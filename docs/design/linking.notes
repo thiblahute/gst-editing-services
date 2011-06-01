@@ -1,0 +1,236 @@
+GESTimelineObject linking
+-------------------------
+
+Summary
+-------
+1. Basic ideas
+2. Use-cases
+3. Proposition to solve the problem
+4. API draft
+  A - GESTimelineGroup API
+  B - GESTimelineObject new API
+
+The goal of this proposal is to design a simple way to link various TimelineObject-s
+through an API which would allow developers to handle as many use-cases as
+possible.
+
+1. Basic ideas
+----------------
+
+  * We can link several TimelineObject
+
+  * Those TimelineObject-s can be in different layers
+
+  * We can unlink them and get the same TimelineObject as we used to
+
+  * When several TimelineObjects are linked, they should all be managed as one
+    object
+
+  * Modifying (Moving) a timelineobject that is linked with another should modify the
+    other.
+
+2. Use-cases
+-----------
+
+  UC-1. The user wants to link various TimelineObjects, to manage them the same way
+        easily
+
+  UC-2. The user wants to unlink them and still get back to the previous state
+
+  UC-3. The user wants to handle various TimelineObject-s that a user selected in
+        the UI
+
+  UC-4. The user wants to manage various TimelineObject-s from different
+        GESTimelineLayer as one object
+
+3. Proposition to solve those problems
+---------------------------------------
+
+We should have a new class that contains and controls other GESTimelineObject-s.
+This should be a GESTimelineObject itself, so the user does not see the difference
+with other TimelineObject-s when using it. When a GESTimelineObject is contained
+in a GESTimelineGroup, any change one this object is handle by the parent, and all
+the children of the parent will also be affected.
+
+
+4. API draft
+------------
+
+
+  A. GESTimelineGroup: Sublcass of GESTimelineObject
+
+    signals:
+    -------
+    /**
+     * GESTimelineGroup::object-removed:
+     * @group: the #GESTimelineGroup
+     * @object: the #GESTimelineObject that was removed from the group
+     *
+     * Will be emitted after the object was removed from the group.
+     */
+    ges_timeline_group_signals[OBJECT_REMOVED]
+
+    /**
+     * GESTimelineGroup::object-added:
+     * @group: the #GESTimelineGroup
+     * @object: the #GESTimelineObject that was added to the group
+     *
+     * Will be emitted after the object was added to the group.
+     */
+    ges_timeline_group_signals[OBJECT_ADDED]
+
+    methods:
+    -------
+
+   /**
+     * ges_timeline_group_new_from_many:
+     * @objects: (transfer full) An array of #GESTimelineObject-s
+     *
+     * Creates a new #GESTimelineGroup from the #GESTimelineObject-s you passed
+     * in parameters
+     *
+     * Returns: (transfer full): the newly created #GESTimelineGroup, resulting
+     * from the linking of the objects passed in parameter or %NULL if something
+     * went wrong.
+     */
+    GESTimelineGroup *
+    ges_timeline_group_new_from_many (GESTimelineObject **objects);
+
+   /**
+     * ges_timeline_group_new_from_many_valist:
+     * @object1: (transfer full) the first #GESTimelineObject you want to link
+     * @...: others #GESTimelineObject you want to link
+     *
+     * Creates a new #GESTimelineGroup from the #GESTimelineObject-s you passed
+     * in parameters
+     *
+     * Returns: (transfer full): the newly created #GESTimelineGroup, resulting
+     * from the linking of the objects passed in parameter or %NULL if something
+     * went wrong.
+     */
+    GESTimelineGroup *
+    ges_timeline_group_new_from_many_valist (GESTimelineObject *object1, ...);
+
+
+    /**
+     * ges_timeline_group_new:
+     *
+     * Returns: (transfer full): a newly created empty #GESTimelineGroup
+     */
+    GESTimelineGroup *
+    ges_timeline_group_new ();
+
+    /**
+     * ges_timeline_group_add:
+     * @group: (transfer none): a #GESTimelineGroup
+     * @object: (transfer full): the #GESTimelineObject you want to add to @group
+     *
+     * Returns: %TRUE if @object could be added %FALSE otherwise
+     */
+    gboolean
+    ges_timeline_group_add (GESTimelineGroup *group, GESTimelineObject *object);
+
+    /**
+     * ges_timeline_group_remove:
+     * @group: (transfer none): a #GESTimelineGroup
+     * @object: (transfer none): the #GESTimelineObject you want to remove from @group
+     *
+     * Will remove @object from @group, looking in @group recursively
+     *
+     * Returns: %TRUE if @object could be removed %FALSE otherwise
+     */
+    gboolean
+    ges_timeline_group_remove (GESTimelineGroup *group, GESTimelineObject *object);
+
+    /**
+     * ges_timeline_group_get_children:
+     * @group: a #GESTimelineGroup
+     *
+     * Gets the list of the direct children of @group.
+     *
+     * Return: value: (element-type GESTimelineObject) (transfer full) a #GList
+     * containing the chilren of group or %NULL
+     */
+    GList *
+    ges_timeline_group_get_children (GESTimelineGroup *group)
+
+    /**
+     * ges_timeline_group_get_children_recursive:
+     * @group: a #GESTimelineGroup
+     *
+     * Gets the list of all the children of @group recursively
+     *
+     * Returns: (element-type GESTimelineObject) (transfer full): a #GList
+     * of #GESTimelineObject, or %NULL
+     */
+    GList *
+    ges_timeline_group_get_children_recursive (GESTimelineGroup *group)
+
+    /**
+     * ges_timeline_group_release_objects:
+     * @group: a #GESTimelineGroup
+     *
+     * Release all #GESTimelineObject contained in @group
+     * If the there are #GESTimelineGroup contained, they will be concidered
+     * as normal #GESTimelineObject-s
+     *
+     * Returns: (element-type GESTimelineObject) (transfer full): a #GList
+     * of the #GESTimelineObject-s that have been released or %NULL
+     */
+    GList *
+    ges_timeline_group_release_objects (GESTimelineGroup *group)
+
+    /**
+     * ges_timeline_group_release_objects:
+     * @group: a #GESTimelineGroup
+     *
+     * Release all #GESTimelineObject contained in @group recursively
+     * If the there are #GESTimelineGroup contained, their children will be
+     * recursed, released and added to the returned #GList
+     *
+     * Returns: (element-type GESTimelineObject) (transfer full): a #GList
+     * of the #GESTimelineObject that have been released or %NULL
+     */
+    GList *
+    ges_timeline_group_release_objects_recurse (GESTimelineGroup *group)
+
+  B. GESTimelineObject:
+
+      methods:
+      ----------
+
+    /**
+     * ges_timeline_object_get_parent:
+     * @object: a #GESTimelineObject
+     *
+     * Gets the parent of @object
+     *
+     * Returns: (transfer none): the #GESTimelineObject parent of
+     * @object
+     */
+    GESTimelineObject *
+    ges_timeline_object_get_parent (GESTimelineObject *object)
+
+    /**
+     * ges_timeline_object_move_to_layer_specify_track_type:
+     * @object: a #GESTimelineObject
+     * @layer: the new #GESTimelineLayer
+     * @types: the types of the track from which you want to move the unlocked
+     * trackobjects
+     *
+     * Lets you move the #GESTimelineObject-s to other layer taking care that
+     * the trackobject that are unlocked inside the timelineobject and are
+     * contained in a track of @tracktype are properly handled as unlocked.
+     * This result in a new #GESTimelineObject containning those #GESTrackObject
+     * and a #GESTimelineGroup that controls the new 2 resulting objects.
+     *
+     * Note: The #GESTrackObject-s that have moved are now locked in the new
+     * #GESTimelineObject.
+     *
+     * Returns: The newly created #GESTimelineGroup containing the resulting
+     * #GESTimelineObject or the #GESTimelineObject that has actually been moved
+     * to @layer in the case there were no unlocked #GESTrackObject
+     */
+    GESTimelineObject *
+    ges_timeline_object_move_to_layer_specify_track_type (
+        GESTimelineObject * object, GESTrackType * type)
