@@ -33,7 +33,7 @@
 #include "ges-timeline-layer.h"
 #include "ges.h"
 
-#define LAYER_HEIGHT 10
+#define LAYER_HEIGHT 1000
 
 G_DEFINE_TYPE (GESTimelineLayer, ges_timeline_layer, G_TYPE_INITIALLY_UNOWNED);
 
