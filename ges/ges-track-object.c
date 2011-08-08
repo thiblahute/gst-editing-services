@@ -73,6 +73,7 @@ enum
   PROP_DURATION,
   PROP_PRIORITY,
   PROP_ACTIVE,
+  PROP_LOCKED,
   PROP_LAST
 };
 
@@ -144,6 +145,9 @@ ges_track_object_get_property (GObject * object, guint property_id,
     case PROP_ACTIVE:
       g_value_set_boolean (value, ges_track_object_is_active (tobj));
       break;
+    case PROP_LOCKED:
+      g_value_set_boolean (value, ges_track_object_is_locked (tobj));
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
   }
@@ -170,6 +174,9 @@ ges_track_object_set_property (GObject * object, guint property_id,
       break;
     case PROP_ACTIVE:
       ges_track_object_set_active (tobj, g_value_get_boolean (value));
+      break;
+    case PROP_LOCKED:
+      ges_track_object_set_locked (tobj, g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -269,6 +276,17 @@ ges_track_object_class_init (GESTrackObjectClass * klass)
       G_PARAM_READWRITE);
   g_object_class_install_property (object_class, PROP_ACTIVE,
       properties[PROP_ACTIVE]);
+
+  /**
+   * GESTrackObject:locked
+   *
+   * Whether it moves in sync with its controlling #GESTimelineObject or not
+   */
+  properties[PROP_LOCKED] =
+      g_param_spec_boolean ("locked", "Locked", "Whether it moves with its \
+      controlling object or not", TRUE, G_PARAM_READWRITE);
+  g_object_class_install_property (object_class, PROP_LOCKED,
+      properties[PROP_LOCKED]);
 
   /**
    * GESTrackObject::deep-notify:
@@ -887,6 +905,12 @@ void
 ges_track_object_set_locked (GESTrackObject * object, gboolean locked)
 {
   object->priv->locked = locked;
+
+#if GLIB_CHECK_VERSION(2,26,0)
+  g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_LOCKED]);
+#else
+  g_object_notify (G_OBJECT (object), "locked");
+#endif
 }
 
 /**
