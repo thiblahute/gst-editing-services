@@ -83,9 +83,9 @@ GST_START_TEST (test_object_properties)
   fail_unless (ges_track_object_set_track (trackobject, track));
 
   /* Check that trackobject has the same properties */
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 42);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject), 51);
-  assert_equals_uint64 (GES_TRACK_OBJECT_INPOINT (trackobject), 12);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 42);
+  assert_equals_uint64 (ges_track_object_get_duration (trackobject), 51);
+  assert_equals_uint64 (ges_track_object_get_inpoint (trackobject), 12);
 
   /* And let's also check that it propagated correctly to GNonLin */
   gnl_object_check (ges_track_object_get_gnlobject (trackobject), 42, 51, 12,
@@ -97,9 +97,9 @@ GST_START_TEST (test_object_properties)
   assert_equals_uint64 (GES_TIMELINE_OBJECT_START (object), 420);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_DURATION (object), 510);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_INPOINT (object), 120);
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 420);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject), 510);
-  assert_equals_uint64 (GES_TRACK_OBJECT_INPOINT (trackobject), 120);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 420);
+  assert_equals_uint64 (ges_track_object_get_duration (trackobject), 510);
+  assert_equals_uint64 (ges_track_object_get_inpoint (trackobject), 120);
 
   /* And let's also check that it propagated correctly to GNonLin */
   gnl_object_check (ges_track_object_get_gnlobject (trackobject), 420, 510, 120,
@@ -110,7 +110,7 @@ GST_START_TEST (test_object_properties)
    * along to the parent and the gnonlin object */
   g_object_set (trackobject, "start", (guint64) 400, NULL);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_START (object), 400);
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 400);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 400);
   gnl_object_check (ges_track_object_get_gnlobject (trackobject), 400, 510, 120,
       510, 0, TRUE);
 
@@ -125,7 +125,7 @@ GST_END_TEST;
 GST_START_TEST (test_object_properties_unlocked)
 {
   GESTrack *track;
-  GESTrackObject *trackobject;
+  GESTrackObject *trackobject, *trackeffect;
   GESTimelineObject *object;
 
   ges_init ();
@@ -145,18 +145,21 @@ GST_START_TEST (test_object_properties_unlocked)
   assert_equals_uint64 (GES_TIMELINE_OBJECT_DURATION (object), 51);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_INPOINT (object), 12);
 
+  trackeffect =
+      GES_TRACK_OBJECT (ges_track_parse_launch_effect_new ("identity"));
   trackobject = ges_timeline_object_create_track_object (object, track);
   fail_unless (trackobject != NULL);
   fail_unless (ges_track_object_set_track (trackobject, track));
+  fail_unless (ges_timeline_object_add_track_object (object, trackeffect));
 
   /* Check that trackobject has the same properties */
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 42);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject), 51);
-  assert_equals_uint64 (GES_TRACK_OBJECT_INPOINT (trackobject), 12);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 42);
+  assert_equals_uint64 (ges_track_object_get_duration (trackobject), 51);
+  assert_equals_uint64 (ges_track_object_get_inpoint (trackobject), 12);
 
   /* And let's also check that it propagated correctly to GNonLin */
   gnl_object_check (ges_track_object_get_gnlobject (trackobject), 42, 51, 12,
-      51, 0, TRUE);
+      51, 1, TRUE);
 
   /* This time we unlock the trackobject and make sure it doesn't propagate */
   ges_track_object_set_locked (trackobject, FALSE);
@@ -168,22 +171,29 @@ GST_START_TEST (test_object_properties_unlocked)
   assert_equals_uint64 (GES_TIMELINE_OBJECT_DURATION (object), 510);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_INPOINT (object), 120);
   /* ... but not on the GESTrackObject since it was unlocked... */
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 42);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject), 51);
-  assert_equals_uint64 (GES_TRACK_OBJECT_INPOINT (trackobject), 12);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 42);
+  assert_equals_uint64 (ges_track_object_get_duration (trackobject), 51);
+  assert_equals_uint64 (ges_track_object_get_inpoint (trackobject), 12);
+  assert_equals_uint64 (ges_track_object_get_start (trackeffect), 42);
+  assert_equals_uint64 (ges_track_object_get_duration (trackeffect), 51);
+  assert_equals_uint64 (ges_track_object_get_inpoint (trackeffect), 12);
   /* ... and neither on the GNonLin object */
   gnl_object_check (ges_track_object_get_gnlobject (trackobject), 42, 51, 12,
-      51, 0, TRUE);
+      51, 1, TRUE);
 
   /* When unlocked, moving the GESTrackObject won't move the GESTimelineObject
    * either */
   /* This time, we move the trackobject to see if the changes move
-   * along to the parent and the gnonlin object */
-  g_object_set (trackobject, "start", (guint64) 400, NULL);
+   * along to the parent and the gnonlin object and check that the effects
+   * are also following it properly */
+  g_object_set (trackobject, "start", (guint64) 400, "duration", 300, NULL);
   assert_equals_uint64 (GES_TIMELINE_OBJECT_START (object), 420);
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 400);
-  gnl_object_check (ges_track_object_get_gnlobject (trackobject), 400, 51, 12,
-      51, 0, TRUE);
+  assert_equals_uint64 (ges_track_object_get_start (trackobject), 400);
+  assert_equals_uint64 (ges_track_object_get_start (trackeffect), 400);
+  assert_equals_uint64 (ges_track_object_get_duration (trackobject), 300);
+  assert_equals_uint64 (ges_track_object_get_duration (trackeffect), 300);
+  gnl_object_check (ges_track_object_get_gnlobject (trackobject), 400, 300, 12,
+      300, 1, TRUE);
 
 
   ges_timeline_object_release_track_object (object, trackobject);
@@ -193,6 +203,7 @@ GST_START_TEST (test_object_properties_unlocked)
 }
 
 GST_END_TEST;
+
 static Suite *
 ges_suite (void)
 {

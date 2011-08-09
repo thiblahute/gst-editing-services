@@ -54,6 +54,9 @@ track_object_duration_changed_cb (GESTrackObject * child,
 static void
 track_object_priority_changed_cb (GESTrackObject * child,
     GParamSpec * arg G_GNUC_UNUSED, GESTimelineObject * object);
+static void
+track_object_locked_changed_cb (GESTrackObject * child,
+    GParamSpec * arg G_GNUC_UNUSED, GESTimelineObject * object);
 static void update_height (GESTimelineObject * object);
 
 static gint sort_track_effects (gpointer a, gpointer b,
@@ -82,6 +85,7 @@ typedef struct
   guint duration_notifyid;
   guint inpoint_notifyid;
   guint priority_notifyid;
+  guint locked_notifyid;
 
   /* track mapping ?? */
 } ObjectMapping;
@@ -492,6 +496,9 @@ ges_timeline_object_add_track_object (GESTimelineObject * object, GESTrackObject
   mapping->priority_notifyid =
       g_signal_connect (G_OBJECT (trobj), "notify::priority",
       G_CALLBACK (track_object_priority_changed_cb), object);
+  mapping->locked_notifyid =
+      g_signal_connect (G_OBJECT (trobj), "notify::locked",
+      G_CALLBACK (track_object_locked_changed_cb), object);
 
   get_layer_priorities (priv->layer, &min_prio, &max_prio);
   ges_track_object_set_priority (trobj, min_prio + object->priority
@@ -539,6 +546,7 @@ ges_timeline_object_release_track_object (GESTimelineObject * object,
     g_signal_handler_disconnect (trackobject, mapping->duration_notifyid);
     g_signal_handler_disconnect (trackobject, mapping->inpoint_notifyid);
     g_signal_handler_disconnect (trackobject, mapping->priority_notifyid);
+    g_signal_handler_disconnect (trackobject, mapping->locked_notifyid);
 
     g_slice_free (ObjectMapping, mapping);
 
@@ -1121,14 +1129,36 @@ track_object_start_changed_cb (GESTrackObject * child,
   if (object->priv->ignore_notifies)
     return;
 
+  GST_DEBUG ("Tracko object %p start changed to %d", child, child->start);
   map = find_object_mapping (object, child);
   if (G_UNLIKELY (map == NULL))
     /* something massively screwed up if we get this */
     return;
 
   if (!ges_track_object_is_locked (child)) {
+    GList *tmp;
+    guint i;
+
     /* Update the internal start_offset */
     map->start_offset = object->start - child->start;
+
+    /* Update the effects that are applying on this track object */
+    for (tmp = object->priv->trackobjects, i = 0; i < object->priv->nb_effects;
+        tmp = tmp->next, i++) {
+      GESTrackObject *tckobj = GES_TRACK_OBJECT (tmp->data);
+
+
+      map = find_object_mapping (object, tckobj);
+      g_return_if_fail (map);
+
+      g_signal_handler_disconnect (tckobj, map->start_notifyid);
+      ges_track_object_set_start (tckobj, child->start);
+      GST_ERROR ("Related track effect %p start changed to %d", tckobj,
+          ges_track_object_get_start (tckobj));
+      map->start_notifyid =
+          g_signal_connect (G_OBJECT (tckobj), "notify::start",
+          G_CALLBACK (track_object_start_changed_cb), object);
+    }
   } else {
     /* Or update the parent start */
     ges_timeline_object_set_start (object, child->start + map->start_offset);
@@ -1151,22 +1181,46 @@ track_object_duration_changed_cb (GESTrackObject * child,
   if (object->priv->ignore_notifies)
     return;
 
+  GST_DEBUG ("TrackObject %p duration changed", child);
+
+  /* Update the effects that are applying on this track object */
+  if (!ges_track_object_is_locked (child)) {
+    GList *tmp;
+    guint i;
+
+    for (tmp = object->priv->trackobjects, i = 0; i < object->priv->nb_effects;
+        tmp = tmp->next, i++) {
+      GESTrackObject *tckobj = GES_TRACK_OBJECT (tmp->data);
+
+      ObjectMapping *map = find_object_mapping (object, tckobj);
+
+      g_return_if_fail (map);
+
+      g_signal_handler_disconnect (tckobj, map->duration_notifyid);
+      ges_track_object_set_duration (tckobj, child->duration);
+      map->duration_notifyid =
+          g_signal_connect (G_OBJECT (tckobj), "notify::duration",
+          G_CALLBACK (track_object_duration_changed_cb), object);
+    }
+  }
 }
 
 static void
 track_object_priority_changed_cb (GESTrackObject * child,
     GParamSpec * arg G_GNUC_UNUSED, GESTimelineObject * object)
 {
-  ObjectMapping *map;
   guint32 layer_min_gnl_prio, layer_max_gnl_prio;
 
   guint tck_priority = ges_track_object_get_priority (child);
+  ObjectMapping *map = find_object_mapping (object, child);
 
   GST_DEBUG ("TrackObject %p priority changed to %i", child,
       ges_track_object_get_priority (child));
 
   if (object->priv->ignore_notifies)
     return;
+
+  g_return_if_fail (map);
 
   update_height (object);
   map = find_object_mapping (object, child);
@@ -1206,6 +1260,30 @@ track_object_priority_changed_cb (GESTrackObject * child,
 
   GST_DEBUG ("object %p priority %d child %p priority %d", object,
       object->priority, child, ges_track_object_get_priority (child));
+}
+
+static void
+track_object_locked_changed_cb (GESTrackObject * child,
+    GParamSpec * arg G_GNUC_UNUSED, GESTimelineObject * object)
+{
+  GList *tmp;
+  guint i;
+
+  /* Keep effects in the same lock state as the track object it is
+   * applied to */
+  for (tmp = object->priv->trackobjects, i = 0; i < object->priv->nb_effects;
+      tmp = tmp->next, i++) {
+    GESTrackObject *tckobj = GES_TRACK_OBJECT (tmp->data);
+    ObjectMapping *map = find_object_mapping (object, tckobj);
+
+    g_return_if_fail (map);
+
+    g_signal_handler_disconnect (tckobj, map->locked_notifyid);
+    ges_track_object_set_locked (tckobj, ges_track_object_is_locked (child));
+    map->locked_notifyid =
+        g_signal_connect (G_OBJECT (tckobj), "notify::locked",
+        G_CALLBACK (track_object_locked_changed_cb), object);
+  }
 }
 
 static void
