@@ -28,6 +28,7 @@ libges_@GST_MAJORMINOR@_la_SOURCES = 		\
 	ges-timeline-title-source.c		\
 	ges-timeline-overlay.c			\
 	ges-timeline-text-overlay.c		\
+	ges-timeline-group.c		\
 	ges-track.c				\
 	ges-track-object.c			\
 	ges-track-source.c			\
@@ -71,6 +72,7 @@ libges_@GST_MAJORMINOR@include_HEADERS = 	\
 	ges-timeline-title-source.h		\
 	ges-timeline-overlay.h			\
 	ges-timeline-text-overlay.h		\
+	ges-timeline-group.h		\
 	ges-track-effect.h		\
 	ges-track-parse-launch-effect.h		\
 	ges-track.h				\
