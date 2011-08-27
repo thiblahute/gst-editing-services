@@ -101,6 +101,7 @@ struct _GESTimelineObjectPrivate
   /* A list of TrackObject controlled by this TimelineObject sorted by
    * priority */
   GList *trackobjects;
+  GESTimelineObject *parent;
 
   /* Set to TRUE when the timelineobject is doing updates of track object
    * properties so we don't end up in infinite property update loops
@@ -977,6 +978,22 @@ ges_timeline_object_set_top_effect_priority (GESTimelineObject * object,
       (GCompareDataFunc) sort_track_effects, object);
 
   return TRUE;
+}
+
+/**
+ * ges_timeline_object_get_parent:
+ * @object: The #GESTimelineObject whe want to get the parent from
+ *
+ * Gets the parent of @object
+ *
+ * Returns: (transfer full) The parent of @object
+ *
+ * Since: 0.10.3
+ */
+GESTimelineObject *
+ges_timeline_object_get_parent (GESTimelineObject * object)
+{
+  return object->priv->parent;
 }
 
 static void

@@ -262,9 +262,12 @@ ges_timeline_object_get_layer            (GESTimelineObject *object);
 GList *
 ges_timeline_object_get_top_effects      (GESTimelineObject *object);
 
-gint 
+gint
 ges_timeline_object_get_top_effect_position (GESTimelineObject *object,
 					     GESTrackEffect *effect);
+
+GESTimelineObject*
+ges_timeline_object_get_parent              (GESTimelineObject * object);
 
 gboolean
 ges_timeline_object_set_top_effect_priority (GESTimelineObject *object,
