@@ -235,6 +235,17 @@ fi
 AC_SUBST(GST_VIDEO_LIBS)
 AC_SUBST(GST_VIDEO_CFLAGS)
 
+dnl check for libxml
+LIBXML_REQUIRED=2.0.0
+PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= $LIBXML_REQUIRED,
+   [HAVE_LIBXML="yes"], [HAVE_LIBXML="no"])
+
+if test "x$HAVE_LIBXML" != "xyes"; then
+  AC_ERROR([libxml is required for formatters support])
+fi
+AC_SUBST(LIBXML_CFLAGS)
+AC_SUBST(LIBXML_LIBS)
+
 dnl Check for documentation xrefs
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
 GST_PREFIX="`$PKG_CONFIG --variable=prefix gstreamer-$GST_MAJORMINOR`"
