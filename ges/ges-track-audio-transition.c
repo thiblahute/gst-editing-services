@@ -26,6 +26,7 @@
 #include "ges-internal.h"
 #include "ges-track-object.h"
 #include "ges-track-audio-transition.h"
+#include <gst/controller/gstcontrolbindingdirect.h>
 
 G_DEFINE_TYPE (GESTrackAudioTransition, ges_track_audio_transition,
     GES_TYPE_TRACK_TRANSITION);
@@ -210,13 +211,15 @@ ges_track_audio_transition_create_element (GESTrackObject * object)
   gst_object_unref (src_target);
 
   acontrol_source = gst_interpolation_control_source_new ();
-  gst_object_set_control_source (GST_OBJECT (atarget), propname,
-      GST_CONTROL_SOURCE (acontrol_source));
+  gst_object_add_control_binding (GST_OBJECT (atarget),
+      gst_control_binding_direct_new (GST_OBJECT (atarget),
+          propname, GST_CONTROL_SOURCE (acontrol_source)));
   g_object_set (acontrol_source, "mode", GST_INTERPOLATION_MODE_LINEAR, NULL);
 
   bcontrol_source = gst_interpolation_control_source_new ();
-  gst_object_set_control_source (GST_OBJECT (btarget), propname,
-      GST_CONTROL_SOURCE (bcontrol_source));
+  gst_object_add_control_binding (GST_OBJECT (btarget),
+      gst_control_binding_direct_new (GST_OBJECT (btarget),
+          propname, GST_CONTROL_SOURCE (bcontrol_source)));
   g_object_set (acontrol_source, "mode", GST_INTERPOLATION_MODE_LINEAR, NULL);
 
   self->priv->a_control_source = acontrol_source;

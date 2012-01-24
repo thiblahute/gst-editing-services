@@ -25,6 +25,7 @@
 
 #include <ges/ges.h>
 #include "ges-internal.h"
+#include <gst/controller/gstcontrolbindingdirect.h>
 
 G_DEFINE_TYPE (GESTrackVideoTransition, ges_track_video_transition,
     GES_TYPE_TRACK_TRANSITION);
@@ -295,8 +296,9 @@ ges_track_video_transition_create_element (GESTrackObject * object)
   g_object_set (target, propname, (gfloat) 0.0, NULL);
 
   control_source = gst_interpolation_control_source_new ();
-  gst_object_set_control_source (GST_OBJECT (target), propname,
-      GST_CONTROL_SOURCE (control_source));
+  gst_object_add_control_binding (GST_OBJECT (target),
+      gst_control_binding_direct_new (GST_OBJECT (target),
+          propname, GST_CONTROL_SOURCE (control_source)));
   g_object_set (control_source, "mode", GST_INTERPOLATION_MODE_LINEAR, NULL);
 
   priv->control_source = control_source;
