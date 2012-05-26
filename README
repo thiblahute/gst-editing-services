@@ -14,5 +14,4 @@ Dependencies:
 -------------
 
  * GStreamer core
- * gst-plugins-base
- * gnonlin
+ * gst-plugins-base 

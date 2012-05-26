@@ -1,6 +1,6 @@
 DISTCHECK_CONFIGURE_FLAGS=--enable-gtk-doc
 
-SUBDIRS = ges tests tools common m4 pkgconfig docs
+SUBDIRS = ges gnl tests tools common m4 pkgconfig docs
 
 DIST_SUBDIRS = $(SUBDIRS)
 
@@ -8,8 +8,8 @@ DIST_SUBDIRS = $(SUBDIRS)
 #include $(top_srcdir)/common/win32.mak
 
 EXTRA_DIST = \
-	gst-editing-services.spec depcomp \
-	AUTHORS COPYING NEWS README RELEASE \
+	gst-editing-services.spec gnonlin.spec depcomp \
+	AUTHORS COPYING NEWS README RELEASE REQUIREMENTS \
 	ChangeLog autogen.sh
 
 DISTCLEANFILES = _stdint.h
@@ -34,8 +34,13 @@ endif
 
 # cruft: plugins that have been merged or moved or renamed
 CRUFT_FILES = \
- $(top_builddir)/common/shave \
- $(top_builddir)/common/shave-libtool
+	$(top_builddir)/common/shave \
+	$(top_builddir)/common/shave-libtool \
+	$(top_builddir)/common/m4/libtool.m4 \
+	$(top_builddir)/common/m4/ltoptions.m4 \
+	$(top_builddir)/common/m4/ltsugar.m4 \
+	$(top_builddir)/common/m4/ltversion.m4 \
+	$(top_builddir)/common/m4/lt~obsolete.m4
 
 include $(top_srcdir)/common/cruft.mak
 

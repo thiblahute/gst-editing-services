@@ -313,6 +313,7 @@ common/m4/Makefile
 gst-editing-services.spec
 m4/Makefile
 ges/Makefile
+gnl/Makefile
 tests/Makefile
 tests/check/Makefile
 tests/examples/Makefile
@@ -323,5 +324,6 @@ docs/libs/Makefile
 pkgconfig/Makefile
 pkgconfig/gst-editing-services.pc
 pkgconfig/gst-editing-services-uninstalled.pc
+gnonlin.spec
 )
 AC_OUTPUT

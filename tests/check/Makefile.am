@@ -27,13 +27,20 @@ check_PROGRAMS = \
 	ges/transition	\
 	ges/overlays\
 	ges/text_properties\
-	ges/save_and_load
+	ges/save_and_load \
+	gnl/simple	\
+	gnl/complex	\
+	gnl/gnlsource	\
+	gnl/gnloperation	\
+	gnl/gnlcomposition	\
+	gnl/seek
 
-noinst_HEADERS = 
+noinst_HEADERS = \
+	gnl/common.h
 
 TESTS = $(check_PROGRAMS)
 
-AM_CFLAGS =  -I$(top_srcdir) $(GST_PLUGINS_BASE_CFLAGS) $(GST_OBJ_CFLAGS) \
+AM_CFLAGS = -DGST_USE_UNSTABLE_API  -I$(top_srcdir) $(GST_PLUGINS_BASE_CFLAGS) $(GST_OBJ_CFLAGS) \
 	$(GST_CHECK_CFLAGS) $(GST_OPTION_CFLAGS) $(GST_CFLAGS) \
 	-UG_DISABLE_ASSERT -UG_DISABLE_CAST_CHECKS
 
@@ -42,3 +49,5 @@ LDADD = $(top_builddir)/ges/libges-@GST_API_VERSION@.la \
 	$(GST_OBJ_LIBS) $(GST_CHECK_LIBS)
 
 EXTRA_DIST = #gst-plugins-bad.supp
+
+SUPPRESSIONS = $(top_srcdir)/common/gst.supp
