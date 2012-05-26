@@ -94,7 +94,7 @@ static GstElement *ges_track_object_create_gnl_object_func (GESTrackObject *
 static void gnlobject_start_cb (GstElement * gnlobject, GParamSpec * arg
     G_GNUC_UNUSED, GESTrackObject * obj);
 
-static void gnlobject_media_start_cb (GstElement * gnlobject, GParamSpec * arg
+static void gnlobject_inpoint_cb (GstElement * gnlobject, GParamSpec * arg
     G_GNUC_UNUSED, GESTrackObject * obj);
 
 static void gnlobject_priority_cb (GstElement * gnlobject, GParamSpec * arg
@@ -413,7 +413,7 @@ ges_track_object_set_inpoint_internal (GESTrackObject * object, guint64 inpoint)
     if (G_UNLIKELY (inpoint == object->inpoint))
       return FALSE;
 
-    g_object_set (object->priv->gnlobject, "media-start", inpoint, NULL);
+    g_object_set (object->priv->gnlobject, "inpoint", inpoint, NULL);
   } else
     object->priv->pending_inpoint = inpoint;
 
@@ -599,7 +599,7 @@ connect_properties_signals (GESTrackObject * object)
 
 /* Callbacks from the GNonLin object */
 static void
-gnlobject_media_start_cb (GstElement * gnlobject,
+gnlobject_inpoint_cb (GstElement * gnlobject,
     GParamSpec * arg G_GNUC_UNUSED, GESTrackObject * obj)
 {
   guint64 start;
@@ -607,15 +607,15 @@ gnlobject_media_start_cb (GstElement * gnlobject,
 
   klass = GES_TRACK_OBJECT_GET_CLASS (obj);
 
-  g_object_get (gnlobject, "media-start", &start, NULL);
+  g_object_get (gnlobject, "inpoint", &start, NULL);
 
   GST_DEBUG ("gnlobject in-point : %" GST_TIME_FORMAT " current : %"
       GST_TIME_FORMAT, GST_TIME_ARGS (start), GST_TIME_ARGS (obj->inpoint));
 
   if (start != obj->inpoint) {
     obj->inpoint = start;
-    if (klass->media_start_changed)
-      klass->media_start_changed (obj, start);
+    if (klass->inpoint_changed)
+      klass->inpoint_changed (obj, start);
   }
 }
 
@@ -812,7 +812,7 @@ ensure_gnl_object (GESTrackObject * object)
       g_signal_connect (G_OBJECT (object->priv->gnlobject), "notify::start",
           G_CALLBACK (gnlobject_start_cb), object);
       g_signal_connect (G_OBJECT (object->priv->gnlobject),
-          "notify::media-start", G_CALLBACK (gnlobject_media_start_cb), object);
+          "notify::inpoint", G_CALLBACK (gnlobject_inpoint_cb), object);
       g_signal_connect (G_OBJECT (object->priv->gnlobject), "notify::duration",
           G_CALLBACK (gnlobject_duration_cb), object);
       g_signal_connect (G_OBJECT (object->priv->gnlobject), "notify::priority",
@@ -825,7 +825,7 @@ ensure_gnl_object (GESTrackObject * object)
           "duration", object->priv->pending_duration,
           "media-duration", object->priv->pending_duration,
           "start", object->priv->pending_start,
-          "media-start", object->priv->pending_inpoint,
+          "inpoint", object->priv->pending_inpoint,
           "priority", object->priv->pending_priority,
           "active", object->priv->pending_active, NULL);
 

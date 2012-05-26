@@ -72,7 +72,7 @@ typedef enum
 #define GNL_OBJECT_START(obj) (GNL_OBJECT_CAST (obj)->start)
 #define GNL_OBJECT_STOP(obj) (GNL_OBJECT_CAST (obj)->stop)
 #define GNL_OBJECT_DURATION(obj) (GNL_OBJECT_CAST (obj)->duration)
-#define GNL_OBJECT_MEDIA_START(obj) (GNL_OBJECT_CAST (obj)->media_start)
+#define GNL_OBJECT_INPOINT(obj) (GNL_OBJECT_CAST (obj)->inpoint)
 #define GNL_OBJECT_MEDIA_STOP(obj) (GNL_OBJECT_CAST (obj)->media_stop)
 #define GNL_OBJECT_MEDIA_DURATION(obj) (GNL_OBJECT_CAST (obj)->media_duration)
 #define GNL_OBJECT_PRIORITY(obj) (GNL_OBJECT_CAST (obj)->priority)
@@ -88,7 +88,7 @@ struct _GnlObject
   /* read-only */
   GstClockTime stop;
 
-  GstClockTime media_start;
+  GstClockTime inpoint;
   GstClockTimeDiff media_duration;
 
   /* read-only */
@@ -128,7 +128,7 @@ struct _GnlObjectClass
   void (*duration_changed) (GnlObject *object, GstClockTime duration);
   void (*media_duration_changed) (GnlObject *object, GstClockTime mduration);
   void (*start_changed) (GnlObject *object, GstClockTime start);
-  void (*media_start_changed) (GnlObject *object, GstClockTime mstart);
+  void (*inpoint_changed) (GnlObject *object, GstClockTime mstart);
   void (*priority_changed) (GnlObject *object, guint32 priority);
   void (*active_changed) (GnlObject *object, gboolean active);
 
@@ -150,7 +150,7 @@ gnl_object_set_caps           (GnlObject * object, const GstCaps * caps);
 void gnl_object_set_duration       (GnlObject *object, GstClockTime duration);
 void gnl_object_set_media_duration (GnlObject *object, GstClockTime mduration);
 void gnl_object_set_start          (GnlObject *object, GstClockTime start);
-void gnl_object_set_media_start    (GnlObject *object, GstClockTime mstart);
+void gnl_object_set_inpoint    (GnlObject *object, GstClockTime mstart);
 void gnl_object_set_priority       (GnlObject *object, guint32 priority);
 void gnl_object_set_active         (GnlObject *object, gboolean active);
 

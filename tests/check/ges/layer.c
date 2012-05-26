@@ -46,7 +46,7 @@ my_fill_track_func (GESTimelineObject * object,
   guint32 pprio;							\
   gboolean pact;							\
   g_object_get (gnlobj, "start", &pstart, "duration", &pdur,		\
-		"media-start", &pmstart, "media-duration", &pmdur,	\
+		"inpoint", &pmstart, "media-duration", &pmdur,	\
 		"priority", &pprio, "active", &pact,			\
 		NULL);							\
   assert_equals_uint64 (pstart, start);					\

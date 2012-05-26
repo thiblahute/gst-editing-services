@@ -100,7 +100,7 @@ struct _GESTrackObject {
  * @create_gnl_object: method to create the GNonLin container object.
  * @create_element: method to return the GstElement to put in the gnlobject.
  * @start_changed: start property of gnlobject has changed
- * @media_start_changed: media-start property of gnlobject has changed
+ * @inpoint_changed: inpoint property of gnlobject has changed
  * @duration_changed: duration property glnobject has changed
  * @gnl_priority_changed: duration property glnobject has changed
  * @active_changed: active property of gnlobject has changed
@@ -126,7 +126,7 @@ struct _GESTrackObjectClass {
   GstElement*  (*create_element)           (GESTrackObject * object);
 
   void (*start_changed)        (GESTrackObject *object, guint64 start);
-  void (*media_start_changed)  (GESTrackObject *object, guint64 media_start);
+  void (*inpoint_changed)  (GESTrackObject *object, guint64 inpoint);
   void (*gnl_priority_changed) (GESTrackObject *object, guint priority);
   void (*duration_changed)     (GESTrackObject *object, guint64 duration);
   void (*active_changed)       (GESTrackObject *object, gboolean active);
