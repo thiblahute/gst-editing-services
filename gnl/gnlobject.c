@@ -648,6 +648,14 @@ beach:
   return ret;
 }
 
+/**
+ * gnl_object_set_duration:
+ * @object: a #GESTrackObject
+ * @duration: the duration (in #GstClockTime)
+ *
+ * Set the duration which will be used in the container #GESTrack
+ * starting from the 'in-point'
+ */
 void
 gnl_object_set_duration (GnlObject * object, GstClockTime duration)
 {
@@ -677,6 +685,13 @@ gnl_object_set_media_duration (GnlObject * object, GstClockTime mduration)
   }
 }
 
+/**
+ * gnl_object_set_start:
+ * @object: a #GESTrackObject
+ * @start: the start position (in #GstClockTime)
+ *
+ * Sets the position of the object in the container #GESTrack.
+ */
 void
 gnl_object_set_start (GnlObject * object, GstClockTime start)
 {
@@ -691,6 +706,13 @@ gnl_object_set_start (GnlObject * object, GstClockTime start)
   }
 }
 
+/**
+ * gnl_object_set_inpoint:
+ * @object: a #GESTrackObject
+ * @inpoint: the in-point (in #GstClockTime)
+ *
+ * Set the offset within the contents of this #GESTrackObject
+ */
 void
 gnl_object_set_inpoint (GnlObject * object, GstClockTime mstart)
 {
@@ -704,6 +726,19 @@ gnl_object_set_inpoint (GnlObject * object, GstClockTime mstart)
   }
 }
 
+/**
+ * gnl_object_set_priority:
+ * @object: a #GESTrackObject
+ * @priority: the priority
+ *
+ * Sets the priority of the object withing the containing #GESTrack.
+ * If two objects intersect over the same region of time, the priority
+ * property is used to decide which one takes precedence.
+ *
+ * The highest priority (that supercedes everything) is 0, and then
+ * lowering priorities go in increasing numerical value (with G_MAXUINT32
+ * being the lowest priority).
+ */
 void
 gnl_object_set_priority (GnlObject * object, guint32 priority)
 {
@@ -717,6 +752,16 @@ gnl_object_set_priority (GnlObject * object, guint32 priority)
   }
 }
 
+/**
+ * ges_track_object_set_active:
+ * @object: a #GESTrackObject
+ * @active: visibility
+ *
+ * Sets the usage of the @object. If @active is %TRUE, the object will be used for
+ * playback and rendering, else it will be ignored.
+ *
+ * Returns: %TRUE if the property was toggled, else %FALSE
+ */
 void
 gnl_object_set_active (GnlObject * object, gboolean active)
 {

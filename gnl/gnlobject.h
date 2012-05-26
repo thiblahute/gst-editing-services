@@ -68,14 +68,69 @@ typedef enum
 #define GNL_OBJECT_IS_EXPANDABLE(obj) \
   (GST_OBJECT_FLAG_IS_SET(obj, GNL_OBJECT_EXPANDABLE))
 
-/* For internal usage only */
+/**
+ * GNL_OBJECT_START:
+ * @obj: a #GnlObject
+ *
+ * The start position of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_START(obj) (GNL_OBJECT_CAST (obj)->start)
+
+/**
+ * GNL_OBJECT_STOP:
+ * @obj: a #GnlObject
+ *
+ * The stop time of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_STOP(obj) (GNL_OBJECT_CAST (obj)->stop)
+
+/**
+ * GNL_OBJECT_DURATION:
+ * @obj: a #GnlObject
+ *
+ * The duration of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_DURATION(obj) (GNL_OBJECT_CAST (obj)->duration)
+
+/**
+ * GNL_OBJECT_INPOINT:
+ * @obj: a #GnlObject
+ *
+ * The inpoint position of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_INPOINT(obj) (GNL_OBJECT_CAST (obj)->inpoint)
+
+/**
+ * GNL_OBJECT_MEDIA_STOP:
+ * @obj: a #GnlObject
+ *
+ * The media stop of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_MEDIA_STOP(obj) (GNL_OBJECT_CAST (obj)->media_stop)
+
+/**
+ * GNL_OBJECT_MEDIA_DURATION:
+ * @obj: a #GnlObject
+ *
+ * The media duration the object (in nanoseconds).
+ */
 #define GNL_OBJECT_MEDIA_DURATION(obj) (GNL_OBJECT_CAST (obj)->media_duration)
+
+/**
+ * GNL_OBJECT_PRIORITY:
+ * @obj: a #GnlObject
+ *
+ * The priority of the object (in nanoseconds).
+ */
 #define GNL_OBJECT_PRIORITY(obj) (GNL_OBJECT_CAST (obj)->priority)
+
+/**
+ * GNL_OBJECT_ACTIVE:
+ * @obj: a #GnlObject
+ *
+ * Whether @object is active or not
+ */
+#define GNL_OBJECT_ACTIVE(obj) (GNL_OBJECT_CAST (obj)->active)
 
 struct _GnlObject
 {
@@ -124,7 +179,7 @@ struct _GnlObjectClass
   gboolean (*cleanup) (GnlObject * object);
 
   /* Let subclasses know about our properties changes without passing
-   * thought the signaling system */
+   * through the signaling system */
   void (*duration_changed) (GnlObject *object, GstClockTime duration);
   void (*media_duration_changed) (GnlObject *object, GstClockTime mduration);
   void (*start_changed) (GnlObject *object, GstClockTime start);
