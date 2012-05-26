@@ -139,10 +139,10 @@ GST_START_TEST (test_get_effects_from_tl)
           GES_TRACK_OBJECT (track_effect2)));
 
   g_object_get (G_OBJECT (source), "height", &tl_object_height, NULL);
-  fail_unless (tl_object_height == 4);
+  assert_equals_int (tl_object_height, 4);
 
   effects = ges_timeline_object_get_top_effects (GES_TIMELINE_OBJECT (source));
-  fail_unless (g_list_length (effects) == 3);
+  assert_equals_int (g_list_length (effects), 3);
   for (tmp = effects; tmp; tmp = tmp->next) {
     gint priority =
         ges_timeline_object_get_top_effect_position (GES_TIMELINE_OBJECT
@@ -205,7 +205,7 @@ GST_START_TEST (test_tl_effect)
           GES_TRACK_OBJECT (tck_effect)));
 
   g_object_get (tl_effect, "height", &tl_object_height, NULL);
-  fail_unless (tl_object_height == 3);
+  assert_equals_int (tl_object_height, 3);
 
   tck_effect1 = ges_track_parse_launch_effect_new ("identity");
   fail_unless (ges_timeline_object_add_track_object (GES_TIMELINE_OBJECT
@@ -214,7 +214,7 @@ GST_START_TEST (test_tl_effect)
           GES_TRACK_OBJECT (tck_effect1)));
 
   g_object_get (tl_effect, "height", &tl_object_height, NULL);
-  fail_unless (tl_object_height == 4);
+  assert_equals_int (tl_object_height, 4);
 
   effects =
       ges_timeline_object_get_top_effects (GES_TIMELINE_OBJECT (tl_effect));
@@ -225,8 +225,8 @@ GST_START_TEST (test_tl_effect)
         GES_TRACK_EFFECT (tmp->data));
     fail_unless (priority > effect_prio);
     fail_unless (GES_IS_TRACK_EFFECT (tmp->data));
-    fail_unless (ges_track_object_get_track (GES_TRACK_OBJECT (tmp->
-                data))->type == track_type[i]);
+    fail_unless (ges_track_object_get_track (GES_TRACK_OBJECT (tmp->data))->
+        type == track_type[i]);
     effect_prio = priority;
 
     g_object_unref (tmp->data);
@@ -277,7 +277,7 @@ GST_START_TEST (test_priorities_tl_object)
           GES_TRACK_OBJECT (tck_effect)));
 
   g_object_get (tl_effect, "height", &tl_object_height, NULL);
-  fail_unless (tl_object_height == 3);
+  assert_equals_int (tl_object_height, 3);
 
   tck_effect1 = ges_track_parse_launch_effect_new ("identity");
   fail_unless (ges_timeline_object_add_track_object (GES_TIMELINE_OBJECT
@@ -295,7 +295,7 @@ GST_START_TEST (test_priorities_tl_object)
   fail_unless (GNL_OBJECT_PRIORITY (GES_TRACK_OBJECT (tck_effect)) == 2);
 
   g_object_get (tl_effect, "height", &tl_object_height, NULL);
-  fail_unless (tl_object_height == 4);
+  assert_equals_int (tl_object_height, 4);
 
   effects =
       ges_timeline_object_get_top_effects (GES_TIMELINE_OBJECT (tl_effect));
