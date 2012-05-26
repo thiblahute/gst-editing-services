@@ -64,7 +64,7 @@ typedef struct _GESTimelineObjectPrivate GESTimelineObjectPrivate;
  */
 typedef gboolean (*GESFillTrackObjectFunc) (GESTimelineObject * object,
                     GESTrackObject * trobject,
-                    GstElement * gnlobj);
+                    GnlObject * gnlobj);
 
 /**
  * GESCreateTrackObjectFunc:
@@ -254,7 +254,7 @@ ges_timeline_object_release_track_object    (GESTimelineObject * object,
 
 gboolean
 ges_timeline_object_fill_track_object       (GESTimelineObject * object,
-					  GESTrackObject * trackobj, GstElement * gnlobj);
+					  GESTrackObject * trackobj, GnlObject * gnlobj);
 
 GESTrackObject *
 ges_timeline_object_find_track_object       (GESTimelineObject * object,

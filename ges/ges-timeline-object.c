@@ -37,7 +37,7 @@
 
 gboolean
 ges_timeline_object_fill_track_object_func (GESTimelineObject * object,
-    GESTrackObject * trackobj, GstElement * gnlobj);
+    GESTrackObject * trackobj, GnlObject * gnlobj);
 
 gboolean
 ges_timeline_object_create_track_objects_func (GESTimelineObject
@@ -574,8 +574,8 @@ ges_timeline_object_add_track_object (GESTimelineObject * object, GESTrackObject
 
       /* We make sure not to move the entire #TimelineObject */
       ges_track_object_set_locked (tmpo, FALSE);
-      ges_track_object_set_priority (tmpo,
-          ges_track_object_get_priority (tmpo) + 1);
+      gnl_object_set_priority (GNL_OBJECT (tmpo),
+          GNL_OBJECT_PRIORITY (tmpo) + 1);
       ges_track_object_set_locked (tmpo, TRUE);
     }
 
@@ -586,9 +586,9 @@ ges_timeline_object_add_track_object (GESTimelineObject * object, GESTrackObject
       g_list_insert_sorted_with_data (object->priv->trackobjects, trobj,
       (GCompareDataFunc) sort_track_effects, object);
 
-  ges_track_object_set_start (trobj, object->start);
-  ges_track_object_set_duration (trobj, object->duration);
-  ges_track_object_set_inpoint (trobj, object->inpoint);
+  gnl_object_set_start (GNL_OBJECT (trobj), object->start);
+  gnl_object_set_duration (GNL_OBJECT (trobj), object->duration);
+  gnl_object_set_inpoint (GNL_OBJECT (trobj), object->inpoint);
   ges_track_object_set_max_duration (trobj, object->priv->maxduration);
 
   if (klass->track_object_added) {
@@ -614,7 +614,7 @@ ges_timeline_object_add_track_object (GESTimelineObject * object, GESTrackObject
       G_CALLBACK (track_object_priority_changed_cb), object);
 
   get_layer_priorities (priv->layer, &min_prio, &max_prio);
-  ges_track_object_set_priority (trobj, min_prio + object->priority
+  gnl_object_set_priority (GNL_OBJECT (trobj), min_prio + object->priority
       + mapping->priority_offset);
 
   GST_DEBUG ("Returning trobj:%p", trobj);
@@ -716,7 +716,7 @@ ges_timeline_object_set_layer (GESTimelineObject * object,
 
 gboolean
 ges_timeline_object_fill_track_object (GESTimelineObject * object,
-    GESTrackObject * trackobj, GstElement * gnlobj)
+    GESTrackObject * trackobj, GnlObject * gnlobj)
 {
   GESTimelineObjectClass *class;
   gboolean res = TRUE;
@@ -742,7 +742,7 @@ ges_timeline_object_fill_track_object (GESTimelineObject * object,
 
 gboolean
 ges_timeline_object_fill_track_object_func (GESTimelineObject * object,
-    GESTrackObject * trackobj, GstElement * gnlobj)
+    GESTrackObject * trackobj, GnlObject * gnlobj)
 {
   GST_WARNING ("No 'fill_track_object' implementation !");
 
@@ -806,10 +806,10 @@ ges_timeline_object_set_start_internal (GESTimelineObject * object,
         ges_timeline_move_object_simple (timeline, tr, NULL, GES_EDGE_NONE,
             start);
       else
-        ges_track_object_set_start (tr, start);
+        gnl_object_set_start (GNL_OBJECT (tr), start);
     } else {
       /* ... or update the offset */
-      map->start_offset = start - tr->start;
+      map->start_offset = start - GNL_OBJECT_START (tr);
     }
   }
 
@@ -853,7 +853,7 @@ ges_timeline_object_set_inpoint_internal (GESTimelineObject * object,
 
     if (ges_track_object_is_locked (tr))
       /* call set_inpoint on each trackobject */
-      ges_track_object_set_inpoint (tr, inpoint);
+      gnl_object_set_inpoint (GNL_OBJECT (tr), inpoint);
   }
 
   object->inpoint = inpoint;
@@ -906,9 +906,9 @@ ges_timeline_object_set_duration_internal (GESTimelineObject * object,
        * and make the snapping happen if in a timeline */
       if (G_LIKELY (snap))
         ges_timeline_trim_object_simple (timeline, tr, NULL, GES_EDGE_END,
-            tr->start + duration, TRUE);
+            GNL_OBJECT_START (tr) + duration, TRUE);
       else
-        ges_track_object_set_duration (tr, duration);
+        gnl_object_set_duration (GNL_OBJECT (tr), duration);
     }
   }
   object->priv->ignore_notifies = FALSE;
@@ -971,11 +971,12 @@ ges_timeline_object_set_priority_internal (GESTimelineObject * object,
         real_tck_prio = layer_max_gnl_prio;
       }
 
-      ges_track_object_set_priority (tr, real_tck_prio);
+      gnl_object_set_priority (GNL_OBJECT (tr), real_tck_prio);
 
     } else {
       /* ... or update the offset */
-      map->priority_offset = tr->priority - layer_min_gnl_prio + priority;
+      map->priority_offset =
+          GNL_OBJECT_PRIORITY (tr) - layer_min_gnl_prio + priority;
     }
   }
 
@@ -1291,7 +1292,7 @@ ges_timeline_object_set_top_effect_priority (GESTimelineObject * object,
 
   tck_obj = GES_TRACK_OBJECT (effect);
   priv = object->priv;
-  current_prio = ges_track_object_get_priority (tck_obj);
+  current_prio = GNL_OBJECT_PRIORITY (tck_obj);
 
   /*  We don't change the priority */
   if (current_prio == newpriority ||
@@ -1308,19 +1309,19 @@ ges_timeline_object_set_top_effect_priority (GESTimelineObject * object,
     return FALSE;
   }
 
-  if (tck_obj->priority < newpriority)
+  if (GNL_OBJECT_PRIORITY (tck_obj) < newpriority)
     inc = -1;
   else
     inc = +1;
 
-  ges_track_object_set_priority (tck_obj, newpriority);
+  gnl_object_set_priority (GNL_OBJECT (tck_obj), newpriority);
   for (tmp = priv->trackobjects; tmp; tmp = tmp->next) {
     GESTrackObject *tmpo = GES_TRACK_OBJECT (tmp->data);
-    guint tck_priority = ges_track_object_get_priority (tmpo);
+    guint tck_priority = GNL_OBJECT_PRIORITY (tmpo);
 
     if ((inc == +1 && tck_priority >= newpriority) ||
         (inc == -1 && tck_priority <= newpriority)) {
-      ges_track_object_set_priority (tmpo, tck_priority + inc);
+      gnl_object_set_priority (GNL_OBJECT (tmpo), tck_priority + inc);
     }
   }
 
@@ -1424,9 +1425,9 @@ ges_timeline_object_split (GESTimelineObject * object, guint64 position)
 
   priv = object->priv;
 
-  duration = GES_TIMELINE_OBJECT_DURATION (object);
-  start = GES_TIMELINE_OBJECT_START (object);
-  inpoint = GES_TIMELINE_OBJECT_INPOINT (object);
+  duration = GNL_OBJECT_DURATION (object);
+  start = GNL_OBJECT_START (object);
+  inpoint = GNL_OBJECT_INPOINT (object);
 
   if (position >= start + duration || position <= start) {
     GST_WARNING_OBJECT (object, "Can not split %" GST_TIME_FORMAT
@@ -1461,15 +1462,17 @@ ges_timeline_object_split (GESTimelineObject * object, guint64 position)
 
     GESTrackObject *new_tckobj, *tckobj = GES_TRACK_OBJECT (tmp->data);
 
-    duration = ges_track_object_get_duration (tckobj);
-    start = ges_track_object_get_start (tckobj);
-    inpoint = ges_track_object_get_inpoint (tckobj);
+    duration = GNL_OBJECT_DURATION (tckobj);
+    start = GNL_OBJECT_START (tckobj);
+    inpoint = GNL_OBJECT_INPOINT (tckobj);
 
     if (position <= start || position >= (start + duration)) {
       GST_DEBUG_OBJECT (tckobj, "Outside %" GST_TIME_FORMAT "the boundaries "
           "not copying it ( start %" GST_TIME_FORMAT ", end %" GST_TIME_FORMAT
-          ")", GST_TIME_ARGS (position), GST_TIME_ARGS (tckobj->start),
-          GST_TIME_ARGS (tckobj->start + tckobj->duration));
+          ")", GST_TIME_ARGS (position),
+          GST_TIME_ARGS (GNL_OBJECT_START (tckobj)),
+          GST_TIME_ARGS (GNL_OBJECT_START (tckobj) +
+              GNL_OBJECT_DURATION (tckobj)));
       continue;
     }
 
@@ -1495,13 +1498,14 @@ ges_timeline_object_split (GESTimelineObject * object, guint64 position)
     ges_track_object_set_locked (tckobj, FALSE);
 
     /* Set 'new' track object timing propeties */
-    ges_track_object_set_start (new_tckobj, position);
-    ges_track_object_set_inpoint (new_tckobj, inpoint + duration - (duration +
-            start - position));
-    ges_track_object_set_duration (new_tckobj, duration + start - position);
+    gnl_object_set_start (GNL_OBJECT (new_tckobj), position);
+    gnl_object_set_priority (GNL_OBJECT (new_tckobj),
+        inpoint + duration - (duration + start - position));
+    gnl_object_set_duration (GNL_OBJECT (new_tckobj),
+        duration + start - position);
 
     /* Set 'old' track object duration */
-    ges_track_object_set_duration (tckobj, position - start);
+    gnl_object_set_duration (GNL_OBJECT (tckobj), position - start);
 
     /* And let track objects in the same locking state as before. */
     ges_track_object_set_locked (tckobj, locked);
@@ -1911,8 +1915,7 @@ update_height (GESTimelineObject * object)
 
   /* Go over all childs and check if height has changed */
   for (tmp = object->priv->trackobjects; tmp; tmp = tmp->next) {
-    guint tck_priority =
-        ges_track_object_get_priority (GES_TRACK_OBJECT (tmp->data));
+    guint tck_priority = GNL_OBJECT_PRIORITY (GES_TRACK_OBJECT (tmp->data));
 
     if (tck_priority < min_prio)
       min_prio = tck_priority;
@@ -1952,11 +1955,12 @@ track_object_start_changed_cb (GESTrackObject * child,
 
   if (!ges_track_object_is_locked (child)) {
     /* Update the internal start_offset */
-    map->start_offset = object->start - child->start;
+    map->start_offset = object->start - GNL_OBJECT_START (child);
   } else {
     /* Or update the parent start */
     object->priv->initiated_move = child;
-    ges_timeline_object_set_start (object, child->start + map->start_offset);
+    ges_timeline_object_set_start (object,
+        GNL_OBJECT_START (child) + map->start_offset);
     object->priv->initiated_move = NULL;
   }
 }
@@ -1977,12 +1981,12 @@ track_object_inpoint_changed_cb (GESTrackObject * child,
 
   if (!ges_track_object_is_locked (child)) {
     /* Update the internal start_offset */
-    map->inpoint_offset = object->inpoint - child->inpoint;
+    map->inpoint_offset = object->inpoint - GNL_OBJECT_INPOINT (child);
   } else {
     /* Or update the parent start */
     object->priv->initiated_move = child;
     ges_timeline_object_set_inpoint (object,
-        child->inpoint + map->inpoint_offset);
+        GNL_OBJECT_INPOINT (child) + map->inpoint_offset);
     object->priv->initiated_move = NULL;
   }
 
@@ -2004,12 +2008,12 @@ track_object_duration_changed_cb (GESTrackObject * child,
 
   if (!ges_track_object_is_locked (child)) {
     /* Update the internal start_offset */
-    map->duration_offset = object->duration - child->duration;
+    map->duration_offset = object->duration - GNL_OBJECT_DURATION (child);
   } else {
     /* Or update the parent start */
     object->priv->initiated_move = child;
     ges_timeline_object_set_duration (object,
-        child->duration + map->duration_offset);
+        GNL_OBJECT_DURATION (child) + map->duration_offset);
     object->priv->initiated_move = NULL;
   }
 
@@ -2022,10 +2026,10 @@ track_object_priority_changed_cb (GESTrackObject * child,
   ObjectMapping *map;
   guint32 layer_min_gnl_prio, layer_max_gnl_prio;
 
-  guint tck_priority = ges_track_object_get_priority (child);
+  guint tck_priority = GNL_OBJECT_PRIORITY (child);
 
   GST_DEBUG ("TrackObject %p priority changed to %i", child,
-      ges_track_object_get_priority (child));
+      GNL_OBJECT_PRIORITY (child));
 
   if (object->priv->ignore_notifies)
     return;
@@ -2066,7 +2070,7 @@ track_object_priority_changed_cb (GESTrackObject * child,
   }
 
   GST_DEBUG ("object %p priority %d child %p priority %d", object,
-      object->priority, child, ges_track_object_get_priority (child));
+      object->priority, child, GNL_OBJECT_PRIORITY (child));
 }
 
 static void

@@ -66,7 +66,7 @@ GST_START_TEST (test_text_properties_in_layer)
       GES_TYPE_TRACK_TEXT_OVERLAY);
 
   fail_unless (trobj != NULL);
-  assert_equals_int (trobj->active, FALSE);
+  assert_equals_int (GNL_OBJECT_ACTIVE (trobj), FALSE);
 
   /* specifically test the text property */
   g_object_set (source, "text", (gchar *) "some text", NULL);
@@ -74,7 +74,7 @@ GST_START_TEST (test_text_properties_in_layer)
   assert_equals_string ("some text", text);
   g_free (text);
 
-  assert_equals_int (trobj->active, TRUE);
+  assert_equals_int (GNL_OBJECT_ACTIVE (trobj), TRUE);
 
   /* test the font-desc property */
   g_object_set (source, "font-desc", (gchar *) "sans 72", NULL);
@@ -86,7 +86,7 @@ GST_START_TEST (test_text_properties_in_layer)
       ges_track_text_overlay_get_font_desc (GES_TRACK_TEXT_OVERLAY (trobj)));
 
   g_object_set (source, "text", (gchar *) NULL, NULL);
-  assert_equals_int (trobj->active, FALSE);
+  assert_equals_int (GNL_OBJECT_ACTIVE (trobj), FALSE);
 
   /* test halign and valign */
   g_object_set (source, "halignment", (gint)

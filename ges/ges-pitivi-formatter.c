@@ -246,8 +246,7 @@ save_track_objects (xmlTextWriterPtr writer, GList * source_list,
       /* Set important properties */
       xmlTextWriterStartElement (writer, BAD_CAST "track-object");
 
-      active =
-          ges_track_object_is_active (tckobj) ? "(bool)True" : "(bool)False";
+      active = GNL_OBJECT_ACTIVE (tckobj) ? "(bool)True" : "(bool)False";
       xmlTextWriterWriteAttribute (writer, BAD_CAST "active", BAD_CAST active);
       locked =
           ges_track_object_is_locked (tckobj) ? "(bool)True" : "(bool)False";
@@ -974,7 +973,7 @@ make_source (GESFormatter * self, GList * reflist, GHashTable * source_table)
           GES_TRACK_OBJECT (effect));
 
       if (!g_strcmp0 (active, (gchar *) "(bool)False"))
-        ges_track_object_set_active (GES_TRACK_OBJECT (effect), FALSE);
+        gnl_object_set_active (GNL_OBJECT (effect), FALSE);
 
       if (video)
         ges_track_add_object (priv->trackv, GES_TRACK_OBJECT (effect));

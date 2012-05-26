@@ -89,7 +89,7 @@ static GObject *link_element_to_mixer_with_smpte (GstBin * bin,
     GstElement ** smpteref);
 
 static void
-ges_track_video_transition_duration_changed (GESTrackObject * self,
+ges_track_video_transition_duration_changed (GnlObject * self,
     guint64 duration);
 
 static GstElement *ges_track_video_transition_create_element (GESTrackObject
@@ -158,8 +158,10 @@ ges_track_video_transition_class_init (GESTrackVideoTransitionClass * klass)
       properties[PROP_INVERT]);
 
   toclass = GES_TRACK_OBJECT_CLASS (klass);
-  toclass->duration_changed = ges_track_video_transition_duration_changed;
   toclass->create_element = ges_track_video_transition_create_element;
+
+  GNL_OBJECT_CLASS (klass)->duration_changed =
+      ges_track_video_transition_duration_changed;
 }
 
 static void
@@ -507,7 +509,7 @@ switch_to_smpte_cb (GstPad * sink, gboolean blocked,
   priv->end_value = 0.0;
 
   set_interpolation (GST_OBJECT (smptealphab), priv, (gchar *) "position");
-  ges_track_video_transition_duration_changed (GES_TRACK_OBJECT (transition),
+  ges_track_video_transition_duration_changed (GNL_OBJECT (transition),
       priv->dur);
 
 
@@ -585,7 +587,7 @@ switch_to_crossfade_cb (GstPad * sink, gboolean blocked,
   priv->start_value = 0.0;
   priv->end_value = 1.0;
   set_interpolation (GST_OBJECT (priv->sinkb), priv, (gchar *) "alpha");
-  ges_track_video_transition_duration_changed (GES_TRACK_OBJECT (transition),
+  ges_track_video_transition_duration_changed (GNL_OBJECT (transition),
       priv->dur);
 
   priv->smpte = NULL;
@@ -642,10 +644,11 @@ link_element_to_mixer_with_smpte (GstBin * bin, GstElement * element,
 }
 
 static void
-ges_track_video_transition_duration_changed (GESTrackObject * object,
+ges_track_video_transition_duration_changed (GnlObject * object,
     guint64 duration)
 {
-  GstElement *gnlobj = ges_track_object_get_gnlobject (object);
+  GnlObject *gnlobj =
+      ges_track_object_get_gnlobject (GES_TRACK_OBJECT (object));
   GESTrackVideoTransition *self = GES_TRACK_VIDEO_TRANSITION (object);
   GESTrackVideoTransitionPrivate *priv = self->priv;
   GstTimedValueControlSource *ts;

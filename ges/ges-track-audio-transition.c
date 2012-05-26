@@ -51,7 +51,7 @@ enum
 #define fast_element_link(a,b) gst_element_link_pads_full((a),"src",(b),"sink",GST_PAD_LINK_CHECK_NOTHING)
 
 static void
-ges_track_audio_transition_duration_changed (GESTrackObject * self, guint64);
+ges_track_audio_transition_duration_changed (GnlObject * self, guint64);
 
 static GstElement *ges_track_audio_transition_create_element (GESTrackObject
     * self);
@@ -71,18 +71,20 @@ ges_track_audio_transition_class_init (GESTrackAudioTransitionClass * klass)
 {
   GObjectClass *object_class;
   GESTrackObjectClass *toclass;
+  GnlObjectClass *gnlobj_class;
 
   g_type_class_add_private (klass, sizeof (GESTrackAudioTransitionPrivate));
 
   object_class = G_OBJECT_CLASS (klass);
   toclass = GES_TRACK_OBJECT_CLASS (klass);
+  gnlobj_class = GNL_OBJECT_CLASS (klass);
 
   object_class->get_property = ges_track_audio_transition_get_property;
   object_class->set_property = ges_track_audio_transition_set_property;
   object_class->dispose = ges_track_audio_transition_dispose;
   object_class->finalize = ges_track_audio_transition_finalize;
 
-  toclass->duration_changed = ges_track_audio_transition_duration_changed;
+  gnlobj_class->duration_changed = ges_track_audio_transition_duration_changed;
 
   toclass->create_element = ges_track_audio_transition_create_element;
 
@@ -230,11 +232,12 @@ ges_track_audio_transition_create_element (GESTrackObject * object)
 }
 
 static void
-ges_track_audio_transition_duration_changed (GESTrackObject * object,
+ges_track_audio_transition_duration_changed (GnlObject * object,
     guint64 duration)
 {
   GESTrackAudioTransition *self;
-  GstElement *gnlobj = ges_track_object_get_gnlobject (object);
+  GnlObject *gnlobj =
+      ges_track_object_get_gnlobject (GES_TRACK_OBJECT (object));
   GstTimedValueControlSource *ta, *tb;
 
   self = GES_TRACK_AUDIO_TRANSITION (object);
@@ -243,7 +246,7 @@ ges_track_audio_transition_duration_changed (GESTrackObject * object,
 
   if (G_UNLIKELY ((!gnlobj || !self->priv->a_control_source ||
               !self->priv->b_control_source)))
-    return;
+    goto done;
 
   GST_INFO ("duration: %" G_GUINT64_FORMAT, duration);
 
@@ -260,6 +263,10 @@ ges_track_audio_transition_duration_changed (GESTrackObject * object,
   gst_timed_value_control_source_set (tb, duration, 1.0);
 
   GST_LOG ("done updating controller");
+
+done:
+  GNL_OBJECT_CLASS (ges_track_audio_transition_parent_class)->duration_changed
+      (object, duration);
 }
 
 /**

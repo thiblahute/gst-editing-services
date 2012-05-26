@@ -44,7 +44,7 @@ G_DEFINE_TYPE (GESCustomTimelineSource, ges_custom_timeline_source,
 
 static gboolean
 ges_custom_timeline_source_fill_track_object (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj);
+    GESTrackObject * trobject, GnlObject * gnlobj);
 
 static GESTrackObject *
 ges_custom_timeline_source_create_track_object (GESTimelineObject * obj,
@@ -74,7 +74,7 @@ ges_custom_timeline_source_init (GESCustomTimelineSource * self)
 
 static gboolean
 ges_custom_timeline_source_fill_track_object (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj)
+    GESTrackObject * trobject, GnlObject * gnlobj)
 {
   gboolean res;
   GESCustomTimelineSourcePrivate *priv;

@@ -24,7 +24,7 @@
 
 static gboolean
 my_fill_track_func (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj, gpointer user_data)
+    GESTrackObject * trobject, GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
 
@@ -152,7 +152,7 @@ GST_START_TEST (test_layer_priorities)
   GESTimelineLayer *layer1, *layer2, *layer3;
   GESTrackObject *tckobj1, *tckobj2, *tckobj3;
   GESTimelineObject *object1, *object2, *object3;
-  GstElement *gnlobj1, *gnlobj2, *gnlobj3;
+  GnlObject *gnlobj1, *gnlobj2, *gnlobj3;
   guint prio1, prio2, prio3;
   GList *objs, *tmp;
 
@@ -279,7 +279,7 @@ GST_START_TEST (test_layer_priorities)
 
   /* And change TrackObject-s priorities and check that changes are well
    * refected on it containing TimelineObject */
-  ges_track_object_set_priority (tckobj3, LAYER_HEIGHT * 2);
+  gnl_object_set_priority (GNL_OBJECT (tckobj3), LAYER_HEIGHT * 2);
   g_object_get (gnlobj3, "priority", &prio3, NULL);
   assert_equals_int (prio3, 2 * LAYER_HEIGHT);
   assert_equals_int (GES_TIMELINE_OBJECT_PRIORITY (object3), 0);

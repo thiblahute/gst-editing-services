@@ -72,7 +72,7 @@ print_transition_data (GESTimelineObject * tr)
     return FALSE;
   if (!(trackobj = GES_TRACK_OBJECT (trackobjects->data)))
     return FALSE;
-  if (!(gnlobj = ges_track_object_get_gnlobject (trackobj)))
+  if (!(gnlobj = GST_ELEMENT (ges_track_object_get_gnlobject (trackobj))))
     return FALSE;
 
   g_object_get (gnlobj, "start", &start, "duration", &duration,

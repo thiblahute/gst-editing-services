@@ -23,7 +23,7 @@
 
 static gboolean
 my_fill_track_func (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj, gpointer user_data)
+    GESTrackObject * trobject, GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
 
@@ -48,9 +48,9 @@ create_custom_tlobj (void)
 }
 
 #define CHECK_OBJECT_PROPS(obj, start, inpoint, duration) {\
-  assert_equals_uint64 (ges_track_object_get_start (obj), start);\
-  assert_equals_uint64 (ges_track_object_get_inpoint (obj), inpoint);\
-  assert_equals_uint64 (ges_track_object_get_duration (obj), duration);\
+  assert_equals_uint64 (GNL_OBJECT_START (obj), start);\
+  assert_equals_uint64 (GNL_OBJECT_INPOINT (obj), inpoint);\
+  assert_equals_uint64 (GNL_OBJECT_DURATION (obj), duration);\
 }
 
 GST_START_TEST (test_basic_timeline_edition)
@@ -95,19 +95,19 @@ GST_START_TEST (test_basic_timeline_edition)
   fail_unless (tckobj != NULL);
   fail_unless (ges_timeline_object_add_track_object (obj, tckobj));
   fail_unless (ges_track_add_object (track, tckobj));
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj), 10);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj), 10);
 
   tckobj1 = ges_timeline_object_create_track_object (obj1, track);
   fail_unless (tckobj1 != NULL);
   fail_unless (ges_timeline_object_add_track_object (obj1, tckobj1));
   fail_unless (ges_track_add_object (track, tckobj1));
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj1), 10);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj1), 10);
 
   tckobj2 = ges_timeline_object_create_track_object (obj2, track);
   fail_unless (ges_timeline_object_add_track_object (obj2, tckobj2));
   fail_unless (tckobj2 != NULL);
   fail_unless (ges_track_add_object (track, tckobj2));
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj2), 60);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj2), 60);
 
   /**
    * Simple rippling obj to: 10
@@ -298,7 +298,7 @@ GST_START_TEST (test_snapping)
   fail_unless ((tckobjs = ges_timeline_object_get_track_objects (obj)) != NULL);
   fail_unless ((tckobj = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj), 37);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj), 37);
   g_list_free_full (tckobjs, g_object_unref);
 
   /* We have 3 references to tckobj from:
@@ -313,7 +313,7 @@ GST_START_TEST (test_snapping)
           ges_timeline_object_get_track_objects (obj1)) != NULL);
   fail_unless ((tckobj1 = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj1) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj1), 15);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj1), 15);
   g_list_free_full (tckobjs, g_object_unref);
 
   /* Same ref logic */
@@ -325,7 +325,7 @@ GST_START_TEST (test_snapping)
           ges_timeline_object_get_track_objects (obj2)) != NULL);
   fail_unless ((tckobj2 = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj2) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj2), 60);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj2), 60);
   g_list_free_full (tckobjs, g_object_unref);
 
   /* Same ref logic */
@@ -542,7 +542,7 @@ GST_START_TEST (test_timeline_edition_mode)
   fail_unless ((tckobjs = ges_timeline_object_get_track_objects (obj)) != NULL);
   fail_unless ((tckobj = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj), 10);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj), 10);
   g_list_free_full (tckobjs, g_object_unref);
 
   /* Add a new layer and add objects to it */
@@ -555,7 +555,7 @@ GST_START_TEST (test_timeline_edition_mode)
           ges_timeline_object_get_track_objects (obj1)) != NULL);
   fail_unless ((tckobj1 = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj1) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj1), 10);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj1), 10);
   g_list_free_full (tckobjs, g_object_unref);
 
   fail_unless (ges_timeline_layer_add_object (layer1, obj2));
@@ -563,7 +563,7 @@ GST_START_TEST (test_timeline_edition_mode)
           ges_timeline_object_get_track_objects (obj2)) != NULL);
   fail_unless ((tckobj2 = GES_TRACK_OBJECT (tckobjs->data)) != NULL);
   fail_unless (ges_track_object_get_track (tckobj2) == track);
-  assert_equals_uint64 (ges_track_object_get_duration (tckobj2), 60);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (tckobj2), 60);
   g_list_free_full (tckobjs, g_object_unref);
 
   /**

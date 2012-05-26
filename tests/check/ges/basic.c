@@ -30,7 +30,7 @@ GST_END_TEST;
 
 static gboolean
 my_fill_track_func (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj, gpointer user_data)
+    GESTrackObject * trobject, GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
 

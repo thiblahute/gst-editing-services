@@ -196,7 +196,7 @@ ges_timeline_filesource_set_mute (GESTimelineFileSource * self, gboolean mute)
     GESTrackObject *trackobject = (GESTrackObject *) tmp->data;
 
     if (ges_track_object_get_track (trackobject)->type == GES_TRACK_TYPE_AUDIO)
-      ges_track_object_set_active (trackobject, !mute);
+      gnl_object_set_active (GNL_OBJECT (trackobject), !mute);
 
     g_object_unref (GES_TRACK_OBJECT (tmp->data));
   }
@@ -368,7 +368,7 @@ ges_timeline_filesource_create_track_object (GESTimelineObject * obj,
 
     /* If mute and track is audio, deactivate the track object */
     if (track->type == GES_TRACK_TYPE_AUDIO && priv->mute)
-      ges_track_object_set_active (res, FALSE);
+      gnl_object_set_active (GNL_OBJECT (res), FALSE);
   }
 
   return res;

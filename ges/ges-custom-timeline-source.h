@@ -63,7 +63,7 @@ typedef struct _GESCustomTimelineSourcePrivate   GESCustomTimelineSourcePrivate;
  */
 typedef gboolean (*GESFillTrackObjectUserFunc) (GESTimelineObject * object,
 					     GESTrackObject * trobject,
-					     GstElement * gnlobj,
+					     GnlObject * gnlobj,
 					     gpointer user_data);
 
 /**

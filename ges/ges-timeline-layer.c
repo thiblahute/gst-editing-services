@@ -266,10 +266,10 @@ compare (GList * compared, GESTrackObject * track_object, gboolean ahead)
   compared_object = ges_track_object_get_timeline_object (compared->data);
   layer = ges_timeline_object_get_layer (object);
 
-  start = ges_track_object_get_start (track_object);
-  duration = ges_track_object_get_duration (track_object);
-  compared_start = ges_track_object_get_start (compared->data);
-  compared_duration = ges_track_object_get_duration (compared->data);
+  start = GNL_OBJECT_START (track_object);
+  duration = GNL_OBJECT_DURATION (track_object);
+  compared_start = GNL_OBJECT_START (compared->data);
+  compared_duration = GNL_OBJECT_DURATION (compared->data);
   end = start + duration;
   compared_end = compared_start + compared_duration;
 

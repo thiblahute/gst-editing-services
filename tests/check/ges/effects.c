@@ -77,7 +77,7 @@ GST_START_TEST (test_add_effect_to_tl_object)
   fail_unless (ges_track_add_object (track_video,
           GES_TRACK_OBJECT (track_effect)));
 
-  assert_equals_int (GES_TRACK_OBJECT (track_effect)->active, TRUE);
+  assert_equals_int (GNL_OBJECT_ACTIVE (track_effect), TRUE);
 
   ges_timeline_layer_remove_object (layer, (GESTimelineObject *) source);
 
@@ -225,8 +225,8 @@ GST_START_TEST (test_tl_effect)
         GES_TRACK_EFFECT (tmp->data));
     fail_unless (priority > effect_prio);
     fail_unless (GES_IS_TRACK_EFFECT (tmp->data));
-    fail_unless (ges_track_object_get_track (GES_TRACK_OBJECT (tmp->data))->
-        type == track_type[i]);
+    fail_unless (ges_track_object_get_track (GES_TRACK_OBJECT (tmp->
+                data))->type == track_type[i]);
     effect_prio = priority;
 
     g_object_unref (tmp->data);
@@ -288,13 +288,11 @@ GST_START_TEST (test_priorities_tl_object)
   fail_unless (ges_timeline_object_set_top_effect_priority (GES_TIMELINE_OBJECT
           (tl_effect), GES_TRACK_EFFECT (tck_effect1), 0));
 
-  fail_unless (ges_track_object_get_priority (GES_TRACK_OBJECT (tck_effect)) ==
-      3);
+  fail_unless (GNL_OBJECT_PRIORITY (GES_TRACK_OBJECT (tck_effect)) == 3);
 
   fail_unless (ges_timeline_object_set_top_effect_priority (GES_TIMELINE_OBJECT
           (tl_effect), GES_TRACK_EFFECT (tck_effect1), 3));
-  fail_unless (ges_track_object_get_priority (GES_TRACK_OBJECT (tck_effect)) ==
-      2);
+  fail_unless (GNL_OBJECT_PRIORITY (GES_TRACK_OBJECT (tck_effect)) == 2);
 
   g_object_get (tl_effect, "height", &tl_object_height, NULL);
   fail_unless (tl_object_height == 4);

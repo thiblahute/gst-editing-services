@@ -22,7 +22,7 @@
 
 static gboolean
 my_fill_track_func (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj, gpointer user_data)
+    GESTrackObject * trobject, GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
 
@@ -41,7 +41,7 @@ my_fill_track_func (GESTimelineObject * object,
 
 static gboolean
 arbitrary_fill_track_func (GESTimelineObject * object,
-    GESTrackObject * trobject, GstElement * gnlobj, gpointer user_data)
+    GESTrackObject * trobject, GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
 

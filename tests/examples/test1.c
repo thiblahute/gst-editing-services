@@ -23,7 +23,7 @@
 
 static gboolean
 fill_customsrc (GESTimelineObject * object, GESTrackObject * trobject,
-    GstElement * gnlobj, gpointer user_data)
+    GnlObject * gnlobj, gpointer user_data)
 {
   GstElement *src;
   guint var = GPOINTER_TO_UINT (user_data);

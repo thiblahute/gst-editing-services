@@ -415,16 +415,16 @@ ges_track_set_caps (GESTrack * track, const GstCaps * caps)
 static gint
 objects_start_compare (GESTrackObject * a, GESTrackObject * b)
 {
-  if (a->start == b->start) {
-    if (a->priority < b->priority)
+  if (GNL_OBJECT_START (a) == GNL_OBJECT_START (b)) {
+    if (GNL_OBJECT_PRIORITY (a) < GNL_OBJECT_PRIORITY (b))
       return -1;
-    if (a->priority > b->priority)
+    if (GNL_OBJECT_PRIORITY (a) > GNL_OBJECT_PRIORITY (b))
       return 1;
     return 0;
   }
-  if (a->start < b->start)
+  if (GNL_OBJECT_START (a) < GNL_OBJECT_START (b))
     return -1;
-  if (a->start > b->start)
+  if (GNL_OBJECT_START (a) > GNL_OBJECT_START (b))
     return 1;
   return 0;
 }
@@ -465,7 +465,7 @@ ges_track_add_object (GESTrack * track, GESTrackObject * object)
       GST_OBJECT_NAME (track->priv->composition));
 
   if (G_UNLIKELY (!gst_bin_add (GST_BIN (track->priv->composition),
-              ges_track_object_get_gnlobject (object)))) {
+              GST_ELEMENT (ges_track_object_get_gnlobject (object))))) {
     GST_WARNING ("Couldn't add object to the GnlComposition");
     return FALSE;
   }
@@ -544,7 +544,7 @@ ges_track_remove_object (GESTrack * track, GESTrackObject * object)
     return FALSE;
   }
 
-  if ((gnlobject = ges_track_object_get_gnlobject (object))) {
+  if ((gnlobject = GST_ELEMENT (ges_track_object_get_gnlobject (object)))) {
     GST_DEBUG ("Removing GnlObject '%s' from composition '%s'",
         GST_ELEMENT_NAME (gnlobject), GST_ELEMENT_NAME (priv->composition));
 
