@@ -643,3 +643,85 @@ gnl_object_change_state (GstElement * element, GstStateChange transition)
 beach:
   return ret;
 }
+
+void
+gnl_object_set_duration (GnlObject * object, GstClockTime duration)
+{
+  if (duration != object->duration) {
+    object->duration = duration;
+    update_values (object);
+
+    if (GNL_OBJECT_GET_CLASS (object)->duration_changed)
+      GNL_OBJECT_GET_CLASS (object)->duration_changed (object, duration);
+
+    g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_DURATION]);
+  }
+}
+
+void
+gnl_object_set_media_duration (GnlObject * object, GstClockTime mduration)
+{
+  if (mduration != object->media_duration) {
+    object->media_duration = mduration;
+    update_values (object);
+
+    if (GNL_OBJECT_GET_CLASS (object)->media_duration_changed)
+      GNL_OBJECT_GET_CLASS (object)->media_duration_changed (object, mduration);
+
+    g_object_notify_by_pspec (G_OBJECT (object),
+        properties[PROP_MEDIA_DURATION]);
+  }
+}
+
+void
+gnl_object_set_start (GnlObject * object, GstClockTime start)
+{
+  if (start != object->start) {
+    object->start = start;
+    update_values (object);
+
+    if (GNL_OBJECT_GET_CLASS (object)->start_changed)
+      GNL_OBJECT_GET_CLASS (object)->start_changed (object, start);
+
+    g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_START]);
+  }
+}
+
+void
+gnl_object_set_media_start (GnlObject * object, GstClockTime mstart)
+{
+  if (mstart != object->media_start) {
+    object->media_start = mstart;
+
+    if (GNL_OBJECT_GET_CLASS (object)->inpoint_changed)
+      GNL_OBJECT_GET_CLASS (object)->inpoint_changed (object, mstart);
+
+    g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_INPOINT]);
+  }
+}
+
+void
+gnl_object_set_priority (GnlObject * object, guint32 priority)
+{
+  if (priority != object->priority) {
+    object->priority = priority;
+
+    if (GNL_OBJECT_GET_CLASS (object)->priority_changed)
+      GNL_OBJECT_GET_CLASS (object)->priority_changed (object, priority);
+
+    g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_PRIORITY]);
+  }
+}
+
+void
+gnl_object_set_active (GnlObject * object, gboolean active)
+{
+  if (active != object->active) {
+    object->active = active;
+
+    if (GNL_OBJECT_GET_CLASS (object)->active_changed)
+    	GNL_OBJECT_GET_CLASS (object)->active_changed (object, active);
+
+    g_object_notify_by_pspec (G_OBJECT (object), properties[PROP_ACTIVE]);
+  }
+}

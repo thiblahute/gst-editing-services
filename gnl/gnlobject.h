@@ -135,7 +135,14 @@ gnl_media_to_object_time (GnlObject * object, GstClockTime mtime,
 			  GstClockTime * otime);
 
 void
-gnl_object_set_caps (GnlObject * object, const GstCaps * caps);
+gnl_object_set_caps           (GnlObject * object, const GstCaps * caps);
+
+void gnl_object_set_duration       (GnlObject *object, GstClockTime duration);
+void gnl_object_set_media_duration (GnlObject *object, GstClockTime mduration);
+void gnl_object_set_start          (GnlObject *object, GstClockTime start);
+void gnl_object_set_media_start    (GnlObject *object, GstClockTime mstart);
+void gnl_object_set_priority       (GnlObject *object, guint32 priority);
+void gnl_object_set_active         (GnlObject *object, gboolean active);
 
 G_END_DECLS
 #endif /* __GNL_OBJECT_H__ */
