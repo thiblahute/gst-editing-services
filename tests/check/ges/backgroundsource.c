@@ -207,8 +207,9 @@ GST_START_TEST (test_test_source_in_layer)
 GST_END_TEST;
 
 static gint
-find_composition_func (GstElement * element)
+find_composition_func (const GValue * velement)
 {
+  GstElement *element = g_value_get_object (velement);
   GstElementFactory *fac = gst_element_get_factory (element);
   const gchar *name = gst_plugin_feature_get_name (GST_PLUGIN_FEATURE (fac));
 
@@ -222,9 +223,14 @@ static GstElement *
 find_composition (GESTrack * track)
 {
   GstIterator *it = gst_bin_iterate_recurse (GST_BIN (track));
-  GstElement *ret =
-      gst_iterator_find_custom (it, (GCompareFunc) find_composition_func, NULL);
+  GValue val = { 0, };
+  GstElement *ret = NULL;
 
+  if (gst_iterator_find_custom (it, (GCompareFunc) find_composition_func, &val,
+          NULL))
+    ret = g_value_get_object (&val);
+
+  g_value_unset (&val);
   gst_iterator_free (it);
 
   return ret;
@@ -269,12 +275,12 @@ GST_START_TEST (test_gap_filling_basic)
   ges_timeline_object_add_track_object (object, trackobject);
   fail_unless (ges_track_add_object (track, trackobject));
   fail_unless (trackobject != NULL);
-  gnlsrc = ges_track_object_get_gnlobject (trackobject);
+  gnlsrc = GST_ELEMENT (ges_track_object_get_gnlobject (trackobject));
   fail_unless (gnlsrc != NULL);
 
   /* Check that trackobject has the same properties */
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject), 0);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject), 5);
+  assert_equals_uint64 (GNL_OBJECT_START (trackobject), 0);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (trackobject), 5);
 
   /* Check no gap were wrongly added */
   assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 1);
@@ -290,12 +296,12 @@ GST_START_TEST (test_gap_filling_basic)
   ges_timeline_object_add_track_object (object1, trackobject1);
   fail_unless (ges_track_add_object (track, trackobject1));
   fail_unless (trackobject1 != NULL);
-  gnlsrc1 = ges_track_object_get_gnlobject (trackobject1);
+  gnlsrc1 = GST_ELEMENT (ges_track_object_get_gnlobject (trackobject1));
   fail_unless (gnlsrc1 != NULL);
 
   /* Check that trackobject1 has the same properties */
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject1), 15);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject1), 5);
+  assert_equals_uint64 (GNL_OBJECT_START (trackobject1), 15);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (trackobject1), 5);
 
   /* Check the gap as properly been added */
   assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 3);
@@ -317,8 +323,8 @@ GST_START_TEST (test_gap_filling_basic)
   ges_timeline_object_add_track_object (object2, trackobject2);
   fail_unless (ges_track_add_object (track, trackobject2));
   fail_unless (trackobject2 != NULL);
-  assert_equals_uint64 (GES_TRACK_OBJECT_START (trackobject2), 35);
-  assert_equals_uint64 (GES_TRACK_OBJECT_DURATION (trackobject2), 5);
+  assert_equals_uint64 (GNL_OBJECT_START (trackobject2), 35);
+  assert_equals_uint64 (GNL_OBJECT_DURATION (trackobject2), 5);
   assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 5);
 
   gst_object_unref (track);
