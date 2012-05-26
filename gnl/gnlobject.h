@@ -120,8 +120,18 @@ struct _GnlObjectClass
   GstBinClass parent_class;
 
   /* virtual methods for subclasses */
-    gboolean (*prepare) (GnlObject * object);
-    gboolean (*cleanup) (GnlObject * object);
+  gboolean (*prepare) (GnlObject * object);
+  gboolean (*cleanup) (GnlObject * object);
+
+  /* Let subclasses know about our properties changes without passing
+   * thought the signaling system */
+  void (*duration_changed) (GnlObject *object, GstClockTime duration);
+  void (*media_duration_changed) (GnlObject *object, GstClockTime mduration);
+  void (*start_changed) (GnlObject *object, GstClockTime start);
+  void (*media_start_changed) (GnlObject *object, GstClockTime mstart);
+  void (*priority_changed) (GnlObject *object, guint32 priority);
+  void (*active_changed) (GnlObject *object, gboolean active);
+
 };
 
 GType gnl_object_get_type (void);

@@ -102,6 +102,12 @@ gnl_object_class_init (GnlObjectClass * klass)
 
   gnlobject_class->prepare = GST_DEBUG_FUNCPTR (gnl_object_prepare_func);
   gnlobject_class->cleanup = GST_DEBUG_FUNCPTR (gnl_object_cleanup_func);
+  gnlobject_class->duration_changed = NULL;
+  gnlobject_class->media_duration_changed = NULL;
+  gnlobject_class->start_changed = NULL;
+  gnlobject_class->media_start_changed = NULL;
+  gnlobject_class->priority_changed = NULL;
+  gnlobject_class->active_changed = NULL;
 
   /**
    * GnlObject:start

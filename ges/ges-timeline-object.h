@@ -25,6 +25,7 @@
 #include <gst/gst.h>
 #include <ges/ges-types.h>
 #include <ges/ges-track.h>
+#include "../gnl/gnlobject.h"
 
 G_BEGIN_DECLS
 
@@ -157,7 +158,7 @@ typedef gboolean (*GESCreateTrackObjectsFunc) (GESTimelineObject * object,
  */
 struct _GESTimelineObject {
   /*< private >*/
-  GInitiallyUnowned parent;
+  GnlObject parent;
 
   GESTimelineObjectPrivate *priv;
   
@@ -196,7 +197,7 @@ struct _GESTimelineObject {
  */
 struct _GESTimelineObjectClass {
   /*< private >*/
-  GInitiallyUnownedClass parent_class;
+  GnlObjectClass parent_class;
 
   /*< public >*/
   GESCreateTrackObjectFunc create_track_object;

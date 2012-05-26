@@ -79,7 +79,7 @@ static GESTimelineObject *ges_timeline_object_copy (GESTimelineObject * object,
     gboolean * deep);
 
 G_DEFINE_ABSTRACT_TYPE (GESTimelineObject, ges_timeline_object,
-    G_TYPE_INITIALLY_UNOWNED);
+    GNL_TYPE_OBJECT);
 
 /* Mapping of relationship between a TimelineObject and the TrackObjects
  * it controls
