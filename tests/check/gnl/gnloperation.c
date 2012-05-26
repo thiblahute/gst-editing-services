@@ -677,7 +677,7 @@ GST_END_TEST;
 
 
 
-Suite *
+static Suite *
 gnonlin_suite (void)
 {
   Suite *s = suite_create ("gnloperation");

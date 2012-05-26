@@ -1,11 +1,17 @@
 include $(top_srcdir)/common/check.mak
 
-TESTS_ENVIRONMENT = 
+CHECK_REGISTRY = $(top_builddir)/tests/check/test-registry.xml
 
 plugindir = $(libdir)/gstreamer-@GST_API_VERSION@
 
-# override to _not_ install the test plugins
-install-pluginLTLIBRARIES:
+REGISTRY_ENVIRONMENT = \
+	GST_REGISTRY=$(CHECK_REGISTRY)
+# Note: GST_PLUGINS_GOOD_DIR is only set in an uninstalled setup
+TESTS_ENVIRONMENT = \
+        CK_DEFAULT_TIMEOUT=120                                   \
+	$(REGISTRY_ENVIRONMENT)					\
+	GST_PLUGIN_SYSTEM_PATH=					\
+	GST_PLUGIN_PATH=$(top_builddir)/gnl:$(GST_PLUGINS_GOOD_DIR):$(GST_PLUGINS_BASE_DIR):$(GST_PLUGINS_DIR)
 
 # the core dumps of some machines have PIDs appended
 CLEANFILES = core.* test-registry.*
