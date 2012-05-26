@@ -29,7 +29,17 @@ DISTCLEANFILE = $(CLEANFILES)
 #files built on make all/check/instal
 BUILT_SOURCES =	$(built_header_configure)
 
-noinst_HEADERS = $(gnl_headers) $(built_header_configure)
+# we only install gnlobject headers
+# FIXME: Do not install it if building GNonLin alone
+noinst_HEADERS = $(built_header_configure) \
+	gnl.h			\
+	gnlcomposition.h	\
+	gnltypes.h		\
+	gnlghostpad.h		\
+	gnloperation.h		\
+	gnlsource.h		\
+	gnltypes.h		\
+	gnlurisource.h
 
 Android.mk: Makefile.am $(BUILT_SOURCES)
 	androgenizer \
