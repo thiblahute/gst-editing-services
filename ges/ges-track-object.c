@@ -35,8 +35,7 @@
 #include "ges-timeline-object.h"
 #include <gobject/gvaluecollector.h>
 
-G_DEFINE_ABSTRACT_TYPE (GESTrackObject, ges_track_object,
-    G_TYPE_INITIALLY_UNOWNED);
+G_DEFINE_ABSTRACT_TYPE (GESTrackObject, ges_track_object, GNL_TYPE_OBJECT);
 
 struct _GESTrackObjectPrivate
 {
@@ -83,7 +82,7 @@ static GParamSpec *properties[PROP_LAST];
 
 enum
 {
-  DEEP_NOTIFY,
+  CHILD_PROP_CHANGED_SIGNAL,
   LAST_SIGNAL
 };
 
@@ -332,7 +331,7 @@ ges_track_object_class_init (GESTrackObjectClass * klass)
           G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
   /**
-   * GESTrackObject::deep-notify:
+   * GESTrackObject::child-property-changed:
    * @track_object: a #GESTrackObject
    * @prop_object: the object that originated the signal
    * @prop: the property that changed
@@ -342,8 +341,8 @@ ges_track_object_class_init (GESTrackObjectClass * klass)
    *
    * Since: 0.10.2
    */
-  ges_track_object_signals[DEEP_NOTIFY] =
-      g_signal_new ("deep-notify", G_TYPE_FROM_CLASS (klass),
+  ges_track_object_signals[CHILD_PROP_CHANGED_SIGNAL] =
+      g_signal_new ("child-property-changed", G_TYPE_FROM_CLASS (klass),
       G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE | G_SIGNAL_DETAILED |
       G_SIGNAL_NO_HOOKS, 0, NULL, NULL, g_cclosure_marshal_generic,
       G_TYPE_NONE, 2, GST_TYPE_ELEMENT, G_TYPE_PARAM);
@@ -569,7 +568,7 @@ static void
 gst_element_prop_changed_cb (GstElement * element, GParamSpec * arg
     G_GNUC_UNUSED, GESTrackObject * obj)
 {
-  g_signal_emit (obj, ges_track_object_signals[DEEP_NOTIFY], 0,
+  g_signal_emit (obj, ges_track_object_signals[CHILD_PROP_CHANGED_SIGNAL], 0,
       GST_ELEMENT (element), arg);
 }
 

@@ -26,6 +26,7 @@
 #include <ges/ges-types.h>
 #include <ges/ges-timeline-object.h>
 #include <ges/ges-track.h>
+#include "../gnl/gnlobject.h"
 
 G_BEGIN_DECLS
 
@@ -78,7 +79,7 @@ typedef struct _GESTrackObjectPrivate GESTrackObjectPrivate;
  * The GESTrackObject base class.
  */
 struct _GESTrackObject {
-  GInitiallyUnowned parent;
+  GnlObject parent;
 
   /*< private >*/
   guint64 start;
@@ -116,7 +117,7 @@ struct _GESTrackObject {
  */ 
 struct _GESTrackObjectClass {
   /*< private >*/
-  GInitiallyUnownedClass parent_class;
+  GnlObjectClass parent_class;
 
   /*< public >*/
   /* virtual methods for subclasses */
