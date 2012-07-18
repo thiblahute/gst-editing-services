@@ -1,8 +1,8 @@
 Metadata
---------
+~~~~~~~~
 
 Summary
---------
+~~~~~~~
 
 1. Basic ideas
 2. Problems
@@ -11,7 +11,7 @@ Summary
 5. API draft
 
 1. Basic ideas
---------------
+~~~~~~~~~~~~~~
 
 If we look at entities that are present in GES we can see that almost all of
 them need some sort of metadata:
@@ -22,36 +22,42 @@ them need some sort of metadata:
     * Yet to be implemented GESProject
 
 For all those classes to be able to contain metadatas and to avoid code
-duplcation as much as possible, we should have an inteface to handle Metadata.
+duplication as much as possible, we should have an interface to handle Metadata.
 Let's call the interface GESMetadataContainer for now (name to be defined).
 
 2. Problems
------------
+~~~~~~~~~~~
 
     1) We must be able to discover all metadata items that are
        attached to object
     2) We must be able to hold metadata of any type user wants
     3) Some metadatas are read only, others are writable
-    4) User should be able to query easily GESMetadatas using varous criterias
+    4) User should be able to query metadata easily using various criteria
+    5) Some metadata needs to be serialized
 
-3. Ways of solving problems
----------------------------
+3. Possible solutions
+~~~~~~~~~~~~~~~~~~~~~
+
     1) To implement metadata GstTagList will be used. It allows to get list of
        all available tags in specified list by calling "gst_tag_list_foreach".
+     - PL: However GstTagList is not an interface
     2) This problem can be solved by means of GstTagList.
     3) ?
 
 4. Use-cases
--------------
-    UC-1. Hold tag information about file source material. TS: I think some of
-        them are TrackObject specific... so we should be able to get them from
-        the 2 types of objects
+~~~~~~~~~~~~
+
+    UC-1. Hold tag information about file source material.
+      - TS: I think some of them are TrackObject specific... so we should be
+        able to get them from the 2 types of objects
     UC-2. Hold descriptions of operations
-    UC-3. Hold information about projects
+    UC-3. Hold information about projects (title, author, description)
     UC-4. Hold user comments about any of TimelineLayer/Timeline/Project/TimelineObjects
+    UC-5. Hold application specific settings (i.e. layer height, folding state
+          in PiTiVi)
 
 5. API Draft
-------------
+~~~~~~~~~~~~
 
 /**
  * ges_metadata_container_set_value
