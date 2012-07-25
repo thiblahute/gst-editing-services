@@ -127,7 +127,7 @@ ges_metadata_container_set_string    (GESMetadataContainer *container,
 
 /**
  * ges_metadata_container_get_value
- * @containter: Target container
+ * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
  * Sets value of given metadata item
