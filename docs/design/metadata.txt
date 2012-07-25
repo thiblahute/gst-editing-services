@@ -140,7 +140,7 @@ ges_metadata_container_set_string    (GESMetadataContainer *container,
 
 /**
  * ges_metadata_container_get_value
- * @containter: Target container
+ * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
  * Sets value of given metadata item
@@ -216,22 +216,20 @@ ges_metadata_container_get_date_time (GESMetadataContainer *container,
 void
 ges_metadata_container_foreach       (GESMetadataContainer *container,
                                       (GESMetdataForeachFunc) func,
-                                      gpointer user_data)
+                                      gpointer user_data);
 
 gchar *
-ges_metadata_container_to_string     (GESMetadataContainer *container)
-
-gchar *
-ges_metadata_container_to_string     (GESMetadataContainer *container)
+ges_metadata_container_to_string     (GESMetadataContainer *container);
 
 void
-gst_tag_register                     (const gchar *name,
+gst_metadata_container_register      (const gchar *name,
                                       GType type,
                                       const gchar *nick,
                                       const gchar *blurb,
                                       GstTagMergeFunc func);
 
 typedef void
-(*GESMetdataForeachFunc)            (GESMetadataContainer *container, gchar *key,
+(*GESMetdataForeachFunc)            (const GESMetadataContainer *container,
+                                     gchar *key,
                                      GValue *value,
                                      gpointer user_data);
