@@ -38,187 +38,168 @@ struct _GESMetadataContainerInterface {
   GTypeInterface parent_iface;
   
   gpointer _ges_reserved[GES_PADDING];
-  
-  void (*do_action) (GESMetadataContainerInterface *self);
 };
 
 GType ges_metadata_container_get_type (void);
 
-void ges_metadata_container_do_action (GESMetadataContainer *self);
-
-
-/**
- * ges_metadata_container_set_value
- * @container: Target container
- * @metadata_item: Name of the metadata item to set
- * @value: Value to set
- * Sets value of given metadata item
- *
- */
 void
-ges_metadata_container_set_value   (GESMetadataContainer *container,
-                                    const gchar* metadata_item,
-                                    const GValue *value);
-
-void
-ges_metadata_container_set_char    (GESMetadataContainer *container,
-                                    const gchar* metadata_item,
-                                    gchar value);
-
-void
-ges_metadata_container_set_uchar   (GESMetadataContainer *container,
-                                    const gchar* metadata_item,
-                                    guchar value);
-
-void
-ges_metadata_container_set_int      (GESMetadataContainer *container,
-                                     const gchar* metadata_item,
-                                     gint value);
-
-void
-ges_metadata_container_set_uint     (GESMetadataContainer *container,
-                                     const gchar* metadata_item,
-                                     guint value);
-
-void
-ges_metadata_container_set_int64    (GESMetadataContainer *container,
-                                     const gchar* metadata_item,
-                                     gint64 value);
-
-void
-ges_metadata_container_set_uint64   (GESMetadataContainer *container,
-                                     const gchar* metadata_item,
-                                     guint64 value);
-
-void
-ges_metadata_container_set_long      (GESMetadataContainer *container,
+ges_metadata_container_set_value     (GESMetadataContainer *container,
                                       const gchar* metadata_item,
-                                      glong value);
+                                      const GValue *value);
 
 void
-ges_metadata_container_set_ulong     (GESMetadataContainer *container,
+ges_metadata_container_set_char      (GESMetadataContainer *container,
                                       const gchar* metadata_item,
-                                      gulong value);
+                                      gchar value);
 
 void
-ges_metadata_container_set_float     (GESMetadataContainer *container,
+ges_metadata_container_set_uchar     (GESMetadataContainer *container,
                                       const gchar* metadata_item,
-                                      gfloat value);
+                                      guchar value);
 
 void
-ges_metadata_container_set_double    (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gdouble value);
+ges_metadata_container_set_int        (GESMetadataContainer *container,
+                                       const gchar* metadata_item,
+                                       gint value);
 
 void
-ges_metadata_container_set_date      (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      const GDate* value);
+ges_metadata_container_set_uint       (GESMetadataContainer *container,
+                                       const gchar* metadata_item,
+                                       guint value);
 
 void
-ges_metadata_container_set_date_time (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      const GstDateTime* value);
+ges_metadata_container_set_int64      (GESMetadataContainer *container,
+                                       const gchar* metadata_item,
+                                       gint64 value);
 
 void
-ges_metadata_container_set_string    (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      const gchar* value);
+ges_metadata_container_set_uint64     (GESMetadataContainer *container,
+                                       const gchar* metadata_item,
+                                       guint64 value);
 
-/**
- * ges_metadata_container_get_value
- * @container: Target container
- * @metadata_item: Name of the metadata item to get
- * @dest: Destination to which value of metadata item will be copied
- * Sets value of given metadata item
- *
- * Returns: TRUE if value was present in object metadata, FALSE if there is no
- * such metadata item
- */
-gboolean
-ges_metadata_container_get_value     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      GValue** dest);
+void
+ges_metadata_container_set_long        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        glong value);
+
+void
+ges_metadata_container_set_ulong       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gulong value);
+
+void
+ges_metadata_container_set_float       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gfloat value);
+
+void
+ges_metadata_container_set_double      (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gdouble value);
+
+void
+ges_metadata_container_set_date        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        const GDate* value);
+
+void
+ges_metadata_container_set_date_time   (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        const GstDateTime* value);
+
+void
+ges_metadata_container_set_string      (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        const gchar* value);
 
 gboolean
-ges_metadata_container_get_char      (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gchar* dest);
+ges_metadata_container_get_value       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        GValue** dest);
 
 gboolean
-ges_metadata_container_get_uchar     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      guchar* dest);
+ges_metadata_container_get_char        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gchar* dest);
 
 gboolean
-ges_metadata_container_get_int       (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gint* dest);
+ges_metadata_container_get_uchar       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        guchar* dest);
 
 gboolean
-ges_metadata_container_get_uint      (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      guint* dest);
+ges_metadata_container_get_int         (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gint* dest);
 
 gboolean
-ges_metadata_container_get_int64     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gint64* dest);
+ges_metadata_container_get_uint        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        guint* dest);
 
 gboolean
-ges_metadata_container_get_uint64    (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      guint64* dest);
+ges_metadata_container_get_int64       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gint64* dest);
 
 gboolean
-ges_metadata_container_get_long      (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      glong* dest);
+ges_metadata_container_get_uint64      (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        guint64* dest);
 
 gboolean
-ges_metadata_container_get_ulong     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gulong* dest);
+ges_metadata_container_get_long        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        glong* dest);
 
 gboolean
-ges_metadata_container_get_float     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gfloat* dest);
+ges_metadata_container_get_ulong       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gulong* dest);
 
 gboolean
-ges_metadata_container_get_double    (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gdouble* dest);
+ges_metadata_container_get_float       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gfloat* dest);
 
 gboolean
-ges_metadata_container_get_date      (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      GDate** dest);
+ges_metadata_container_get_double      (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gdouble* dest);
 
 gboolean
-ges_metadata_container_get_date_time (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      GstDateTime** dest);
+ges_metadata_container_get_date        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        GDate** dest);
+
+gboolean
+ges_metadata_container_get_date_time   (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        GstDateTime** dest);
 
 typedef void
-(*GESMetadataContainerForeachFunc)   (const GESMetadataContainer *container,
-                                      const gchar *key,
-                                      GValue *value,
-                                      gpointer user_data);
+(*GESMetadataContainerForeachFunc)     (const GESMetadataContainer *container,
+                                        const gchar *key,
+                                        GValue *value,
+                                        gpointer user_data);
                                       
 void
-ges_metadata_container_foreach       (GESMetadataContainer *container,
-                                      GESMetadataContainerForeachFunc func,
-                                      gpointer user_data);
+ges_metadata_container_foreach         (GESMetadataContainer *container,
+                                        GESMetadataContainerForeachFunc func,
+                                        gpointer user_data);
 
 gchar *
-ges_metadata_container_to_string     (GESMetadataContainer *container);
+ges_metadata_container_to_string       (GESMetadataContainer *container);
+
+GESMetadataContainer *
+ges_metadata_container_new_from_string (const gchar *str);
 
 void
-gst_metadata_container_register      (const gchar *name,
-                                      GType type,
-                                      const gchar *nick,
-                                      const gchar *blurb,
-                                      GstTagMergeFunc func);
+gst_metadata_container_register        (const gchar *name,
+                                        GType type,
+                                        const gchar *nick,
+                                        const gchar *blurb,
+                                        GstTagMergeFunc func);
+
 G_END_DECLS
 #endif /* _GES_METADATA_CONTAINER */

@@ -919,6 +919,7 @@ ges_metadata_container_set_uint64
 ges_metadata_container_set_ulong
 ges_metadata_container_set_value
 ges_metadata_container_to_string
+ges_metadata_container_new_from_string
 gst_metadata_container_register
 <SUBSECTION Standard>
 GESMetadataContainerInterface
