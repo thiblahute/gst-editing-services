@@ -27,8 +27,8 @@
 G_BEGIN_DECLS
 
 #define GES_TYPE_METADATA_CONTAINER                 (ges_metadata_container_get_type ())
-#define GES_METADATA_CONTAINER (obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GES_TYPE_METADATA_CONTAINER, GESMetadataContainer))
-#define GES_IS_METADATA_CONTAINER (obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GES_TYPE_METADATA_CONTAINER))
+#define GES_METADATA_CONTAINER(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GES_TYPE_METADATA_CONTAINER, GESMetadataContainer))
+#define GES_IS_METADATA_CONTAINER(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GES_TYPE_METADATA_CONTAINER))
 #define GES_METADATA_CONTAINER_GET_INTERFACE (inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GES_TYPE_METADATA_CONTAINER, GESMetadataContainerInterface))
 
 typedef struct _GESMetadataContainer          GESMetadataContainer;
