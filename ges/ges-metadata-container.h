@@ -29,14 +29,14 @@ G_BEGIN_DECLS
 #define GES_TYPE_METADATA_CONTAINER                 (ges_metadata_container_get_type ())
 #define GES_METADATA_CONTAINER (obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GES_TYPE_METADATA_CONTAINER, GESMetadataContainer))
 #define GES_IS_METADATA_CONTAINER (obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GES_TYPE_METADATA_CONTAINER))
-#define GES_METADATA_CONTAINER_GET_INTERFACE (inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GES_TYPE_METADATA_CONTAINER, GESMetadataContainerClass))
+#define GES_METADATA_CONTAINER_GET_INTERFACE (inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GES_TYPE_METADATA_CONTAINER, GESMetadataContainerInterface))
 
 typedef struct _GESMetadataContainer          GESMetadataContainer;
 typedef struct _GESMetadataContainerInterface GESMetadataContainerInterface;
 
 struct _GESMetadataContainerInterface {
   GTypeInterface parent_iface;
-  
+
   gpointer _ges_reserved[GES_PADDING];
 };
 
@@ -195,11 +195,8 @@ GESMetadataContainer *
 ges_metadata_container_new_from_string (const gchar *str);
 
 void
-gst_metadata_container_register        (const gchar *name,
-                                        GType type,
-                                        const gchar *nick,
-                                        const gchar *blurb,
-                                        GstTagMergeFunc func);
+ges_metadata_register                  (const gchar *name,
+                                        GType type);
 
 G_END_DECLS
 #endif /* _GES_METADATA_CONTAINER */
