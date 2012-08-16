@@ -48,9 +48,9 @@ ges_metadata_container_set_value     (GESMetadataContainer *container,
                                       const GValue *value);
 
 void
-ges_metadata_container_set_char      (GESMetadataContainer *container,
+ges_metadata_container_set_boolean   (GESMetadataContainer *container,
                                       const gchar* metadata_item,
-                                      gchar value);
+                                      gboolean value);
 
 void
 ges_metadata_container_set_uchar     (GESMetadataContainer *container,
@@ -113,9 +113,9 @@ ges_metadata_container_set_string      (GESMetadataContainer *container,
                                         const gchar* value);
 
 gboolean
-ges_metadata_container_get_value       (GESMetadataContainer *container,
+ges_metadata_container_get_boolean     (GESMetadataContainer *container,
                                         const gchar* metadata_item,
-                                        GValue** dest);
+                                        gboolean* dest);
 
 gboolean
 ges_metadata_container_get_char        (GESMetadataContainer *container,
@@ -176,6 +176,11 @@ gboolean
 ges_metadata_container_get_date_time   (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         GstDateTime** dest);
+
+gboolean
+ges_metadata_container_get_string      (GESMetadataContainer * container,
+                                        const gchar * metadata_item,
+                                        gchar ** dest);
 
 typedef void
 (*GESMetadataContainerForeachFunc)     (const GESMetadataContainer *container,
