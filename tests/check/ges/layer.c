@@ -515,6 +515,67 @@ GST_START_TEST (test_layer_metadata_double)
 
 GST_END_TEST;
 
+GST_START_TEST (test_layer_metadata_date)
+{
+  GESTimeline *timeline;
+  GESTimelineLayer *layer;
+  GDate *input;
+  GDate *result;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+  layer = ges_timeline_layer_new ();
+  ges_timeline_add_layer (timeline, layer);
+
+  input = g_date_new_dmy (1, 1, 2012);
+
+  ges_metadata_container_set_date (GES_METADATA_CONTAINER (layer),
+      "ges-test", input);
+
+  fail_unless (ges_metadata_container_get_date (GES_METADATA_CONTAINER
+          (layer), "ges-test", &result));
+
+  fail_unless (g_date_compare (result, input) == 0);
+
+  g_date_free (input);
+  g_date_free (result);
+}
+
+GST_END_TEST;
+
+GST_START_TEST (test_layer_metadata_date_time)
+{
+  GESTimeline *timeline;
+  GESTimelineLayer *layer;
+  GstDateTime *input;
+  GstDateTime *result;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+  layer = ges_timeline_layer_new ();
+  ges_timeline_add_layer (timeline, layer);
+
+  input = gst_date_time_new_from_unix_epoch_local_time (123456789);
+
+  ges_metadata_container_set_date_time (GES_METADATA_CONTAINER (layer),
+      "ges-test", input);
+
+  fail_unless (ges_metadata_container_get_date_time (GES_METADATA_CONTAINER
+          (layer), "ges-test", &result));
+
+  //TODO CHECK
+  fail_unless (gst_date_time_get_day (input) == gst_date_time_get_day (result));
+  fail_unless (gst_date_time_get_hour (input) ==
+      gst_date_time_get_hour (result));
+
+  gst_date_time_unref (input);
+  gst_date_time_unref (result);
+}
+
+GST_END_TEST;
+
 static Suite *
 ges_suite (void)
 {
@@ -534,6 +595,8 @@ ges_suite (void)
   tcase_add_test (tc_chain, test_layer_metadata_uint64);
   tcase_add_test (tc_chain, test_layer_metadata_float);
   tcase_add_test (tc_chain, test_layer_metadata_double);
+  tcase_add_test (tc_chain, test_layer_metadata_date);
+  tcase_add_test (tc_chain, test_layer_metadata_date_time);
 
   return s;
 }

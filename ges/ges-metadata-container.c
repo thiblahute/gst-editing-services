@@ -193,9 +193,37 @@ ges_metadata_container_set_double (GESMetadataContainer * container,
 }
 
 void
+ges_metadata_container_set_date (GESMetadataContainer * container,
+    const gchar * metadata_item, const GDate * value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_DATE);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
+}
+
+void
 ges_metadata_container_set_date_time (GESMetadataContainer * container,
     const gchar * metadata_item, const GstDateTime * value)
 {
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, GST_TYPE_DATE_TIME);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
 }
 
 void
