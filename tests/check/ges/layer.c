@@ -468,6 +468,52 @@ GST_START_TEST (test_layer_metadata_uint64)
 
 GST_END_TEST;
 
+GST_START_TEST (test_layer_metadata_long)
+{
+  GESTimeline *timeline;
+  GESTimelineLayer *layer;
+  glong result;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+  layer = ges_timeline_layer_new ();
+  ges_timeline_add_layer (timeline, layer);
+
+  ges_metadata_container_set_long (GES_METADATA_CONTAINER (layer),
+      "ges-test", 42);
+
+  fail_unless (ges_metadata_container_get_long (GES_METADATA_CONTAINER
+          (layer), "ges-test", &result));
+
+  fail_unless (result == 42);
+}
+
+GST_END_TEST;
+
+GST_START_TEST (test_layer_metadata_ulong)
+{
+  GESTimeline *timeline;
+  GESTimelineLayer *layer;
+  gulong result;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+  layer = ges_timeline_layer_new ();
+  ges_timeline_add_layer (timeline, layer);
+
+  ges_metadata_container_set_ulong (GES_METADATA_CONTAINER (layer),
+      "ges-test", 42);
+
+  fail_unless (ges_metadata_container_get_ulong (GES_METADATA_CONTAINER
+          (layer), "ges-test", &result));
+
+  fail_unless (result == 42);
+}
+
+GST_END_TEST;
+
 GST_START_TEST (test_layer_metadata_float)
 {
   GESTimeline *timeline;
@@ -593,6 +639,8 @@ ges_suite (void)
   tcase_add_test (tc_chain, test_layer_metadata_uint);
   tcase_add_test (tc_chain, test_layer_metadata_int64);
   tcase_add_test (tc_chain, test_layer_metadata_uint64);
+  tcase_add_test (tc_chain, test_layer_metadata_long);
+  tcase_add_test (tc_chain, test_layer_metadata_ulong);
   tcase_add_test (tc_chain, test_layer_metadata_float);
   tcase_add_test (tc_chain, test_layer_metadata_double);
   tcase_add_test (tc_chain, test_layer_metadata_date);

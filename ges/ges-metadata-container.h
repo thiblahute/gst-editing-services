@@ -43,39 +43,34 @@ struct _GESMetadataContainerInterface {
 GType ges_metadata_container_get_type (void);
 
 void
-ges_metadata_container_set_value     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      const GValue *value);
+ges_metadata_container_set_value       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        const GValue *value);
 
 void
-ges_metadata_container_set_boolean   (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      gboolean value);
+ges_metadata_container_set_boolean     (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gboolean value);
 
 void
-ges_metadata_container_set_uchar     (GESMetadataContainer *container,
-                                      const gchar* metadata_item,
-                                      guchar value);
+ges_metadata_container_set_int         (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gint value);
 
 void
-ges_metadata_container_set_int        (GESMetadataContainer *container,
-                                       const gchar* metadata_item,
-                                       gint value);
+ges_metadata_container_set_uint        (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        guint value);
 
 void
-ges_metadata_container_set_uint       (GESMetadataContainer *container,
-                                       const gchar* metadata_item,
-                                       guint value);
+ges_metadata_container_set_int64       (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        gint64 value);
 
 void
-ges_metadata_container_set_int64      (GESMetadataContainer *container,
-                                       const gchar* metadata_item,
-                                       gint64 value);
-
-void
-ges_metadata_container_set_uint64     (GESMetadataContainer *container,
-                                       const gchar* metadata_item,
-                                       guint64 value);
+ges_metadata_container_set_uint64      (GESMetadataContainer *container,
+                                        const gchar* metadata_item,
+                                        guint64 value);
 
 void
 ges_metadata_container_set_long        (GESMetadataContainer *container,
@@ -116,16 +111,6 @@ gboolean
 ges_metadata_container_get_boolean     (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         gboolean* dest);
-
-gboolean
-ges_metadata_container_get_char        (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        gchar* dest);
-
-gboolean
-ges_metadata_container_get_uchar       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        guchar* dest);
 
 gboolean
 ges_metadata_container_get_int         (GESMetadataContainer *container,

@@ -194,6 +194,54 @@ ges_metadata_container_set_uint64 (GESMetadataContainer * container,
 }
 
 /**
+ * ges_metadata_container_set_long
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to set
+ * @value: Value to set
+ * Sets the value of a given metadata item
+ */
+void
+ges_metadata_container_set_long (GESMetadataContainer * container,
+    const gchar * metadata_item, glong value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_LONG);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
+}
+
+/**
+ * ges_metadata_container_set_ulong
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to set
+ * @value: Value to set
+ * Sets the value of a given metadata item
+ */
+void
+ges_metadata_container_set_ulong (GESMetadataContainer * container,
+    const gchar * metadata_item, gulong value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_ULONG);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
+}
+
+/**
  * ges_metadata_container_set_float
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
@@ -347,7 +395,8 @@ ges_metadata_container_to_string (GESMetadataContainer * container)
  *
  * Deserializes a metadata container.
  *
- * Returns: a new #GESMetadataContainer, or NULL in case of an error.
+ * Returns: (transfer full): a new #GESMetadataContainer, or NULL in case of an
+ * error.
  */
 GESMetadataContainer *
 ges_metadata_container_new_from_string (const gchar * str)
@@ -431,6 +480,24 @@ CREATE_GETTER (int64, gint64, TRUE);
  * can not be found.
  */
 CREATE_GETTER (uint64, guint64, TRUE);
+/**
+ * ges_metadata_container_get_long
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to get
+ * @dest: Destination to which value of metadata item will be copied
+ * Gets the value of a given metadata item, returns NULL if @metadata_item
+ * can not be found.
+ */
+CREATE_GETTER (long, glong, TRUE);
+/**
+ * ges_metadata_container_get_ulong
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to get
+ * @dest: Destination to which value of metadata item will be copied
+ * Gets the value of a given metadata item, returns NULL if @metadata_item
+ * can not be found.
+ */
+CREATE_GETTER (ulong, gulong, TRUE);
 /**
  * ges_metadata_container_get_float
  * @container: Target container
