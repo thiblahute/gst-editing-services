@@ -887,7 +887,7 @@ ges_track_parse_launch_effect_get_type
 <FILE>ges-metadata-container</FILE>
 <TITLE>GESMetadataContainer</TITLE>
 GESMetadataContainer
-GESMetadataContainerForeachFunc
+GESMetadataForeachFunc
 ges_metadata_container_foreach
 ges_metadata_container_get_boolean
 ges_metadata_container_get_date

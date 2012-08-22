@@ -73,6 +73,47 @@ ges_metadata_container_get_data (GESMetadataContainer * container)
   return data;
 }
 
+typedef struct
+{
+  GESMetadataForeachFunc func;
+  const GESMetadataContainer *container;
+  gpointer data;
+} MetadataForeachData;
+
+static void
+tag_list_foreach (const GstTagList * taglist, const gchar * tag,
+    gpointer user_data)
+{
+  MetadataForeachData *data = (MetadataForeachData *) user_data;
+
+  GValue value = { 0, };
+
+  if (!gst_tag_list_copy_value (&value, taglist, tag))
+    return;
+
+  data->func (data->container, tag, &value, data->data);
+}
+
+void
+ges_metadata_container_foreach (GESMetadataContainer * container,
+    GESMetadataForeachFunc func, gpointer user_data)
+{
+  GESMetadata *data;
+  MetadataForeachData foreach_data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (func != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  foreach_data.func = func;
+  foreach_data.container = container;
+  foreach_data.data = user_data;
+
+  gst_tag_list_foreach (data->list, (GstTagForeachFunc) tag_list_foreach,
+      &foreach_data);
+}
+
 /**
  * ges_metadata_container_set_boolean
  * @container: Target container
@@ -359,13 +400,6 @@ ges_metadata_container_set_string (GESMetadataContainer * container,
   ges_metadata_register (metadata_item, G_TYPE_STRING);
   gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
   GES_METADATA_UNLOCK (data);
-}
-
-void
-ges_metadata_container_foreach (GESMetadataContainer * container,
-    GESMetadataContainerForeachFunc func, gpointer user_data)
-{
-
 }
 
 /**

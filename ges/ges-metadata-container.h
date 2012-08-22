@@ -168,14 +168,14 @@ ges_metadata_container_get_string      (GESMetadataContainer * container,
                                         gchar ** dest);
 
 typedef void
-(*GESMetadataContainerForeachFunc)     (const GESMetadataContainer *container,
+(*GESMetadataForeachFunc)              (const GESMetadataContainer *container,
                                         const gchar *key,
                                         GValue *value,
                                         gpointer user_data);
                                       
 void
 ges_metadata_container_foreach         (GESMetadataContainer *container,
-                                        GESMetadataContainerForeachFunc func,
+                                        GESMetadataForeachFunc func,
                                         gpointer user_data);
 
 gchar *

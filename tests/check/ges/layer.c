@@ -622,6 +622,37 @@ GST_START_TEST (test_layer_metadata_date_time)
 
 GST_END_TEST;
 
+static void
+test_foreach (const GESMetadataContainer * container, const gchar * key,
+    GValue * value, gpointer user_data)
+{
+  fail_unless ((0 == g_strcmp0 (key, "some-string")) ||
+      (0 == g_strcmp0 (key, "some-int")));
+}
+
+GST_START_TEST (test_layer_metadata_foreach)
+{
+  GESTimeline *timeline;
+  GESTimelineLayer *layer;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+  layer = ges_timeline_layer_new ();
+  ges_timeline_add_layer (timeline, layer);
+
+  ges_metadata_container_set_string (GES_METADATA_CONTAINER (layer),
+      "some-string", "some-content");
+
+  ges_metadata_container_set_int (GES_METADATA_CONTAINER (layer),
+      "some-int", 123456);
+
+  ges_metadata_container_foreach (GES_METADATA_CONTAINER (layer),
+      (GESMetadataForeachFunc) test_foreach, NULL);
+}
+
+GST_END_TEST;
+
 static Suite *
 ges_suite (void)
 {
@@ -645,6 +676,7 @@ ges_suite (void)
   tcase_add_test (tc_chain, test_layer_metadata_double);
   tcase_add_test (tc_chain, test_layer_metadata_date);
   tcase_add_test (tc_chain, test_layer_metadata_date_time);
+  tcase_add_test (tc_chain, test_layer_metadata_foreach);
 
   return s;
 }
