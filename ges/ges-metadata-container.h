@@ -43,11 +43,6 @@ struct _GESMetadataContainerInterface {
 GType ges_metadata_container_get_type (void);
 
 void
-ges_metadata_container_set_value       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        const GValue *value);
-
-void
 ges_metadata_container_set_boolean     (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         gboolean value);
@@ -107,6 +102,11 @@ ges_metadata_container_set_string      (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         const gchar* value);
 
+void
+ges_metadata_container_set_value       (GESMetadataContainer * container,
+                                        const gchar* metadata_item,
+                                        const GValue *value);
+
 gboolean
 ges_metadata_container_get_boolean     (GESMetadataContainer *container,
                                         const gchar* metadata_item,
@@ -165,7 +165,12 @@ ges_metadata_container_get_date_time   (GESMetadataContainer *container,
 gboolean
 ges_metadata_container_get_string      (GESMetadataContainer * container,
                                         const gchar * metadata_item,
-                                        gchar ** dest);
+                                        gchar** dest);
+
+gboolean
+ges_metadata_container_get_value       (GESMetadataContainer * container,
+                                        const gchar* metadata_item,
+                                        GValue* dest);
 
 typedef void
 (*GESMetadataForeachFunc)              (const GESMetadataContainer *container,

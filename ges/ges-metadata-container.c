@@ -94,6 +94,15 @@ tag_list_foreach (const GstTagList * taglist, const gchar * tag,
   data->func (data->container, tag, &value, data->data);
 }
 
+/**
+ * ges_metadata_container_foreach:
+ * @container: container to iterate over
+ * @func: (scope call): function to be called for each tag
+ * @user_data: (closure): user specified data
+ *
+ * Calls the given function for each tag inside the metadata container. Note
+ * that if there is no tag, the function won't be called at all.
+ */
 void
 ges_metadata_container_foreach (GESMetadataContainer * container,
     GESMetadataForeachFunc func, gpointer user_data)
@@ -403,6 +412,30 @@ ges_metadata_container_set_string (GESMetadataContainer * container,
 }
 
 /**
+ * ges_metadata_container_set_value
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to set
+ * @value: Value to set
+ * Sets the value of a given metadata item
+ */
+void
+ges_metadata_container_set_value (GESMetadataContainer * container,
+    const gchar * metadata_item, const GValue * value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_STRING);
+  gst_tag_list_add_value (data->list, data->mode, metadata_item, value);
+  GES_METADATA_UNLOCK (data);
+}
+
+/**
  * ges_metadata_container_to_string:
  * @container: a #GESMetadataContainer
  *
@@ -452,7 +485,7 @@ gboolean                                                                   \
 ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
                            const gchar *metadata_item, type *value)        \
 {                                                                          \
-  GValue v = { 0, };                                                       \
+  GValue v = G_VALUE_INIT;                                                 \
   GESMetadata *data;                                                       \
                                                                            \
   g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);     \
@@ -573,7 +606,32 @@ _gst_strdup0 (const gchar * s)
  */
 CREATE_GETTER (string, gchar *, (*value != NULL));
 
+/**
+ * ges_metadata_container_get_value
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to get
+ * @dest: Destination to which value of metadata item will be copied
+ * Gets the value of a given metadata item, returns NULL if @metadata_item
+ * can not be found.
+ */
+gboolean
+ges_metadata_container_get_value (GESMetadataContainer * container,
+    const gchar * tag, GValue * value)
+{
+  //GValue v = G_VALUE_INIT;
+  GESMetadata *data;
 
+  g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);
+  g_return_val_if_fail (tag != NULL, FALSE);
+  g_return_val_if_fail (value != NULL, FALSE);
+
+  data = ges_metadata_container_get_data (container);
+
+  if (!gst_tag_list_copy_value (value, data->list, tag))
+    return FALSE;
+
+  return (value != NULL);
+}
 
 /**
  * ges_metadata_container_get_date
@@ -587,7 +645,7 @@ gboolean
 ges_metadata_container_get_date (GESMetadataContainer * container,
     const gchar * tag, GDate ** value)
 {
-  GValue v = { 0, };
+  GValue v = G_VALUE_INIT;
   GESMetadata *data;
 
   g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);
@@ -616,7 +674,7 @@ gboolean
 ges_metadata_container_get_date_time (GESMetadataContainer * container,
     const gchar * tag, GstDateTime ** value)
 {
-  GValue v = { 0, };
+  GValue v = G_VALUE_INIT;
   GESMetadata *data;
 
   g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);
