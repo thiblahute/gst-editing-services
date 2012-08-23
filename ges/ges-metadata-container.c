@@ -148,6 +148,54 @@ ges_metadata_container_set_boolean (GESMetadataContainer * container,
 }
 
 /**
+ * ges_metadata_container_set_char
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to set
+ * @value: Value to set
+ * Sets the value of a given metadata item
+ */
+void
+ges_metadata_container_set_char (GESMetadataContainer * container,
+    const gchar * metadata_item, gchar value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_CHAR);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
+}
+
+/**
+ * ges_metadata_container_set_uchar
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to set
+ * @value: Value to set
+ * Sets the value of a given metadata item
+ */
+void
+ges_metadata_container_set_uchar (GESMetadataContainer * container,
+    const gchar * metadata_item, guchar value)
+{
+  GESMetadata *data;
+
+  g_return_if_fail (GES_IS_METADATA_CONTAINER (container));
+  g_return_if_fail (metadata_item != NULL);
+
+  data = ges_metadata_container_get_data (container);
+
+  GES_METADATA_LOCK (data);
+  ges_metadata_register (metadata_item, G_TYPE_UCHAR);
+  gst_tag_list_add (data->list, data->mode, metadata_item, value, NULL);
+  GES_METADATA_UNLOCK (data);
+}
+
+/**
  * ges_metadata_container_set_int
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
@@ -511,6 +559,24 @@ ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
  * can not be found.
  */
 CREATE_GETTER (boolean, gboolean, TRUE);
+/**
+ * ges_metadata_container_get_char
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to get
+ * @dest: Destination to which value of metadata item will be copied
+ * Gets the value of a given metadata item, returns NULL if @metadata_item
+ * can not be found.
+ */
+CREATE_GETTER (char, gchar, TRUE);
+/**
+ * ges_metadata_container_get_uchar
+ * @container: Target container
+ * @metadata_item: Name of the metadata item to get
+ * @dest: Destination to which value of metadata item will be copied
+ * Gets the value of a given metadata item, returns NULL if @metadata_item
+ * can not be found.
+ */
+CREATE_GETTER (uchar, guchar, TRUE);
 /**
  * ges_metadata_container_get_int
  * @container: Target container
