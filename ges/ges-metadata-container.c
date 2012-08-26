@@ -447,7 +447,6 @@ ges_metadata_container_get_ ## name (GESMetadataContainer *container,    \
   return gst_tag_list_get_ ## name (data->list, metadata_item, value);   \
 }
 
-#define COPY_FUNC /**/
 /**
  * ges_metadata_container_get_boolean:
  * @container: Target container
@@ -520,9 +519,6 @@ _gst_strdup0 (const gchar * s)
 
   return g_strdup (s);
 }
-
-#undef COPY_FUNC
-#define COPY_FUNC _gst_strdup0
 
 /**
  * ges_metadata_container_get_string:
