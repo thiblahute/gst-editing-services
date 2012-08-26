@@ -197,7 +197,7 @@ typedef void
                                         const gchar *key,
                                         GValue *value,
                                         gpointer user_data);
-                                      
+
 void
 ges_metadata_container_foreach         (GESMetadataContainer *container,
                                         GESMetadataForeachFunc func,

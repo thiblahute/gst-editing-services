@@ -124,7 +124,7 @@ ges_metadata_container_foreach (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_boolean
+ * ges_metadata_container_set_boolean:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -148,7 +148,7 @@ ges_metadata_container_set_boolean (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_char
+ * ges_metadata_container_set_char:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -172,7 +172,7 @@ ges_metadata_container_set_char (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_uchar
+ * ges_metadata_container_set_uchar:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -196,7 +196,7 @@ ges_metadata_container_set_uchar (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_int
+ * ges_metadata_container_set_int:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -220,7 +220,7 @@ ges_metadata_container_set_int (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_uint
+ * ges_metadata_container_set_uint:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -244,7 +244,7 @@ ges_metadata_container_set_uint (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_int64
+ * ges_metadata_container_set_int64:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -268,7 +268,7 @@ ges_metadata_container_set_int64 (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_uint64
+ * ges_metadata_container_set_uint64:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -292,7 +292,7 @@ ges_metadata_container_set_uint64 (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_long
+ * ges_metadata_container_set_long:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -316,7 +316,7 @@ ges_metadata_container_set_long (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_ulong
+ * ges_metadata_container_set_ulong:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -340,7 +340,7 @@ ges_metadata_container_set_ulong (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_float
+ * ges_metadata_container_set_float:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -364,7 +364,7 @@ ges_metadata_container_set_float (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_double
+ * ges_metadata_container_set_double:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -388,7 +388,7 @@ ges_metadata_container_set_double (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_date
+ * ges_metadata_container_set_date:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -412,7 +412,7 @@ ges_metadata_container_set_date (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_date_time
+ * ges_metadata_container_set_date_time:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -436,7 +436,7 @@ ges_metadata_container_set_date_time (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_string
+ * ges_metadata_container_set_string:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -460,7 +460,7 @@ ges_metadata_container_set_string (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_set_value
+ * ges_metadata_container_set_value:
  * @container: Target container
  * @metadata_item: Name of the metadata item to set
  * @value: Value to set
@@ -551,7 +551,7 @@ ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
 
 #define COPY_FUNC /**/
 /**
- * ges_metadata_container_get_boolean
+ * ges_metadata_container_get_boolean:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -560,7 +560,7 @@ ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
  */
 CREATE_GETTER (boolean, gboolean, TRUE);
 /**
- * ges_metadata_container_get_char
+ * ges_metadata_container_get_char:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -569,7 +569,7 @@ CREATE_GETTER (boolean, gboolean, TRUE);
  */
 CREATE_GETTER (char, gchar, TRUE);
 /**
- * ges_metadata_container_get_uchar
+ * ges_metadata_container_get_uchar:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -578,7 +578,7 @@ CREATE_GETTER (char, gchar, TRUE);
  */
 CREATE_GETTER (uchar, guchar, TRUE);
 /**
- * ges_metadata_container_get_int
+ * ges_metadata_container_get_int:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -587,7 +587,7 @@ CREATE_GETTER (uchar, guchar, TRUE);
  */
 CREATE_GETTER (int, gint, TRUE);
 /**
- * ges_metadata_container_get_uint
+ * ges_metadata_container_get_uint:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -596,7 +596,7 @@ CREATE_GETTER (int, gint, TRUE);
  */
 CREATE_GETTER (uint, guint, TRUE);
 /**
- * ges_metadata_container_get_int64
+ * ges_metadata_container_get_int64:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -605,7 +605,7 @@ CREATE_GETTER (uint, guint, TRUE);
  */
 CREATE_GETTER (int64, gint64, TRUE);
 /**
- * ges_metadata_container_get_uint64
+ * ges_metadata_container_get_uint64:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -614,7 +614,7 @@ CREATE_GETTER (int64, gint64, TRUE);
  */
 CREATE_GETTER (uint64, guint64, TRUE);
 /**
- * ges_metadata_container_get_long
+ * ges_metadata_container_get_long:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -623,7 +623,7 @@ CREATE_GETTER (uint64, guint64, TRUE);
  */
 CREATE_GETTER (long, glong, TRUE);
 /**
- * ges_metadata_container_get_ulong
+ * ges_metadata_container_get_ulong:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -632,7 +632,7 @@ CREATE_GETTER (long, glong, TRUE);
  */
 CREATE_GETTER (ulong, gulong, TRUE);
 /**
- * ges_metadata_container_get_float
+ * ges_metadata_container_get_float:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -641,7 +641,7 @@ CREATE_GETTER (ulong, gulong, TRUE);
  */
 CREATE_GETTER (float, gfloat, TRUE);
 /**
- * ges_metadata_container_get_double
+ * ges_metadata_container_get_double:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -663,7 +663,7 @@ _gst_strdup0 (const gchar * s)
 #define COPY_FUNC _gst_strdup0
 
 /**
- * ges_metadata_container_get_string
+ * ges_metadata_container_get_string:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -673,7 +673,7 @@ _gst_strdup0 (const gchar * s)
 CREATE_GETTER (string, gchar *, (*value != NULL));
 
 /**
- * ges_metadata_container_get_value
+ * ges_metadata_container_get_value:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -700,7 +700,7 @@ ges_metadata_container_get_value (GESMetadataContainer * container,
 }
 
 /**
- * ges_metadata_container_get_date
+ * ges_metadata_container_get_date:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -727,9 +727,8 @@ ges_metadata_container_get_date (GESMetadataContainer * container,
   return (*value != NULL);
 }
 
-
 /**
- * ges_metadata_container_get_dtae_time
+ * ges_metadata_container_get_date_time:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
