@@ -24,8 +24,7 @@ typedef struct
 
 G_DEFINE_INTERFACE_WITH_CODE (GESMetadataContainer, ges_metadata_container,
     G_TYPE_OBJECT, ges_taglist_key =
-    g_quark_from_static_string ("ges-metadata-container-data");
-    );
+    g_quark_from_static_string ("ges-metadata-container-data"););
 
 static void
 ges_metadata_container_default_init (GESMetadataContainerInterface * iface)
@@ -432,25 +431,20 @@ ges_metadata_register (const gchar * name, GType type)
 /* Copied from gsttaglist.c */
 /***** evil macros to get all the *_get_* functions right *****/
 
-#define CREATE_GETTER(name,type,ret)                                       \
-gboolean                                                                   \
-ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
-                           const gchar *metadata_item, type *value)        \
-{                                                                          \
-  GValue v = G_VALUE_INIT;                                                 \
-  GESMetadata *data;                                                       \
-                                                                           \
-  g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);     \
-  g_return_val_if_fail (metadata_item != NULL, FALSE);                     \
-  g_return_val_if_fail (value != NULL, FALSE);                             \
-                                                                           \
-  data = ges_metadata_container_get_data (container);                      \
-                                                                           \
-  if (!gst_tag_list_copy_value (&v, data->list, metadata_item))            \
-      return FALSE;                                                        \
-  *value = COPY_FUNC (g_value_get_ ## name (&v));                          \
-  g_value_unset (&v);                                                      \
-  return ret;                                                              \
+#define CREATE_GETTER(name,type)                                         \
+gboolean                                                                 \
+ges_metadata_container_get_ ## name (GESMetadataContainer *container,    \
+                           const gchar *metadata_item, type value)       \
+{                                                                        \
+  GESMetadata *data;                                                     \
+                                                                         \
+  g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);   \
+  g_return_val_if_fail (metadata_item != NULL, FALSE);                   \
+  g_return_val_if_fail (value != NULL, FALSE);                           \
+                                                                         \
+  data = ges_metadata_container_get_data (container);                    \
+                                                                         \
+  return gst_tag_list_get_ ## name (data->list, metadata_item, value);   \
 }
 
 #define COPY_FUNC /**/
@@ -462,7 +456,7 @@ ges_metadata_container_get_ ## name (GESMetadataContainer *container,      \
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (boolean, gboolean, TRUE);
+CREATE_GETTER (boolean, gboolean *);
 /**
  * ges_metadata_container_get_int:
  * @container: Target container
@@ -471,7 +465,7 @@ CREATE_GETTER (boolean, gboolean, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (int, gint, TRUE);
+CREATE_GETTER (int, gint *);
 /**
  * ges_metadata_container_get_uint:
  * @container: Target container
@@ -480,7 +474,7 @@ CREATE_GETTER (int, gint, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (uint, guint, TRUE);
+CREATE_GETTER (uint, guint *);
 /**
  * ges_metadata_container_get_int64:
  * @container: Target container
@@ -489,7 +483,7 @@ CREATE_GETTER (uint, guint, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (int64, gint64, TRUE);
+CREATE_GETTER (int64, gint64 *);
 /**
  * ges_metadata_container_get_uint64:
  * @container: Target container
@@ -498,7 +492,7 @@ CREATE_GETTER (int64, gint64, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (uint64, guint64, TRUE);
+CREATE_GETTER (uint64, guint64 *);
 /**
  * ges_metadata_container_get_float:
  * @container: Target container
@@ -507,7 +501,7 @@ CREATE_GETTER (uint64, guint64, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (float, gfloat, TRUE);
+CREATE_GETTER (float, gfloat *);
 /**
  * ges_metadata_container_get_double:
  * @container: Target container
@@ -516,7 +510,7 @@ CREATE_GETTER (float, gfloat, TRUE);
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (double, gdouble, TRUE);
+CREATE_GETTER (double, gdouble *);
 
 static inline gchar *
 _gst_strdup0 (const gchar * s)
@@ -538,10 +532,10 @@ _gst_strdup0 (const gchar * s)
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-CREATE_GETTER (string, gchar *, (*value != NULL));
+CREATE_GETTER (string, gchar **);
 
 /**
- * ges_metadata_container_get_value:
+ * ges_metadata_container_copy_value:
  * @container: Target container
  * @metadata_item: Name of the metadata item to get
  * @dest: Destination to which value of metadata item will be copied
@@ -575,25 +569,7 @@ ges_metadata_container_get_value (GESMetadataContainer * container,
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-gboolean
-ges_metadata_container_get_date (GESMetadataContainer * container,
-    const gchar * tag, GDate ** value)
-{
-  GValue v = G_VALUE_INIT;
-  GESMetadata *data;
-
-  g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);
-  g_return_val_if_fail (tag != NULL, FALSE);
-  g_return_val_if_fail (value != NULL, FALSE);
-
-  data = ges_metadata_container_get_data (container);
-
-  if (!gst_tag_list_copy_value (&v, data->list, tag))
-    return FALSE;
-  *value = (GDate *) g_value_dup_boxed (&v);
-  g_value_unset (&v);
-  return (*value != NULL);
-}
+CREATE_GETTER (date, GDate **);
 
 /**
  * ges_metadata_container_get_date_time:
@@ -603,25 +579,4 @@ ges_metadata_container_get_date (GESMetadataContainer * container,
  * Gets the value of a given metadata item, returns NULL if @metadata_item
  * can not be found.
  */
-gboolean
-ges_metadata_container_get_date_time (GESMetadataContainer * container,
-    const gchar * tag, GstDateTime ** value)
-{
-  GValue v = G_VALUE_INIT;
-  GESMetadata *data;
-
-  g_return_val_if_fail (GES_IS_METADATA_CONTAINER (container), FALSE);
-  g_return_val_if_fail (tag != NULL, FALSE);
-  g_return_val_if_fail (value != NULL, FALSE);
-
-  data = ges_metadata_container_get_data (container);
-
-  if (!gst_tag_list_copy_value (&v, data->list, tag))
-    return FALSE;
-
-  g_return_val_if_fail (GST_VALUE_HOLDS_DATE_TIME (&v), FALSE);
-
-  *value = (GstDateTime *) g_value_dup_boxed (&v);
-  g_value_unset (&v);
-  return (*value != NULL);
-}
+CREATE_GETTER (date_time, GstDateTime **);
