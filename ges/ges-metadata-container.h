@@ -48,16 +48,6 @@ ges_metadata_container_set_boolean     (GESMetadataContainer *container,
                                         gboolean value);
 
 void
-ges_metadata_container_set_char        (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        gchar value);
-
-void
-ges_metadata_container_set_uchar       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        guchar value);
-
-void
 ges_metadata_container_set_int         (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         gint value);
@@ -76,16 +66,6 @@ void
 ges_metadata_container_set_uint64      (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         guint64 value);
-
-void
-ges_metadata_container_set_long        (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        glong value);
-
-void
-ges_metadata_container_set_ulong       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        gulong value);
 
 void
 ges_metadata_container_set_float       (GESMetadataContainer *container,
@@ -123,16 +103,6 @@ ges_metadata_container_get_boolean     (GESMetadataContainer *container,
                                         gboolean* dest);
 
 gboolean
-ges_metadata_container_get_char        (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        gchar* dest);
-
-gboolean
-ges_metadata_container_get_uchar       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        guchar* dest);
-
-gboolean
 ges_metadata_container_get_int         (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         gint* dest);
@@ -151,16 +121,6 @@ gboolean
 ges_metadata_container_get_uint64      (GESMetadataContainer *container,
                                         const gchar* metadata_item,
                                         guint64* dest);
-
-gboolean
-ges_metadata_container_get_long        (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        glong* dest);
-
-gboolean
-ges_metadata_container_get_ulong       (GESMetadataContainer *container,
-                                        const gchar* metadata_item,
-                                        gulong* dest);
 
 gboolean
 ges_metadata_container_get_float       (GESMetadataContainer *container,
