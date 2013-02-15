@@ -88,7 +88,7 @@ G_DEFINE_ABSTRACT_TYPE (GESClip, ges_clip, GES_TYPE_TIMELINE_ELEMENT);
  */
 typedef struct
 {
-  GESTrackElement *object;
+  GESTrackElement *track_element;
   gint64 start_offset;
   gint64 duration_offset;
   gint64 inpoint_offset;
@@ -465,7 +465,7 @@ ges_clip_add_track_element (GESClip * object, GESTrackElement * trobj)
   g_object_ref (trobj);
 
   mapping = g_slice_new0 (ObjectMapping);
-  mapping->object = trobj;
+  mapping->track_element = trobj;
   priv->mappings = g_list_append (priv->mappings, mapping);
 
   GST_DEBUG ("Adding TrackElement to the list of controlled track elements");
@@ -579,7 +579,7 @@ ges_clip_release_track_element (GESClip * object,
 
   for (tmp = object->priv->mappings; tmp; tmp = tmp->next) {
     mapping = (ObjectMapping *) tmp->data;
-    if (mapping->object == trackelement)
+    if (mapping->track_element == trackelement)
       break;
   }
 
@@ -673,7 +673,7 @@ find_object_mapping (GESClip * object, GESTrackElement * child)
 
   for (tmp = object->priv->mappings; tmp; tmp = tmp->next) {
     ObjectMapping *map = (ObjectMapping *) tmp->data;
-    if (map->object == child)
+    if (map->track_element == child)
       return map;
   }
 
@@ -1392,7 +1392,7 @@ ges_clip_objects_set_locked (GESClip * object, gboolean locked)
   g_return_if_fail (GES_IS_CLIP (object));
 
   for (tmp = object->priv->mappings; tmp; tmp = g_list_next (tmp)) {
-    ges_track_element_set_locked (((ObjectMapping *) tmp->data)->object,
+    ges_track_element_set_locked (((ObjectMapping *) tmp->data)->track_element,
         locked);
   }
 }
