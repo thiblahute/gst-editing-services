@@ -159,12 +159,15 @@ _set_start (GESTimelineElement * element, GstClockTime start)
   GST_DEBUG_OBJECT (element, "Setting children start, (initiated_move: %"
       GST_PTR_FORMAT ")", container->priv->initiated_move);
 
-  container->priv->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
+  if (container->priv->children_control_mode == GES_CHILDREN_UPDATE)
+    container->priv->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
+
   for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
     GESTimelineElement *child = (GESTimelineElement *) tmp->data;
 
     map = g_hash_table_lookup (priv->mappings, child);
-    if (child != container->priv->initiated_move) {
+    if (child != container->priv->initiated_move &&
+        priv->children_control_mode != GES_CHILDREN_UPDATE_OFFSETS) {
       gint64 new_start = start - map->start_offset;
 
       /* Move the child... */
