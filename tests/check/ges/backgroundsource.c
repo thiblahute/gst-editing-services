@@ -127,8 +127,8 @@ GST_START_TEST (test_test_source_in_layer)
 
   timeline = ges_timeline_new ();
   layer = (GESTimelineLayer *) ges_simple_timeline_layer_new ();
-  a = ges_track_audio_raw_new ();
-  v = ges_track_video_raw_new ();
+  a = GES_TRACK (ges_audio_track_new ());
+  v = GES_TRACK (ges_video_track_new ());
 
   ges_timeline_add_track (timeline, a);
   ges_timeline_add_track (timeline, v);
@@ -255,7 +255,7 @@ GST_START_TEST (test_gap_filling_basic)
 
   ges_init ();
 
-  track = ges_track_audio_raw_new ();
+  track = GES_TRACK (ges_audio_track_new ());
   fail_unless (track != NULL);
 
   composition = find_composition (track);
