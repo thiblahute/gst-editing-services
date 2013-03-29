@@ -170,7 +170,7 @@ gstl_recalculate (GESSimpleTimelineLayer * self)
   gboolean valid = TRUE;
   GESSimpleTimelineLayerPrivate *priv = self->priv;
 
-  priority = GES_TIMELINE_LAYER (self)->min_gnl_priority + 2;
+  priority = GES_TIMELINE_LAYER (self)->min_gnl_priority;
 
   GST_DEBUG ("recalculating values");
 
