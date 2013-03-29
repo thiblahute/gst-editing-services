@@ -216,7 +216,7 @@ static gboolean
 ges_timeline_layer_resync_priorities (GESTimelineLayer * layer)
 {
   GList *tmp;
-  GESTimelineElement *track_element;
+  GESTimelineElement *element;
 
   GST_DEBUG ("Resync priorities of %p", layer);
 
@@ -225,8 +225,8 @@ ges_timeline_layer_resync_priorities (GESTimelineLayer * layer)
    * do in the meantime. */
 
   for (tmp = layer->priv->clips_start; tmp; tmp = tmp->next) {
-    track_element = GES_TIMELINE_ELEMENT (tmp->data);
-    _set_priority0 (track_element, _PRIORITY (track_element));
+    element = GES_TIMELINE_ELEMENT (tmp->data);
+    _set_priority0 (element, _PRIORITY (element));
   }
 
   return TRUE;
