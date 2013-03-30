@@ -289,8 +289,9 @@ GST_START_TEST (test_gap_filling_basic)
   assert_equals_uint64 (_START (trackelement), 0);
   assert_equals_uint64 (_DURATION (trackelement), 5);
 
-  /* Check no gap were wrongly added */
-  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 1);
+  /* Check no gap were wrongly added
+   * 2: 1 for the trackelement and 1 for the mixer */
+  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 2);
 
   clip1 = GES_CLIP (ges_test_clip_new ());
   fail_unless (clip1 != NULL);
@@ -312,17 +313,19 @@ GST_START_TEST (test_gap_filling_basic)
   assert_equals_uint64 (_DURATION (trackelement1), 5);
 
   /* Check the gap as properly been added */
-  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 3);
+  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 4);
 
   for (tmp = GST_BIN_CHILDREN (composition); tmp; tmp = tmp->next) {
+    guint prio;
     GstElement *tmp_gnlobj = GST_ELEMENT (tmp->data);
 
-    if (tmp_gnlobj != gnlsrc && tmp_gnlobj != gnlsrc1) {
+    g_object_get (tmp_gnlobj, "priority", &prio, NULL);
+    if (tmp_gnlobj != gnlsrc && tmp_gnlobj != gnlsrc1 && prio == 1) {
       gap = tmp_gnlobj;
     }
   }
   fail_unless (gap != NULL);
-  gap_object_check (gap, 5, 10, 0);
+  gap_object_check (gap, 5, 10, 1);
 
   clip2 = GES_CLIP (ges_test_clip_new ());
   fail_unless (clip2 != NULL);
@@ -334,7 +337,7 @@ GST_START_TEST (test_gap_filling_basic)
   fail_unless (ges_track_element_get_track (trackelement2) == track);
   assert_equals_uint64 (_START (trackelement2), 35);
   assert_equals_uint64 (_DURATION (trackelement2), 5);
-  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 5);
+  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 6);
 
   gst_object_unref (timeline);
 }
