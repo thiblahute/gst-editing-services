@@ -772,8 +772,8 @@ ges_clip_move_to_layer (GESClip * clip, GESTimelineLayer * layer)
  * Note: If many objects match, then the one with the highest priority will be
  * returned.
  *
- * Returns: (transfer full): The #GESTrackElement used by @track, else %NULL.
- * Unref after usage.
+ * Returns: (transfer full): The #GESTrackElement used by @track, else %NULL,
+ * Unref after usage
  */
 
 GESTrackElement *
