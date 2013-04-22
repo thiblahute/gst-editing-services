@@ -129,6 +129,15 @@ ges_timeline_layer_dispose (GObject * object)
   G_OBJECT_CLASS (ges_timeline_layer_parent_class)->dispose (object);
 }
 
+static gboolean
+_register_metas (GESTimelineLayer * layer)
+{
+  ges_meta_container_register_meta_float (GES_META_CONTAINER (layer),
+      GES_META_READ_WRITE, GES_META_VOLUME, 1.0);
+
+  return TRUE;
+}
+
 static void
 ges_meta_container_interface_init (GESMetaContainerInterface * iface)
 {
@@ -203,6 +212,8 @@ ges_timeline_layer_init (GESTimelineLayer * self)
   self->priv->auto_transition = FALSE;
   self->min_gnl_priority = MIN_GNL_PRIO;
   self->max_gnl_priority = LAYER_HEIGHT + MIN_GNL_PRIO;
+
+  _register_metas (self);
 }
 
 /**
