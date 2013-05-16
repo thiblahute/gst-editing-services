@@ -26,11 +26,19 @@
  * the type of the track which contains the object.
  */
 
+#include <string.h>
+
 #include "ges-internal.h"
 #include "ges-track-element.h"
 #include "ges-uri-source.h"
 #include "ges-uri-asset.h"
 #include "ges-extractable.h"
+
+struct _GESUriSourcePrivate
+{
+  GHashTable *props_hashtable;
+  void *dummy;
+};
 
 static gchar *
 ges_extractable_check_id (GType type, const gchar * id, GError ** error)
@@ -64,11 +72,6 @@ G_DEFINE_TYPE_WITH_CODE (GESUriSource, ges_track_filesource,
     GES_TYPE_SOURCE,
     G_IMPLEMENT_INTERFACE (GES_TYPE_EXTRACTABLE,
         ges_extractable_interface_init));
-
-struct _GESUriSourcePrivate
-{
-  void *dummy;
-};
 
 enum
 {
@@ -123,6 +126,29 @@ _pad_added_cb (GstElement * element, GstPad * srcpad, GstPad * sinkpad)
   gst_pad_link (srcpad, sinkpad);
 }
 
+static gboolean
+pspec_equal (gconstpointer key_spec_1, gconstpointer key_spec_2)
+{
+  const GParamSpec *key1 = key_spec_1;
+  const GParamSpec *key2 = key_spec_2;
+
+  return (key1->owner_type == key2->owner_type &&
+      strcmp (key1->name, key2->name) == 0);
+}
+
+static guint
+pspec_hash (gconstpointer key_spec)
+{
+  const GParamSpec *key = key_spec;
+  const gchar *p;
+  guint h = key->owner_type;
+
+  for (p = key->name; *p; p++)
+    h = (h << 5) - h + *p;
+
+  return h;
+}
+
 static GstElement *
 ges_uri_source_create_element (GESTrackElement * trksrc)
 {
@@ -135,6 +161,9 @@ ges_uri_source_create_element (GESTrackElement * trksrc)
   GstPad *ghost;
   GESLayer *layer;
   gfloat layer_volume;
+  GObjectClass *class;
+  guint i, nb_specs;
+  GParamSpec **parray;
 
   self = (GESUriSource *) trksrc;
   track = ges_track_element_get_track (trksrc);
@@ -171,6 +200,22 @@ ges_uri_source_create_element (GESTrackElement * trksrc)
       } else
         GST_DEBUG_OBJECT (trksrc, "NOT setting the volume");
 
+      class = G_OBJECT_GET_CLASS (volume);
+      parray = g_object_class_list_properties (class, &nb_specs);
+
+      if (self->priv->props_hashtable == NULL)
+        self->priv->props_hashtable =
+            g_hash_table_new_full ((GHashFunc) pspec_hash, pspec_equal,
+            (GDestroyNotify) g_param_spec_unref, gst_object_unref);
+
+      for (i = 0; i < nb_specs; i++) {
+        if (parray[i]->flags & G_PARAM_WRITABLE) {
+          g_hash_table_insert (self->priv->props_hashtable,
+              g_param_spec_ref (parray[i]), gst_object_ref (volume));
+        }
+      }
+      g_free (parray);
+
       ret = topbin;
       break;
     default:
@@ -183,6 +228,19 @@ ges_uri_source_create_element (GESTrackElement * trksrc)
       "expose-all-streams", FALSE, "uri", self->uri, NULL);
 
   return ret;
+}
+
+static GHashTable *
+ges_base_effect_get_props_hashtable (GESTrackElement * element)
+{
+  GESUriSource *self = (GESUriSource *) element;
+
+  if (self->priv->props_hashtable == NULL)
+    self->priv->props_hashtable =
+        g_hash_table_new_full ((GHashFunc) pspec_hash, pspec_equal,
+        (GDestroyNotify) g_param_spec_unref, gst_object_unref);
+
+  return self->priv->props_hashtable;
 }
 
 static void
@@ -207,6 +265,7 @@ ges_track_filesource_class_init (GESUriSourceClass * klass)
           NULL, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   track_class->create_element = ges_uri_source_create_element;
+  track_class->get_props_hastable = ges_base_effect_get_props_hashtable;
 }
 
 static void
@@ -214,6 +273,7 @@ ges_track_filesource_init (GESUriSource * self)
 {
   self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self,
       GES_TYPE_URI_SOURCE, GESUriSourcePrivate);
+  self->priv->props_hashtable = NULL;
 }
 
 /**
