@@ -356,14 +356,15 @@ GST_START_TEST (test_gap_filling_empty_track)
 
   ges_init ();
 
-  track = GES_TRACK(ges_audio_track_new ());
+  track = GES_TRACK (ges_audio_track_new ());
 
   layer = ges_layer_new ();
   timeline = ges_timeline_new ();
   fail_unless (timeline != NULL);
   fail_unless (ges_timeline_add_layer (timeline, layer));
   fail_unless (ges_timeline_add_track (timeline, track));
-  fail_unless (ges_timeline_add_track (timeline, GES_TRACK(ges_video_track_new ())));
+  fail_unless (ges_timeline_add_track (timeline,
+          GES_TRACK (ges_video_track_new ())));
 
   /* Set some properties */
   asset = ges_asset_request (GES_TYPE_TEST_CLIP, NULL, NULL);
@@ -375,11 +376,13 @@ GST_START_TEST (test_gap_filling_empty_track)
 
   /* Check that a gap was properly added */
   composition = find_composition (track);
-  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 1);
+  /* We also have an adder in that composition */
+  assert_equals_int (g_list_length (GST_BIN_CHILDREN (composition)), 2);
 
   gap = GST_BIN_CHILDREN (composition)->data;
   fail_unless (gap != NULL);
-  gap_object_check (gap, 0, 10, 0);
+  /* and the adder is at priority 0 */
+  gap_object_check (gap, 0, 10, 1);
 
   gst_object_unref (timeline);
 }
