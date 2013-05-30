@@ -76,10 +76,10 @@ _request_new_pad (GstElement * element, GstPadTemplate * templ,
     const gchar * name, const GstCaps * caps)
 {
   GstPad *audioresample_srcpad, *audioconvert_sinkpad, *tmpghost;
-  PadInfos *infos = g_slice_new0 (PadInfos);
-  GESSmartAdder *self = GES_SMART_ADDER (element);
   GstPad *ghost;
   GstElement *audioconvert, *audioresample;
+  PadInfos *infos = g_slice_new0 (PadInfos);
+  GESSmartAdder *self = GES_SMART_ADDER (element);
 
   infos->adder_pad = gst_element_request_pad (self->adder, templ, NULL, caps);
   if (infos->adder_pad == NULL) {

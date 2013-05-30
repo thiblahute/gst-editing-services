@@ -26,8 +26,7 @@
  * the type of the track which contains the object.
  */
 
-#include <string.h>
-
+#include "ges-utils.h"
 #include "ges-internal.h"
 #include "ges-track-element.h"
 #include "ges-uri-source.h"
@@ -60,36 +59,13 @@ _ghost_pad_added_cb (GstElement * element, GstPad * srcpad, GstElement * bin)
 {
   GstPad *ghost;
 
-  gst_element_no_more_pads (element);
   ghost = gst_ghost_pad_new ("src", srcpad);
   gst_pad_set_active (ghost, TRUE);
   gst_element_add_pad (bin, ghost);
+  gst_element_no_more_pads (element);
 }
 
 /* Internal methods */
-
-static gboolean
-_pspec_equal (gconstpointer key_spec_1, gconstpointer key_spec_2)
-{
-  const GParamSpec *key1 = key_spec_1;
-  const GParamSpec *key2 = key_spec_2;
-
-  return (key1->owner_type == key2->owner_type &&
-      strcmp (key1->name, key2->name) == 0);
-}
-
-static guint
-_pspec_hash (gconstpointer key_spec)
-{
-  const GParamSpec *key = key_spec;
-  const gchar *p;
-  guint h = key->owner_type;
-
-  for (p = key->name; *p; p++)
-    h = (h << 5) - h + *p;
-
-  return h;
-}
 
 static GstElement *
 _create_bin (const gchar * bin_name, GstElement * decodebin, ...)
@@ -142,39 +118,47 @@ _create_bin (const gchar * bin_name, GstElement * decodebin, ...)
 }
 
 static void
-_add_elements_properties_to_hashtable (GESUriSource * self, ...)
+_add_element_properties_to_hashtable (GESUriSource * self, GstElement * element,
+    ...)
 {
   GObjectClass *class;
-  guint i, nb_specs;
-  GParamSpec **parray;
-  GstElement *element;
+  GParamSpec *pspec;
   va_list argp;
+  const gchar *propname;
 
-  va_start (argp, self);
-  while ((element = va_arg (argp, GstElement *)) != NULL) {
-    class = G_OBJECT_GET_CLASS (element);
-    parray = g_object_class_list_properties (class, &nb_specs);
+  class = G_OBJECT_GET_CLASS (element);
+  va_start (argp, element);
+
+  while ((propname = va_arg (argp, const gchar *)) != NULL)
+  {
+    pspec = g_object_class_find_property (class, propname);
+    if (!pspec) {
+      GST_WARNING ("no such property : %s in element : %s", propname,
+          gst_element_get_name (element));
+      continue;
+    }
 
     if (self->priv->props_hashtable == NULL)
       self->priv->props_hashtable =
-          g_hash_table_new_full ((GHashFunc) _pspec_hash, _pspec_equal,
+          g_hash_table_new_full ((GHashFunc) pspec_hash, pspec_equal,
           (GDestroyNotify) g_param_spec_unref, gst_object_unref);
 
-    for (i = 0; i < nb_specs; i++) {
-      if (parray[i]->flags & G_PARAM_WRITABLE) {
-        g_hash_table_insert (self->priv->props_hashtable,
-            g_param_spec_ref (parray[i]), gst_object_ref (element));
-      }
-    }
-    g_free (parray);
+    if (pspec->flags & G_PARAM_WRITABLE) {
+      g_hash_table_insert (self->priv->props_hashtable,
+          g_param_spec_ref (pspec), gst_object_ref (element));
+      GST_LOG_OBJECT (self,
+          "added property %s to controllable properties successfully !",
+          propname);
+    } else
+      GST_WARNING ("the property %s for element %s exists but is not writable",
+          propname, gst_element_get_name (element));
   }
 
   va_end (argp);
 }
 
-/* Only works with float beware. TODO : macro ? */
 static void
-_sync_element_to_layer_property (GESTrackElement * trksrc,
+_sync_element_to_layer_property_float (GESTrackElement * trksrc,
     GstElement * element, const gchar * meta, const gchar * propname)
 {
   GESTimelineElement *parent;
@@ -222,9 +206,10 @@ ges_uri_source_create_element (GESTrackElement * trksrc)
 
       topbin = _create_bin ("audio-src-bin", decodebin, volume, NULL);
 
-      _sync_element_to_layer_property (trksrc, volume, GES_META_VOLUME,
+      _sync_element_to_layer_property_float (trksrc, volume, GES_META_VOLUME,
           "volume");
-      _add_elements_properties_to_hashtable (self, volume, NULL);
+      _add_element_properties_to_hashtable (self, volume, "volume", "mute",
+          NULL);
       break;
     default:
       decodebin = gst_element_factory_make ("uridecodebin", NULL);
@@ -245,7 +230,7 @@ ges_base_effect_get_props_hashtable (GESTrackElement * element)
 
   if (self->priv->props_hashtable == NULL)
     self->priv->props_hashtable =
-        g_hash_table_new_full ((GHashFunc) _pspec_hash, _pspec_equal,
+        g_hash_table_new_full ((GHashFunc) pspec_hash, pspec_equal,
         (GDestroyNotify) g_param_spec_unref, gst_object_unref);
 
   return self->priv->props_hashtable;
@@ -313,7 +298,7 @@ ges_track_filesource_set_property (GObject * object, guint property_id,
   switch (property_id) {
     case PROP_URI:
       if (uriclip->uri)
-	  g_free (uriclip->uri);
+        g_free (uriclip->uri);
       uriclip->uri = g_value_dup_string (value);
       break;
     default:
