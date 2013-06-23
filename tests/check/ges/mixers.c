@@ -137,17 +137,6 @@ done:
 
 GST_END_TEST;
 
-static gboolean
-print_position (GstElement * pipeline)
-{
-  gint64 pos;
-
-  gst_element_query_position (pipeline, GST_FORMAT_TIME, &pos);
-  GST_ERROR ("position : %" GST_TIME_FORMAT, GST_TIME_ARGS (pos));
-
-  return TRUE;
-}
-
 GST_START_TEST (audio_video_mixed_with_pipeline)
 {
   GstBus *bus;
@@ -184,8 +173,6 @@ GST_START_TEST (audio_video_mixed_with_pipeline)
   g_signal_connect (bus, "message", (GCallback) message_received_cb, pipeline);
   fail_if (gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PLAYING)
       == GST_STATE_CHANGE_FAILURE);
-
-  g_timeout_add (300, (GSourceFunc) print_position, pipeline);
 
   message = gst_bus_timed_pop_filtered (bus, 5 * GST_SECOND,
       GST_MESSAGE_ASYNC_DONE | GST_MESSAGE_ERROR);
