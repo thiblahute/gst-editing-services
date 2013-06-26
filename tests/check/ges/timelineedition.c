@@ -1027,6 +1027,284 @@ GST_START_TEST (test_timeline_edition_mode)
 
 GST_END_TEST;
 
+GST_START_TEST (test_grouping)
+{
+  guint i;
+  GESAsset *asset;
+  GESGroup *group;
+  GESTimeline *timeline;
+  GESClip *clip, *clip1, *clip2;
+  GESLayer *layer, *layer1, *layer2;
+  GList *trackelements, *layers, *tmp, *clips;
+  GESTrackElement *trackelement, *trackelement1, *trackelement2;
+
+  ges_init ();
+
+  timeline = ges_timeline_new_audio_video ();
+
+  layer = ges_timeline_append_layer (timeline);
+  layer1 = ges_timeline_append_layer (timeline);
+  layer2 = ges_timeline_append_layer (timeline);
+  asset = ges_asset_request (GES_TYPE_TEST_CLIP, NULL, NULL);
+
+  /**
+   * Our timeline:
+   * -------------
+   *
+   *          0------------Group1---------------110
+   *          |--------                          |
+   * layer:   |  clip  |                         |
+   *          |-------10                         |
+   *          |----------------------------------|
+   *          |        0---------    0-----------|
+   * layer1:  |        | clip1   |    |  clip2   |
+   *          |       10--------20   50----------|
+   *          |----------------------------------|
+   */
+  clip = ges_layer_add_asset (layer, asset, 0, 0, 10, GES_TRACK_TYPE_UNKNOWN);
+  clip1 =
+      ges_layer_add_asset (layer1, asset, 10, 0, 10, GES_TRACK_TYPE_UNKNOWN);
+  clip2 =
+      ges_layer_add_asset (layer1, asset, 50, 0, 60, GES_TRACK_TYPE_UNKNOWN);
+  clips = g_list_prepend (clips, clip);
+  clips = g_list_prepend (clips, clip1);
+  clips = g_list_prepend (clips, clip2);
+  group = ges_container_group (clips);
+
+  fail_unless (GES_IS_GROUP (group));
+  fail_unless (g_list_length (GES_CONTAINER_CHILDREN (group)) == 3);
+  CHECK_OBJECT_PROPS (clip, 0, 0, 10);
+  CHECK_OBJECT_PROPS (clip1, 10, 0, 10);
+  CHECK_OBJECT_PROPS (clip2, 50, 0, 60);
+  CHECK_OBJECT_PROPS (group, 0, 0, 110);
+
+  /*
+   *        0  10------------Group1---------------120
+   *            |--------                          |
+   * layer:     |  clip  |                         |
+   *            |-------20                         |
+   *            |----------------------------------|
+   *            |        0---------    0-----------|
+   * layer1:    |        | clip1   |    |  clip2   |
+   *            |       20--------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_set_start (GES_TIMELINE_ELEMENT (clip), 10);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 10);
+  CHECK_OBJECT_PROPS (clip1, 20, 0, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 60);
+  CHECK_OBJECT_PROPS (group, 10, 0, 110);
+
+  /*
+   *        0  10------------Group1---------------120
+   *            |------                            |
+   * layer:     |clip  |                           |
+   *            |-----15                           |
+   *            |----------------------------------|
+   *            |        0---------    0-----------|
+   * layer1:    |        | clip1   |    |  clip2   |
+   *            |       20--------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (clip), 5);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 20, 0, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 60);
+  CHECK_OBJECT_PROPS (group, 10, 0, 110);
+
+  /*
+   *        0  10------------Group1---------------110
+   *            |------                            |
+   * layer:     |clip  |                           |
+   *            |-----15                           |
+   *            |----------------------------------|
+   *            |        0---------    0-----------|
+   * layer1:    |        | clip1   |    |  clip2   |
+   *            |       20--------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (clip2), 50);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 20, 0, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 10, 0, 100);
+
+  /*
+   *        0  10------------Group1---------------110
+   *            |------                            |
+   * layer:     |clip  |                           |
+   *            |-----15                            |
+   *            |----------------------------------|
+   *            |        5---------    0-----------|
+   * layer1:    |        | clip1   |    |  clip2   |
+   *            |       20--------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_set_inpoint (GES_TIMELINE_ELEMENT (clip1), 5);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 20, 5, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 10, 0, 100);
+
+  /*
+   *        0  10------------Group1---------------110
+   *            |------                            |
+   * layer:     |clip  |                           |
+   *            |-----15                            |
+   *            |----------------------------------|
+   *            |        5---------    0-----------|
+   * layer1:    |        | clip1   |    |  clip2   |
+   *            |       20--------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_set_inpoint (GES_TIMELINE_ELEMENT (clip1), 5);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 20, 5, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 10, 0, 100);
+
+  /*
+   *        0           20---Group1---------------110
+   *                    |                          |
+   * layer:             |                          |
+   *                    |                          |
+   *                    |--------------------------|
+   *                    5---------    0------------|
+   * layer1:            | clip1   |    |  clip2    |
+   *                    20--------30   60----------|
+   *                    |--------------------------|
+   */
+  ges_timeline_element_trim (GES_TIMELINE_ELEMENT (group), 20);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 20, 5, 10);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 20, 0, 90);
+
+  /*
+   *        0             25---Group1---------------110
+   *                       |                          |
+   * layer:                |                          |
+   *                       |                          |
+   *                       |--------------------------|
+   *                       10------      0------------|
+   * layer1:               | clip1 |      |  clip2    |
+   *                      25------30      60----------|
+   *                       |--------------------------|
+   */
+  ges_timeline_element_trim (GES_TIMELINE_ELEMENT (group), 25);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 25, 10, 5);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 25, 0, 85);
+
+  /*
+   *        0  10------------Group1---------------110
+   *            |------                            |
+   * layer:     |clip  |                           |
+   *            |-----15                           |
+   *            |----------------------------------|
+   *            0-----------------     0-----------|
+   * layer1:    |    clip1        |    |   clip2   |
+   *            |-----------------30   60----------|
+   *            |----------------------------------|
+   */
+  ges_timeline_element_trim (GES_TIMELINE_ELEMENT (group), 10);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 10, 0, 20);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 10, 0, 100);
+
+  /*
+   *        0             25---Group1---------------110
+   *                       |                          |
+   * layer:         15     |                          |
+   *                 |clip |                          |
+   *                 -     |--------------------------|
+   *                       15------      0------------|
+   * layer1:               | clip1 |      |  clip2    |
+   *                      25------30      60----------|
+   *                       |--------------------------|
+   */
+  ges_timeline_element_trim (GES_TIMELINE_ELEMENT (group), 25);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 25, 15, 5);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 50);
+  CHECK_OBJECT_PROPS (group, 25, 0, 85);
+
+  /*
+   *        0             25---Group1--30
+   *                       |            |
+   * layer:          15    |            |
+   *                 |clip |            |
+   *                  -    |------------
+   *                       15-----------|   60
+   * layer1:               | clip1      |   |clip2
+   *                      25------------|   -
+   *                       |------------|
+   */
+  ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (group), 10);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 25, 15, 5);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 0);
+  CHECK_OBJECT_PROPS (group, 25, 0, 5);
+
+  /*
+   *        0             25---Group1---------------125
+   *                       |                          |
+   * layer:        15      |                          |
+   *                |clip  |                          |
+   *                -      |--------------------------|
+   *                       15-------------------------|
+   * layer1:               |  clip1       |  clip2    |
+   *                      25--------------60----------|
+   *                       |--------------------------|
+   */
+  ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (group), 100);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 25, 15, 100);
+  CHECK_OBJECT_PROPS (clip2, 60, 0, 65);
+  CHECK_OBJECT_PROPS (group, 25, 0, 100);
+
+  /*
+   *        0           20---Group1---------------120
+   *                    |                          |
+   * layer:        15   |                          |
+   *               |clip|                          |
+   *               -    |--------------------------|
+   *                    15-------------------------|
+   * layer1:            |  clip1       |  clip2    |
+   *                    20-------------55----------|
+   *                    |--------------------------|
+   */
+  ges_timeline_element_set_start (GES_TIMELINE_ELEMENT (group), 20);
+  CHECK_OBJECT_PROPS (clip, 15, 5, 0);
+  CHECK_OBJECT_PROPS (clip1, 20, 15, 100);
+  CHECK_OBJECT_PROPS (clip2, 55, 0, 65);
+  CHECK_OBJECT_PROPS (group, 20, 0, 100);
+
+  /*
+   *        0      10---Group1---------------120
+   *               |-----15                   |
+   * layer:        | clip|                    |
+   *               |------                    |
+   *               |--------------------------|
+   *               5--------------------------|
+   * layer1:       |  clip1       |  clip2    |
+   *               10-------------55----------|
+   *               |--------------------------|
+   */
+  ges_timeline_element_trim (GES_TIMELINE_ELEMENT (group), 10);
+  CHECK_OBJECT_PROPS (clip, 10, 0, 5);
+  CHECK_OBJECT_PROPS (clip1, 10, 5, 110);
+  CHECK_OBJECT_PROPS (clip2, 55, 0, 65);
+  CHECK_OBJECT_PROPS (group, 10, 0, 110);
+
+  gst_object_unref (timeline);
+  gst_object_unref (asset);
+}
+
+GST_END_TEST;
+
 static Suite *
 ges_suite (void)
 {
@@ -1039,6 +1317,7 @@ ges_suite (void)
   tcase_add_test (tc_chain, test_snapping);
   tcase_add_test (tc_chain, test_timeline_edition_mode);
   tcase_add_test (tc_chain, test_simple_triming);
+  tcase_add_test (tc_chain, test_grouping);
 
   return s;
 }

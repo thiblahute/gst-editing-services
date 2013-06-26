@@ -1325,6 +1325,7 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
 
       timeline->priv->needs_transitions_update = FALSE;
       _set_start0 (GES_TIMELINE_ELEMENT (track_element), nstart);
+      GST_ERROR ("SETTING INPOINT TO %" G_GUINT64_FORMAT, inpoint);
       _set_inpoint0 (GES_TIMELINE_ELEMENT (track_element), inpoint);
       timeline->priv->needs_transitions_update = TRUE;
 
