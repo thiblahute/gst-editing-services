@@ -325,8 +325,6 @@ _child_start_changed_cb (GESTimelineElement * child,
   map = g_hash_table_lookup (priv->mappings, child);
   g_assert (map);
 
-  GST_FIXME_OBJECT (container, "We should make sure that our child does not"
-      "involve our start becoming < 0. In that case, undo the child move.");
   if (container->children_control_mode == GES_CHILDREN_UPDATE_OFFSETS) {
     map->start_offset = _START (container) - _START (child);
 
