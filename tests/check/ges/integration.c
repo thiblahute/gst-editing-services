@@ -66,8 +66,9 @@ static gboolean got_async_done = FALSE;
 static const gchar *testfilename1 = NULL;
 static const gchar *testfilename2 = NULL;
 static const gchar *test_image_filename = NULL;
+static const gchar *test_project_name = NULL;
 static EncodingProfileName current_profile = PROFILE_NONE;
-
+static TCase *tc_chain;
 #define DURATION_TOLERANCE 0.1 * GST_SECOND
 
 #define get_asset(filename, asset)                                            \
@@ -295,6 +296,7 @@ check_timeline (GESTimeline * timeline)
   ret = FALSE;
 
   ges_timeline_commit (timeline);
+
   pipeline = ges_pipeline_new ();
   if (current_profile != PROFILE_NONE) {
     render_uri = ges_test_file_name (profile_specs[current_profile][3]);
@@ -305,15 +307,26 @@ check_timeline (GESTimeline * timeline)
 
 
     gst_object_unref (profile);
-  } else if (g_getenv ("GES_MUTE_TESTS")) {
-    GstElement *sink = gst_element_factory_make ("fakesink", NULL);
+  } else {
+    gchar num_str[64];
+    GstClockTime duration = ges_timeline_get_duration (timeline);
 
-    g_object_set (sink, "sync", TRUE, NULL);
-    ges_pipeline_preview_set_audio_sink (pipeline, sink);
 
-    sink = gst_element_factory_make ("fakesink", NULL);
-    g_object_set (sink, "sync", TRUE, NULL);
-    ges_pipeline_preview_set_video_sink (pipeline, sink);
+    GST_ERROR ("-CK_DEFAULT_TIMEOUT %s", g_getenv ("CK_DEFAULT_TIMEOUT"));
+    g_snprintf (num_str, sizeof (num_str), "%" G_GUINT64_FORMAT,
+        duration / GST_SECOND);
+    g_setenv ("CK_DEFAULT_TIMEOUT", num_str, TRUE);
+    GST_ERROR ("-CK_DEFAULT_TIMEOUT %s", g_getenv ("CK_DEFAULT_TIMEOUT"));
+    if (g_getenv ("GES_MUTE_TESTS")) {
+      GstElement *sink = gst_element_factory_make ("fakesink", NULL);
+
+      g_object_set (sink, "sync", TRUE, NULL);
+      ges_pipeline_preview_set_audio_sink (pipeline, sink);
+
+      sink = gst_element_factory_make ("fakesink", NULL);
+      g_object_set (sink, "sync", TRUE, NULL);
+      ges_pipeline_preview_set_video_sink (pipeline, sink);
+    }
   }
 
   bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
@@ -604,6 +617,59 @@ test_image (void)
   fail_unless (check_timeline (timeline));
 }
 
+static void
+_project_loaded (GESProject * project, GESTimeline * timeline)
+{
+  g_main_loop_quit (loop);
+  fail_unless (check_timeline (timeline));
+}
+
+static void
+_error_loading_asset (GESProject * project, GError * error,
+    const gchar * id, GType type)
+{
+  fail_unless (FALSE, "Could not load asset %s, erro %s",
+      id, error ? error->message : "Unknown");
+}
+
+static void
+test_basic_project (void)
+{
+  GESProject *project;
+  GESTimeline *timeline;
+  gchar *project_uri, *project_path, *testing_directory, *n_testing_directory;
+
+  GError *error = NULL;
+  testing_directory = (gchar *) g_getenv ("GES_TESTING_ASSETS_DIRECTORY");
+
+  if (testing_directory == NULL)
+    testing_directory =
+        g_build_filename (g_get_user_special_dir (G_USER_DIRECTORY_VIDEOS),
+        "ges-integration-projects", NULL);
+  else
+    testing_directory = g_strdup (testing_directory);
+
+  project_path = g_build_filename (testing_directory, test_project_name, NULL);
+
+  n_testing_directory = g_path_get_dirname (project_path);
+  g_setenv ("GES_TESTING_ASSETS_DIRECTORY", n_testing_directory, TRUE);
+  g_free (n_testing_directory);
+  g_free (testing_directory);
+
+  project_uri = gst_filename_to_uri (project_path, NULL);
+  project = ges_project_new (project_uri);
+  g_free (project_uri);
+  g_free (project_path);
+
+  g_signal_connect (project, "loaded", G_CALLBACK (_project_loaded), NULL);
+  g_signal_connect (project, "error-loading-asset",
+      G_CALLBACK (_error_loading_asset), NULL);
+  timeline = (GESTimeline *) ges_asset_extract (GES_ASSET (project), &error);
+  fail_unless (timeline != NULL, "Could not extract project %s", project_uri);
+
+  g_main_loop_run (loop);
+}
+
 #define CREATE_TEST(name, func, profile)                                       \
 GST_START_TEST (test_##name##_raw_h264_mov)                                    \
 {                                                                              \
@@ -682,6 +748,17 @@ GST_END_TEST;
   ADD_PLAYBACK_TESTS(name)                                                     \
   ADD_RENDERING_TESTS(name)
 
+#define CREATE_TEST_FROM_NAMES(name, to, profile)                              \
+  CREATE_TEST( name##to, test_##name, profile)
+
+#define CREATE_PROJECT(name, project_name, profile)                            \
+GST_START_TEST (test_project_##name)                                           \
+{                                                                              \
+  test_project_name = project_name;                                            \
+  current_profile = profile;                                                   \
+  test_basic_project ();                                                       \
+}                                                                              \
+GST_END_TEST;
 
 /* *INDENT-OFF* */
 CREATE_TEST_FULL(basic)
@@ -694,13 +771,15 @@ CREATE_PLAYBACK_TEST(seeking)
 CREATE_PLAYBACK_TEST(seeking_audio)
 CREATE_PLAYBACK_TEST(seeking_video)
 CREATE_PLAYBACK_TEST(image)
+
+CREATE_PROJECT(simple, "simple/simple.xges", PROFILE_NONE)
 /* *INDENT-ON* */
 
 static Suite *
 ges_suite (void)
 {
   Suite *s = suite_create ("ges-render");
-  TCase *tc_chain = tcase_create ("render");
+  tc_chain = tcase_create ("render");
 
   suite_add_tcase (s, tc_chain);
 
@@ -716,6 +795,8 @@ ges_suite (void)
   ADD_PLAYBACK_TESTS (seeking);
   ADD_PLAYBACK_TESTS (seeking_audio);
   ADD_PLAYBACK_TESTS (seeking_video);
+
+  tcase_add_test (tc_chain, test_project_simple);
 
   /* TODO : next test case : complex timeline created from project. */
   /* TODO : deep checking of rendered clips */

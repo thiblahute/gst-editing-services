@@ -199,39 +199,31 @@ extractable_check_id (GType type, const gchar * id)
 {
   const gchar *testing_directory;
 
+  GST_ERROR ("SRSLY: s %s", g_getenv ("GES_TESTING_ASSETS_DIRECTORY"));
   testing_directory = g_getenv ("GES_TESTING_ASSETS_DIRECTORY");
 
   /* Testing purposes, user can specify a directory to look up for script */
   if (testing_directory != NULL) {
-    gchar **tokens;
-    gchar *location = NULL;
-    guint i;
+    gchar *filename = g_path_get_basename (id);
 
     GST_DEBUG ("Checking if the testing directory contains needed media");
 
-    tokens = g_strsplit (id, "media", 2);
-    for (i = 0; tokens[i]; i++)
-      if (i == 1)
-        location = tokens[1];
+    if (filename) {
+      gchar *actual_id, *tmp =
+          g_build_filename (testing_directory, filename, NULL);
 
-    if (location == NULL)
-      GST_WARNING ("The provided id doesn't have a media subdirectory");
-    else {
-      gchar *actual_id =
-          g_strconcat ("file://", testing_directory, "/media/", location, NULL);
+      actual_id = gst_filename_to_uri (tmp, NULL);
+      g_free (tmp);
 
+      GST_ERROR ("Chaa %s", actual_id);
       if (gst_uri_is_valid (actual_id)) {
         GST_DEBUG ("Returning new id %s instead of id %s", actual_id, id);
-        g_strfreev (tokens);
-        return (actual_id);
+        return actual_id;
       } else
         GST_WARNING ("The constructed id %s was not valid, trying %s anyway",
             actual_id, id);
-
       g_free (actual_id);
     }
-
-    g_strfreev (tokens);
   }
 
   if (gst_uri_is_valid (id))
