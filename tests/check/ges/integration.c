@@ -811,6 +811,57 @@ test_mixing (void)
 
 }
 
+static void
+test_adding (void)
+{
+  GESTimeline *timeline;
+  GESLayer *layer;
+  GESUriClipAsset *asset1;
+  GESUriClipAsset *asset2;
+  GESPipeline *pipeline;
+  GESClip *clip;
+
+  timeline = ges_timeline_new_audio_video ();
+
+  get_asset (testfilename1, asset1);
+  get_asset (testfilename2, asset2);
+  layer = ges_layer_new ();
+  fail_unless (ges_timeline_add_layer (timeline, layer));
+
+  ges_layer_add_asset (layer, GES_ASSET (asset1), 2 * GST_SECOND,
+      0 * GST_SECOND, 1 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
+  gst_object_unref (asset1);
+
+  ges_timeline_commit (timeline);
+
+  pipeline = ges_pipeline_new ();
+  ges_pipeline_add_timeline (pipeline, timeline);
+
+  gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PAUSED);
+  gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
+
+  gst_element_seek_simple (GST_ELEMENT (pipeline),
+      GST_FORMAT_TIME,
+      GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE, 0.5 * GST_SECOND);
+
+  clip = ges_layer_add_asset (layer, GES_ASSET (asset2), 0 * GST_SECOND,
+      0 * GST_SECOND, 1 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
+
+  ges_timeline_commit (timeline);
+  gst_element_seek_simple (GST_ELEMENT (pipeline),
+      GST_FORMAT_TIME,
+      GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE, 0.5 * GST_SECOND);
+
+  ges_layer_remove_clip (layer, clip);
+
+  ges_timeline_commit (timeline);
+
+  gst_element_seek_simple (GST_ELEMENT (pipeline),
+      GST_FORMAT_TIME,
+      GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE, 0.5 * GST_SECOND);
+
+  gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_NULL);
+}
 
 #define CREATE_TEST(name, func, profile)                                       \
 GST_START_TEST (test_##name##_raw_h264_mov)                                    \
@@ -866,9 +917,26 @@ GST_END_TEST;
 #define CREATE_PLAYBACK_TEST(name)                                             \
   CREATE_TEST_FROM_NAMES(name, _playback, PROFILE_NONE)
 
+#define CREATE_MANIPULATION_TEST(name)                                             \
+  CREATE_TEST_FROM_NAMES(name, _manipulation, PROFILE_NONE)
+
 #define CREATE_TEST_FULL(name)                                                 \
   CREATE_PLAYBACK_TEST(name)                                                   \
   CREATE_RENDERING_TEST(name, func)
+
+#define ADD_MANIPULATION_TESTS(name)					           \
+  tcase_add_test (tc_chain, test_##name##_manipulation_vorbis_vp8_webm);           \
+  tcase_add_test (tc_chain, test_##name##_manipulation_vorbis_theora_ogv);         \
+  tcase_add_test (tc_chain, test_##name##_manipulation_raw_h264_mov);              \
+  tcase_add_test (tc_chain, test_##name##_manipulation_mp3_h264_mov);              \
+  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
+							      "_manipulation_mp3_h264_mov")); \
+  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
+        "_manipulation_raw_h264_mov"));                                             \
+  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
+        "_manipulation_vorbis_theora_ogv"));                                        \
+  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
+        "_manipulation_vorbis_vp8_webm"));
 
 #define ADD_PLAYBACK_TESTS(name)                                               \
   tcase_add_test (tc_chain, test_##name##_playback_vorbis_vp8_webm);           \
@@ -957,6 +1025,8 @@ CREATE_PLAYBACK_TEST(seeking_paused_noplay)
 CREATE_PLAYBACK_TEST(seeking_paused_audio_noplay)
 CREATE_PLAYBACK_TEST(seeking_paused_video_noplay)
 CREATE_PLAYBACK_TEST(image)
+
+CREATE_MANIPULATION_TEST(adding)
 /* *INDENT-ON* */
 
 static Suite *
@@ -989,6 +1059,8 @@ ges_suite (void)
   ADD_PLAYBACK_TESTS (seeking_paused_noplay);
   ADD_PLAYBACK_TESTS (seeking_paused_audio_noplay);
   ADD_PLAYBACK_TESTS (seeking_paused_video_noplay);
+
+  ADD_MANIPULATION_TESTS (adding);
 
   /* TODO : next test case : complex timeline created from project. */
   /* TODO : deep checking of rendered clips */
