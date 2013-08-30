@@ -1096,43 +1096,57 @@ main (int argc, char **argv)
     {NULL}
   };
 
-  ctx = g_option_context_new ("Run integration tests");
-  g_option_context_add_main_entries (ctx, options, NULL);
-  g_option_context_add_group (ctx, gst_init_get_option_group ());
+  g_test_init (&argc, &argv, NULL);
 
-  if (!g_option_context_parse (ctx, &argc, &argv, &err)) {
-    g_printerr ("Error initializing: %s\n", err->message);
-    g_option_context_free (ctx);
-    exit (1);
-  }
-
-  if (list_tests || list_tests_only) {
-    GList *tmp;
-
-    g_print ("=== Listing tests %s === \n", list_tests_only ? "only" : "");
-    for (tmp = tests_names; tmp; tmp = tmp->next)
-      g_print ("%s\n", (gchar *) tmp->data);
-    g_print ("=== Listed tests ===\n");
-
-    if (list_tests_only == TRUE) {
-      g_list_free_full (tests_names, g_free);
-      return 0;
-    }
-  }
+  testfilename1 = "assets/mp3_h264.0.mov";
+  testfilename2 = "assets/mp3_h264.1.mov";
+  test_image_filename = "assets/png.png";
+  current_profile = PROFILE_AAC_H264_QUICKTIME;
 
   gst_check_init (&argc, &argv);
   ges_init ();
+  g_test_add_func ("/render/seek/mp3_h264_to_aac_h264_quicktime", test_seeking);
 
-  if (!generate_all_files ()) {
-    GST_ERROR ("error generating necessary test files in rendering test\n");
-    return 1;
-  }
+  return g_test_run ();
 
-
-  loop = g_main_loop_new (NULL, FALSE);
-  nf = gst_check_run_suite (s, "ges", __FILE__);
-
-  g_list_free_full (tests_names, g_free);
-
+/*   ctx = g_option_context_new ("Run integration tests");
+ *   g_option_context_add_main_entries (ctx, options, NULL);
+ *   g_option_context_add_group (ctx, gst_init_get_option_group ());
+ *
+ *   if (!g_option_context_parse (ctx, &argc, &argv, &err)) {
+ *     g_printerr ("Error initializing: %s\n", err->message);
+ *     g_option_context_free (ctx);
+ *     exit (1);
+ *   }
+ *
+ *   if (list_tests || list_tests_only) {
+ *     GList *tmp;
+ *
+ *     g_print ("=== Listing tests %s === \n", list_tests_only ? "only" : "");
+ *     for (tmp = tests_names; tmp; tmp = tmp->next)
+ *       g_print ("%s\n", (gchar *) tmp->data);
+ *     g_print ("=== Listed tests ===\n");
+ *
+ *     if (list_tests_only == TRUE) {
+ *       g_list_free_full (tests_names, g_free);
+ *       return 0;
+ *     }
+ *   }
+ *
+ *   gst_check_init (&argc, &argv);
+ *   ges_init ();
+ *
+ *   if (!generate_all_files ()) {
+ *     GST_ERROR ("error generating necessary test files in rendering test\n");
+ *     return 1;
+ *   }
+ *
+ *
+ *   loop = g_main_loop_new (NULL, FALSE);
+ *   nf = gst_check_run_suite (s, "ges", __FILE__);
+ *
+ *   g_list_free_full (tests_names, g_free);
+ *
+ */
   return nf;
 }
