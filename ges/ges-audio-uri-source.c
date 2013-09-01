@@ -19,11 +19,8 @@
  */
 
 /**
- * SECTION:ges-uri-source
- * @short_description: outputs a single media stream from a given file
- *
- * Outputs a single media stream from a given file. The stream chosen depends on
- * the type of the track which contains the object.
+ * SECTION:ges-audio-uri-source
+ * @short_description: outputs a single audio stream from a given file
  */
 
 #include "ges-utils.h"
