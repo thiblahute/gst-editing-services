@@ -42,7 +42,9 @@ enum
   PROP_ALPHA,
   PROP_POSX,
   PROP_POSY,
-  PROP_ZORDER
+  PROP_ZORDER,
+  PROP_WIDTH,
+  PROP_HEIGHT
 };
 
 static GstStaticPadTemplate gst_frame_positionner_src_template =
@@ -61,6 +63,39 @@ GST_STATIC_PAD_TEMPLATE ("sink",
 
 G_DEFINE_TYPE (GstFramePositionner, gst_frame_positionner,
     GST_TYPE_BASE_TRANSFORM);
+
+void
+ges_frame_positionner_set_capsfilter (GstFramePositionner * pos,
+    GstElement * capsfilter)
+{
+  pos->capsfilter = capsfilter;
+}
+
+static void
+gst_frame_positionner_update_size (GstFramePositionner * pos)
+{
+  GstCaps *size_caps;
+
+  if (pos->capsfilter == NULL)
+    return;
+
+  if (pos->width == 0 && pos->height == 0)
+    size_caps = gst_caps_new_empty_simple ("video/x-raw");
+  else if (pos->width == 0)
+    size_caps =
+        gst_caps_new_simple ("video/x-raw", "height", G_TYPE_INT, pos->height,
+        NULL);
+  else if (pos->height == 0)
+    size_caps =
+        gst_caps_new_simple ("video/x-raw", "width", G_TYPE_INT, pos->width,
+        NULL);
+  else
+    size_caps =
+        gst_caps_new_simple ("video/x-raw", "width", G_TYPE_INT,
+        pos->width, "height", G_TYPE_INT, pos->height, NULL);
+
+  g_object_set (pos->capsfilter, "caps", size_caps, NULL);
+}
 
 static void
 gst_frame_positionner_class_init (GstFramePositionnerClass * klass)
@@ -115,6 +150,26 @@ gst_frame_positionner_class_init (GstFramePositionnerClass * klass)
       g_param_spec_uint ("zorder", "zorder", "z order of the stream",
           0, 10000, 0, G_PARAM_READWRITE));
 
+  /**
+   * gesframepositionner:width:
+   *
+   * The desired width for that source.
+   * Set to 0 if size is not mandatory, will be set to width of the current track.
+   */
+  g_object_class_install_property (gobject_class, PROP_WIDTH,
+      g_param_spec_int ("width", "width", "width of the source",
+          0, G_MAXSHORT, 0, G_PARAM_READWRITE));
+
+  /**
+   * gesframepositionner:height:
+   *
+   * The desired height for that source.
+   * Set to 0 if size is not mandatory, will be set to height of the current track.
+   */
+  g_object_class_install_property (gobject_class, PROP_HEIGHT,
+      g_param_spec_int ("height", "height", "height of the source",
+          0, G_MAXSHORT, 0, G_PARAM_READWRITE));
+
   gst_element_class_set_static_metadata (GST_ELEMENT_CLASS (klass),
       "frame positionner", "Metadata",
       "This element provides with tagging facilities",
@@ -128,6 +183,9 @@ gst_frame_positionner_init (GstFramePositionner * framepositionner)
   framepositionner->posx = 0.0;
   framepositionner->posy = 0.0;
   framepositionner->zorder = 0;
+  framepositionner->width = 0;
+  framepositionner->height = 0;
+  framepositionner->capsfilter = NULL;
 }
 
 void
@@ -150,6 +208,14 @@ gst_frame_positionner_set_property (GObject * object, guint property_id,
       break;
     case PROP_ZORDER:
       framepositionner->zorder = g_value_get_uint (value);
+      break;
+    case PROP_WIDTH:
+      framepositionner->width = g_value_get_int (value);
+      gst_frame_positionner_update_size (framepositionner);
+      break;
+    case PROP_HEIGHT:
+      framepositionner->height = g_value_get_int (value);
+      gst_frame_positionner_update_size (framepositionner);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -178,6 +244,12 @@ gst_frame_positionner_get_property (GObject * object, guint property_id,
       break;
     case PROP_ZORDER:
       g_value_set_uint (value, framepositionner->zorder);
+      break;
+    case PROP_WIDTH:
+      g_value_set_int (value, framepositionner->width);
+      break;
+    case PROP_HEIGHT:
+      g_value_set_int (value, framepositionner->height);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);

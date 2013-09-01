@@ -38,10 +38,13 @@ struct _GstFramePositionner
 {
   GstBaseTransform base_framepositionner;
 
+  GstElement *capsfilter;
   gdouble alpha;
   gint posx;
   gint posy;
   guint zorder;
+  gint width;
+  gint height;
 };
 
 struct _GstFramePositionnerClass
@@ -58,6 +61,7 @@ struct _GstFramePositionnerMeta {
   guint zorder;
 };
 
+void ges_frame_positionner_set_capsfilter(GstFramePositionner *pos, GstElement *capsfilter);
 GType gst_frame_positionner_get_type (void);
 GType
 gst_frame_positionner_meta_api_get_type (void);
