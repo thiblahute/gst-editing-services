@@ -23,6 +23,7 @@
  * @short_description: Base Class for single-media sources
  */
 
+#include "ges-internal.h"
 #include "ges/ges-meta-container.h"
 #include "ges-track-element.h"
 #include "ges-source.h"
@@ -36,84 +37,6 @@ struct _GESSourcePrivate
   /*  Dummy variable */
   GstFramePositionner *positionner;
 };
-
-static void
-_pad_added_cb (GstElement * element, GstPad * srcpad, GstPad * sinkpad)
-{
-  gst_element_no_more_pads (element);
-  gst_pad_link (srcpad, sinkpad);
-}
-
-static void
-_ghost_pad_added_cb (GstElement * element, GstPad * srcpad, GstElement * bin)
-{
-  GstPad *ghost;
-
-  ghost = gst_ghost_pad_new ("src", srcpad);
-  gst_pad_set_active (ghost, TRUE);
-  gst_element_add_pad (bin, ghost);
-  gst_element_no_more_pads (element);
-}
-
-static GstElement *
-_create_bin (const gchar * bin_name, GstElement * sub_element, ...)
-{
-  va_list argp;
-
-  GstElement *element;
-  GstElement *prev = NULL;
-  GstElement *first = NULL;
-  GstElement *bin;
-  GstPad *sub_srcpad;
-
-  va_start (argp, sub_element);
-  bin = gst_bin_new (bin_name);
-  gst_bin_add (GST_BIN (bin), sub_element);
-
-  while ((element = va_arg (argp, GstElement *)) != NULL) {
-    gst_bin_add (GST_BIN (bin), element);
-    if (prev)
-      gst_element_link (prev, element);
-    prev = element;
-    if (first == NULL)
-      first = element;
-  }
-
-  va_end (argp);
-
-  sub_srcpad = gst_element_get_static_pad (sub_element, "src");
-
-  if (prev != NULL) {
-    GstPad *srcpad, *sinkpad, *ghost;
-
-    srcpad = gst_element_get_static_pad (prev, "src");
-    ghost = gst_ghost_pad_new ("src", srcpad);
-    gst_pad_set_active (ghost, TRUE);
-    gst_element_add_pad (bin, ghost);
-
-    sinkpad = gst_element_get_static_pad (first, "sink");
-    if (sub_srcpad)
-      gst_pad_link (sub_srcpad, sinkpad);
-    else
-      g_signal_connect (sub_element, "pad-added", G_CALLBACK (_pad_added_cb),
-          sinkpad);
-
-    gst_object_unref (srcpad);
-    gst_object_unref (sinkpad);
-
-  } else if (sub_srcpad) {
-    GstPad *ghost;
-
-    ghost = gst_ghost_pad_new ("src", sub_srcpad);
-    gst_pad_set_active (ghost, TRUE);
-    gst_element_add_pad (bin, ghost);
-  } else {
-    g_signal_connect (sub_element, "pad-added",
-        G_CALLBACK (_ghost_pad_added_cb), bin);
-  }
-
-  return bin;
-}
 
 static void
 _sync_element_to_layer_property_float (GESTrackElement * trksrc,
@@ -187,7 +110,7 @@ ges_source_create_element (GESTrackElement * trksrc)
 
       volume = gst_element_factory_make ("volume", NULL);
 
-      topbin = _create_bin ("audio-src-bin", sub_element, volume, NULL);
+      topbin = create_bin ("audiosrcbin", sub_element, volume, NULL);
 
       _sync_element_to_layer_property_float (trksrc, volume, GES_META_VOLUME,
           "volume");
@@ -207,7 +130,7 @@ ges_source_create_element (GESTrackElement * trksrc)
 
       ges_track_element_add_children_props (trksrc, positionner, NULL, NULL,
           props);
-      topbin = _create_bin ("video-src-bin", sub_element, positionner, NULL);
+      topbin = create_bin ("videosrcbin", sub_element, positionner, NULL);
       parent = ges_timeline_element_get_parent (GES_TIMELINE_ELEMENT (trksrc));
       if (parent) {
         self->priv->positionner = GST_FRAME_POSITIONNER (positionner);
@@ -221,7 +144,7 @@ ges_source_create_element (GESTrackElement * trksrc)
       break;
     }
     default:
-      topbin = _create_bin ("a-questionable-name", sub_element, NULL);
+      topbin = create_bin ("a-questionable-name", sub_element, NULL);
       break;
   }
 
