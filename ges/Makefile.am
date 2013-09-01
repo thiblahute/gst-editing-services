@@ -34,6 +34,8 @@ libges_@GST_API_VERSION@_la_SOURCES = 		\
 	ges-track-element.c			\
 	ges-source.c			\
 	ges-operation.c			\
+	ges-video-source.c \
+	ges-audio-source.c \
 	ges-video-uri-source.c			\
 	ges-audio-uri-source.c	\
 	ges-image-source.c		\
@@ -101,6 +103,8 @@ libges_@GST_API_VERSION@include_HEADERS = 	\
 	ges-track-element.h			\
 	ges-source.h			\
 	ges-operation.h			\
+	ges-video-source.h \
+	ges-audio-source.h \
 	ges-video-uri-source.h			\
 	ges-audio-uri-source.h			\
 	ges-image-source.h		\

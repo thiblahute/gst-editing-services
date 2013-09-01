@@ -104,6 +104,12 @@ typedef struct _GESBaseEffectClass GESBaseEffectClass;
 typedef struct _GESEffect GESEffect;
 typedef struct _GESEffectClass GESEffectClass;
 
+typedef struct _GESVideoSource GESVideoSource;
+typedef struct _GESVideoSourceClass GESVideoSourceClass;
+
+typedef struct _GESAudioSource GESAudioSource;
+typedef struct _GESAudioSourceClass GESAudioSourceClass;
+
 typedef struct _GESVideoUriSource GESVideoUriSource;
 typedef struct _GESVideoUriSourceClass GESVideoUriSourceClass;
 
