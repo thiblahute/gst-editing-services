@@ -1006,6 +1006,86 @@ CREATE_PLAYBACK_TEST(seeking_paused_video_noplay)
 CREATE_PLAYBACK_TEST(image)
 /* *INDENT-ON* */
 
+static void
+_set_track_element_width_height (GESTrackElement * trksrc, gint wvalue,
+    gint hvalue)
+{
+  GValue width = { 0 };
+  GValue height = { 0 };
+
+  g_value_init (&width, G_TYPE_INT);
+  g_value_init (&height, G_TYPE_INT);
+  g_value_set_int (&width, wvalue);
+  g_value_set_int (&height, hvalue);
+  ges_track_element_set_child_property (trksrc, "width", &width);
+  ges_track_element_set_child_property (trksrc, "height", &height);
+}
+
+GST_START_TEST (test_scaling)
+{
+  GESTimeline *timeline;
+  GESLayer *layer;
+  GESUriClipAsset *asset1, *asset2;
+  GESClip *clip;
+  GESTrack *trackv = GES_TRACK (ges_video_track_new ());
+  GstCaps *caps =
+      gst_caps_new_simple ("video/x-raw", "width", G_TYPE_INT, 1200, "height",
+      G_TYPE_INT, 1000, NULL);
+
+  current_profile = PROFILE_NONE;
+  testfilename2 = "assets/vorbis_theora.1.ogg";
+  testfilename1 = "assets/vorbis_theora.500x400.ogg";
+
+  timeline = ges_timeline_new ();
+  ges_timeline_add_track (timeline, trackv);
+  layer = ges_layer_new ();
+  fail_unless (ges_timeline_add_layer (timeline, layer));
+
+  g_object_set (layer, "auto-transition", TRUE, NULL);
+
+  get_asset (testfilename1, asset1);
+  get_asset (testfilename2, asset2);
+
+  fail_unless (asset1 != NULL && asset2 != NULL);
+
+  GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS (GST_BIN (timeline),
+      GST_DEBUG_GRAPH_SHOW_ALL, "ges-integration-timeline");
+
+  ges_track_set_restriction_caps (trackv, caps);
+
+  GST_ERROR ("caps got set");
+
+  clip =
+      ges_layer_add_asset (layer, GES_ASSET (asset1), 0 * GST_SECOND,
+      0 * GST_SECOND, 4 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
+  gst_object_unref (asset1);
+
+  if (GES_IS_VIDEO_SOURCE (GES_CONTAINER_CHILDREN (clip)->data))
+    _set_track_element_width_height (GES_CONTAINER_CHILDREN (clip)->data, 1024,
+        768);
+
+  clip =
+      ges_layer_add_asset (layer, GES_ASSET (asset2), 2 * GST_SECOND,
+      0 * GST_SECOND, 4 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
+  gst_object_unref (asset2);
+
+  if (GES_IS_VIDEO_SOURCE (GES_CONTAINER_CHILDREN (clip)->data))
+    _set_track_element_width_height (GES_CONTAINER_CHILDREN (clip)->data, 200,
+        170);
+
+    /**
+   * Our timeline
+   *                    [T]
+   * inpoints 0--------0 0--------0
+   *          |  clip  | |  clip2 |
+   * time     0------- 2 1--------3
+   */
+
+  fail_unless (check_timeline (timeline));
+}
+
+GST_END_TEST;
+
 static Suite *
 ges_suite (void)
 {
@@ -1013,6 +1093,8 @@ ges_suite (void)
   TCase *tc_chain = tcase_create ("integration");
 
   suite_add_tcase (s, tc_chain);
+
+  tcase_add_test (tc_chain, test_scaling);
 
   ADD_TESTS (basic);
   ADD_TESTS (basic_audio);
