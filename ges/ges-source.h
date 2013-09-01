@@ -74,7 +74,6 @@ struct _GESSourceClass {
 
   /*< private >*/
   /* Padding for API extension */
-  GstElement*  (*create_source)           (GESTrackElement * object);
   gpointer _ges_reserved[GES_PADDING];
 };
 

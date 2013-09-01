@@ -92,7 +92,7 @@ ges_extractable_interface_init (GESExtractableInterface * iface)
 }
 
 G_DEFINE_TYPE_WITH_CODE (GESAudioUriSource, ges_audio_uri_source,
-    GES_TYPE_SOURCE,
+    GES_TYPE_AUDIO_SOURCE,
     G_IMPLEMENT_INTERFACE (GES_TYPE_EXTRACTABLE,
         ges_extractable_interface_init));
 
@@ -148,7 +148,7 @@ static void
 ges_audio_uri_source_class_init (GESAudioUriSourceClass * klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GESSourceClass *source_class = GES_SOURCE_CLASS (klass);
+  GESAudioSourceClass *source_class = GES_AUDIO_SOURCE_CLASS (klass);
 
   g_type_class_add_private (klass, sizeof (GESAudioUriSourcePrivate));
 
