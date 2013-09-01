@@ -29,7 +29,7 @@
 #include "ges-utils.h"
 #include "ges-internal.h"
 #include "ges-track-element.h"
-#include "ges-uri-source.h"
+#include "ges-video-uri-source.h"
 #include "ges-uri-asset.h"
 #include "ges-extractable.h"
 
@@ -94,7 +94,7 @@ ges_extractable_interface_init (GESExtractableInterface * iface)
   iface->set_asset = extractable_set_asset;
 }
 
-G_DEFINE_TYPE_WITH_CODE (GESVideoUriSource, ges_track_filesource,
+G_DEFINE_TYPE_WITH_CODE (GESVideoUriSource, ges_video_uri_source,
     GES_TYPE_SOURCE,
     G_IMPLEMENT_INTERFACE (GES_TYPE_EXTRACTABLE,
         ges_extractable_interface_init));
@@ -103,7 +103,7 @@ G_DEFINE_TYPE_WITH_CODE (GESVideoUriSource, ges_track_filesource,
 /* GObject VMethods */
 
 static void
-ges_track_filesource_get_property (GObject * object, guint property_id,
+ges_video_uri_source_get_property (GObject * object, guint property_id,
     GValue * value, GParamSpec * pspec)
 {
   GESVideoUriSource *uriclip = GES_VIDEO_URI_SOURCE (object);
@@ -118,7 +118,7 @@ ges_track_filesource_get_property (GObject * object, guint property_id,
 }
 
 static void
-ges_track_filesource_set_property (GObject * object, guint property_id,
+ges_video_uri_source_set_property (GObject * object, guint property_id,
     const GValue * value, GParamSpec * pspec)
 {
   GESVideoUriSource *uriclip = GES_VIDEO_URI_SOURCE (object);
@@ -137,27 +137,27 @@ ges_track_filesource_set_property (GObject * object, guint property_id,
 }
 
 static void
-ges_track_filesource_dispose (GObject * object)
+ges_video_uri_source_dispose (GObject * object)
 {
   GESVideoUriSource *uriclip = GES_VIDEO_URI_SOURCE (object);
 
   if (uriclip->uri)
     g_free (uriclip->uri);
 
-  G_OBJECT_CLASS (ges_track_filesource_parent_class)->dispose (object);
+  G_OBJECT_CLASS (ges_video_uri_source_parent_class)->dispose (object);
 }
 
 static void
-ges_track_filesource_class_init (GESVideoUriSourceClass * klass)
+ges_video_uri_source_class_init (GESVideoUriSourceClass * klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GESSourceClass *source_class = GES_SOURCE_CLASS (klass);
 
   g_type_class_add_private (klass, sizeof (GESVideoUriSourcePrivate));
 
-  object_class->get_property = ges_track_filesource_get_property;
-  object_class->set_property = ges_track_filesource_set_property;
-  object_class->dispose = ges_track_filesource_dispose;
+  object_class->get_property = ges_video_uri_source_get_property;
+  object_class->set_property = ges_video_uri_source_set_property;
+  object_class->dispose = ges_video_uri_source_dispose;
 
   /**
    * GESVideoUriSource:uri:
@@ -172,14 +172,14 @@ ges_track_filesource_class_init (GESVideoUriSourceClass * klass)
 }
 
 static void
-ges_track_filesource_init (GESVideoUriSource * self)
+ges_video_uri_source_init (GESVideoUriSource * self)
 {
   self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self,
       GES_TYPE_VIDEO_URI_SOURCE, GESVideoUriSourcePrivate);
 }
 
 /**
- * ges_track_filesource_new:
+ * ges_video_uri_source_new:
  * @uri: the URI the source should control
  *
  * Creates a new #GESVideoUriSource for the provided @uri.
@@ -188,7 +188,7 @@ ges_track_filesource_init (GESVideoUriSource * self)
  * error.
  */
 GESVideoUriSource *
-ges_track_filesource_new (gchar * uri)
+ges_video_uri_source_new (gchar * uri)
 {
   return g_object_new (GES_TYPE_VIDEO_URI_SOURCE, "uri", uri, NULL);
 }
