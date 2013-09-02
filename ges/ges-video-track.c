@@ -24,6 +24,7 @@
 
 #include "ges-video-track.h"
 #include "ges-smart-video-mixer.h"
+#include "ges-internal.h"
 
 struct _GESVideoTrackPrivate
 {
@@ -87,8 +88,11 @@ ges_video_track_new (void)
   GESVideoTrack *ret;
   GstCaps *caps = gst_caps_new_empty_simple ("video/x-raw");
 
-  ret = g_object_new (GES_TYPE_VIDEO_TRACK, "track-type", GES_TRACK_TYPE_VIDEO,
-      "caps", caps, NULL);
+  ret =
+      g_object_new (GES_TYPE_VIDEO_TRACK, "track-type", GES_TRACK_TYPE_VIDEO,
+      NULL);
+
+  ges_track_set_caps (GES_TRACK (ret), caps);
 
   ges_track_set_create_element_for_gap_func (GES_TRACK (ret),
       create_element_for_raw_video_gap);

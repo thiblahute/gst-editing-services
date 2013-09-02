@@ -24,6 +24,7 @@
 
 #define DEFAULT_CAPS "audio/x-raw"
 
+#include "ges-internal.h"
 #include "ges-smart-adder.h"
 #include "ges-audio-track.h"
 
@@ -99,8 +100,11 @@ ges_audio_track_new (void)
   GESAudioTrack *ret;
   GstCaps *caps = gst_caps_from_string (DEFAULT_CAPS);
 
-  ret = g_object_new (GES_TYPE_AUDIO_TRACK, "caps", caps,
-      "track-type", GES_TRACK_TYPE_AUDIO, NULL);
+  ret =
+      g_object_new (GES_TYPE_AUDIO_TRACK, "track-type", GES_TRACK_TYPE_AUDIO,
+      NULL);
+
+  ges_track_set_caps (GES_TRACK (ret), caps);
 
   ges_track_set_create_element_for_gap_func (GES_TRACK (ret),
       create_element_for_raw_audio_gap);
