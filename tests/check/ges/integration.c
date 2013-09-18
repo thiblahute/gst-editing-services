@@ -17,28 +17,47 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include "test-utils.h"
 #include <ges/ges.h>
-#include <gst/check/gstcheck.h>
+//#include "test-utils.h"
+/* 
+ */
+static GMainLoop *loop;
+static GESPipeline *pipeline = NULL;
+static gint64 seeked_position = GST_CLOCK_TIME_NONE;    /* last seeked position */
+static gint64 seek_tol = 0.05 * GST_SECOND;     /* tolerance seek interval */
+static GList *seeks;            /* list of seeks */
+static gboolean got_async_done = FALSE;
 
-static GList *tests_names;
+/* This is used to specify a dot dumping after the target element started outputting buffers */
+static const gchar *target_element = "smart-mixer-mixer";
+
+typedef struct _ProfileDescription
+{
+  const gchar *container_caps;
+  const gchar *audio_caps;
+  const gchar *video_caps;
+  const gchar *output_file;
+  const gchar *name;
+
+} ProfileDescription;
 
 /* *INDENT-OFF* */
-static const char * const profile_specs[][4] = {
-  { "application/ogg", "audio/x-vorbis", "video/x-theora", "assets/vorbis_theora.rendered.ogv" },
-  { "video/webm", "audio/x-vorbis", "video/x-vp8", "assets/vorbis_vp8.rendered.webm"},
-  { "video/quicktime,variant=iso", "audio/mpeg,mpegversion=1,layer=3", "video/x-h264",  "assets/aac_h264.rendered.mov"},
-  { "video/x-matroska", "audio/x-vorbis", "video/x-h264", "assets/vorbis_h264.rendered.mkv"},
+static const ProfileDescription profile_specs[] = {
+  { "application/ogg", "audio/x-vorbis", "video/x-theora", "assets/vorbis_theora.rendered.ogv", "vorbis_theora_ogv" },
+  { "video/webm", "audio/x-vorbis", "video/x-vp8", "assets/vorbis_vp8.rendered.webm", "vorbis_vp8_webm"},
+  { "video/quicktime,variant=iso", "audio/mpeg,mpegversion=1,layer=3", "video/x-h264",  "assets/mp3_h264.rendered.mov", "mp3_h264_mp4"},
+  { "video/x-matroska", "audio/x-vorbis", "video/x-h264", "assets/vorbis_h264.rendered.mkv", "vorbis_h264_mkv"},
 };
 /* *INDENT-ON* */
 
 typedef enum
 {
-  PROFILE_NONE = -1,
   PROFILE_VORBIS_THEORA_OGG,
   PROFILE_VORBIS_VP8_WEBM,
   PROFILE_AAC_H264_QUICKTIME,
   PROFILE_VORBIS_H264_MATROSKA,
+  PROFILE_NONE,
+  PROFILE_ANY,
 } EncodingProfileName;
 
 typedef struct _PresetInfos
@@ -46,9 +65,6 @@ typedef struct _PresetInfos
   const gchar *muxer_preset_name;
   const gchar *audio_preset_name;
   const gchar *video_preset_name;
-
-  gsize expected_size;
-
 } PresetInfos;
 
 typedef struct SeekInfo
@@ -57,31 +73,64 @@ typedef struct SeekInfo
   GstClockTime seeking_position;        /* position to do seek from */
 } SeekInfo;
 
-static GMainLoop *loop;
-static gboolean seeking = FALSE;
-static GESPipeline *pipeline = NULL;
-static gint64 seeked_position = GST_CLOCK_TIME_NONE;    /* last seeked position */
-static gint64 seek_tol = 0.05 * GST_SECOND;     /* tolerance seek interval */
-static GList *seeks;            /* list of seeks */
-static gboolean got_async_done = FALSE;
-static gboolean seek_paused = FALSE, seek_paused_noplay = FALSE;
+typedef struct _TestingFunction
+{
+  GTestDataFunc func;
+  GTestDataFunc func_subproc;
+  const gchar *shortname;
+} TestingFunction;
 
-/* This allow us to run the tests multiple times with different input files */
-static const gchar *testfilename1 = NULL;
-static const gchar *testfilename2 = NULL;
-static const gchar *test_image_filename = NULL;
-static EncodingProfileName current_profile = PROFILE_NONE;
+typedef struct _MediaFile
+{
+  const gchar *name;
+  const gchar *file1;
+  const gchar *file2;
+  gboolean *is_audio_only;
+  gboolean *is_image;
+
+  const gchar *audioencoder;
+  const gchar *videoencoder;
+  const gchar *muxer;
+
+} MediaFile;
+
+typedef struct _Scenario
+{
+  EncodingProfileName profile;
+  const gchar *path;
+
+  /* This should be way more modular ... in the future! */
+  gboolean seeking;
+  gboolean seek_paused;
+  gboolean seek_always_paused;
+
+  gboolean audio_only;
+  gboolean video_only;
+} Scenario;
+
+typedef struct _TestDefinition
+{
+  EncodingProfileName encoding_profile;
+  const gchar *file1;
+  const gchar *file2;
+  gchar *path;
+
+  Scenario scenario;
+} TestDefinition;
 
 #define DURATION_TOLERANCE 0.1 * GST_SECOND
 
-#define get_asset(filename, asset)                                            \
-{                                                                              \
-  GError *error = NULL;                                                        \
-  gchar *uri = ges_test_file_name (filename);                                  \
-  asset = ges_uri_clip_asset_request_sync (uri, &error);                       \
-  fail_unless (GES_IS_ASSET (asset), "Testing file %s could not be used as an "\
-      "asset -- Reason: %s", uri, error ? error->message : "Uknown");          \
-  g_free (uri);                                                                \
+#define get_asset(filename, asset)                                      \
+{                                                                       \
+  GError *error = NULL;                                                 \
+  gchar *uri = ges_test_file_name (filename);                           \
+  asset = ges_uri_clip_asset_request_sync (uri, &error);                \
+  if (GES_IS_ASSET (asset) == FALSE) {                                  \
+    g_test_message ("Testing file %s could not be used as an "          \
+        "asset -- Reason: %s", uri, error ? error->message : "Uknown"); \
+    g_assert_not_reached();                                             \
+  }                                                                     \
+  g_free (uri);                                                         \
 }
 
 static SeekInfo *
@@ -90,6 +139,7 @@ new_seek_info (GstClockTime seeking_position, GstClockTime position)
   SeekInfo *info = g_slice_new0 (SeekInfo);
   info->seeking_position = seeking_position;
   info->position = position;
+
   return info;
 }
 
@@ -159,12 +209,27 @@ beach:
 static GstEncodingProfile *
 create_audio_video_profile (EncodingProfileName type)
 {
-  return create_profile (profile_specs[type][0], NULL, profile_specs[type][1],
-      NULL, profile_specs[type][2], NULL);
+  return create_profile (profile_specs[type].container_caps, NULL,
+      profile_specs[type].audio_caps, NULL, profile_specs[type].video_caps,
+      NULL);
 }
 
-/* This is used to specify a dot dumping after the target element started outputting buffers */
-static const gchar *target_element = "smart-mixer-mixer";
+static GESTimeline *
+create_timeline (TestDefinition * test)
+{
+  GESTimeline *timeline = ges_timeline_new ();
+
+  if (test->scenario.audio_only)
+    ges_timeline_add_track (timeline, GES_TRACK (ges_audio_track_new ()));
+  else if (test->scenario.video_only)
+    ges_timeline_add_track (timeline, GES_TRACK (ges_video_track_new ()));
+  else {
+    ges_timeline_add_track (timeline, GES_TRACK (ges_video_track_new ()));
+    ges_timeline_add_track (timeline, GES_TRACK (ges_audio_track_new ()));
+  }
+
+  return timeline;
+}
 
 static GstPadProbeReturn
 dump_to_dot (GstPad * pad, GstPadProbeInfo * info)
@@ -175,10 +240,8 @@ dump_to_dot (GstPad * pad, GstPadProbeInfo * info)
 }
 
 static gboolean
-my_bus_callback (GstBus * bus, GstMessage * message, gpointer data)
+_bus_callback (GstBus * bus, GstMessage * message, TestDefinition * test)
 {
-  gboolean *ret = (gboolean *) data;
-
   switch (GST_MESSAGE_TYPE (message)) {
     case GST_MESSAGE_STATE_CHANGED:{
       GstState old_state, new_state;
@@ -208,7 +271,6 @@ my_bus_callback (GstBus * bus, GstMessage * message, gpointer data)
     }
     case GST_MESSAGE_EOS:
       GST_INFO ("EOS\n");
-      *ret = TRUE;
       g_main_loop_quit (loop);
       break;
     case GST_MESSAGE_ASYNC_DONE:
@@ -216,7 +278,7 @@ my_bus_callback (GstBus * bus, GstMessage * message, gpointer data)
       if (GST_CLOCK_TIME_IS_VALID (seeked_position))
         seeked_position = GST_CLOCK_TIME_NONE;
 
-      if (seeks == NULL && seek_paused_noplay) {
+      if (seeks == NULL && test->scenario.seek_always_paused) {
         /* We are now done with seeking, let it play until the end */
         gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PLAYING);
         gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
@@ -230,7 +292,7 @@ my_bus_callback (GstBus * bus, GstMessage * message, gpointer data)
 }
 
 static gboolean
-get_position (void)
+get_position (TestDefinition * test)
 {
   GList *tmp;
   gint64 position;
@@ -245,29 +307,29 @@ get_position (void)
         && (position <= (seek->seeking_position + seek_tol))) {
 
       if (!got_async_done)
-        fail_if (GST_CLOCK_TIME_IS_VALID (seeked_position));
+        g_assert (GST_CLOCK_TIME_IS_VALID (seeked_position) == FALSE);
       got_async_done = FALSE;
 
       GST_INFO ("seeking to: %" GST_TIME_FORMAT,
           GST_TIME_ARGS (seek->position));
 
       seeked_position = seek->position;
-      if (seek_paused) {
+      if (test->scenario.seek_paused) {
         gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PAUSED);
         GST_LOG ("Set state playing");
         gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
         GST_LOG ("Done wainting");
       }
 
-      if (seek_paused_noplay) {
+      if (test->scenario.seek_always_paused) {
         gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PAUSED);
         gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
       }
-      fail_unless (gst_element_seek_simple (GST_ELEMENT (pipeline),
+      g_assert (gst_element_seek_simple (GST_ELEMENT (pipeline),
               GST_FORMAT_TIME,
               GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE, seek->position));
 
-      if (seek_paused) {
+      if (test->scenario.seek_paused) {
         gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_PLAYING);
         gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
       }
@@ -283,6 +345,11 @@ get_position (void)
   return TRUE;
 }
 
+#define assert (message) \
+    g_assertion_message_expr (message == NULL); \
+    g_free (message);
+
+
 static void
 check_rendered_file_properties (const gchar * render_file,
     GstClockTime duration)
@@ -297,40 +364,44 @@ check_rendered_file_properties (const gchar * render_file,
   info = ges_uri_clip_asset_get_info (GES_URI_CLIP_ASSET (asset));
   gst_object_unref (asset);
 
-  fail_unless (GST_IS_DISCOVERER_INFO (info), "Could not discover file %s",
-      render_file);
+  if (!GST_IS_DISCOVERER_INFO (info)) {
+    GST_ERROR_OBJECT (info, "WAT");
+    g_assertion_message_expr (G_LOG_DOMAIN, __FILE__, __LINE__, G_STRFUNC,
+        g_strdup_printf ("Could not discover file %s %p", render_file));
+  }
 
   /* Let's not be too nazi */
 
   real_duration = gst_discoverer_info_get_duration (info);
 
-  fail_if ((real_duration < duration - DURATION_TOLERANCE)
-      || (real_duration > duration + DURATION_TOLERANCE), "Duration %"
-      GST_TIME_FORMAT " not in range [%" GST_TIME_FORMAT " -- %"
-      GST_TIME_FORMAT "]", GST_TIME_ARGS (real_duration),
-      GST_TIME_ARGS (duration - DURATION_TOLERANCE),
-      GST_TIME_ARGS (duration + DURATION_TOLERANCE));
+  if ((real_duration < duration - DURATION_TOLERANCE)
+      || (real_duration > duration + DURATION_TOLERANCE)) {
+    g_assertion_message_expr (G_LOG_DOMAIN, __FILE__, __LINE__, G_STRFUNC,
+        g_strdup_printf ("Duration %"
+            GST_TIME_FORMAT " not in range [%" GST_TIME_FORMAT " -- %"
+            GST_TIME_FORMAT "]", GST_TIME_ARGS (real_duration),
+            GST_TIME_ARGS (duration - DURATION_TOLERANCE),
+            GST_TIME_ARGS (duration + DURATION_TOLERANCE)));
+  }
 
 
   gst_object_unref (info);
 }
 
-static gboolean
-check_timeline (GESTimeline * timeline)
+static void
+check_timeline (TestDefinition * test, GESTimeline * timeline)
 {
   GstBus *bus;
-  static gboolean ret;
   GstEncodingProfile *profile;
   gchar *render_uri = NULL;
 
-  ret = FALSE;
-
   ges_timeline_commit (timeline);
   pipeline = ges_pipeline_new ();
-  if (current_profile != PROFILE_NONE) {
-    render_uri = ges_test_file_name (profile_specs[current_profile][3]);
+  if (test->encoding_profile != PROFILE_NONE) {
+    render_uri =
+        ges_test_file_name (profile_specs[test->encoding_profile].output_file);
 
-    profile = create_audio_video_profile (current_profile);
+    profile = create_audio_video_profile (test->encoding_profile);
     ges_pipeline_set_render_settings (pipeline, render_uri, profile);
     ges_pipeline_set_mode (pipeline, TIMELINE_MODE_RENDER);
 
@@ -348,7 +419,7 @@ check_timeline (GESTimeline * timeline)
   }
 
   bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
-  gst_bus_add_watch (bus, my_bus_callback, &ret);
+  gst_bus_add_watch (bus, (GstBusFunc) _bus_callback, test);
   gst_object_unref (bus);
 
   ges_pipeline_add_timeline (pipeline, timeline);
@@ -357,31 +428,29 @@ check_timeline (GESTimeline * timeline)
   GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS (GST_BIN (pipeline),
       GST_DEBUG_GRAPH_SHOW_ALL, "ges-integration-playing");
   if (seeks != NULL)
-    g_timeout_add (50, (GSourceFunc) get_position, NULL);
+    g_timeout_add (50, (GSourceFunc) get_position, test);
 
   g_main_loop_run (loop);
 
   gst_element_set_state (GST_ELEMENT (pipeline), GST_STATE_NULL);
   gst_element_get_state (GST_ELEMENT (pipeline), NULL, NULL, -1);
 
-  if (current_profile != PROFILE_NONE) {
-    check_rendered_file_properties (profile_specs[current_profile][3],
-        ges_timeline_get_duration (timeline));
+  if (test->encoding_profile != PROFILE_NONE) {
+    check_rendered_file_properties (profile_specs[test->encoding_profile].
+        output_file, ges_timeline_get_duration (timeline));
     g_free (render_uri);
   }
 
   gst_object_unref (pipeline);
-
-  return ret;
 }
 
 /* Test seeking in various situations */
 static void
-run_simple_seeks_test (GESTimeline * timeline)
+run_simple_seeks_test (TestDefinition * test, GESTimeline * timeline)
 {
   GList *tmp;
 
-  if (!seek_paused_noplay) {
+  if (!test->scenario.seek_always_paused) {
     seeks =
         g_list_append (seeks, new_seek_info (0.2 * GST_SECOND,
             0.6 * GST_SECOND));
@@ -403,7 +472,7 @@ run_simple_seeks_test (GESTimeline * timeline)
         g_list_append (seeks, new_seek_info (1.2 * GST_SECOND,
             1.8 * GST_SECOND));
   }
-  fail_unless (check_timeline (timeline));
+  check_timeline (test, timeline);
   if (seeks != NULL) {
     /* free failed seeks */
     while (seeks) {
@@ -417,13 +486,13 @@ run_simple_seeks_test (GESTimeline * timeline)
       g_slice_free (SeekInfo, info);
       g_list_free (tmp);
     }
-    fail_if (TRUE, "Got EOS before being able to execute all seeks");
+    g_assert_cmpstr ("Got EOS before being able to execute all seeks", ==, "");
   }
 }
 
 /* Test adding an effect [E] marks the effect */
 static void
-test_effect (void)
+test_effect (TestDefinition * test)
 {
   GESTimeline *timeline;
   GESLayer *layer;
@@ -431,18 +500,21 @@ test_effect (void)
   GESUriClipAsset *asset1;
   GESEffect *effect;
   GESClip *clip;
-  gchar *uri = ges_test_file_name (testfilename1);
+  gchar *uri = ges_test_file_name (test->file1);
 
   asset1 = ges_uri_clip_asset_request_sync (uri, &error);
   g_free (uri);
-  fail_unless (GES_IS_ASSET (asset1), "Testing file %s could not be used as an "
-      "asset -- Reason: %s", uri, error ? error->message : "Uknown");
+  if (!GES_IS_ASSET (asset1)) {
+    g_test_message ("Testing file %s could not be used as an "
+        "asset -- Reason: %s", uri, error ? error->message : "Uknown");
+    g_assert_not_reached ();
+  }
 
-  fail_unless (asset1 != NULL);
+  g_assert (asset1 != NULL);
 
   layer = ges_layer_new ();
-  timeline = ges_timeline_new_audio_video ();
-  fail_unless (ges_timeline_add_layer (timeline, layer));
+  timeline = create_timeline (test);
+  g_assert (ges_timeline_add_layer (timeline, layer));
 
   clip =
       ges_layer_add_asset (layer, GES_ASSET (asset1), 0 * GST_SECOND,
@@ -460,30 +532,30 @@ test_effect (void)
    * time     0--------1
    */
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->scenario.seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 }
 
 static void
-test_transition (void)
+test_transition (TestDefinition * test)
 {
   GESTimeline *timeline;
   GESLayer *layer;
   GESUriClipAsset *asset1, *asset2;
   GESClip *clip;
 
-  timeline = ges_timeline_new_audio_video ();
+  timeline = create_timeline (test);
   layer = ges_layer_new ();
-  fail_unless (ges_timeline_add_layer (timeline, layer));
+  g_assert (ges_timeline_add_layer (timeline, layer));
 
   g_object_set (layer, "auto-transition", TRUE, NULL);
 
-  get_asset (testfilename1, asset1);
-  get_asset (testfilename2, asset2);
+  get_asset (test->file1, asset1);
+  get_asset (test->file2, asset2);
 
-  fail_unless (asset1 != NULL && asset2 != NULL);
+  g_assert (asset1 != NULL && asset2 != NULL);
 
   clip =
       ges_layer_add_asset (layer, GES_ASSET (asset1), 0 * GST_SECOND,
@@ -505,23 +577,24 @@ test_transition (void)
    * time     0------- 2 1--------3
    */
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->scenario.seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 }
 
 static void
-run_basic (GESTimeline * timeline)
+run_basic (TestDefinition * test, GESTimeline * timeline)
 {
   GESLayer *layer;
   GESUriClipAsset *asset1;
   GESUriClipAsset *asset2;
 
-  get_asset (testfilename1, asset1);
-  get_asset (testfilename2, asset2);
+  GST_ERROR ("SUCE");
+  get_asset (test->file1, asset1);
+  get_asset (test->file2, asset2);
   layer = ges_layer_new ();
-  fail_unless (ges_timeline_add_layer (timeline, layer));
+  g_assert (ges_timeline_add_layer (timeline, layer));
 
   ges_layer_add_asset (layer, GES_ASSET (asset1), 0 * GST_SECOND,
       0 * GST_SECOND, 1 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
@@ -540,53 +613,33 @@ run_basic (GESTimeline * timeline)
    * time     0------- 1 1--------2
    */
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->scenario.seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 }
 
 static void
-test_basic (void)
+test_basic (TestDefinition * test)
 {
-  run_basic (ges_timeline_new_audio_video ());
+  GST_ERROR ("HERE");
+  run_basic (test, create_timeline (test));
 }
 
+#if 0
 static void
-test_basic_audio (void)
-{
-  GESTimeline *timeline = ges_timeline_new ();
-
-  fail_unless (ges_timeline_add_track (timeline,
-          GES_TRACK (ges_audio_track_new ())));
-
-  run_basic (timeline);
-}
-
-static void
-test_basic_video (void)
-{
-  GESTimeline *timeline = ges_timeline_new ();
-
-  fail_unless (ges_timeline_add_track (timeline,
-          GES_TRACK (ges_video_track_new ())));
-
-  run_basic (timeline);
-}
-
-static void
-test_image (void)
+test_image (TestDefinition * test)
 {
   GESTimeline *timeline;
   GESLayer *layer;
   GESUriClipAsset *asset1, *asset2;
 
   get_asset (test_image_filename, asset1);
-  get_asset (testfilename1, asset2);
+  get_asset (test->file1, asset2);
 
   layer = ges_layer_new ();
   timeline = ges_timeline_new_audio_video ();
-  fail_unless (ges_timeline_add_layer (timeline, layer));
+  g_assert (ges_timeline_add_layer (timeline, layer));
 
   ges_layer_add_asset (layer, GES_ASSET (asset1), 0 * GST_SECOND,
       0 * GST_SECOND, 1 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
@@ -594,7 +647,7 @@ test_image (void)
   /* Test most simple case */
 
   layer = ges_layer_new ();
-  fail_unless (ges_timeline_add_layer (timeline, layer));
+  g_assert (ges_timeline_add_layer (timeline, layer));
 
   ges_layer_add_asset (layer, GES_ASSET (asset2), 1 * GST_SECOND,
       0 * GST_SECOND, 1 * GST_SECOND, GES_TRACK_TYPE_UNKNOWN);
@@ -609,11 +662,12 @@ test_image (void)
    * time     0--------1
    */
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 }
+#endif
 
 static gboolean
 test_mix_layers (GESTimeline * timeline, GESUriClipAsset ** assets,
@@ -630,7 +684,7 @@ test_mix_layers (GESTimeline * timeline, GESUriClipAsset ** assets,
 
   for (i = 0; i < num_layers; i++) {
     layer = ges_timeline_append_layer (timeline);
-    fail_unless (layer != NULL);
+    g_assert (layer != NULL);
 
     for (j = 0; j < num_assets; j++) {
       asset = assets[j];
@@ -639,7 +693,7 @@ test_mix_layers (GESTimeline * timeline, GESUriClipAsset ** assets,
           ges_layer_add_asset (layer, GES_ASSET (asset),
           (i * step + j) * GST_SECOND, 0 * GST_SECOND, 1 * GST_SECOND,
           GES_TRACK_TYPE_UNKNOWN);
-      fail_unless (clip != NULL);
+      g_assert (clip != NULL);
 
       for (tmp = GES_CONTAINER_CHILDREN (clip); tmp; tmp = tmp->next) {
         track_element = GES_TRACK_ELEMENT (tmp->data);
@@ -665,16 +719,16 @@ test_mix_layers (GESTimeline * timeline, GESUriClipAsset ** assets,
 
 
 static void
-test_mixing (void)
+test_mixing (TestDefinition * test)
 {
   GESTimeline *timeline;
   GESUriClipAsset *asset[2];
   GError *error = NULL;
 
-  gchar *uri1 = ges_test_file_name (testfilename1);
-  gchar *uri2 = ges_test_file_name (testfilename1);
+  gchar *uri1 = ges_test_file_name (test->file1);
+  gchar *uri2 = ges_test_file_name (test->file1);
 
-  timeline = ges_timeline_new ();
+  timeline = create_timeline (test);
   ges_timeline_add_track (timeline, GES_TRACK (ges_audio_track_new ()));
 
   asset[0] = ges_uri_clip_asset_request_sync (uri1, &error);
@@ -684,7 +738,7 @@ test_mixing (void)
   g_free (uri2);
 
   /* we are only using the first asset / clip for now */
-  fail_unless (test_mix_layers (timeline, asset, 1, 2));
+  g_assert (test_mix_layers (timeline, asset, 1, 2));
 
     /**
    * Our timeline has 4 layers
@@ -703,15 +757,15 @@ test_mixing (void)
    * time              0.75--1.75
    */
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->scenario.seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 
 }
 
 static void
-test_title (void)
+test_title (TestDefinition * test)
 {
   GESTitleClip *title;
   GESAsset *asset[2];
@@ -719,7 +773,7 @@ test_title (void)
   GESLayer *layer, *layer1;
 
   GError *error = NULL;
-  gchar *uri1 = ges_test_file_name (testfilename1);
+  gchar *uri1 = ges_test_file_name (test->file1);
 
   timeline = ges_timeline_new_audio_video ();
   layer = ges_timeline_append_layer (timeline);
@@ -745,406 +799,68 @@ test_title (void)
   ges_layer_add_asset (layer1, asset[1], 1 * GST_SECOND, 0, 1 * GST_SECOND,
       GES_TRACK_TYPE_UNKNOWN);
 
-  if (seeking)
-    run_simple_seeks_test (timeline);
+  if (test->scenario.seeking)
+    run_simple_seeks_test (test, timeline);
   else
-    fail_unless (check_timeline (timeline));
+    check_timeline (test, timeline);
 }
 
-#define CREATE_TEST(name, func, profile)                                       \
-GST_START_TEST (test_##name##_raw_h264_mov)                                    \
-{                                                                              \
-  g_print("running test_%s_%s\n", #name, "raw_h264_mov");                      \
-  testfilename1 = "assets/raw_h264.0.mov";                                     \
-  testfilename2 = "assets/raw_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = FALSE;                                                             \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_##name##_vorbis_theora_ogv)                               \
-{                                                                              \
-  g_print("running test_%s_%s\n", #name, "vorbis_theora_ogv");                 \
-  testfilename1 = "assets/vorbis_theora.0.ogg";                                \
-  testfilename2 = "assets/vorbis_theora.1.ogg";                                \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = FALSE;                                                             \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_##name##_vorbis_vp8_webm)                                 \
-{                                                                              \
-  g_print("running test_%s_%s\n", #name, "vorbis_vp8_webm");                   \
-  testfilename1 = "assets/vorbis_vp8.0.webm";                                  \
-  testfilename2 = "assets/vorbis_vp8.1.webm";                                  \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = FALSE;                                                             \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_##name##_mp3_h264_mov)                                    \
-{                                                                              \
-  g_print("running test_%s_%s\n", #name, "mp3_h264_mov");                      \
-  testfilename1 = "assets/mp3_h264.0.mov";                                     \
-  testfilename2 = "assets/mp3_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = FALSE;                                                             \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;
-
-#define CREATE_SEEKING_TEST(name, func, profile)                               \
-GST_START_TEST (test_seek_##name##_raw_h264_mov)                               \
-{                                                                              \
-  g_print("running test_seek_%s_%s\n", #name, "raw_h264_mov");                 \
-  testfilename1 = "assets/raw_h264.0.mov";                                     \
-  testfilename2 = "assets/raw_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_##name##_vorbis_theora_ogv)                          \
-{                                                                              \
-  g_print("running test_seek_%s_%s\n", #name, "vorbis_theora_ogv");            \
-  testfilename1 = "assets/vorbis_theora.0.ogg";                                \
-  testfilename2 = "assets/vorbis_theora.1.ogg";                                \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_##name##_vorbis_vp8_webm)                            \
-{                                                                              \
-  g_print("running test_seek_%s_%s\n", #name, "vorbis_vp8_webm");              \
-  testfilename1 = "assets/vorbis_vp8.0.webm";                                  \
-  testfilename2 = "assets/vorbis_vp8.1.webm";                                  \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_##name##_mp3_h264_mov)                               \
-{                                                                              \
-  g_print("running test_seek_%s_%s\n", #name, "mp3_h264_mov");                 \
-  testfilename1 = "assets/mp3_h264.0.mov";                                     \
-  testfilename2 = "assets/mp3_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_paused_##name##_raw_h264_mov)                        \
-{                                                                              \
-  g_print("running test_seek_paused_%s_%s\n", #name, "raw_h264_mov");          \
-  testfilename1 = "assets/raw_h264.0.mov";                                     \
-  testfilename2 = "assets/raw_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = TRUE;                                                          \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_paused_##name##_vorbis_theora_ogv)                   \
-{                                                                              \
-  g_print("running test_seek_paused_%s_%s\n", #name, "vorbis_theora_ogv");     \
-  testfilename1 = "assets/vorbis_theora.0.ogg";                                \
-  testfilename2 = "assets/vorbis_theora.1.ogg";                                \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = TRUE;                                                          \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_paused_##name##_vorbis_vp8_webm)                     \
-{                                                                              \
-  g_print("running test_seek_paused_%s_%s\n", #name, "vorbis_vp8_webm");       \
-  testfilename1 = "assets/vorbis_vp8.0.webm";                                  \
-  testfilename2 = "assets/vorbis_vp8.1.webm";                                  \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = TRUE;                                                          \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_paused_##name##_mp3_h264_mov)                        \
-{                                                                              \
-  g_print("running test_seek_paused_%s_%s\n", #name, "mp3_h264_mov");          \
-  testfilename1 = "assets/mp3_h264.0.mov";                                     \
-  testfilename2 = "assets/mp3_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = TRUE;                                                          \
-  seek_paused_noplay = FALSE;                                                  \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_no_play_##name##_raw_h264_mov)                       \
-{                                                                              \
-  g_print("running test_seek_no_play_%s_%s\n", #name, "raw_h264_mov");         \
-  testfilename1 = "assets/raw_h264.0.mov";                                     \
-  testfilename2 = "assets/raw_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = TRUE;                                                   \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_no_play_##name##_vorbis_theora_ogv)                  \
-{                                                                              \
-  g_print("running test_seek_no_play_%s_%s\n", #name, "vorbis_theora_ogv");    \
-  testfilename1 = "assets/vorbis_theora.0.ogg";                                \
-  testfilename2 = "assets/vorbis_theora.1.ogg";                                \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = TRUE;                                                   \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_no_play_##name##_vorbis_vp8_webm)                    \
-{                                                                              \
-  g_print("running test_seek_no_play_%s_%s\n", #name, "vorbis_vp8_webm");      \
-  testfilename1 = "assets/vorbis_vp8.0.webm";                                  \
-  testfilename2 = "assets/vorbis_vp8.1.webm";                                  \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = TRUE;                                                   \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;                                                                  \
-GST_START_TEST (test_seek_no_play_##name##_mp3_h264_mov)                       \
-{                                                                              \
-  g_print("running test_seek_no_play_%s_%s\n", #name, "mp3_h264_mov");         \
-  testfilename1 = "assets/mp3_h264.0.mov";                                     \
-  testfilename2 = "assets/mp3_h264.1.mov";                                     \
-  test_image_filename = "assets/png.png";                                      \
-  current_profile = profile;                                                   \
-  seeking = TRUE;                                                              \
-  seek_paused = FALSE;                                                         \
-  seek_paused_noplay = TRUE;                                                   \
-  func ();                                                                     \
-}                                                                              \
-GST_END_TEST;
-
-#define CREATE_TEST_FROM_NAMES(name, to, profile)                              \
-  CREATE_TEST( name##to, test_##name, profile)
-
-#define CREATE_SEEKING_TEST_FROM_NAMES(name, to, profile)                      \
-  CREATE_SEEKING_TEST( name##to, test_##name, profile)
-
-#define CREATE_RENDERING_TEST(name, func)                                      \
-  CREATE_TEST_FROM_NAMES(name, _render_to_vorbis_theora_ogg, PROFILE_VORBIS_THEORA_OGG)   \
-  CREATE_TEST_FROM_NAMES(name, _render_to_vorbis_vp8_webm, PROFILE_VORBIS_VP8_WEBM)       \
-  CREATE_TEST_FROM_NAMES(name, _render_to_aac_h264_quicktime, PROFILE_AAC_H264_QUICKTIME) \
-  CREATE_TEST_FROM_NAMES(name, _render_to_vorbis_h264_matroska, PROFILE_VORBIS_H264_MATROSKA)
-
-#define CREATE_PLAYBACK_TEST(name)                                             \
-  CREATE_TEST_FROM_NAMES(name, _playback, PROFILE_NONE)                        \
-  CREATE_SEEKING_TEST_FROM_NAMES(name, _playback, PROFILE_NONE)
-
-#define CREATE_TEST_FULL(name)                                                 \
-  CREATE_PLAYBACK_TEST(name)                                                   \
-  CREATE_RENDERING_TEST(name, func)
-
-#define ADD_PLAYBACK_TESTS(name)                                               \
-  tcase_add_test (tc_chain, test_##name##_playback_vorbis_vp8_webm);           \
-  tcase_add_test (tc_chain, test_##name##_playback_vorbis_theora_ogv);         \
-  tcase_add_test (tc_chain, test_##name##_playback_raw_h264_mov);              \
-  tcase_add_test (tc_chain, test_##name##_playback_mp3_h264_mov);              \
-  tcase_add_test (tc_chain, test_seek_##name##_playback_vorbis_vp8_webm);           \
-  tcase_add_test (tc_chain, test_seek_##name##_playback_vorbis_theora_ogv);         \
-  tcase_add_test (tc_chain, test_seek_##name##_playback_raw_h264_mov);              \
-  tcase_add_test (tc_chain, test_seek_##name##_playback_mp3_h264_mov);              \
-  tcase_add_test (tc_chain, test_seek_paused_##name##_playback_vorbis_vp8_webm);    \
-  tcase_add_test (tc_chain, test_seek_paused_##name##_playback_vorbis_theora_ogv);  \
-  tcase_add_test (tc_chain, test_seek_paused_##name##_playback_raw_h264_mov);       \
-  tcase_add_test (tc_chain, test_seek_paused_##name##_playback_mp3_h264_mov);       \
-  tcase_add_test (tc_chain, test_seek_no_play_##name##_playback_vorbis_vp8_webm);   \
-  tcase_add_test (tc_chain, test_seek_no_play_##name##_playback_vorbis_theora_ogv); \
-  tcase_add_test (tc_chain, test_seek_no_play_##name##_playback_raw_h264_mov);      \
-  tcase_add_test (tc_chain, test_seek_no_play_##name##_playback_mp3_h264_mov);      \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,                \
-        "_playback_mp3_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_", #name,           \
-        "_playback_mp3_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_paused_", #name,    \
-        "_playback_mp3_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_no_play_", #name,   \
-        "_playback_mp3_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,                \
-        "_playback_raw_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_", #name,           \
-        "_playback_raw_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_paused_", #name,    \
-        "_playback_raw_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_no_play_", #name,   \
-        "_playback_raw_h264_mov"));                                                                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,                \
-        "_playback_vorbis_theora_ogv"));                                                               \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_", #name,           \
-        "_playback_vorbis_theora_ogv"));                                                               \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_paused", #name,     \
-        "_playback_vorbis_theora_ogv"));                                                               \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_no_play_", #name,   \
-        "_playback_vorbis_theora_ogv"));                                                               \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,                \
-        "_playback_vorbis_vp8_webm"));                                                                 \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek", #name,            \
-        "_playback_vorbis_vp8_webm"));                                                                 \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_paused", #name,     \
-        "_playback_vorbis_vp8_webm"));                                                                 \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_seek_no_play_", #name,   \
-        "_playback_vorbis_vp8_webm"));
-
-#define ADD_RENDERING_TESTS(name)                                              \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_theora_ogg_raw_h264_mov);      \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_theora_ogg_mp3_h264_mov);      \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_theora_ogg_vorbis_vp8_webm);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_theora_ogg_vorbis_theora_ogv); \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_vp8_webm_vorbis_vp8_webm);     \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_vp8_webm_raw_h264_mov);        \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_vp8_webm_mp3_h264_mov);        \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_vp8_webm_vorbis_theora_ogv);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_aac_h264_quicktime_raw_h264_mov);      \
-  tcase_add_test (tc_chain, test_##name##_render_to_aac_h264_quicktime_vorbis_theora_ogv);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_aac_h264_quicktime_vorbis_vp8_webm);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_aac_h264_quicktime_mp3_h264_mov); \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_h264_matroska_raw_h264_mov);      \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_h264_matroska_vorbis_theora_ogv);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_h264_matroska_vorbis_vp8_webm);   \
-  tcase_add_test (tc_chain, test_##name##_render_to_vorbis_h264_matroska_mp3_h264_mov); \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_",            \
-      #name, "_render_to_vorbis_theora_ogg_raw_h264_mov"));                           \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_theora_ogg_mp3_h264_mov"));                            \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_theora_ogg_vorbis_vp8_webm"));                         \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_theora_ogg_vorbis_theora_ogv"));                       \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_vp8_webm_vorbis_vp8_webm"));                           \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_vp8_webm_raw_h264_mov"));                              \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_vp8_webm_mp3_h264_mov"));                              \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_vp8_webm_vorbis_theora_ogv"));                         \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_aac_h264_quicktime_raw_h264_mov"));                           \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_aac_h264_quicktime_vorbis_theora_ogv"));                      \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_aac_h264_quicktime_vorbis_vp8_webm"));                        \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_aac_h264_quicktime_mp3_h264_mov"));                           \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_h264_matroska_raw_h264_mov"));                         \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_h264_matroska_vorbis_theora_ogv"));                    \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_h264_matroska_vorbis_vp8_webm"));                      \
-  tests_names = g_list_prepend (tests_names, g_strdup_printf ("%s%s%s", "test_", #name,     \
-      "_render_to_vorbis_h264_matroska_mp3_h264_mov"));
-
-#define ADD_TESTS(name)                                                        \
-  ADD_PLAYBACK_TESTS(name)                                                     \
-  ADD_RENDERING_TESTS(name)
-
-
-/* *INDENT-OFF* */
-CREATE_TEST_FULL(basic)
-CREATE_TEST_FULL(basic_audio)
-CREATE_TEST_FULL(basic_video)
-CREATE_TEST_FULL(transition)
-CREATE_TEST_FULL(effect)
-CREATE_TEST_FULL(mixing)
-CREATE_TEST_FULL(title)
-CREATE_PLAYBACK_TEST(image)
-/* *INDENT-ON* */
-
-static Suite *
-ges_suite (void)
+static void
+test_trick (TestDefinition * test)
 {
-  Suite *s = suite_create ("ges-integration");
-  TCase *tc_chain = tcase_create ("integration");
-
-  suite_add_tcase (s, tc_chain);
-
-  ADD_TESTS (basic);
-  ADD_TESTS (basic_audio);
-  ADD_TESTS (basic_video);
-
-  ADD_TESTS (effect);
-  ADD_TESTS (transition);
-
-  ADD_TESTS (mixing);
-
-  ADD_TESTS (title);
-
-  ADD_PLAYBACK_TESTS (image);
-  /* TODO : next test case : complex timeline created from project. */
-  /* TODO : deep checking of rendered clips */
-  /* TODO : might be interesting to try all profiles, and maintain a list of currently working profiles ? */
-
-  return s;
+  g_test_trap_subprocess (test->path, G_USEC_PER_SEC * 20,
+      G_TEST_SUBPROCESS_INHERIT_STDOUT | G_TEST_SUBPROCESS_INHERIT_STDERR);
+  g_test_trap_assert_passed ();
 }
+
+static TestingFunction testing_funcs[] = {
+  {(GTestDataFunc) test_trick, (GTestDataFunc) test_basic, "basic"},
+  {(GTestDataFunc) test_trick, (GTestDataFunc) test_title, "title"},
+  {(GTestDataFunc) test_trick, (GTestDataFunc) test_mixing, "mixing"},
+  {(GTestDataFunc) test_trick, (GTestDataFunc) test_effect, "effect"},
+  {(GTestDataFunc) test_trick, (GTestDataFunc) test_transition, "transition"},
+};
+
+static MediaFile assets[] = {
+  {"vorbis_vp8.webm", "assets/vorbis_vp8.0.webm", "assets/vorbis_vp8.1.webm",
+      FALSE, FALSE, "vorbisenc", "vp8enc", "webmmux"},
+  {"vorbis_theora.ogv", "assets/vorbis_theora.0.ogg",
+        "assets/vorbis_theora.1.ogg", FALSE, FALSE, "vorbisenc", "theoraenc",
+      "oggmux"},
+  {"raw_h264.mp4", "assets/raw_h264.0.mov", "assets/raw_h264.1.mov", FALSE,
+      FALSE, "x264enc", "qtmux"},
+  {"mp3_h264.mkv", "assets/mp3_h264.0.mov", "assets/mp3_h264.1.mov", FALSE,
+      FALSE, "lamemp3enc", "x264enc", "matroskamux"}
+};
+
+static Scenario scenarios[] = {
+  {PROFILE_ANY, "", FALSE, FALSE, FALSE},
+  {PROFILE_ANY, "/audio_only", FALSE, FALSE, FALSE, TRUE, FALSE},
+  {PROFILE_ANY, "/video_only", FALSE, FALSE, FALSE, FALSE, TRUE},
+  {PROFILE_NONE, "/seek", TRUE, FALSE, FALSE, FALSE, FALSE},
+  {PROFILE_NONE, "/seek_paused", TRUE, TRUE, FALSE, FALSE, FALSE},
+  {PROFILE_NONE, "/seek_always_paused", TRUE, FALSE, TRUE, FALSE, FALSE}
+};
 
 static gboolean
 generate_all_files (void)
 {
-  if (!ges_generate_test_file_audio_video ("assets/vorbis_vp8.0.webm",
-          "vorbisenc", "vp8enc", "webmmux", "18", "11"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/vorbis_vp8.1.webm",
-          "vorbisenc", "vp8enc", "webmmux", "0", "0"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/vorbis_theora.0.ogg",
-          "vorbisenc", "theoraenc", "oggmux", "18", "11"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/vorbis_theora.1.ogg",
-          "vorbisenc", "theoraenc", "oggmux", "0", "0"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/raw_h264.0.mov", NULL,
-          "x264enc", "qtmux", "18", "11"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/raw_h264.1.mov", NULL,
-          "x264enc", "qtmux", "0", "0"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/mp3_h264.0.mov",
-          "lamemp3enc", "x264enc", "qtmux", "18", "11"))
-    return FALSE;
-  if (!ges_generate_test_file_audio_video ("assets/mp3_h264.1.mov",
-          "lamemp3enc", "x264enc", "qtmux", "0", "0"))
-    return FALSE;
+  gint assetscnt;
+
+  for (assetscnt = 0; assetscnt < G_N_ELEMENTS (assets); assetscnt++) {
+    MediaFile *m = &assets[assetscnt];
+
+    if (m->is_image)
+      continue;
+
+    if (!ges_generate_test_file_audio_video (m->file1,
+            m->audioencoder, m->videoencoder, m->muxer, "18", "11"))
+      return FALSE;
+
+    if (!ges_generate_test_file_audio_video (m->file2,
+            m->audioencoder, m->videoencoder, m->muxer, "18", "11"))
+      return FALSE;
+  }
 
   return TRUE;
 }
@@ -1153,46 +869,11 @@ generate_all_files (void)
 int
 main (int argc, char **argv)
 {
-  int nf;
-  GOptionContext *ctx;
+  gint funccnt, assetscnt, profilecnt, scenariocnt;
 
-  GError *err = NULL;
-  gboolean list_tests = FALSE, list_tests_only = FALSE;
-  Suite *s = ges_suite ();
+  g_test_init (&argc, &argv, NULL);
 
-  GOptionEntry options[] = {
-    {"list-tests", 'l', 0.0, G_OPTION_ARG_NONE, &list_tests,
-        "List all avalaible tests", "N"},
-    {"list-tests-only", 'o', 0.0, G_OPTION_ARG_NONE, &list_tests_only,
-        "List all avalaible tests", "N"},
-    {NULL}
-  };
-
-  ctx = g_option_context_new ("Run integration tests");
-  g_option_context_add_main_entries (ctx, options, NULL);
-  g_option_context_add_group (ctx, gst_init_get_option_group ());
-
-  if (!g_option_context_parse (ctx, &argc, &argv, &err)) {
-    g_printerr ("Error initializing: %s\n", err->message);
-    g_option_context_free (ctx);
-    exit (1);
-  }
-
-  if (list_tests || list_tests_only) {
-    GList *tmp;
-
-    g_print ("=== Listing tests %s === \n", list_tests_only ? "only" : "");
-    for (tmp = tests_names; tmp; tmp = tmp->next)
-      g_print ("%s\n", (gchar *) tmp->data);
-    g_print ("=== Listed tests ===\n");
-
-    if (list_tests_only == TRUE) {
-      g_list_free_full (tests_names, g_free);
-      return 0;
-    }
-  }
-
-  gst_check_init (&argc, &argv);
+  gst_init (&argc, &argv);
   ges_init ();
 
   if (!generate_all_files ()) {
@@ -1200,11 +881,51 @@ main (int argc, char **argv)
     return 1;
   }
 
+  for (funccnt = 0; funccnt < G_N_ELEMENTS (testing_funcs); funccnt++) {
+    for (profilecnt = 0; profilecnt < PROFILE_ANY; profilecnt++) {
+      for (assetscnt = 0; assetscnt < G_N_ELEMENTS (assets); assetscnt++) {
+        for (scenariocnt = 0; scenariocnt < G_N_ELEMENTS (scenarios);
+            scenariocnt++) {
+          gchar *path, *path_subproc;
+          TestDefinition *test;
+
+          if (!(scenarios[scenariocnt].profile == PROFILE_ANY ||
+                  scenarios[scenariocnt].profile == profilecnt))
+            continue;
+
+          test = g_slice_new0 (TestDefinition);
+          test->encoding_profile = profilecnt;
+          test->file1 = assets[assetscnt].file1;
+          test->file2 = assets[assetscnt].file2;
+          if (profilecnt == PROFILE_NONE) {
+            path =
+                g_strdup_printf ("/playback%s/%s/%s",
+                scenarios[scenariocnt].path, testing_funcs[funccnt].shortname,
+                assets[assetscnt].name);
+            path_subproc =
+                g_strdup_printf ("/playback%s/%s/%s/subprocess",
+                scenarios[scenariocnt].path, testing_funcs[funccnt].shortname,
+                assets[assetscnt].name);
+          } else {
+            path =
+                g_strdup_printf ("/rendering/%s/%s/%s",
+                testing_funcs[funccnt].shortname,
+                profile_specs[profilecnt].name, assets[assetscnt].name);
+            path_subproc =
+                g_strdup_printf ("/rendering/%s/%s/subprocess",
+                testing_funcs[funccnt].shortname, assets[assetscnt].name);
+          }
+
+          test->path = path_subproc;
+          g_test_add_data_func (path, test, testing_funcs[funccnt].func);
+          g_test_add_data_func (path_subproc, test,
+              testing_funcs[funccnt].func_subproc);
+        }
+      }
+    }
+  }
 
   loop = g_main_loop_new (NULL, FALSE);
-  nf = gst_check_run_suite (s, "ges", __FILE__);
 
-  g_list_free_full (tests_names, g_free);
-
-  return nf;
+  return g_test_run ();
 }
