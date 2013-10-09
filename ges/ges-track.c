@@ -162,14 +162,14 @@ gap_new (GESTrack * track, GstClockTime start, GstClockTime duration)
 static void
 free_gap (Gap * gap)
 {
+  gboolean ret;
   GESTrack *track = gap->track;
 
   GST_DEBUG_OBJECT (track, "Removed gap with start %" GST_TIME_FORMAT
       " duration %" GST_TIME_FORMAT, GST_TIME_ARGS (gap->start),
       GST_TIME_ARGS (gap->duration));
-  gst_bin_remove (GST_BIN (track->priv->composition), gap->gnlobj);
-  gst_element_set_state (gap->gnlobj, GST_STATE_NULL);
-  gst_object_unref (gap->gnlobj);
+
+  g_signal_emit_by_name (track->priv->composition, "remove", gap->gnlobj, &ret);
 
   g_slice_free (Gap, gap);
 }
@@ -324,6 +324,8 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
   GESTrackPrivate *priv;
   GstElement *gnlobject;
 
+  gboolean ret = TRUE;
+
   GST_DEBUG_OBJECT (track, "object:%p", object);
 
   priv = track->priv;
@@ -337,12 +339,7 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
     GST_DEBUG ("Removing GnlObject '%s' from composition '%s'",
         GST_ELEMENT_NAME (gnlobject), GST_ELEMENT_NAME (priv->composition));
 
-    if (!gst_bin_remove (GST_BIN (priv->composition), gnlobject)) {
-      GST_WARNING ("Failed to remove gnlobject from composition");
-      return FALSE;
-    }
-
-    gst_element_set_state (gnlobject, GST_STATE_NULL);
+    g_signal_emit_by_name (track->priv->composition, "remove", gnlobject, &ret);
   }
 
   g_signal_handlers_disconnect_by_func (object, sort_track_elements_cb, NULL);
@@ -355,7 +352,7 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
 
   gst_object_unref (object);
 
-  return TRUE;
+  return ret;
 }
 
 static void
@@ -764,12 +761,14 @@ ges_track_set_mixing (GESTrack * track, gboolean mixing)
       return;
     }
   } else {
-    if (!gst_bin_remove (GST_BIN (track->priv->composition),
-            track->priv->mixing_operation)) {
+    gboolean ret;
+
+    g_signal_emit_by_name (track->priv->composition, "remove",
+        track->priv->mixing_operation, &ret);
+
+    if (ret == FALSE)
       GST_WARNING_OBJECT (track,
           "Could not remove the mixer from our composition");
-      return;
-    }
   }
 
   track->priv->mixing = mixing;
