@@ -36,6 +36,7 @@
 #include "ges-extractable.h"
 #include "ges-image-source.h"
 #include "ges-audio-test-source.h"
+#include "ges-multi-file-source.h"
 
 static void ges_extractable_interface_init (GESExtractableInterface * iface);
 
@@ -427,7 +428,11 @@ ges_uri_clip_create_track_element (GESClip * clip, GESTrackType type)
   GESUriClipPrivate *priv = GES_URI_CLIP (clip)->priv;
   GESTrackElement *res = NULL;
 
-  if (priv->is_image) {
+  if (g_str_has_prefix (priv->uri, "multifile://")) {
+    GST_DEBUG ("Creating a GESMultiFileSource for %s", priv->uri);
+    res = (GESTrackElement *)
+        ges_multi_file_source_new (g_strdup (&priv->uri[12]));
+  } else if (priv->is_image) {
     if (type != GES_TRACK_TYPE_VIDEO) {
       GST_DEBUG ("Object is still image, not adding any audio source");
       return NULL;
