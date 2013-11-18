@@ -87,62 +87,21 @@ ges_image_source_dispose (GObject * object)
   G_OBJECT_CLASS (ges_image_source_parent_class)->dispose (object);
 }
 
-static void
-pad_added_cb (GstElement * timeline, GstPad * pad, GstElement * scale)
-{
-  GstPad *sinkpad;
-  GstPadLinkReturn ret;
-
-  sinkpad = gst_element_get_static_pad (scale, "sink");
-  if (sinkpad) {
-    GST_DEBUG ("got sink pad, trying to link");
-
-    ret = gst_pad_link (pad, sinkpad);
-    gst_object_unref (sinkpad);
-    if (GST_PAD_LINK_SUCCESSFUL (ret)) {
-      GST_DEBUG ("linked ok, returning");
-      return;
-    }
-  }
-
-  GST_DEBUG ("pad failed to link properly");
-}
-
 static GstElement *
 ges_image_source_create_source (GESTrackElement * track_element)
 {
-  GstElement *bin, *source, *scale, *freeze, *iconv;
-  GstPad *src, *target;
+  GstElement *source, *scale, *freeze, *iconv;
 
-  bin = GST_ELEMENT (gst_bin_new ("still-image-bin"));
   source = gst_element_factory_make ("uridecodebin", NULL);
   scale = gst_element_factory_make ("videoscale", NULL);
   freeze = gst_element_factory_make ("imagefreeze", NULL);
   iconv = gst_element_factory_make ("videoconvert", NULL);
 
   g_object_set (scale, "add-borders", TRUE, NULL);
-
-  gst_bin_add_many (GST_BIN (bin), source, scale, freeze, iconv, NULL);
-
-  gst_element_link_pads_full (scale, "src", iconv, "sink",
-      GST_PAD_LINK_CHECK_NOTHING);
-  gst_element_link_pads_full (iconv, "src", freeze, "sink",
-      GST_PAD_LINK_CHECK_NOTHING);
-
-  /* FIXME: add capsfilter here with sink caps (see 626518) */
-
-  target = gst_element_get_static_pad (freeze, "src");
-
-  src = gst_ghost_pad_new ("src", target);
-  gst_element_add_pad (bin, src);
-  gst_object_unref (target);
-
   g_object_set (source, "uri", ((GESImageSource *) track_element)->uri, NULL);
 
-  g_signal_connect (G_OBJECT (source), "pad-added",
-      G_CALLBACK (pad_added_cb), scale);
-
-  return bin;
+  return ges_source_create_topbin ("image-source", source, scale, iconv, freeze,
+      NULL);
 }
 
 static void
