@@ -292,17 +292,16 @@ _set_name_default (GESTimelineElement * self)
   for (i = 0; i < l; i++)
     name[i] = g_ascii_tolower (name[i]);
 
+  g_free (self->name);
   if (G_UNLIKELY (self->parent != NULL))
     goto had_parent;
 
-  g_free (self->name);
   self->name = name;
 
   return TRUE;
 
 had_parent:
   {
-    g_free (name);
     GST_WARNING ("parented objects can't be renamed");
     return FALSE;
   }
