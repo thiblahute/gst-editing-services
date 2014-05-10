@@ -54,8 +54,41 @@ get_timeline (GstValidateScenario * scenario)
 }
 
 static gboolean
+_flush (GstValidateScenario * scenario, GstValidateAction * action,
+    GESTimeline * timeline)
+{
+  GstQuery *query_segment;
+  gint64 cpos;
+  gint64 stop_value;
+  gdouble rate;
+
+  query_segment = gst_query_new_segment (GST_FORMAT_TIME);
+  if (!gst_element_query (scenario->pipeline, query_segment)) {
+    GST_ERROR_OBJECT (scenario, "Could not query segment");
+    return FALSE;
+  }
+
+  if (!gst_element_query_position (scenario->pipeline, GST_FORMAT_TIME, &cpos)) {
+    GST_ERROR_OBJECT (scenario, "Could not query position");
+    return FALSE;
+  }
+
+  if (!ges_timeline_commit (timeline)) {
+    GST_DEBUG_OBJECT (scenario, "nothing changed, no need to seek");
+    return TRUE;
+  }
+
+  gst_query_parse_segment (query_segment, &rate, NULL, NULL, &stop_value);
+
+  return gst_validate_scenario_execute_seek (scenario, action,
+      rate, GST_FORMAT_TIME, GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE,
+      GST_SEEK_TYPE_SET, cpos, GST_SEEK_TYPE_SET, stop_value);
+}
+
+static gboolean
 _set_child_property (GstValidateScenario * scenario, GstValidateAction * action)
 {
+  gboolean res;
   const GValue *value;
   GESTimeline *timeline;
   GESTimelineElement *element;
@@ -77,9 +110,11 @@ _set_child_property (GstValidateScenario * scenario, GstValidateAction * action)
   ges_track_element_set_child_property (GES_TRACK_ELEMENT (element),
       property_name, (GValue *) value);
 
+  res = _flush (scenario, action, timeline);
+
   g_object_unref (timeline);
 
-  return TRUE;
+  return res;
 }
 
 static GESAsset *
@@ -407,14 +442,10 @@ beach:
 static gboolean
 _edit_clip (GstValidateScenario * scenario, GstValidateAction * action)
 {
-  gint64 cpos;
-  gdouble rate;
   GList *layers = NULL;
   GESTimeline *timeline;
-  GstQuery *query_segment;
   GESTimelineElement *clip;
   GstClockTime position;
-  gint64 stop_value;
   gboolean res = FALSE;
 
   gint new_layer_priority = -1;
@@ -464,29 +495,7 @@ _edit_clip (GstValidateScenario * scenario, GstValidateAction * action)
   }
   gst_object_unref (clip);
 
-  query_segment = gst_query_new_segment (GST_FORMAT_TIME);
-  if (!gst_element_query (scenario->pipeline, query_segment)) {
-    GST_ERROR_OBJECT (scenario, "Could not query segment");
-    goto beach;
-  }
-
-  if (!gst_element_query_position (scenario->pipeline, GST_FORMAT_TIME, &cpos)) {
-    GST_ERROR_OBJECT (scenario, "Could not query position");
-    goto beach;
-  }
-
-  if (!ges_timeline_commit (timeline)) {
-    GST_DEBUG_OBJECT (scenario, "nothing changed, no need to seek");
-    res = TRUE;
-    goto beach;
-  }
-
-
-  gst_query_parse_segment (query_segment, &rate, NULL, NULL, &stop_value);
-
-  res = gst_validate_scenario_execute_seek (scenario, action,
-      rate, GST_FORMAT_TIME, GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_ACCURATE,
-      GST_SEEK_TYPE_SET, cpos, GST_SEEK_TYPE_SET, stop_value);
+  res = _flush (scenario, action, timeline);
 
 beach:
   g_object_unref (timeline);
