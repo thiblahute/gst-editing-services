@@ -82,6 +82,90 @@ _set_child_property (GstValidateScenario * scenario, GstValidateAction * action)
   return TRUE;
 }
 
+static GESAsset *
+_action_get_asset (GstValidateAction * action, GESProject * project,
+    const gchar * asset_id_name)
+{
+  GType type;
+  GESAsset *asset = NULL;
+  const gchar *id = NULL;
+  const gchar *type_string;
+
+  type_string = gst_structure_get_string (action->structure, "type");
+  id = gst_structure_get_string (action->structure, asset_id_name);
+  if (!type_string || !id) {
+    GST_ERROR ("Missing parameters, we got type %s and id %s", type_string, id);
+    return NULL;
+  }
+
+  if (!(type = g_type_from_name (type_string))) {
+    GST_ERROR ("This type doesn't exist : %s", type_string);
+    return NULL;
+  }
+
+  asset = ges_project_get_asset (project, id, type);
+  if (asset)
+    return asset;;
+
+  if (!(asset = ges_asset_request (type, id, NULL)))
+    GST_ERROR ("Could not get asset %s for type %s", id, type_string);
+
+  return asset;
+}
+
+static gboolean
+_add_element_to_container (GstValidateScenario * scenario,
+    GstValidateAction * action)
+{
+  GESAsset *asset;
+  GESTimeline *timeline;
+  GESContainer *container;
+  const gchar *container_name;
+  GESTimelineElement *element;
+
+  GError *err = NULL;
+  gboolean res = FALSE;
+
+  container_name =
+      gst_structure_get_string (action->structure, "container-name");
+
+  timeline = get_timeline (scenario);
+  g_return_val_if_fail (timeline, FALSE);
+
+  container = GES_CONTAINER (ges_timeline_get_element (timeline,
+          container_name));
+  g_return_val_if_fail (GES_IS_CONTAINER (container), FALSE);
+
+  if (!(asset = _action_get_asset (action,
+              ges_timeline_get_project (timeline), "asset-id"))) {
+    GST_ERROR_OBJECT (scenario, "Could not get asset");
+    goto beach;
+  }
+
+  element = GES_TIMELINE_ELEMENT (ges_asset_extract (asset, &err));
+  if (err) {
+    GST_ERROR_OBJECT (scenario, "Could not extract from asset: %s",
+        err->message);
+
+    goto beach;
+  }
+
+  g_return_val_if_fail (GES_IS_TIMELINE_ELEMENT (element), FALSE);
+
+  gst_validate_printf (action, "Adding element %s to container %s\n",
+      GES_TIMELINE_ELEMENT_NAME (element),
+      GES_TIMELINE_ELEMENT_NAME (container));
+
+  res = ges_container_add (container, element);
+
+  ges_timeline_commit (timeline);
+
+beach:
+  g_object_unref (timeline);
+
+  return res;
+}
+
 static gboolean
 _serialize_project (GstValidateScenario * scenario, GstValidateAction * action)
 {
@@ -89,7 +173,7 @@ _serialize_project (GstValidateScenario * scenario, GstValidateAction * action)
   GESTimeline *timeline = get_timeline (scenario);
   gboolean res;
 
-  gst_validate_printf (action, "Saving project to %s", uri);
+  gst_validate_printf (action, "Saving project to %s\n", uri);
 
   res = ges_timeline_save_to_uri (timeline, uri, NULL, TRUE, NULL);
 
@@ -100,34 +184,17 @@ _serialize_project (GstValidateScenario * scenario, GstValidateAction * action)
 static gboolean
 _remove_asset (GstValidateScenario * scenario, GstValidateAction * action)
 {
-  const gchar *id = NULL;
-  const gchar *type_string = NULL;
-  GType type;
+  GESProject *project;
   GESTimeline *timeline = get_timeline (scenario);
-  GESProject *project = ges_timeline_get_project (timeline);
   GESAsset *asset;
   gboolean res = FALSE;
 
-  id = gst_structure_get_string (action->structure, "id");
-  type_string = gst_structure_get_string (action->structure, "type");
-
-  if (!type_string || !id) {
-    GST_ERROR ("Missing parameters, we got type %s and id %s", type_string, id);
+  project = ges_timeline_get_project (timeline);
+  if (!(asset = _action_get_asset (action, project, "id")))
     goto beach;
-  }
 
-  if (!(type = g_type_from_name (type_string))) {
-    GST_ERROR ("This type doesn't exist : %s", type_string);
-    goto beach;
-  }
-
-  asset = ges_project_get_asset (project, id, type);
-
-  if (!asset) {
-    GST_ERROR ("No asset with id %s and type %s", id, type_string);
-    goto beach;
-  }
-
+  gst_validate_printf (action, "Removing asset: %s from project\n",
+      ges_asset_get_id (asset));
   res = ges_project_remove_asset (project, asset);
 
 beach:
@@ -138,8 +205,7 @@ beach:
 static gboolean
 _add_asset (GstValidateScenario * scenario, GstValidateAction * action)
 {
-  const gchar *id = NULL;
-  const gchar *type_string = NULL;
+  const gchar *type_string = NULL, *id;
   GType type;
   GESTimeline *timeline = get_timeline (scenario);
   GESProject *project = ges_timeline_get_project (timeline);
@@ -171,6 +237,8 @@ _add_asset (GstValidateScenario * scenario, GstValidateAction * action)
     goto beach;
   }
 
+  gst_validate_printf (action, "Adding asset: %s to project\n",
+      ges_asset_get_id (asset));
   res = ges_project_add_asset (project, asset);
 
 beach:
@@ -288,47 +356,28 @@ _remove_clip (GstValidateScenario * scenario, GstValidateAction * action)
 static gboolean
 _add_clip (GstValidateScenario * scenario, GstValidateAction * action)
 {
-  GESTimeline *timeline = get_timeline (scenario);
   GESAsset *asset;
   GESLayer *layer;
   GESClip *clip;
-  GError *error = NULL;
   gint layer_priority;
   const gchar *name;
-  const gchar *asset_id;
-  const gchar *type_string;
-  GType type;
   gboolean res = FALSE;
-  GstClockTime duration = 1 * GST_SECOND;
+  GstClockTime duration = GST_CLOCK_TIME_NONE;
+  GESTimeline *timeline = get_timeline (scenario);
 
   gst_structure_get_int (action->structure, "layer-priority", &layer_priority);
   name = gst_structure_get_string (action->structure, "name");
-  asset_id = gst_structure_get_string (action->structure, "asset-id");
-  type_string = gst_structure_get_string (action->structure, "type");
 
-  if (!(type = g_type_from_name (type_string))) {
-    GST_ERROR ("This type doesn't exist : %s", type_string);
-    goto beach;
-  }
-
-  asset = ges_asset_request (type, asset_id, &error);
-
-  if (!asset || error) {
-    GST_ERROR
-        ("There was an error requesting the asset with id %s and type %s (%s)",
-        asset_id, type_string, error->message);
+  if (!(asset = _action_get_asset (action,
+              ges_timeline_get_project (timeline), "asset-id"))) {
+    GST_ERROR_OBJECT (scenario, "Could not get asset");
     goto beach;
   }
 
   layer = _get_layer_by_priority (timeline, layer_priority);
-
   if (!layer) {
     GST_ERROR ("No layer with priority %d", layer_priority);
     goto beach;
-  }
-
-  if (type == GES_TYPE_URI_CLIP) {
-    duration = GST_CLOCK_TIME_NONE;
   }
 
   clip = ges_layer_add_asset (layer, asset, GST_CLOCK_TIME_NONE, 0, duration,
@@ -338,11 +387,12 @@ _add_clip (GstValidateScenario * scenario, GstValidateAction * action)
     res = TRUE;
     if (!ges_timeline_element_set_name (GES_TIMELINE_ELEMENT (clip), name)) {
       res = FALSE;
-      GST_ERROR ("couldn't set name %s on clip with id %s", name, asset_id);
+      GST_ERROR ("couldn't set name %s on clip with id %s", name,
+          gst_structure_get_string (action->structure, "id"));
     }
   } else {
     GST_ERROR ("Couldn't add clip with id %s to layer with priority %d",
-        asset_id, layer_priority);
+        gst_structure_get_string (action->structure, "id"), layer_priority);
   }
 
   gst_object_unref (layer);
@@ -478,13 +528,17 @@ ges_validate_activate (GstPipeline * pipeline, const gchar * scenario,
   };
 
   const gchar *add_clip_mandatory_fields[] = { "name", "layer-priority",
-    "asset-id", "type",
-    NULL
+    "asset-id", "type", NULL
   };
 
   const gchar *remove_clip_mandatory_fields[] = { "name",
     NULL
   };
+
+  const gchar *container_add_element_mandatory_field[] =
+      { "container-name", "asset-id", "type", NULL
+  };
+
 
   gst_validate_init ();
 
@@ -518,6 +572,9 @@ ges_validate_activate (GstPipeline * pipeline, const gchar * scenario,
       "Allows to remove a clip from a given layer", FALSE);
   gst_validate_add_action_type ("serialize-project", _serialize_project,
       serialize_project_mandatory_fields, "serializes a project", FALSE);
+  gst_validate_add_action_type ("container-add-element",
+      _add_element_to_container, container_add_element_mandatory_field,
+      "Add a GESTimelineElement to a container", FALSE);
 
   gst_validate_add_action_type ("set-child-property", _set_child_property,
       set_child_property_mandatory_fields,
