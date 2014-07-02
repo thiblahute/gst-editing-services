@@ -219,7 +219,7 @@ static void update_start_stop_duration (GnlComposition * comp);
 static gboolean
 gnl_composition_event_handler (GstPad * ghostpad, GstObject * parent,
     GstEvent * event);
-static void _relink_single_node (GnlComposition * comp, GNode * node);
+static void _relink_single_node (GnlComposition * comp, GNode * node, GstEvent *toplevel_seek);
 static gboolean update_pipeline_func (GnlComposition * comp);
 static gboolean commit_pipeline_func (GnlComposition * comp);
 static gboolean lock_child_state (GValue * item, GValue * ret,
@@ -2474,7 +2474,7 @@ _link_to_parent (GnlComposition * comp, GnlObject * newobj,
 
 static void
 _relink_children_recursively (GnlComposition * comp,
-    GnlObject * newobj, GNode * node)
+    GnlObject * newobj, GNode * node, GstEvent *toplevel_seek)
 {
   GNode *child;
   guint nbchildren = g_node_n_children (node);
@@ -2488,7 +2488,7 @@ _relink_children_recursively (GnlComposition * comp,
     g_object_set (G_OBJECT (newobj), "sinks", nbchildren, NULL);
 
   for (child = node->children; child; child = child->next)
-    _relink_single_node (comp, child);
+    _relink_single_node (comp, child, toplevel_seek);
 
   if (G_UNLIKELY (nbchildren < oper->num_sinks))
     GST_ERROR ("Not enough sinkpads to link all objects to the operation ! "
@@ -2509,11 +2509,12 @@ _relink_children_recursively (GnlComposition * comp,
  * WITH OBJECTS LOCK TAKEN
  */
 static void
-_relink_single_node (GnlComposition * comp, GNode * node)
+_relink_single_node (GnlComposition * comp, GNode * node, GstEvent *toplevel_seek)
 {
   GnlObject *newobj;
   GnlObject *newparent;
   GstPad *srcpad = NULL, *sinkpad = NULL;
+  GstEvent *translated_seek;
 
   if (G_UNLIKELY (!node))
     return;
@@ -2529,6 +2530,10 @@ _relink_single_node (GnlComposition * comp, GNode * node)
   gst_bin_add (GST_BIN (comp->priv->current_bin), GST_ELEMENT_CAST (newobj));
   gst_element_sync_state_with_parent (GST_ELEMENT_CAST (newobj));
 
+  translated_seek = gnl_object_translate_incoming_seek (newobj, toplevel_seek);
+
+  gst_element_send_event (GST_ELEMENT (newobj), translated_seek);
+
   /* link to parent if needed.  */
   if (newparent) {
     _link_to_parent (comp, newobj, newparent);
@@ -2542,7 +2547,7 @@ _relink_single_node (GnlComposition * comp, GNode * node)
 
   /* Handle children */
   if (GNL_IS_OPERATION (newobj))
-    _relink_children_recursively (comp, newobj, node);
+    _relink_children_recursively (comp, newobj, node, toplevel_seek);
 
   GST_LOG_OBJECT (comp, "done with object %s",
       GST_ELEMENT_NAME (GST_ELEMENT (newobj)));
@@ -2590,6 +2595,7 @@ _empty_bin (GstBin * bin)
 static GList *
 compare_relink_stack (GnlComposition * comp, GNode * stack, gboolean modify)
 {
+  GstEvent *toplevel_seek = get_new_seek_event (comp, TRUE, FALSE);
   GList *deactivate = NULL;
 
   gst_element_set_locked_state (comp->priv->current_bin, TRUE);
@@ -2600,7 +2606,7 @@ compare_relink_stack (GnlComposition * comp, GNode * stack, gboolean modify)
 
   _empty_bin (GST_BIN_CAST (comp->priv->current_bin));
 
-  _relink_single_node (comp, stack);
+  _relink_single_node (comp, stack, toplevel_seek);
 
   gst_element_set_locked_state (comp->priv->current_bin, FALSE);
   gst_element_sync_state_with_parent (comp->priv->current_bin);
@@ -2667,44 +2673,9 @@ beach:
   return res;
 }
 
-static inline void
-_deactivate_current_stack (GnlComposition * comp, GList * todeactivate)
-{
-  GList *tmp;
-  GstElement *element;
-  GnlCompositionPrivate *priv = comp->priv;
-
-  /* Invalidate current stack */
-  if (priv->current)
-    g_node_destroy (priv->current);
-
-  priv->current = NULL;
-
-  if (!todeactivate) {
-    GST_DEBUG_OBJECT (comp, "Nothing to deactivate");
-
-    return;
-  }
-
-  GST_DEBUG_OBJECT (comp, "De-activating objects no longer used");
-
-  /* state-lock elements no more used */
-  for (tmp = todeactivate; tmp; tmp = tmp->next) {
-    element = GST_ELEMENT_CAST (tmp->data);
-
-    gst_element_set_state (element, priv->deactivated_elements_state);
-    gst_element_set_locked_state (element, TRUE);
-  }
-
-  g_list_free (todeactivate);
-
-  GST_DEBUG_OBJECT (comp, "Finished de-activating objects no longer used");
-}
-
 static inline gboolean
 _activate_new_stack (GnlComposition * comp, gboolean forcing_flush)
 {
-  GstEvent *event;
   GstPad *pad;
   GstElement *topelement;
   GnlCompositionEntry *topentry;
@@ -2725,9 +2696,6 @@ _activate_new_stack (GnlComposition * comp, gboolean forcing_flush)
 
   priv->stackvalid = TRUE;
 
-  /* Create new seek event for newly configured timeline stack */
-  event = get_new_seek_event (comp, forcing_flush, FALSE);
-
   /* The stack is entirely ready, send seek out synchronously */
   topelement = GST_ELEMENT (priv->current->data);
   /* Get toplevel object source pad */
@@ -2737,27 +2705,7 @@ _activate_new_stack (GnlComposition * comp, gboolean forcing_flush)
   GST_ERROR_OBJECT (comp,
       "We have a valid toplevel element pad %s:%s", GST_DEBUG_PAD_NAME (pad));
 
-  /* Send seek event */
-  GST_ERROR_OBJECT (comp, "sending seek event");
-  if (gst_pad_send_event (pad, event)) {
-    /* Unconditionnaly set the ghostpad target to pad */
-    GST_LOG_OBJECT (comp,
-        "Setting the composition's ghostpad target to %s:%s",
-        GST_DEBUG_PAD_NAME (pad));
-
-    gnl_composition_ghost_pad_set_target (comp, pad, topentry);
-
-    if (topentry->probeid) {
-      /* unblock top-level pad */
-      GST_LOG_OBJECT (comp, "About to unblock top-level srcpad");
-      gst_pad_remove_probe (pad, topentry->probeid);
-      topentry->probeid = 0;
-    }
-  } else {
-    GST_WARNING_OBJECT (comp, "Could not send seek event to the newly"
-        "activated stack");
-    return FALSE;
-  }
+  gnl_composition_ghost_pad_set_target (comp, pad, topentry);
 
   GST_ERROR_OBJECT (comp, "New stack activated!");
   return TRUE;
@@ -2785,7 +2733,6 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
   gboolean startchanged, stopchanged;
 
   GNode *stack = NULL;
-  GList *todeactivate = NULL;
   gboolean samestack = FALSE;
   gboolean forcing_flush = initial;
   GstState state = GST_STATE (comp);
@@ -2819,10 +2766,6 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
   /* invalidate the stack while modifying it */
   priv->stackvalid = FALSE;
 
-  /* If stacks are different, unlink/relink objects */
-  if (!samestack)
-    todeactivate = compare_relink_stack (comp, stack, modify);
-
   if (priv->segment->rate >= 0.0) {
     startchanged = priv->segment_start != currenttime;
     stopchanged = priv->segment_stop != new_stop;
@@ -2841,7 +2784,9 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
     priv->segment_stop = currenttime;
   }
 
-  _deactivate_current_stack (comp, todeactivate);
+  /* If stacks are different, unlink/relink objects */
+  if (!samestack)
+    compare_relink_stack (comp, stack, modify);
 
   /* Unlock all elements in new stack */
   GST_DEBUG_OBJECT (comp, "Setting current stack");
@@ -2861,7 +2806,8 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
     forcing_flush = (state == GST_STATE_PLAYING) ? FALSE : TRUE;
   }
 
-  return _activate_new_stack (comp, forcing_flush);
+  _activate_new_stack (comp, forcing_flush);
+  return TRUE;
 }
 
 static gboolean
