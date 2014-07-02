@@ -494,6 +494,7 @@ ghostpad_event_function (GstPad * ghostpad, GstObject * parent,
         {
           GstPad *target;
 
+          GST_ERROR_OBJECT (object, "GOT SEEKD: %" GST_PTR_FORMAT, event);
           event = translate_incoming_seek (object, event);
           if (!(target = gst_ghost_pad_get_target (GST_GHOST_PAD (ghostpad)))) {
             priv->pending_seek = event;

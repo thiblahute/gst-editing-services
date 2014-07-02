@@ -219,7 +219,7 @@ static void update_start_stop_duration (GnlComposition * comp);
 static gboolean
 gnl_composition_event_handler (GstPad * ghostpad, GstObject * parent,
     GstEvent * event);
-static void compare_relink_single_node (GnlComposition * comp, GNode * node);
+static void _relink_single_node (GnlComposition * comp, GNode * node);
 static gboolean update_pipeline_func (GnlComposition * comp);
 static gboolean commit_pipeline_func (GnlComposition * comp);
 static gboolean lock_child_state (GValue * item, GValue * ret,
@@ -2488,7 +2488,7 @@ _relink_children_recursively (GnlComposition * comp,
     g_object_set (G_OBJECT (newobj), "sinks", nbchildren, NULL);
 
   for (child = node->children; child; child = child->next)
-    compare_relink_single_node (comp, child);
+    _relink_single_node (comp, child);
 
   if (G_UNLIKELY (nbchildren < oper->num_sinks))
     GST_ERROR ("Not enough sinkpads to link all objects to the operation ! "
@@ -2509,7 +2509,7 @@ _relink_children_recursively (GnlComposition * comp,
  * WITH OBJECTS LOCK TAKEN
  */
 static void
-compare_relink_single_node (GnlComposition * comp, GNode * node)
+_relink_single_node (GnlComposition * comp, GNode * node)
 {
   GnlObject *newobj;
   GnlObject *newparent;
@@ -2548,123 +2548,30 @@ compare_relink_single_node (GnlComposition * comp, GNode * node)
       GST_ELEMENT_NAME (GST_ELEMENT (newobj)));
 }
 
-/*
- * recursive depth-first compare stack function on old stack
- *
- * _ Add no-longer used objects to the deactivate list
- * _ unlink child-parent relations that have changed (not same parent, or not same order)
- * _ blocks available source pads
- *
- * FIXME : modify is only used for the root element.
- *    It is TRUE all the time except when the update is done from a seek
- *
- * WITH OBJECTS LOCK TAKEN
- */
-static GList *
-compare_deactivate_single_node (GnlComposition * comp, GNode * node,
-    GNode * newstack, gboolean modify)
+static gboolean
+_remove_child (GValue * item, GValue * ret G_GNUC_UNUSED, GstBin * bin)
 {
-  GNode *child;
-  GNode *newnode = NULL;        /* Same node in newstack */
-  GnlObject *oldparent;
-  GList *deactivate = NULL;
-  GnlObject *oldobj = NULL;
-  GstPad *srcpad = NULL;
-  GstPad *peerpad = NULL;
+  GstElement *child = g_value_get_object (item);
 
-  if (G_UNLIKELY (!node))
-    return NULL;
+  gst_bin_remove (bin, child);
 
-  /* The former parent GnlObject (i.e. downstream) of the given node */
-  oldparent = G_NODE_IS_ROOT (node) ? NULL : (GnlObject *) node->parent->data;
+  return TRUE;
+}
 
-  /* The former GnlObject */
-  oldobj = (GnlObject *) node->data;
+static void
+_empty_bin (GstBin * bin)
+{
+  GstIterator *children;
 
-  /* The node corresponding to oldobj in the new stack */
-  if (newstack)
-    newnode = g_node_find (newstack, G_IN_ORDER, G_TRAVERSE_ALL, oldobj);
+  children = gst_bin_iterate_elements (bin);
 
-  GST_DEBUG_OBJECT (comp, "oldobj:%s",
-      GST_ELEMENT_NAME ((GstElement *) oldobj));
-  srcpad = GNL_OBJECT_SRC (oldobj);
-
-  /* Block source pad
-   *   This makes sure that no data/event flow will come out of this element after this
-   *   point.
-   */
-  _object_block_and_drop_data (comp, oldobj);
-
-  /* 2. If we have to modify or we have a parent, flush downstream
-   *   This ensures the streaming thread going through the current object has
-   *   either stopped or is blocking against the source pad. */
-  if ((modify || oldparent) && (peerpad = gst_pad_get_peer (srcpad))) {
-    GST_LOG_OBJECT (comp, "Sending flush start/stop downstream ");
-    gst_pad_send_event (peerpad, gst_event_new_flush_start ());
-    gst_pad_send_event (peerpad, gst_event_new_flush_stop (TRUE));
-    GST_DEBUG_OBJECT (comp, "DONE Sending flush events downstream");
-    gst_object_unref (peerpad);
+  while (G_UNLIKELY (gst_iterator_fold (children,
+              (GstIteratorFoldFunction) _remove_child, NULL,
+              bin) == GST_ITERATOR_RESYNC)) {
+    gst_iterator_resync (children);
   }
 
-  /* 3. Unlink from the parent if we've changed position */
-
-  GST_LOG_OBJECT (comp,
-      "Checking if we need to unlink from downstream element");
-  if (G_UNLIKELY (!oldparent)) {
-    GST_LOG_OBJECT (comp, "Top-level object");
-    /* for top-level objects we just set the ghostpad target to NULL */
-    gnl_composition_ghost_pad_set_target (comp, NULL, NULL);
-  } else {
-    GnlObject *newparent = NULL;
-
-    GST_LOG_OBJECT (comp, "non-toplevel object");
-
-    if (newnode)
-      newparent =
-          G_NODE_IS_ROOT (newnode) ? NULL : (GnlObject *) newnode->parent->data;
-
-    if ((!newnode) || (oldparent != newparent) ||
-        (newparent &&
-            (g_node_child_index (node,
-                    oldobj) != g_node_child_index (newnode, oldobj)))) {
-      GstPad *peerpad = NULL;
-
-      GST_LOG_OBJECT (comp, "Topology changed, unlinking from downstream");
-
-      if ((peerpad = gst_pad_get_peer (srcpad))) {
-        GST_LOG_OBJECT (peerpad, "Sending flush start/stop");
-        gst_pad_send_event (peerpad, gst_event_new_flush_start ());
-        gst_pad_send_event (peerpad, gst_event_new_flush_stop (TRUE));
-        gst_pad_unlink (srcpad, peerpad);
-        gst_object_unref (peerpad);
-      }
-    } else
-      GST_LOG_OBJECT (comp, "Topology unchanged");
-  }
-
-  /* If we're dealing with an operation, call this method recursively on it */
-  if (G_UNLIKELY (GNL_IS_OPERATION (oldobj))) {
-    GST_LOG_OBJECT (comp,
-        "Object is an operation, recursively calling on children");
-    for (child = node->children; child; child = child->next) {
-      GList *newdeac =
-          compare_deactivate_single_node (comp, child, newstack, modify);
-
-      if (newdeac)
-        deactivate = g_list_concat (deactivate, newdeac);
-    }
-  }
-
-  /* If object isn't used anymore, add it to the list of objects to deactivate */
-  if (G_LIKELY (!newnode)) {
-    GST_LOG_OBJECT (comp, "Object doesn't exist in new stack");
-    deactivate = g_list_prepend (deactivate, oldobj);
-  }
-
-  GST_LOG_OBJECT (comp, "done with object %s",
-      GST_ELEMENT_NAME (GST_ELEMENT (oldobj)));
-
-  return deactivate;
+  gst_iterator_free (children);
 }
 
 /*
@@ -2686,17 +2593,14 @@ compare_relink_stack (GnlComposition * comp, GNode * stack, gboolean modify)
   GList *deactivate = NULL;
 
   gst_element_set_locked_state (comp->priv->current_bin, TRUE);
+
   GST_ERROR ("Set state return: %s",
       gst_element_state_change_return_get_name
       (gst_element_set_state (comp->priv->current_bin, GST_STATE_READY)));
 
-  /* 1. Traverse old stack to deactivate no longer used objects */
-  deactivate =
-      compare_deactivate_single_node (comp, comp->priv->current, stack, modify);
+  _empty_bin (GST_BIN_CAST (comp->priv->current_bin));
 
-
-  /* 2. Traverse new stack to do needed (re)links */
-  compare_relink_single_node (comp, stack);
+  _relink_single_node (comp, stack);
 
   gst_element_set_locked_state (comp->priv->current_bin, FALSE);
   gst_element_sync_state_with_parent (comp->priv->current_bin);
