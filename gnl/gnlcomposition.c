@@ -169,6 +169,8 @@ struct _GnlCompositionPrivate
   GstState deactivated_elements_state;
 
   gboolean external_gst_bin_add_remove; /*  When people try to call gst_bin_add/remove themselves */
+
+  GstElement *current_bin;
 };
 
 static guint _signals[LAST_SIGNAL] = { 0 };
@@ -228,6 +230,10 @@ static gboolean
 set_child_caps (GValue * item, GValue * ret G_GNUC_UNUSED, GnlObject * comp);
 static GstEvent *get_new_seek_event (GnlComposition * comp, gboolean initial,
     gboolean updatestoponly);
+static gboolean
+_gnl_composition_add_entry (GnlComposition * comp, GnlObject * object);
+static gboolean
+_gnl_composition_remove_entry (GnlComposition * comp, GnlObject * object);
 
 
 /* COMP_REAL_START: actual position to start current playback at. */
@@ -605,6 +611,8 @@ _add_remove_object_gsource (GnlComposition * comp, GnlObject * object)
 static gboolean
 remove_object_handler (GnlComposition * comp, GnlObject * object)
 {
+  g_return_val_if_fail (GNL_IS_OBJECT (object), FALSE);
+
   _add_remove_object_gsource (comp, object);
 
   return TRUE;
@@ -663,6 +671,8 @@ _add_add_object_gsource (GnlComposition * comp, GnlObject * object)
 static gboolean
 add_object_handler (GnlComposition * comp, GnlObject * object)
 {
+  g_return_val_if_fail (GNL_IS_OBJECT (object), FALSE);
+
   _add_add_object_gsource (comp, object);
 
   return TRUE;
@@ -836,6 +846,11 @@ gnl_composition_init (GnlComposition * comp)
 
   comp->priv = priv;
 
+  GST_ERROR_OBJECT (comp, "HERE");
+  priv->current_bin = gst_bin_new ("current-bin");
+  gst_bin_add (GST_BIN (comp), priv->current_bin);
+  GST_ERROR_OBJECT (comp, "There");
+
   gnl_composition_reset (comp);
 
   priv->gnl_event_pad_func = GST_PAD_EVENTFUNC (GNL_OBJECT_SRC (comp));
@@ -967,7 +982,7 @@ unblock_children (GnlComposition * comp)
 {
   GstIterator *children;
 
-  children = gst_bin_iterate_elements (GST_BIN (comp));
+  children = gst_bin_iterate_elements (GST_BIN (comp->priv->current_bin));
 
 retry:
   if (G_UNLIKELY (gst_iterator_fold (children,
@@ -1021,7 +1036,8 @@ reset_children (GnlComposition * comp)
 {
   GstIterator *children;
 
-  children = gst_bin_iterate_elements (GST_BIN (comp));
+  children = gst_bin_iterate_elements (GST_BIN (comp->priv->current_bin));
+
 retry:
   if (G_UNLIKELY (gst_iterator_fold (children,
               (GstIteratorFoldFunction) reset_child, NULL,
@@ -2110,10 +2126,20 @@ _process_pending_entry (GnlObject * object,
   GnlCompositionEntry *entry = COMP_ENTRY (comp, object);
 
   comp->priv->external_gst_bin_add_remove = FALSE;
-  if (entry)
-    gst_bin_remove (GST_BIN (comp), GST_ELEMENT (object));
-  else
-    gst_bin_add (GST_BIN (comp), GST_ELEMENT (object));
+  if (entry) {
+    GST_ERROR_OBJECT (object, "Num refs : %i", ((GObject *) object)->ref_count);
+    gst_bin_remove (GST_BIN (comp->priv->current_bin), GST_ELEMENT (object));
+
+    GST_ERROR_OBJECT (object, "Num refs : %i", ((GObject *) object)->ref_count);
+
+    _gnl_composition_remove_entry (comp, object);
+    GST_ERROR_OBJECT (object, "Num refs : %i", ((GObject *) object)->ref_count);
+  } else {
+    gst_bin_add (GST_BIN (comp->priv->current_bin), GST_ELEMENT (object));
+
+    _gnl_composition_add_entry (comp, object);
+  }
+
   comp->priv->external_gst_bin_add_remove = TRUE;
 
   return TRUE;
@@ -2230,7 +2256,7 @@ gnl_composition_change_state (GstElement * element, GstStateChange transition)
       GST_DEBUG_OBJECT (comp,
           "Setting all children to READY and locking their state");
 
-      children = gst_bin_iterate_elements (GST_BIN (comp));
+      children = gst_bin_iterate_elements (GST_BIN (comp->priv->current_bin));
 
       while (G_UNLIKELY (gst_iterator_fold (children,
                   (GstIteratorFoldFunction) lock_child_state, NULL,
@@ -2241,7 +2267,7 @@ gnl_composition_change_state (GstElement * element, GstStateChange transition)
 
       /* Set caps on all objects */
       if (G_UNLIKELY (!gst_caps_is_any (GNL_OBJECT (comp)->caps))) {
-        children = gst_bin_iterate_elements (GST_BIN (comp));
+        children = gst_bin_iterate_elements (GST_BIN (comp->priv->current_bin));
 
         while (G_UNLIKELY (gst_iterator_fold (children,
                     (GstIteratorFoldFunction) set_child_caps, NULL,
@@ -2955,24 +2981,37 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
 static gboolean
 gnl_composition_add_object (GstBin * bin, GstElement * element)
 {
-  gboolean ret;
-  GnlCompositionEntry *entry;
   GnlComposition *comp = (GnlComposition *) bin;
+
+  if (element == comp->priv->current_bin) {
+    GST_ERROR_OBJECT (comp, "Adding internal bin");
+    return GST_BIN_CLASS (parent_class)->add_element (bin, element);
+  }
+
+  g_assert_not_reached ();
+
+  return FALSE;
+}
+
+static gboolean
+_gnl_composition_add_entry (GnlComposition * comp, GnlObject * object)
+{
+  gboolean ret = TRUE;
+
+  GnlCompositionEntry *entry;
   GnlCompositionPrivate *priv = comp->priv;
 
-  /* we only accept GnlObject */
-  g_return_val_if_fail (GNL_IS_OBJECT (element), FALSE);
   g_return_val_if_fail (priv->external_gst_bin_add_remove == FALSE, FALSE);
 
-  GST_DEBUG_OBJECT (bin, "element %s", GST_OBJECT_NAME (element));
-  GST_DEBUG_OBJECT (element, "%" GST_TIME_FORMAT "--%" GST_TIME_FORMAT,
-      GST_TIME_ARGS (GNL_OBJECT_START (element)),
-      GST_TIME_ARGS (GNL_OBJECT_STOP (element)));
+  GST_DEBUG_OBJECT (comp, "element %s", GST_OBJECT_NAME (object));
+  GST_DEBUG_OBJECT (object, "%" GST_TIME_FORMAT "--%" GST_TIME_FORMAT,
+      GST_TIME_ARGS (GNL_OBJECT_START (object)),
+      GST_TIME_ARGS (GNL_OBJECT_STOP (object)));
 
-  gst_object_ref (element);
+  gst_object_ref (object);
 
-  if ((GNL_OBJECT_IS_EXPANDABLE (element)) &&
-      g_list_find (priv->expandables, element)) {
+  if ((GNL_OBJECT_IS_EXPANDABLE (object)) &&
+      g_list_find (priv->expandables, object)) {
     GST_WARNING_OBJECT (comp,
         "We already have an expandable, remove it before adding new one");
     ret = FALSE;
@@ -2980,55 +3019,52 @@ gnl_composition_add_object (GstBin * bin, GstElement * element)
     goto chiringuito;
   }
 
-  /* Call parent class ::add_element() */
-  ret = GST_BIN_CLASS (parent_class)->add_element (bin, element);
-
   gnl_object_set_commit_needed (GNL_OBJECT (comp));
 
   if (!ret) {
-    GST_WARNING_OBJECT (bin, "couldn't add element");
+    GST_WARNING_OBJECT (comp, "couldn't add object");
     goto chiringuito;
   }
 
   /* lock state of child ! */
-  GST_LOG_OBJECT (bin, "Locking state of %s", GST_ELEMENT_NAME (element));
-  gst_element_set_locked_state (element, TRUE);
+  GST_LOG_OBJECT (comp, "Locking state of %s", GST_ELEMENT_NAME (object));
+  gst_element_set_locked_state (GST_ELEMENT (object), TRUE);
 
   /* wrap new element in a GnlCompositionEntry ... */
   entry = g_slice_new0 (GnlCompositionEntry);
-  entry->object = (GnlObject *) element;
+  entry->object = (GnlObject *) object;
   entry->comp = comp;
 
-  if (GNL_OBJECT_IS_EXPANDABLE (element)) {
+  if (GNL_OBJECT_IS_EXPANDABLE (object)) {
     /* Only react on non-default objects properties */
-    g_object_set (element,
+    g_object_set (object,
         "start", (GstClockTime) 0,
         "inpoint", (GstClockTime) 0,
         "duration", (GstClockTimeDiff) GNL_OBJECT_STOP (comp), NULL);
 
-    GST_INFO_OBJECT (element, "Used as expandable, commiting now");
-    gnl_object_commit (GNL_OBJECT (element), FALSE);
+    GST_INFO_OBJECT (object, "Used as expandable, commiting now");
+    gnl_object_commit (GNL_OBJECT (object), FALSE);
   }
 
   /* ...and add it to the hash table */
-  g_hash_table_insert (priv->objects_hash, element, entry);
+  g_hash_table_insert (priv->objects_hash, object, entry);
 
   _entry_block_and_drop_data (entry);
 
   /* Set the caps of the composition */
   if (G_UNLIKELY (!gst_caps_is_any (((GnlObject *) comp)->caps)))
-    gnl_object_set_caps ((GnlObject *) element, ((GnlObject *) comp)->caps);
+    gnl_object_set_caps ((GnlObject *) object, ((GnlObject *) comp)->caps);
 
   /* Special case for default source. */
-  if (GNL_OBJECT_IS_EXPANDABLE (element)) {
+  if (GNL_OBJECT_IS_EXPANDABLE (object)) {
     /* It doesn't get added to objects_start and objects_stop. */
-    priv->expandables = g_list_prepend (priv->expandables, element);
+    priv->expandables = g_list_prepend (priv->expandables, object);
     goto beach;
   }
 
   /* add it sorted to the objects list */
   priv->objects_start = g_list_insert_sorted
-      (priv->objects_start, element, (GCompareFunc) objects_start_compare);
+      (priv->objects_start, object, (GCompareFunc) objects_start_compare);
 
   if (priv->objects_start)
     GST_LOG_OBJECT (comp,
@@ -3039,12 +3075,11 @@ gnl_composition_add_object (GstBin * bin, GstElement * element)
         GST_TIME_ARGS (GNL_OBJECT_STOP (priv->objects_start->data)));
 
   priv->objects_stop = g_list_insert_sorted
-      (priv->objects_stop, element, (GCompareFunc) objects_stop_compare);
+      (priv->objects_stop, object, (GCompareFunc) objects_stop_compare);
 
   /* Now the object is ready to be commited and then used */
 
 beach:
-  gst_object_unref (element);
   return ret;
 
 chiringuito:
@@ -3058,46 +3093,55 @@ static gboolean
 gnl_composition_remove_object (GstBin * bin, GstElement * element)
 {
   GnlComposition *comp = (GnlComposition *) bin;
-  GnlCompositionPrivate *priv = comp->priv;
+
+  if (element == comp->priv->current_bin) {
+    GST_ERROR_OBJECT (comp, "Adding internal bin");
+    return GST_BIN_CLASS (parent_class)->remove_element (bin, element);
+  }
+
+  g_assert_not_reached ();
+
+  return FALSE;
+}
+
+static gboolean
+_gnl_composition_remove_entry (GnlComposition * comp, GnlObject * object)
+{
   gboolean ret = FALSE;
   GnlCompositionEntry *entry;
+  GnlCompositionPrivate *priv = comp->priv;
 
-  GST_DEBUG_OBJECT (bin, "element %s", GST_OBJECT_NAME (element));
+  GST_ERROR_OBJECT (comp, "object %s", GST_OBJECT_NAME (object));
 
   /* we only accept GnlObject */
-  g_return_val_if_fail (GNL_IS_OBJECT (element), FALSE);
-  g_return_val_if_fail (priv->external_gst_bin_add_remove == FALSE, FALSE);
-
-  entry = COMP_ENTRY (comp, element);
+  entry = COMP_ENTRY (comp, object);
   if (entry == NULL) {
     goto out;
   }
 
-  gst_object_ref (element);
-  gst_element_set_locked_state (element, FALSE);
+  gst_element_set_locked_state (GST_ELEMENT (object), FALSE);
 
   /* handle default source */
-  if (GNL_OBJECT_IS_EXPANDABLE (element)) {
+  if (GNL_OBJECT_IS_EXPANDABLE (object)) {
     /* Find it in the list */
-    priv->expandables = g_list_remove (priv->expandables, element);
+    priv->expandables = g_list_remove (priv->expandables, object);
   } else {
     /* remove it from the objects list and resort the lists */
-    priv->objects_start = g_list_remove (priv->objects_start, element);
-    priv->objects_stop = g_list_remove (priv->objects_stop, element);
-    GST_LOG_OBJECT (element, "Removed from the objects start/stop list");
+    priv->objects_start = g_list_remove (priv->objects_start, object);
+    priv->objects_stop = g_list_remove (priv->objects_stop, object);
+    GST_LOG_OBJECT (object, "Removed from the objects start/stop list");
   }
 
-  if (priv->current && GNL_OBJECT (priv->current->data) == GNL_OBJECT (element))
+  if (priv->current && GNL_OBJECT (priv->current->data) == GNL_OBJECT (object))
     gnl_composition_reset_target_pad (comp);
 
-  g_hash_table_remove (priv->objects_hash, element);
+  g_hash_table_remove (priv->objects_hash, object);
 
-  ret = GST_BIN_CLASS (parent_class)->remove_element (bin, element);
-  GST_LOG_OBJECT (element, "Done removing from the composition, now updating");
+  GST_LOG_OBJECT (object, "Done removing from the composition, now updating");
 
   /* Make it possible to reuse the same object later */
-  gnl_object_reset (GNL_OBJECT (element));
-  gst_object_unref (element);
+  gnl_object_reset (GNL_OBJECT (object));
+  gst_object_unref (object);
 
 out:
   return ret;
