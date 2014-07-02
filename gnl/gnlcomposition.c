@@ -2133,7 +2133,6 @@ _process_pending_entry (GnlObject * object,
     GST_ERROR_OBJECT (object, "Num refs : %i", ((GObject *) object)->ref_count);
 
     _gnl_composition_remove_entry (comp, object);
-    GST_ERROR_OBJECT (object, "Num refs : %i", ((GObject *) object)->ref_count);
   } else {
     gst_bin_add (GST_BIN (comp->priv->current_bin), GST_ELEMENT (object));
 
