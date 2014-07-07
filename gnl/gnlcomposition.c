@@ -172,6 +172,12 @@ struct _GnlCompositionPrivate
 
   gboolean seeking_itself;
   gint real_eos_seqnum;
+
+  /* While we do not get a buffer on our srcpad,
+   * we are not commited */
+  gulong commited_probeid;
+  /* 0 means that we already received the right segment */
+  gint awaited_segment_seqnum;
 };
 
 static guint _signals[LAST_SIGNAL] = { 0 };
@@ -2009,6 +2015,82 @@ _process_pending_entries (GnlComposition * comp)
   g_hash_table_remove_all (priv->pending_io);
 }
 
+static gboolean
+_emit_commited_signal_func (GnlComposition * comp)
+{
+  GST_INFO_OBJECT (comp, "Emiting COMMITED now that the stack "
+      "is ready");
+
+  g_signal_emit (comp, _signals[COMMITED_SIGNAL], 0, TRUE);
+
+  return G_SOURCE_REMOVE;
+}
+
+static GstPadProbeReturn
+_add_emit_commited_and_restart_task (GnlComposition * comp)
+{
+  GST_ERROR_OBJECT (comp, "Setup commit and restart task!");
+
+  MAIN_CONTEXT_LOCK (comp);
+  g_main_context_invoke_full (comp->priv->mcontext, G_PRIORITY_HIGH,
+      (GSourceFunc) _emit_commited_signal_func, comp, NULL);
+  MAIN_CONTEXT_UNLOCK (comp);
+
+
+  comp->priv->awaited_segment_seqnum = 0;
+  comp->priv->commited_probeid = 0;
+
+  gst_task_start (comp->task);
+
+  return GST_PAD_PROBE_REMOVE;
+}
+
+static GstPadProbeReturn
+_commit_done_cb (GstPad * pad, GstPadProbeInfo * info, GnlComposition * comp)
+{
+  if (comp->priv->awaited_segment_seqnum) {
+    if (GST_IS_EVENT (info->data)) {
+      gint seqnum = gst_event_get_seqnum (info->data);
+
+      GST_DEBUG_OBJECT (comp, "Got event %s -- with seqnum: %i "
+          "(awaited_segment_seqnum: %i)",
+          GST_EVENT_TYPE_NAME (info->data), seqnum,
+          comp->priv->awaited_segment_seqnum);
+
+      if (seqnum == comp->priv->awaited_segment_seqnum) {
+
+        if (GST_EVENT_TYPE (info->data) == GST_EVENT_EOS) {
+          GST_INFO_OBJECT (comp, "Received EOS even before"
+              " receiving SEGMENT with proper seqnum -> we are done");
+
+          return _add_emit_commited_and_restart_task (comp);
+
+        } else if (GST_EVENT_TYPE (info->data) == GST_EVENT_SEGMENT) {
+
+          GST_INFO_OBJECT (comp, "Got segment event with right seqnum"
+              " now waiting for a buffer to restart playing with our "
+              " children");
+
+          comp->priv->awaited_segment_seqnum = 0;
+        }
+      }
+    }
+
+    return GST_PAD_PROBE_OK;
+  } else if (GST_IS_BUFFER (info->data)) {
+
+    GST_INFO_OBJECT (comp, "Got %" GST_PTR_FORMAT " concidering commit "
+        "as done", info->data);
+
+    return _add_emit_commited_and_restart_task (comp);
+  }
+
+  GST_INFO_OBJECT (comp, "Got %" GST_PTR_FORMAT " still waiting for a buffer",
+      info->data);
+
+  return GST_PAD_PROBE_OK;
+}
+
 static inline gboolean
 _commit_values (GnlComposition * comp)
 {
@@ -2033,6 +2115,8 @@ _commit_func (GnlComposition * comp)
   GstClockTime curpos;
   GnlCompositionPrivate *priv = comp->priv;
 
+  GST_INFO_OBJECT (comp, "Commiting state");
+
   COMP_OBJECTS_LOCK (comp);
 
   /* Get current so that it represent the duration it was
@@ -2043,7 +2127,7 @@ _commit_func (GnlComposition * comp)
 
   if (_commit_values (comp) == FALSE) {
     COMP_OBJECTS_UNLOCK (comp);
-    GST_ERROR_OBJECT (comp, "Nothing to commit, leaving");
+    GST_INFO_OBJECT (comp, "Nothing to commit, leaving");
 
     g_signal_emit (comp, _signals[COMMITED_SIGNAL], 0, FALSE);
 
@@ -2057,18 +2141,26 @@ _commit_func (GnlComposition * comp)
       (priv->objects_stop, (GCompareFunc) objects_stop_compare);
 
   if (priv->initialized == FALSE) {
+    GST_DEBUG_OBJECT (comp, "Not initialized yet, just updating values");
+
     update_start_stop_duration (comp);
+
+    g_signal_emit (comp, _signals[COMMITED_SIGNAL], 0, TRUE);
+
   } else {
     /* And update the pipeline at current position if needed */
 
     update_start_stop_duration (comp);
     update_pipeline (comp, curpos, TRUE, TRUE);
 
+    if (!priv->current) {
+      GST_INFO_OBJECT (comp, "No new stack set, we can go and keep acting on"
+          " our children");
+      g_signal_emit (comp, _signals[COMMITED_SIGNAL], 0, TRUE);
+    }
   }
   COMP_OBJECTS_UNLOCK (comp);
 
-  GST_ERROR ("emitted signal");
-  g_signal_emit (comp, _signals[COMMITED_SIGNAL], 0, TRUE);
   return G_SOURCE_REMOVE;
 }
 
@@ -2678,8 +2770,8 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
   }
 
   toplevel_seek = get_new_seek_event (comp, TRUE, updatestoponly);
+  stack_seqnum = gst_event_get_seqnum (toplevel_seek);
   if (_is_last_stack (comp)) {
-    stack_seqnum = gst_event_get_seqnum (toplevel_seek);
     g_atomic_int_set (&priv->real_eos_seqnum, stack_seqnum);
 
     GST_ERROR_OBJECT (comp, "Seeting up last stack, seqnum is: %i",
@@ -2696,11 +2788,17 @@ update_pipeline (GnlComposition * comp, GstClockTime currenttime,
   GST_DEBUG_OBJECT (comp, "Setting current stack");
   priv->current = stack;
 
-  if (!samestack && stack) {
-    GST_DEBUG_OBJECT (comp, "activating objects in new stack to %s",
-        gst_element_state_get_name (nextstate));
-    unlock_activate_stack (comp, stack, nextstate);
-    GST_DEBUG_OBJECT (comp, "Finished activating objects in new stack");
+  if (priv->current) {
+    GST_INFO_OBJECT (comp, "New stack set and ready to run, probing src pad"
+        " and stopping children thread until we are actually ready with"
+        " that new stack");
+
+    comp->priv->awaited_segment_seqnum = stack_seqnum;
+    priv->commited_probeid = gst_pad_add_probe (GNL_OBJECT_SRC (comp),
+        GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM,
+        (GstPadProbeCallback) _commit_done_cb, comp, NULL);
+
+    gst_task_pause (comp->task);
   }
 
   /* Activate stack */
