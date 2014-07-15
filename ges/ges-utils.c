@@ -161,3 +161,13 @@ ges_get_compositor_factory (void)
 
   return compositor_factory;
 }
+
+gboolean
+gnl_composition_add_object (GstElement *comp, GstElement *object)
+{
+  gboolean ret = TRUE;
+
+  g_signal_emit_by_name (comp, "add-object", object, &ret);
+
+  return ret;
+}

@@ -132,7 +132,7 @@ gap_new (GESTrack * track, GstClockTime start, GstClockTime duration)
     return NULL;
   }
 
-  if (G_UNLIKELY (gst_bin_add (GST_BIN (track->priv->composition),
+  if (G_UNLIKELY (gnl_composition_add_object (track->priv->composition,
               gnlsrc) == FALSE)) {
     GST_WARNING_OBJECT (track, "Could not add gap to the composition");
 
@@ -478,7 +478,7 @@ ges_track_constructed (GObject * object)
     g_object_set (gnlobject, "expandable", TRUE, NULL);
 
     if (self->priv->mixing) {
-      if (!gst_bin_add (GST_BIN (self->priv->composition), gnlobject)) {
+      if (!gnl_composition_add_object (self->priv->composition, gnlobject)) {
         GST_WARNING_OBJECT (self, "Could not add the mixer to our composition");
 
         return;
@@ -773,7 +773,7 @@ ges_track_set_mixing (GESTrack * track, gboolean mixing)
   if (mixing) {
     /* increase ref count to hold the object */
     gst_object_ref (track->priv->mixing_operation);
-    if (!gst_bin_add (GST_BIN (track->priv->composition),
+    if (!gnl_composition_add_object (track->priv->composition,
             track->priv->mixing_operation)) {
       GST_WARNING_OBJECT (track, "Could not add the mixer to our composition");
       return;
@@ -827,7 +827,7 @@ ges_track_add_element (GESTrack * track, GESTrackElement * object)
       GST_OBJECT_NAME (ges_track_element_get_gnlobject (object)),
       GST_OBJECT_NAME (track->priv->composition));
 
-  if (G_UNLIKELY (!gst_bin_add (GST_BIN (track->priv->composition),
+  if (G_UNLIKELY (!gnl_composition_add_object (track->priv->composition,
               ges_track_element_get_gnlobject (object)))) {
     GST_WARNING ("Couldn't add object to the GnlComposition");
     return FALSE;
