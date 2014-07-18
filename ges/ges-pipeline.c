@@ -48,8 +48,6 @@ typedef struct
   GstPad *srcpad;               /* Timeline source pad */
   GstPad *playsinkpad;
   GstPad *encodebinpad;
-  GstPad *blocked_pad;
-  gulong probe_id;
 } OutputChain;
 
 
@@ -564,14 +562,6 @@ no_pad:
   }
 }
 
-static GstPadProbeReturn
-pad_blocked (GstPad * pad, GstPadProbeInfo * info, gpointer user_data)
-{
-  /* no nothing */
-  GST_DEBUG_OBJECT (pad, "blocked callback, blocked");
-  return GST_PAD_PROBE_OK;
-}
-
 static void
 pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
 {
@@ -662,10 +652,6 @@ pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
       gst_object_unref (tmppad);
       goto error;
     }
-    chain->blocked_pad = tmppad;
-    GST_DEBUG_OBJECT (tmppad, "blocking pad");
-    chain->probe_id = gst_pad_add_probe (tmppad,
-        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, pad_blocked, NULL, NULL);
 
     GST_DEBUG ("Reconfiguring playsink");
 
@@ -771,14 +757,6 @@ pad_removed_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
     gst_object_unref (chain->playsinkpad);
   }
 
-  if (chain->blocked_pad) {
-    GST_DEBUG_OBJECT (chain->blocked_pad, "unblocking pad");
-    gst_pad_remove_probe (chain->blocked_pad, chain->probe_id);
-    gst_object_unref (chain->blocked_pad);
-    chain->blocked_pad = NULL;
-    chain->probe_id = 0;
-  }
-
   /* Unlike/remove tee */
   peer = gst_element_get_static_pad (chain->tee, "sink");
   gst_pad_unlink (pad, peer);
@@ -792,23 +770,13 @@ pad_removed_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
   GST_DEBUG ("done");
 }
 
-static void
-no_more_pads_cb (GstElement * timeline, GESPipeline * self)
+  static gboolean
+_add_pad (GValue * item, GValue * ret G_GNUC_UNUSED, GESPipeline * pipeline)
 {
-  GList *tmp;
+  GstPad *pad = g_value_get_object (item);
 
-  GST_DEBUG ("received no-more-pads");
-  for (tmp = self->priv->chains; tmp; tmp = g_list_next (tmp)) {
-    OutputChain *chain = (OutputChain *) tmp->data;
-
-    if (chain->blocked_pad) {
-      GST_DEBUG_OBJECT (chain->blocked_pad, "unblocking pad");
-      gst_pad_remove_probe (chain->blocked_pad, chain->probe_id);
-      gst_object_unref (chain->blocked_pad);
-      chain->blocked_pad = NULL;
-      chain->probe_id = 0;
-    }
-  }
+  pad_added_cb (GST_ELEMENT (pipeline->priv->timeline), pad, pipeline);
+  return TRUE;
 }
 
 /**
@@ -826,6 +794,8 @@ no_more_pads_cb (GstElement * timeline, GESPipeline * self)
 gboolean
 ges_pipeline_set_timeline (GESPipeline * pipeline, GESTimeline * timeline)
 {
+  GstIterator *srcpads;
+
   g_return_val_if_fail (GES_IS_PIPELINE (pipeline), FALSE);
   g_return_val_if_fail (GES_IS_TIMELINE (timeline), FALSE);
   g_return_val_if_fail (pipeline->priv->timeline == NULL, FALSE);
@@ -838,11 +808,19 @@ ges_pipeline_set_timeline (GESPipeline * pipeline, GESTimeline * timeline)
   }
   pipeline->priv->timeline = timeline;
 
+  srcpads = gst_element_iterate_src_pads (GST_ELEMENT (timeline));
+
+  while (G_UNLIKELY (gst_iterator_fold (srcpads,
+                    (GstIteratorFoldFunction) _add_pad, NULL,
+                     pipeline) == GST_ITERATOR_RESYNC)) {
+    gst_iterator_resync (srcpads);
+  }
+
+  gst_iterator_free (srcpads);
+
   /* Connect to pipeline */
   g_signal_connect (timeline, "pad-added", (GCallback) pad_added_cb, pipeline);
   g_signal_connect (timeline, "pad-removed", (GCallback) pad_removed_cb,
-      pipeline);
-  g_signal_connect (timeline, "no-more-pads", (GCallback) no_more_pads_cb,
       pipeline);
 
   /* FIXME Check if we should rollback if we can't sync state */
