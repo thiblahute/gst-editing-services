@@ -171,3 +171,13 @@ gnl_composition_add_object (GstElement *comp, GstElement *object)
 
   return ret;
 }
+
+gboolean
+gnl_composition_remove_object (GstElement *comp, GstElement *object)
+{
+  gboolean ret = TRUE;
+
+  g_signal_emit_by_name (comp, "remove-object", object, &ret);
+
+  return ret;
+}

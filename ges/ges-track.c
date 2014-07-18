@@ -171,7 +171,7 @@ free_gap (Gap * gap)
   GST_DEBUG_OBJECT (track, "Removed gap with start %" GST_TIME_FORMAT
       " duration %" GST_TIME_FORMAT, GST_TIME_ARGS (gap->start),
       GST_TIME_ARGS (gap->duration));
-  gst_bin_remove (GST_BIN (track->priv->composition), gap->gnlobj);
+  gnl_composition_remove_object (track->priv->composition, gap->gnlobj);
   gst_element_set_state (gap->gnlobj, GST_STATE_NULL);
   gst_object_unref (gap->gnlobj);
 
@@ -184,6 +184,7 @@ update_gaps (GESTrack * track)
   Gap *gap;
   GList *gaps;
   GSequenceIter *it;
+  gboolean ret;
 
   GESTrackElement *trackelement;
   GstClockTime start, end, duration = 0, timeline_duration;
@@ -238,6 +239,7 @@ update_gaps (GESTrack * track)
 
   /* 4- Remove old gaps */
   g_list_free_full (gaps, (GDestroyNotify) free_gap);
+  g_signal_emit_by_name (track->priv->composition, "commit", TRUE, &ret);
 }
 
 static inline void
@@ -331,7 +333,7 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
     GST_DEBUG ("Removing GnlObject '%s' from composition '%s'",
         GST_ELEMENT_NAME (gnlobject), GST_ELEMENT_NAME (priv->composition));
 
-    if (!gst_bin_remove (GST_BIN (priv->composition), gnlobject)) {
+    if (!gnl_composition_remove_object (priv->composition, gnlobject)) {
       GST_WARNING ("Failed to remove gnlobject from composition");
       return FALSE;
     }
@@ -415,6 +417,7 @@ ges_track_dispose (GObject * object)
 {
   GESTrack *track = (GESTrack *) object;
   GESTrackPrivate *priv = track->priv;
+  gboolean ret;
 
   /* Remove all TrackElements and drop our reference */
   g_hash_table_unref (priv->trackelements_iter);
@@ -422,6 +425,7 @@ ges_track_dispose (GObject * object)
       (GFunc) dispose_trackelements_foreach, track);
   g_sequence_free (priv->trackelements_by_start);
   g_list_free_full (priv->gaps, (GDestroyNotify) free_gap);
+  g_signal_emit_by_name (track->priv->composition, "commit", TRUE, &ret);
 
   if (priv->mixing_operation)
     gst_object_unref (priv->mixing_operation);
@@ -779,7 +783,7 @@ ges_track_set_mixing (GESTrack * track, gboolean mixing)
       return;
     }
   } else {
-    if (!gst_bin_remove (GST_BIN (track->priv->composition),
+    if (!gnl_composition_remove_object (track->priv->composition,
             track->priv->mixing_operation)) {
       GST_WARNING_OBJECT (track,
           "Could not remove the mixer from our composition");
