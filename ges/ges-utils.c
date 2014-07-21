@@ -165,19 +165,11 @@ ges_get_compositor_factory (void)
 gboolean
 gnl_composition_add_object (GstElement *comp, GstElement *object)
 {
-  gboolean ret = TRUE;
-
-  g_signal_emit_by_name (comp, "add-object", object, &ret);
-
-  return ret;
+  return gst_bin_add (GST_BIN (comp), object);
 }
 
 gboolean
 gnl_composition_remove_object (GstElement *comp, GstElement *object)
 {
-  gboolean ret = TRUE;
-
-  g_signal_emit_by_name (comp, "remove-object", object, &ret);
-
-  return ret;
+  return gst_bin_remove (GST_BIN (comp), object);
 }
