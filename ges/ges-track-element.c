@@ -186,7 +186,6 @@ ges_track_element_dispose (GObject * object)
 
     g_object_set_qdata (G_OBJECT (priv->gnlobject),
         GNL_OBJECT_TRACK_ELEMENT_QUARK, NULL);
-    gst_object_unref (priv->gnlobject);
     priv->gnlobject = NULL;
   }
 
@@ -680,7 +679,7 @@ ensure_gnl_object (GESTrackElement * object)
 
     GST_DEBUG_OBJECT (object, "Got a valid GnlObject, now filling it in");
 
-    object->priv->gnlobject = gst_object_ref (gnlobject);
+    object->priv->gnlobject = gnlobject;
     g_object_set_qdata (G_OBJECT (gnlobject), GNL_OBJECT_TRACK_ELEMENT_QUARK,
         object);
 
