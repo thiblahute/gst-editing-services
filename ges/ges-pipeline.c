@@ -37,6 +37,10 @@
 #include "ges-audio-track.h"
 #include "ges-video-track.h"
 
+GST_DEBUG_CATEGORY_STATIC (ges_pipeline_debug);
+#undef GST_CAT_DEFAULT
+#define GST_CAT_DEFAULT ges_pipeline_debug
+
 #define DEFAULT_TIMELINE_MODE  GES_PIPELINE_MODE_PREVIEW
 
 /* Structure corresponding to a timeline - sink link */
@@ -86,6 +90,8 @@ static OutputChain *get_output_chain_for_track (GESPipeline * self,
     GESTrack * track);
 static OutputChain *new_output_chain_for_track (GESPipeline * self,
     GESTrack * track);
+static void _link_track (GESPipeline * self, GESTrack * track);
+static void _unlink_track (GESPipeline * self, GESTrack * track);
 
 /****************************************************
  *    Video Overlay vmethods implementation         *
@@ -231,6 +237,9 @@ ges_pipeline_class_init (GESPipelineClass * klass)
   GstElementClass *element_class = GST_ELEMENT_CLASS (klass);
 
   g_type_class_add_private (klass, sizeof (GESPipelinePrivate));
+
+  GST_DEBUG_CATEGORY_INIT (ges_pipeline_debug, "gespipeline",
+      GST_DEBUG_FG_YELLOW, "ges pipeline");
 
   object_class->dispose = ges_pipeline_dispose;
   object_class->get_property = ges_pipeline_get_property;
@@ -432,6 +441,39 @@ done:
   return TRUE;
 }
 
+static void
+_link_tracks (GESPipeline * pipeline)
+{
+  GList *tmp;
+
+  GST_DEBUG_OBJECT (pipeline, "Linking tracks");
+
+  if (!pipeline->priv->timeline) {
+    GST_INFO_OBJECT (pipeline, "Not timeline set yet, doing nothing");
+
+    return;
+  }
+
+  for (tmp = pipeline->priv->timeline->tracks; tmp; tmp = tmp->next)
+    _link_track (pipeline, tmp->data);
+}
+
+static void
+_unlink_tracks (GESPipeline * pipeline)
+{
+  GList *tmp;
+
+  GST_DEBUG_OBJECT (pipeline, "Disconnecting all tracks");
+  if (!pipeline->priv->timeline) {
+    GST_INFO_OBJECT (pipeline, "Not timeline set yet, doing nothing");
+
+    return;
+  }
+
+  for (tmp = pipeline->priv->timeline->tracks; tmp; tmp = tmp->next)
+    _unlink_track (pipeline, tmp->data);
+}
+
 static GstStateChangeReturn
 ges_pipeline_change_state (GstElement * element, GstStateChange transition)
 {
@@ -451,12 +493,13 @@ ges_pipeline_change_state (GstElement * element, GstStateChange transition)
       if (self->priv->mode & (GES_PIPELINE_MODE_RENDER |
               GES_PIPELINE_MODE_SMART_RENDER))
         GST_DEBUG ("rendering => Updating pipeline caps");
+      /* Set caps on all tracks according to profile if present */
       if (!ges_pipeline_update_caps (self)) {
         GST_ERROR_OBJECT (element, "Error setting the caps for rendering");
         ret = GST_STATE_CHANGE_FAILURE;
         goto done;
       }
-      /* Set caps on all tracks according to profile if present */
+      _link_tracks (self);
       break;
     default:
       break;
@@ -465,6 +508,14 @@ ges_pipeline_change_state (GstElement * element, GstStateChange transition)
   ret =
       GST_ELEMENT_CLASS (ges_pipeline_parent_class)->change_state
       (element, transition);
+
+  switch (transition) {
+    case GST_STATE_CHANGE_PAUSED_TO_READY:
+      _unlink_tracks (self);
+      break;
+    default:
+      break;
+  }
 
 done:
   return ret;
@@ -498,25 +549,21 @@ get_output_chain_for_track (GESPipeline * self, GESTrack * track)
 /* Fetches a compatible pad on the target element which isn't already
  * linked */
 static GstPad *
-get_compatible_unlinked_pad (GstElement * element, GstPad * pad)
+get_compatible_unlinked_pad (GstElement * element, GESTrack * track)
 {
   GstPad *res = NULL;
   GstIterator *pads;
   gboolean done = FALSE;
-  GstCaps *srccaps;
+  const GstCaps *srccaps;
   GValue paditem = { 0, };
 
-  if (G_UNLIKELY (pad == NULL))
-    goto no_pad;
+  if (G_UNLIKELY (track == NULL))
+    goto no_track;
 
-  GST_DEBUG ("element : %s, pad %s:%s",
-      GST_ELEMENT_NAME (element), GST_DEBUG_PAD_NAME (pad));
+  GST_DEBUG_OBJECT (element, " track %" GST_PTR_FORMAT, track);
 
-  if (GST_PAD_DIRECTION (pad) == GST_PAD_SRC)
-    pads = gst_element_iterate_sink_pads (element);
-  else
-    pads = gst_element_iterate_src_pads (element);
-  srccaps = gst_pad_query_caps (pad, NULL);
+  pads = gst_element_iterate_sink_pads (element);
+  srccaps = ges_track_get_caps (track);
 
   GST_DEBUG ("srccaps %" GST_PTR_FORMAT, srccaps);
 
@@ -551,34 +598,33 @@ get_compatible_unlinked_pad (GstElement * element, GstPad * pad)
   }
   g_value_reset (&paditem);
   gst_iterator_free (pads);
-  gst_caps_unref (srccaps);
 
   return res;
 
-no_pad:
+no_track:
   {
-    GST_ERROR ("No pad to check against");
+    GST_ERROR ("No track to check against");
     return NULL;
   }
 }
 
 static void
-pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
+_link_track (GESPipeline * self, GESTrack * track)
 {
+  GstPad *pad;
   OutputChain *chain;
-  GESTrack *track;
   GstPad *sinkpad;
   GstCaps *caps;
+  GstPadLinkReturn lret;
   gboolean reconfigured = FALSE;
 
+  pad = ges_timeline_get_pad_for_track (self->priv->timeline, track);
   caps = gst_pad_query_caps (pad, NULL);
 
   GST_DEBUG_OBJECT (self, "new pad %s:%s , caps:%" GST_PTR_FORMAT,
       GST_DEBUG_PAD_NAME (pad), caps);
 
   gst_caps_unref (caps);
-
-  track = ges_timeline_get_track_for_pad (self->priv->timeline, pad);
 
   if (G_UNLIKELY (!track)) {
     GST_WARNING_OBJECT (self, "Couldn't find coresponding track !");
@@ -603,15 +649,23 @@ pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
   if (!(chain = get_output_chain_for_track (self, track)))
     chain = new_output_chain_for_track (self, track);
   chain->srcpad = pad;
+  gst_object_unref (pad);
 
   /* Adding tee */
-  chain->tee = gst_element_factory_make ("tee", NULL);
-  gst_bin_add (GST_BIN_CAST (self), chain->tee);
-  gst_element_sync_state_with_parent (chain->tee);
+  if (!chain->tee) {
+    chain->tee = gst_element_factory_make ("tee", NULL);
+    gst_bin_add (GST_BIN_CAST (self), chain->tee);
+    gst_element_sync_state_with_parent (chain->tee);
+  }
 
   /* Linking pad to tee */
   sinkpad = gst_element_get_static_pad (chain->tee, "sink");
-  gst_pad_link_full (pad, sinkpad, GST_PAD_LINK_CHECK_NOTHING);
+  lret = gst_pad_link (pad, sinkpad);
+  if (lret != GST_PAD_LINK_OK) {
+    GST_ERROR_OBJECT (self, "Could not link the tee (%i)", lret);
+    goto error;
+  }
+
   gst_object_unref (sinkpad);
 
   /* Connect playsink */
@@ -648,7 +702,7 @@ pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
     tmppad = gst_element_get_request_pad (chain->tee, "src_%u");
     if (G_UNLIKELY (gst_pad_link_full (tmppad, sinkpad,
                 GST_PAD_LINK_CHECK_NOTHING) != GST_PAD_LINK_OK)) {
-      GST_ERROR_OBJECT (self, "Couldn't link track pad to playsink");
+      GST_ERROR_OBJECT (self, "Couldn't link track pad to encodebin");
       gst_object_unref (tmppad);
       goto error;
     }
@@ -671,7 +725,7 @@ pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
 
     if (!chain->encodebinpad) {
       /* Check for unused static pads */
-      sinkpad = get_compatible_unlinked_pad (self->priv->encodebin, pad);
+      sinkpad = get_compatible_unlinked_pad (self->priv->encodebin, track);
 
       if (sinkpad == NULL) {
         GstCaps *caps = gst_pad_query_caps (pad, NULL);
@@ -690,10 +744,9 @@ pad_added_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
     }
 
     tmppad = gst_element_get_request_pad (chain->tee, "src_%u");
-    if (G_UNLIKELY (gst_pad_link_full (tmppad,
-                chain->encodebinpad,
+    if (G_UNLIKELY (gst_pad_link_full (tmppad, chain->encodebinpad,
                 GST_PAD_LINK_CHECK_NOTHING) != GST_PAD_LINK_OK)) {
-      GST_WARNING_OBJECT (self, "Couldn't link track pad to playsink");
+      GST_ERROR_OBJECT (self, "Couldn't link track pad to encodebin");
       goto error;
     }
     gst_object_unref (tmppad);
@@ -719,25 +772,19 @@ error:
 }
 
 static void
-pad_removed_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
+_unlink_track (GESPipeline * self, GESTrack * track)
 {
   OutputChain *chain;
-  GESTrack *track;
-  GstPad *peer;
+  GstPad *pad, *peer;
 
-  GST_DEBUG_OBJECT (self, "pad removed %s:%s", GST_DEBUG_PAD_NAME (pad));
-
-  if (G_UNLIKELY (!(track =
-              ges_timeline_get_track_for_pad (self->priv->timeline, pad)))) {
-    GST_WARNING_OBJECT (self, "Couldn't find coresponding track !");
-    return;
-  }
+  GST_DEBUG_OBJECT (self, "Unlinking removed %" GST_PTR_FORMAT, track);
 
   if (G_UNLIKELY (!(chain = get_output_chain_for_track (self, track)))) {
-    GST_DEBUG_OBJECT (self, "Pad wasn't used");
+    GST_DEBUG_OBJECT (self, "Track wasn't used");
     return;
   }
 
+  pad = ges_timeline_get_pad_for_track (self->priv->timeline, track);
   /* Unlink encodebin */
   if (chain->encodebinpad) {
     peer = gst_pad_get_peer (chain->encodebinpad);
@@ -766,17 +813,9 @@ pad_removed_cb (GstElement * timeline, GstPad * pad, GESPipeline * self)
 
   self->priv->chains = g_list_remove (self->priv->chains, chain);
   g_free (chain);
+  gst_object_unref (pad);
 
   GST_DEBUG ("done");
-}
-
-  static gboolean
-_add_pad (GValue * item, GValue * ret G_GNUC_UNUSED, GESPipeline * pipeline)
-{
-  GstPad *pad = g_value_get_object (item);
-
-  pad_added_cb (GST_ELEMENT (pipeline->priv->timeline), pad, pipeline);
-  return TRUE;
 }
 
 /**
@@ -794,7 +833,6 @@ _add_pad (GValue * item, GValue * ret G_GNUC_UNUSED, GESPipeline * pipeline)
 gboolean
 ges_pipeline_set_timeline (GESPipeline * pipeline, GESTimeline * timeline)
 {
-  GstIterator *srcpads;
 
   g_return_val_if_fail (GES_IS_PIPELINE (pipeline), FALSE);
   g_return_val_if_fail (GES_IS_TIMELINE (timeline), FALSE);
@@ -807,21 +845,6 @@ ges_pipeline_set_timeline (GESPipeline * pipeline, GESTimeline * timeline)
     return FALSE;
   }
   pipeline->priv->timeline = timeline;
-
-  srcpads = gst_element_iterate_src_pads (GST_ELEMENT (timeline));
-
-  while (G_UNLIKELY (gst_iterator_fold (srcpads,
-                    (GstIteratorFoldFunction) _add_pad, NULL,
-                     pipeline) == GST_ITERATOR_RESYNC)) {
-    gst_iterator_resync (srcpads);
-  }
-
-  gst_iterator_free (srcpads);
-
-  /* Connect to pipeline */
-  g_signal_connect (timeline, "pad-added", (GCallback) pad_added_cb, pipeline);
-  g_signal_connect (timeline, "pad-removed", (GCallback) pad_removed_cb,
-      pipeline);
 
   /* FIXME Check if we should rollback if we can't sync state */
   gst_element_sync_state_with_parent (GST_ELEMENT (timeline));
