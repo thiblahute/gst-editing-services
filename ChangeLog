@@ -1836,7 +1836,7 @@
 2013-05-16 03:27:20 +0200  Mathieu Duponchelle <mathieu.duponchelle@epitech.eu>
 
 	* ges/ges-uri-source.c:
-	  ges-uri-source: don't use gnlurisource but a custom bin.
+	  ges-uri-source: don't use nleurisource but a custom bin.
 	  + This bin is a uridecodebin when GES_TRACK_TYPE_VIDEO
 	  + This bin contains a uridecodebin and a volume when GES_TRACK_TYPE_AUDIO
 
@@ -2234,7 +2234,7 @@
 2013-04-24 03:50:40 +0200  Mathieu Duponchelle <mathieu.duponchelle@epitech.eu>
 
 	* ges/ges-video-transition.c:
-	  replace query_caps with get_current_caps. don't check for unused gnlobject.
+	  replace query_caps with get_current_caps. don't check for unused nleobject.
 
 2013-04-23 20:04:04 -0300  Thibault Saunier <thibault.saunier@collabora.com>
 
@@ -5652,9 +5652,9 @@
 
 	* ges/ges-track-object.c:
 	* ges/ges-track.c:
-	  track-object: Keep a reference to our gnlobject
+	  track-object: Keep a reference to our nleobject
 	  Avoid refering to an object that doesn't exists and segfault in some cases.
-	  We do not need to increase the reference to the gnlobj when the trackobject
+	  We do not need to increase the reference to the nleobj when the trackobject
 	  is removed from a track because the TrackObject as its own reference and will
 	  handle the disposal gracefully.
 	  Add some guard around related APIs
@@ -6020,7 +6020,7 @@
 
 	* ges/ges-track-object.c:
 	* ges/ges-track.c:
-	  ges-track-object: Make possible to add a track already containing a gnlobject to a track
+	  ges-track-object: Make possible to add a track already containing a nleobject to a track
 
 2012-04-23 14:40:26 -0300  Thiago Santos <thiago.sousa.santos@collabora.com>
 
@@ -6254,9 +6254,9 @@
 2012-03-28 02:53:50 +0300  Volodymyr Rudyi <vladimir.rudoy@gmail.com>
 
 	* ges/ges-track.c:
-	  ges-track: Set gnlobject state to NULL before disposing it
+	  ges-track: Set nleobject state to NULL before disposing it
 	  Work around a deadlock if setting state to NULL right before removing the
-	  gnlobject from the composition.
+	  nleobject from the composition.
 	  https://bugzilla.gnome.org/show_bug.cgi?id=672751
 
 2012-01-27 17:09:08 +0100  Thibault Saunier <thibault.saunier@collabora.com>
@@ -6298,9 +6298,9 @@
 2012-03-28 02:53:50 +0300  Volodymyr Rudyi <vladimir.rudoy@gmail.com>
 
 	* ges/ges-track.c:
-	  ges-track: Set gnlobject state to NULL before disposing it
+	  ges-track: Set nleobject state to NULL before disposing it
 	  Work around a deadlock if setting state to NULL right before removing the
-	  gnlobject from the composition.
+	  nleobject from the composition.
 	  https://bugzilla.gnome.org/show_bug.cgi?id=672751
 
 2012-03-26 12:43:30 +0200  Wim Taymans <wim.taymans@collabora.co.uk>
@@ -6795,7 +6795,7 @@
 2011-10-20 16:16:30 +0200  Thibault Saunier <thibault.saunier@collabora.com>
 
 	* ges/ges-track.c:
-	  ges: Add a gnl background object  to tracks
+	  ges: Add a nle background object  to tracks
 	  This is in order to support gaps in the timeline.
 	  This is not the proper solution, we should make sure to fill gaps properly,
 	  but for the time being, it makes the trick
@@ -6804,7 +6804,7 @@
 
 	* ges/ges-simple-timeline-layer.c:
 	  ges: Make sure not to set transition start to negative
-	  gnlobject.start is a guint64, we can not set it to a negative value
+	  nleobject.start is a guint64, we can not set it to a negative value
 
 2011-09-14 14:58:01 +0200  Mathieu Duponchelle <seeed@laposte.net>
 
@@ -9397,9 +9397,9 @@
 	* ges/ges-track-video-test-source.c:
 	* ges/ges-track-video-transition.c:
 	  GESTrackObject: Add create_element vmethod
-	  API: GESTrackObjectClass::gnlobject_factorytype
+	  API: GESTrackObjectClass::nleobject_factorytype
 	  API: GESTrackObjectClass::create_element
-	  Most track objects are only specific by the contents of the gnlobject,
+	  Most track objects are only specific by the contents of the nleobject,
 	  therefore move the 'create_element' vmethod which was already present
 	  in some subclasses to the top-level class.
 	  Also make the code more robust
@@ -9434,7 +9434,7 @@
 	* tests/check/ges/simplelayer.c:
 	* tests/check/ges/timelineobject.c:
 	  tests: Make sure gst_bin_add succeeds
-	  And detect when we're trying to add contents to a gnlsource which
+	  And detect when we're trying to add contents to a nlesource which
 	  already has something
 
 2010-12-09 17:09:11 +0100  Edward Hervey <edward.hervey@collabora.co.uk>
@@ -10857,7 +10857,7 @@
 	* docs/libs/ges-sections.txt:
 	* ges/ges-track-object.c:
 	* ges/ges-track-object.h:
-	  distinguish between base_priority, priority_offset, and gnl_priority
+	  distinguish between base_priority, priority_offset, and nle_priority
 
 2010-07-07 17:07:33 +0200  Brandon Lewis <brandon@collabora.co.uk>
 
@@ -12660,7 +12660,7 @@
 2010-05-28 00:12:45 +0200  Brandon Lewis <brandon.lewis@collabora.co.uk>
 
 	* ges/ges-track-transition.c:
-	  ges/ges-track-transition.c: give gnloperations a unique name
+	  ges/ges-track-transition.c: give nleoperations a unique name
 
 2010-05-28 00:11:51 +0200  Brandon Lewis <brandon.lewis@collabora.co.uk>
 
@@ -12754,7 +12754,7 @@
 2010-05-25 19:07:21 +0200  Brandon Lewis <brandon.lewis@collabora.co.uk>
 
 	* ges/ges-track-transition.c:
-	  ges-track-transition.c: set interpolation control points properly from gnlobject properties
+	  ges-track-transition.c: set interpolation control points properly from nleobject properties
 
 2010-05-25 19:06:10 +0200  Brandon Lewis <brandon.lewis@collabora.co.uk>
 
@@ -13153,7 +13153,7 @@
 	  GESTimelinePipeline: Limit encodebin buffering to 1 buffer
 	  We don't need to queue more than that since we only need thread decoupling
 	  and the various streams going into encodebin are guaranteed to come
-	  from different streaming threads (since they're separate gnlcomposition).
+	  from different streaming threads (since they're separate nlecomposition).
 
 2010-05-06 19:57:25 +0200  Edward Hervey <edward.hervey@collabora.co.uk>
 
@@ -13632,7 +13632,7 @@
 2009-09-30 16:43:12 +0200  Edward Hervey <edward.hervey@collabora.co.uk>
 
 	* ges/ges-track-object.c:
-	  GESTrackObject: Listen to property change from gnlobject
+	  GESTrackObject: Listen to property change from nleobject
 	  TODO: add/emit the 'changed' signal
 
 2009-09-30 16:42:31 +0200  Edward Hervey <edward.hervey@collabora.co.uk>

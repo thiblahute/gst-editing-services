@@ -66,7 +66,7 @@ GST_START_TEST (test_object_properties)
   assert_equals_uint64 (_INPOINT (trackelement), 12);
 
   /* And let's also check that it propagated correctly to GNonLin */
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 42, 51, 12,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 42, 51, 12,
       51, MIN_GNL_PRIO, TRUE);
 
   /* Change more properties, see if they propagate */
@@ -81,7 +81,7 @@ GST_START_TEST (test_object_properties)
 
   /* And let's also check that it propagated correctly to GNonLin */
   ges_timeline_commit (timeline);
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 420, 510,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 420, 510,
       120, 510, MIN_GNL_PRIO + 0, TRUE);
 
 
@@ -91,7 +91,7 @@ GST_START_TEST (test_object_properties)
   ges_timeline_commit (timeline);
   assert_equals_uint64 (_START (clip), 400);
   assert_equals_uint64 (_START (trackelement), 400);
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 400, 510,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 400, 510,
       120, 510, MIN_GNL_PRIO + 0, TRUE);
 
   ges_container_remove (GES_CONTAINER (clip),
@@ -145,7 +145,7 @@ GST_START_TEST (test_split_object)
   assert_equals_uint64 (_INPOINT (trackelement), 12);
 
   /* And let's also check that it propagated correctly to GNonLin */
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 42, 50, 12,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 42, 50, 12,
       50, MIN_GNL_PRIO, TRUE);
 
   splitclip = ges_clip_split (clip, 67);

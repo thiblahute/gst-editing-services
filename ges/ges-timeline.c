@@ -331,7 +331,7 @@ ges_timeline_dispose (GObject * object)
 
   /* FIXME: it should be possible to remove tracks before removing
    * layers, but at the moment this creates a problem because the track
-   * objects aren't notified that their gnlobjects have been destroyed.
+   * objects aren't notified that their nleobjects have been destroyed.
    */
 
   while (tl->tracks)

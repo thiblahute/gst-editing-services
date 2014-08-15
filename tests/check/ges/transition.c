@@ -109,7 +109,7 @@ GST_START_TEST (test_transition_properties)
   assert_equals_uint64 (_INPOINT (trackelement), 12);
 
   /* And let's also check that it propagated correctly to GNonLin */
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 42, 51, 12,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 42, 51, 12,
       51, MIN_GNL_PRIO, TRUE);
 
   /* Change more properties, see if they propagate */
@@ -124,7 +124,7 @@ GST_START_TEST (test_transition_properties)
   assert_equals_uint64 (_INPOINT (trackelement), 120);
 
   /* And let's also check that it propagated correctly to GNonLin */
-  gnl_object_check (ges_track_element_get_gnlobject (trackelement), 420, 510,
+  nle_object_check (ges_track_element_get_nleobject (trackelement), 420, 510,
       120, 510, MIN_GNL_PRIO + 0, TRUE);
 
   /* test changing vtype */
