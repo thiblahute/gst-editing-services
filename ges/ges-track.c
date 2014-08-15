@@ -331,6 +331,8 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
       GST_WARNING ("Failed to remove nleobject from composition");
       return FALSE;
     }
+
+    gst_element_set_state (nleobject, GST_STATE_NULL);
   }
 
   g_signal_handlers_disconnect_by_func (object, sort_track_elements_cb, NULL);
@@ -340,6 +342,8 @@ remove_object_internal (GESTrack * track, GESTrackElement * object)
 
   g_signal_emit (track, ges_track_signals[TRACK_ELEMENT_REMOVED], 0,
       GES_TRACK_ELEMENT (object));
+
+  gst_object_unref (object);
 
   return TRUE;
 }
