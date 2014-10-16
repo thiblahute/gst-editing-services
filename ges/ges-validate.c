@@ -22,7 +22,6 @@
 #include "config.h"
 #endif
 
-#include "ges-validate.h"
 #include <ges/ges.h>
 
 #ifdef HAVE_GST_VALIDATE
@@ -801,7 +800,7 @@ done:
   return ret;
 }
 
-void
+gboolean
 ges_validate_register_action_types (void)
 {
   gst_validate_init ();
@@ -1214,5 +1213,13 @@ ges_validate_register_action_types (void)
        "Commit the timeline.", FALSE);
 
   /*  *INDENT-ON* */
+
+  return TRUE;
+}
+#else
+gboolean
+ges_validate_register_action_types (void)
+{
+  return FALSE;
 }
 #endif
