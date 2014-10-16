@@ -89,6 +89,8 @@ gboolean ges_init    (void);
 void     ges_version (guint * major, guint * minor, guint * micro,
                       guint * nano);
 
+void ges_validate_register_action_types (void);
+
 G_END_DECLS
 
 #endif /* __GES_H__ */
