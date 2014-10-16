@@ -819,7 +819,7 @@ ges_validate_register_action_types (void)
   gst_validate_init ();
 
   /*  *INDENT-OFF* */
-  gst_validate_add_action_type ("edit-container", "ges", _edit_container,
+  gst_validate_register_action_type ("edit-container", "ges", _edit_container,
       (GstValidateActionParameter [])  {
         {
          .name = "container-name",
@@ -867,7 +867,7 @@ ges_validate_register_action_types (void)
        "be commited, and flushed so that the edition is taken into account",
        FALSE);
 
-  gst_validate_add_action_type ("add-asset", "ges", _add_asset,
+  gst_validate_register_action_type ("add-asset", "ges", _add_asset,
       (GstValidateActionParameter [])  {
         {
           .name = "id",
@@ -885,7 +885,7 @@ ges_validate_register_action_types (void)
       },
       "Allows to add an asset to the current project", FALSE);
 
-  gst_validate_add_action_type ("remove-asset", "ges", _remove_asset,
+  gst_validate_register_action_type ("remove-asset", "ges", _remove_asset,
       (GstValidateActionParameter [])  {
         {
           .name = "id",
@@ -903,7 +903,7 @@ ges_validate_register_action_types (void)
       },
       "Allows to remove an asset from the current project", FALSE);
 
-  gst_validate_add_action_type ("add-layer", "ges", _add_layer,
+  gst_validate_register_action_type ("add-layer", "ges", _add_layer,
       (GstValidateActionParameter [])  {
         {
           .name = "priority",
@@ -915,7 +915,7 @@ ges_validate_register_action_types (void)
       },
       "Allows to add a layer to the current timeline", FALSE);
 
-  gst_validate_add_action_type ("remove-layer", "ges", _remove_layer,
+  gst_validate_register_action_type ("remove-layer", "ges", _remove_layer,
       (GstValidateActionParameter [])  {
         {
           .name = "priority",
@@ -934,7 +934,7 @@ ges_validate_register_action_types (void)
       },
       "Allows to remove a layer from the current timeline", FALSE);
 
-  gst_validate_add_action_type ("add-clip", "ges", _add_clip,
+  gst_validate_register_action_type ("add-clip", "ges", _add_clip,
       (GstValidateActionParameter []) {
         {
           .name = "name",
@@ -981,7 +981,7 @@ ges_validate_register_action_types (void)
         {NULL}
       }, "Allows to add a clip to a given layer", FALSE);
 
-  gst_validate_add_action_type ("remove-clip", "ges", _remove_clip,
+  gst_validate_register_action_type ("remove-clip", "ges", _remove_clip,
       (GstValidateActionParameter []) {
         {
           .name = "name",
@@ -992,7 +992,7 @@ ges_validate_register_action_types (void)
         {NULL}
       }, "Allows to remove a clip from a given layer", FALSE);
 
-  gst_validate_add_action_type ("serialize-project", "ges", _serialize_project,
+  gst_validate_register_action_type ("serialize-project", "ges", _serialize_project,
       (GstValidateActionParameter []) {
         {
           .name = "uri",
@@ -1003,7 +1003,7 @@ ges_validate_register_action_types (void)
         {NULL}
       }, "serializes a project", FALSE);
 
-  gst_validate_add_action_type ("set-child-property", "ges", _set_child_property,
+  gst_validate_register_action_type ("set-child-property", "ges", _set_child_property,
       (GstValidateActionParameter []) {
         {
           .name = "element-name",
