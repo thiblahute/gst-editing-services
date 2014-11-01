@@ -1038,7 +1038,6 @@ main (int argc, gchar ** argv)
 #endif
 
   if (!load_path) {
-    GST_ERROR ("===> BOOM");
     if (needs_set_state && gst_element_set_state (GST_ELEMENT (pipeline),
             GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE) {
       g_error ("Failed to start the pipeline\n");

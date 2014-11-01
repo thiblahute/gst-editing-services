@@ -1157,7 +1157,16 @@ _save_group (GESXmlFormatter * self, GString * str, GList ** seen_groups,
     GESGroup * group)
 {
   GList *tmp;
+  gboolean temporary;
   gchar *properties;
+
+  g_object_get (group, "temporary", &temporary, NULL);
+  if (temporary) {
+
+    GST_DEBUG_OBJECT (group, "Is teporary");
+
+    return;
+  }
 
   if (g_list_find (*seen_groups, group)) {
     GST_DEBUG_OBJECT (group, "Already serialized");

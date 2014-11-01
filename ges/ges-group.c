@@ -51,6 +51,7 @@ struct _GESGroupPrivate
   /* This is used while were are setting ourselve a proper timing value,
    * in this case the value should always be kept */
   gboolean setting_value;
+  gboolean temporary;
 };
 
 enum
@@ -61,6 +62,7 @@ enum
   PROP_DURATION,
   PROP_MAX_DURATION,
   PROP_PRIORITY,
+  PROP_TEMPORARY,
   PROP_LAST
 };
 
@@ -534,6 +536,9 @@ ges_group_get_property (GObject * object, guint property_id,
     case PROP_PRIORITY:
       g_value_set_uint (value, self->priority);
       break;
+    case PROP_TEMPORARY:
+      g_value_set_boolean (value, GES_GROUP (self)->priv->temporary);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (self, property_id, pspec);
   }
@@ -560,6 +565,9 @@ ges_group_set_property (GObject * object, guint property_id,
       break;
     case PROP_MAX_DURATION:
       ges_timeline_element_set_max_duration (self, g_value_get_uint64 (value));
+      break;
+    case PROP_TEMPORARY:
+      GES_GROUP (self)->priv->temporary = g_value_get_boolean (value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (self, property_id, pspec);
@@ -630,12 +638,23 @@ ges_group_class_init (GESGroupClass * klass)
       G_PARAM_READWRITE | G_PARAM_CONSTRUCT | GES_PARAM_NO_SERIALIZATION);
 
   /**
-   * GESTGroup:priority:
+   * GESGroup:priority:
    *
    * The priority of the object.
    */
   properties[PROP_PRIORITY] = g_param_spec_uint ("priority", "Priority",
       "The priority of the object", 0, G_MAXUINT, 0,
+      G_PARAM_READWRITE | GES_PARAM_NO_SERIALIZATION);
+
+  /**
+   * GESGroup:temporary:
+   *
+   * Marks the group as temporary, so it is just use to do manipulations in the timeline,
+   * but the group will not be serialized
+   */
+  properties[PROP_TEMPORARY] = g_param_spec_boolean ("temporary", "Temporary",
+      " Marks the group as temporary, so it is just use to do manipulations in the timeline,"
+      " but the group will not be serialized", FALSE,
       G_PARAM_READWRITE | GES_PARAM_NO_SERIALIZATION);
 
   g_object_class_install_properties (object_class, PROP_LAST, properties);
