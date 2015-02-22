@@ -714,7 +714,7 @@ main (int argc, gchar ** argv)
   static gboolean verbose = FALSE;
   gchar *load_path = NULL;
   gchar *videosink = NULL, *audiosink = NULL;
-  gboolean inspect_action_type = FALSE;
+  gboolean inspect_action_type = FALSE, list_scenarios = FALSE;
   gchar *encoding_profile = NULL;
 
   GOptionEntry options[] = {
@@ -759,6 +759,8 @@ main (int argc, gchar ** argv)
           &_add_media_path,
         "Same as above, but recursing into the folder"},
 #ifdef HAVE_GST_VALIDATE
+    {"list-scenarios", 0, 0, G_OPTION_ARG_NONE, &list_scenarios,
+        "List the avalaible scenarios that can be run", NULL},
     {"inspect-action-type", 'y', 0, G_OPTION_ARG_NONE, &inspect_action_type,
           "Inspect the avalaible action types with which to write scenarios"
           " if no parameter passed, it will list all avalaible action types"
@@ -847,7 +849,13 @@ main (int argc, gchar ** argv)
     return ges_validate_print_action_types ((const gchar **) argv + 1,
         argc - 1);
 
-  if (((!load_path && !scenario && (argc < 4)))) {
+  if (list_scenarios) {
+    if (ges_validate_list_scenarios (argv + 1, argc - 1))
+      return 1;
+    return 0;
+  }
+
+  if (((!load_path && !scenario && (argc < 1)))) {
     g_printf ("%s", g_option_context_get_help (ctx, TRUE, NULL));
     g_option_context_free (ctx);
     exit (1);

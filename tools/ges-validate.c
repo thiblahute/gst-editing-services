@@ -128,6 +128,17 @@ ges_validate_print_action_types (const gchar ** types, gint num_types)
   return 0;
 }
 
+gint
+ges_validate_list_scenarios (gchar ** scenarios, gint num_scenarios)
+{
+  if (!gst_validate_list_scenarios (scenarios, num_scenarios, NULL)) {
+    GST_ERROR ("Could not list action types");
+    return 1;
+  }
+
+  return 0;
+}
+
 #else
 static gboolean
 _print_position (GstElement * pipeline)
