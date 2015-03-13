@@ -131,14 +131,14 @@ Generic options
 COMMANDS
 --------
 
-clip::
++clip::
 	Add a clip to the timeline. See ges-launch-1.0 help clip for more information.
 
-transition::
++transition::
 	Add a transition to the timeline. See ges-launch-1.0 help clip for more information.
 	Note that transitions are automatically added between overlapping clips.
 
-effect::
++effect::
 	Add an effect to an element or to the timeline. See ges-launch-1.0 help effect
 	for more information.
 

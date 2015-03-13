@@ -8,7 +8,7 @@ ges-launch-1.0-effect - Adds an effect to a clip.
 SYNOPSIS
 --------
 [verse]
-'ges-launch-1.0 effect' <bin-description>
+'ges-launch-1.0 +effect' <bin-description>
 
 DESCRIPTION
 -----------
@@ -37,7 +37,7 @@ Property names can be looked up with gst-inspect my_element.
 EXAMPLES
 --------
 
-`ges-launch-1.0 clip /path/to/media effect "agingtv"`::
+`ges-launch-1.0 +clip /path/to/media +effect "agingtv"`::
 	This will apply the agingtv effect to "media" and play it back.
 
 include::authors.txt[]

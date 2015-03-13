@@ -8,7 +8,7 @@ ges-launch-1.0-clip - Add a clip to the timeline
 SYNOPSIS
 --------
 [verse]
-'ges-launch-1.0 clip' 	  <path|uri> [i=<inpoint>|inpoint=<inpoint>]
+'ges-launch-1.0 +clip' 	  <path|uri> [i=<inpoint>|inpoint=<inpoint>]
 			[d=<duration>|duration=<duration>]
 			[s=<start>|start=<start>] [l=<layer>|layer=<layer>]
 
@@ -111,25 +111,25 @@ mute::
 EXAMPLES
 --------
 
-`ges-launch-1.0 clip /path/to/media`::
+`ges-launch-1.0 +clip /path/to/media`::
 	This will simply play the sample from its beginning to its end.
 
-`ges-launch-1.0 clip /path/to/media inpoint=4.0`::
+`ges-launch-1.0 +clip /path/to/media inpoint=4.0`::
 	Assuming "media" is a 10 second long media sample, this will
 	play the sample from the 4th second to the 10th, resulting in a
 	6-seconds long playback.
 
-`ges-launch-1.0 clip /path/to/media inpoint=4.0 duration=2.0 start=4.0`::
+`ges-launch-1.0 +clip /path/to/media inpoint=4.0 duration=2.0 start=4.0`::
 	Assuming "media" is an audio video sample longer than 6 seconds, this
 	will play a black frame and silence for 4 seconds, then the sample
 	from its 4th second to its sixth second, resulting in a 6-seconds
 	long playback.
 
-`ges-launch-1.0 --track-types=audio clip /path/to/media`::
+`ges-launch-1.0 --track-types=audio +clip /path/to/media`::
 	Assuming "media" is an audio video sample, this will only play the audio
 	of the sample in its entirety.
 
-`ges-launch-1.0 clip /path/to/media1 layer=1 set-alpha 0.9 clip /path/to/media2 layer=0`::
+`ges-launch-1.0 +clip /path/to/media1 layer=1 set-alpha 0.9 +clip /path/to/media2 layer=0`::
 	Assume media1 and media2 both contain audio and video and last for 10 seconds.
 	This will first add media1 in a new layer of "priority" 1, thus implicitly creating
 	a layer of "priority" 0, the start of the clip will be 0 as no clip had been added
