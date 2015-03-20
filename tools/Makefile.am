@@ -7,6 +7,7 @@ noinst_HEADERS = ges-validate.h
 
 ges_launch_@GST_API_VERSION@_SOURCES = ges-validate.c ges-launch.c
 
+
 Android.mk: Makefile.am $(BUILT_SOURCES)
 	androgenizer \
 	-:PROJECT ges_launch -:EXECUTABLE ges-launch \

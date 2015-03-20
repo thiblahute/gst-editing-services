@@ -35,7 +35,6 @@
 #include <glib-unix.h>
 #endif
 
-
 /* GLOBAL VARIABLE */
 static guint repeat = 0;
 static gboolean mute = FALSE;
@@ -133,6 +132,56 @@ error_loading_asset_cb (GESProject * project, GError * error,
   g_main_loop_quit (mainloop);
 }
 
+static gboolean
+_timeline_set_user_options (GESTimeline * timeline, const gchar * load_path)
+{
+  GList *tmp;
+  GESTrack *tracka, *trackv;
+  gboolean has_audio = FALSE, has_video = FALSE;
+
+retry:
+  for (tmp = timeline->tracks; tmp; tmp = tmp->next) {
+
+    if (GES_TRACK (tmp->data)->type == GES_TRACK_TYPE_VIDEO)
+      has_video = TRUE;
+    else if (GES_TRACK (tmp->data)->type == GES_TRACK_TYPE_AUDIO)
+      has_audio = TRUE;
+
+    if (disable_mixing) {
+      GST_ERROR_OBJECT (tmp->data, "DISABLE MIXING");
+      ges_track_set_mixing (tmp->data, FALSE);
+    }
+
+    if (!(GES_TRACK (tmp->data)->type & track_types)) {
+      ges_timeline_remove_track (timeline, tmp->data);
+      goto retry;
+    }
+  }
+
+  if (scenario && !load_path) {
+    if (!has_video && track_types & GES_TRACK_TYPE_VIDEO) {
+      trackv = GES_TRACK (ges_video_track_new ());
+
+      if (disable_mixing)
+        ges_track_set_mixing (trackv, FALSE);
+
+      if (!(ges_timeline_add_track (timeline, trackv)))
+        return FALSE;
+    }
+
+    if (!has_audio && track_types & GES_TRACK_TYPE_AUDIO) {
+      tracka = GES_TRACK (ges_audio_track_new ());
+      if (disable_mixing)
+        ges_track_set_mixing (tracka, FALSE);
+
+      if (!(ges_timeline_add_track (timeline, tracka)))
+        return FALSE;
+    }
+  }
+
+  return TRUE;
+}
+
 static void
 project_loaded_cb (GESProject * project, GESTimeline * timeline)
 {
@@ -162,7 +211,10 @@ project_loaded_cb (GESProject * project, GESTimeline * timeline)
     }
   }
 
-  if (ges_validate_activate (GST_PIPELINE (pipeline), scenario,
+  _timeline_set_user_options (timeline, ges_project_get_uri (project));
+
+  if (ges_project_get_uri (project)
+      && ges_validate_activate (GST_PIPELINE (pipeline), scenario,
           &needs_set_state) == FALSE) {
     g_error ("Could not activate scenario %s", scenario);
     seenerrors = TRUE;
@@ -175,206 +227,6 @@ project_loaded_cb (GESProject * project, GESTimeline * timeline)
   }
 }
 
-static gboolean
-check_time (char *time)
-{
-  static GRegex *re = NULL;
-
-  if (!re) {
-    if (NULL == (re = g_regex_new ("^[0-9]+(.[0-9]+)?$", G_REGEX_EXTENDED, 0,
-                NULL)))
-      return FALSE;
-  }
-
-  if (g_regex_match (re, time, 0, NULL))
-    return TRUE;
-  return FALSE;
-}
-
-static guint64
-str_to_time (char *time)
-{
-  gdouble nsecs;
-
-  g_return_val_if_fail (check_time (time), 0);
-
-  nsecs = g_ascii_strtod (time, NULL);
-
-  return nsecs * GST_SECOND;
-}
-
-static void
-_clip_added_cb (GESLayer * layer, GESClip * clip, GESAsset * asset)
-{
-  if (GES_IS_TRANSITION_CLIP (clip))
-    ges_extractable_set_asset (GES_EXTRACTABLE (clip), asset);
-}
-
-static GESTimeline *
-create_timeline (int nbargs, gchar ** argv, const gchar * proj_uri,
-    const gchar * scenario)
-{
-  GESLayer *layer = NULL;
-  GESTrack *tracka = NULL, *trackv = NULL;
-  GESTimeline *timeline;
-  guint i, clip_added_sigid = 0;
-  GstClockTime next_trans_dur = 0;
-  GESProject *project = ges_project_new (proj_uri);
-
-  g_signal_connect (project, "error-loading-asset",
-      G_CALLBACK (error_loading_asset_cb), NULL);
-
-  if (proj_uri != NULL) {
-    g_signal_connect (project, "loaded", G_CALLBACK (project_loaded_cb), NULL);
-  }
-
-  timeline = GES_TIMELINE (ges_asset_extract (GES_ASSET (project), NULL));
-
-  if (proj_uri) {
-    goto done;
-  }
-
-  g_object_set (timeline, "auto-transition", TRUE, NULL);
-  if (track_types & GES_TRACK_TYPE_VIDEO) {
-    trackv = GES_TRACK (ges_video_track_new ());
-
-    if (disable_mixing)
-      ges_track_set_mixing (trackv, FALSE);
-
-    if (!(ges_timeline_add_track (timeline, trackv)))
-      goto build_failure;
-  }
-
-  if (track_types & GES_TRACK_TYPE_AUDIO) {
-    tracka = GES_TRACK (ges_audio_track_new ());
-    if (disable_mixing)
-      ges_track_set_mixing (tracka, FALSE);
-
-    if (!(ges_timeline_add_track (timeline, tracka)))
-      goto build_failure;
-  }
-
-  /* Here we've finished initializing our timeline, we're
-   * ready to start using it... by solely working with the layer !*/
-
-  for (i = 0; i < nbargs / 3; i++) {
-    GESClip *clip;
-
-    char *source = argv[i * 3];
-    char *arg0 = argv[(i * 3) + 1];
-    guint64 duration = str_to_time (argv[(i * 3) + 2]);
-
-    if (i == 0) {
-      /* We are only going to be doing one layer of clips */
-      layer = (GESLayer *) ges_layer_new ();
-
-      /* Add the tracks and the layer to the timeline */
-      if (!ges_timeline_add_layer (timeline, layer))
-        goto build_failure;
-    }
-
-    if (duration == 0)
-      duration = GST_CLOCK_TIME_NONE;
-
-    if (!g_strcmp0 ("+pattern", source)) {
-      clip = GES_CLIP (ges_test_clip_new_for_nick (arg0));
-      if (!clip) {
-        g_error ("%s is an invalid pattern name!\n", arg0);
-        goto build_failure;
-      }
-
-      g_object_set (G_OBJECT (clip), "duration", duration, NULL);
-
-      g_printf ("Adding <pattern:%s> duration %" GST_TIME_FORMAT "\n", arg0,
-          GST_TIME_ARGS (duration));
-    }
-
-    else if (!g_strcmp0 ("+transition", source)) {
-      GESAsset *asset =
-          ges_asset_request (GES_TYPE_TRANSITION_CLIP, arg0, NULL);
-
-      if (asset == NULL) {
-        g_warning ("Can not create transition %s", arg0);
-      }
-
-      next_trans_dur = duration;
-      clip_added_sigid = g_signal_connect (layer, "clip-added",
-          (GCallback) _clip_added_cb, asset);
-
-      continue;
-    } else if (!g_strcmp0 ("+title", source)) {
-      clip = GES_CLIP (ges_title_clip_new ());
-
-      g_object_set (clip, "duration", duration, "text", arg0, NULL);
-
-      g_printf ("Adding <title:%s> duration %" GST_TIME_FORMAT "\n", arg0,
-          GST_TIME_ARGS (duration));
-    }
-
-    else {
-      gchar *uri;
-      GESAsset *asset;
-      guint64 inpoint;
-
-      GError *error = NULL;
-
-      if (!(uri = ensure_uri (source))) {
-        GST_ERROR ("couldn't create uri for '%s'", source);
-        goto build_failure;
-      }
-
-      inpoint = str_to_time (argv[i * 3 + 1]);
-      asset = GES_ASSET (ges_uri_clip_asset_request_sync (uri, &error));
-      if (error) {
-        g_printerr ("Can not create asset for %s", uri);
-
-        return NULL;
-      }
-
-      ges_project_add_asset (project, asset);
-      clip = GES_CLIP (ges_asset_extract (asset, &error));
-      if (error) {
-        g_printerr ("Can not extract asset for %s", uri);
-
-        return NULL;
-      }
-
-      if (!GST_CLOCK_TIME_IS_VALID (duration))
-        duration =
-            GES_TIMELINE_ELEMENT_DURATION (clip) - (GstClockTime) inpoint;
-
-      g_object_set (clip,
-          "in-point", (guint64) inpoint, "duration", (guint64) duration, NULL);
-
-      g_printf ("Adding clip %s inpoint:%" GST_TIME_FORMAT " duration:%"
-          GST_TIME_FORMAT "\n", uri, GST_TIME_ARGS (inpoint),
-          GST_TIME_ARGS (duration));
-
-      g_free (uri);
-    }
-
-    g_object_set (G_OBJECT (clip), "start",
-        ges_layer_get_duration (layer) - next_trans_dur, NULL);
-
-    ges_layer_add_clip (layer, clip);
-
-    if (clip_added_sigid) {
-      g_signal_handler_disconnect (layer, clip_added_sigid);
-      clip_added_sigid = 0;
-      next_trans_dur = 0;
-    }
-
-  }
-
-done:
-  return timeline;
-
-build_failure:
-  {
-    gst_object_unref (timeline);
-    return NULL;
-  }
-}
 
 static gboolean
 _save_timeline (GESTimeline * timeline, const gchar * load_path)
@@ -392,9 +244,41 @@ _save_timeline (GESTimeline * timeline, const gchar * load_path)
   return TRUE;
 }
 
+static GESTimeline *
+create_timeline (const gchar * serialized_timeline, const gchar * proj_uri,
+    const gchar * scenario)
+{
+  GESTimeline *timeline;
+  GESProject *project;
+
+  GError *error = NULL;
+
+  if (proj_uri != NULL) {
+    project = ges_project_new (proj_uri);
+  } else if (scenario == NULL) {
+    project = ges_project_new (serialized_timeline);
+  } else {
+    project = ges_project_new (NULL);
+  }
+
+  g_signal_connect (project, "error-loading-asset",
+      G_CALLBACK (error_loading_asset_cb), NULL);
+  g_signal_connect (project, "loaded", G_CALLBACK (project_loaded_cb), NULL);
+
+  timeline = GES_TIMELINE (ges_asset_extract (GES_ASSET (project), &error));
+
+  if (error) {
+    g_error ("Could not create timeline, error: %s", error->message);
+
+    return NULL;
+  }
+
+  return timeline;
+}
+
 static GESPipeline *
 create_pipeline (GESTimeline ** ret_timeline, gchar * load_path,
-    int argc, char **argv, const gchar * scenario)
+    const gchar * serialized_timeline, const gchar * scenario)
 {
   gchar *uri = NULL;
   GESTimeline *timeline = NULL;
@@ -411,8 +295,10 @@ create_pipeline (GESTimeline ** ret_timeline, gchar * load_path,
 
   pipeline = ges_pipeline_new ();
 
-  if (!(timeline = create_timeline (argc, argv, uri, scenario)))
+  if (!(timeline = create_timeline (serialized_timeline, uri, scenario))) {
+    GST_ERROR ("Could not create the timeline");
     goto failure;
+  }
 
   if (!load_path)
     ges_timeline_commit (timeline);
@@ -699,12 +585,102 @@ _add_media_path (const gchar * option_name, const gchar * value,
   return TRUE;
 }
 
+/* g_free after usage */
+static gchar *
+sanitize_argument (gchar * arg)
+{
+  char *equal_index = strstr (arg, "=");
+  char *space_index = strstr (arg, " ");
+  gchar *new_string = g_malloc (sizeof (gchar) * (strlen (arg) + 3));
+  gchar *tmp_string = new_string;
+
+  if (!space_index)
+    return g_strdup (arg);
+
+  if (!equal_index || equal_index > space_index)
+    return g_strdup_printf ("\"%s\"", arg);
+
+  for (arg = arg; *arg != '\0'; arg++) {
+    *tmp_string = *arg;
+    tmp_string += 1;
+    if (*arg == '=') {
+      *tmp_string = '"';
+      tmp_string += 1;
+    }
+  }
+  *tmp_string = '"';
+  tmp_string += 1;
+  *tmp_string = '\0';
+
+  return new_string;
+}
+
+static gchar *
+_parse_timeline (int argc, char **argv)
+{
+  gint i;
+
+  gchar *string = g_strdup (" ");
+
+  for (i = 1; i < argc; i++) {
+    gchar *new_string;
+    gchar *sanitized = sanitize_argument (argv[i]);
+
+    new_string = g_strconcat (string, " ", sanitized, NULL);
+
+    g_free (sanitized);
+    g_free (string);
+    string = new_string;
+  }
+
+
+  return string;
+}
+
+static void
+_print_all_commands (void)
+{
+  /* Yeah I know very fancy */
+  g_print ("Available ges-launch-1.0 commands:\n\n");
+  g_print ("  %-9s %-11s %-10s\n\n", "+clip", "+effect", "set-");
+  g_print ("See ges-launch-1.0 help <command> or ges-launch-1.0 help <guide> "
+      "to read about a specific command or a given guide\n");
+}
+
+static void
+_check_command_help (int argc, gchar ** argv)
+{
+/**
+ * if (!g_strcmp0 (argv[1], "help")) {
+ *   gchar *page = NULL;
+ *
+ *     if (argc == 2)
+ *       page = g_strdup ("ges-launch-1.0");
+ *     else if (!g_strcmp0 (argv[2], "all"))
+ */
+
+  _print_all_commands ();
+
+/*     else
+ *       page = g_strconcat ("ges-launch-1.0", "-", argv[2], NULL);
+ *
+ *     if (page) {
+ *       execlp ("man", "man", page, NULL);
+ *       g_free (page);
+ *     }
+ *
+ *     an error is raised by execlp it will be displayed in the terminal
+ *     exit (0);
+ *   }
+ */
+}
+
 int
 main (int argc, gchar ** argv)
 {
   gint validate_res;
   GError *err = NULL;
-  gchar *outputuri = NULL;
+  gchar *outputuri = NULL, *serialized_timeline = NULL;
   const gchar *format = NULL;
   gchar *exclude_args = NULL;
   static gboolean smartrender = FALSE;
@@ -718,10 +694,6 @@ main (int argc, gchar ** argv)
   gchar *encoding_profile = NULL;
 
   GOptionEntry options[] = {
-    {"thumbnail", 'm', 0.0, G_OPTION_ARG_DOUBLE, &thumbinterval,
-        "Save thumbnail every <n> seconds to current directory", "<n>"},
-    {"smartrender", 's', 0, G_OPTION_ARG_NONE, &smartrender,
-        "Render to outputuri and avoid decoding/reencoding", NULL},
     {"outputuri", 'o', 0, G_OPTION_ARG_STRING, &outputuri,
         "URI to encode to", "<protocol>://<location>"},
     {"format", 'f', 0, G_OPTION_ARG_STRING, &format,
@@ -731,21 +703,15 @@ main (int argc, gchar ** argv)
         "Use a specific encoding profile from XML", "<profile-name>"},
     {"repeat", 'r', 0, G_OPTION_ARG_INT, &repeat,
         "Number of times to repeat timeline", "<times>"},
-    {"list-transitions", 't', 0, G_OPTION_ARG_NONE, &list_transitions,
+    {"list-transitions", 0, 0, G_OPTION_ARG_NONE, &list_transitions,
         "List valid transition types and exit", NULL},
-    {"list-patterns", 'p', 0, G_OPTION_ARG_NONE, &list_patterns,
-        "List patterns and exit", NULL},
-    {"save", 'z', 0, G_OPTION_ARG_STRING, &save_path,
+    {"save", 's', 0, G_OPTION_ARG_STRING, &save_path,
         "Save project to file before rendering", "<path>"},
     {"load", 'l', 0, G_OPTION_ARG_STRING, &load_path,
         "Load project from file before rendering", "<path>"},
-    {"verbose", 0, 0, G_OPTION_ARG_NONE, &verbose,
-        "Output status information and property notifications", NULL},
-    {"exclude", 'X', 0, G_OPTION_ARG_NONE, &exclude_args,
-        "Do not output status information of <type>", "<type1>,<type2>,..."},
-    {"track-types", 'p', 0, G_OPTION_ARG_CALLBACK, &parse_track_type,
+    {"track-types", 't', 0, G_OPTION_ARG_CALLBACK, &parse_track_type,
         "Defines the track types to be created"},
-    {"mute", 0, 0, G_OPTION_ARG_NONE, &mute,
+    {"mute", 'm', 0, G_OPTION_ARG_NONE, &mute,
         "Mute playback output by using fakesinks"},
     {"disable-mixing", 0, 0, G_OPTION_ARG_NONE, &disable_mixing,
         "Do not use mixing element in the tracks"},
@@ -753,13 +719,13 @@ main (int argc, gchar ** argv)
         "The video sink used for playing back", "<videosink>"},
     {"audiosink", 'a', 0, G_OPTION_ARG_STRING, &audiosink,
         "The audio sink used for playing back", "<audiosink>"},
-    {"sample-paths", 'P', 0, G_OPTION_ARG_CALLBACK, &_add_media_path,
+    {"sample-paths", 'p', 0, G_OPTION_ARG_CALLBACK, &_add_media_path,
         "List of pathes to look assets in if they were moved"},
     {"sample-path-recurse", 'R', 0, G_OPTION_ARG_CALLBACK,
           &_add_media_path,
         "Same as above, but recursing into the folder"},
 #ifdef HAVE_GST_VALIDATE
-    {"inspect-action-type", 'y', 0, G_OPTION_ARG_NONE, &inspect_action_type,
+    {"inspect-action-type", 0, 0, G_OPTION_ARG_NONE, &inspect_action_type,
           "Inspect the avalaible action types with which to write scenarios"
           " if no parameter passed, it will list all avalaible action types"
           " otherwize will print the full description of the wanted types",
@@ -778,6 +744,7 @@ main (int argc, gchar ** argv)
   guint signal_watch_id;
 #endif
 
+  _check_command_help (argc, argv);
   setlocale (LC_ALL, "");
 
   ctx = g_option_context_new ("- plays or renders a timeline.");
@@ -820,6 +787,8 @@ main (int argc, gchar ** argv)
   g_option_context_add_group (ctx, gst_init_get_option_group ());
   g_option_context_add_group (ctx, ges_init_get_option_group ());
 
+  g_option_context_set_ignore_unknown_options (ctx, TRUE);
+
   if (!g_option_context_parse (ctx, &argc, &argv, &err)) {
     g_printerr ("Error initializing: %s\n", err->message);
     g_option_context_free (ctx);
@@ -847,7 +816,7 @@ main (int argc, gchar ** argv)
     return ges_validate_print_action_types ((const gchar **) argv + 1,
         argc - 1);
 
-  if (((!load_path && !scenario && (argc < 4)))) {
+  if (((!load_path && !scenario && (argc < 1)))) {
     g_printf ("%s", g_option_context_get_help (ctx, TRUE, NULL));
     g_option_context_free (ctx);
     exit (1);
@@ -856,7 +825,8 @@ main (int argc, gchar ** argv)
   g_option_context_free (ctx);
 
   /* Create the pipeline */
-  create_pipeline (&timeline, load_path, argc - 1, argv + 1, scenario);
+  serialized_timeline = _parse_timeline (argc, argv);
+  create_pipeline (&timeline, load_path, serialized_timeline, scenario);
   if (!pipeline)
     exit (1);
 
@@ -944,6 +914,11 @@ main (int argc, gchar ** argv)
     if (ges_validate_activate (GST_PIPELINE (pipeline), scenario,
             &needs_set_state) == FALSE) {
       g_error ("Could not activate scenario %s", scenario);
+      return 29;
+    }
+
+    if (!_timeline_set_user_options (timeline, NULL)) {
+      g_error ("Could not properly set tracks");
       return 29;
     }
   }
