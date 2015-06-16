@@ -1416,6 +1416,7 @@ ges_track_element_set_control_source (GESTrackElement * object,
   GstElement *element;
   GParamSpec *pspec;
   GstControlBinding *binding;
+  gboolean direct, direct_absolute;
 
   g_return_val_if_fail (GES_IS_TRACK_ELEMENT (object), FALSE);
   priv = GES_TRACK_ELEMENT (object)->priv;
@@ -1445,7 +1446,10 @@ ges_track_element_set_control_source (GESTrackElement * object,
   }
 
   /* TODO : update this according to new types of bindings */
-  if (!g_strcmp0 (binding_type, "direct")) {
+  direct = !g_strcmp0 (binding_type, "direct");
+  direct_absolute = !g_strcmp0 (binding_type, "direct-absolute");
+
+  if (direct || direct_absolute) {
     /* First remove existing binding */
     binding =
         (GstControlBinding *) g_hash_table_lookup (priv->bindings_hashtable,
@@ -1455,9 +1459,16 @@ ges_track_element_set_control_source (GESTrackElement * object,
           property_name);
       gst_object_remove_control_binding (GST_OBJECT (element), binding);
     }
-    binding =
-        gst_direct_control_binding_new (GST_OBJECT (element), property_name,
-        source);
+
+    if (direct_absolute)
+      binding =
+          gst_direct_control_binding_new_absolute (GST_OBJECT (element),
+          property_name, source);
+    else
+      binding =
+          gst_direct_control_binding_new (GST_OBJECT (element), property_name,
+          source);
+
     gst_object_add_control_binding (GST_OBJECT (element), binding);
     g_hash_table_insert (priv->bindings_hashtable, g_strdup (property_name),
         binding);
