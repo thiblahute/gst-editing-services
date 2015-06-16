@@ -1392,6 +1392,47 @@ ges_track_element_edit (GESTrackElement * object,
   return TRUE;
 }
 
+/**
+ * ges_track_element_remove_control_binding:
+ * @object: the #GESTrackElement on which to set a control binding
+ * @property_name: The name of the property to control.
+ * @binding_type: The type of binding to create. Only "direct" is available for now.
+ *
+ * Removes a #GstControlBinding from @object.
+ *
+ * Returns: %TRUE if the binding could be removed, %FALSE if an error
+ * occured
+ */
+gboolean
+ges_track_element_remove_control_binding (GESTrackElement * object,
+    const gchar * property_name)
+{
+  GESTrackElementPrivate *priv;
+  GstControlBinding *binding;
+  GstObject *target;
+
+  g_return_val_if_fail (GES_IS_TRACK_ELEMENT (object), FALSE);
+
+  priv = GES_TRACK_ELEMENT (object)->priv;
+  binding =
+      (GstControlBinding *) g_hash_table_lookup (priv->bindings_hashtable,
+      property_name);
+
+  if (binding) {
+    g_object_get (binding, "object", &target, NULL);
+    GST_DEBUG_OBJECT (object, "Removing binding %p for property %s", binding,
+        property_name);
+
+    gst_object_remove_control_binding (target, binding);
+    gst_object_unref (target);
+
+    g_hash_table_remove (priv->bindings_hashtable, property_name);
+
+    return TRUE;
+  }
+
+  return FALSE;
+}
 
 /**
  * ges_track_element_set_control_source:
