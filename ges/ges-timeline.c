@@ -206,6 +206,9 @@ struct _GESTimelinePrivate
   /* For ges_timeline_commit_sync */
   GMutex commited_lock;
   GCond commited_cond;
+
+  /* Avoid sorting layers when we are actually resyncing them ourself */
+  gboolean resyncing_layers;
 };
 
 /* private structure to contain our track-related information */
@@ -786,6 +789,23 @@ sort_starts_ends_start (GESTimeline * timeline, TrackObjIters * iters)
   g_sequence_sort_changed (iters->iter_start,
       (GCompareDataFunc) compare_uint64, NULL);
   timeline_update_duration (timeline);
+}
+
+
+static void
+_resync_layers (GESTimeline * timeline)
+{
+  GList *tmp;
+  gint i = 0;
+
+  timeline->priv->resyncing_layers = TRUE;
+  for (tmp = timeline->layers; tmp; tmp = tmp->next) {
+    GST_ERROR_OBJECT (tmp->data, "New index: %d", i);
+    ges_layer_set_priority (tmp->data, i);
+
+    i++;
+  }
+  timeline->priv->resyncing_layers = FALSE;
 }
 
 static void
@@ -2423,6 +2443,9 @@ static void
 layer_priority_changed_cb (GESLayer * layer,
     GParamSpec * arg G_GNUC_UNUSED, GESTimeline * timeline)
 {
+  if (timeline->priv->resyncing_layers)
+    return;
+
   timeline->layers = g_list_sort (timeline->layers, (GCompareFunc)
       sort_layers);
 }
@@ -2982,6 +3005,8 @@ ges_timeline_remove_layer (GESTimeline * timeline, GESLayer * layer)
 
   gst_object_unref (layer);
   timeline->priv->movecontext.needs_move_ctx = TRUE;
+
+  _resync_layers (timeline);
 
   return TRUE;
 }

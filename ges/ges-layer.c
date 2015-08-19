@@ -104,6 +104,8 @@ ges_layer_set_property (GObject * object, guint property_id,
 
   switch (property_id) {
     case PROP_PRIORITY:
+      GST_FIXME_OBJECT (object, "The 'priority' property is deprecated"
+          " use ges_timeline_move_layer instead");
       ges_layer_set_priority (layer, g_value_get_uint (value));
       break;
     case PROP_AUTO_TRANSITION:
@@ -164,6 +166,10 @@ ges_layer_class_init (GESLayerClass * klass)
    *
    * Note that the timeline needs to be commited (with #ges_timeline_commit)
    * for the change to be taken into account.
+   *
+   * Deprecated: use #ges_timeline_move_layer instead. This deprecation means
+   * that you will not need to handle layer priorities at all yourself, GES
+   * will make sure there is never 'gaps' between layer priorities.
    */
   g_object_class_install_property (object_class, PROP_PRIORITY,
       g_param_spec_uint ("priority", "Priority",
@@ -370,6 +376,10 @@ ges_layer_remove_clip (GESLayer * layer, GESClip * clip)
  *
  * Sets the layer to the given @priority. See the documentation of the
  * priority property for more information.
+ *
+ * Deprecated: use #ges_timeline_move_layer instead. This deprecation means
+ * that you will not need to handle layer priorities at all yourself, GES
+ * will make sure there is never 'gaps' between layer priorities.
  */
 void
 ges_layer_set_priority (GESLayer * layer, guint priority)
