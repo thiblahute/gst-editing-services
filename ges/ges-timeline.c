@@ -442,6 +442,32 @@ forward:
   gst_element_post_message (GST_ELEMENT_CAST (bin), message);
 }
 
+static GstStateChangeReturn
+ges_timeline_change_state (GstElement * element, GstStateChange transition)
+{
+  GESTimeline *self;
+
+  self = GES_TIMELINE (element);
+
+  switch (transition) {
+    case GST_STATE_CHANGE_READY_TO_PAUSED:
+      if (ges_timeline_is_empty (self)) {
+        GST_ELEMENT_ERROR (element, CORE, STATE_CHANGE,
+            ("GESTimeline %p does not contain any active GESSource"
+                " can not change state to PAUSED", self), NULL);
+
+        return GST_STATE_CHANGE_FAILURE;
+      }
+      break;
+    default:
+      break;
+  }
+
+  return GST_ELEMENT_CLASS (parent_class)->change_state (element, transition);
+}
+
+
+
 /* we collect the first result */
 static gboolean
 _gst_array_accumulator (GSignalInvocationHint * ihint,
@@ -461,6 +487,7 @@ ges_timeline_class_init (GESTimelineClass * klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GstBinClass *bin_class = GST_BIN_CLASS (klass);
+  GstElementClass *element_class = GST_ELEMENT_CLASS (klass);
 
   g_type_class_add_private (klass, sizeof (GESTimelinePrivate));
 
@@ -475,6 +502,7 @@ ges_timeline_class_init (GESTimelineClass * klass)
   object_class->finalize = ges_timeline_finalize;
 
   bin_class->handle_message = GST_DEBUG_FUNCPTR (ges_timeline_handle_message);
+  element_class->change_state = GST_DEBUG_FUNCPTR (ges_timeline_change_state);
 
   /**
    * GESTimeline:duration:

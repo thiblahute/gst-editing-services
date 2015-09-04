@@ -178,7 +178,7 @@ _project_loaded_cb (GESProject * project, GESTimeline * timeline,
   if (ges_project_get_uri (project)
       && ges_validate_activate (GST_PIPELINE (self->priv->pipeline),
           opts->scenario, &opts->needs_set_state) == FALSE) {
-    g_error ("Could not activate scenario %s", opts->scenario);
+    g_printerr ("Could not activate scenario %s", opts->scenario);
     self->priv->seenerrors = TRUE;
     g_application_quit (G_APPLICATION (self));
   }
@@ -186,7 +186,8 @@ _project_loaded_cb (GESProject * project, GESTimeline * timeline,
   if (!self->priv->seenerrors && opts->needs_set_state &&
       gst_element_set_state (GST_ELEMENT (self->priv->pipeline),
           GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE) {
-    g_error ("Failed to start the pipeline\n");
+    g_printerr ("Failed to start the pipeline\n");
+    g_application_quit (G_APPLICATION (self));
   }
 }
 
