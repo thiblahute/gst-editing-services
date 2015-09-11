@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GStreamer Editing Services 1.5.90 Reference Manual: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="next" href="ch01.html" title="GStreamer Editing Services Overview">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="book">
+<div class="titlepage">
+<div>
+<div><table class="navigation" id="top" width="100%" cellpadding="2" cellspacing="0"><tr><th valign="middle"><p class="title">GStreamer Editing Services 1.5.90 Reference Manual</p></th></tr></table></div>
+<div><p class="releaseinfo">
+      for GStreamer Editing Services 1.0 (1.5.90)
+    </p></div>
+</div>
+<hr>
+</div>
+<div class="toc"><dl class="toc">
+<dt><span class="chapter"><a href="ch01.html">GStreamer Editing Services Overview</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="ges-architecture.html">Overview and architecture</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-Initialization.html">Initialization</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GES-Enums.html">GES Enums</a></span><span class="refpurpose"> — Various enums for the Gstreamer Editing Services</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GES-GErrors.html">GES GErrors</a></span><span class="refpurpose"> — GError — Categorized error messages</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch02.html">Base Classes</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESTimeline.html">GESTimeline</a></span><span class="refpurpose"> — Multimedia timeline</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESLayer.html">GESLayer</a></span><span class="refpurpose"> — Non-overlapping sequence of GESClip</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTimelineElement.html">GESTimelineElement</a></span><span class="refpurpose"> — Base Class for all elements that will be in a way or
+another inside a GESTimeline.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESContainer.html">GESContainer</a></span><span class="refpurpose"> — Base Class for objects responsible for controlling other
+GESTimelineElement-s</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESClip.html">GESClip</a></span><span class="refpurpose"> — Base Class for objects in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESSourceClip.html">GESSourceClip</a></span><span class="refpurpose"> — Base Class for sources of a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESOperationClip.html">GESOperationClip</a></span><span class="refpurpose"> — Base Class for operations in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESOverlayClip.html">GESOverlayClip</a></span><span class="refpurpose"> — Base Class for overlays in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESBaseEffectClip.html">GESBaseEffectClip</a></span><span class="refpurpose"> — An effect in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTrack.html">GESTrack</a></span><span class="refpurpose"> — Composition of objects</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTrackElement.html">GESTrackElement</a></span><span class="refpurpose"> — Base Class for objects contained in a GESTrack</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESSource.html">GESSource</a></span><span class="refpurpose"> — Base Class for single-media sources</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESVideoSource.html">GESVideoSource</a></span><span class="refpurpose"> — Base Class for video sources</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESAudioSource.html">GESAudioSource</a></span><span class="refpurpose"> — Base Class for audio sources</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESBaseEffect.html">GESBaseEffect</a></span><span class="refpurpose"> — adds an effect to a stream in a GESSourceClip or a
+GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESOperation.html">GESOperation</a></span><span class="refpurpose"> — Base Class for effects and overlays</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESBaseTransitionClip.html">GESBaseTransitionClip</a></span><span class="refpurpose"> — Base classes for transitions</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESAsset.html">GESAsset</a></span><span class="refpurpose"> — Represents usable resources inside the GStreamer Editing Services</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch03.html">Timeline objects</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESUriClip.html">GESUriClip</a></span><span class="refpurpose"> — An object for manipulating media files in a GESTimeline</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTitleClip.html">GESTitleClip</a></span><span class="refpurpose"> — Render stand-alone titles in  GESLayer.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTestClip.html">GESTestClip</a></span><span class="refpurpose"> — Render video and audio test patterns in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTextOverlayClip.html">GESTextOverlayClip</a></span><span class="refpurpose"> — Render text onto another stream in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTransitionClip.html">GESTransitionClip</a></span><span class="refpurpose"> — Transition from one clip to another in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESEffectClip.html">GESEffectClip</a></span><span class="refpurpose"> — An effect created by parse-launch style bin descriptions
+in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESGroup.html">GESGroup</a></span><span class="refpurpose"> — Class that permits to group GESClip-s in a timeline,
+letting the user manage it a single GESTimelineElement</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch04.html">Track objects</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESAudioUriSource.html">GESAudioUriSource</a></span><span class="refpurpose"> — outputs a single audio stream from a given file</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESVideoUriSource.html">GESVideoUriSource</a></span><span class="refpurpose"> — outputs a single video stream from a given file</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTitleSource.html">GESTitleSource</a></span><span class="refpurpose"> — render stand-alone text titles</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESAudioTestSource.html">GESAudioTestSource</a></span><span class="refpurpose"> — produce a simple test waveform or silence</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESVideoTestSource.html">GESVideoTestSource</a></span><span class="refpurpose"> — produce solid colors and patterns</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTextOverlay.html">GESTextOverlay</a></span><span class="refpurpose"> — render text onto another video stream in a GESLayer</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTransition.html">GESTransition</a></span><span class="refpurpose"> — base class for audio and video transitions</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESVideoTransition.html">GESVideoTransition</a></span><span class="refpurpose"> — implements video crossfade transition</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESAudioTransition.html">GESAudioTransition</a></span><span class="refpurpose"> — implements audio crossfade transition</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESImageSource.html">GESImageSource</a></span><span class="refpurpose"> — outputs the video stream from a media file as a still
+image.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESMultiFileSource.html">GESMultiFileSource</a></span><span class="refpurpose"> — outputs the video stream from a sequence of images.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESEffect.html">GESEffect</a></span><span class="refpurpose"> — adds an effect build from a parse-launch style 
+bin description to a stream in a GESSourceClip or a GESLayer</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch05.html">Convenience classes</a></span></dt>
+<dd><dl><dt>
+<span class="refentrytitle"><a href="GESPipeline.html">GESPipeline</a></span><span class="refpurpose"> — Convenience GstPipeline for editing.</span>
+</dt></dl></dd>
+<dt><span class="chapter"><a href="ch06.html">Serialization Classes</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESFormatter.html">GESFormatter</a></span><span class="refpurpose"> — Timeline saving and loading.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESPitiviFormatter.html">GESPitiviFormatter</a></span><span class="refpurpose"> — A formatter for the obsolete Pitivi xptv project file format</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESBaseXmlFormatter.html">GESBaseXmlFormatter</a></span><span class="refpurpose"></span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESXmlFormatter.html">GESXmlFormatter</a></span><span class="refpurpose"></span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch07.html">Interfaces</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESMetaContainer.html">GESMetaContainer</a></span><span class="refpurpose"> — An interface for storing meta</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESExtractableInterface.html">GESExtractableInterface</a></span><span class="refpurpose"> — An interface for objects which can be extracted from a GESAsset</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch08.html">Assets</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GESClipAsset.html">GESClipAsset</a></span><span class="refpurpose"> — A GESAsset subclass specialized in GESClip extraction</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESTrackElementAsset.html">GESTrackElementAsset</a></span><span class="refpurpose"> — A GESAsset subclass specialized in GESTrackElement extraction</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESUriClipAsset.html">GESUriClipAsset</a></span><span class="refpurpose"> — A GESAsset subclass specialized in GESUriClip extraction</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESUriSourceAsset.html">GESUriSourceAsset</a></span><span class="refpurpose"> — A GESAsset subclass specialized in GESUriSource extraction</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GESProject.html">GESProject</a></span><span class="refpurpose"> — A GESAsset that is used to manage projects</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ch09.html">Tracks</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="ges-GESVideoTrack.html">GESVideoTrack</a></span><span class="refpurpose"> — A standard GESTrack for raw video</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="ges-GESAudioTrack.html">GESAudioTrack</a></span><span class="refpurpose"> — A standard GESTrack for raw audio</span>
+</dt>
+</dl></dd>
+<dt><span class="chapter"><a href="ges-hierarchy.html">Object Hierarchy</a></span></dt>
+<dt><span class="index"><a href="api-index-full.html">API Index</a></span></dt>
+<dt><span class="glossary"><a href="annotation-glossary.html">Annotation Glossary</a></span></dt>
+</dl></div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
