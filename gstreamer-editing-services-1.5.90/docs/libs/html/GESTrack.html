@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESTrack: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESBaseEffectClip.html" title="GESBaseEffectClip">
+<link rel="next" href="GESTrackElement.html" title="GESTrackElement">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESTrack.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESTrack.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESTrack.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESTrack.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GESTrack.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESBaseEffectClip.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESTrackElement.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESTrack"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESTrack.top_of_page"></a>GESTrack</span></h2>
+<p>GESTrack — Composition of objects</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESTrack.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESTrack.html#GESCreateElementForGapFunc" title="GESCreateElementForGapFunc ()">*GESCreateElementForGapFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTrack.html" title="GESTrack"><span class="returnvalue">GESTrack</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-new" title="ges_track_new ()">ges_track_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-add-element" title="ges_track_add_element ()">ges_track_add_element</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-set-restriction-caps" title="ges_track_set_restriction_caps ()">ges_track_set_restriction_caps</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-update-restriction-caps" title="ges_track_update_restriction_caps ()">ges_track_update_restriction_caps</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-remove-element" title="ges_track_remove_element ()">ges_track_remove_element</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="returnvalue">GstCaps</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-get-caps" title="ges_track_get_caps ()">ges_track_get_caps</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrack.html#ges-track-get-elements" title="ges_track_get_elements ()">ges_track_get_elements</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *</td>
+<td class="property_name"><a class="link" href="GESTrack.html#GESTrack--caps" title="The “caps” property">caps</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a></td>
+<td class="property_name"><a class="link" href="GESTrack.html#GESTrack--duration" title="The “duration” property">duration</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESTrack.html#GESTrack--mixing" title="The “mixing” property">mixing</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *</td>
+<td class="property_name"><a class="link" href="GESTrack.html#GESTrack--restriction-caps" title="The “restriction-caps” property">restriction-caps</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></td>
+<td class="property_name"><a class="link" href="GESTrack.html#GESTrack--track-type" title="The “track-type” property">track-type</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESTrack.html#GESTrack-commited" title="The “commited” signal">commited</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESTrack.html#GESTrack-track-element-added" title="The “track-element-added” signal">track-element-added</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESTrack.html#GESTrack-track-element-removed" title="The “track-element-removed” signal">track-element-removed</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTrack.html#GESTrack-struct" title="GESTrack">GESTrack</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html">GstObject</a>
+            <span class="lineart">╰──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html">GstElement</a>
+                <span class="lineart">╰──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstBin.html">GstBin</a>
+                    <span class="lineart">╰──</span> GESTrack
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTrack.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESTrack implements
+ <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstChildProxy.html">GstChildProxy</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESTrack.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTrack.description"></a><h2>Description</h2>
+<p>Corresponds to one output format (i.e. audio OR video).</p>
+<p>Contains the compatible TrackElement(s).</p>
+</div>
+<div class="refsect1">
+<a name="GESTrack.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GESCreateElementForGapFunc"></a><h3>GESCreateElementForGapFunc ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+<span class="c_punctuation">(</span>*GESCreateElementForGapFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>);</pre>
+<p>A function that will be called to create the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> that will be used
+as a source to fill the gaps in <em class="parameter"><code>track</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.2.6"></a><h4>Returns</h4>
+<p> A <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> (must be a source) that will be used to
+fill the gaps (periods of time in <em class="parameter"><code>track</code></em>
+that containes no source).</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-new"></a><h3>ges_track_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESTrack.html" title="GESTrack"><span class="returnvalue">GESTrack</span></a> *
+ges_track_new (<em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> type</code></em>,
+               <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *caps</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> with the given <em class="parameter"><code>type</code></em>
+ and <em class="parameter"><code>caps</code></em>
+.</p>
+<p>The newly created track will steal a reference to the caps. If you wish to
+use those caps elsewhere, you will have to take an extra reference.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.3.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>The type of track</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>caps</p></td>
+<td class="parameter_description"><p> The caps to restrict the output of the track to. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.3.7"></a><h4>Returns</h4>
+<p> A new <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-add-element"></a><h3>ges_track_add_element ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_add_element (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                       <em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Adds the given object to the track. Sets the object's controlling track,
+and thus takes ownership of the <em class="parameter"><code>object</code></em>
+.</p>
+<p>An object can only be added to one track.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.4.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p> the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> to add. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.4.7"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><span class="type">TRUE</span></a> if the object was properly added. <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><span class="type">FALSE</span></a> if the track does not
+want to accept the object.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-set-restriction-caps"></a><h3>ges_track_set_restriction_caps ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_set_restriction_caps (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                                <em class="parameter"><code>const <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *caps</code></em>);</pre>
+<p>Sets the given <em class="parameter"><code>caps</code></em>
+ as the caps the track has to output.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>caps</p></td>
+<td class="parameter_description"><p>the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-update-restriction-caps"></a><h3>ges_track_update_restriction_caps ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_update_restriction_caps (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                                   <em class="parameter"><code>const <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *caps</code></em>);</pre>
+<p>Updates the restriction caps by modifying all the fields present in <em class="parameter"><code>caps</code></em>
+
+in the original restriction caps. If for example the current restriction caps
+are video/x-raw, format=I420, width=360 and <em class="parameter"><code>caps</code></em>
+ is video/x-raw, format=RGB,
+the restriction caps will be updated to video/x-raw, format=RGB, width=360.</p>
+<p>Modification happens for each structure in the new caps, and
+one can add new fields or structures through that function.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.6.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>caps</p></td>
+<td class="parameter_description"><p>the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> to update with</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-remove-element"></a><h3>ges_track_remove_element ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_remove_element (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                          <em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Removes the object from the track and unparents it.
+Unparenting it means the reference owned by <em class="parameter"><code>track</code></em>
+ on the <em class="parameter"><code>object</code></em>
+ will be
+removed. If you wish to use the <em class="parameter"><code>object</code></em>
+ after this function, make sure you
+call <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html#gst-object-ref"><code class="function">gst_object_ref()</code></a> before removing it from the <em class="parameter"><code>track</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> to remove</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.7.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><span class="type">TRUE</span></a> if the object was removed, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><span class="type">FALSE</span></a> if the track
+could not remove the object (like if it didn't belong to the track).</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-get-caps"></a><h3>ges_track_get_caps ()</h3>
+<pre class="programlisting">const <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="returnvalue">GstCaps</span></a> *
+ges_track_get_caps (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>);</pre>
+<p>Get the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> this track is configured to output.</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.8.6"></a><h4>Returns</h4>
+<p> The <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> this track is configured to output.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-get-elements"></a><h3>ges_track_get_elements ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_track_get_elements (<em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>);</pre>
+<p>Gets the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> contained in <em class="parameter"><code>track</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.3.11.11.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.11.11.9.6"></a><h4>Returns</h4>
+<p> the list of
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> present in the Track sorted by priority and start. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESTrackElement]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESTrack-struct"></a><h3>GESTrack</h3>
+<pre class="programlisting">typedef struct {
+  /* READ-ONLY */
+  GESTrackType     type;
+} GESTrack;
+</pre>
+<div class="refsect3">
+<a name="id-1.3.11.12.2.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody><tr>
+<td class="struct_member_name"><p><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> <em class="structfield"><code><a name="GESTrack-struct.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>a <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> indicting the basic type of the track.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESTrack--caps"></a><h3>The <code class="literal">“caps”</code> property</h3>
+<pre class="programlisting">  “caps”                     <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *</pre>
+<p>Caps used to filter/choose the output stream. This is generally set to
+a generic set of caps like 'video/x-raw' for raw video.</p>
+<p>Default value: <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html#GST-CAPS-ANY:CAPS"><span class="type">GST_CAPS_ANY</span></a>.</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack--duration"></a><h3>The <code class="literal">“duration”</code> property</h3>
+<pre class="programlisting">  “duration”                 <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a></pre>
+<p>Current duration of the track</p>
+<p>Default value: O</p>
+<p>Flags: Read</p>
+<p>Default value: 1000000000</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack--mixing"></a><h3>The <code class="literal">“mixing”</code> property</h3>
+<pre class="programlisting">  “mixing”                   <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether layer mixing is activated or not on the track.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack--restriction-caps"></a><h3>The <code class="literal">“restriction-caps”</code> property</h3>
+<pre class="programlisting">  “restriction-caps”         <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html"><span class="type">GstCaps</span></a> *</pre>
+<p>Caps used to filter/choose the output stream.</p>
+<p>Default value: <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html#GST-CAPS-ANY:CAPS"><span class="type">GST_CAPS_ANY</span></a>.</p>
+<p>Flags: Read / Write</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack--track-type"></a><h3>The <code class="literal">“track-type”</code> property</h3>
+<pre class="programlisting">  “track-type”               <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></pre>
+<p>Type of stream the track outputs. This is used when creating the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>
+to specify in generic terms what type of content will be outputted.</p>
+<p>It also serves as a 'fast' way to check what type of data will be outputted
+from the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> without having to actually check the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>'s caps
+property.</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Default value: GES_TRACK_TYPE_CUSTOM</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrack.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GESTrack-commited"></a><h3>The <code class="literal">“commited”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<div class="refsect3">
+<a name="id-1.3.11.14.2.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack-track-element-added"></a><h3>The <code class="literal">“track-element-added”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>        *object,
+               <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *effect,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>         user_data)</pre>
+<p>Will be emitted after a track element was added to the track.</p>
+<div class="refsect3">
+<a name="id-1.3.11.14.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>effect</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> that was added.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrack-track-element-removed"></a><h3>The <code class="literal">“track-element-removed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>        *object,
+               <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *effect,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>         user_data)</pre>
+<p>Will be emitted after a track element was removed from the track.</p>
+<div class="refsect3">
+<a name="id-1.3.11.14.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>effect</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> that was removed.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

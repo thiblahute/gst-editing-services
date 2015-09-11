@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESAsset: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESBaseTransitionClip.html" title="GESBaseTransitionClip">
+<link rel="next" href="ch03.html" title="Timeline objects">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESAsset.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESAsset.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESAsset.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESBaseTransitionClip.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ch03.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESAsset"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESAsset.top_of_page"></a>GESAsset</span></h2>
+<p>GESAsset — Represents usable resources inside the GStreamer Editing Services</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESAsset.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-get-extractable-type" title="ges_asset_get_extractable_type ()">ges_asset_get_extractable_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-get-id" title="ges_asset_get_id ()">ges_asset_get_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-request" title="ges_asset_request ()">ges_asset_request</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-request-async" title="ges_asset_request_async ()">ges_asset_request_async</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-request-finish" title="ges_asset_request_finish ()">ges_asset_request_finish</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="returnvalue">GESExtractable</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-asset-extract" title="ges_asset_extract ()">ges_asset_extract</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESAsset.html#ges-list-assets" title="ges_list_assets ()">ges_list_assets</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESAsset.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESAsset.html#GESAsset-struct" title="GESAsset">GESAsset</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESAsset.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> GESAsset
+        <span class="lineart">├──</span> <a class="link" href="GESProject.html" title="GESProject">GESProject</a>
+        <span class="lineart">├──</span> <a class="link" href="GESClipAsset.html" title="GESClipAsset">GESClipAsset</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTrackElementAsset.html" title="GESTrackElementAsset">GESTrackElementAsset</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESAsset.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESAsset implements
+ <a href="https://developer.gnome.org/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>,  <a href="https://developer.gnome.org/gio/unstable/GInitable.html">GInitable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESAsset.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESAsset.description"></a><h2>Description</h2>
+<p>The Assets in the GStreamer Editing Services represent the resources
+that can be used. You can create assets for any type that implements the <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a>
+interface, for example <a href="../ges-1.0/GESClip.html"><span class="type">GESClips</span></a>, <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a>, and <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> do implement it.
+This means that assets will represent for example a <a href="../ges-1.0/GESUriClip.html"><span class="type">GESUriClips</span></a>, <a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> etc,
+and then you can extract objects of those types with the appropriate parameters from the asset
+using the <a class="link" href="GESAsset.html#ges-asset-extract" title="ges_asset_extract ()"><span class="type">ges_asset_extract</span></a> method:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="usertype">GESAsset</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">effect_asset</span><span class="symbol">;</span>
+<span class="usertype">GESEffect</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">effect</span><span class="symbol">;</span>
+
+<span class="comment">// You create an asset for an effect</span>
+<span class="normal">effect_asset </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-request">ges_asset_request</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">GES_TYPE_EFFECT</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"agingtv"</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">);</span>
+
+<span class="comment">// And now you can extract an instance of GESEffect from that asset</span>
+<span class="normal">effect </span><span class="symbol">=</span><span class="normal"> </span><span class="function">GES_EFFECT</span><span class="normal"> </span><span class="symbol">(</span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-extract">ges_asset_extract</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">effect_asset</span><span class="symbol">));</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<p>In that example, the advantages of having a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> are that you can know what effects
+you are working with and let your user know about the avalaible ones, you can add metadata
+to the <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> through the <a class="link" href="GESMetaContainer.html" title="GESMetaContainer"><span class="type">GESMetaContainer</span></a> interface and you have a model for your
+custom effects. Note that <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> management is making easier thanks to the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> class.</p>
+<p>Each asset is represented by a pair of <em class="parameter"><code>extractable_type</code></em>
+ and <em class="parameter"><code>id</code></em>
+ (string). Actually the <em class="parameter"><code>extractable_type</code></em>
+
+is the type that implements the <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a> interface, that means that for example for a <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a>,
+the type that implements the <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a> interface is <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>.
+The identifier represents different things depending on the <em class="parameter"><code>extractable_type</code></em>
+ and you should check
+the documentation of each type to know what the ID of <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> actually represents for that type. By default,
+we only have one <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> per type, and the <em class="parameter"><code>id</code></em>
+ is the name of the type, but this behaviour is overriden
+to be more useful. For example, for GESTransitionClips, the ID is the vtype of the transition
+you will extract from it (ie crossfade, box-wipe-rc etc..) For <a class="link" href="GESEffect.html" title="GESEffect"><span class="type">GESEffect</span></a> the ID is the
+<em class="parameter"><code>bin</code></em>
+-description property of the extracted objects (ie the gst-launch style description of the bin that
+will be used).</p>
+<p>Each and every <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> is cached into GES, and you can query those with the <a class="link" href="GESAsset.html#ges-list-assets" title="ges_list_assets ()"><span class="type">ges_list_assets</span></a> function.
+Also the system will automatically register <a href="../ges-1.0/GESAsset.html"><span class="type">GESAssets</span></a> for <a href="../ges-1.0/GESFormatter.html"><span class="type">GESFormatters</span></a> and <a href="../ges-1.0/GESTransitionClip.html"><span class="type">GESTransitionClips</span></a>
+and standard effects (actually not implemented yet) and you can simply query those calling:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="usertype">GList</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">formatter_assets</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">tmp</span><span class="symbol">;</span>
+
+<span class="comment">//  List all  the transitions</span>
+<span class="normal">formatter_assets </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-list-assets">ges_list_assets</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">GES_TYPE_FORMATTER</span><span class="symbol">);</span>
+
+<span class="comment">// Print some infos about the formatter GESAsset</span>
+<span class="keyword">for</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">tmp </span><span class="symbol">=</span><span class="normal"> formatter_assets</span><span class="symbol">;</span><span class="normal"> tmp</span><span class="symbol">;</span><span class="normal"> tmp </span><span class="symbol">=</span><span class="normal"> tmp</span><span class="symbol">-&gt;</span><span class="normal">next</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Warnings-and-Assertions.html#g-print">g_print</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"Name of the formatter: %s, file extension it produces: %s"</span><span class="symbol">,</span>
+<span class="normal">    </span><span class="function"><a href="../ges-1.0/GESMetaContainer.html#ges-meta-container-get-string">ges_meta_container_get_string</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function">GES_META_CONTAINER</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">tmp</span><span class="symbol">-&gt;</span><span class="normal">data</span><span class="symbol">),</span><span class="normal"> <a href="../ges-1.0/GESMetaContainer.html#GES-META-FORMATTER-NAME:CAPS">GES_META_FORMATTER_NAME</a></span><span class="symbol">),</span>
+<span class="normal">    </span><span class="function"><a href="../ges-1.0/GESMetaContainer.html#ges-meta-container-get-string">ges_meta_container_get_string</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function">GES_META_CONTAINER</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">tmp</span><span class="symbol">-&gt;</span><span class="normal">data</span><span class="symbol">),</span><span class="normal"> <a href="../ges-1.0/GESMetaContainer.html#GES-META-FORMATTER-EXTENSION:CAPS">GES_META_FORMATTER_EXTENSION</a></span><span class="symbol">));</span>
+<span class="cbracket">}</span>
+
+<span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free">g_list_free</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">transition_assets</span><span class="symbol">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<p>You can request the creation of <a href="../ges-1.0/GESAsset.html"><span class="type">GESAssets</span></a> using either <a class="link" href="GESAsset.html#ges-asset-request-async" title="ges_asset_request_async ()"><span class="type">ges_asset_request_async</span></a> or
+<a class="link" href="GESAsset.html#ges-asset-request-async" title="ges_asset_request_async ()"><span class="type">ges_asset_request_async</span></a>. All the <a href="../ges-1.0/GESAsset.html"><span class="type">GESAssets</span></a> are cached and thus any asset that has already
+been created can be requested again without overhead.</p>
+</div>
+<div class="refsect1">
+<a name="GESAsset.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-asset-get-extractable-type"></a><h3>ges_asset_get_extractable_type ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+ges_asset_get_extractable_type (<em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *self</code></em>);</pre>
+<p>Gets the type of object that can be extracted from <em class="parameter"><code>self</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.3.19.9.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.2.6"></a><h4>Returns</h4>
+<p> the type of object that can be extracted from <em class="parameter"><code>self</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-asset-get-id"></a><h3>ges_asset_get_id ()</h3>
+<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+ges_asset_get_id (<em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *self</code></em>);</pre>
+<p>Gets the ID of a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a></p>
+<div class="refsect3">
+<a name="id-1.3.19.9.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to get ID from</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.3.6"></a><h4>Returns</h4>
+<p> The ID of <em class="parameter"><code>self</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-asset-request"></a><h3>ges_asset_request ()</h3>
+<pre class="programlisting"><a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+ges_asset_request (<em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> extractable_type</code></em>,
+                   <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *id</code></em>,
+                   <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Create a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> in the most simple cases, you should look at the <em class="parameter"><code>extractable_type</code></em>
+
+documentation to see if that constructor can be called for this particular type</p>
+<p>As it is recommanded not to instanciate assets for GESUriClip synchronously,
+it will not work with this method, but you can instead use the specific
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-request-sync" title="ges_uri_clip_asset_request_sync ()"><span class="type">ges_uri_clip_asset_request_sync</span></a> method if you really want to.</p>
+<div class="refsect3">
+<a name="id-1.3.19.9.4.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>extractable_type</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> of the object that can be extracted from the new asset.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p> The Identifier or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.4.7"></a><h4>Returns</h4>
+<p> A reference to the wanted <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-asset-request-async"></a><h3>ges_asset_request_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_asset_request_async (<em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> extractable_type</code></em>,
+                         <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *id</code></em>,
+                         <em class="parameter"><code><a href="https://developer.gnome.org/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                         <em class="parameter"><code><a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                         <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>Request a new <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> asyncronously, <em class="parameter"><code>callback</code></em>
+ will be called when the materail is
+ready to be used or if an error occured.</p>
+<p>Example of request of a GESAsset async:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="comment">// The request callback</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="type">void</span>
+<span class="function">asset_loaded_cb</span><span class="normal"> </span><span class="symbol">(</span><span class="normal"><a href="../ges-1.0/GESAsset.html">GESAsset</a> </span><span class="symbol">*</span><span class="normal"> source</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html">GAsyncResult</a> </span><span class="symbol">*</span><span class="normal"> res</span><span class="symbol">,</span><span class="normal"> </span><span class="usertype">gpointer</span><span class="normal"> user_data</span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">  </span><span class="usertype">GESAsset</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">asset</span><span class="symbol">;</span>
+<span class="normal">  </span><span class="usertype">GError</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">error </span><span class="symbol">=</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">;</span>
+
+<span class="normal">  asset </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-request-finish">ges_asset_request_finish</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">res</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">&amp;</span><span class="normal">error</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="keyword">if</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">asset</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">   </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Warnings-and-Assertions.html#g-print">g_print</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"The file: %s is usable as a FileSource"</span><span class="symbol">,</span>
+<span class="normal">       </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-get-id">ges_asset_get_id</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">asset</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="cbracket">}</span><span class="normal"> </span><span class="keyword">else</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">   </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Warnings-and-Assertions.html#g-print">g_print</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"The file: %s is *not* usable as a FileSource because: %s"</span><span class="symbol">,</span>
+<span class="normal">       </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-get-id">ges_asset_get_id</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">source</span><span class="symbol">),</span><span class="normal"> error</span><span class="symbol">-&gt;</span><span class="normal">message</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="cbracket">}</span>
+
+<span class="normal">  </span><span class="function"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html#gst-object-unref">gst_object_unref</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">mfs</span><span class="symbol">);</span>
+<span class="cbracket">}</span>
+
+<span class="comment">// The request:</span>
+<span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-request-async">ges_asset_request_async</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">GES_TYPE_URI_CLIP</span><span class="symbol">,</span><span class="normal"> some_uri</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">,</span>
+<span class="normal">   </span><span class="symbol">(</span><span class="normal"><a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback">GAsyncReadyCallback</a></span><span class="symbol">)</span><span class="normal"> asset_loaded_cb</span><span class="symbol">,</span><span class="normal"> user_data</span><span class="symbol">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="id-1.3.19.9.5.8"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>extractable_type</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> of the object that can be extracted from the
+new asset. The class must implement the <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a> interface.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>The Identifier of the asset we want to create. This identifier depends of the extractable,
+type you want. By default it is the name of the class itself (or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>), but for example for a
+GESEffect, it will be the pipeline description, for a GESUriClip it
+will be the name of the file, etc... You should refer to the documentation of the <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a>
+type you want to create a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> for.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p> optional <a href="https://developer.gnome.org/gio/unstable/GCancellable.html"><code class="literal">GCancellable</code></a> object, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to ignore. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>callback</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the initialization is finished,
+Note that the <em class="parameter"><code>source</code></em>
+of the callback will be the <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a>, but you need to
+make sure that the asset is properly loaded using the <a class="link" href="GESAsset.html#ges-asset-request-finish" title="ges_asset_request_finish ()"><span class="type">ges_asset_request_finish</span></a>
+method. This asset can not be used as is.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>The user data to pass when <em class="parameter"><code>callback</code></em>
+is called</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-asset-request-finish"></a><h3>ges_asset_request_finish ()</h3>
+<pre class="programlisting"><a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+ges_asset_request_finish (<em class="parameter"><code><a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> *res</code></em>,
+                          <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Finalize the request of an async <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a></p>
+<div class="refsect3">
+<a name="id-1.3.19.9.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>res</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html"><span class="type">GAsyncResult</span></a> from which to get the newly created <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case
+something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.6.6"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> previously requested. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-asset-extract"></a><h3>ges_asset_extract ()</h3>
+<pre class="programlisting"><a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="returnvalue">GESExtractable</span></a> *
+ges_asset_extract (<em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *self</code></em>,
+                   <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Extracts a new <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"><span class="type">GObject</span></a> from <em class="parameter"><code>asset</code></em>
+. The type of the object is
+defined by the extractable-type of <em class="parameter"><code>asset</code></em>
+, you can check what
+type will be extracted from <em class="parameter"><code>asset</code></em>
+ using
+<a class="link" href="GESAsset.html#ges-asset-get-extractable-type" title="ges_asset_get_extractable_type ()"><span class="type">ges_asset_get_extractable_type</span></a></p>
+<div class="refsect3">
+<a name="id-1.3.19.9.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to get extract an object from</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.7.6"></a><h4>Returns</h4>
+<p> A newly created <a class="link" href="ges-GESExtractableInterface.html#GESExtractable"><span class="type">GESExtractable</span></a>. </p>
+<p><span class="annotation">[<acronym title="Alias for transfer none, used for objects with floating refs."><span class="acronym">transfer floating</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-list-assets"></a><h3>ges_list_assets ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_list_assets (<em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> filter</code></em>);</pre>
+<p>List all <em class="parameter"><code>asset</code></em>
+ filtering per filter as defined by <em class="parameter"><code>filter</code></em>
+.
+It copies the asset and thus will not be updated in time.</p>
+<div class="refsect3">
+<a name="id-1.3.19.9.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>Type of assets to list, <span class="type">GES_TYPE_EXTRACTABLE</span>  will list
+all assets</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.19.9.8.6"></a><h4>Returns</h4>
+<p> The list of
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> the object contains. </p>
+<p><span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESAsset]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESAsset.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESAsset-struct"></a><h3>GESAsset</h3>
+<pre class="programlisting">typedef struct _GESAsset GESAsset;</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
