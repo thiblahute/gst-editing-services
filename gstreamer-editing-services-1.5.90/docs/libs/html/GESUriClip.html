@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESUriClip: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch03.html" title="Timeline objects">
+<link rel="prev" href="ch03.html" title="Timeline objects">
+<link rel="next" href="GESTitleClip.html" title="GESTitleClip">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESUriClip.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESUriClip.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESUriClip.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESUriClip.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch03.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESTitleClip.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESUriClip"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESUriClip.top_of_page"></a>GESUriClip</span></h2>
+<p>GESUriClip — An object for manipulating media files in a GESTimeline</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESUriClip.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GESUriClip.html" title="GESUriClip"><span class="returnvalue">GESUriClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-new" title="ges_uri_clip_new ()">ges_uri_clip_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-get-uri" title="ges_uri_clip_get_uri ()">ges_uri_clip_get_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-is-image" title="ges_uri_clip_is_image ()">ges_uri_clip_is_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-is-muted" title="ges_uri_clip_is_muted ()">ges_uri_clip_is_muted</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-set-is-image" title="ges_uri_clip_set_is_image ()">ges_uri_clip_set_is_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClip.html#ges-uri-clip-set-mute" title="ges_uri_clip_set_mute ()">ges_uri_clip_set_mute</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESUriClip.html#GESUriClip--is-image" title="The “is-image” property">is-image</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESUriClip.html#GESUriClip--mute" title="The “mute” property">mute</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></td>
+<td class="property_name"><a class="link" href="GESUriClip.html#GESUriClip--supported-formats" title="The “supported-formats” property">supported-formats</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<td class="property_name"><a class="link" href="GESUriClip.html#GESUriClip--uri" title="The “uri” property">uri</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESUriClip.html#GESUriClip-struct" title="GESUriClip">GESUriClip</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+                <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GESSourceClip.html" title="GESSourceClip">GESSourceClip</a>
+                        <span class="lineart">╰──</span> GESUriClip
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESUriClip implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.description"></a><h2>Description</h2>
+<p>Represents all the output streams from a particular uri. It is assumed that
+the URI points to a file of some type.</p>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-uri-clip-new"></a><h3>ges_uri_clip_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="returnvalue">GESUriClip</span></a> *
+ges_uri_clip_new (<em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> for the provided <em class="parameter"><code>uri</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI the source should control</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.2.10.2.6"></a><h4>Returns</h4>
+<p> The newly created <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a>, or NULL if there was an
+error.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-get-uri"></a><h3>ges_uri_clip_get_uri ()</h3>
+<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+ges_uri_clip_get_uri (<em class="parameter"><code><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> *self</code></em>);</pre>
+<p>Get the location of the resource.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.2.10.3.6"></a><h4>Returns</h4>
+<p> The location of the resource.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-is-image"></a><h3>ges_uri_clip_is_image ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_uri_clip_is_image (<em class="parameter"><code><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> *self</code></em>);</pre>
+<p>Lets you know if <em class="parameter"><code>self</code></em>
+ is an image or not.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.2.10.4.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>self</code></em>
+is a still image <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-is-muted"></a><h3>ges_uri_clip_is_muted ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_uri_clip_is_muted (<em class="parameter"><code><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> *self</code></em>);</pre>
+<p>Lets you know if the audio track of <em class="parameter"><code>self</code></em>
+ is muted or not.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.2.10.5.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the audio track of <em class="parameter"><code>self</code></em>
+is muted, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-set-is-image"></a><h3>ges_uri_clip_set_is_image ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_uri_clip_set_is_image (<em class="parameter"><code><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> *self</code></em>,
+                           <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> is_image</code></em>);</pre>
+<p>Sets whether the clip is a still image or not.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>is_image</p></td>
+<td class="parameter_description"><p><a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>self</code></em>
+is a still image, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-set-mute"></a><h3>ges_uri_clip_set_mute ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_uri_clip_set_mute (<em class="parameter"><code><a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> *self</code></em>,
+                       <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> mute</code></em>);</pre>
+<p>Sets whether the audio track of this clip is muted or not.</p>
+<div class="refsect3">
+<a name="id-1.4.2.10.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESUriClip.html" title="GESUriClip"><span class="type">GESUriClip</span></a> on which to mute or unmute the audio track</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mute</p></td>
+<td class="parameter_description"><p><a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to mute <em class="parameter"><code>self</code></em>
+audio track, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> to unmute it</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESUriClip-struct"></a><h3>GESUriClip</h3>
+<pre class="programlisting">typedef struct _GESUriClip GESUriClip;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESUriClip.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESUriClip--is-image"></a><h3>The <code class="literal">“is-image”</code> property</h3>
+<pre class="programlisting">  “is-image”                 <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether this filesource represents a still image or not. This must be set
+before create_track_elements is called.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESUriClip--mute"></a><h3>The <code class="literal">“mute”</code> property</h3>
+<pre class="programlisting">  “mute”                     <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether the sound will be played or not.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESUriClip--supported-formats"></a><h3>The <code class="literal">“supported-formats”</code> property</h3>
+<pre class="programlisting">  “supported-formats”        <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></pre>
+<p>Formats supported by the file.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: GES_TRACK_TYPE_UNKNOWN</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESUriClip--uri"></a><h3>The <code class="literal">“uri”</code> property</h3>
+<pre class="programlisting">  “uri”                      <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<p>The location of the file/resource to use.</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Default value: NULL</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
