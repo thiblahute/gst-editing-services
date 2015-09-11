@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESFormatter: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch06.html" title="Serialization Classes">
+<link rel="prev" href="ch06.html" title="Serialization Classes">
+<link rel="next" href="ges-GESPitiviFormatter.html" title="GESPitiviFormatter">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESFormatter.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESFormatter.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESFormatter.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch06.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch06.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ges-GESPitiviFormatter.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESFormatter"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESFormatter.top_of_page"></a>GESFormatter</span></h2>
+<p>GESFormatter — Timeline saving and loading.</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESFormatter.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESFormatter.html#GESFormatterLoadFromURIMethod" title="GESFormatterLoadFromURIMethod ()">*GESFormatterLoadFromURIMethod</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESFormatter.html#GESFormatterSaveToURIMethod" title="GESFormatterSaveToURIMethod ()">*GESFormatterSaveToURIMethod</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESFormatter.html#GESFormatterCanLoadURIMethod" title="GESFormatterCanLoadURIMethod ()">*GESFormatterCanLoadURIMethod</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-class-register-metas" title="ges_formatter_class_register_metas ()">ges_formatter_class_register_metas</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-load-from-uri" title="ges_formatter_load_from_uri ()">ges_formatter_load_from_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-save-to-uri" title="ges_formatter_save_to_uri ()">ges_formatter_save_to_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-can-load-uri" title="ges_formatter_can_load_uri ()">ges_formatter_can_load_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-can-save-uri" title="ges_formatter_can_save_uri ()">ges_formatter_can_save_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESFormatter.html#ges-formatter-get-default" title="ges_formatter_get_default ()">ges_formatter_get_default</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESFormatter.html#GESFormatter-struct" title="GESFormatter">GESFormatter</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESFormatter.html#GESFormatterClass" title="GESFormatterClass">GESFormatterClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> GESFormatter
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESFormatter implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GESFormatterLoadFromURIMethod"></a><h3>GESFormatterLoadFromURIMethod ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="c_punctuation">(</span>*GESFormatterLoadFromURIMethod<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> *formatter</code></em>,
+                                  <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                                  <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                  <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Virtual method for loading a timeline from a given URI.</p>
+<p>Every <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> subclass needs to implement this method.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.2.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI to load from</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.2.7"></a><h4>Returns</h4>
+<p> TRUE if the <em class="parameter"><code>timeline</code></em>
+was properly loaded from the given <em class="parameter"><code>uri</code></em>
+,
+else FALSE.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESFormatterSaveToURIMethod"></a><h3>GESFormatterSaveToURIMethod ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="c_punctuation">(</span>*GESFormatterSaveToURIMethod<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> *formatter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> overwrite</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Virtual method for saving a timeline to a uri.</p>
+<p>Every <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> subclass needs to implement this method.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.3.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI to save to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>overwrite</p></td>
+<td class="parameter_description"><p>Whether the file should be overwritten in case it exists</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.3.7"></a><h4>Returns</h4>
+<p> TRUE if the <em class="parameter"><code>timeline</code></em>
+was properly stored to the given <em class="parameter"><code>uri</code></em>
+,
+else FALSE.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESFormatterCanLoadURIMethod"></a><h3>GESFormatterCanLoadURIMethod ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="c_punctuation">(</span>*GESFormatterCanLoadURIMethod<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> *dummy_instance</code></em>,
+                                 <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-class-register-metas"></a><h3>ges_formatter_class_register_metas ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_formatter_class_register_metas (<em class="parameter"><code><a class="link" href="GESFormatter.html#GESFormatterClass" title="GESFormatterClass"><span class="type">GESFormatterClass</span></a> *klass</code></em>,
+                                    <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>,
+                                    <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *description</code></em>,
+                                    <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *extension</code></em>,
+                                    <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mimetype</code></em>,
+                                    <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> version</code></em>,
+                                    <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstPluginFeature.html#GstRank"><span class="type">GstRank</span></a> rank</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-load-from-uri"></a><h3>ges_formatter_load_from_uri ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_formatter_load_from_uri (<em class="parameter"><code><a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> *formatter</code></em>,
+                             <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                             <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Load data from the given URI into timeline.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * pointing to a URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>A <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> that will be set in case of error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.6.6"></a><h4>Returns</h4>
+<p> TRUE if the timeline data was successfully loaded from the URI,
+else FALSE.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-save-to-uri"></a><h3>ges_formatter_save_to_uri ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_formatter_save_to_uri (<em class="parameter"><code><a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> *formatter</code></em>,
+                           <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                           <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                           <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> overwrite</code></em>,
+                           <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Save data from timeline to the given URI.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * pointing to a URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>overwrite</p></td>
+<td class="parameter_description"><p><a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to overwrite file if it exists</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>A <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> that will be set in case of error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.7.6"></a><h4>Returns</h4>
+<p> TRUE if the timeline data was successfully saved to the URI
+else FALSE.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-can-load-uri"></a><h3>ges_formatter_can_load_uri ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_formatter_can_load_uri (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                            <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Checks if there is a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> available which can load a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a>
+from the given URI.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * pointing to the URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>A <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> that will be set in case of error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.8.6"></a><h4>Returns</h4>
+<p> TRUE if there is a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> that can support the given uri
+or FALSE if not.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-can-save-uri"></a><h3>ges_formatter_can_save_uri ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_formatter_can_save_uri (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                            <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Returns TRUE if there is a <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> available which can save a
+<a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> to the given URI.</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> * pointing to a URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>A <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> that will be set in case of error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.7.2.9.9.6"></a><h4>Returns</h4>
+<p> TRUE if the given <em class="parameter"><code>uri</code></em>
+is supported, else FALSE.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-formatter-get-default"></a><h3>ges_formatter_get_default ()</h3>
+<pre class="programlisting"><a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+ges_formatter_get_default (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Get the default <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to use as formatter. It will return
+the asset for the <a class="link" href="GESFormatter.html" title="GESFormatter"><span class="type">GESFormatter</span></a> that has the highest <em class="parameter"><code>rank</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.7.2.9.10.5"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> for the formatter with highest <em class="parameter"><code>rank</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESFormatter.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESFormatter-struct"></a><h3>GESFormatter</h3>
+<pre class="programlisting">typedef struct _GESFormatter GESFormatter;</pre>
+<p>Base class for timeline data serialization and deserialization.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESFormatterClass"></a><h3>GESFormatterClass</h3>
+<pre class="programlisting">typedef struct {
+  GInitiallyUnownedClass parent_class;
+
+  /* TODO 2.0: Rename the loading method to can_load and load.
+   * Technically we just pass data to load, it should not necessarily
+   * be a URI */
+  GESFormatterCanLoadURIMethod can_load_uri;
+  GESFormatterLoadFromURIMethod load_from_uri;
+  GESFormatterSaveToURIMethod save_to_uri;
+} GESFormatterClass;
+</pre>
+<p>GES Formatter class. Override the vmethods to implement the formatter functionnality.</p>
+<div class="refsect3">
+<a name="id-1.7.2.10.3.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnownedClass"><span class="type">GInitiallyUnownedClass</span></a> <em class="structfield"><code><a name="GESFormatterClass.parent-class"></a>parent_class</code></em>;</p></td>
+<td class="struct_member_description"><p>the parent class structure</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="GESFormatter.html#GESFormatterCanLoadURIMethod" title="GESFormatterCanLoadURIMethod ()"><span class="type">GESFormatterCanLoadURIMethod</span></a> <em class="structfield"><code><a name="GESFormatterClass.can-load-uri"></a>can_load_uri</code></em>;</p></td>
+<td class="struct_member_description"><p>Whether the URI can be loaded</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="GESFormatter.html#GESFormatterLoadFromURIMethod" title="GESFormatterLoadFromURIMethod ()"><span class="type">GESFormatterLoadFromURIMethod</span></a> <em class="structfield"><code><a name="GESFormatterClass.load-from-uri"></a>load_from_uri</code></em>;</p></td>
+<td class="struct_member_description"><p>class method to deserialize data from a URI</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="GESFormatter.html#GESFormatterSaveToURIMethod" title="GESFormatterSaveToURIMethod ()"><span class="type">GESFormatterSaveToURIMethod</span></a> <em class="structfield"><code><a name="GESFormatterClass.save-to-uri"></a>save_to_uri</code></em>;</p></td>
+<td class="struct_member_description"><p>class method to serialize data to a URI</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

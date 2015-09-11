@@ -1,0 +1,1363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESTrackElement: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESTrack.html" title="GESTrack">
+<link rel="next" href="GESSource.html" title="GESSource">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESTrackElement.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESTrackElement.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESTrackElement.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESTrackElement.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GESTrackElement.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTrack.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESSource.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESTrackElement"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESTrackElement.top_of_page"></a>GESTrackElement</span></h2>
+<p>GESTrackElement — Base Class for objects contained in a GESTrack</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESTrackElement.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-active" title="ges_track_element_set_active ()">ges_track_element_set_active</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTrack.html" title="GESTrack"><span class="returnvalue">GESTrack</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-track" title="ges_track_element_get_track ()">ges_track_element_get_track</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-nleobject" title="ges_track_element_get_nleobject ()">ges_track_element_get_nleobject</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-gnlobject" title="ges_track_element_get_gnlobject ()">ges_track_element_get_gnlobject</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-element" title="ges_track_element_get_element ()">ges_track_element_get_element</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-is-active" title="ges_track_element_is_active ()">ges_track_element_is_active</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-lookup-child" title="ges_track_element_lookup_child ()">ges_track_element_lookup_child</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="returnvalue">GParamSpec</span></a> **
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-list-children-properties" title="ges_track_element_list_children_properties ()">ges_track_element_list_children_properties</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-child-property" title="ges_track_element_set_child_property ()">ges_track_element_set_child_property</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-child-properties" title="ges_track_element_set_child_properties ()">ges_track_element_set_child_properties</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-child-property-valist" title="ges_track_element_set_child_property_valist ()">ges_track_element_set_child_property_valist</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-child-property-by-pspec" title="ges_track_element_set_child_property_by_pspec ()">ges_track_element_set_child_property_by_pspec</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-child-property" title="ges_track_element_get_child_property ()">ges_track_element_get_child_property</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-child-properties" title="ges_track_element_get_child_properties ()">ges_track_element_get_child_properties</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-child-property-valist" title="ges_track_element_get_child_property_valist ()">ges_track_element_get_child_property_valist</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-child-property-by-pspec" title="ges_track_element_get_child_property_by_pspec ()">ges_track_element_get_child_property_by_pspec</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-edit" title="ges_track_element_edit ()">ges_track_element_edit</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-set-control-source" title="ges_track_element_set_control_source ()">ges_track_element_set_control_source</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="returnvalue">GstControlBinding</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-control-binding" title="ges_track_element_get_control_binding ()">ges_track_element_get_control_binding</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-get-all-control-bindings" title="ges_track_element_get_all_control_bindings ()">ges_track_element_get_all_control_bindings</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTrackElement.html#ges-track-element-remove-control-binding" title="ges_track_element_remove_control_binding ()">ges_track_element_remove_control_binding</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESTrackElement.html#GESTrackElement--active" title="The “active” property">active</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type">
+<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *</td>
+<td class="property_name"><a class="link" href="GESTrackElement.html#GESTrackElement--track" title="The “track” property">track</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></td>
+<td class="property_name"><a class="link" href="GESTrackElement.html#GESTrackElement--track-type" title="The “track-type” property">track-type</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESTrackElement.html#GESTrackElement-control-binding-added" title="The “control-binding-added” signal">control-binding-added</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESTrackElement.html#GESTrackElement-control-binding-reomved" title="The “control-binding-reomved” signal">control-binding-reomved</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTrackElement.html#GESTrackElement-struct" title="GESTrackElement">GESTrackElement</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTrackElement.html#GESTrackElementClass" title="GESTrackElementClass">GESTrackElementClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> GESTrackElement
+                <span class="lineart">├──</span> <a class="link" href="GESSource.html" title="GESSource">GESSource</a>
+                <span class="lineart">╰──</span> <a class="link" href="GESOperation.html" title="GESOperation">GESOperation</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESTrackElement implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.description"></a><h2>Description</h2>
+<p><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> is the Base Class for any object that can be contained in a
+<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>.</p>
+<p>It contains the basic information as to the location of the object within
+its container, like the start position, the inpoint, the duration and the
+priority.</p>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-track-element-set-active"></a><h3>ges_track_element_set_active ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_set_active (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                              <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> active</code></em>);</pre>
+<p>Sets the usage of the <em class="parameter"><code>object</code></em>
+. If <em class="parameter"><code>active</code></em>
+ is <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>, the object will be used for
+playback and rendering, else it will be ignored.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>active</p></td>
+<td class="parameter_description"><p>visibility</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.2.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the property was toggled, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-track"></a><h3>ges_track_element_get_track ()</h3>
+<pre class="programlisting"><a class="link" href="GESTrack.html" title="GESTrack"><span class="returnvalue">GESTrack</span></a> *
+ges_track_element_get_track (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Get the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> to which this object belongs.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.3.6"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> to which this object belongs. Can be <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if it
+is not in any track. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-nleobject"></a><h3>ges_track_element_get_nleobject ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+ges_track_element_get_nleobject (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Get the GNonLin object this object is controlling.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.4.6"></a><h4>Returns</h4>
+<p> the GNonLin object this object is controlling. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: 1.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-gnlobject"></a><h3>ges_track_element_get_gnlobject ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+ges_track_element_get_gnlobject (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_get_gnlobject</code> is deprecated and should not be used in newly-written code.</p>
+<p>use <a class="link" href="GESTrackElement.html#ges-track-element-get-nleobject" title="ges_track_element_get_nleobject ()"><span class="type">ges_track_element_get_nleobject</span></a> instead.</p>
+</div>
+<p>Get the NleObject object this object is controlling.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.5.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.5.7"></a><h4>Returns</h4>
+<p> the NleObject object this object is controlling. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-element"></a><h3>ges_track_element_get_element ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="returnvalue">GstElement</span></a> *
+ges_track_element_get_element (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Get the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> this track element is controlling within GNonLin.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.6.6"></a><h4>Returns</h4>
+<p> the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> this track element is controlling
+within GNonLin. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-is-active"></a><h3>ges_track_element_is_active ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_is_active (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>);</pre>
+<p>Lets you know if <em class="parameter"><code>object</code></em>
+ will be used for playback and rendering,
+or not.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.7.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>object</code></em>
+is active, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-lookup-child"></a><h3>ges_track_element_lookup_child ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_lookup_child (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prop_name</code></em>,
+                                <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> **element</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> **pspec</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_lookup_child</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-lookup-child" title="ges_timeline_element_lookup_child ()"><span class="type">ges_timeline_element_lookup_child</span></a></p>
+</div>
+<p>Looks up which <em class="parameter"><code>element</code></em>
+ and <em class="parameter"><code>pspec</code></em>
+ would be effected by the given <em class="parameter"><code>name</code></em>
+. If various
+contained elements have this property name you will get the first one, unless you
+specify the class name in <em class="parameter"><code>name</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.8.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>object to lookup the property in</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>prop_name</p></td>
+<td class="parameter_description"><p>name of the property to look up. You can specify the name of the
+class as such: "ClassName::property-name", to guarantee that you get the
+proper GParamSpec in case various GstElement-s contain the same property
+name. If you don't do so, you will get the first element found, having
+this property and the and the corresponding GParamSpec.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>element</p></td>
+<td class="parameter_description"><p> pointer to a <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> that
+takes the real object to set property on. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pspec</p></td>
+<td class="parameter_description"><p> pointer to take the <a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a>
+describing the property. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.8.7"></a><h4>Returns</h4>
+<p> TRUE if <em class="parameter"><code>element</code></em>
+and <em class="parameter"><code>pspec</code></em>
+could be found. FALSE otherwise. In that
+case the values for <em class="parameter"><code>pspec</code></em>
+and <em class="parameter"><code>element</code></em>
+are not modified. Unref <em class="parameter"><code>element</code></em>
+after
+usage.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-list-children-properties"></a><h3>ges_track_element_list_children_properties ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="returnvalue">GParamSpec</span></a> **
+ges_track_element_list_children_properties
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> *n_properties</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_list_children_properties</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-list-children-properties" title="ges_timeline_element_list_children_properties ()"><span class="type">ges_timeline_element_list_children_properties</span></a></p>
+</div>
+<p>Gets an array of <a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a>* for all configurable properties of the
+children of <em class="parameter"><code>object</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.9.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> to get the list of children properties from</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_properties</p></td>
+<td class="parameter_description"><p> return location for the length of the returned array. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.9.7"></a><h4>Returns</h4>
+<p> an array of <a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a>* which should be freed after use or
+<a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if something went wrong. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=n_properties]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-set-child-property"></a><h3>ges_track_element_set_child_property ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_set_child_property (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                      <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *property_name</code></em>,
+                                      <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_set_child_property</code> is deprecated and should not be used in newly-written code.</p>
+<p>use <a class="link" href="GESTimelineElement.html#ges-timeline-element-set-child-property" title="ges_timeline_element_set_child_property ()"><span class="type">ges_timeline_element_set_child_property</span></a> instead</p>
+</div>
+<p>Sets a property of a GstElement contained in <em class="parameter"><code>object</code></em>
+.</p>
+<p>Note that <a class="link" href="GESTrackElement.html#ges-track-element-set-child-property" title="ges_track_element_set_child_property ()"><span class="type">ges_track_element_set_child_property</span></a> is really
+intended for language bindings, <a class="link" href="GESTrackElement.html#ges-track-element-set-child-properties" title="ges_track_element_set_child_properties ()"><span class="type">ges_track_element_set_child_properties</span></a>
+is much more convenient for C programming.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.10.7"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>property_name</p></td>
+<td class="parameter_description"><p>The name of the property</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>the value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.10.8"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the property was set, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-set-child-properties"></a><h3>ges_track_element_set_child_properties ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_set_child_properties
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *first_property_name</code></em>,
+                                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_set_child_properties</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-set-child-properties" title="ges_timeline_element_set_child_properties ()"><span class="type">ges_timeline_element_set_child_properties</span></a></p>
+</div>
+<p>Sets a property of a child of <em class="parameter"><code>object</code></em>
+. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.11.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> parent object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>first_property_name</p></td>
+<td class="parameter_description"><p>The name of the first property to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>...</p></td>
+<td class="parameter_description"><p>value for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-set-child-property-valist"></a><h3>ges_track_element_set_child_property_valist ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_set_child_property_valist
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *first_property_name</code></em>,
+                                <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_set_child_property_valist</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-set-child-property-valist" title="ges_timeline_element_set_child_property_valist ()"><span class="type">ges_timeline_element_set_child_property_valist</span></a></p>
+</div>
+<p>Sets a property of a child of <em class="parameter"><code>object</code></em>
+. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.12.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> parent object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>first_property_name</p></td>
+<td class="parameter_description"><p>The name of the first property to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>var_args</p></td>
+<td class="parameter_description"><p>value for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-set-child-property-by-pspec"></a><h3>ges_track_element_set_child_property_by_pspec ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_set_child_property_by_pspec
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_set_child_property_by_pspec</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <span class="type">ges_timeline_element_set_child_property_by_spec</span></p>
+</div>
+<p>Sets a property of a child of <em class="parameter"><code>object</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.13.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pspec</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> that specifies the property you want to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>the value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-child-property"></a><h3>ges_track_element_get_child_property ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_get_child_property (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                      <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *property_name</code></em>,
+                                      <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_get_child_property</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-get-child-property" title="ges_timeline_element_get_child_property ()"><span class="type">ges_timeline_element_get_child_property</span></a></p>
+</div>
+<p>In general, a copy is made of the property contents and
+the caller is responsible for freeing the memory by calling
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Generic-values.html#g-value-unset"><code class="function">g_value_unset()</code></a>.</p>
+<p>Gets a property of a GstElement contained in <em class="parameter"><code>object</code></em>
+.</p>
+<p>Note that <a class="link" href="GESTrackElement.html#ges-track-element-get-child-property" title="ges_track_element_get_child_property ()"><span class="type">ges_track_element_get_child_property</span></a> is really
+intended for language bindings, <a class="link" href="GESTrackElement.html#ges-track-element-get-child-properties" title="ges_track_element_get_child_properties ()"><span class="type">ges_track_element_get_child_properties</span></a>
+is much more convenient for C programming.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.14.8"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>property_name</p></td>
+<td class="parameter_description"><p>The name of the property</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p> return location for the property value, it will
+be initialized if it is initialized with 0. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.14.9"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the property was found, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-child-properties"></a><h3>ges_track_element_get_child_properties ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_get_child_properties
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *first_property_name</code></em>,
+                                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_get_child_properties</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-get-child-properties" title="ges_timeline_element_get_child_properties ()"><span class="type">ges_timeline_element_get_child_properties</span></a></p>
+</div>
+<p>Gets properties of a child of <em class="parameter"><code>object</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.15.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>first_property_name</p></td>
+<td class="parameter_description"><p>The name of the first property to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>...</p></td>
+<td class="parameter_description"><p>return location for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-child-property-valist"></a><h3>ges_track_element_get_child_property_valist ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_get_child_property_valist
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *first_property_name</code></em>,
+                                <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_get_child_property_valist</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-get-child-property-valist" title="ges_timeline_element_get_child_property_valist ()"><span class="type">ges_timeline_element_get_child_property_valist</span></a></p>
+</div>
+<p>Gets a property of a child of <em class="parameter"><code>object</code></em>
+. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.16.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> parent object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>first_property_name</p></td>
+<td class="parameter_description"><p>The name of the first property to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>var_args</p></td>
+<td class="parameter_description"><p>value for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-child-property-by-pspec"></a><h3>ges_track_element_get_child_property_by_pspec ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_track_element_get_child_property_by_pspec
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> *pspec</code></em>,
+                                <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">ges_track_element_get_child_property_by_pspec</code> is deprecated and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="GESTimelineElement.html#ges-timeline-element-get-child-property-by-pspec" title="ges_timeline_element_get_child_property_by_pspec ()"><span class="type">ges_timeline_element_get_child_property_by_pspec</span></a></p>
+</div>
+<p>Gets a property of a child of <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.17.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pspec</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gobject/unstable/gobject-GParamSpec.html#GParamSpec"><span class="type">GParamSpec</span></a> that specifies the property you want to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p> return location for the value. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-edit"></a><h3>ges_track_element_edit ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_edit (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *layers</code></em>,
+                        <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESEditMode" title="enum GESEditMode"><span class="type">GESEditMode</span></a> mode</code></em>,
+                        <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESEdge" title="enum GESEdge"><span class="type">GESEdge</span></a> edge</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> position</code></em>);</pre>
+<p>Edit <em class="parameter"><code>object</code></em>
+ in the different exisiting <a class="link" href="ges-GES-Enums.html#GESEditMode" title="enum GESEditMode"><span class="type">GESEditMode</span></a> modes. In the case of
+slide, and roll, you need to specify a <a class="link" href="ges-GES-Enums.html#GESEdge" title="enum GESEdge"><span class="type">GESEdge</span></a></p>
+<div class="refsect3">
+<a name="id-1.3.12.11.18.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> to edit</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>layers</p></td>
+<td class="parameter_description"><p> The layers you want the edit to
+happen in, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> means that the edition is done in all the
+<a href="../ges-1.0/GESLayer.html"><span class="type">GESLayers</span></a> contained in the current timeline.
+FIXME: This is not implemented yet. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESLayer]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mode</p></td>
+<td class="parameter_description"><p>The <a class="link" href="ges-GES-Enums.html#GESEditMode" title="enum GESEditMode"><span class="type">GESEditMode</span></a> in which the editition will happen.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>edge</p></td>
+<td class="parameter_description"><p>The <a class="link" href="ges-GES-Enums.html#GESEdge" title="enum GESEdge"><span class="type">GESEdge</span></a> the edit should happen on.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>position</p></td>
+<td class="parameter_description"><p>The position at which to edit <em class="parameter"><code>object</code></em>
+(in nanosecond)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.18.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the object as been edited properly, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error
+occured</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-set-control-source"></a><h3>ges_track_element_set_control_source ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_set_control_source (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                      <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlSource.html"><span class="type">GstControlSource</span></a> *source</code></em>,
+                                      <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *property_name</code></em>,
+                                      <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *binding_type</code></em>);</pre>
+<p>Creates a <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> and adds it to the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> concerned by the
+property. Use the same syntax as <a class="link" href="GESTrackElement.html#ges-track-element-lookup-child" title="ges_track_element_lookup_child ()"><span class="type">ges_track_element_lookup_child</span></a> for
+the property name.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.19.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> on which to set a control binding</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>source</p></td>
+<td class="parameter_description"><p> the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlSource.html"><span class="type">GstControlSource</span></a> to set on the binding. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GstControlSource]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>property_name</p></td>
+<td class="parameter_description"><p>The name of the property to control.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>binding_type</p></td>
+<td class="parameter_description"><p>The type of binding to create. Only "direct" is available for now.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.19.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the binding could be created and added, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error
+occured</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-control-binding"></a><h3>ges_track_element_get_control_binding ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="returnvalue">GstControlBinding</span></a> *
+ges_track_element_get_control_binding (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                       <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *property_name</code></em>);</pre>
+<p>Looks up the various controlled properties for that <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>,
+and returns the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> which controls <em class="parameter"><code>property_name</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.20.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> in which to lookup the bindings.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>property_name</p></td>
+<td class="parameter_description"><p>The property_name to which the binding is associated.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.20.6"></a><h4>Returns</h4>
+<p> the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> associated with <em class="parameter"><code>property_name</code></em>
+, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+if that property is not controlled. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-get-all-control-bindings"></a><h3>ges_track_element_get_all_control_bindings ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *
+ges_track_element_get_all_control_bindings
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *trackelement</code></em>);</pre>
+<div class="refsect3">
+<a name="id-1.3.12.11.21.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>trackelement</p></td>
+<td class="parameter_description"><p>The <span class="type">TrackElement</span> from which to get all set bindings</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.21.5"></a><h4>Returns</h4>
+<p> A
+<a href="https://developer.gnome.org/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> containing all property_name: GstControlBinding. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> gchar* GstControlBinding][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-track-element-remove-control-binding"></a><h3>ges_track_element_remove_control_binding ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_track_element_remove_control_binding
+                               (<em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *property_name</code></em>);</pre>
+<p>Removes a <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> from <em class="parameter"><code>object</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.12.11.22.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> on which to set a control binding</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>property_name</p></td>
+<td class="parameter_description"><p>The name of the property to control.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>binding_type</p></td>
+<td class="parameter_description"><p>The type of binding to create. Only "direct" is available for now.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.12.11.22.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the binding could be removed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error
+occured</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESTrackElement-struct"></a><h3>GESTrackElement</h3>
+<pre class="programlisting">typedef struct _GESTrackElement GESTrackElement;</pre>
+<p>The GESTrackElement base class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrackElementClass"></a><h3>GESTrackElementClass</h3>
+<pre class="programlisting">typedef struct {
+  /* virtual methods for subclasses */
+  const gchar  *nleobject_factorytype;
+  GstElement*  (*create_gnl_object)        (GESTrackElement * object);
+  GstElement*  (*create_element)           (GESTrackElement * object);
+
+  void (*active_changed)       (GESTrackElement *object, gboolean active);
+
+  /* virtual methods for subclasses */
+  GParamSpec** (*list_children_properties) (GESTrackElement * object,
+              guint *n_properties);
+  gboolean (*lookup_child)                 (GESTrackElement *object,
+                                            const gchar *prop_name,
+                                            GstElement **element,
+                                            GParamSpec **pspec);
+} GESTrackElementClass;
+</pre>
+<p>Subclasses can override the <em class="parameter"><code>create_gnl_object</code></em>
+ method to override what type
+of GNonLin object will be created.</p>
+<div class="refsect3">
+<a name="id-1.3.12.12.3.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="GESTrackElementClass.nleobject-factorytype"></a>nleobject_factorytype</code></em>;</p></td>
+<td class="struct_member_description"><p>name of the GNonLin GStElementFactory type to use.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESTrackElementClass.create-gnl-object"></a>create_gnl_object</code></em> ()</p></td>
+<td class="struct_member_description"><p>method to create the GNonLin container object.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESTrackElementClass.create-element"></a>create_element</code></em> ()</p></td>
+<td class="struct_member_description"><p>method to return the GstElement to put in the nleobject.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESTrackElementClass.active-changed"></a>active_changed</code></em> ()</p></td>
+<td class="struct_member_description"><p>active property of nleobject has changed</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESTrackElementClass.list-children-properties"></a>list_children_properties</code></em> ()</p></td>
+<td class="struct_member_description"><p>method to get children properties that user could
+like to configure.
+The default implementation will create an object
+of type <em class="parameter"><code>nleobject_factorytype</code></em>
+and call
+<em class="parameter"><code>create_element</code></em>
+.
+DeprecatedUse: GESTimelineElement.list_children_properties instead</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESTrackElementClass.lookup-child"></a>lookup_child</code></em> ()</p></td>
+<td class="struct_member_description"><p>method letting subclasses look for a child, overriding the
+simple standard behaviour. This vmethod can be used for example
+in the case where you want the name of a child property to be
+'overriden'. A good example of where it is usefull is the
+GESTitleSource where we have a videotestsrc which has a
+'foreground-color' property that is used in the TitleSource to
+set the background color of the title, in that case, this method
+has been overriden so that we tweak the name passed has parametter
+to rename "background" to "foreground-backend" making our API
+understandable.
+Deprecated: use GESTimelineElement.lookup_child instead</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESTrackElement--active"></a><h3>The <code class="literal">“active”</code> property</h3>
+<pre class="programlisting">  “active”                   <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether the object should be taken into account in the <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> output.
+If <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><span class="type">FALSE</span></a>, then its contents will not be used in the resulting track.</p>
+<p>Flags: Read / Write</p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrackElement--track"></a><h3>The <code class="literal">“track”</code> property</h3>
+<pre class="programlisting">  “track”                    <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *</pre>
+<p>The track the object is in.</p>
+<p>Flags: Read</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrackElement--track-type"></a><h3>The <code class="literal">“track-type”</code> property</h3>
+<pre class="programlisting">  “track-type”               <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></pre>
+<p>The track type of the object.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: GES_TRACK_TYPE_UNKNOWN</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTrackElement.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GESTrackElement-control-binding-added"></a><h3>The <code class="literal">“control-binding-added”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>   *track_element,
+               <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> *control_binding,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)</pre>
+<p>The control-bunding-added  is emitted each time a control binding
+is added for a child property of <em class="parameter"><code>track_element</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.3.12.14.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>track_element</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>control_binding</p></td>
+<td class="parameter_description"><p>the <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> that has been added</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTrackElement-control-binding-reomved"></a><h3>The <code class="literal">“control-binding-reomved”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>   *gestrackelement,
+               <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstControlBinding.html"><span class="type">GstControlBinding</span></a> *arg1,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)</pre>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
