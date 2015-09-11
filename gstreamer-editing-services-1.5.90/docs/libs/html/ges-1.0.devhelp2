@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="GStreamer Editing Services 1.5.90 Reference Manual" link="index.html" author="" name="ges-1.0" version="2" language="c">
+  <chapters>
+    <sub name="GStreamer Editing Services Overview" link="ch01.html">
+      <sub name="Overview and architecture" link="ges-architecture.html"/>
+      <sub name="Initialization" link="ges-Initialization.html"/>
+      <sub name="GES Enums" link="ges-GES-Enums.html"/>
+      <sub name="GES GErrors" link="ges-GES-GErrors.html"/>
+    </sub>
+    <sub name="Base Classes" link="ch02.html">
+      <sub name="GESTimeline" link="GESTimeline.html"/>
+      <sub name="GESLayer" link="GESLayer.html"/>
+      <sub name="GESTimelineElement" link="GESTimelineElement.html"/>
+      <sub name="GESContainer" link="GESContainer.html"/>
+      <sub name="GESClip" link="GESClip.html"/>
+      <sub name="GESSourceClip" link="GESSourceClip.html"/>
+      <sub name="GESOperationClip" link="GESOperationClip.html"/>
+      <sub name="GESOverlayClip" link="GESOverlayClip.html"/>
+      <sub name="GESBaseEffectClip" link="GESBaseEffectClip.html"/>
+      <sub name="GESTrack" link="GESTrack.html"/>
+      <sub name="GESTrackElement" link="GESTrackElement.html"/>
+      <sub name="GESSource" link="GESSource.html"/>
+      <sub name="GESVideoSource" link="GESVideoSource.html"/>
+      <sub name="GESAudioSource" link="GESAudioSource.html"/>
+      <sub name="GESBaseEffect" link="GESBaseEffect.html"/>
+      <sub name="GESOperation" link="GESOperation.html"/>
+      <sub name="GESBaseTransitionClip" link="GESBaseTransitionClip.html"/>
+      <sub name="GESAsset" link="GESAsset.html"/>
+    </sub>
+    <sub name="Timeline objects" link="ch03.html">
+      <sub name="GESUriClip" link="GESUriClip.html"/>
+      <sub name="GESTitleClip" link="GESTitleClip.html"/>
+      <sub name="GESTestClip" link="GESTestClip.html"/>
+      <sub name="GESTextOverlayClip" link="GESTextOverlayClip.html"/>
+      <sub name="GESTransitionClip" link="GESTransitionClip.html"/>
+      <sub name="GESEffectClip" link="GESEffectClip.html"/>
+      <sub name="GESGroup" link="ges-GESGroup.html"/>
+    </sub>
+    <sub name="Track objects" link="ch04.html">
+      <sub name="GESAudioUriSource" link="GESAudioUriSource.html"/>
+      <sub name="GESVideoUriSource" link="GESVideoUriSource.html"/>
+      <sub name="GESTitleSource" link="GESTitleSource.html"/>
+      <sub name="GESAudioTestSource" link="GESAudioTestSource.html"/>
+      <sub name="GESVideoTestSource" link="GESVideoTestSource.html"/>
+      <sub name="GESTextOverlay" link="GESTextOverlay.html"/>
+      <sub name="GESTransition" link="GESTransition.html"/>
+      <sub name="GESVideoTransition" link="GESVideoTransition.html"/>
+      <sub name="GESAudioTransition" link="GESAudioTransition.html"/>
+      <sub name="GESImageSource" link="GESImageSource.html"/>
+      <sub name="GESMultiFileSource" link="GESMultiFileSource.html"/>
+      <sub name="GESEffect" link="GESEffect.html"/>
+    </sub>
+    <sub name="Convenience classes" link="ch05.html">
+      <sub name="GESPipeline" link="GESPipeline.html"/>
+    </sub>
+    <sub name="Serialization Classes" link="ch06.html">
+      <sub name="GESFormatter" link="GESFormatter.html"/>
+      <sub name="GESPitiviFormatter" link="ges-GESPitiviFormatter.html"/>
+      <sub name="GESBaseXmlFormatter" link="ges-GESBaseXmlFormatter.html"/>
+      <sub name="GESXmlFormatter" link="ges-GESXmlFormatter.html"/>
+    </sub>
+    <sub name="Interfaces" link="ch07.html">
+      <sub name="GESMetaContainer" link="GESMetaContainer.html"/>
+      <sub name="GESExtractableInterface" link="ges-GESExtractableInterface.html"/>
+    </sub>
+    <sub name="Assets" link="ch08.html">
+      <sub name="GESClipAsset" link="GESClipAsset.html"/>
+      <sub name="GESTrackElementAsset" link="GESTrackElementAsset.html"/>
+      <sub name="GESUriClipAsset" link="GESUriClipAsset.html"/>
+      <sub name="GESUriSourceAsset" link="GESUriSourceAsset.html"/>
+      <sub name="GESProject" link="GESProject.html"/>
+    </sub>
+    <sub name="Tracks" link="ch09.html">
+      <sub name="GESVideoTrack" link="ges-GESVideoTrack.html"/>
+      <sub name="GESAudioTrack" link="ges-GESAudioTrack.html"/>
+    </sub>
+    <sub name="Object Hierarchy" link="ges-hierarchy.html"/>
+    <sub name="API Index" link="api-index-full.html"/>
+    <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+  </chapters>
+  <functions>
+    <keyword type="function" name="ges_init ()" link="ges-Initialization.html#ges-init"/>
+    <keyword type="function" name="ges_init_check ()" link="ges-Initialization.html#ges-init-check"/>
+    <keyword type="function" name="ges_version ()" link="ges-Initialization.html#ges-version"/>
+    <keyword type="function" name="ges_init_get_option_group ()" link="ges-Initialization.html#ges-init-get-option-group"/>
+    <keyword type="macro" name="GES_VERSION_MAJOR" link="ges-Initialization.html#GES-VERSION-MAJOR:CAPS"/>
+    <keyword type="macro" name="GES_VERSION_MICRO" link="ges-Initialization.html#GES-VERSION-MICRO:CAPS"/>
+    <keyword type="macro" name="GES_VERSION_MINOR" link="ges-Initialization.html#GES-VERSION-MINOR:CAPS"/>
+    <keyword type="macro" name="GES_VERSION_NANO" link="ges-Initialization.html#GES-VERSION-NANO:CAPS"/>
+    <keyword type="enum" name="enum GESTrackType" link="ges-GES-Enums.html#GESTrackType"/>
+    <keyword type="enum" name="enum GESVideoStandardTransitionType" link="ges-GES-Enums.html#GESVideoStandardTransitionType"/>
+    <keyword type="enum" name="enum GESTextHAlign" link="ges-GES-Enums.html#GESTextHAlign"/>
+    <keyword type="macro" name="DEFAULT_HALIGNMENT" link="ges-GES-Enums.html#DEFAULT-HALIGNMENT:CAPS"/>
+    <keyword type="enum" name="enum GESTextVAlign" link="ges-GES-Enums.html#GESTextVAlign"/>
+    <keyword type="macro" name="DEFAULT_VALIGNMENT" link="ges-GES-Enums.html#DEFAULT-VALIGNMENT:CAPS"/>
+    <keyword type="enum" name="enum GESVideoTestPattern" link="ges-GES-Enums.html#GESVideoTestPattern"/>
+    <keyword type="enum" name="enum GESPipelineFlags" link="ges-GES-Enums.html#GESPipelineFlags"/>
+    <keyword type="enum" name="enum GESEdge" link="ges-GES-Enums.html#GESEdge"/>
+    <keyword type="enum" name="enum GESEditMode" link="ges-GES-Enums.html#GESEditMode"/>
+    <keyword type="enum" name="enum GESMetaFlag" link="ges-GES-Enums.html#GESMetaFlag"/>
+    <keyword type="macro" name="GES_ERROR" link="ges-GES-GErrors.html#GES-ERROR:CAPS"/>
+    <keyword type="enum" name="enum GESError" link="ges-GES-GErrors.html#GESError"/>
+    <keyword type="function" name="ges_timeline_new ()" link="GESTimeline.html#ges-timeline-new"/>
+    <keyword type="function" name="ges_timeline_new_audio_video ()" link="GESTimeline.html#ges-timeline-new-audio-video"/>
+    <keyword type="function" name="ges_timeline_new_from_uri ()" link="GESTimeline.html#ges-timeline-new-from-uri"/>
+    <keyword type="function" name="ges_timeline_add_layer ()" link="GESTimeline.html#ges-timeline-add-layer"/>
+    <keyword type="function" name="ges_timeline_append_layer ()" link="GESTimeline.html#ges-timeline-append-layer"/>
+    <keyword type="function" name="ges_timeline_remove_layer ()" link="GESTimeline.html#ges-timeline-remove-layer"/>
+    <keyword type="function" name="ges_timeline_add_track ()" link="GESTimeline.html#ges-timeline-add-track"/>
+    <keyword type="function" name="ges_timeline_remove_track ()" link="GESTimeline.html#ges-timeline-remove-track"/>
+    <keyword type="function" name="ges_timeline_load_from_uri ()" link="GESTimeline.html#ges-timeline-load-from-uri"/>
+    <keyword type="function" name="ges_timeline_save_to_uri ()" link="GESTimeline.html#ges-timeline-save-to-uri"/>
+    <keyword type="function" name="ges_timeline_commit ()" link="GESTimeline.html#ges-timeline-commit"/>
+    <keyword type="function" name="ges_timeline_commit_sync ()" link="GESTimeline.html#ges-timeline-commit-sync"/>
+    <keyword type="function" name="ges_timeline_get_tracks ()" link="GESTimeline.html#ges-timeline-get-tracks"/>
+    <keyword type="function" name="ges_timeline_get_layer ()" link="GESTimeline.html#ges-timeline-get-layer"/>
+    <keyword type="function" name="ges_timeline_get_layers ()" link="GESTimeline.html#ges-timeline-get-layers"/>
+    <keyword type="function" name="ges_timeline_get_track_for_pad ()" link="GESTimeline.html#ges-timeline-get-track-for-pad"/>
+    <keyword type="function" name="ges_timeline_get_pad_for_track ()" link="GESTimeline.html#ges-timeline-get-pad-for-track"/>
+    <keyword type="function" name="ges_timeline_get_duration ()" link="GESTimeline.html#ges-timeline-get-duration"/>
+    <keyword type="macro" name="ges_timeline_get_project()" link="GESTimeline.html#ges-timeline-get-project"/>
+    <keyword type="function" name="ges_timeline_get_auto_transition ()" link="GESTimeline.html#ges-timeline-get-auto-transition"/>
+    <keyword type="function" name="ges_timeline_set_auto_transition ()" link="GESTimeline.html#ges-timeline-set-auto-transition"/>
+    <keyword type="function" name="ges_timeline_get_snapping_distance ()" link="GESTimeline.html#ges-timeline-get-snapping-distance"/>
+    <keyword type="function" name="ges_timeline_set_snapping_distance ()" link="GESTimeline.html#ges-timeline-set-snapping-distance"/>
+    <keyword type="function" name="ges_timeline_get_element ()" link="GESTimeline.html#ges-timeline-get-element"/>
+    <keyword type="function" name="ges_timeline_is_empty ()" link="GESTimeline.html#ges-timeline-is-empty"/>
+    <keyword type="struct" name="GESTimeline" link="GESTimeline.html#GESTimeline-struct"/>
+    <keyword type="property" name="The “auto-transition” property" link="GESTimeline.html#GESTimeline--auto-transition"/>
+    <keyword type="property" name="The “duration” property" link="GESTimeline.html#GESTimeline--duration"/>
+    <keyword type="property" name="The “snapping-distance” property" link="GESTimeline.html#GESTimeline--snapping-distance"/>
+    <keyword type="signal" name="The “commited” signal" link="GESTimeline.html#GESTimeline-commited"/>
+    <keyword type="signal" name="The “layer-added” signal" link="GESTimeline.html#GESTimeline-layer-added"/>
+    <keyword type="signal" name="The “layer-removed” signal" link="GESTimeline.html#GESTimeline-layer-removed"/>
+    <keyword type="signal" name="The “select-tracks-for-object” signal" link="GESTimeline.html#GESTimeline-select-tracks-for-object"/>
+    <keyword type="signal" name="The “snapping-ended” signal" link="GESTimeline.html#GESTimeline-snapping-ended"/>
+    <keyword type="signal" name="The “snapping-started” signal" link="GESTimeline.html#GESTimeline-snapping-started"/>
+    <keyword type="signal" name="The “track-added” signal" link="GESTimeline.html#GESTimeline-track-added"/>
+    <keyword type="signal" name="The “track-removed” signal" link="GESTimeline.html#GESTimeline-track-removed"/>
+    <keyword type="function" name="ges_layer_add_clip ()" link="GESLayer.html#ges-layer-add-clip"/>
+    <keyword type="function" name="ges_layer_add_asset ()" link="GESLayer.html#ges-layer-add-asset"/>
+    <keyword type="function" name="ges_layer_new ()" link="GESLayer.html#ges-layer-new"/>
+    <keyword type="function" name="ges_layer_remove_clip ()" link="GESLayer.html#ges-layer-remove-clip"/>
+    <keyword type="function" name="ges_layer_set_priority ()" link="GESLayer.html#ges-layer-set-priority"/>
+    <keyword type="function" name="ges_layer_get_priority ()" link="GESLayer.html#ges-layer-get-priority"/>
+    <keyword type="function" name="ges_layer_get_clips ()" link="GESLayer.html#ges-layer-get-clips"/>
+    <keyword type="function" name="ges_layer_get_timeline ()" link="GESLayer.html#ges-layer-get-timeline"/>
+    <keyword type="function" name="ges_layer_get_auto_transition ()" link="GESLayer.html#ges-layer-get-auto-transition"/>
+    <keyword type="function" name="ges_layer_set_auto_transition ()" link="GESLayer.html#ges-layer-set-auto-transition"/>
+    <keyword type="function" name="ges_layer_is_empty ()" link="GESLayer.html#ges-layer-is-empty"/>
+    <keyword type="function" name="ges_layer_get_duration ()" link="GESLayer.html#ges-layer-get-duration"/>
+    <keyword type="macro" name="GES_TIMELINE_GET_LAYERS()" link="GESLayer.html#GES-TIMELINE-GET-LAYERS:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_GET_TRACKS()" link="GESLayer.html#GES-TIMELINE-GET-TRACKS:CAPS"/>
+    <keyword type="struct" name="GESLayer" link="GESLayer.html#GESLayer-struct"/>
+    <keyword type="struct" name="GESLayerClass" link="GESLayer.html#GESLayerClass"/>
+    <keyword type="property" name="The “auto-transition” property" link="GESLayer.html#GESLayer--auto-transition"/>
+    <keyword type="property" name="The “priority” property" link="GESLayer.html#GESLayer--priority"/>
+    <keyword type="signal" name="The “clip-added” signal" link="GESLayer.html#GESLayer-clip-added"/>
+    <keyword type="signal" name="The “clip-removed” signal" link="GESLayer.html#GESLayer-clip-removed"/>
+    <keyword type="function" name="ges_timeline_element_set_parent ()" link="GESTimelineElement.html#ges-timeline-element-set-parent"/>
+    <keyword type="function" name="ges_timeline_element_get_parent ()" link="GESTimelineElement.html#ges-timeline-element-get-parent"/>
+    <keyword type="function" name="ges_timeline_element_set_timeline ()" link="GESTimelineElement.html#ges-timeline-element-set-timeline"/>
+    <keyword type="function" name="ges_timeline_element_get_timeline ()" link="GESTimelineElement.html#ges-timeline-element-get-timeline"/>
+    <keyword type="function" name="ges_timeline_element_set_start ()" link="GESTimelineElement.html#ges-timeline-element-set-start"/>
+    <keyword type="function" name="ges_timeline_element_set_inpoint ()" link="GESTimelineElement.html#ges-timeline-element-set-inpoint"/>
+    <keyword type="function" name="ges_timeline_element_set_duration ()" link="GESTimelineElement.html#ges-timeline-element-set-duration"/>
+    <keyword type="function" name="ges_timeline_element_set_max_duration ()" link="GESTimelineElement.html#ges-timeline-element-set-max-duration"/>
+    <keyword type="function" name="ges_timeline_element_set_priority ()" link="GESTimelineElement.html#ges-timeline-element-set-priority"/>
+    <keyword type="function" name="ges_timeline_element_get_start ()" link="GESTimelineElement.html#ges-timeline-element-get-start"/>
+    <keyword type="function" name="ges_timeline_element_get_inpoint ()" link="GESTimelineElement.html#ges-timeline-element-get-inpoint"/>
+    <keyword type="function" name="ges_timeline_element_get_duration ()" link="GESTimelineElement.html#ges-timeline-element-get-duration"/>
+    <keyword type="function" name="ges_timeline_element_get_max_duration ()" link="GESTimelineElement.html#ges-timeline-element-get-max-duration"/>
+    <keyword type="function" name="ges_timeline_element_get_priority ()" link="GESTimelineElement.html#ges-timeline-element-get-priority"/>
+    <keyword type="function" name="ges_timeline_element_ripple ()" link="GESTimelineElement.html#ges-timeline-element-ripple"/>
+    <keyword type="function" name="ges_timeline_element_ripple_end ()" link="GESTimelineElement.html#ges-timeline-element-ripple-end"/>
+    <keyword type="function" name="ges_timeline_element_roll_start ()" link="GESTimelineElement.html#ges-timeline-element-roll-start"/>
+    <keyword type="function" name="ges_timeline_element_roll_end ()" link="GESTimelineElement.html#ges-timeline-element-roll-end"/>
+    <keyword type="function" name="ges_timeline_element_trim ()" link="GESTimelineElement.html#ges-timeline-element-trim"/>
+    <keyword type="function" name="ges_timeline_element_get_toplevel_parent ()" link="GESTimelineElement.html#ges-timeline-element-get-toplevel-parent"/>
+    <keyword type="function" name="ges_timeline_element_copy ()" link="GESTimelineElement.html#ges-timeline-element-copy"/>
+    <keyword type="function" name="ges_timeline_element_paste ()" link="GESTimelineElement.html#ges-timeline-element-paste" since="1.6.0"/>
+    <keyword type="function" name="ges_timeline_element_get_name ()" link="GESTimelineElement.html#ges-timeline-element-get-name"/>
+    <keyword type="function" name="ges_timeline_element_set_name ()" link="GESTimelineElement.html#ges-timeline-element-set-name"/>
+    <keyword type="function" name="ges_timeline_element_list_children_properties ()" link="GESTimelineElement.html#ges-timeline-element-list-children-properties"/>
+    <keyword type="function" name="ges_timeline_element_lookup_child ()" link="GESTimelineElement.html#ges-timeline-element-lookup-child"/>
+    <keyword type="function" name="ges_timeline_element_get_child_property_by_pspec ()" link="GESTimelineElement.html#ges-timeline-element-get-child-property-by-pspec"/>
+    <keyword type="function" name="ges_timeline_element_get_child_property_valist ()" link="GESTimelineElement.html#ges-timeline-element-get-child-property-valist"/>
+    <keyword type="function" name="ges_timeline_element_get_child_properties ()" link="GESTimelineElement.html#ges-timeline-element-get-child-properties"/>
+    <keyword type="function" name="ges_timeline_element_set_child_property_valist ()" link="GESTimelineElement.html#ges-timeline-element-set-child-property-valist"/>
+    <keyword type="function" name="ges_timeline_element_set_child_property_by_pspec ()" link="GESTimelineElement.html#ges-timeline-element-set-child-property-by-pspec"/>
+    <keyword type="function" name="ges_timeline_element_set_child_properties ()" link="GESTimelineElement.html#ges-timeline-element-set-child-properties"/>
+    <keyword type="function" name="ges_timeline_element_set_child_property ()" link="GESTimelineElement.html#ges-timeline-element-set-child-property"/>
+    <keyword type="function" name="ges_timeline_element_get_child_property ()" link="GESTimelineElement.html#ges-timeline-element-get-child-property"/>
+    <keyword type="function" name="ges_timeline_element_add_child_property ()" link="GESTimelineElement.html#ges-timeline-element-add-child-property"/>
+    <keyword type="function" name="ges_timeline_element_remove_child_property ()" link="GESTimelineElement.html#ges-timeline-element-remove-child-property"/>
+    <keyword type="function" name="ges_timeline_element_get_track_types ()" link="GESTimelineElement.html#ges-timeline-element-get-track-types" since="1.6.0"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_PARENT()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-PARENT:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_TIMELINE()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-TIMELINE:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_START()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-START:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_END()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-END:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_INPOINT()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-INPOINT:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_DURATION()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-DURATION:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_MAX_DURATION()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-MAX-DURATION:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_PRIORITY()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-PRIORITY:CAPS"/>
+    <keyword type="macro" name="GES_TIMELINE_ELEMENT_NAME()" link="GESTimelineElement.html#GES-TIMELINE-ELEMENT-NAME:CAPS"/>
+    <keyword type="struct" name="GESTimelineElement" link="GESTimelineElement.html#GESTimelineElement-struct"/>
+    <keyword type="struct" name="GESTimelineElementClass" link="GESTimelineElement.html#GESTimelineElementClass"/>
+    <keyword type="macro" name="GES_CONTAINER_CHILDREN()" link="GESContainer.html#GES-CONTAINER-CHILDREN:CAPS"/>
+    <keyword type="macro" name="GES_CONTAINER_HEIGHT()" link="GESContainer.html#GES-CONTAINER-HEIGHT:CAPS"/>
+    <keyword type="function" name="ges_container_get_children ()" link="GESContainer.html#ges-container-get-children"/>
+    <keyword type="function" name="ges_container_add ()" link="GESContainer.html#ges-container-add"/>
+    <keyword type="function" name="ges_container_remove ()" link="GESContainer.html#ges-container-remove"/>
+    <keyword type="function" name="ges_container_ungroup ()" link="GESContainer.html#ges-container-ungroup"/>
+    <keyword type="function" name="ges_container_group ()" link="GESContainer.html#ges-container-group"/>
+    <keyword type="struct" name="GESContainer" link="GESContainer.html#GESContainer-struct"/>
+    <keyword type="struct" name="GESContainerClass" link="GESContainer.html#GESContainerClass"/>
+    <keyword type="function" name="GESCreateTrackElementFunc ()" link="GESClip.html#GESCreateTrackElementFunc"/>
+    <keyword type="function" name="GESCreateTrackElementsFunc ()" link="GESClip.html#GESCreateTrackElementsFunc"/>
+    <keyword type="function" name="GESFillTrackElementFunc ()" link="GESClip.html#GESFillTrackElementFunc"/>
+    <keyword type="function" name="ges_clip_get_layer ()" link="GESClip.html#ges-clip-get-layer"/>
+    <keyword type="function" name="ges_clip_find_track_element ()" link="GESClip.html#ges-clip-find-track-element"/>
+    <keyword type="function" name="ges_clip_find_track_elements ()" link="GESClip.html#ges-clip-find-track-elements"/>
+    <keyword type="function" name="ges_clip_add_asset ()" link="GESClip.html#ges-clip-add-asset"/>
+    <keyword type="function" name="ges_clip_get_top_effects ()" link="GESClip.html#ges-clip-get-top-effects"/>
+    <keyword type="function" name="ges_clip_get_top_effect_index ()" link="GESClip.html#ges-clip-get-top-effect-index"/>
+    <keyword type="function" name="ges_clip_move_to_layer ()" link="GESClip.html#ges-clip-move-to-layer"/>
+    <keyword type="function" name="ges_clip_set_top_effect_index ()" link="GESClip.html#ges-clip-set-top-effect-index"/>
+    <keyword type="function" name="ges_clip_set_supported_formats ()" link="GESClip.html#ges-clip-set-supported-formats"/>
+    <keyword type="function" name="ges_clip_get_supported_formats ()" link="GESClip.html#ges-clip-get-supported-formats"/>
+    <keyword type="function" name="ges_clip_split ()" link="GESClip.html#ges-clip-split"/>
+    <keyword type="struct" name="GESClip" link="GESClip.html#GESClip-struct"/>
+    <keyword type="struct" name="GESClipClass" link="GESClip.html#GESClipClass"/>
+    <keyword type="property" name="The “layer” property" link="GESClip.html#GESClip--layer"/>
+    <keyword type="property" name="The “supported-formats” property" link="GESClip.html#GESClip--supported-formats"/>
+    <keyword type="struct" name="GESSourceClip" link="GESSourceClip.html#GESSourceClip-struct"/>
+    <keyword type="struct" name="GESSourceClipClass" link="GESSourceClip.html#GESSourceClipClass"/>
+    <keyword type="struct" name="GESOperationClip" link="GESOperationClip.html#GESOperationClip-struct"/>
+    <keyword type="struct" name="GESOverlayClip" link="GESOverlayClip.html#GESOverlayClip-struct"/>
+    <keyword type="struct" name="GESOverlayClipClass" link="GESOverlayClip.html#GESOverlayClipClass"/>
+    <keyword type="struct" name="GESBaseEffectClip" link="GESBaseEffectClip.html#GESBaseEffectClip-struct"/>
+    <keyword type="function" name="GESCreateElementForGapFunc ()" link="GESTrack.html#GESCreateElementForGapFunc"/>
+    <keyword type="function" name="ges_track_new ()" link="GESTrack.html#ges-track-new"/>
+    <keyword type="function" name="ges_track_add_element ()" link="GESTrack.html#ges-track-add-element"/>
+    <keyword type="function" name="ges_track_set_restriction_caps ()" link="GESTrack.html#ges-track-set-restriction-caps"/>
+    <keyword type="function" name="ges_track_update_restriction_caps ()" link="GESTrack.html#ges-track-update-restriction-caps"/>
+    <keyword type="function" name="ges_track_remove_element ()" link="GESTrack.html#ges-track-remove-element"/>
+    <keyword type="function" name="ges_track_get_caps ()" link="GESTrack.html#ges-track-get-caps"/>
+    <keyword type="function" name="ges_track_get_elements ()" link="GESTrack.html#ges-track-get-elements"/>
+    <keyword type="struct" name="GESTrack" link="GESTrack.html#GESTrack-struct"/>
+    <keyword type="property" name="The “caps” property" link="GESTrack.html#GESTrack--caps"/>
+    <keyword type="property" name="The “duration” property" link="GESTrack.html#GESTrack--duration"/>
+    <keyword type="property" name="The “mixing” property" link="GESTrack.html#GESTrack--mixing"/>
+    <keyword type="property" name="The “restriction-caps” property" link="GESTrack.html#GESTrack--restriction-caps"/>
+    <keyword type="property" name="The “track-type” property" link="GESTrack.html#GESTrack--track-type"/>
+    <keyword type="signal" name="The “commited” signal" link="GESTrack.html#GESTrack-commited"/>
+    <keyword type="signal" name="The “track-element-added” signal" link="GESTrack.html#GESTrack-track-element-added"/>
+    <keyword type="signal" name="The “track-element-removed” signal" link="GESTrack.html#GESTrack-track-element-removed"/>
+    <keyword type="function" name="ges_track_element_set_active ()" link="GESTrackElement.html#ges-track-element-set-active"/>
+    <keyword type="function" name="ges_track_element_get_track ()" link="GESTrackElement.html#ges-track-element-get-track"/>
+    <keyword type="function" name="ges_track_element_get_nleobject ()" link="GESTrackElement.html#ges-track-element-get-nleobject" since="1.6"/>
+    <keyword type="function" name="ges_track_element_get_gnlobject ()" link="GESTrackElement.html#ges-track-element-get-gnlobject" deprecated="use #ges_track_element_get_nleobject instead."/>
+    <keyword type="function" name="ges_track_element_get_element ()" link="GESTrackElement.html#ges-track-element-get-element"/>
+    <keyword type="function" name="ges_track_element_is_active ()" link="GESTrackElement.html#ges-track-element-is-active"/>
+    <keyword type="function" name="ges_track_element_lookup_child ()" link="GESTrackElement.html#ges-track-element-lookup-child" deprecated="Use #ges_timeline_element_lookup_child"/>
+    <keyword type="function" name="ges_track_element_list_children_properties ()" link="GESTrackElement.html#ges-track-element-list-children-properties" deprecated="Use #ges_timeline_element_list_children_properties"/>
+    <keyword type="function" name="ges_track_element_set_child_property ()" link="GESTrackElement.html#ges-track-element-set-child-property" deprecated="use #ges_timeline_element_set_child_property instead"/>
+    <keyword type="function" name="ges_track_element_set_child_properties ()" link="GESTrackElement.html#ges-track-element-set-child-properties" deprecated="Use #ges_timeline_element_set_child_properties"/>
+    <keyword type="function" name="ges_track_element_set_child_property_valist ()" link="GESTrackElement.html#ges-track-element-set-child-property-valist" deprecated="Use #ges_timeline_element_set_child_property_valist"/>
+    <keyword type="function" name="ges_track_element_set_child_property_by_pspec ()" link="GESTrackElement.html#ges-track-element-set-child-property-by-pspec" deprecated="Use #ges_timeline_element_set_child_property_by_spec"/>
+    <keyword type="function" name="ges_track_element_get_child_property ()" link="GESTrackElement.html#ges-track-element-get-child-property" deprecated="Use #ges_timeline_element_get_child_property"/>
+    <keyword type="function" name="ges_track_element_get_child_properties ()" link="GESTrackElement.html#ges-track-element-get-child-properties" deprecated="Use #ges_timeline_element_get_child_properties"/>
+    <keyword type="function" name="ges_track_element_get_child_property_valist ()" link="GESTrackElement.html#ges-track-element-get-child-property-valist" deprecated="Use #ges_timeline_element_get_child_property_valist"/>
+    <keyword type="function" name="ges_track_element_get_child_property_by_pspec ()" link="GESTrackElement.html#ges-track-element-get-child-property-by-pspec" deprecated="Use #ges_timeline_element_get_child_property_by_pspec"/>
+    <keyword type="function" name="ges_track_element_edit ()" link="GESTrackElement.html#ges-track-element-edit"/>
+    <keyword type="function" name="ges_track_element_set_control_source ()" link="GESTrackElement.html#ges-track-element-set-control-source"/>
+    <keyword type="function" name="ges_track_element_get_control_binding ()" link="GESTrackElement.html#ges-track-element-get-control-binding"/>
+    <keyword type="function" name="ges_track_element_get_all_control_bindings ()" link="GESTrackElement.html#ges-track-element-get-all-control-bindings"/>
+    <keyword type="function" name="ges_track_element_remove_control_binding ()" link="GESTrackElement.html#ges-track-element-remove-control-binding"/>
+    <keyword type="struct" name="GESTrackElement" link="GESTrackElement.html#GESTrackElement-struct"/>
+    <keyword type="struct" name="GESTrackElementClass" link="GESTrackElement.html#GESTrackElementClass"/>
+    <keyword type="property" name="The “active” property" link="GESTrackElement.html#GESTrackElement--active"/>
+    <keyword type="property" name="The “track” property" link="GESTrackElement.html#GESTrackElement--track"/>
+    <keyword type="property" name="The “track-type” property" link="GESTrackElement.html#GESTrackElement--track-type"/>
+    <keyword type="signal" name="The “control-binding-added” signal" link="GESTrackElement.html#GESTrackElement-control-binding-added"/>
+    <keyword type="signal" name="The “control-binding-reomved” signal" link="GESTrackElement.html#GESTrackElement-control-binding-reomved"/>
+    <keyword type="struct" name="GESSource" link="GESSource.html#GESSource-struct"/>
+    <keyword type="struct" name="GESSourceClass" link="GESSource.html#GESSourceClass"/>
+    <keyword type="struct" name="GESVideoSource" link="GESVideoSource.html#GESVideoSource-struct"/>
+    <keyword type="struct" name="GESAudioSource" link="GESAudioSource.html#GESAudioSource-struct"/>
+    <keyword type="struct" name="GESBaseEffect" link="GESBaseEffect.html#GESBaseEffect-struct"/>
+    <keyword type="struct" name="GESOperation" link="GESOperation.html#GESOperation-struct"/>
+    <keyword type="struct" name="GESOperationClass" link="GESOperation.html#GESOperationClass"/>
+    <keyword type="struct" name="GESBaseTransitionClip" link="GESBaseTransitionClip.html#GESBaseTransitionClip-struct"/>
+    <keyword type="function" name="ges_asset_get_extractable_type ()" link="GESAsset.html#ges-asset-get-extractable-type"/>
+    <keyword type="function" name="ges_asset_get_id ()" link="GESAsset.html#ges-asset-get-id"/>
+    <keyword type="function" name="ges_asset_request ()" link="GESAsset.html#ges-asset-request"/>
+    <keyword type="function" name="ges_asset_request_async ()" link="GESAsset.html#ges-asset-request-async"/>
+    <keyword type="function" name="ges_asset_request_finish ()" link="GESAsset.html#ges-asset-request-finish"/>
+    <keyword type="function" name="ges_asset_extract ()" link="GESAsset.html#ges-asset-extract"/>
+    <keyword type="function" name="ges_list_assets ()" link="GESAsset.html#ges-list-assets"/>
+    <keyword type="struct" name="GESAsset" link="GESAsset.html#GESAsset-struct"/>
+    <keyword type="function" name="ges_uri_clip_new ()" link="GESUriClip.html#ges-uri-clip-new"/>
+    <keyword type="function" name="ges_uri_clip_get_uri ()" link="GESUriClip.html#ges-uri-clip-get-uri"/>
+    <keyword type="function" name="ges_uri_clip_is_image ()" link="GESUriClip.html#ges-uri-clip-is-image"/>
+    <keyword type="function" name="ges_uri_clip_is_muted ()" link="GESUriClip.html#ges-uri-clip-is-muted"/>
+    <keyword type="function" name="ges_uri_clip_set_is_image ()" link="GESUriClip.html#ges-uri-clip-set-is-image"/>
+    <keyword type="function" name="ges_uri_clip_set_mute ()" link="GESUriClip.html#ges-uri-clip-set-mute"/>
+    <keyword type="struct" name="GESUriClip" link="GESUriClip.html#GESUriClip-struct"/>
+    <keyword type="property" name="The “is-image” property" link="GESUriClip.html#GESUriClip--is-image"/>
+    <keyword type="property" name="The “mute” property" link="GESUriClip.html#GESUriClip--mute"/>
+    <keyword type="property" name="The “supported-formats” property" link="GESUriClip.html#GESUriClip--supported-formats"/>
+    <keyword type="property" name="The “uri” property" link="GESUriClip.html#GESUriClip--uri"/>
+    <keyword type="function" name="ges_title_clip_new ()" link="GESTitleClip.html#ges-title-clip-new"/>
+    <keyword type="function" name="ges_title_clip_set_text ()" link="GESTitleClip.html#ges-title-clip-set-text" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_font_desc ()" link="GESTitleClip.html#ges-title-clip-set-font-desc" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_halignment ()" link="GESTitleClip.html#ges-title-clip-set-halignment" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_valignment ()" link="GESTitleClip.html#ges-title-clip-set-valignment" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_color ()" link="GESTitleClip.html#ges-title-clip-set-color" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_background ()" link="GESTitleClip.html#ges-title-clip-set-background" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_xpos ()" link="GESTitleClip.html#ges-title-clip-set-xpos" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_set_ypos ()" link="GESTitleClip.html#ges-title-clip-set-ypos" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_text ()" link="GESTitleClip.html#ges-title-clip-get-text" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_font_desc ()" link="GESTitleClip.html#ges-title-clip-get-font-desc" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_valignment ()" link="GESTitleClip.html#ges-title-clip-get-valignment" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_halignment ()" link="GESTitleClip.html#ges-title-clip-get-halignment" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_text_color ()" link="GESTitleClip.html#ges-title-clip-get-text-color" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_background_color ()" link="GESTitleClip.html#ges-title-clip-get-background-color" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_xpos ()" link="GESTitleClip.html#ges-title-clip-get-xpos" deprecated=""/>
+    <keyword type="function" name="ges_title_clip_get_ypos ()" link="GESTitleClip.html#ges-title-clip-get-ypos" deprecated=""/>
+    <keyword type="struct" name="GESTitleClip" link="GESTitleClip.html#GESTitleClip-struct"/>
+    <keyword type="property" name="The “background” property" link="GESTitleClip.html#GESTitleClip--background"/>
+    <keyword type="property" name="The “color” property" link="GESTitleClip.html#GESTitleClip--color"/>
+    <keyword type="property" name="The “font-desc” property" link="GESTitleClip.html#GESTitleClip--font-desc"/>
+    <keyword type="property" name="The “halignment” property" link="GESTitleClip.html#GESTitleClip--halignment"/>
+    <keyword type="property" name="The “text” property" link="GESTitleClip.html#GESTitleClip--text"/>
+    <keyword type="property" name="The “valignment” property" link="GESTitleClip.html#GESTitleClip--valignment"/>
+    <keyword type="property" name="The “xpos” property" link="GESTitleClip.html#GESTitleClip--xpos"/>
+    <keyword type="property" name="The “ypos” property" link="GESTitleClip.html#GESTitleClip--ypos"/>
+    <keyword type="function" name="ges_test_clip_new ()" link="GESTestClip.html#ges-test-clip-new"/>
+    <keyword type="function" name="ges_test_clip_new_for_nick ()" link="GESTestClip.html#ges-test-clip-new-for-nick"/>
+    <keyword type="function" name="ges_test_clip_get_vpattern ()" link="GESTestClip.html#ges-test-clip-get-vpattern"/>
+    <keyword type="function" name="ges_test_clip_get_frequency ()" link="GESTestClip.html#ges-test-clip-get-frequency"/>
+    <keyword type="function" name="ges_test_clip_get_volume ()" link="GESTestClip.html#ges-test-clip-get-volume"/>
+    <keyword type="function" name="ges_test_clip_is_muted ()" link="GESTestClip.html#ges-test-clip-is-muted"/>
+    <keyword type="function" name="ges_test_clip_set_vpattern ()" link="GESTestClip.html#ges-test-clip-set-vpattern"/>
+    <keyword type="function" name="ges_test_clip_set_frequency ()" link="GESTestClip.html#ges-test-clip-set-frequency"/>
+    <keyword type="function" name="ges_test_clip_set_mute ()" link="GESTestClip.html#ges-test-clip-set-mute"/>
+    <keyword type="function" name="ges_test_clip_set_volume ()" link="GESTestClip.html#ges-test-clip-set-volume"/>
+    <keyword type="struct" name="GESTestClip" link="GESTestClip.html#GESTestClip-struct"/>
+    <keyword type="struct" name="GESTestClipClass" link="GESTestClip.html#GESTestClipClass"/>
+    <keyword type="property" name="The “freq” property" link="GESTestClip.html#GESTestClip--freq"/>
+    <keyword type="property" name="The “mute” property" link="GESTestClip.html#GESTestClip--mute"/>
+    <keyword type="property" name="The “volume” property" link="GESTestClip.html#GESTestClip--volume"/>
+    <keyword type="property" name="The “vpattern” property" link="GESTestClip.html#GESTestClip--vpattern"/>
+    <keyword type="function" name="ges_text_overlay_clip_new ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-new"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_text ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-text"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_font_desc ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-font-desc"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_valign ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-valign"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_halign ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-halign"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_color ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-color"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_xpos ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-xpos"/>
+    <keyword type="function" name="ges_text_overlay_clip_set_ypos ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-set-ypos"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_text ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-text"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_font_desc ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-font-desc"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_valignment ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-valignment"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_halignment ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-halignment"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_color ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-color"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_xpos ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-xpos"/>
+    <keyword type="function" name="ges_text_overlay_clip_get_ypos ()" link="GESTextOverlayClip.html#ges-text-overlay-clip-get-ypos"/>
+    <keyword type="struct" name="GESTextOverlayClip" link="GESTextOverlayClip.html#GESTextOverlayClip-struct"/>
+    <keyword type="property" name="The “color” property" link="GESTextOverlayClip.html#GESTextOverlayClip--color"/>
+    <keyword type="property" name="The “font-desc” property" link="GESTextOverlayClip.html#GESTextOverlayClip--font-desc"/>
+    <keyword type="property" name="The “halignment” property" link="GESTextOverlayClip.html#GESTextOverlayClip--halignment"/>
+    <keyword type="property" name="The “text” property" link="GESTextOverlayClip.html#GESTextOverlayClip--text"/>
+    <keyword type="property" name="The “valignment” property" link="GESTextOverlayClip.html#GESTextOverlayClip--valignment"/>
+    <keyword type="property" name="The “xpos” property" link="GESTextOverlayClip.html#GESTextOverlayClip--xpos"/>
+    <keyword type="property" name="The “ypos” property" link="GESTextOverlayClip.html#GESTextOverlayClip--ypos"/>
+    <keyword type="function" name="ges_transition_clip_new ()" link="GESTransitionClip.html#ges-transition-clip-new"/>
+    <keyword type="function" name="ges_transition_clip_new_for_nick ()" link="GESTransitionClip.html#ges-transition-clip-new-for-nick"/>
+    <keyword type="struct" name="GESTransitionClip" link="GESTransitionClip.html#GESTransitionClip-struct"/>
+    <keyword type="property" name="The “vtype” property" link="GESTransitionClip.html#GESTransitionClip--vtype"/>
+    <keyword type="function" name="ges_effect_clip_new ()" link="GESEffectClip.html#ges-effect-clip-new"/>
+    <keyword type="struct" name="GESEffectClip" link="GESEffectClip.html#GESEffectClip-struct"/>
+    <keyword type="property" name="The “audio-bin-description” property" link="GESEffectClip.html#GESEffectClip--audio-bin-description"/>
+    <keyword type="property" name="The “video-bin-description” property" link="GESEffectClip.html#GESEffectClip--video-bin-description"/>
+    <keyword type="function" name="ges_group_new ()" link="ges-GESGroup.html#ges-group-new"/>
+    <keyword type="struct" name="GESGroup" link="ges-GESGroup.html#GESGroup"/>
+    <keyword type="struct" name="GESAudioUriSource" link="GESAudioUriSource.html#GESAudioUriSource-struct"/>
+    <keyword type="property" name="The “uri” property" link="GESAudioUriSource.html#GESAudioUriSource--uri"/>
+    <keyword type="struct" name="GESVideoUriSource" link="GESVideoUriSource.html#GESVideoUriSource-struct"/>
+    <keyword type="property" name="The “uri” property" link="GESVideoUriSource.html#GESVideoUriSource--uri"/>
+    <keyword type="function" name="ges_title_source_set_text ()" link="GESTitleSource.html#ges-title-source-set-text" deprecated=""/>
+    <keyword type="function" name="ges_title_source_set_font_desc ()" link="GESTitleSource.html#ges-title-source-set-font-desc"/>
+    <keyword type="function" name="ges_title_source_set_halignment ()" link="GESTitleSource.html#ges-title-source-set-halignment"/>
+    <keyword type="function" name="ges_title_source_set_valignment ()" link="GESTitleSource.html#ges-title-source-set-valignment"/>
+    <keyword type="function" name="ges_title_source_set_text_color ()" link="GESTitleSource.html#ges-title-source-set-text-color"/>
+    <keyword type="function" name="ges_title_source_set_background_color ()" link="GESTitleSource.html#ges-title-source-set-background-color"/>
+    <keyword type="function" name="ges_title_source_set_xpos ()" link="GESTitleSource.html#ges-title-source-set-xpos"/>
+    <keyword type="function" name="ges_title_source_set_ypos ()" link="GESTitleSource.html#ges-title-source-set-ypos"/>
+    <keyword type="function" name="ges_title_source_get_text ()" link="GESTitleSource.html#ges-title-source-get-text"/>
+    <keyword type="function" name="ges_title_source_get_font_desc ()" link="GESTitleSource.html#ges-title-source-get-font-desc"/>
+    <keyword type="function" name="ges_title_source_get_halignment ()" link="GESTitleSource.html#ges-title-source-get-halignment"/>
+    <keyword type="function" name="ges_title_source_get_valignment ()" link="GESTitleSource.html#ges-title-source-get-valignment"/>
+    <keyword type="function" name="ges_title_source_get_text_color ()" link="GESTitleSource.html#ges-title-source-get-text-color"/>
+    <keyword type="function" name="ges_title_source_get_background_color ()" link="GESTitleSource.html#ges-title-source-get-background-color"/>
+    <keyword type="function" name="ges_title_source_get_xpos ()" link="GESTitleSource.html#ges-title-source-get-xpos"/>
+    <keyword type="function" name="ges_title_source_get_ypos ()" link="GESTitleSource.html#ges-title-source-get-ypos"/>
+    <keyword type="struct" name="GESTitleSource" link="GESTitleSource.html#GESTitleSource-struct"/>
+    <keyword type="function" name="ges_audio_test_source_set_freq ()" link="GESAudioTestSource.html#ges-audio-test-source-set-freq"/>
+    <keyword type="function" name="ges_audio_test_source_set_volume ()" link="GESAudioTestSource.html#ges-audio-test-source-set-volume"/>
+    <keyword type="function" name="ges_audio_test_source_get_freq ()" link="GESAudioTestSource.html#ges-audio-test-source-get-freq"/>
+    <keyword type="function" name="ges_audio_test_source_get_volume ()" link="GESAudioTestSource.html#ges-audio-test-source-get-volume"/>
+    <keyword type="struct" name="GESAudioTestSource" link="GESAudioTestSource.html#GESAudioTestSource-struct"/>
+    <keyword type="function" name="ges_video_test_source_set_pattern ()" link="GESVideoTestSource.html#ges-video-test-source-set-pattern"/>
+    <keyword type="function" name="ges_video_test_source_get_pattern ()" link="GESVideoTestSource.html#ges-video-test-source-get-pattern"/>
+    <keyword type="struct" name="GESVideoTestSource" link="GESVideoTestSource.html#GESVideoTestSource-struct"/>
+    <keyword type="function" name="ges_text_overlay_new ()" link="GESTextOverlay.html#ges-text-overlay-new"/>
+    <keyword type="function" name="ges_text_overlay_set_text ()" link="GESTextOverlay.html#ges-text-overlay-set-text"/>
+    <keyword type="function" name="ges_text_overlay_set_font_desc ()" link="GESTextOverlay.html#ges-text-overlay-set-font-desc"/>
+    <keyword type="function" name="ges_text_overlay_set_halignment ()" link="GESTextOverlay.html#ges-text-overlay-set-halignment"/>
+    <keyword type="function" name="ges_text_overlay_set_valignment ()" link="GESTextOverlay.html#ges-text-overlay-set-valignment"/>
+    <keyword type="function" name="ges_text_overlay_set_color ()" link="GESTextOverlay.html#ges-text-overlay-set-color"/>
+    <keyword type="function" name="ges_text_overlay_set_xpos ()" link="GESTextOverlay.html#ges-text-overlay-set-xpos"/>
+    <keyword type="function" name="ges_text_overlay_set_ypos ()" link="GESTextOverlay.html#ges-text-overlay-set-ypos"/>
+    <keyword type="function" name="ges_text_overlay_get_text ()" link="GESTextOverlay.html#ges-text-overlay-get-text"/>
+    <keyword type="function" name="ges_text_overlay_get_font_desc ()" link="GESTextOverlay.html#ges-text-overlay-get-font-desc"/>
+    <keyword type="function" name="ges_text_overlay_get_halignment ()" link="GESTextOverlay.html#ges-text-overlay-get-halignment"/>
+    <keyword type="function" name="ges_text_overlay_get_valignment ()" link="GESTextOverlay.html#ges-text-overlay-get-valignment"/>
+    <keyword type="function" name="ges_text_overlay_get_color ()" link="GESTextOverlay.html#ges-text-overlay-get-color"/>
+    <keyword type="function" name="ges_text_overlay_get_xpos ()" link="GESTextOverlay.html#ges-text-overlay-get-xpos"/>
+    <keyword type="function" name="ges_text_overlay_get_ypos ()" link="GESTextOverlay.html#ges-text-overlay-get-ypos"/>
+    <keyword type="struct" name="GESTextOverlay" link="GESTextOverlay.html#GESTextOverlay-struct"/>
+    <keyword type="struct" name="GESTransition" link="GESTransition.html#GESTransition-struct"/>
+    <keyword type="struct" name="GESTransitionClass" link="GESTransition.html#GESTransitionClass"/>
+    <keyword type="function" name="ges_video_transition_new ()" link="GESVideoTransition.html#ges-video-transition-new"/>
+    <keyword type="function" name="ges_video_transition_set_transition_type ()" link="GESVideoTransition.html#ges-video-transition-set-transition-type"/>
+    <keyword type="function" name="ges_video_transition_get_transition_type ()" link="GESVideoTransition.html#ges-video-transition-get-transition-type"/>
+    <keyword type="function" name="ges_video_transition_set_border ()" link="GESVideoTransition.html#ges-video-transition-set-border"/>
+    <keyword type="function" name="ges_video_transition_get_border ()" link="GESVideoTransition.html#ges-video-transition-get-border"/>
+    <keyword type="function" name="ges_video_transition_set_inverted ()" link="GESVideoTransition.html#ges-video-transition-set-inverted"/>
+    <keyword type="function" name="ges_video_transition_is_inverted ()" link="GESVideoTransition.html#ges-video-transition-is-inverted"/>
+    <keyword type="struct" name="GESVideoTransition" link="GESVideoTransition.html#GESVideoTransition-struct"/>
+    <keyword type="property" name="The “border” property" link="GESVideoTransition.html#GESVideoTransition--border"/>
+    <keyword type="property" name="The “invert” property" link="GESVideoTransition.html#GESVideoTransition--invert"/>
+    <keyword type="property" name="The “transition-type” property" link="GESVideoTransition.html#GESVideoTransition--transition-type"/>
+    <keyword type="function" name="ges_audio_transition_new ()" link="GESAudioTransition.html#ges-audio-transition-new"/>
+    <keyword type="struct" name="GESAudioTransition" link="GESAudioTransition.html#GESAudioTransition-struct"/>
+    <keyword type="struct" name="GESImageSource" link="GESImageSource.html#GESImageSource-struct"/>
+    <keyword type="property" name="The “uri” property" link="GESImageSource.html#GESImageSource--uri"/>
+    <keyword type="function" name="ges_multi_file_source_new ()" link="GESMultiFileSource.html#ges-multi-file-source-new"/>
+    <keyword type="struct" name="GESMultiFileSource" link="GESMultiFileSource.html#GESMultiFileSource-struct"/>
+    <keyword type="property" name="The “uri” property" link="GESMultiFileSource.html#GESMultiFileSource--uri"/>
+    <keyword type="function" name="ges_effect_new ()" link="GESEffect.html#ges-effect-new"/>
+    <keyword type="struct" name="GESEffect" link="GESEffect.html#GESEffect-struct"/>
+    <keyword type="property" name="The “bin-description” property" link="GESEffect.html#GESEffect--bin-description"/>
+    <keyword type="function" name="ges_pipeline_new ()" link="GESPipeline.html#ges-pipeline-new"/>
+    <keyword type="function" name="ges_pipeline_set_timeline ()" link="GESPipeline.html#ges-pipeline-set-timeline"/>
+    <keyword type="function" name="ges_pipeline_set_mode ()" link="GESPipeline.html#ges-pipeline-set-mode"/>
+    <keyword type="function" name="ges_pipeline_set_render_settings ()" link="GESPipeline.html#ges-pipeline-set-render-settings"/>
+    <keyword type="function" name="ges_pipeline_preview_get_audio_sink ()" link="GESPipeline.html#ges-pipeline-preview-get-audio-sink"/>
+    <keyword type="function" name="ges_pipeline_preview_get_video_sink ()" link="GESPipeline.html#ges-pipeline-preview-get-video-sink"/>
+    <keyword type="function" name="ges_pipeline_preview_set_audio_sink ()" link="GESPipeline.html#ges-pipeline-preview-set-audio-sink"/>
+    <keyword type="function" name="ges_pipeline_preview_set_video_sink ()" link="GESPipeline.html#ges-pipeline-preview-set-video-sink"/>
+    <keyword type="function" name="ges_pipeline_get_mode ()" link="GESPipeline.html#ges-pipeline-get-mode"/>
+    <keyword type="function" name="ges_pipeline_get_thumbnail ()" link="GESPipeline.html#ges-pipeline-get-thumbnail"/>
+    <keyword type="function" name="ges_pipeline_get_thumbnail_rgb24 ()" link="GESPipeline.html#ges-pipeline-get-thumbnail-rgb24"/>
+    <keyword type="function" name="ges_pipeline_save_thumbnail ()" link="GESPipeline.html#ges-pipeline-save-thumbnail"/>
+    <keyword type="struct" name="GESPipeline" link="GESPipeline.html#GESPipeline-struct"/>
+    <keyword type="property" name="The “audio-filter” property" link="GESPipeline.html#GESPipeline--audio-filter"/>
+    <keyword type="property" name="The “audio-sink” property" link="GESPipeline.html#GESPipeline--audio-sink"/>
+    <keyword type="property" name="The “mode” property" link="GESPipeline.html#GESPipeline--mode"/>
+    <keyword type="property" name="The “timeline” property" link="GESPipeline.html#GESPipeline--timeline"/>
+    <keyword type="property" name="The “video-filter” property" link="GESPipeline.html#GESPipeline--video-filter"/>
+    <keyword type="property" name="The “video-sink” property" link="GESPipeline.html#GESPipeline--video-sink"/>
+    <keyword type="function" name="GESFormatterLoadFromURIMethod ()" link="GESFormatter.html#GESFormatterLoadFromURIMethod"/>
+    <keyword type="function" name="GESFormatterSaveToURIMethod ()" link="GESFormatter.html#GESFormatterSaveToURIMethod"/>
+    <keyword type="function" name="GESFormatterCanLoadURIMethod ()" link="GESFormatter.html#GESFormatterCanLoadURIMethod"/>
+    <keyword type="function" name="ges_formatter_class_register_metas ()" link="GESFormatter.html#ges-formatter-class-register-metas"/>
+    <keyword type="function" name="ges_formatter_load_from_uri ()" link="GESFormatter.html#ges-formatter-load-from-uri"/>
+    <keyword type="function" name="ges_formatter_save_to_uri ()" link="GESFormatter.html#ges-formatter-save-to-uri"/>
+    <keyword type="function" name="ges_formatter_can_load_uri ()" link="GESFormatter.html#ges-formatter-can-load-uri"/>
+    <keyword type="function" name="ges_formatter_can_save_uri ()" link="GESFormatter.html#ges-formatter-can-save-uri"/>
+    <keyword type="function" name="ges_formatter_get_default ()" link="GESFormatter.html#ges-formatter-get-default"/>
+    <keyword type="struct" name="GESFormatter" link="GESFormatter.html#GESFormatter-struct"/>
+    <keyword type="struct" name="GESFormatterClass" link="GESFormatter.html#GESFormatterClass"/>
+    <keyword type="function" name="ges_pitivi_formatter_new ()" link="ges-GESPitiviFormatter.html#ges-pitivi-formatter-new"/>
+    <keyword type="struct" name="GESPitiviFormatter" link="ges-GESPitiviFormatter.html#GESPitiviFormatter"/>
+    <keyword type="function" name="ges_base_xml_formatter_get_type ()" link="ges-GESBaseXmlFormatter.html#ges-base-xml-formatter-get-type"/>
+    <keyword type="struct" name="struct GESBaseXmlFormatter" link="ges-GESBaseXmlFormatter.html#GESBaseXmlFormatter"/>
+    <keyword type="function" name="ges_xml_formatter_get_type ()" link="ges-GESXmlFormatter.html#ges-xml-formatter-get-type"/>
+    <keyword type="function" name="GESMetaForeachFunc ()" link="GESMetaContainer.html#GESMetaForeachFunc"/>
+    <keyword type="function" name="ges_meta_container_foreach ()" link="GESMetaContainer.html#ges-meta-container-foreach"/>
+    <keyword type="function" name="ges_meta_container_get_meta ()" link="GESMetaContainer.html#ges-meta-container-get-meta"/>
+    <keyword type="function" name="ges_meta_container_get_boolean ()" link="GESMetaContainer.html#ges-meta-container-get-boolean"/>
+    <keyword type="function" name="ges_meta_container_get_date ()" link="GESMetaContainer.html#ges-meta-container-get-date"/>
+    <keyword type="function" name="ges_meta_container_get_date_time ()" link="GESMetaContainer.html#ges-meta-container-get-date-time"/>
+    <keyword type="function" name="ges_meta_container_get_double ()" link="GESMetaContainer.html#ges-meta-container-get-double"/>
+    <keyword type="function" name="ges_meta_container_get_float ()" link="GESMetaContainer.html#ges-meta-container-get-float"/>
+    <keyword type="function" name="ges_meta_container_get_int ()" link="GESMetaContainer.html#ges-meta-container-get-int"/>
+    <keyword type="function" name="ges_meta_container_get_int64 ()" link="GESMetaContainer.html#ges-meta-container-get-int64"/>
+    <keyword type="function" name="ges_meta_container_get_string ()" link="GESMetaContainer.html#ges-meta-container-get-string"/>
+    <keyword type="function" name="ges_meta_container_get_uint ()" link="GESMetaContainer.html#ges-meta-container-get-uint"/>
+    <keyword type="function" name="ges_meta_container_get_uint64 ()" link="GESMetaContainer.html#ges-meta-container-get-uint64"/>
+    <keyword type="function" name="ges_meta_container_set_boolean ()" link="GESMetaContainer.html#ges-meta-container-set-boolean"/>
+    <keyword type="function" name="ges_meta_container_set_date ()" link="GESMetaContainer.html#ges-meta-container-set-date"/>
+    <keyword type="function" name="ges_meta_container_set_date_time ()" link="GESMetaContainer.html#ges-meta-container-set-date-time"/>
+    <keyword type="function" name="ges_meta_container_set_double ()" link="GESMetaContainer.html#ges-meta-container-set-double"/>
+    <keyword type="function" name="ges_meta_container_set_float ()" link="GESMetaContainer.html#ges-meta-container-set-float"/>
+    <keyword type="function" name="ges_meta_container_set_int ()" link="GESMetaContainer.html#ges-meta-container-set-int"/>
+    <keyword type="function" name="ges_meta_container_set_int64 ()" link="GESMetaContainer.html#ges-meta-container-set-int64"/>
+    <keyword type="function" name="ges_meta_container_set_string ()" link="GESMetaContainer.html#ges-meta-container-set-string"/>
+    <keyword type="function" name="ges_meta_container_set_uint ()" link="GESMetaContainer.html#ges-meta-container-set-uint"/>
+    <keyword type="function" name="ges_meta_container_set_uint64 ()" link="GESMetaContainer.html#ges-meta-container-set-uint64"/>
+    <keyword type="function" name="ges_meta_container_set_meta ()" link="GESMetaContainer.html#ges-meta-container-set-meta"/>
+    <keyword type="function" name="ges_meta_container_register_meta_boolean ()" link="GESMetaContainer.html#ges-meta-container-register-meta-boolean"/>
+    <keyword type="function" name="ges_meta_container_register_meta_int ()" link="GESMetaContainer.html#ges-meta-container-register-meta-int"/>
+    <keyword type="function" name="ges_meta_container_register_meta_uint ()" link="GESMetaContainer.html#ges-meta-container-register-meta-uint"/>
+    <keyword type="function" name="ges_meta_container_register_meta_int64 ()" link="GESMetaContainer.html#ges-meta-container-register-meta-int64"/>
+    <keyword type="function" name="ges_meta_container_register_meta_uint64 ()" link="GESMetaContainer.html#ges-meta-container-register-meta-uint64"/>
+    <keyword type="function" name="ges_meta_container_register_meta_float ()" link="GESMetaContainer.html#ges-meta-container-register-meta-float"/>
+    <keyword type="function" name="ges_meta_container_register_meta_double ()" link="GESMetaContainer.html#ges-meta-container-register-meta-double"/>
+    <keyword type="function" name="ges_meta_container_register_meta_date ()" link="GESMetaContainer.html#ges-meta-container-register-meta-date"/>
+    <keyword type="function" name="ges_meta_container_register_meta_date_time ()" link="GESMetaContainer.html#ges-meta-container-register-meta-date-time"/>
+    <keyword type="function" name="ges_meta_container_register_meta_string ()" link="GESMetaContainer.html#ges-meta-container-register-meta-string"/>
+    <keyword type="function" name="ges_meta_container_register_meta ()" link="GESMetaContainer.html#ges-meta-container-register-meta"/>
+    <keyword type="function" name="ges_meta_container_metas_to_string ()" link="GESMetaContainer.html#ges-meta-container-metas-to-string"/>
+    <keyword type="function" name="ges_meta_container_add_metas_from_string ()" link="GESMetaContainer.html#ges-meta-container-add-metas-from-string"/>
+    <keyword type="function" name="ges_meta_container_get_type ()" link="GESMetaContainer.html#ges-meta-container-get-type"/>
+    <keyword type="function" name="ges_meta_container_check_meta_registered ()" link="GESMetaContainer.html#ges-meta-container-check-meta-registered"/>
+    <keyword type="struct" name="GESMetaContainer" link="GESMetaContainer.html#GESMetaContainer-struct"/>
+    <keyword type="macro" name="GES_META_FORMATTER_NAME" link="GESMetaContainer.html#GES-META-FORMATTER-NAME:CAPS"/>
+    <keyword type="macro" name="GES_META_FORMATTER_MIMETYPE" link="GESMetaContainer.html#GES-META-FORMATTER-MIMETYPE:CAPS"/>
+    <keyword type="macro" name="GES_META_FORMATTER_EXTENSION" link="GESMetaContainer.html#GES-META-FORMATTER-EXTENSION:CAPS"/>
+    <keyword type="macro" name="GES_META_FORMATTER_VERSION" link="GESMetaContainer.html#GES-META-FORMATTER-VERSION:CAPS"/>
+    <keyword type="macro" name="GES_META_FORMATTER_RANK" link="GESMetaContainer.html#GES-META-FORMATTER-RANK:CAPS"/>
+    <keyword type="macro" name="GES_META_DESCRIPTION" link="GESMetaContainer.html#GES-META-DESCRIPTION:CAPS"/>
+    <keyword type="macro" name="GES_META_FORMAT_VERSION" link="GESMetaContainer.html#GES-META-FORMAT-VERSION:CAPS"/>
+    <keyword type="signal" name="The “notify-meta” signal" link="GESMetaContainer.html#GESMetaContainer-notify-meta"/>
+    <keyword type="function" name="GESExtractableCheckId ()" link="ges-GESExtractableInterface.html#GESExtractableCheckId"/>
+    <keyword type="function" name="ges_extractable_get_asset ()" link="ges-GESExtractableInterface.html#ges-extractable-get-asset"/>
+    <keyword type="function" name="ges_extractable_set_asset ()" link="ges-GESExtractableInterface.html#ges-extractable-set-asset"/>
+    <keyword type="function" name="ges_extractable_get_id ()" link="ges-GESExtractableInterface.html#ges-extractable-get-id"/>
+    <keyword type="struct" name="GESExtractable" link="ges-GESExtractableInterface.html#GESExtractable-struct"/>
+    <keyword type="struct" name="GESExtractableInterface" link="ges-GESExtractableInterface.html#GESExtractableInterface"/>
+    <keyword type="function" name="ges_clip_asset_get_type ()" link="GESClipAsset.html#ges-clip-asset-get-type"/>
+    <keyword type="function" name="ges_clip_asset_set_supported_formats ()" link="GESClipAsset.html#ges-clip-asset-set-supported-formats"/>
+    <keyword type="function" name="ges_clip_asset_get_supported_formats ()" link="GESClipAsset.html#ges-clip-asset-get-supported-formats"/>
+    <keyword type="struct" name="GESClipAsset" link="GESClipAsset.html#GESClipAsset-struct"/>
+    <keyword type="function" name="ges_track_element_asset_get_type ()" link="GESTrackElementAsset.html#ges-track-element-asset-get-type"/>
+    <keyword type="function" name="ges_track_element_asset_get_track_type ()" link="GESTrackElementAsset.html#ges-track-element-asset-get-track-type"/>
+    <keyword type="function" name="ges_track_element_asset_set_track_type ()" link="GESTrackElementAsset.html#ges-track-element-asset-set-track-type"/>
+    <keyword type="function" name="ges_track_element_add_children_props ()" link="GESTrackElementAsset.html#ges-track-element-add-children-props"/>
+    <keyword type="struct" name="GESTrackElementAsset" link="GESTrackElementAsset.html#GESTrackElementAsset-struct"/>
+    <keyword type="function" name="ges_uri_clip_asset_get_type ()" link="GESUriClipAsset.html#ges-uri-clip-asset-get-type"/>
+    <keyword type="function" name="ges_uri_clip_asset_get_duration ()" link="GESUriClipAsset.html#ges-uri-clip-asset-get-duration"/>
+    <keyword type="function" name="ges_uri_clip_asset_is_image ()" link="GESUriClipAsset.html#ges-uri-clip-asset-is-image"/>
+    <keyword type="function" name="ges_uri_clip_asset_get_info ()" link="GESUriClipAsset.html#ges-uri-clip-asset-get-info"/>
+    <keyword type="function" name="ges_uri_clip_asset_new ()" link="GESUriClipAsset.html#ges-uri-clip-asset-new"/>
+    <keyword type="function" name="ges_uri_clip_asset_request_sync ()" link="GESUriClipAsset.html#ges-uri-clip-asset-request-sync"/>
+    <keyword type="function" name="ges_uri_clip_asset_get_stream_assets ()" link="GESUriClipAsset.html#ges-uri-clip-asset-get-stream-assets"/>
+    <keyword type="function" name="ges_uri_clip_asset_class_set_timeout ()" link="GESUriClipAsset.html#ges-uri-clip-asset-class-set-timeout"/>
+    <keyword type="struct" name="GESUriClipAsset" link="GESUriClipAsset.html#GESUriClipAsset-struct"/>
+    <keyword type="function" name="ges_uri_source_asset_get_type ()" link="GESUriSourceAsset.html#ges-uri-source-asset-get-type"/>
+    <keyword type="function" name="ges_uri_source_asset_get_filesource_asset ()" link="GESUriSourceAsset.html#ges-uri-source-asset-get-filesource-asset"/>
+    <keyword type="function" name="ges_uri_source_asset_get_stream_info ()" link="GESUriSourceAsset.html#ges-uri-source-asset-get-stream-info"/>
+    <keyword type="function" name="ges_uri_source_asset_get_stream_uri ()" link="GESUriSourceAsset.html#ges-uri-source-asset-get-stream-uri"/>
+    <keyword type="struct" name="GESUriSourceAsset" link="GESUriSourceAsset.html#GESUriSourceAsset-struct"/>
+    <keyword type="function" name="ges_project_load ()" link="GESProject.html#ges-project-load"/>
+    <keyword type="function" name="ges_project_add_asset ()" link="GESProject.html#ges-project-add-asset"/>
+    <keyword type="function" name="ges_project_remove_asset ()" link="GESProject.html#ges-project-remove-asset"/>
+    <keyword type="function" name="ges_project_list_assets ()" link="GESProject.html#ges-project-list-assets"/>
+    <keyword type="function" name="ges_project_get_asset ()" link="GESProject.html#ges-project-get-asset"/>
+    <keyword type="function" name="ges_project_save ()" link="GESProject.html#ges-project-save"/>
+    <keyword type="function" name="ges_project_create_asset ()" link="GESProject.html#ges-project-create-asset"/>
+    <keyword type="function" name="ges_project_get_type ()" link="GESProject.html#ges-project-get-type"/>
+    <keyword type="function" name="ges_project_get_uri ()" link="GESProject.html#ges-project-get-uri"/>
+    <keyword type="function" name="ges_project_new ()" link="GESProject.html#ges-project-new"/>
+    <keyword type="function" name="ges_project_add_encoding_profile ()" link="GESProject.html#ges-project-add-encoding-profile"/>
+    <keyword type="function" name="ges_project_list_encoding_profiles ()" link="GESProject.html#ges-project-list-encoding-profiles"/>
+    <keyword type="function" name="ges_project_get_loading_assets ()" link="GESProject.html#ges-project-get-loading-assets"/>
+    <keyword type="struct" name="GESProject" link="GESProject.html#GESProject-struct"/>
+    <keyword type="property" name="The “uri” property" link="GESProject.html#GESProject--uri"/>
+    <keyword type="signal" name="The “asset-added” signal" link="GESProject.html#GESProject-asset-added"/>
+    <keyword type="signal" name="The “asset-removed” signal" link="GESProject.html#GESProject-asset-removed"/>
+    <keyword type="signal" name="The “error-loading-asset” signal" link="GESProject.html#GESProject-error-loading-asset"/>
+    <keyword type="signal" name="The “loaded” signal" link="GESProject.html#GESProject-loaded"/>
+    <keyword type="signal" name="The “missing-uri” signal" link="GESProject.html#GESProject-missing-uri"/>
+    <keyword type="function" name="ges_video_track_new ()" link="ges-GESVideoTrack.html#ges-video-track-new"/>
+    <keyword type="struct" name="GESVideoTrack" link="ges-GESVideoTrack.html#GESVideoTrack"/>
+    <keyword type="function" name="ges_audio_track_new ()" link="ges-GESAudioTrack.html#ges-audio-track-new"/>
+    <keyword type="struct" name="GESAudioTrack" link="ges-GESAudioTrack.html#GESAudioTrack"/>
+    <keyword type="constant" name="GES_TRACK_TYPE_UNKNOWN" link="ges-GES-Enums.html#GES-TRACK-TYPE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="GES_TRACK_TYPE_AUDIO" link="ges-GES-Enums.html#GES-TRACK-TYPE-AUDIO:CAPS"/>
+    <keyword type="constant" name="GES_TRACK_TYPE_VIDEO" link="ges-GES-Enums.html#GES-TRACK-TYPE-VIDEO:CAPS"/>
+    <keyword type="constant" name="GES_TRACK_TYPE_TEXT" link="ges-GES-Enums.html#GES-TRACK-TYPE-TEXT:CAPS"/>
+    <keyword type="constant" name="GES_TRACK_TYPE_CUSTOM" link="ges-GES-Enums.html#GES-TRACK-TYPE-CUSTOM:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_NONE" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-NONE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_LR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BAR-WIPE-LR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_TB" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BAR-WIPE-TB:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-TL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-TR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-BR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-BL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CI" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FOUR-BOX-WIPE-CI:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CO" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FOUR-BOX-WIPE-CO:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_V" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNDOOR-V:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_H" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNDOOR-H:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TC" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-TC:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_RC" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-RC:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BC" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-BC:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_LC" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOX-WIPE-LC:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DIAGONAL-TL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DIAGONAL-TR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_V" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOWTIE-V:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_H" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BOWTIE-H:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DBL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNDOOR-DBL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DTL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNDOOR-DTL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DBD" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-MISC-DIAGONAL-DBD:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DD" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-MISC-DIAGONAL-DD:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_D" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-VEE-D:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_L" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-VEE-L:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_U" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-VEE-U:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_R" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-VEE-R:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_D" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNVEE-D:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_L" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNVEE-L:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_U" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNVEE-U:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_R" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-BARNVEE-R:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_IRIS_RECT" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-IRIS-RECT:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW12" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-CLOCK-CW12:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW3" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-CLOCK-CW3:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW6" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-CLOCK-CW6:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW9" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-CLOCK-CW9:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBV" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-PINWHEEL-TBV:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBH" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-PINWHEEL-TBH:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_FB" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-PINWHEEL-FB:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CT" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-CT:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-CR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOV" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLEFAN-FOV:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOH" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLEFAN-FOH:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWT" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWT:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWB" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWB:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PV" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-PV:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PD" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-PD:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OV" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-OV:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OH" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-OH:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_T" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-T:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_R" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-R:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_B" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-B:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_L" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-FAN-L:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIV" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLEFAN-FIV:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIH" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLEFAN-FIH:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWTL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWBL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWBR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTR" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SINGLESWEEP-CWTR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDTL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-PDTL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDBL" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-DOUBLESWEEP-PDBL:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_T" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SALOONDOOR-T:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_L" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SALOONDOOR-L:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_B" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SALOONDOOR-B:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_R" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-SALOONDOOR-R:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_R" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-WINDSHIELD-R:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_U" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-WINDSHIELD-U:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_V" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-WINDSHIELD-V:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_H" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-WINDSHIELD-H:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE" link="ges-GES-Enums.html#GES-VIDEO-STANDARD-TRANSITION-TYPE-CROSSFADE:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_HALIGN_LEFT" link="ges-GES-Enums.html#GES-TEXT-HALIGN-LEFT:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_HALIGN_CENTER" link="ges-GES-Enums.html#GES-TEXT-HALIGN-CENTER:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_HALIGN_RIGHT" link="ges-GES-Enums.html#GES-TEXT-HALIGN-RIGHT:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_HALIGN_POSITION" link="ges-GES-Enums.html#GES-TEXT-HALIGN-POSITION:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_VALIGN_BASELINE" link="ges-GES-Enums.html#GES-TEXT-VALIGN-BASELINE:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_VALIGN_BOTTOM" link="ges-GES-Enums.html#GES-TEXT-VALIGN-BOTTOM:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_VALIGN_TOP" link="ges-GES-Enums.html#GES-TEXT-VALIGN-TOP:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_VALIGN_POSITION" link="ges-GES-Enums.html#GES-TEXT-VALIGN-POSITION:CAPS"/>
+    <keyword type="constant" name="GES_TEXT_VALIGN_CENTER" link="ges-GES-Enums.html#GES-TEXT-VALIGN-CENTER:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_SMPTE" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-SMPTE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_SNOW" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-SNOW:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_BLACK" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-BLACK:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_WHITE" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-WHITE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_RED" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-RED:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_GREEN" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-GREEN:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_BLUE" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-BLUE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_CHECKERS1" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-CHECKERS1:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_CHECKERS2" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-CHECKERS2:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_CHECKERS4" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-CHECKERS4:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_CHECKERS8" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-CHECKERS8:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_CIRCULAR" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-CIRCULAR:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_BLINK" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-BLINK:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_SMPTE75" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-SMPTE75:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_ZONE_PLATE" link="ges-GES-Enums.html#GES-VIDEO-TEST-ZONE-PLATE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_GAMUT" link="ges-GES-Enums.html#GES-VIDEO-TEST-GAMUT:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_CHROMA_ZONE_PLATE" link="ges-GES-Enums.html#GES-VIDEO-TEST-CHROMA-ZONE-PLATE:CAPS"/>
+    <keyword type="constant" name="GES_VIDEO_TEST_PATTERN_SOLID" link="ges-GES-Enums.html#GES-VIDEO-TEST-PATTERN-SOLID:CAPS"/>
+    <keyword type="constant" name="GES_PIPELINE_MODE_PREVIEW_AUDIO" link="ges-GES-Enums.html#GES-PIPELINE-MODE-PREVIEW-AUDIO:CAPS"/>
+    <keyword type="constant" name="GES_PIPELINE_MODE_PREVIEW_VIDEO" link="ges-GES-Enums.html#GES-PIPELINE-MODE-PREVIEW-VIDEO:CAPS"/>
+    <keyword type="constant" name="GES_PIPELINE_MODE_PREVIEW" link="ges-GES-Enums.html#GES-PIPELINE-MODE-PREVIEW:CAPS"/>
+    <keyword type="constant" name="GES_PIPELINE_MODE_RENDER" link="ges-GES-Enums.html#GES-PIPELINE-MODE-RENDER:CAPS"/>
+    <keyword type="constant" name="GES_PIPELINE_MODE_SMART_RENDER" link="ges-GES-Enums.html#GES-PIPELINE-MODE-SMART-RENDER:CAPS"/>
+    <keyword type="constant" name="GES_EDGE_START" link="ges-GES-Enums.html#GES-EDGE-START:CAPS"/>
+    <keyword type="constant" name="GES_EDGE_END" link="ges-GES-Enums.html#GES-EDGE-END:CAPS"/>
+    <keyword type="constant" name="GES_EDGE_NONE" link="ges-GES-Enums.html#GES-EDGE-NONE:CAPS"/>
+    <keyword type="constant" name="GES_EDIT_MODE_NORMAL" link="ges-GES-Enums.html#GES-EDIT-MODE-NORMAL:CAPS"/>
+    <keyword type="constant" name="GES_EDIT_MODE_RIPPLE" link="ges-GES-Enums.html#GES-EDIT-MODE-RIPPLE:CAPS"/>
+    <keyword type="constant" name="GES_EDIT_MODE_ROLL" link="ges-GES-Enums.html#GES-EDIT-MODE-ROLL:CAPS"/>
+    <keyword type="constant" name="GES_EDIT_MODE_TRIM" link="ges-GES-Enums.html#GES-EDIT-MODE-TRIM:CAPS"/>
+    <keyword type="constant" name="GES_EDIT_MODE_SLIDE" link="ges-GES-Enums.html#GES-EDIT-MODE-SLIDE:CAPS"/>
+    <keyword type="constant" name="GES_META_READABLE" link="ges-GES-Enums.html#GES-META-READABLE:CAPS"/>
+    <keyword type="constant" name="GES_META_WRITABLE" link="ges-GES-Enums.html#GES-META-WRITABLE:CAPS"/>
+    <keyword type="constant" name="GES_META_READ_WRITE" link="ges-GES-Enums.html#GES-META-READ-WRITE:CAPS"/>
+    <keyword type="constant" name="GES_ERROR_ASSET_WRONG_ID" link="ges-GES-GErrors.html#GES-ERROR-ASSET-WRONG-ID:CAPS"/>
+    <keyword type="constant" name="GES_ERROR_ASSET_LOADING" link="ges-GES-GErrors.html#GES-ERROR-ASSET-LOADING:CAPS"/>
+    <keyword type="constant" name="GES_ERROR_FORMATTER_MALFORMED_INPUT_FILE" link="ges-GES-GErrors.html#GES-ERROR-FORMATTER-MALFORMED-INPUT-FILE:CAPS"/>
+  </functions>
+</book>
