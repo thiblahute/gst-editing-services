@@ -1,0 +1,1045 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESProject: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch08.html" title="Assets">
+<link rel="prev" href="GESUriSourceAsset.html" title="GESUriSourceAsset">
+<link rel="next" href="ch09.html" title="Tracks">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESProject.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESProject.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESProject.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESProject.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GESProject.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch08.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESUriSourceAsset.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ch09.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESProject"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESProject.top_of_page"></a>GESProject</span></h2>
+<p>GESProject — A GESAsset that is used to manage projects</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESProject.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-load" title="ges_project_load ()">ges_project_load</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-add-asset" title="ges_project_add_asset ()">ges_project_add_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-remove-asset" title="ges_project_remove_asset ()">ges_project_remove_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-list-assets" title="ges_project_list_assets ()">ges_project_list_assets</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-get-asset" title="ges_project_get_asset ()">ges_project_get_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-save" title="ges_project_save ()">ges_project_save</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-create-asset" title="ges_project_create_asset ()">ges_project_create_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-get-type" title="ges_project_get_type ()">ges_project_get_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-get-uri" title="ges_project_get_uri ()">ges_project_get_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESProject.html" title="GESProject"><span class="returnvalue">GESProject</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-new" title="ges_project_new ()">ges_project_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-add-encoding-profile" title="ges_project_add_encoding_profile ()">ges_project_add_encoding_profile</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-list-encoding-profiles" title="ges_project_list_encoding_profiles ()">ges_project_list_encoding_profiles</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESProject.html#ges-project-get-loading-assets" title="ges_project_get_loading_assets ()">ges_project_get_loading_assets</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESProject.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<td class="property_name"><a class="link" href="GESProject.html#GESProject--uri" title="The “uri” property">uri</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESProject.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESProject.html#GESProject-asset-added" title="The “asset-added” signal">asset-added</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESProject.html#GESProject-asset-removed" title="The “asset-removed” signal">asset-removed</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESProject.html#GESProject-error-loading-asset" title="The “error-loading-asset” signal">error-loading-asset</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESProject.html#GESProject-loaded" title="The “loaded” signal">loaded</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a>*</td>
+<td class="signal_name"><a class="link" href="GESProject.html#GESProject-missing-uri" title="The “missing-uri” signal">missing-uri</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESProject.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESProject.html#GESProject-struct" title="GESProject">GESProject</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESProject.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a class="link" href="GESAsset.html" title="GESAsset">GESAsset</a>
+        <span class="lineart">╰──</span> GESProject
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESProject.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESProject implements
+ <a href="https://developer.gnome.org/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>,  <a href="https://developer.gnome.org/gio/unstable/GInitable.html">GInitable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESProject.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESProject.description"></a><h2>Description</h2>
+<p>The <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> is used to control a set of <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> and is a
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> with <span class="type">GES_TYPE_TIMELINE</span> as <em class="parameter"><code>extractable_type</code></em>
+ itself. That
+means that you can extract <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> from a project as followed:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="usertype">GESProject</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">project</span><span class="symbol">;</span>
+<span class="usertype">GESTimeline</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">timeline</span><span class="symbol">;</span>
+
+<span class="normal">project </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESProject.html#ges-project-new">ges_project_new</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"file:///path/to/a/valid/project/uri"</span><span class="symbol">);</span>
+
+<span class="comment">// Here you can connect to the various signal to get more infos about</span>
+<span class="comment">// what is happening and recover from errors if possible</span>
+<span class="symbol">...</span>
+
+<span class="normal">timeline </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-extract">ges_asset_extract</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function">GES_ASSET</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">project</span><span class="symbol">));</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<p>The <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> class offers a higher level API to handle <span class="type">GESAsset-s</span>.
+It lets you request new asset, and it informs you about new assets through
+a set of signals. Also it handles problem such as missing files/missing
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> and lets you try to recover from those.</p>
+</div>
+<div class="refsect1">
+<a name="GESProject.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-project-load"></a><h3>ges_project_load ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_load (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                  <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                  <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Loads <em class="parameter"><code>project</code></em>
+ into <em class="parameter"><code>timeline</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> that has an <em class="parameter"><code>uri</code></em>
+set already</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>A blank timeline to load <em class="parameter"><code>project</code></em>
+into</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.2.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the project could be loaded <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-add-asset"></a><h3>ges_project_add_asset ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_add_asset (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                       <em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *asset</code></em>);</pre>
+<p>Adds a <span class="type">Asset</span> to <em class="parameter"><code>project</code></em>
+, the project will keep a reference on
+<em class="parameter"><code>asset</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p> A <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to add to <em class="parameter"><code>project</code></em>
+. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.3.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the asset could be added <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> it was already
+in the project</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-remove-asset"></a><h3>ges_project_remove_asset ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_remove_asset (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                          <em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *asset</code></em>);</pre>
+<p>remove a <em class="parameter"><code>asset</code></em>
+ to from <em class="parameter"><code>project</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p> A <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to remove from <em class="parameter"><code>project</code></em>
+. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.4.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the asset could be removed <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-list-assets"></a><h3>ges_project_list_assets ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_project_list_assets (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                         <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> filter</code></em>);</pre>
+<p>List all <em class="parameter"><code>asset</code></em>
+ contained in <em class="parameter"><code>project</code></em>
+ filtering per extractable_type
+as defined by <em class="parameter"><code>filter</code></em>
+. It copies the asset and thus will not be updated
+in time.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>Type of assets to list, <span class="type">GES_TYPE_EXTRACTABLE</span> will list
+all assets</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.5.6"></a><h4>Returns</h4>
+<p> The list of
+<a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> the object contains. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESAsset]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-get-asset"></a><h3>ges_project_get_asset ()</h3>
+<pre class="programlisting"><a class="link" href="GESAsset.html" title="GESAsset"><span class="returnvalue">GESAsset</span></a> *
+ges_project_get_asset (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                       <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *id</code></em>,
+                       <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> extractable_type</code></em>);</pre>
+<div class="refsect3">
+<a name="id-1.9.6.11.6.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>The id of the asset to retrieve</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>extractable_type</p></td>
+<td class="parameter_description"><p>The extractable_type of the asset
+to retrieve from <em class="parameter"><code>object</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.6.5"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> with
+<em class="parameter"><code>id</code></em>
+or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if no asset with <em class="parameter"><code>id</code></em>
+as an ID. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-save"></a><h3>ges_project_save ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_save (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                  <em class="parameter"><code><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline</code></em>,
+                  <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                  <em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *formatter_asset</code></em>,
+                  <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> overwrite</code></em>,
+                  <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Save the timeline of <em class="parameter"><code>project</code></em>
+ to <em class="parameter"><code>uri</code></em>
+. You should make sure that <em class="parameter"><code>timeline</code></em>
+
+is one of the timelines that have been extracted from <em class="parameter"><code>project</code></em>
+
+(using ges_asset_extract (<em class="parameter"><code>project</code></em>
+);)</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> to save</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> to save, it must have been extracted from <em class="parameter"><code>project</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>The uri where to save <em class="parameter"><code>project</code></em>
+and <em class="parameter"><code>timeline</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>formatter_asset</p></td>
+<td class="parameter_description"><p> The formatter asset to use or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>,
+will try to save in the same format as the one from which the timeline as been loaded
+or default to the formatter with highest rank. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>overwrite</p></td>
+<td class="parameter_description"><p><a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to overwrite file if it exists</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.7.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the project could be save, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-create-asset"></a><h3>ges_project_create_asset ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_create_asset (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                          <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *id</code></em>,
+                          <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> extractable_type</code></em>);</pre>
+<p>Create and add a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to <em class="parameter"><code>project</code></em>
+. You should connect to the
+"asset-added" signal to get the asset when it finally gets added to
+<em class="parameter"><code>project</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p> The id of the asset to create and add to <em class="parameter"><code>project</code></em>
+. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>extractable_type</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> of the asset to create</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.8.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the asset started to be added <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> it was already
+in the project</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-get-type"></a><h3>ges_project_get_type ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+ges_project_get_type (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-get-uri"></a><h3>ges_project_get_uri ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+ges_project_get_uri (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>);</pre>
+<p>Retrieve the uri that is currently set on <em class="parameter"><code>project</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.10.6"></a><h4>Returns</h4>
+<p> The uri that is set on <em class="parameter"><code>project</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-new"></a><h3>ges_project_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESProject.html" title="GESProject"><span class="returnvalue">GESProject</span></a> *
+ges_project_new (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *id</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> and sets its uri to <em class="parameter"><code>uri</code></em>
+ if provided. Note that
+if <em class="parameter"><code>uri</code></em>
+ is not valid or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, the uri of the project will then be set
+the first time you save the project. If you then save the project to
+other locations, it will never be updated again and the first valid URI is
+the URI it will keep refering to.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p> The uri to be set after creating the project. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.11.6"></a><h4>Returns</h4>
+<p> A newly created <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-add-encoding-profile"></a><h3>ges_project_add_encoding_profile ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_project_add_encoding_profile (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>,
+                                  <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-encoding-profile.html#GstEncodingProfile"><span class="type">GstEncodingProfile</span></a> *profile</code></em>);</pre>
+<p>Adds <em class="parameter"><code>profile</code></em>
+ to the project. It lets you save in what format
+the project has been renders and keep a reference to those formats.
+Also, those formats will be saves to the project file when possible.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.12.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>profile</p></td>
+<td class="parameter_description"><p>A <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-encoding-profile.html#GstEncodingProfile"><span class="type">GstEncodingProfile</span></a> to add to the project. If a profile with
+the same name already exists, it will be replaced</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.12.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>profile</code></em>
+could be added, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-list-encoding-profiles"></a><h3>ges_project_list_encoding_profiles ()</h3>
+<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_project_list_encoding_profiles (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>);</pre>
+<p>Lists the encoding profile that have been set to <em class="parameter"><code>project</code></em>
+. The first one
+is the latest added.</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.13.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.13.6"></a><h4>Returns</h4>
+<p> The
+list of <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-encoding-profile.html#GstEncodingProfile"><span class="type">GstEncodingProfile</span></a> used in <em class="parameter"><code>project</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GstPbutils.EncodingProfile][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-project-get-loading-assets"></a><h3>ges_project_get_loading_assets ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_project_get_loading_assets (<em class="parameter"><code><a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project</code></em>);</pre>
+<p>Get the assets that are being loaded</p>
+<div class="refsect3">
+<a name="id-1.9.6.11.14.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.11.14.6"></a><h4>Returns</h4>
+<p> A set of loading asset
+that will be added to <em class="parameter"><code>project</code></em>
+. Note that those Asset are *not* loaded yet,
+and thus can not be used. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GES.Asset]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESProject.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESProject-struct"></a><h3>GESProject</h3>
+<pre class="programlisting">typedef struct _GESProject GESProject;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESProject.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESProject--uri"></a><h3>The <code class="literal">“uri”</code> property</h3>
+<pre class="programlisting">  “uri”                      <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<p>uri of the project.</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Default value: NULL</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESProject.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GESProject-asset-added"></a><h3>The <code class="literal">“asset-added”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *formatter,
+               <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a>   *asset,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)</pre>
+<div class="refsect3">
+<a name="id-1.9.6.14.2.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> that has been added to <em class="parameter"><code>project</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESProject-asset-removed"></a><h3>The <code class="literal">“asset-removed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *formatter,
+               <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a>   *asset,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)</pre>
+<div class="refsect3">
+<a name="id-1.9.6.14.3.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>formatter</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> that has been removed from <em class="parameter"><code>project</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESProject-error-loading-asset"></a><h3>The <code class="literal">“error-loading-asset”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>     *error,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>      *id,
+               <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>      *extractable_type,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)</pre>
+<p>Informs you that a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> could not be created. In case of
+missing GStreamer plugins, the error will be set to <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstGError.html#GST-CORE-ERROR:CAPS"><span class="type">GST_CORE_ERROR</span></a>
+<span class="type">GST_CORE_ERROR_MISSING_PLUGIN</span></p>
+<div class="refsect3">
+<a name="id-1.9.6.14.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> on which a problem happend when creted a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>The <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> defining the error that accured, might be <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>The <em class="parameter"><code>id</code></em>
+of the asset that failed loading</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>extractable_type</p></td>
+<td class="parameter_description"><p>The <em class="parameter"><code>extractable_type</code></em>
+of the asset that
+failed loading</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESProject-loaded"></a><h3>The <code class="literal">“loaded”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a>  *project,
+               <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *timeline,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>     user_data)</pre>
+<div class="refsect3">
+<a name="id-1.9.6.14.5.4"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> that is done loading a project.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeline</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> that complete loading</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESProject-missing-uri"></a><h3>The <code class="literal">“missing-uri”</code> signal</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a>*
+user_function (<a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> *project,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>     *error,
+               <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a>   *wrong_asset,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>    user_data)</pre>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="keyword">static</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar">gchar</a></span>
+<span class="function">source_moved_cb</span><span class="normal"> </span><span class="symbol">(</span><span class="usertype">GESProject</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">project</span><span class="symbol">,</span><span class="normal"> </span><span class="usertype">GError</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">error</span><span class="symbol">,</span><span class="normal"> </span><span class="usertype">GESAsset</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">asset_with_error</span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-String-Utility-Functions.html#g-strdup">g_strdup</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"file:///the/new/uri.ogg"</span><span class="symbol">);</span>
+<span class="cbracket">}</span>
+
+<span class="keyword">static</span><span class="normal"> </span><span class="type">int</span>
+<span class="function">main</span><span class="normal"> </span><span class="symbol">(</span><span class="type">int</span><span class="normal"> argc</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar">gchar</a> </span><span class="symbol">**</span><span class="normal"> argv</span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">  </span><span class="usertype">GESTimeline</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">timeline</span><span class="symbol">;</span>
+<span class="normal">  </span><span class="usertype">GESProject</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">project </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESProject.html#ges-project-new">ges_project_new</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"file:///some/uri.xges"</span><span class="symbol">);</span>
+
+<span class="normal">  </span><span class="function"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect">g_signal_connect</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">project</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"missing-uri"</span><span class="symbol">,</span><span class="normal"> source_moved_cb</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">);</span>
+<span class="normal">  timeline </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-extract">ges_asset_extract</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function">GES_ASSET</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">project</span><span class="symbol">));</span>
+<span class="cbracket">}</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="id-1.9.6.14.6.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>project</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESProject.html" title="GESProject"><span class="type">GESProject</span></a> reporting that a file has moved</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>The error that happened</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>wrong_asset</p></td>
+<td class="parameter_description"><p>The asset with the wrong ID, you should us it and its content
+only to find out what the new location is.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.6.14.6.7"></a><h4>Returns</h4>
+<p> The new URI of <em class="parameter"><code>wrong_asset</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

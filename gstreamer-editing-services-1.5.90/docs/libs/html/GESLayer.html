@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESLayer: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESTimeline.html" title="GESTimeline">
+<link rel="next" href="GESTimelineElement.html" title="GESTimelineElement">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESLayer.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESLayer.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESLayer.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESLayer.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GESLayer.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTimeline.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESTimelineElement.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESLayer"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESLayer.top_of_page"></a>GESLayer</span></h2>
+<p>GESLayer — Non-overlapping sequence of GESClip</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESLayer.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-add-clip" title="ges_layer_add_clip ()">ges_layer_add_clip</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESClip.html" title="GESClip"><span class="returnvalue">GESClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-add-asset" title="ges_layer_add_asset ()">ges_layer_add_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESLayer.html" title="GESLayer"><span class="returnvalue">GESLayer</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-new" title="ges_layer_new ()">ges_layer_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-remove-clip" title="ges_layer_remove_clip ()">ges_layer_remove_clip</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-set-priority" title="ges_layer_set_priority ()">ges_layer_set_priority</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-get-priority" title="ges_layer_get_priority ()">ges_layer_get_priority</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-get-clips" title="ges_layer_get_clips ()">ges_layer_get_clips</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTimeline.html" title="GESTimeline"><span class="returnvalue">GESTimeline</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-get-timeline" title="ges_layer_get_timeline ()">ges_layer_get_timeline</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-get-auto-transition" title="ges_layer_get_auto_transition ()">ges_layer_get_auto_transition</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-set-auto-transition" title="ges_layer_set_auto_transition ()">ges_layer_set_auto_transition</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-is-empty" title="ges_layer_is_empty ()">ges_layer_is_empty</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="returnvalue">GstClockTime</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#ges-layer-get-duration" title="ges_layer_get_duration ()">ges_layer_get_duration</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#GES-TIMELINE-GET-LAYERS:CAPS" title="GES_TIMELINE_GET_LAYERS()">GES_TIMELINE_GET_LAYERS</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GESLayer.html#GES-TIMELINE-GET-TRACKS:CAPS" title="GES_TIMELINE_GET_TRACKS()">GES_TIMELINE_GET_TRACKS</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESLayer.html#GESLayer--auto-transition" title="The “auto-transition” property">auto-transition</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a></td>
+<td class="property_name"><a class="link" href="GESLayer.html#GESLayer--priority" title="The “priority” property">priority</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESLayer.html#GESLayer-clip-added" title="The “clip-added” signal">clip-added</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GESLayer.html#GESLayer-clip-removed" title="The “clip-removed” signal">clip-removed</a></td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESLayer.html#GESLayer-struct" title="GESLayer">GESLayer</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESLayer.html#GESLayerClass" title="GESLayerClass">GESLayerClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> GESLayer
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESLayer.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESLayer implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESLayer.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESLayer.description"></a><h2>Description</h2>
+<p>Responsible for the ordering of the various contained Clip(s). A
+timeline layer has a "priority" property, which is used to manage the
+priorities of individual Clips. Two layers should not have the
+same priority within a given timeline.</p>
+</div>
+<div class="refsect1">
+<a name="GESLayer.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-layer-add-clip"></a><h3>ges_layer_add_clip ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_layer_add_clip (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>,
+                    <em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>);</pre>
+<p>Adds the given clip to the layer. Sets the clip's parent, and thus
+takes ownership of the clip.</p>
+<p>An clip can only be added to one layer.</p>
+<p>Calling this method will construct and properly set all the media related
+elements on <em class="parameter"><code>clip</code></em>
+. If you need to know when those objects (actually <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>)
+are constructed, you should connect to the container::child-added signal which
+is emited right after those elements are ready to be used.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.2.7"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p> the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> to add. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.2.8"></a><h4>Returns</h4>
+<p> TRUE if the clip was properly added to the layer, or FALSE
+if the <em class="parameter"><code>layer</code></em>
+refuses to add the clip.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-add-asset"></a><h3>ges_layer_add_asset ()</h3>
+<pre class="programlisting"><a class="link" href="GESClip.html" title="GESClip"><span class="returnvalue">GESClip</span></a> *
+ges_layer_add_asset (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>,
+                     <em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *asset</code></em>,
+                     <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="type">GstClockTime</span></a> start</code></em>,
+                     <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="type">GstClockTime</span></a> inpoint</code></em>,
+                     <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="type">GstClockTime</span></a> duration</code></em>,
+                     <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> track_types</code></em>);</pre>
+<p>Creates Clip from asset, adds it to layer and
+returns a reference to it.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p>The asset to add to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>start</p></td>
+<td class="parameter_description"><p>The start value to set on the new <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>,
+if <em class="parameter"><code>start</code></em>
+== GST_CLOCK_TIME_NONE, it will be set to
+the current duration of <em class="parameter"><code>layer</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>inpoint</p></td>
+<td class="parameter_description"><p>The inpoint value to set on the new <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>duration</p></td>
+<td class="parameter_description"><p>The duration value to set on the new <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>track_types</p></td>
+<td class="parameter_description"><p>The <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> to set on the the new <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.3.6"></a><h4>Returns</h4>
+<p> Created <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-new"></a><h3>ges_layer_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESLayer.html" title="GESLayer"><span class="returnvalue">GESLayer</span></a> *
+ges_layer_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates a new <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.4.5"></a><h4>Returns</h4>
+<p> A new <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-remove-clip"></a><h3>ges_layer_remove_clip ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_layer_remove_clip (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>,
+                       <em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>);</pre>
+<p>Removes the given <em class="parameter"><code>clip</code></em>
+ from the <em class="parameter"><code>layer</code></em>
+ and unparents it.
+Unparenting it means the reference owned by <em class="parameter"><code>layer</code></em>
+ on the <em class="parameter"><code>clip</code></em>
+ will be
+removed. If you wish to use the <em class="parameter"><code>clip</code></em>
+ after this function, make sure you
+call <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html#gst-object-ref"><code class="function">gst_object_ref()</code></a> before removing it from the <em class="parameter"><code>layer</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> to remove</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.5.6"></a><h4>Returns</h4>
+<p> TRUE if the clip could be removed, FALSE if the layer does
+not want to remove the clip.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-set-priority"></a><h3>ges_layer_set_priority ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_layer_set_priority (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> priority</code></em>);</pre>
+<p>Sets the layer to the given <em class="parameter"><code>priority</code></em>
+. See the documentation of the
+priority property for more information.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>priority</p></td>
+<td class="parameter_description"><p>the priority to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-get-priority"></a><h3>ges_layer_get_priority ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+ges_layer_get_priority (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Get the priority of <em class="parameter"><code>layer</code></em>
+ within the timeline.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.7.6"></a><h4>Returns</h4>
+<p> The priority of the <em class="parameter"><code>layer</code></em>
+within the timeline.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-get-clips"></a><h3>ges_layer_get_clips ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_layer_get_clips (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Get the clips this layer contains.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.8.6"></a><h4>Returns</h4>
+<p> a <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
+clips. The user is responsible for
+unreffing the contained objects and freeing the list. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESClip]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-get-timeline"></a><h3>ges_layer_get_timeline ()</h3>
+<pre class="programlisting"><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="returnvalue">GESTimeline</span></a> *
+ges_layer_get_timeline (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Get the <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> in which <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> currently is.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> to get the parent <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> from</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.9.6"></a><h4>Returns</h4>
+<p>  the <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> in which <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a>
+currently is or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not in any timeline yet. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-get-auto-transition"></a><h3>ges_layer_get_auto_transition ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_layer_get_auto_transition (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Gets whether transitions are automatically added when objects
+overlap or not.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.10.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if transitions are automatically added, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-set-auto-transition"></a><h3>ges_layer_set_auto_transition ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_layer_set_auto_transition (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>,
+                               <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> auto_transition</code></em>);</pre>
+<p>Sets the layer to the given <em class="parameter"><code>auto_transition</code></em>
+. See the documentation of the
+property auto_transition for more information.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>auto_transition</p></td>
+<td class="parameter_description"><p>whether the auto_transition is active</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-is-empty"></a><h3>ges_layer_is_empty ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_layer_is_empty (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Convenience method to check if <em class="parameter"><code>layer</code></em>
+ is empty (doesn't contain any clip),
+or not.</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.12.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> to check</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.12.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>layer</code></em>
+is empty, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if it already contains at least
+one <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-layer-get-duration"></a><h3>ges_layer_get_duration ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="returnvalue">GstClockTime</span></a>
+ges_layer_get_duration (<em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Lets you retrieve the duration of the layer, which means
+the end time of the last clip inside it</p>
+<div class="refsect3">
+<a name="id-1.3.3.11.13.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> to get the duration from</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.3.11.13.6"></a><h4>Returns</h4>
+<p> The duration of a layer</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GES-TIMELINE-GET-LAYERS:CAPS"></a><h3>GES_TIMELINE_GET_LAYERS()</h3>
+<pre class="programlisting">#define GES_TIMELINE_GET_LAYERS(obj) (GES_TIMELINE (obj)-&gt;layers)
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GES-TIMELINE-GET-TRACKS:CAPS"></a><h3>GES_TIMELINE_GET_TRACKS()</h3>
+<pre class="programlisting">#define GES_TIMELINE_GET_TRACKS(obj) (GES_TIMELINE (obj)-&gt;tracks)
+</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESLayer-struct"></a><h3>GESLayer</h3>
+<pre class="programlisting">typedef struct {
+  GESTimeline *timeline;
+} GESLayer;
+</pre>
+<div class="refsect3">
+<a name="id-1.3.3.12.2.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody><tr>
+<td class="struct_member_name"><p><a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> *<em class="structfield"><code><a name="GESLayer-struct.timeline"></a>timeline</code></em>;</p></td>
+<td class="struct_member_description"><p>the <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> where this layer is being used.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESLayerClass"></a><h3>GESLayerClass</h3>
+<pre class="programlisting">typedef struct {
+  /* virtual methods for subclasses */
+  GList *(*get_objects) (GESLayer * layer);
+} GESLayerClass;
+</pre>
+<p>Subclasses can override the <em class="parameter"><code>get_objects</code></em>
+ if they can provide a more
+efficient way of providing the list of contained <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>(s).</p>
+<div class="refsect3">
+<a name="id-1.3.3.12.3.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody><tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESLayerClass.get-objects"></a>get_objects</code></em> ()</p></td>
+<td class="struct_member_description"><p>method to get the objects contained in the layer</p></td>
+<td class="struct_member_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESLayer--auto-transition"></a><h3>The <code class="literal">“auto-transition”</code> property</h3>
+<pre class="programlisting">  “auto-transition”          <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Sets whether transitions are added automagically when clips overlap.</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESLayer--priority"></a><h3>The <code class="literal">“priority”</code> property</h3>
+<pre class="programlisting">  “priority”                 <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a></pre>
+<p>The priority of the layer in the <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a>. 0 is the highest
+priority. Conceptually, a <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a> is a stack of GESLayers,
+and the priority of the layer represents its position in the stack. Two
+layers should not have the same priority within a given GESTimeline.</p>
+<p>Note that the timeline needs to be commited (with <a class="link" href="GESTimeline.html#ges-timeline-commit" title="ges_timeline_commit ()"><span class="type">ges_timeline_commit</span></a>)
+for the change to be taken into account.</p>
+<p>Flags: Read / Write</p>
+<p>Default value: 0</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESLayer.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GESLayer-clip-added"></a><h3>The <code class="literal">“clip-added”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer,
+               <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>  *clip,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Will be emitted after the clip was added to the layer.</p>
+<div class="refsect3">
+<a name="id-1.3.3.14.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> that was added.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESLayer-clip-removed"></a><h3>The <code class="literal">“clip-removed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer,
+               <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>  *clip,
+               <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Will be emitted after the clip was removed from the layer.</p>
+<div class="refsect3">
+<a name="id-1.3.3.14.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> that was removed</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
