@@ -1,0 +1,858 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESClip: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESContainer.html" title="GESContainer">
+<link rel="next" href="GESSourceClip.html" title="GESSourceClip">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESClip.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESClip.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESClip.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESClip.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESContainer.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESSourceClip.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESClip"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESClip.top_of_page"></a>GESClip</span></h2>
+<p>GESClip — Base Class for objects in a GESLayer</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESClip.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESClip.html#GESCreateTrackElementFunc" title="GESCreateTrackElementFunc ()">*GESCreateTrackElementFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESClip.html#GESCreateTrackElementsFunc" title="GESCreateTrackElementsFunc ()">*GESCreateTrackElementsFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GESClip.html#GESFillTrackElementFunc" title="GESFillTrackElementFunc ()">*GESFillTrackElementFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESLayer.html" title="GESLayer"><span class="returnvalue">GESLayer</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-get-layer" title="ges_clip_get_layer ()">ges_clip_get_layer</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-find-track-element" title="ges_clip_find_track_element ()">ges_clip_find_track_element</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-find-track-elements" title="ges_clip_find_track_elements ()">ges_clip_find_track_elements</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-add-asset" title="ges_clip_add_asset ()">ges_clip_add_asset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-get-top-effects" title="ges_clip_get_top_effects ()">ges_clip_get_top_effects</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-get-top-effect-index" title="ges_clip_get_top_effect_index ()">ges_clip_get_top_effect_index</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-move-to-layer" title="ges_clip_move_to_layer ()">ges_clip_move_to_layer</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-set-top-effect-index" title="ges_clip_set_top_effect_index ()">ges_clip_set_top_effect_index</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-set-supported-formats" title="ges_clip_set_supported_formats ()">ges_clip_set_supported_formats</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="returnvalue">GESTrackType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-get-supported-formats" title="ges_clip_get_supported_formats ()">ges_clip_get_supported_formats</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESClip.html" title="GESClip"><span class="returnvalue">GESClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESClip.html#ges-clip-split" title="ges_clip_split ()">ges_clip_split</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESClip.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *</td>
+<td class="property_name"><a class="link" href="GESClip.html#GESClip--layer" title="The “layer” property">layer</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></td>
+<td class="property_name"><a class="link" href="GESClip.html#GESClip--supported-formats" title="The “supported-formats” property">supported-formats</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESClip.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESClip.html#GESClip-struct" title="GESClip">GESClip</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESClip.html#GESClipClass" title="GESClipClass">GESClipClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESClip.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+                <span class="lineart">╰──</span> GESClip
+                    <span class="lineart">├──</span> <a class="link" href="GESOperationClip.html" title="GESOperationClip">GESOperationClip</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GESSourceClip.html" title="GESSourceClip">GESSourceClip</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESClip.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESClip implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESClip.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESClip.description"></a><h2>Description</h2>
+<p>A <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> is a 'natural' object which controls one or more
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>(s) in one or more <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>(s).</p>
+<p>Keeps a reference to the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>(s) it created and
+sets/updates their properties.</p>
+</div>
+<div class="refsect1">
+<a name="GESClip.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GESCreateTrackElementFunc"></a><h3>GESCreateTrackElementFunc ()</h3>
+<pre class="programlisting"><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+<span class="c_punctuation">(</span>*GESCreateTrackElementFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                              <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> type</code></em>);</pre>
+<p>Creates the 'primary' track element for this <em class="parameter"><code>clip</code></em>
+.</p>
+<p>Subclasses should implement this method if they only provide a
+single <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> per track.</p>
+<p>If the subclass needs to create more than one <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> for a
+given track, then it should implement the 'create_track_elements'
+method instead.</p>
+<p>The implementer of this function shall return the proper <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>
+that should be controlled by <em class="parameter"><code>clip</code></em>
+ for the given <em class="parameter"><code>track</code></em>
+.</p>
+<p>The returned <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> will be automatically added to the list
+of objects controlled by the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.2.9"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>a <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.2.10"></a><h4>Returns</h4>
+<p> the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> to be used, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if it can't provide one
+for the given <em class="parameter"><code>track</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESCreateTrackElementsFunc"></a><h3>GESCreateTrackElementsFunc ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+<span class="c_punctuation">(</span>*GESCreateTrackElementsFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                               <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> type</code></em>);</pre>
+<p>Create all track elements this clip handles for this type of track.</p>
+<p>Subclasses should implement this method if they potentially need to
+return more than one <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a>(s) for a given <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.3.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>a <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.3.7"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESFillTrackElementFunc"></a><h3>GESFillTrackElementFunc ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="c_punctuation">(</span>*GESFillTrackElementFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                            <em class="parameter"><code><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> *track_element</code></em>,
+                            <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> *nleobj</code></em>);</pre>
+<p>A function that will be called when the GNonLin object of a corresponding
+track element needs to be filled.</p>
+<p>The implementer of this function shall add the proper <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html"><span class="type">GstElement</span></a> to <em class="parameter"><code>nleobj</code></em>
+
+using <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstBin.html#gst-bin-add"><code class="function">gst_bin_add()</code></a>.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.4.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> controlling the track elements</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>track_element</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nleobj</p></td>
+<td class="parameter_description"><p>the GNonLin object that needs to be filled.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.4.7"></a><h4>Returns</h4>
+<p> TRUE if the implementer succesfully filled the <em class="parameter"><code>nleobj</code></em>
+, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><span class="type">FALSE</span></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-get-layer"></a><h3>ges_clip_get_layer ()</h3>
+<pre class="programlisting"><a class="link" href="GESLayer.html" title="GESLayer"><span class="returnvalue">GESLayer</span></a> *
+ges_clip_get_layer (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>);</pre>
+<p>Get the <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> to which this clip belongs.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.5.6"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> where this <em class="parameter"><code>clip</code></em>
+is being
+used, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if it is not used on any layer. The caller should unref it
+usage. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-find-track-element"></a><h3>ges_clip_find_track_element ()</h3>
+<pre class="programlisting"><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+ges_clip_find_track_element (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                             <em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);</pre>
+<p>Finds the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> controlled by <em class="parameter"><code>clip</code></em>
+ that is used in <em class="parameter"><code>track</code></em>
+. You
+may optionally specify a GType to further narrow search criteria.</p>
+<p>Note: If many objects match, then the one with the highest priority will be
+returned.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.6.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p> a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> or NULL. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> indicating the type of track element you are looking
+for or <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#G-TYPE-NONE:CAPS"><code class="literal">G_TYPE_NONE</code></a> if you do not care about the track type.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.6.7"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> used by <em class="parameter"><code>track</code></em>
+, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>,
+Unref after usage. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-find-track-elements"></a><h3>ges_clip_find_track_elements ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_clip_find_track_elements (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                              <em class="parameter"><code><a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> *track</code></em>,
+                              <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> track_type</code></em>,
+                              <em class="parameter"><code><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);</pre>
+<p>Finds all the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> controlled by <em class="parameter"><code>clip</code></em>
+ that is used in <em class="parameter"><code>track</code></em>
+. You
+may optionally specify a GType to further narrow search criteria.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>track</p></td>
+<td class="parameter_description"><p> a <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a> or NULL. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>track_type</p></td>
+<td class="parameter_description"><p>a <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> indicating the type of tracks in which elements
+should be searched.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> indicating the type of track element you are looking
+for or <a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#G-TYPE-NONE:CAPS"><code class="literal">G_TYPE_NONE</code></a> if you do not care about the track type.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.7.6"></a><h4>Returns</h4>
+<p> a <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of the
+<a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> contained in <em class="parameter"><code>clip</code></em>
+.
+The refcount of the objects will be increased. The user will have to
+unref each <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> and free the <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESTrackElement]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-add-asset"></a><h3>ges_clip_add_asset ()</h3>
+<pre class="programlisting"><a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="returnvalue">GESTrackElement</span></a> *
+ges_clip_add_asset (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                    <em class="parameter"><code><a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> *asset</code></em>);</pre>
+<p>Extracts a <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> from <em class="parameter"><code>asset</code></em>
+ and adds it to the <em class="parameter"><code>clip</code></em>
+.
+Should only be called in order to add operations to a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>,
+ni other cases TrackElement are added automatically when adding the
+<a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>/<a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> to a layer.</p>
+<p>Takes a reference on <em class="parameter"><code>track_element</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.8.6"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>asset</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> with <span class="type">GES_TYPE_TRACK_ELEMENT</span> as extractable_type</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.8.7"></a><h4>Returns</h4>
+<p> Created <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> or NULL
+if an error happened. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-get-top-effects"></a><h3>ges_clip_get_top_effects ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_clip_get_top_effects (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>);</pre>
+<p>Get effects applied on <em class="parameter"><code>clip</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.9.6"></a><h4>Returns</h4>
+<p> a <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of the
+<a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> that are applied on <em class="parameter"><code>clip</code></em>
+order by ascendant priorities.
+The refcount of the objects will be increased. The user will have to
+unref each <a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> and free the <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESTrackElement]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-get-top-effect-index"></a><h3>ges_clip_get_top_effect_index ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+ges_clip_get_top_effect_index (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                               <em class="parameter"><code><a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> *effect</code></em>);</pre>
+<p>Gets the index position of an effect.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>effect</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> we want to get the top index from</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.10.6"></a><h4>Returns</h4>
+<p> The top index of the effect, -1 if something went wrong.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-move-to-layer"></a><h3>ges_clip_move_to_layer ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_clip_move_to_layer (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                        <em class="parameter"><code><a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *layer</code></em>);</pre>
+<p>Moves <em class="parameter"><code>clip</code></em>
+ to <em class="parameter"><code>layer</code></em>
+. If <em class="parameter"><code>clip</code></em>
+ is not in any layer, it adds it to
+<em class="parameter"><code>layer</code></em>
+, else, it removes it from its current layer, and adds it to <em class="parameter"><code>layer</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>layer</p></td>
+<td class="parameter_description"><p>the new <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.11.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>clip</code></em>
+could be moved <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwize</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-set-top-effect-index"></a><h3>ges_clip_set_top_effect_index ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_clip_set_top_effect_index (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                               <em class="parameter"><code><a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> *effect</code></em>,
+                               <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> newindex</code></em>);</pre>
+<p>This is a convenience method that lets you set the index of a top effect.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.12.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>The origin <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>effect</p></td>
+<td class="parameter_description"><p>The <a class="link" href="GESBaseEffect.html" title="GESBaseEffect"><span class="type">GESBaseEffect</span></a> to move</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>newindex</p></td>
+<td class="parameter_description"><p>the new index at which to move the <em class="parameter"><code>effect</code></em>
+inside this
+<a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.12.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>effect</code></em>
+was successfuly moved, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-set-supported-formats"></a><h3>ges_clip_set_supported_formats ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_clip_set_supported_formats (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                                <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> supportedformats</code></em>);</pre>
+<p>Sets the formats supported by the file.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.13.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> to set supported formats on</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>supportedformats</p></td>
+<td class="parameter_description"><p>the <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a> defining formats supported by <em class="parameter"><code>clip</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-get-supported-formats"></a><h3>ges_clip_get_supported_formats ()</h3>
+<pre class="programlisting"><a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="returnvalue">GESTrackType</span></a>
+ges_clip_get_supported_formats (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>);</pre>
+<p>Get the formats supported by <em class="parameter"><code>clip</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.14.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.14.6"></a><h4>Returns</h4>
+<p> The formats supported by <em class="parameter"><code>clip</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-clip-split"></a><h3>ges_clip_split ()</h3>
+<pre class="programlisting"><a class="link" href="GESClip.html" title="GESClip"><span class="returnvalue">GESClip</span></a> *
+ges_clip_split (<em class="parameter"><code><a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> *clip</code></em>,
+                <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> position</code></em>);</pre>
+<p>The function modifies <em class="parameter"><code>clip</code></em>
+, and creates another <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> so
+we have two clips at the end, splitted at the time specified by <em class="parameter"><code>position</code></em>
+.
+The newly created clip will be added to the same layer as <em class="parameter"><code>clip</code></em>
+ is in.
+This implies that <em class="parameter"><code>clip</code></em>
+ must be in a <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> for the operation to
+be possible.</p>
+<div class="refsect3">
+<a name="id-1.3.6.10.15.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>clip</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> to split</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>position</p></td>
+<td class="parameter_description"><p>a <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="type">GstClockTime</span></a> representing the position at which to split</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.6.10.15.6"></a><h4>Returns</h4>
+<p> The newly created <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> resulting from the
+splitting. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESClip.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESClip-struct"></a><h3>GESClip</h3>
+<pre class="programlisting">typedef struct _GESClip GESClip;</pre>
+<p>The <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a> base class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESClipClass"></a><h3>GESClipClass</h3>
+<pre class="programlisting">typedef struct {
+  GESCreateTrackElementFunc  create_track_element;
+  GESCreateTrackElementsFunc create_track_elements;
+} GESClipClass;
+</pre>
+<p>Subclasses can override the <em class="parameter"><code>create_track_element</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.6.11.3.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="GESClip.html#GESCreateTrackElementFunc" title="GESCreateTrackElementFunc ()"><span class="type">GESCreateTrackElementFunc</span></a> <em class="structfield"><code><a name="GESClipClass.create-track-element"></a>create_track_element</code></em>;</p></td>
+<td class="struct_member_description"><p>method to create a single <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> for a given <a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="GESClip.html#GESCreateTrackElementsFunc" title="GESCreateTrackElementsFunc ()"><span class="type">GESCreateTrackElementsFunc</span></a> <em class="structfield"><code><a name="GESClipClass.create-track-elements"></a>create_track_elements</code></em>;</p></td>
+<td class="struct_member_description"><p>method to create multiple <a href="../ges-1.0/GESTrackElement.html"><span class="type">GESTrackElements</span></a> for a
+<a class="link" href="GESTrack.html" title="GESTrack"><span class="type">GESTrack</span></a>.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESClip.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESClip--layer"></a><h3>The <code class="literal">“layer”</code> property</h3>
+<pre class="programlisting">  “layer”                    <a class="link" href="GESLayer.html" title="GESLayer"><span class="type">GESLayer</span></a> *</pre>
+<p>The GESLayer where this clip is being used. If you want to connect to its
+notify signal you should connect to it with g_signal_connect_after as the
+signal emission can be stop in the first fase.</p>
+<p>Flags: Read</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESClip--supported-formats"></a><h3>The <code class="literal">“supported-formats”</code> property</h3>
+<pre class="programlisting">  “supported-formats”        <a class="link" href="ges-GES-Enums.html#GESTrackType" title="enum GESTrackType"><span class="type">GESTrackType</span></a></pre>
+<p>The formats supported by the clip.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: GES_TRACK_TYPE_AUDIO | GES_TRACK_TYPE_VIDEO</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

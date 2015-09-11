@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESTestClip: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch03.html" title="Timeline objects">
+<link rel="prev" href="GESTitleClip.html" title="GESTitleClip">
+<link rel="next" href="GESTextOverlayClip.html" title="GESTextOverlayClip">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESTestClip.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESTestClip.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESTestClip.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESTestClip.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTitleClip.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESTextOverlayClip.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESTestClip"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESTestClip.top_of_page"></a>GESTestClip</span></h2>
+<p>GESTestClip — Render video and audio test patterns in a GESLayer</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESTestClip.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTestClip.html" title="GESTestClip"><span class="returnvalue">GESTestClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-new" title="ges_test_clip_new ()">ges_test_clip_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTestClip.html" title="GESTestClip"><span class="returnvalue">GESTestClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-new-for-nick" title="ges_test_clip_new_for_nick ()">ges_test_clip_new_for_nick</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="returnvalue">GESVideoTestPattern</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-get-vpattern" title="ges_test_clip_get_vpattern ()">ges_test_clip_get_vpattern</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="returnvalue">gdouble</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-get-frequency" title="ges_test_clip_get_frequency ()">ges_test_clip_get_frequency</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="returnvalue">gdouble</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-get-volume" title="ges_test_clip_get_volume ()">ges_test_clip_get_volume</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-is-muted" title="ges_test_clip_is_muted ()">ges_test_clip_is_muted</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-set-vpattern" title="ges_test_clip_set_vpattern ()">ges_test_clip_set_vpattern</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-set-frequency" title="ges_test_clip_set_frequency ()">ges_test_clip_set_frequency</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-set-mute" title="ges_test_clip_set_mute ()">ges_test_clip_set_mute</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESTestClip.html#ges-test-clip-set-volume" title="ges_test_clip_set_volume ()">ges_test_clip_set_volume</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a></td>
+<td class="property_name"><a class="link" href="GESTestClip.html#GESTestClip--freq" title="The “freq” property">freq</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="GESTestClip.html#GESTestClip--mute" title="The “mute” property">mute</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a></td>
+<td class="property_name"><a class="link" href="GESTestClip.html#GESTestClip--volume" title="The “volume” property">volume</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a></td>
+<td class="property_name"><a class="link" href="GESTestClip.html#GESTestClip--vpattern" title="The “vpattern” property">vpattern</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTestClip.html#GESTestClip-struct" title="GESTestClip">GESTestClip</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTestClip.html#GESTestClipClass" title="GESTestClipClass">GESTestClipClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+                <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GESSourceClip.html" title="GESSourceClip">GESSourceClip</a>
+                        <span class="lineart">╰──</span> GESTestClip
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESTestClip implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.description"></a><h2>Description</h2>
+<p>Useful for testing purposes.</p>
+<p>You can use the ges_asset_request_simple API to create an Asset
+capable of extracting GESTestClip-s</p>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-test-clip-new"></a><h3>ges_test_clip_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="returnvalue">GESTestClip</span></a> *
+ges_test_clip_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates a new <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.2.5"></a><h4>Returns</h4>
+<p> The newly created <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a>, or NULL if there was an
+error.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-new-for-nick"></a><h3>ges_test_clip_new_for_nick ()</h3>
+<pre class="programlisting"><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="returnvalue">GESTestClip</span></a> *
+ges_test_clip_new_for_nick (<em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *nick</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> for the provided <em class="parameter"><code>nick</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>nick</p></td>
+<td class="parameter_description"><p>the nickname for which to create the <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.4.10.3.6"></a><h4>Returns</h4>
+<p> The newly created <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a>, or NULL if there was an
+error.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-get-vpattern"></a><h3>ges_test_clip_get_vpattern ()</h3>
+<pre class="programlisting"><a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="returnvalue">GESVideoTestPattern</span></a>
+ges_test_clip_get_vpattern (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>);</pre>
+<p>Get the <a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a> which is applied on <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.4.10.4.6"></a><h4>Returns</h4>
+<p> The <a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a> which is applied on <em class="parameter"><code>self</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-get-frequency"></a><h3>ges_test_clip_get_frequency ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="returnvalue">gdouble</span></a>
+ges_test_clip_get_frequency (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>);</pre>
+<p>Get the frequency <em class="parameter"><code>self</code></em>
+ generates.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.4.10.5.6"></a><h4>Returns</h4>
+<p> The frequency <em class="parameter"><code>self</code></em>
+generates. See audiotestsrc element.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-get-volume"></a><h3>ges_test_clip_get_volume ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="returnvalue">gdouble</span></a>
+ges_test_clip_get_volume (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>);</pre>
+<p>Get the volume of the test audio signal applied on <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.4.10.6.6"></a><h4>Returns</h4>
+<p> The volume of the test audio signal applied on <em class="parameter"><code>self</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-is-muted"></a><h3>ges_test_clip_is_muted ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_test_clip_is_muted (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>);</pre>
+<p>Let you know if the audio track of <em class="parameter"><code>self</code></em>
+ is muted or not.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.4.10.7.6"></a><h4>Returns</h4>
+<p> Whether the audio track of <em class="parameter"><code>self</code></em>
+is muted or not.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-set-vpattern"></a><h3>ges_test_clip_set_vpattern ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_test_clip_set_vpattern (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>,
+                            <em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a> vpattern</code></em>);</pre>
+<p>Sets which video pattern to display on <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> to set the pattern on</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>vpattern</p></td>
+<td class="parameter_description"><p>the <a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a> to use on <em class="parameter"><code>self</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-set-frequency"></a><h3>ges_test_clip_set_frequency ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_test_clip_set_frequency (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> freq</code></em>);</pre>
+<p>Sets the frequency to generate. See audiotestsrc element.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> to set the frequency on</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>freq</p></td>
+<td class="parameter_description"><p>the frequency you want to use on <em class="parameter"><code>self</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-set-mute"></a><h3>ges_test_clip_set_mute ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_test_clip_set_mute (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> mute</code></em>);</pre>
+<p>Sets whether the audio track of this clip is muted or not.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.10.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> on which to mute or unmute the audio track</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mute</p></td>
+<td class="parameter_description"><p><a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to mute the audio track, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> to unmute it</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-test-clip-set-volume"></a><h3>ges_test_clip_set_volume ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_test_clip_set_volume (<em class="parameter"><code><a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> *self</code></em>,
+                          <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> volume</code></em>);</pre>
+<p>Sets the volume of the test audio signal.</p>
+<div class="refsect3">
+<a name="id-1.4.4.10.11.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTestClip.html" title="GESTestClip"><span class="type">GESTestClip</span></a> to set the volume on</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>volume</p></td>
+<td class="parameter_description"><p>the volume of the audio signal you want to use on <em class="parameter"><code>self</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESTestClip-struct"></a><h3>GESTestClip</h3>
+<pre class="programlisting">typedef struct _GESTestClip GESTestClip;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTestClipClass"></a><h3>GESTestClipClass</h3>
+<pre class="programlisting">typedef struct {
+} GESTestClipClass;
+</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTestClip.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESTestClip--freq"></a><h3>The <code class="literal">“freq”</code> property</h3>
+<pre class="programlisting">  “freq”                     <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a></pre>
+<p>The frequency to generate for audio track elements.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Allowed values: [0,20000]</p>
+<p>Default value: 440</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTestClip--mute"></a><h3>The <code class="literal">“mute”</code> property</h3>
+<pre class="programlisting">  “mute”                     <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether the sound will be played or not.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTestClip--volume"></a><h3>The <code class="literal">“volume”</code> property</h3>
+<pre class="programlisting">  “volume”                   <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a></pre>
+<p>The volume for the audio track elements.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Allowed values: [0,1]</p>
+<p>Default value: 1</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESTestClip--vpattern"></a><h3>The <code class="literal">“vpattern”</code> property</h3>
+<pre class="programlisting">  “vpattern”                 <a class="link" href="ges-GES-Enums.html#GESVideoTestPattern" title="enum GESVideoTestPattern"><span class="type">GESVideoTestPattern</span></a></pre>
+<p>Video pattern to display in video track elements.</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: GES_VIDEO_TEST_PATTERN_SMPTE</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

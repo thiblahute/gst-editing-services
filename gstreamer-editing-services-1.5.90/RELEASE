@@ -1,0 +1,67 @@
+
+Release notes for GStreamer Editing Services 1.5.90
+
+
+The GStreamer team is pleased to announce the first release candidate for the
+stable 1.6 release series. The 1.6 release series is adding new features on top of
+the 1.0, 1.2 and 1.4 series and is part of the API and ABI-stable 1.x release
+series of the GStreamer Editing Services. The final 1.6.0 release is planned
+in the next few days unless any major bugs are found.
+
+
+Binaries for Android, iOS, Mac OS X and Windows will be provided separately by
+the GStreamer project.
+
+
+  
+
+Features of this release
+    
+
+Bugs fixed in this release
+     
+      * 751510 : gst-library-error-quark: Failed to encode frame when rendering to webm
+      * 752300 : After updating GES from 1.5.2 to Master complex timelines makes whole app to hang
+
+==== Download ====
+
+You can find source releases of gst-editing-services in the download
+directory: http://gstreamer.freedesktop.org/src/gst-editing-services/
+
+The git repository and details how to clone it can be found at
+http://cgit.freedesktop.org/gstreamer/gst-editing-services/
+
+==== Homepage ====
+
+The project's website is http://gstreamer.freedesktop.org/
+
+==== Support and Bugs ====
+
+We use GNOME's bugzilla for bug reports and feature requests:
+http://bugzilla.gnome.org/enter_bug.cgi?product=GStreamer
+
+Please submit patches via bugzilla as well.
+
+For help and support, please subscribe to and send questions to the
+gstreamer-devel mailing list (see below for details).
+
+There is also a #gstreamer IRC channel on the Freenode IRC network.
+
+==== Developers ====
+
+GStreamer is stored in Git, hosted at git.freedesktop.org, and can be cloned
+from there (see link above).
+
+Interested developers of the core library, plugins, and applications should
+subscribe to the gstreamer-devel list.
+
+        
+Applications
+  
+Contributors to this release
+    
+      * Sebastian Dröge
+      * Stefan Sauer
+      * Thibault Saunier
+      * Tim-Philipp Müller
+ 
