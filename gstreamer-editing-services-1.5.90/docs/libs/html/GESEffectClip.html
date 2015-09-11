@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESEffectClip: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch03.html" title="Timeline objects">
+<link rel="prev" href="GESTransitionClip.html" title="GESTransitionClip">
+<link rel="next" href="ges-GESGroup.html" title="GESGroup">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESEffectClip.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESEffectClip.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESEffectClip.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESEffectClip.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTransitionClip.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ges-GESGroup.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESEffectClip"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESEffectClip.top_of_page"></a>GESEffectClip</span></h2>
+<p>GESEffectClip — An effect created by parse-launch style bin descriptions
+in a GESLayer</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESEffectClip.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody><tr>
+<td class="function_type">
+<a class="link" href="GESEffectClip.html" title="GESEffectClip"><span class="returnvalue">GESEffectClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESEffectClip.html#ges-effect-clip-new" title="ges_effect_clip_new ()">ges_effect_clip_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<td class="property_name"><a class="link" href="GESEffectClip.html#GESEffectClip--audio-bin-description" title="The “audio-bin-description” property">audio-bin-description</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+<tr>
+<td class="property_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<td class="property_name"><a class="link" href="GESEffectClip.html#GESEffectClip--video-bin-description" title="The “video-bin-description” property">video-bin-description</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESEffectClip.html#GESEffectClip-struct" title="GESEffectClip">GESEffectClip</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+                <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GESOperationClip.html" title="GESOperationClip">GESOperationClip</a>
+                        <span class="lineart">╰──</span> <a class="link" href="GESBaseEffectClip.html" title="GESBaseEffectClip">GESBaseEffectClip</a>
+                            <span class="lineart">╰──</span> GESEffectClip
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESEffectClip implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.description"></a><h2>Description</h2>
+<p>The effect will be applied on the sources that have lower priorities
+(higher number) between the inpoint and the end of it.</p>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-effect-clip-new"></a><h3>ges_effect_clip_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESEffectClip.html" title="GESEffectClip"><span class="returnvalue">GESEffectClip</span></a> *
+ges_effect_clip_new (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *video_bin_description</code></em>,
+                     <em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *audio_bin_description</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESEffectClip.html" title="GESEffectClip"><span class="type">GESEffectClip</span></a> from the description of the bin.</p>
+<div class="refsect3">
+<a name="id-1.4.7.10.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>video_bin_description</p></td>
+<td class="parameter_description"><p>The gst-launch like bin description of the effect</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>audio_bin_description</p></td>
+<td class="parameter_description"><p>The gst-launch like bin description of the effect</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.7.10.2.6"></a><h4>Returns</h4>
+<p> a newly created <a class="link" href="GESEffectClip.html" title="GESEffectClip"><span class="type">GESEffectClip</span></a>, or
+<a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if something went wrong.</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESEffectClip-struct"></a><h3>GESEffectClip</h3>
+<pre class="programlisting">typedef struct _GESEffectClip GESEffectClip;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESEffectClip.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESEffectClip--audio-bin-description"></a><h3>The <code class="literal">“audio-bin-description”</code> property</h3>
+<pre class="programlisting">  “audio-bin-description”    <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<p>The description of the audio track of the effect bin with a gst-launch-style
+pipeline description. This should be used for test purposes.</p>
+<p>Example: "audiopanorama panorama=1.0"</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESEffectClip--video-bin-description"></a><h3>The <code class="literal">“video-bin-description”</code> property</h3>
+<pre class="programlisting">  “video-bin-description”    <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<p>The description of the video track of the effect bin with a gst-launch-style
+pipeline description. This should be used for test purposes.</p>
+<p>Example: "videobalance saturation=1.5 hue=+0.5"</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Default value: NULL</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

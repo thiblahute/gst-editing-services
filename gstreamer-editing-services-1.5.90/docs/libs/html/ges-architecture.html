@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Overview and architecture: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch01.html" title="GStreamer Editing Services Overview">
+<link rel="prev" href="ch01.html" title="GStreamer Editing Services Overview">
+<link rel="next" href="ges-Initialization.html" title="Initialization">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ges-Initialization.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="ges-architecture"></a><div class="titlepage"></div>
+<div class="refsect1">
+<a name="id-1.2.4.2"></a><h2>Goals of GStreamer Editing Services</h2>
+<p>The GStreamer multimedia framework and the accompanying GNonLin set
+    of plugins for non-linear editing offer all the building blocks for:
+    </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>Decoding and encoding to a wide variety of formats, through
+          all the available GStreamer plugins.</p></li>
+<li class="listitem"><p>Easily choosing segments of streams and arranging them through
+          time through the GNonLin set of plugins.</p></li>
+</ul></div>
+<p>But all those building blocks only offer stream-level access, which
+    results in developers who want to write non-linear editors to write a
+    consequent amount of code to get to the level of <span class="emphasis"><em>non-linear
+    editing</em></span> notions which are closer and more meaningful for the
+    end-user (and therefore the application).</p>
+<p>The GStreamer Editing Services <em><span class="remark">(hereafter GES)</span></em> aims
+    to fill the gap between GStreamer/GNonLin and the application developer by
+    offering a series of classes to simplify the creation of many kind of
+    editing-related applications.</p>
+</div>
+<div class="refsect1">
+<a name="id-1.2.4.3"></a><h2>Architecture</h2>
+<div class="refsect2">
+<a name="id-1.2.4.3.2"></a><h3>Timeline and TimelinePipeline</h3>
+<p>The most top-level object encapsulating every other object is the
+      <a class="link" href="GESTimeline.html" title="GESTimeline">GESTimeline</a>. It is the central object
+      for any editing project.</p>
+<p>The <code class="classname">GESTimeline</code> is a
+      <code class="classname">GstElement</code>. It can therefore be used in any
+      GStreamer pipeline like any other object.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="id-1.2.4.3.3"></a><h3>Tracks and Layers</h3>
+<p>The GESTimeline can contain two types of objects (seen in <a class="xref" href="ges-architecture.html#layer_tracks_diagram" title="Figure 1. Layers and Tracks">Figure 1, “Layers and Tracks”</a>): </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>Layers - Corresponds to the user-visible arrangement of clips,
+            and what you primarily interact with as an application developer.
+            A minimalistic timeline would only have one layer,
+            but a more complex editing application could use as many as needed.
+            </p></li>
+<li class="listitem"><p>Tracks - Corresponds to the output streams in GStreamer.
+            A typical GESTimeline, aimed at a video editing application, would
+            have an audio track and a video track.
+            A GESTimeline for an audio editing application would only require
+            an audio track. Multiple layers can be related to each track.</p></li>
+</ul></div>
+<div class="figure">
+<a name="layer_tracks_diagram"></a><p class="title"><b>Figure 1. Layers and Tracks</b></p>
+<div class="figure-contents"><div class="mediaobject"><img src="layer_track_overview.png" width="405" alt="Layers and Tracks"></div></div>
+</div>
+<br class="figure-break"><p>In order to reduce even more the amount of GStreamer interaction
+      the application developer has to deal with, a convenience GstPipeline
+      has been made available specifically for Timelines : <a class="link" href="GESPipeline.html" title="GESPipeline">GESPipeline</a>.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
