@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Object Hierarchy: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="prev" href="ges-GESAudioTrack.html" title="GESAudioTrack">
+<link rel="next" href="api-index-full.html" title="API Index">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><img src="up-insensitive.png" width="16" height="16" border="0"></td>
+<td><a accesskey="p" href="ges-GESAudioTrack.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="api-index-full.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ges-hierarchy"></a>Object Hierarchy</h1></div></div></div>
+<pre class="screen">
+    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">├──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+    <span class="lineart">│</span>   <span class="lineart">├──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html">GstObject</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>   <span class="lineart">╰──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstElement.html">GstElement</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>       <span class="lineart">╰──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstBin.html">GstBin</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>           <span class="lineart">├──</span> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstPipeline.html">GstPipeline</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>           <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESPipeline.html" title="GESPipeline">GESPipeline</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>           <span class="lineart">├──</span> <a class="link" href="GESTimeline.html" title="GESTimeline">GESTimeline</a>
+    <span class="lineart">│</span>   <span class="lineart">│</span>           <span class="lineart">╰──</span> <a class="link" href="GESTrack.html" title="GESTrack">GESTrack</a>
+    <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESFormatter.html" title="GESFormatter">GESFormatter</a>
+    <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESLayer.html" title="GESLayer">GESLayer</a>
+    <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+    <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESOperationClip.html" title="GESOperationClip">GESOperationClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESOverlayClip.html" title="GESOverlayClip">GESOverlayClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESTextOverlayClip.html" title="GESTextOverlayClip">GESTextOverlayClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESBaseTransitionClip.html" title="GESBaseTransitionClip">GESBaseTransitionClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESTransitionClip.html" title="GESTransitionClip">GESTransitionClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESBaseEffectClip.html" title="GESBaseEffectClip">GESBaseEffectClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">╰──</span> <a class="link" href="GESEffectClip.html" title="GESEffectClip">GESEffectClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>       <span class="lineart">╰──</span> <a class="link" href="GESSourceClip.html" title="GESSourceClip">GESSourceClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>           <span class="lineart">├──</span> <a class="link" href="GESTestClip.html" title="GESTestClip">GESTestClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>           <span class="lineart">├──</span> <a class="link" href="GESUriClip.html" title="GESUriClip">GESUriClip</a>
+    <span class="lineart">│</span>       <span class="lineart">│</span>           <span class="lineart">╰──</span> <a class="link" href="GESTitleClip.html" title="GESTitleClip">GESTitleClip</a>
+    <span class="lineart">│</span>       <span class="lineart">╰──</span> <a class="link" href="GESTrackElement.html" title="GESTrackElement">GESTrackElement</a>
+    <span class="lineart">│</span>           <span class="lineart">├──</span> <a class="link" href="GESSource.html" title="GESSource">GESSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESAudioSource.html" title="GESAudioSource">GESAudioSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>   <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESAudioTestSource.html" title="GESAudioTestSource">GESAudioTestSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>   <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESAudioUriSource.html" title="GESAudioUriSource">GESAudioUriSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESVideoSource.html" title="GESVideoSource">GESVideoSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESVideoUriSource.html" title="GESVideoUriSource">GESVideoUriSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESImageSource.html" title="GESImageSource">GESImageSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESMultiFileSource.html" title="GESMultiFileSource">GESMultiFileSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>       <span class="lineart">├──</span> <a class="link" href="GESTitleSource.html" title="GESTitleSource">GESTitleSource</a>
+    <span class="lineart">│</span>           <span class="lineart">│</span>       <span class="lineart">╰──</span> <a class="link" href="GESVideoTestSource.html" title="GESVideoTestSource">GESVideoTestSource</a>
+    <span class="lineart">│</span>           <span class="lineart">╰──</span> <a class="link" href="GESOperation.html" title="GESOperation">GESOperation</a>
+    <span class="lineart">│</span>               <span class="lineart">├──</span> <a class="link" href="GESTransition.html" title="GESTransition">GESTransition</a>
+    <span class="lineart">│</span>               <span class="lineart">│</span>   <span class="lineart">├──</span> <a class="link" href="GESAudioTransition.html" title="GESAudioTransition">GESAudioTransition</a>
+    <span class="lineart">│</span>               <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESVideoTransition.html" title="GESVideoTransition">GESVideoTransition</a>
+    <span class="lineart">│</span>               <span class="lineart">├──</span> <a class="link" href="GESBaseEffect.html" title="GESBaseEffect">GESBaseEffect</a>
+    <span class="lineart">│</span>               <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESEffect.html" title="GESEffect">GESEffect</a>
+    <span class="lineart">│</span>               <span class="lineart">╰──</span> <a class="link" href="GESTextOverlay.html" title="GESTextOverlay">GESTextOverlay</a>
+    <span class="lineart">╰──</span> <a class="link" href="GESAsset.html" title="GESAsset">GESAsset</a>
+        <span class="lineart">├──</span> <a class="link" href="GESProject.html" title="GESProject">GESProject</a>
+        <span class="lineart">├──</span> <a class="link" href="GESClipAsset.html" title="GESClipAsset">GESClipAsset</a>
+        <span class="lineart">│</span>   <span class="lineart">╰──</span> <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset">GESUriClipAsset</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTrackElementAsset.html" title="GESTrackElementAsset">GESTrackElementAsset</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESUriSourceAsset.html" title="GESUriSourceAsset">GESUriSourceAsset</a>
+    <a href="https://developer.gnome.org/gobject/unstable/GTypeModule.html">GInterface</a>
+    <span class="lineart">├──</span> <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a>
+    <span class="lineart">╰──</span> <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>
+</pre>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

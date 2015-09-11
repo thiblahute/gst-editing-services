@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESTransitionClip: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch03.html" title="Timeline objects">
+<link rel="prev" href="GESTextOverlayClip.html" title="GESTextOverlayClip">
+<link rel="next" href="GESEffectClip.html" title="GESEffectClip">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESTransitionClip.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESTransitionClip.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESTransitionClip.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GESTransitionClip.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTextOverlayClip.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESEffectClip.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESTransitionClip"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESTransitionClip.top_of_page"></a>GESTransitionClip</span></h2>
+<p>GESTransitionClip — Transition from one clip to another in a GESLayer</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESTransitionClip.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="returnvalue">GESTransitionClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTransitionClip.html#ges-transition-clip-new" title="ges_transition_clip_new ()">ges_transition_clip_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="returnvalue">GESTransitionClip</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESTransitionClip.html#ges-transition-clip-new-for-nick" title="ges_transition_clip_new_for_nick ()">ges_transition_clip_new_for_nick</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type"><a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a></td>
+<td class="property_name"><a class="link" href="GESTransitionClip.html#GESTransitionClip--vtype" title="The “vtype” property">vtype</a></td>
+<td class="property_flags">Read / Write / Construct</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESTransitionClip.html#GESTransitionClip-struct" title="GESTransitionClip">GESTransitionClip</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> <a class="link" href="GESContainer.html" title="GESContainer">GESContainer</a>
+                <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GESOperationClip.html" title="GESOperationClip">GESOperationClip</a>
+                        <span class="lineart">╰──</span> <a class="link" href="GESBaseTransitionClip.html" title="GESBaseTransitionClip">GESBaseTransitionClip</a>
+                            <span class="lineart">╰──</span> GESTransitionClip
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESTransitionClip implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.description"></a><h2>Description</h2>
+<p>Creates an object that mixes together the two underlying objects, A and B.
+The A object is assumed to have a higher prioirity (lower number) than the
+B object. At the transition in point, only A will be visible, and by the
+end only B will be visible.</p>
+<p>The shape of the video transition depends on the value of the "vtype"
+property. The default value is "crossfade". For audio, only "crossfade" is
+supported.</p>
+<p>The ID of the ExtractableType is the nickname of the vtype property value. Note
+that this value can be changed after creation and the GESExtractable.asset value
+will be updated when needed.</p>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-transition-clip-new"></a><h3>ges_transition_clip_new ()</h3>
+<pre class="programlisting"><a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="returnvalue">GESTransitionClip</span></a> *
+ges_transition_clip_new (<em class="parameter"><code><a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a> vtype</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="type">GESTransitionClip</span></a>.</p>
+<div class="refsect3">
+<a name="id-1.4.6.10.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>vtype</p></td>
+<td class="parameter_description"><p>the type of transition to create</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.6.10.2.6"></a><h4>Returns</h4>
+<p> a newly created <a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="type">GESTransitionClip</span></a>, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if something
+went wrong.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-transition-clip-new-for-nick"></a><h3>ges_transition_clip_new_for_nick ()</h3>
+<pre class="programlisting"><a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="returnvalue">GESTransitionClip</span></a> *
+ges_transition_clip_new_for_nick (<em class="parameter"><code><span class="type">char</span> *nick</code></em>);</pre>
+<p>Creates a new <a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="type">GESTransitionClip</span></a> for the provided <em class="parameter"><code>nick</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.4.6.10.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>nick</p></td>
+<td class="parameter_description"><p>a string representing the type of transition to create</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.4.6.10.3.6"></a><h4>Returns</h4>
+<p> The newly created <a class="link" href="GESTransitionClip.html" title="GESTransitionClip"><span class="type">GESTransitionClip</span></a>, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if something
+went wrong</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESTransitionClip-struct"></a><h3>GESTransitionClip</h3>
+<pre class="programlisting">typedef struct {
+  GESVideoStandardTransitionType vtype;
+} GESTransitionClip;
+</pre>
+<div class="refsect3">
+<a name="id-1.4.6.11.2.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody><tr>
+<td class="struct_member_name"><p><a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a> <em class="structfield"><code><a name="GESTransitionClip-struct.vtype"></a>vtype</code></em>;</p></td>
+<td class="struct_member_description"><p>a <a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a> indicating the type of video transition
+to apply.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESTransitionClip.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GESTransitionClip--vtype"></a><h3>The <code class="literal">“vtype”</code> property</h3>
+<pre class="programlisting">  “vtype”                    <a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a></pre>
+<p>a <a class="link" href="ges-GES-Enums.html#GESVideoStandardTransitionType" title="enum GESVideoStandardTransitionType"><span class="type">GESVideoStandardTransitionType</span></a> representing the wipe to use</p>
+<p>Flags: Read / Write / Construct</p>
+<p>Default value: GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
