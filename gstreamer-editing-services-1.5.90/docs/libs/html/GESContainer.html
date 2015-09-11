@@ -1,0 +1,489 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESContainer: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch02.html" title="Base Classes">
+<link rel="prev" href="GESTimelineElement.html" title="GESTimelineElement">
+<link rel="next" href="GESClip.html" title="GESClip">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESContainer.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESContainer.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESContainer.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTimelineElement.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESClip.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESContainer"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESContainer.top_of_page"></a>GESContainer</span></h2>
+<p>GESContainer — Base Class for objects responsible for controlling other
+GESTimelineElement-s</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESContainer.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#GES-CONTAINER-CHILDREN:CAPS" title="GES_CONTAINER_CHILDREN()">GES_CONTAINER_CHILDREN</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#GES-CONTAINER-HEIGHT:CAPS" title="GES_CONTAINER_HEIGHT()">GES_CONTAINER_HEIGHT</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#ges-container-get-children" title="ges_container_get_children ()">ges_container_get_children</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#ges-container-add" title="ges_container_add ()">ges_container_add</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#ges-container-remove" title="ges_container_remove ()">ges_container_remove</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#ges-container-ungroup" title="ges_container_ungroup ()">ges_container_ungroup</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESContainer.html" title="GESContainer"><span class="returnvalue">GESContainer</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESContainer.html#ges-container-group" title="ges_container_group ()">ges_container_group</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESContainer.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESContainer.html#GESContainer-struct" title="GESContainer">GESContainer</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESContainer.html#GESContainerClass" title="GESContainerClass">GESContainerClass</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESContainer.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESTimelineElement.html" title="GESTimelineElement">GESTimelineElement</a>
+            <span class="lineart">╰──</span> GESContainer
+                <span class="lineart">╰──</span> <a class="link" href="GESClip.html" title="GESClip">GESClip</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESContainer.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESContainer implements
+ <a class="link" href="ges-GESExtractableInterface.html#GESExtractable">GESExtractable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESContainer.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESContainer.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GESContainer.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GES-CONTAINER-CHILDREN:CAPS"></a><h3>GES_CONTAINER_CHILDREN()</h3>
+<pre class="programlisting">#define GES_CONTAINER_CHILDREN(obj) (((GESContainer*)obj)-&gt;children)
+</pre>
+<p>A <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> containing the children of <em class="parameter"><code>object</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.2.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>obj</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GES-CONTAINER-HEIGHT:CAPS"></a><h3>GES_CONTAINER_HEIGHT()</h3>
+<pre class="programlisting">#define GES_CONTAINER_HEIGHT(obj) (((GESContainer*)obj)-&gt;height)
+</pre>
+<p>The span of priorities this object occupies.</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>obj</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-container-get-children"></a><h3>ges_container_get_children ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_container_get_children (<em class="parameter"><code><a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> *container</code></em>,
+                            <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> recursive</code></em>);</pre>
+<p>Get the list of <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> contained in <em class="parameter"><code>container</code></em>
+
+The user is responsible for unreffing the contained objects
+and freeing the list.</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>container</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>recursive</p></td>
+<td class="parameter_description"><p>Whether to recursively get children in <em class="parameter"><code>container</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.5.9.4.6"></a><h4>Returns</h4>
+<p> The list of
+timeline element contained in <em class="parameter"><code>container</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESTimelineElement]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-container-add"></a><h3>ges_container_add ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_container_add (<em class="parameter"><code><a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> *container</code></em>,
+                   <em class="parameter"><code><a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> *child</code></em>);</pre>
+<p>Add the <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> to the container.</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>container</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.5.9.5.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-container-remove"></a><h3>ges_container_remove ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_container_remove (<em class="parameter"><code><a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> *container</code></em>,
+                      <em class="parameter"><code><a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> *child</code></em>);</pre>
+<p>Release the <em class="parameter"><code>child</code></em>
+ from the control of <em class="parameter"><code>container</code></em>
+.</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.6.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>container</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child</p></td>
+<td class="parameter_description"><p>the <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> to release</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.5.9.6.6"></a><h4>Returns</h4>
+<p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the <em class="parameter"><code>child</code></em>
+was properly released, else <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-container-ungroup"></a><h3>ges_container_ungroup ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_container_ungroup (<em class="parameter"><code><a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> *container</code></em>,
+                       <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> recursive</code></em>);</pre>
+<p>Ungroups the <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> contained in this GESContainer,
+creating new <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> containing those <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a>
+apropriately.</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>container</p></td>
+<td class="parameter_description"><p> The <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> to ungroup. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>recursive</p></td>
+<td class="parameter_description"><p>Wether to recursively ungroup <em class="parameter"><code>container</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.5.9.7.6"></a><h4>Returns</h4>
+<p> The list of
+<a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> resulting from the ungrouping operation
+The user is responsible for unreffing the contained objects
+and freeing the list. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESContainer]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-container-group"></a><h3>ges_container_group ()</h3>
+<pre class="programlisting"><a class="link" href="GESContainer.html" title="GESContainer"><span class="returnvalue">GESContainer</span></a> *
+ges_container_group (<em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *containers</code></em>);</pre>
+<p>Groups the <span class="type">GESContainer-s</span> provided in <em class="parameter"><code>containers</code></em>
+. It creates a subclass
+of <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a>, depending on the containers provided in <em class="parameter"><code>containers</code></em>
+.
+Basically, if all the containers in <em class="parameter"><code>containers</code></em>
+ should be contained in a same
+clip (all the <a class="link" href="GESTrackElement.html" title="GESTrackElement"><span class="type">GESTrackElement</span></a> they contain have the exact same
+start/inpoint/duration and are in the same layer), it will create a <a class="link" href="GESClip.html" title="GESClip"><span class="type">GESClip</span></a>
+otherwise a <a class="link" href="ges-GESGroup.html#GESGroup" title="GESGroup"><span class="type">GESGroup</span></a> will be created</p>
+<div class="refsect3">
+<a name="id-1.3.5.9.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>containers</p></td>
+<td class="parameter_description"><p> The
+<a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> to group, they must all be in a same <a class="link" href="GESTimeline.html" title="GESTimeline"><span class="type">GESTimeline</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESContainer][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.3.5.9.8.6"></a><h4>Returns</h4>
+<p> The <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> (subclass) resulting of the
+grouping. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESContainer.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESContainer-struct"></a><h3>GESContainer</h3>
+<pre class="programlisting">typedef struct {
+  /*&lt; readonly &gt;*/
+  GList *children;
+
+  /* We don't add those properties to the priv struct for optimization and code
+   * readability purposes */
+  guint32 height;       /* the span of priorities this object needs */
+} GESContainer;
+</pre>
+<p>The <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> base class.</p>
+<div class="refsect3">
+<a name="id-1.3.5.10.2.5"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="GESContainer-struct.children"></a>children</code></em>;</p></td>
+<td class="struct_member_description"><p> A list of TimelineElement
+controlled by this Container. NOTE: Do not modify. </p></td>
+<td class="struct_member_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GES.TimelineElement]</span></td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="GESContainer-struct.height"></a>height</code></em>;</p></td>
+<td class="struct_member_description"><p>The span of priorities this container occupies</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GESContainerClass"></a><h3>GESContainerClass</h3>
+<pre class="programlisting">typedef struct {
+  /* signals */
+  void (*child_added)             (GESContainer *container, GESTimelineElement *element);
+  void (*child_removed)           (GESContainer *container, GESTimelineElement *element);
+  gboolean (*add_child)           (GESContainer *container, GESTimelineElement *element);
+  gboolean (*remove_child)        (GESContainer *container, GESTimelineElement *element);
+  GList* (*ungroup)               (GESContainer *container, gboolean recursive);
+  GESContainer * (*group)         (GList *containers);
+  gboolean (*edit)                (GESContainer * container,
+                                   GList * layers, gint new_layer_priority,
+                                   GESEditMode mode,
+                                   GESEdge edge,
+                                   guint64 position);
+} GESContainerClass;
+</pre>
+<div class="refsect3">
+<a name="id-1.3.5.10.3.4"></a><h4>Members</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.child-added"></a>child_added</code></em> ()</p></td>
+<td class="struct_member_description"><p>Virtual method that is called right after a <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> is added</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.child-removed"></a>child_removed</code></em> ()</p></td>
+<td class="struct_member_description"><p>Virtual method that is called right after a <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> is removed</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.add-child"></a>add_child</code></em> ()</p></td>
+<td class="struct_member_description"><p>Virtual method to add a child</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.remove-child"></a>remove_child</code></em> ()</p></td>
+<td class="struct_member_description"><p>Virtual method to remove a child</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.ungroup"></a>ungroup</code></em> ()</p></td>
+<td class="struct_member_description"><p>Ungroups the <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> contained in this <a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a>, creating new</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.group"></a>group</code></em> ()</p></td>
+<td class="struct_member_description"><p>Groups the <a href="../ges-1.0/GESContainer.html"><span class="type">GESContainers</span></a> together
+<a class="link" href="GESContainer.html" title="GESContainer"><span class="type">GESContainer</span></a> containing those <a class="link" href="GESTimelineElement.html" title="GESTimelineElement"><span class="type">GESTimelineElement</span></a> apropriately.</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><em class="structfield"><code><a name="GESContainerClass.edit"></a>edit</code></em> ()</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>

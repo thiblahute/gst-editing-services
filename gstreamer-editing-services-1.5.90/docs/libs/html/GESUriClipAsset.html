@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GESUriClipAsset: GStreamer Editing Services 1.5.90 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GStreamer Editing Services 1.5.90 Reference Manual">
+<link rel="up" href="ch08.html" title="Assets">
+<link rel="prev" href="GESTrackElementAsset.html" title="GESTrackElementAsset">
+<link rel="next" href="GESUriSourceAsset.html" title="GESUriSourceAsset">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GESUriClipAsset.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GESUriClipAsset.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GESUriClipAsset.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch08.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GESTrackElementAsset.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GESUriSourceAsset.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GESUriClipAsset"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GESUriClipAsset.top_of_page"></a>GESUriClipAsset</span></h2>
+<p>GESUriClipAsset — A GESAsset subclass specialized in GESUriClip extraction</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GESUriClipAsset.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-get-type" title="ges_uri_clip_asset_get_type ()">ges_uri_clip_asset_get_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="returnvalue">GstClockTime</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-get-duration" title="ges_uri_clip_asset_get_duration ()">ges_uri_clip_asset_get_duration</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-is-image" title="ges_uri_clip_asset_is_image ()">ges_uri_clip_asset_is_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstdiscoverer.html#GstDiscovererInfo"><span class="returnvalue">GstDiscovererInfo</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-get-info" title="ges_uri_clip_asset_get_info ()">ges_uri_clip_asset_get_info</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-new" title="ges_uri_clip_asset_new ()">ges_uri_clip_asset_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="returnvalue">GESUriClipAsset</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-request-sync" title="ges_uri_clip_asset_request_sync ()">ges_uri_clip_asset_request_sync</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-get-stream-assets" title="ges_uri_clip_asset_get_stream_assets ()">ges_uri_clip_asset_get_stream_assets</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GESUriClipAsset.html#ges-uri-clip-asset-class-set-timeout" title="ges_uri_clip_asset_class_set_timeout ()">ges_uri_clip_asset_class_set_timeout</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GESUriClipAsset.html#GESUriClipAsset-struct" title="GESUriClipAsset">GESUriClipAsset</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+    <span class="lineart">╰──</span> <a class="link" href="GESAsset.html" title="GESAsset">GESAsset</a>
+        <span class="lineart">╰──</span> <a class="link" href="GESClipAsset.html" title="GESClipAsset">GESClipAsset</a>
+            <span class="lineart">╰──</span> GESUriClipAsset
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GESUriClipAsset implements
+ <a href="https://developer.gnome.org/gio/unstable/GAsyncInitable.html">GAsyncInitable</a>,  <a href="https://developer.gnome.org/gio/unstable/GInitable.html">GInitable</a> and  <a class="link" href="GESMetaContainer.html" title="GESMetaContainer">GESMetaContainer</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;ges/ges.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.description"></a><h2>Description</h2>
+<p>The <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> is a special <a class="link" href="GESAsset.html" title="GESAsset"><span class="type">GESAsset</span></a> that lets you handle
+the media file to use inside the GStreamer Editing Services. It has APIs that
+let you get information about the medias. Also, the tags found in the media file are
+set as Metadatas of the Asser.</p>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-get-type"></a><h3>ges_uri_clip_asset_get_type ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#GType"><span class="returnvalue">GType</span></a>
+ges_uri_clip_asset_get_type (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-get-duration"></a><h3>ges_uri_clip_asset_get_duration ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="returnvalue">GstClockTime</span></a>
+ges_uri_clip_asset_get_duration (<em class="parameter"><code><a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> *self</code></em>);</pre>
+<p>Gets duration of the file represented by <em class="parameter"><code>self</code></em>
+</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.3.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.4.9.3.6"></a><h4>Returns</h4>
+<p> The duration of <em class="parameter"><code>self</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-is-image"></a><h3>ges_uri_clip_asset_is_image ()</h3>
+<pre class="programlisting"><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+ges_uri_clip_asset_is_image (<em class="parameter"><code><a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> *self</code></em>);</pre>
+<p>Gets Whether the file represented by <em class="parameter"><code>self</code></em>
+ is an image or not</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.4.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <span class="type">indent</span>: Standard input:311: Error:Unexpected end of file
+GESUriClipAsset</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.4.9.4.6"></a><h4>Returns</h4>
+<p> Whether the file represented by <em class="parameter"><code>self</code></em>
+is an image or not</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-get-info"></a><h3>ges_uri_clip_asset_get_info ()</h3>
+<pre class="programlisting"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstdiscoverer.html#GstDiscovererInfo"><span class="returnvalue">GstDiscovererInfo</span></a> *
+ges_uri_clip_asset_get_info (<em class="parameter"><code>const <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> *self</code></em>);</pre>
+<p>Gets <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstdiscoverer.html#GstDiscovererInfo"><span class="type">GstDiscovererInfo</span></a> about the file</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.5.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>Target asset</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.4.9.5.6"></a><h4>Returns</h4>
+<p> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstdiscoverer.html#GstDiscovererInfo"><span class="type">GstDiscovererInfo</span></a> of specified asset. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-new"></a><h3>ges_uri_clip_asset_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_uri_clip_asset_new (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/gio/unstable/GCancellable.html"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>Creates a <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> for <em class="parameter"><code>uri</code></em>
+</p>
+<p>Example of request of a GESUriClipAsset:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="comment">// The request callback</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="type">void</span>
+<span class="function">filesource_asset_loaded_cb</span><span class="normal"> </span><span class="symbol">(</span><span class="normal"><a href="../ges-1.0/GESAsset.html">GESAsset</a> </span><span class="symbol">*</span><span class="normal"> source</span><span class="symbol">,</span><span class="normal"> <a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html">GAsyncResult</a> </span><span class="symbol">*</span><span class="normal"> res</span><span class="symbol">,</span><span class="normal"> </span><span class="usertype">gpointer</span><span class="normal"> user_data</span><span class="symbol">)</span>
+<span class="cbracket">{</span>
+<span class="normal">  </span><span class="usertype">GError</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">error </span><span class="symbol">=</span><span class="normal"> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">;</span>
+<span class="normal">  </span><span class="usertype">GESUriClipAsset</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">filesource_asset</span><span class="symbol">;</span>
+
+<span class="normal">  filesource_asset </span><span class="symbol">=</span><span class="normal"> </span><span class="function">GES_URI_CLIP_ASSET</span><span class="normal"> </span><span class="symbol">(</span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-request-finish">ges_asset_request_finish</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">res</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">&amp;</span><span class="normal">error</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="keyword">if</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">filesource_asset</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">   </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Warnings-and-Assertions.html#g-print">g_print</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"The file: %s is usable as a FileSource, it is%s an image and lasts %"</span><span class="normal"> <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstInfo.html#GST-TIME-FORMAT:CAPS">GST_TIME_FORMAT</a></span><span class="symbol">,</span>
+<span class="normal">       </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-get-id">ges_asset_get_id</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function">GES_ASSET</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">filesource_asset</span><span class="symbol">))</span>
+<span class="normal">       </span><span class="function"><a href="../ges-1.0/GESUriClipAsset.html#ges-uri-clip-asset-is-image">ges_uri_clip_asset_is_image</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">filesource_asset</span><span class="symbol">)</span><span class="normal"> </span><span class="symbol">?</span><span class="normal"> </span><span class="string">""</span><span class="normal"> </span><span class="symbol">:</span><span class="normal"> </span><span class="string">" not"</span><span class="symbol">,</span>
+<span class="normal">       </span><span class="function"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstInfo.html#GST-TIME-ARGS:CAPS">GST_TIME_ARGS</a></span><span class="normal"> </span><span class="symbol">(</span><span class="function"><a href="../ges-1.0/GESUriClipAsset.html#ges-uri-clip-asset-get-duration">ges_uri_clip_asset_get_duration</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">filesource_asset</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="cbracket">}</span><span class="normal"> </span><span class="keyword">else</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">   </span><span class="function"><a href="https://developer.gnome.org/glib/unstable/glib-Warnings-and-Assertions.html#g-print">g_print</a></span><span class="normal"> </span><span class="symbol">(</span><span class="string">"The file: %s is *not* usable as a FileSource because: %s"</span><span class="symbol">,</span>
+<span class="normal">       </span><span class="function"><a href="../ges-1.0/GESAsset.html#ges-asset-get-id">ges_asset_get_id</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">source</span><span class="symbol">),</span><span class="normal"> error</span><span class="symbol">-&gt;</span><span class="normal">message</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="cbracket">}</span>
+
+<span class="normal">  </span><span class="function"><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstObject.html#gst-object-unref">gst_object_unref</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">mfs</span><span class="symbol">);</span>
+<span class="cbracket">}</span>
+
+<span class="comment">// The request:</span>
+<span class="function"><a href="../ges-1.0/GESUriClipAsset.html#ges-uri-clip-asset-new">ges_uri_clip_asset_new</a></span><span class="normal"> </span><span class="symbol">(</span><span class="normal">uri</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">(</span><span class="normal"><a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback">GAsyncReadyCallback</a></span><span class="symbol">)</span><span class="normal"> filesource_asset_loaded_cb</span><span class="symbol">,</span><span class="normal"> user_data</span><span class="symbol">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="id-1.9.4.9.6.8"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>The URI of the file for which to create a <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p>optional <a href="https://developer.gnome.org/gio/unstable/GCancellable.html"><code class="literal">GCancellable</code></a> object, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to ignore.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>callback</p></td>
+<td class="parameter_description"><p> a <a href="https://developer.gnome.org/gio/unstable/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> to call when the initialization is finished. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>The user data to pass when <em class="parameter"><code>callback</code></em>
+is called</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-request-sync"></a><h3>ges_uri_clip_asset_request_sync ()</h3>
+<pre class="programlisting"><a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="returnvalue">GESUriClipAsset</span></a> *
+ges_uri_clip_asset_request_sync (<em class="parameter"><code>const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Creates a <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> for <em class="parameter"><code>uri</code></em>
+ syncronously. You should avoid
+to use it in application, and rather create <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> asynchronously</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.7.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>The URI of the file for which to create a <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a>.
+You can also use multi file uris for <a class="link" href="GESMultiFileSource.html" title="GESMultiFileSource"><span class="type">GESMultiFileSource</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p> An error to be set in case something wrong happens or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.4.9.7.6"></a><h4>Returns</h4>
+<p> A reference to the requested asset or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if an error happend. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-get-stream-assets"></a><h3>ges_uri_clip_asset_get_stream_assets ()</h3>
+<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+ges_uri_clip_asset_get_stream_assets (<em class="parameter"><code><a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> *self</code></em>);</pre>
+<p>Get the GESUriSourceAsset <em class="parameter"><code>self</code></em>
+ containes</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.8.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="id-1.9.4.9.8.6"></a><h4>Returns</h4>
+<p> a
+<a href="https://developer.gnome.org/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <a class="link" href="GESUriSourceAsset.html" title="GESUriSourceAsset"><span class="type">GESUriSourceAsset</span></a>. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GESUriSourceAsset]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ges-uri-clip-asset-class-set-timeout"></a><h3>ges_uri_clip_asset_class_set_timeout ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+ges_uri_clip_asset_class_set_timeout (<em class="parameter"><code><span class="type">GESUriClipAssetClass</span> *klass</code></em>,
+                                      <em class="parameter"><code><a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstClock.html#GstClockTime"><span class="type">GstClockTime</span></a> timeout</code></em>);</pre>
+<p>Sets the timeout of <a class="link" href="GESUriClipAsset.html" title="GESUriClipAsset"><span class="type">GESUriClipAsset</span></a> loading</p>
+<div class="refsect3">
+<a name="id-1.9.4.9.9.5"></a><h4>Parameters</h4>
+<div class="informaltable"><table width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>klass</p></td>
+<td class="parameter_description"><p>The <span class="type">GESUriClipAssetClass</span> on which to set the discoverer timeout</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeout</p></td>
+<td class="parameter_description"><p>The timeout to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GESUriClipAsset.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GESUriClipAsset-struct"></a><h3>GESUriClipAsset</h3>
+<pre class="programlisting">typedef struct _GESUriClipAsset GESUriClipAsset;</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.24</div>
+</body>
+</html>
