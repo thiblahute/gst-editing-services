@@ -1,0 +1,236 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+add_trackelement_to_list_foreach	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^add_trackelement_to_list_foreach (GESTrackElement * trackelement, GList ** list)$/;"	f	language:C++	file:
+API_VERSION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	34;"	d	language:C++	file:
+append_escaped	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^append_escaped (GString * str, gchar * tmpstr)$/;"	f	language:C++	file:
+ARG_0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_0,$/;"	e	language:C++	enum:__anon2	file:
+ARG_CAPS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_CAPS,$/;"	e	language:C++	enum:__anon2	file:
+ARG_DURATION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_DURATION,$/;"	e	language:C++	enum:__anon2	file:
+ARG_LAST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_LAST,$/;"	e	language:C++	enum:__anon2	file:
+ARG_MIXING	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_MIXING,$/;"	e	language:C++	enum:__anon2	file:
+ARG_RESTRICTION_CAPS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_RESTRICTION_CAPS,$/;"	e	language:C++	enum:__anon2	file:
+ARG_TYPE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  ARG_TYPE,$/;"	e	language:C++	enum:__anon2	file:
+caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstCaps *caps;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+capsfilter	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstElement *capsfilter;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+COLLECT_STR_OPT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	1536;"	d	language:C++	file:
+COLLECT_STR_OPT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	38;"	d	language:C++	file:
+COMMITED	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  COMMITED,$/;"	e	language:C++	enum:__anon2	file:
+composition	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstElement *composition;      \/* The composition associated with this track *\/$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+composition_commited_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^composition_commited_cb (GstElement * composition, gboolean changed,$/;"	f	language:C++	file:
+composition_duration_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^composition_duration_cb (GstElement * composition,$/;"	f	language:C++	file:
+composition_duration_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^static void composition_duration_cb (GstElement * composition, GParamSpec * arg$/;"	p	language:C++	file:
+compositor_factory	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^static GstElementFactory *compositor_factory = NULL;$/;"	v	language:C++	file:
+create_element_for_gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GESCreateElementForGapFunc create_element_for_gaps;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+dispose_trackelements_foreach	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^dispose_trackelements_foreach (GESTrackElement * trackelement, GESTrack * track)$/;"	f	language:C++	file:
+duration	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstClockTime duration;$/;"	m	language:C++	struct:__anon1	file:
+duration	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  guint64 duration;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+element_end_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gint element_end_compare                  (GESTimelineElement * a,$/;"	p	language:C++
+element_end_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^element_end_compare (GESTimelineElement * a, GESTimelineElement * b)$/;"	f	language:C++
+element_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  GHashTable *element_id;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+element_start_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gint element_start_compare                (GESTimelineElement * a,$/;"	p	language:C++
+element_start_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^element_start_compare (GESTimelineElement * a, GESTimelineElement * b)$/;"	f	language:C++
+end	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^  gint end;$/;"	m	language:C++	struct:GESMultiFileURI
+find_compositor	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^find_compositor (GstPluginFeatureFilter * feature, gpointer udata)$/;"	f	language:C++	file:
+free_gap	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^free_gap (Gap * gap)$/;"	f	language:C++	file:
+Gap	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^} Gap;$/;"	t	language:C++	typeref:struct:__anon1	file:
+gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GList *gaps;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+gap_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^gap_new (GESTrack * track, GstClockTime start, GstClockTime duration)$/;"	f	language:C++	file:
+GESMultiFileURI	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^typedef struct GESMultiFileURI$/;"	s	language:C++
+GESMultiFileURI	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^} GESMultiFileURI;$/;"	t	language:C++	typeref:struct:GESMultiFileURI
+ges_asset_cache_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_cache_init (void);$/;"	p	language:C++
+ges_asset_cache_lookup	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_cache_lookup(GType extractable_type, const gchar * id);$/;"	p	language:C++
+ges_asset_cache_put	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_cache_put (GESAsset * asset, GTask *task);$/;"	p	language:C++
+ges_asset_cache_set_loaded	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_cache_set_loaded(GType extractable_type, const gchar * id, GError *error);$/;"	p	language:C++
+ges_asset_request_id_update	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_request_id_update (GESAsset *asset, gchar **proposed_id,$/;"	p	language:C++
+ges_asset_set_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_set_id (GESAsset *asset, const gchar *id);$/;"	p	language:C++
+ges_asset_set_proxy	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_asset_set_proxy (GESAsset *asset, const gchar *new_id);$/;"	p	language:C++
+ges_audio_test_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESAudioTestSource * ges_audio_test_source_new (void);$/;"	p	language:C++
+ges_audio_uri_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESAudioUriSource  * ges_audio_uri_source_new  (gchar *uri);$/;"	p	language:C++
+ges_base_xml_formatter_add_asset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_asset        (GESBaseXmlFormatter * self,$/;"	p	language:C++
+ges_base_xml_formatter_add_clip	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_clip (GESBaseXmlFormatter * self,$/;"	p	language:C++
+ges_base_xml_formatter_add_control_binding	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_control_binding (GESBaseXmlFormatter * self,$/;"	p	language:C++
+ges_base_xml_formatter_add_encoding_profile	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_encoding_profile(GESBaseXmlFormatter * self,$/;"	p	language:C++
+ges_base_xml_formatter_add_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_group           (GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_add_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_layer           (GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_add_source	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_source          (GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_add_track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_track           (GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_add_track_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_add_track_element   (GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_last_group_add_child	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_base_xml_formatter_last_group_add_child(GESBaseXmlFormatter *self,$/;"	p	language:C++
+ges_base_xml_formatter_set_timeline_properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_base_xml_formatter_set_timeline_properties(GESBaseXmlFormatter * self,$/;"	p	language:C++
+ges_clip_create_track_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESTrackElement*  ges_clip_create_track_element   (GESClip *clip, GESTrackType type);$/;"	p	language:C++
+ges_clip_create_track_elements	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GList*            ges_clip_create_track_elements  (GESClip *clip, GESTrackType type);$/;"	p	language:C++
+ges_clip_get_layer_priority	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL guint32           ges_clip_get_layer_priority     (GESClip *clip);$/;"	p	language:C++
+ges_clip_is_moving_from_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean          ges_clip_is_moving_from_layer   (GESClip *clip);$/;"	p	language:C++
+ges_clip_set_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void              ges_clip_set_layer              (GESClip *clip, GESLayer  *layer);$/;"	p	language:C++
+ges_clip_set_moving_from_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void              ges_clip_set_moving_from_layer  (GESClip *clip, gboolean is_moving);$/;"	p	language:C++
+ges_extractable_get_real_extractable_type_for_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_extractable_get_real_extractable_type_for_id (GType type, const gchar * id);$/;"	p	language:C++
+ges_extractable_register_metas	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_extractable_register_metas                   (GType extractable_type, GESAsset *asset);$/;"	p	language:C++
+ges_extractable_type_check_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_extractable_type_check_id                    (GType type, const gchar *id, GError **error);$/;"	p	language:C++
+ges_extractable_type_get_asset_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_extractable_type_get_asset_type              (GType type);$/;"	p	language:C++
+ges_extractable_type_get_parameters_from_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_extractable_type_get_parameters_from_id      (GType type, const gchar *id,$/;"	p	language:C++
+ges_formatter_get_project	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_formatter_get_project                        (GESFormatter *formatter);$/;"	p	language:C++
+ges_formatter_set_project	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_formatter_set_project                        (GESFormatter *formatter,$/;"	p	language:C++
+ges_get_compositor_factory	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_get_compositor_factory                                (void);$/;"	p	language:C++
+ges_get_compositor_factory	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_get_compositor_factory (void)$/;"	f	language:C++
+ges_image_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESImageSource     * ges_image_source_new      (gchar *uri);$/;"	p	language:C++
+ges_multi_file_uri_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESMultiFileURI * ges_multi_file_uri_new (const gchar * uri);$/;"	p	language:C++
+ges_nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean ges_nle_composition_add_object (GstElement *comp, GstElement *object);$/;"	p	language:C++
+ges_nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_nle_composition_add_object (GstElement * comp, GstElement * object)$/;"	f	language:C++
+ges_nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean ges_nle_composition_remove_object (GstElement *comp, GstElement *object);$/;"	p	language:C++
+ges_nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_nle_composition_remove_object (GstElement * comp, GstElement * object)$/;"	f	language:C++
+ges_nle_object_commit	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean ges_nle_object_commit (GstElement * nlesource, gboolean recurse);$/;"	p	language:C++
+ges_nle_object_commit	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_nle_object_commit (GstElement * nlesource, gboolean recurse)$/;"	f	language:C++
+ges_opened	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  gboolean ges_opened;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+GES_PARAM_NO_SERIALIZATION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	377;"	d	language:C++
+ges_project_add_loading_asset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL  void ges_project_add_loading_asset               (GESProject *project,$/;"	p	language:C++
+ges_project_set_loaded	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL  gboolean ges_project_set_loaded                  (GESProject * project,$/;"	p	language:C++
+ges_project_try_updating_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL  gchar * ges_project_try_updating_id              (GESProject *self,$/;"	p	language:C++
+ges_pspec_equal	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_pspec_equal (gconstpointer key_spec_1, gconstpointer key_spec_2)$/;"	f	language:C++
+ges_pspec_hash	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_pspec_hash (gconstpointer key_spec)$/;"	f	language:C++
+ges_source_create_topbin	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GstElement *ges_source_create_topbin (const gchar * bin_name, GstElement * sub_element, ...);$/;"	p	language:C++
+GES_TIMELINE_ELEMENT_ARGS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	61;"	d	language:C++
+GES_TIMELINE_ELEMENT_FORMAT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	55;"	d	language:C++
+ges_timeline_move_object_simple	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_timeline_move_object_simple (GESTimeline * timeline, GESTimelineElement * object,$/;"	p	language:C++
+ges_timeline_new_audio_video	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-utils.c	/^ges_timeline_new_audio_video (void)$/;"	f	language:C++
+ges_timeline_trim_object_simple	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^ges_timeline_trim_object_simple (GESTimeline * timeline, GESTimelineElement * obj,$/;"	p	language:C++
+ges_title_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESTitleSource     * ges_title_source_new      (void);$/;"	p	language:C++
+ges_track_add_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_add_element (GESTrack * track, GESTrackElement * object)$/;"	f	language:C++
+ges_track_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_class_init (GESTrackClass * klass)$/;"	f	language:C++	file:
+ges_track_commit	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_commit (GESTrack * track)$/;"	f	language:C++
+ges_track_constructed	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_constructed (GObject * object)$/;"	f	language:C++	file:
+ges_track_dispose	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_dispose (GObject * object)$/;"	f	language:C++	file:
+ges_track_element_copy_bindings	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_track_element_copy_bindings (GESTrackElement *element,$/;"	p	language:C++
+ges_track_element_copy_properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_track_element_copy_properties          (GESTimelineElement * element,$/;"	p	language:C++
+ges_track_element_set_track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean  ges_track_element_set_track           (GESTrackElement * object, GESTrack * track);$/;"	p	language:C++
+ges_track_finalize	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_finalize (GObject * object)$/;"	f	language:C++	file:
+ges_track_get_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_caps (GESTrack * track)$/;"	f	language:C++
+ges_track_get_composition	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GstElement * ges_track_get_composition (GESTrack *track);$/;"	p	language:C++
+ges_track_get_composition	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_composition (GESTrack * track)$/;"	f	language:C++
+ges_track_get_elements	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_elements (GESTrack * track)$/;"	f	language:C++
+ges_track_get_mixing	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_mixing (GESTrack * track)$/;"	f	language:C++
+ges_track_get_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+ges_track_get_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_get_timeline (GESTrack * track)$/;"	f	language:C++
+ges_track_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_init (GESTrack * self)$/;"	f	language:C++	file:
+ges_track_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_new (GESTrackType type, GstCaps * caps)$/;"	f	language:C++
+ges_track_remove_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_remove_element (GESTrack * track, GESTrackElement * object)$/;"	f	language:C++
+ges_track_set_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void ges_track_set_caps                (GESTrack *track,$/;"	p	language:C++
+ges_track_set_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_caps (GESTrack * track, const GstCaps * caps)$/;"	f	language:C++
+ges_track_set_create_element_for_gap_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_create_element_for_gap_func (GESTrack * track,$/;"	f	language:C++
+ges_track_set_mixing	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_mixing (GESTrack * track, gboolean mixing)$/;"	f	language:C++
+ges_track_set_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+ges_track_set_restriction_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_restriction_caps (GESTrack * track, const GstCaps * caps)$/;"	f	language:C++
+ges_track_set_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_set_timeline (GESTrack * track, GESTimeline * timeline)$/;"	f	language:C++
+ges_track_signals	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^static guint ges_track_signals[LAST_SIGNAL] = { 0 };$/;"	v	language:C++	file:
+ges_track_src_pad_template	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^static GstStaticPadTemplate ges_track_src_pad_template =$/;"	v	language:C++	file:
+ges_track_update_restriction_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^ges_track_update_restriction_caps (GESTrack * self, const GstCaps * caps)$/;"	f	language:C++
+ges_video_test_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESVideoTestSource * ges_video_test_source_new (void);$/;"	p	language:C++
+ges_video_uri_source_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL GESVideoUriSource  * ges_video_uri_source_new  (gchar *uri);$/;"	p	language:C++
+ges_xml_formatter_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^ges_xml_formatter_class_init (GESXmlFormatterClass * self_class)$/;"	f	language:C++	file:
+ges_xml_formatter_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^ges_xml_formatter_init (GESXmlFormatter * self)$/;"	f	language:C++	file:
+GST_CAT_DEFAULT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	35;"	d	language:C++
+last_gap_disabled	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  gboolean last_gap_disabled;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+LAST_SIGNAL	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  LAST_SIGNAL$/;"	e	language:C++	enum:__anon2	file:
+LAYER_HEIGHT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	42;"	d	language:C++
+location	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^  gchar *location;$/;"	m	language:C++	struct:GESMultiFileURI
+MINOR_VERSION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	35;"	d	language:C++	file:
+MIN_NLE_PRIO	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	41;"	d	language:C++
+min_version	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  guint min_version;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+mixing	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  gboolean mixing;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+mixing_operation	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstElement *mixing_operation;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+nbelements	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  guint nbelements;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+nleobj	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstElement *nleobj;$/;"	m	language:C++	struct:__anon1	file:
+NLE_OBJECT_TRACK_ELEMENT_QUARK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	336;"	d	language:C++
+parent_class	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	31;"	d	language:C++	file:
+project_opened	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  gboolean project_opened;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^static GParamSpec *properties[ARG_LAST];$/;"	v	language:C++	file:
+remove_object_internal	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^remove_object_internal (GESTrack * track, GESTrackElement * object)$/;"	f	language:C++	file:
+restriction_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstCaps *restriction_caps;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+set_property_foreach	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL gboolean set_property_foreach                   (GQuark field_id,$/;"	p	language:C++
+sort_track_elements_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^sort_track_elements_cb (GESTrackElement * child,$/;"	f	language:C++	file:
+srcpad	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstPad *srcpad;               \/* The source GhostPad *\/$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^  gint start;$/;"	m	language:C++	struct:GESMultiFileURI
+start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GstClockTime start;$/;"	m	language:C++	struct:__anon1	file:
+str	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^  GString *str;$/;"	m	language:C++	struct:_GESXmlFormatterPrivate	file:
+timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GESTimeline *timeline;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+timeline_add_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_add_element           (GESTimeline *timeline,$/;"	p	language:C++
+timeline_add_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_add_group             (GESTimeline *timeline,$/;"	p	language:C++
+timeline_context_to_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_context_to_layer      (GESTimeline *timeline, gint offset);$/;"	p	language:C++
+timeline_fill_gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_fill_gaps            (GESTimeline *timeline);$/;"	p	language:C++
+timeline_get_groups	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_get_groups           (GESTimeline * timeline);$/;"	p	language:C++
+timeline_move_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_move_object           (GESTimeline *timeline, GESTrackElement * object,$/;"	p	language:C++
+timeline_remove_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_remove_element       (GESTimeline *timeline,$/;"	p	language:C++
+timeline_remove_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_remove_group          (GESTimeline *timeline,$/;"	p	language:C++
+timeline_ripple_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_ripple_object         (GESTimeline *timeline, GESTrackElement *obj,$/;"	p	language:C++
+timeline_roll_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_roll_object           (GESTimeline *timeline, GESTrackElement *obj,$/;"	p	language:C++
+timeline_slide_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_slide_object          (GESTimeline *timeline, GESTrackElement *obj,$/;"	p	language:C++
+timeline_trim_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^timeline_trim_object           (GESTimeline *timeline, GESTrackElement * object,$/;"	p	language:C++
+track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GESTrack *track;$/;"	m	language:C++	struct:__anon1	file:
+trackelements_by_start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GSequence *trackelements_by_start;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+trackelements_iter	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  GHashTable *trackelements_iter;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+track_disable_last_gap	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^track_disable_last_gap        (GESTrack *track, gboolean disabled);$/;"	p	language:C++
+track_disable_last_gap	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^track_disable_last_gap (GESTrack * track, gboolean disabled)$/;"	f	language:C++
+TRACK_ELEMENT_ADDED	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  TRACK_ELEMENT_ADDED,$/;"	e	language:C++	enum:__anon2	file:
+TRACK_ELEMENT_REMOVED	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  TRACK_ELEMENT_REMOVED,$/;"	e	language:C++	enum:__anon2	file:
+track_resort_and_fill_gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^track_resort_and_fill_gaps    (GESTrack *track);$/;"	p	language:C++
+track_resort_and_fill_gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^track_resort_and_fill_gaps (GESTrack * track)$/;"	f	language:C++
+update_field	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^update_field (GQuark field_id, const GValue * value, GstStructure * original)$/;"	f	language:C++	file:
+update_gaps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^update_gaps (GESTrack * track)$/;"	f	language:C++	file:
+updating	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^  gboolean updating;$/;"	m	language:C++	struct:_GESTrackPrivate	file:
+VERSION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	36;"	d	language:C++	file:
+_can_serialize_spec	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_can_serialize_spec (GParamSpec * spec)$/;"	f	language:C++	file:
+_dispose	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_dispose (GObject * object)$/;"	f	language:C++	file:
+_DURATION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	46;"	d	language:C++
+_END	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	49;"	d	language:C++
+_error_parsing	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_error_parsing (GMarkupParseContext * context, GError * error,$/;"	f	language:C++	file:
+_find_formatter_asset_for_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^_find_formatter_asset_for_id                     (const gchar *id);$/;"	p	language:C++
+_GESTrackPrivate	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^struct _GESTrackPrivate$/;"	s	language:C++	file:
+_GESXmlFormatterPrivate	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^struct _GESXmlFormatterPrivate$/;"	s	language:C++	file:
+_ges_command_line_formatter_get_option_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^_ges_command_line_formatter_get_option_group (void);$/;"	p	language:C++
+_ges_container_sort_children	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void _ges_container_sort_children         (GESContainer *container);$/;"	p	language:C++
+_ges_container_sort_children_by_end	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void _ges_container_sort_children_by_end  (GESContainer *container);$/;"	p	language:C++
+_ges_debug	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^GST_DEBUG_CATEGORY_EXTERN (_ges_debug);$/;"	v	language:C++
+_ges_track_element_get_layer_priority	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL guint32   _ges_track_element_get_layer_priority (GESTrackElement * element);$/;"	p	language:C++
+_GET_PRIV	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	40;"	d	language:C++	file:
+_get_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_get_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+_ghost_nlecomposition_srcpad	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-track.c	/^_ghost_nlecomposition_srcpad (GESTrack * track)$/;"	f	language:C++	file:
+_init_formatter_assets	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void _init_formatter_assets                  (void);$/;"	p	language:C++
+_init_standard_transition_assets	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	/^G_GNUC_INTERNAL void _init_standard_transition_assets        (void);$/;"	p	language:C++
+_init_value_from_spec_for_serialization	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_init_value_from_spec_for_serialization (GValue * value, GParamSpec * spec)$/;"	f	language:C++	file:
+_INPOINT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	45;"	d	language:C++
+_MAXDURATION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	47;"	d	language:C++
+_parse_asset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_asset (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_binding	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_binding (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_clip	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_clip (GMarkupParseContext * context,$/;"	f	language:C++	file:
+_parse_effect	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_effect (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_element_end	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_element_end (GMarkupParseContext * context,$/;"	f	language:C++	file:
+_parse_element_start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_element_start (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_encoding_profile	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_encoding_profile (GMarkupParseContext * context,$/;"	f	language:C++	file:
+_parse_ges_element	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_ges_element (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_group (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_group_child	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_group_child (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_layer (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_project	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_project (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_source	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_source (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_stream_profile	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_stream_profile (GMarkupParseContext * context,$/;"	f	language:C++	file:
+_parse_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_timeline (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_parse_track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_parse_track (GMarkupParseContext * context, const gchar * element_name,$/;"	f	language:C++	file:
+_PRIORITY	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	48;"	d	language:C++
+_save	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save (GESFormatter * formatter, GESTimeline * timeline, GError ** error)$/;"	f	language:C++	file:
+_save_assets	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_assets (GString * str, GESProject * project)$/;"	f	language:C++	file:
+_save_children_properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_children_properties (GString * str, GESTrackElement * trackelement)$/;"	f	language:C++	file:
+_save_effect	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_effect (GString * str, guint clip_id, GESTrackElement * trackelement,$/;"	f	language:C++	file:
+_save_encoding_profiles	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_encoding_profiles (GESXmlFormatter * self, GString * str,$/;"	f	language:C++	file:
+_save_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_group (GESXmlFormatter * self, GString * str, GList ** seen_groups,$/;"	f	language:C++	file:
+_save_groups	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_groups (GESXmlFormatter * self, GString * str, GESTimeline * timeline)$/;"	f	language:C++	file:
+_save_keyframes	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_keyframes (GString * str, GESTrackElement * trackelement, gint index)$/;"	f	language:C++	file:
+_save_layers	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_layers (GESXmlFormatter * self, GString * str, GESTimeline * timeline)$/;"	f	language:C++	file:
+_save_stream_profiles	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_stream_profiles (GESXmlFormatter * self, GString * str,$/;"	f	language:C++	file:
+_save_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_timeline (GESXmlFormatter * self, GString * str, GESTimeline * timeline)$/;"	f	language:C++	file:
+_save_tracks	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_save_tracks (GESXmlFormatter * self, GString * str, GESTimeline * timeline)$/;"	f	language:C++	file:
+_serialize_properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_serialize_properties (GObject * object, const gchar * fieldname, ...)$/;"	f	language:C++	file:
+_set_duration0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	52;"	d	language:C++
+_set_inpoint0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	51;"	d	language:C++
+_set_priority0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	53;"	d	language:C++
+_set_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-xml-formatter.c	/^_set_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+_set_start0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	50;"	d	language:C++
+_START	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	44;"	d	language:C++
+__GES_INTERNAL_H__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-internal.h	22;"	d	language:C++

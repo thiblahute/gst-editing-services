@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<refentry lang="en">
+<refentryinfo>
+    <title>ges-launch-1.0(1)</title>
+</refentryinfo>
+<refmeta>
+<refentrytitle>ges-launch-1.0</refentrytitle>
+<manvolnum>1</manvolnum>
+<refmiscinfo class="source">&#160;</refmiscinfo>
+<refmiscinfo class="manual">&#160;</refmiscinfo>
+</refmeta>
+<refnamediv>
+    <refname>ges-launch-1.0</refname>
+    <refpurpose>Build and play a multimedia timeline</refpurpose>
+</refnamediv>
+<refsynopsisdiv id="_synopsis">
+<blockquote>
+<literallayout><emphasis>ges-launch-1.0</emphasis>  [-l &lt;path&gt;|--load=&lt;path&gt;] [-s &lt;path&gt;|--save=&lt;path&gt;]
+                [-p &lt;path&gt;|--sample-path=&lt;path&gt;] [-r &lt;path&gt;|--sample-path-recurse=&lt;path&gt;]
+                [-o &lt;uri&gt;|--outputuri=&lt;uri&gt;] [-f &lt;profile&gt;|--format=&lt;profile&gt;]
+                [-e &lt;profile-name&gt;|--encoding-profile=&lt;profile-name&gt;]
+                [-t &lt;track-types&gt;|--track-types=&lt;track-types&gt;]
+                [-v &lt;videosink&gt;|--videosink=&lt;videosink&gt;]
+                [-a &lt;audiosink&gt;---audiosink=&lt;audiosink&gt;]
+                [-m|--mute] [--inspect-action-type[=&lt;action-type&gt;]]
+                [--list-transitions] [--disable-mixing]
+                [-r &lt;times&gt;|--repeat=&lt;times&gt;] [--set-scenario=&lt;scenario-name]</literallayout>
+</blockquote>
+</refsynopsisdiv>
+<refsect1 id="_description">
+<title>DESCRIPTION</title>
+<simpara>ges-launch-1.0 creates a multimedia timeline and plays it back,
+or renders it to the specified format.</simpara>
+<simpara>It can load a timeline from an existing project, or create one
+from the specified commands.</simpara>
+<simpara>Updating an existing project can be done through --set-scenario
+if ges-launch-1.0 has been compiled with gst-validate, see
+ges-launch-1.0 --inspect-action-type for the available commands.</simpara>
+<simpara>You can learn more about individual ges-launch-1.0 commands with
+"ges-launch-1.0 help command".</simpara>
+<simpara>By default, ges-launch-1.0 is in "playback-mode".</simpara>
+</refsect1>
+<refsect1 id="_options">
+<title>OPTIONS</title>
+<refsect2 id="_project_related_options">
+<title>Project-related options</title>
+<variablelist>
+<varlistentry>
+<term>
+-l
+</term>
+<term>
+--load=&lt;path&gt;
+</term>
+<listitem>
+<simpara>
+        Load project from file. The project be saved again with the --save option.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-s
+</term>
+<term>
+--save=&lt;path&gt;
+</term>
+<listitem>
+<simpara>
+        Save project to file before rendering. It can then be loaded with the --load option
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-p
+</term>
+<term>
+--sample-path
+</term>
+<listitem>
+<simpara>
+        If some assets are missing when loading a project file, ges-launch-1.0 will try to
+        locate them in this path. It is especially useful when sharing a project.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-r
+</term>
+<term>
+--sample-path-recurse
+</term>
+<listitem>
+<simpara>
+        Identical to --sample-path, but ges-launch-1.0 will also recurse in the subfolders
+        to look for assets.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 id="_rendering_options">
+<title>Rendering options</title>
+<variablelist>
+<varlistentry>
+<term>
+-o
+</term>
+<term>
+--outputuri=&lt;uri&gt;
+</term>
+<listitem>
+<simpara>
+        If set, ges-launch-1.0 will render the specified timeline instead
+        of playing it back. The default rendering format is ogv, containing
+        theora and vorbis.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-f
+</term>
+<term>
+--format=&lt;profile&gt;
+</term>
+<listitem>
+<simpara>
+        Set an encoding profile on the command line. See ges-launch-1.0 help profile
+        for more information.
+        This will have no effect if no outputuri has been specified.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-e
+</term>
+<listitem>
+<simpara>
+--encoding-profile=&lt;profile-name&gt;:
+        Set an encoding profile from a preset file. See ges-launch-1.0 help profile
+        for more information.
+        This will have no effect if no outputuri has been specified.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-t
+</term>
+<term>
+--track-types=&lt;track-types&gt;
+</term>
+<listitem>
+<simpara>
+        Specify the track types to be created. When loading a project, only relevant
+        tracks will be added to the timeline.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 id="_playback_options">
+<title>Playback options</title>
+<variablelist>
+<varlistentry>
+<term>
+-v
+</term>
+<term>
+--videosink=&lt;videosink&gt;
+</term>
+<listitem>
+<simpara>
+        Set the videosink used for playback.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-a
+</term>
+<term>
+--audiosink=&lt;audiosink&gt;
+</term>
+<listitem>
+<simpara>
+        Set the audiosink used for playback.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-m
+</term>
+<term>
+--mute
+</term>
+<listitem>
+<simpara>
+        Mute playback output. This has no effect when rendering.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 id="_helpful_options">
+<title>Helpful options</title>
+<variablelist>
+<varlistentry>
+<term>
+--inspect-action-type=&lt;action-type&gt;
+</term>
+<listitem>
+<simpara>
+        Inspect the available action types that can be defined in a scenario set with --set-scenario.
+        Will list all action-types if action-type is empty.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--list-transitions
+</term>
+<listitem>
+<simpara>
+        List all valid transition types and exit. See ges-launch-1.0 help transition
+        for more information.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 id="_generic_options">
+<title>Generic options</title>
+<variablelist>
+<varlistentry>
+<term>
+--disable-mixing
+</term>
+<listitem>
+<simpara>
+        Do not use mixing elements to mix layers together.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-r
+</term>
+<term>
+--repeat=&lt;times&gt;
+</term>
+<listitem>
+<simpara>
+        Set the number of times to repeat the timeline.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--set-scenario
+</term>
+<listitem>
+<simpara>
+        ges-launch-1.0 exposes gst-validate functionalities, such as scenarios.
+        Scenarios describe actions to execute, such as seeks or setting of properties.
+        GES implements editing-specific actions such as adding or removal of clips.
+        See gst-validate-1.0 --help for more info about validate and scenarios, and
+        --inspect-action-type.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+</refsect1>
+<refsect1 id="_commands">
+<title>COMMANDS</title>
+<variablelist>
+<varlistentry>
+<term>
+clip
+</term>
+<listitem>
+<simpara>
+        Add a clip to the timeline. See ges-launch-1.0 help clip for more information.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+transition
+</term>
+<listitem>
+<simpara>
+        Add a transition to the timeline. See ges-launch-1.0 help clip for more information.
+        Note that transitions are automatically added between overlapping clips.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+effect
+</term>
+<listitem>
+<simpara>
+        Add an effect to an element or to the timeline. See ges-launch-1.0 help effect
+        for more information.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 id="_authors">
+<title>AUTHORS</title>
+<simpara>GES and ges-launch-1.0 were started by Edward Hervey, and are currently maintained by Thibault Saunier
+and Mathieu Duponchelle.</simpara>
+<simpara>If you have a clone of gst-editing-services, the output of git shortlog and git blame can show
+you the authors for specific parts of the project.</simpara>
+</refsect1>
+<refsect1 id="_reporting_bugs">
+<title>Reporting Bugs</title>
+<simpara>Report bugs to the gstreamer bugzilla <ulink url="https://bugzilla.gnome.org/enter_bug.cgi?product=GStreamer">https://bugzilla.gnome.org/enter_bug.cgi?product=GStreamer</ulink>
+and choose the "gst-editing-services" component.</simpara>
+</refsect1>
+</refentry>

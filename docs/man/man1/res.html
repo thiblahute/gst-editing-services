@@ -1,0 +1,143 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+.\"  Language: English
+.\"
+.TH "GES\-LAUNCH\-1\&amp;.0" "1" "09/15/2015" "\ \&amp;" "\ \&amp;"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+ges-launch-1.0 \- Build and play a multimedia timeline
+.SH "SYNOPSIS"
+.sp
+.nf
+\fIges\-launch\-1\&amp;.0\fR  [\-l &lt;path&gt;|\-\-load=&lt;path&gt;] [\-s &lt;path&gt;|\-\-save=&lt;path&gt;]
+                [\-p &lt;path&gt;|\-\-sample\-path=&lt;path&gt;] [\-r &lt;path&gt;|\-\-sample\-path\-recurse=&lt;path&gt;]
+                [\-o &lt;uri&gt;|\-\-outputuri=&lt;uri&gt;] [\-f &lt;profile&gt;|\-\-format=&lt;profile&gt;]
+                [\-e &lt;profile\-name&gt;|\-\-encoding\-profile=&lt;profile\-name&gt;]
+                [\-t &lt;track\-types&gt;|\-\-track\-types=&lt;track\-types&gt;]
+                [\-v &lt;videosink&gt;|\-\-videosink=&lt;videosink&gt;]
+                [\-a &lt;audiosink&gt;\-\-\-audiosink=&lt;audiosink&gt;]
+                [\-m|\-\-mute] [\-\-inspect\-action\-type[=&lt;action\-type&gt;]]
+                [\-\-list\-transitions] [\-\-disable\-mixing]
+                [\-r &lt;times&gt;|\-\-repeat=&lt;times&gt;] [\-\-set\-scenario=&lt;scenario\-name]
+.fi
+.SH "DESCRIPTION"
+.sp
+ges\-launch\-1\&amp;.0 creates a multimedia timeline and plays it back, or renders it to the specified format\&amp;.
+.sp
+It can load a timeline from an existing project, or create one from the specified commands\&amp;.
+.sp
+Updating an existing project can be done through \-\-set\-scenario if ges\-launch\-1\&amp;.0 has been compiled with gst\-validate, see ges\-launch\-1\&amp;.0 \-\-inspect\-action\-type for the available commands\&amp;.
+.sp
+You can learn more about individual ges\-launch\-1\&amp;.0 commands with "ges\-launch\-1\&amp;.0 help command"\&amp;.
+.sp
+By default, ges\-launch\-1\&amp;.0 is in "playback\-mode"\&amp;.
+.SH "OPTIONS"
+.SS "Project\-related options"
+.PP
+.PP
+\-r, \-\-sample\-path\-recurse
+.RS 4
+Identical to \-\-sample\-path, but ges\-launch\-1\&amp;.0 will also recurse in the subfolders to look for assets\&amp;.
+.RE
+.SS "Rendering options"
+.PP
+\-o, \-\-outputuri=&lt;uri&gt;
+.RS 4
+If set, ges\-launch\-1\&amp;.0 will render the specified timeline instead of playing it back\&amp;. The default rendering format is ogv, containing theora and vorbis\&amp;.
+.RE
+.PP
+\-f, \-\-format=&lt;profile&gt;
+.RS 4
+Set an encoding profile on the command line\&amp;. See ges\-launch\-1\&amp;.0 help profile for more information\&amp;. This will have no effect if no outputuri has been specified\&amp;.
+.RE
+.PP
+\-e
+.RS 4
+\-\-encoding\-profile=&lt;profile\-name&gt;: Set an encoding profile from a preset file\&amp;. See ges\-launch\-1\&amp;.0 help profile for more information\&amp;. This will have no effect if no outputuri has been specified\&amp;.
+.RE
+.PP
+\-t, \-\-track\-types=&lt;track\-types&gt;
+.RS 4
+Specify the track types to be created\&amp;. When loading a project, only relevant tracks will be added to the timeline\&amp;.
+.RE
+.SS "Playback options"
+.PP
+\-v, \-\-videosink=&lt;videosink&gt;
+.RS 4
+Set the videosink used for playback\&amp;.
+.RE
+.PP
+\-a, \-\-audiosink=&lt;audiosink&gt;
+.RS 4
+Set the audiosink used for playback\&amp;.
+.RE
+.PP
+\-m, \-\-mute
+.RS 4
+Mute playback output\&amp;. This has no effect when rendering\&amp;.
+.RE
+.SS "Helpful options"
+.PP
+\-\-inspect\-action\-type=&lt;action\-type&gt;
+.RS 4
+Inspect the available action types that can be defined in a scenario set with \-\-set\-scenario\&amp;. Will list all action\-types if action\-type is empty\&amp;.
+.RE
+.PP
+\-\-list\-transitions
+.RS 4
+List all valid transition types and exit\&amp;. See ges\-launch\-1\&amp;.0 help transition for more information\&amp;.
+.RS 4
+ges\-launch\-1\&amp;.0 exposes gst\-validate functionalities, such as scenarios\&amp;. Scenarios describe actions to execute, such as seeks or setting of properties\&amp;. GES implements editing\-specific actions such as adding or removal of clips\&amp;. See gst\-validate\-1\&amp;.0 \-\-help for more info about validate and scenarios, and \-\-inspect\-action\-type\&amp;.
+.RE
+.SH "COMMANDS"
+.PP
+clip
+.RS 4
+Add a clip to the timeline\&amp;. See ges\-launch\-1\&amp;.0 help clip for more information\&amp;.
+.RE
+.PP
+transition
+.RS 4
+Add a transition to the timeline\&amp;. See ges\-launch\-1\&amp;.0 help clip for more information\&amp;. Note that transitions are automatically added between overlapping clips\&amp;.
+.RE
+.PP
+effect
+.RS 4
+Add an effect to an element or to the timeline\&amp;. See ges\-launch\-1\&amp;.0 help effect for more information\&amp;.
+.RE
+.SH "AUTHORS"
+.sp
+GES and ges\-launch\-1\&amp;.0 were started by Edward Hervey, and are currently maintained by Thibault Saunier and Mathieu Duponchelle\&amp;.
+.sp
+If you have a clone of gst\-editing\-services, the output of git shortlog and git blame can show you the authors for specific parts of the project\&amp;.
+.SH "REPORTING BUGS"
+.sp
+Report bugs to the gstreamer bugzilla https://bugzilla\&amp;.gnome\&amp;.org/enter_bug\&amp;.cgi?product=GStreamer and choose the "gst\-editing\-services" component\&amp;.
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,39 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+asset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^  GESAsset *asset;$/;"	m	language:C++	struct:_AssetUri	file:
+AssetUri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^} AssetUri;$/;"	t	language:C++	typeref:struct:_AssetUri	file:
+asset_created_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^asset_created_cb (GObject * source, GAsyncResult * res, gpointer udata)$/;"	f	language:C++	file:
+av_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^static gchar *av_uri;$/;"	v	language:C++	file:
+create_asset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^create_asset (AssetUri * asset_uri)$/;"	f	language:C++	file:
+ges	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_CHECK_MAIN (ges);$/;"	v	language:C++
+ges_suite	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^ges_suite (void)$/;"	f	language:C++	file:
+ges_suite	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^ges_suite (void)$/;"	f	language:C++	file:
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_activate_automatic_transition)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_boolean)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_date)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_date_time)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_double)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_float)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_foreach)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_int)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_int64)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_register)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_string)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_uint)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_uint64)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_meta_value)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_priorities)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_layer_properties)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_multi_layer_automatic_transition)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_single_layer_automatic_transition)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^GST_START_TEST (test_timeline_auto_transition)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^GST_START_TEST (test_filesource_basic)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^GST_START_TEST (test_filesource_images)$/;"	f	language:C++
+GST_START_TEST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^GST_START_TEST (test_filesource_properties)$/;"	f	language:C++
+image_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^static gchar *image_uri;$/;"	v	language:C++	file:
+LAYER_HEIGHT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	24;"	d	language:C++	file:
+main	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^main (int argc, char **argv)$/;"	f	language:C++
+mainloop	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^GMainLoop *mainloop;$/;"	v	language:C++
+test_foreach	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/layer.c	/^test_foreach (const GESMetaContainer * container, const gchar * key,$/;"	f	language:C++	file:
+TEST_URI	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	25;"	d	language:C++	file:
+uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^  const gchar *uri;$/;"	m	language:C++	struct:_AssetUri	file:
+_AssetUri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/check/ges/uriclip.c	/^typedef struct _AssetUri$/;"	s	language:C++	file:
