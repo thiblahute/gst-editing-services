@@ -1,0 +1,180 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+Action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^} Action;$/;"	t	language:C++	typeref:struct:_Action	file:
+actions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GList *actions;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+actions_cond	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GCond actions_cond;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+actions_lock	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GMutex actions_lock;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+ACTIONS_LOCK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	265;"	d	language:C++	file:
+ACTIONS_UNLOCK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	273;"	d	language:C++	file:
+ACTION_CALLBACK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	190;"	d	language:C++	file:
+are_same_stacks	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^are_same_stacks (GNode * stack1, GNode * stack2)$/;"	f	language:C++	file:
+ChildIOData	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^} ChildIOData;$/;"	t	language:C++	typeref:struct:__anon6	file:
+closure	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GCClosure closure;$/;"	m	language:C++	struct:_Action	file:
+COMMITED_SIGNAL	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMMITED_SIGNAL,$/;"	e	language:C++	enum:__anon3	file:
+COMMIT_SIGNAL	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMMIT_SIGNAL,$/;"	e	language:C++	enum:__anon3	file:
+comp	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleComposition *comp;$/;"	m	language:C++	struct:__anon5	file:
+comp	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleComposition *comp;$/;"	m	language:C++	struct:__anon6	file:
+comp	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleComposition *comp;$/;"	m	language:C++	struct:__anon7	file:
+COMP_REAL_START	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	257;"	d	language:C++	file:
+COMP_REAL_STOP	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	260;"	d	language:C++	file:
+COMP_UPDATE_STACK_INITIALIZE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMP_UPDATE_STACK_INITIALIZE,$/;"	e	language:C++	enum:__anon4	file:
+COMP_UPDATE_STACK_NONE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMP_UPDATE_STACK_NONE$/;"	e	language:C++	enum:__anon4	file:
+COMP_UPDATE_STACK_ON_COMMIT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMP_UPDATE_STACK_ON_COMMIT,$/;"	e	language:C++	enum:__anon4	file:
+COMP_UPDATE_STACK_ON_EOS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMP_UPDATE_STACK_ON_EOS,$/;"	e	language:C++	enum:__anon4	file:
+COMP_UPDATE_STACK_ON_SEEK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  COMP_UPDATE_STACK_ON_SEEK,$/;"	e	language:C++	enum:__anon4	file:
+convert_list_to_tree	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^convert_list_to_tree (GList ** stack, GstClockTime * start,$/;"	f	language:C++	file:
+current	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GNode *current;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+current_bin	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstElement *current_bin;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+dispose_has_run	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean dispose_has_run;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+event	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstEvent *event;$/;"	m	language:C++	struct:__anon5	file:
+expandables	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GList *expandables;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+flush_seqnum	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint flush_seqnum;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+get_clean_toplevel_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^get_clean_toplevel_stack (NleComposition * comp, GstClockTime * timestamp,$/;"	f	language:C++	file:
+get_current_position	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^get_current_position (NleComposition * comp)$/;"	f	language:C++	file:
+get_current_position	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static GstClockTime get_current_position (NleComposition * comp);$/;"	p	language:C++	file:
+get_new_seek_event	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^get_new_seek_event (NleComposition * comp, gboolean initial,$/;"	f	language:C++	file:
+get_new_seek_event	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static GstEvent *get_new_seek_event (NleComposition * comp, gboolean initial,$/;"	p	language:C++	file:
+get_stack_list	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^get_stack_list (NleComposition * comp, GstClockTime timestamp,$/;"	f	language:C++	file:
+GET_TASK_LOCK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	294;"	d	language:C++	file:
+ghosteventprobe	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gulong ghosteventprobe;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+ghost_event_probe_handler	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^ghost_event_probe_handler (GstPad * ghostpad G_GNUC_UNUSED,$/;"	f	language:C++	file:
+GST_CAT_DEFAULT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	43;"	d	language:C++	file:
+have_to_update_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^have_to_update_pipeline (NleComposition * comp,$/;"	f	language:C++	file:
+initialized	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean initialized;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+LAST_SIGNAL	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  LAST_SIGNAL$/;"	e	language:C++	enum:__anon3	file:
+next_base_time	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  guint64 next_base_time;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+next_eos_seqnum	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint next_eos_seqnum;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+nlecomposition_debug	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^GST_DEBUG_CATEGORY_STATIC (nlecomposition_debug);$/;"	v	language:C++
+nleobject_properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static GParamSpec *nleobject_properties[NLEOBJECT_PROP_LAST];$/;"	v	language:C++	file:
+NLEOBJECT_PROP_DURATION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NLEOBJECT_PROP_DURATION,$/;"	e	language:C++	enum:__anon2	file:
+NLEOBJECT_PROP_LAST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NLEOBJECT_PROP_LAST$/;"	e	language:C++	enum:__anon2	file:
+NLEOBJECT_PROP_START	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NLEOBJECT_PROP_START,$/;"	e	language:C++	enum:__anon2	file:
+NLEOBJECT_PROP_STOP	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NLEOBJECT_PROP_STOP,$/;"	e	language:C++	enum:__anon2	file:
+NleUpdateStackReason	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^} NleUpdateStackReason;$/;"	t	language:C++	typeref:enum:__anon4	file:
+nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_add_object (GstBin * bin, GstElement * element)$/;"	f	language:C++	file:
+nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean nle_composition_add_object (GstBin * bin, GstElement * element);$/;"	p	language:C++	file:
+nle_composition_change_state	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_change_state (GstElement * element, GstStateChange transition)$/;"	f	language:C++	file:
+nle_composition_change_state	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_change_state (GstElement * element, GstStateChange transition);$/;"	p	language:C++	file:
+nle_composition_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_class_init (NleCompositionClass * klass)$/;"	f	language:C++	file:
+nle_composition_commit_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_commit_func (NleObject * object, gboolean recurse)$/;"	f	language:C++	file:
+nle_composition_commit_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean nle_composition_commit_func (NleObject * object,$/;"	p	language:C++	file:
+nle_composition_dispose	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_dispose (GObject * object)$/;"	f	language:C++	file:
+nle_composition_dispose	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void nle_composition_dispose (GObject * object);$/;"	p	language:C++	file:
+nle_composition_event_handler	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_event_handler (GstPad * ghostpad, GstObject * parent,$/;"	f	language:C++	file:
+nle_composition_event_handler	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_event_handler (GstPad * ghostpad, GstObject * parent,$/;"	p	language:C++	file:
+nle_composition_finalize	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_finalize (GObject * object)$/;"	f	language:C++	file:
+nle_composition_finalize	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void nle_composition_finalize (GObject * object);$/;"	p	language:C++	file:
+nle_composition_ghost_pad_set_target	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_ghost_pad_set_target (NleComposition * comp, GstPad * target)$/;"	f	language:C++	file:
+nle_composition_handle_message	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_handle_message (GstBin * bin, GstMessage * message)$/;"	f	language:C++	file:
+nle_composition_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_init (NleComposition * comp)$/;"	f	language:C++	file:
+nle_composition_parent_class	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	47;"	d	language:C++	file:
+nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_remove_object (GstBin * bin, GstElement * element)$/;"	f	language:C++	file:
+nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_remove_object (GstBin * bin, GstElement * element);$/;"	p	language:C++	file:
+nle_composition_reset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_reset (NleComposition * comp)$/;"	f	language:C++	file:
+nle_composition_reset	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void nle_composition_reset (NleComposition * comp);$/;"	p	language:C++	file:
+nle_composition_reset_target_pad	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^nle_composition_reset_target_pad (NleComposition * comp)$/;"	f	language:C++	file:
+nle_composition_reset_target_pad	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static inline void nle_composition_reset_target_pad (NleComposition * comp);$/;"	p	language:C++	file:
+nle_composition_src_template	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static GstStaticPadTemplate nle_composition_src_template =$/;"	v	language:C++	file:
+nle_event_pad_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstPadEventFunction nle_event_pad_func;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleObject *object;$/;"	m	language:C++	struct:__anon6	file:
+objects_hash	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GHashTable *objects_hash;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+objects_start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GList *objects_start;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+objects_start_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^objects_start_compare (NleObject * a, NleObject * b)$/;"	f	language:C++	file:
+objects_start_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gint objects_start_compare (NleObject * a, NleObject * b);$/;"	p	language:C++	file:
+objects_stop	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GList *objects_stop;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+objects_stop_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^objects_stop_compare (NleObject * a, NleObject * b)$/;"	f	language:C++	file:
+objects_stop_compare	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gint objects_stop_compare (NleObject * a, NleObject * b);$/;"	p	language:C++	file:
+OBJECT_IN_ACTIVE_SEGMENT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	196;"	d	language:C++	file:
+outside_segment	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstSegment *outside_segment;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+pending_io	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GHashTable *pending_io;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+priority	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint priority;$/;"	m	language:C++	struct:_Action	file:
+priority_comp	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^priority_comp (NleObject * a, NleObject * b)$/;"	f	language:C++	file:
+PROP_0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  PROP_0,$/;"	e	language:C++	enum:__anon1	file:
+PROP_DEACTIVATED_ELEMENTS_STATE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  PROP_DEACTIVATED_ELEMENTS_STATE,$/;"	e	language:C++	enum:__anon1	file:
+PROP_LAST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  PROP_LAST,$/;"	e	language:C++	enum:__anon1	file:
+QUERY_POSITION_SIGNAL	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  QUERY_POSITION_SIGNAL,$/;"	e	language:C++	enum:__anon3	file:
+real_eos_seqnum	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint real_eos_seqnum;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+reason	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleUpdateStackReason reason;$/;"	m	language:C++	struct:__anon7	file:
+refine_start_stop_in_region_above_priority	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^refine_start_stop_in_region_above_priority (NleComposition * composition,$/;"	f	language:C++	file:
+running	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean running;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+SeekData	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^} SeekData;$/;"	t	language:C++	typeref:struct:__anon5	file:
+seeking_itself	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean seeking_itself;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+seek_handling	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^seek_handling (NleComposition * comp, gint32 seqnum,$/;"	f	language:C++	file:
+seek_handling	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^seek_handling (NleComposition * comp, gint32 seqnum,$/;"	p	language:C++	file:
+segment	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstSegment *segment;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+segment_start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstClockTime segment_start;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+segment_stop	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  GstClockTime segment_stop;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+send_stream_start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean send_stream_start;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+seqnum	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint32 seqnum;$/;"	m	language:C++	struct:__anon7	file:
+seqnum_to_restart_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gint seqnum_to_restart_task;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+signal_duration_change	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^signal_duration_change (NleComposition * comp)$/;"	f	language:C++	file:
+SIGNAL_NEW_ACTION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	288;"	d	language:C++	file:
+tearing_down_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean tearing_down_stack;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+UpdateCompositionData	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^} UpdateCompositionData;$/;"	t	language:C++	typeref:struct:__anon7	file:
+update_base_time	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^update_base_time (GNode * node, GstClockTime * timestamp)$/;"	f	language:C++	file:
+update_operations_base_time	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^update_operations_base_time (NleComposition * comp, gboolean reverse)$/;"	f	language:C++	file:
+update_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean update_pipeline (NleComposition * comp,$/;"	p	language:C++	file:
+update_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^update_pipeline (NleComposition * comp, GstClockTime currenttime, gint32 seqnum,$/;"	f	language:C++	file:
+UPDATE_PIPELINE_REASONS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static const char *UPDATE_PIPELINE_REASONS[] = {$/;"	v	language:C++	file:
+update_start_stop_duration	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void update_start_stop_duration (NleComposition * comp);$/;"	p	language:C++	file:
+update_start_stop_duration	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^update_start_stop_duration (NleComposition * comp)$/;"	f	language:C++	file:
+updating_reason	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  NleUpdateStackReason updating_reason;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+waiting_for_buffer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^  gboolean waiting_for_buffer;$/;"	m	language:C++	struct:_NleCompositionPrivate	file:
+WAIT_FOR_AN_ACTION	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	279;"	d	language:C++	file:
+_Action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^typedef struct _Action$/;"	s	language:C++	file:
+_activate_new_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_activate_new_stack (NleComposition * comp)$/;"	f	language:C++	file:
+_add_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_action (NleComposition * comp, GCallback func, gpointer data,$/;"	p	language:C++	file:
+_add_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_action (NleComposition * comp, GCallback func,$/;"	f	language:C++	file:
+_add_add_object_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_add_object_action (NleComposition * comp, NleObject * object)$/;"	f	language:C++	file:
+_add_object_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_object_func (NleComposition * comp, ChildIOData * childio)$/;"	f	language:C++	file:
+_add_remove_object_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_remove_object_action (NleComposition * comp, NleObject * object)$/;"	f	language:C++	file:
+_add_seek_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_seek_action (NleComposition * comp, GstEvent * event)$/;"	f	language:C++	file:
+_add_update_compo_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_add_update_compo_action (NleComposition * comp,$/;"	f	language:C++	file:
+_assert_proper_thread	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_assert_proper_thread (NleComposition * comp)$/;"	f	language:C++	file:
+_commit_all_values	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_commit_all_values (NleComposition * comp)$/;"	f	language:C++	file:
+_commit_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _commit_func (NleComposition * comp,$/;"	p	language:C++	file:
+_commit_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_commit_func (NleComposition * comp, UpdateCompositionData * ucompo)$/;"	f	language:C++	file:
+_commit_values	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_commit_values (NleComposition * comp)$/;"	f	language:C++	file:
+_deactivate_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _deactivate_stack (NleComposition * comp,$/;"	p	language:C++	file:
+_deactivate_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_deactivate_stack (NleComposition * comp, gboolean flush_downstream)$/;"	f	language:C++	file:
+_do_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	45;"	d	language:C++	file:
+_drop_all_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_drop_all_cb (GstPad * pad G_GNUC_UNUSED,$/;"	f	language:C++	file:
+_emit_commited_signal_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _emit_commited_signal_func (NleComposition * comp, gpointer udata);$/;"	p	language:C++	file:
+_emit_commited_signal_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_emit_commited_signal_func (NleComposition * comp, gpointer udata)$/;"	f	language:C++	file:
+_empty_bin	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_empty_bin (GstBin * bin)$/;"	f	language:C++	file:
+_execute_actions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_execute_actions (NleComposition * comp)$/;"	f	language:C++	file:
+_free_action	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_free_action (Action * action, gpointer udata)$/;"	f	language:C++	file:
+_have_to_flush_downstream	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_have_to_flush_downstream (NleUpdateStackReason update_reason)$/;"	f	language:C++	file:
+_initialize_stack_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_initialize_stack_func (NleComposition * comp, UpdateCompositionData * ucompo)$/;"	f	language:C++	file:
+_is_ready_to_restart_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_is_ready_to_restart_task (NleComposition * comp, GstEvent * event)$/;"	f	language:C++	file:
+_is_ready_to_restart_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_is_ready_to_restart_task (NleComposition * comp, GstEvent * event);$/;"	p	language:C++	file:
+_link_to_parent	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_link_to_parent (NleComposition * comp, NleObject * newobj,$/;"	f	language:C++	file:
+_NleCompositionPrivate	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^struct _NleCompositionPrivate$/;"	s	language:C++	file:
+_nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean _nle_composition_add_object (NleComposition * comp,$/;"	p	language:C++	file:
+_nle_composition_add_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_nle_composition_add_object (NleComposition * comp, NleObject * object)$/;"	f	language:C++	file:
+_nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean _nle_composition_remove_object (NleComposition * comp,$/;"	p	language:C++	file:
+_nle_composition_remove_object	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_nle_composition_remove_object (NleComposition * comp, NleObject * object)$/;"	f	language:C++	file:
+_post_start_composition_update	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_post_start_composition_update (NleComposition * comp,$/;"	f	language:C++	file:
+_post_start_composition_update_done	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_post_start_composition_update_done (NleComposition * comp,$/;"	f	language:C++	file:
+_process_pending_entries	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_process_pending_entries (NleComposition * comp)$/;"	f	language:C++	file:
+_relink_children_recursively	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_relink_children_recursively (NleComposition * comp,$/;"	f	language:C++	file:
+_relink_new_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_relink_new_stack (NleComposition * comp, GNode * stack,$/;"	f	language:C++	file:
+_relink_single_node	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _relink_single_node (NleComposition * comp, GNode * node,$/;"	p	language:C++	file:
+_relink_single_node	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_relink_single_node (NleComposition * comp, GNode * node,$/;"	f	language:C++	file:
+_remove_actions_for_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_remove_actions_for_type (NleComposition * comp, GCallback callback)$/;"	f	language:C++	file:
+_remove_child	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_remove_child (GValue * item, GValue * ret G_GNUC_UNUSED, GstBin * bin)$/;"	f	language:C++	file:
+_remove_object_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_remove_object_func (NleComposition * comp, ChildIOData * childio)$/;"	f	language:C++	file:
+_remove_seek_actions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_remove_seek_actions (NleComposition * comp)$/;"	f	language:C++	file:
+_remove_update_actions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_remove_update_actions (NleComposition * comp)$/;"	f	language:C++	file:
+_restart_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _restart_task (NleComposition * comp);$/;"	p	language:C++	file:
+_restart_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_restart_task (NleComposition * comp)$/;"	f	language:C++	file:
+_seek_current_stack	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_seek_current_stack (NleComposition * comp, GstEvent * event,$/;"	f	language:C++	file:
+_seek_pipeline_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_seek_pipeline_func (NleComposition * comp, SeekData * seekd)$/;"	f	language:C++	file:
+_set_all_children_state	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_set_all_children_state (NleComposition * comp, GstState state)$/;"	f	language:C++	file:
+_set_current_bin_to_ready	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_set_current_bin_to_ready (NleComposition * comp, gboolean flush_downstream)$/;"	f	language:C++	file:
+_set_real_eos_seqnum_from_seek	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static gboolean _set_real_eos_seqnum_from_seek (NleComposition * comp,$/;"	p	language:C++	file:
+_set_real_eos_seqnum_from_seek	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_set_real_eos_seqnum_from_seek (NleComposition * comp, GstEvent * event)$/;"	f	language:C++	file:
+_signals	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static guint _signals[LAST_SIGNAL] = { 0 };$/;"	v	language:C++	file:
+_start_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_start_task (NleComposition * comp)$/;"	f	language:C++	file:
+_stop_task	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_stop_task (NleComposition * comp)$/;"	f	language:C++	file:
+_update_pipeline_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^static void _update_pipeline_func (NleComposition * comp,$/;"	p	language:C++	file:
+_update_pipeline_func	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/nle/nlecomposition.c	/^_update_pipeline_func (NleComposition * comp, UpdateCompositionData * ucompo)$/;"	f	language:C++	file:

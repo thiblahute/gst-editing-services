@@ -1,0 +1,53 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+add_options	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def add_options(self, parser):$/;"	m	language:Python	class:GESTestsManager
+build_arguments	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def build_arguments(self):$/;"	m	language:Python	class:GESRenderTest
+build_arguments	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def build_arguments(self):$/;"	m	language:Python	class:GESTest
+check_results	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def check_results(self):$/;"	m	language:Python	class:GESRenderTest
+ET	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import xml.etree.ElementTree as ET$/;"	i	language:Python
+etree	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import xml.etree.ElementTree as ET$/;"	i	language:Python
+GESPlaybackTest	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^class GESPlaybackTest(GESTest):$/;"	c	language:Python
+GESRenderTest	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^class GESRenderTest(GESTest, GstValidateEncodingTestInterface):$/;"	c	language:Python
+GESTest	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^class GESTest(GstValidateTest):$/;"	c	language:Python
+GESTestsManager	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^class GESTestsManager(TestsManager):$/;"	c	language:Python
+GES_DURATION_TOLERANCE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^GES_DURATION_TOLERANCE = utils.GST_SECOND \/ 2$/;"	v	language:Python
+GES_ENCODING_TARGET_COMBINATIONS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^GES_ENCODING_TARGET_COMBINATIONS = [$/;"	v	language:Python
+GES_LAUNCH_COMMAND	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^GES_LAUNCH_COMMAND = "ges-launch-1.0"$/;"	v	language:Python
+get_caps	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_caps(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_current_value	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_current_value(self):$/;"	m	language:Python	class:GESPlaybackTest
+get_current_value	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_current_value(self):$/;"	m	language:Python	class:GESRenderTest
+get_duration	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_duration(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_media_filepath	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_media_filepath(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_num_tracks	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_num_tracks(self, track_type):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_path	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_path(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_protocol	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_protocol(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+get_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def get_uri(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+GstValidateEncodingTestInterface	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+GstValidateTest	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def init(self):$/;"	m	language:Python	class:GESTestsManager
+is_image	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def is_image(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+is_seekable	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def is_seekable(self):$/;"	m	language:Python	class:XgesProjectDescriptor
+list_tests	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def list_tests(self):$/;"	m	language:Python	class:GESTestsManager
+MediaDescriptor	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+MediaFormatCombination	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+name	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    name = "ges"$/;"	v	language:Python	class:GESTestsManager
+os	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import os$/;"	i	language:Python
+quote_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^def quote_uri(uri):$/;"	f	language:Python
+register_defaults	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def register_defaults(self, project_paths=None):$/;"	m	language:Python	class:GESTestsManager
+ScenarioManager	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+set_sample_paths	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def set_sample_paths(self):$/;"	m	language:Python	class:GESTest
+set_settings	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def set_settings(self, options, args, reporter):$/;"	m	language:Python	class:GESTestsManager
+subprocess	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import subprocess$/;"	i	language:Python
+sys	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import sys$/;"	i	language:Python
+TestsManager	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    MediaDescriptor, GstValidateEncodingTestInterface$/;"	i	language:Python
+unquote	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^from urllib import unquote$/;"	i	language:Python
+urlparse	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import urlparse$/;"	i	language:Python
+utils	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import utils$/;"	i	language:Python
+XgesProjectDescriptor	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^class XgesProjectDescriptor(MediaDescriptor):$/;"	c	language:Python
+xml	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^import xml.etree.ElementTree as ET$/;"	i	language:Python
+_scenarios	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    _scenarios = ScenarioManager()$/;"	v	language:Python	class:GESTestsManager
+_set_rendering_info	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def _set_rendering_info(self):$/;"	m	language:Python	class:GESRenderTest
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def __init__(self):$/;"	m	language:Python	class:GESTestsManager
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def __init__(self, classname, options, reporter, project, combination):$/;"	m	language:Python	class:GESRenderTest
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def __init__(self, classname, options, reporter, project, scenario):$/;"	m	language:Python	class:GESPlaybackTest
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def __init__(self, classname, options, reporter, project, scenario=None,$/;"	m	language:Python	class:GESTest
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tests/validate/geslaunch.py	/^    def __init__(self, uri):$/;"	m	language:Python	class:XgesProjectDescriptor

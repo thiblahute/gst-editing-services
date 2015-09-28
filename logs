@@ -1,0 +1,3748 @@
+commit 822e0a7b09b4da360736d1c1e727584f2a9eca53
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 24 13:21:15 2015 +0200
+
+    ges: Avoid emitting 'child-added/removed' when signal emission stops addition
+    
+    In the GESTimeline, TrackElement addition to a clip might get cancelled
+    (and thus the element gets removed), we need to make sure users do not
+    get wrong signals.
+    
+    Also document the fact that user should connect to container::child-added
+    with g_signal_connect_after.
+
+commit bd1d03202bdd278df7db3558e9df49082ade485d
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Tue Sep 22 23:10:35 2015 +0900
+
+    nle{composition,object}: remove unused allocation & trivial leakages
+    
+    nlecomposition allocates unused 'UpdateCompositionData' and it
+    causes leakages.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=755417
+
+commit 0b900bddc9eb534535e57c42afd27b6fc8d97399
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Thu Sep 24 13:40:27 2015 +0900
+
+    pipeline: don't leak GstPad
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=755505
+
+commit 00ae999547687b7cd3eeb8c7e8fbbca801913206
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Thu Sep 24 13:42:16 2015 +0900
+
+    pitivi-formatter: don't leak internal hash table
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=755505
+
+commit 1131a22a7422071e6b23d689aeca9d5e90d3f4f8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Sep 23 21:23:13 2015 +0200
+
+    video-transition: Make compositor background transparent
+    
+    Allowing further mixing downstream
+
+commit d1c01678bcce36d305a0a9ccffcbf59a50304535
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Sep 23 21:12:33 2015 +0200
+
+    video-transition: Add a framepositioner at the end of the transitio
+    
+    So downstream compositor knows the zorder of the various streams
+
+commit 5207d6dfcab9de33c6d592cc612aa1694c7db30b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 18 18:40:18 2015 +0200
+
+    Release 1.5.91
+
+commit 5a0393c54a909e974926aecc5cd8f5aabf9cdab1
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 18 10:01:44 2015 +0200
+
+    ges: Namespace NLE utils function into GES
+    
+    Avoiding name clashes when built statically
+
+commit c8e9cf962cad86449e4dc413ac1a892805c48361
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Sep 15 12:17:19 2015 +0200
+
+    nle: Avoid unsetting srcpad target after the srcpad is already freed
+    
+    That leaded to segfaults
+
+commit 69e9acc823d45e63000bad61239db8ab26450ad9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Sep 15 11:08:29 2015 +0200
+
+    nle: Stop wrongly set operation segment base time
+    
+    Inside the composition we actually do not need to have any notion
+    of what the timing outside the compositon as we already tweak the segment
+    base time outside the composition. This code was only there to work
+    around https://bugzilla.gnome.org/show_bug.cgi?id=753196
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754893
+
+commit ff388f1d9b7eb55ea749d0de014932d9e8d87a05
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Fri Sep 11 16:18:46 2015 +0900
+
+    nlecomposition: don't leak internal hashtable
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754867
+
+commit 937217021e484a59afd720c580a9901fe38d4626
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Fri Sep 11 16:13:19 2015 +0900
+
+    nleobject: don't leak srcpad when disposing
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754867
+
+commit fe2165cad3f249f706b4304d52764b6fa14c82d1
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Fri Sep 11 16:11:40 2015 +0900
+
+    timeline: don't leak pad in private structure
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754867
+
+commit 04bac06fad499fa89aa5fc99a6f68dc19d64ebcb
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Fri Sep 11 09:58:56 2015 +0900
+
+    ges-launcher: don't leak GError
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754858
+
+commit 32c694cc0091d25b9e2dc7a547d6f83a686e7203
+Author: Justin Kim <justin.kim@collabora.com>
+Date:   Wed Sep 9 23:32:19 2015 +0900
+
+    ges-launcher: fix double free when argument is invalid
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754783
+
+commit f046bb5a03db75872bc405af3e91c9d17ef2cebf
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 4 12:01:16 2015 +0200
+
+    video-source: Use the priority being set to compute zorder
+
+commit f0b3cd27f99096428e082e364beb47d671e37e2a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Sep 2 23:27:16 2015 +0200
+
+    video:transition: Set mixer pad zorder
+
+commit 8c0a6402f654a00399321464594879a04f945827
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Sep 2 17:58:33 2015 +0200
+
+    video-source: Make sure to set framepositionner zorder when creating it
+    
+    And fix a computation bug where we would be having mixing order
+    reversed between layers.
+    
+    And make sure that the positionner does not mix up Transition handling
+    of the zorder
+
+commit ab254648769d206caa36b057cdc21df0f71ebc89
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Aug 27 16:28:42 2015 +0200
+
+    video-source: Simply set framepositionner->zorder = self->priority
+    
+    Summary:
+    Making the code simpler and handling the transition case
+    where elements are in the same layer (which was failing
+    /setting same zorders until now).
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: https://phabricator.freedesktop.org/D237
+
+commit fd0cc5cb2af6365eb88c35907128aa9faf9dd0df
+Author: Jan Schmidt <jan@centricular.com>
+Date:   Sun Aug 23 01:35:18 2015 +1000
+
+    Use standard GST_PLUGIN_LDFLAGS for the nle plugin
+    
+    Add the standard GST_PLUGIN_LDFLAGS to the configure.ac file.
+
+commit fc7ae396c89fb90a283c3991fc470892cf1f717d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Aug 21 21:25:27 2015 +0200
+
+    Add support for static plugins builds
+
+commit 1dc013984ba11ad195e3b39997b14894ee9f756a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Aug 20 17:55:48 2015 +0200
+
+    Release 1.5.90
+
+commit edc5c27ffbcc527d6bc8121463228eaa015e9cdd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Aug 19 11:24:11 2015 +0200
+
+    Move NLE to a dedicated GstPlugin
+    
+    Summary: Allowing external user to directly use it
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: https://phabricator.freedesktop.org/D231
+
+commit fdd1456062f64714cd57108380e696d28b14aad6
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 23 11:53:52 2015 +0200
+
+    nle: Enhance debug logging
+
+commit 3c127d96220446e9e10d1d641746dd51ba6eaec6
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 23 11:42:48 2015 +0200
+
+    ges: Do not leak and uselessly create errors
+    
+    And avoid parenthesis in GstObject names
+
+commit 254c2b1f5ed98fbd5c69d9e0c7da75dfc5176999
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 23 11:40:57 2015 +0200
+
+    ges: Fix how we handle layer vs layer-priority in the structured interface
+
+commit 844ce696509cde0c4aae0d5947ee68f2c22943f8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 23 11:39:04 2015 +0200
+
+    tests: Do not use gst-structured-interface in the tests
+    
+    It breaks $ make distcheck
+
+commit 84d3f8056c8c125ddb42285a601f537275883d88
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Thu Jul 16 17:26:04 2015 +0100
+
+    Update mailing list in doap file
+
+commit d5663a46dc1522b04f52ea0fdca8a28afc17d81e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 16 10:54:54 2015 +0200
+
+    timeline: Remove transitions that can no fit into an auto transition
+    
+    When activating auto transition mode
+
+commit 6fc6ce29f9d614275229292a288533f6a340c7e6
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 16 10:53:17 2015 +0200
+
+    ges; Minor debug enhancement
+
+commit 724418b75d698786e42f8b464e7ea527e27ff157
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 13 13:48:40 2015 +0200
+
+    assets: Avoid deadlock when done initialising asset
+    
+    Avoid to hold the CACHE lock when setting the GTasks return values.
+    
+    Fixes https://bugzilla.gnome.org/show_bug.cgi?id=752300
+
+commit 50f26f1269f33bad81024bbd0be8a7055167c3a0
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 8 18:59:33 2015 +0200
+
+    nleobject: Concider objects as 'inactive' when they have a duration == 0
+
+commit 0fad60e75436e1785acf1e29387311107b3e6c18
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 8 18:59:00 2015 +0200
+
+    track-element: Handle the case where we have only one keyframe set when interpollating keyframes
+
+commit 7be28b29b2ba9170c6d451c0fb85eed2835e7784
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 6 10:24:33 2015 +0200
+
+    asset: Port use of deprecated GSimpleAsyncResult to GTask
+
+commit f99708003455621e82555f178ccea669d65c04a5
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Fri Jul 3 22:00:08 2015 +0200
+
+    Automatic update of common submodule
+    
+    From f74b2df to 9aed1d7
+
+commit 58fb9a67209144f3cf53baa8cb66cdad960641dd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 3 13:49:57 2015 +0200
+
+    track-element: Fix splitting bindings and add unit tests
+
+commit d9c596162e1e08fed5f718e06c9ed3678e9e712d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 1 18:33:39 2015 +0200
+
+    structured-interface: Better handle CLOCK_TIME type from GstStructures
+
+commit 5885f58c14fa88a26b547e1068cbdbcf2ea65639
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jun 29 18:04:32 2015 +0200
+
+    element: Implement a paste method
+    
+    Allowing user to copy paste clips very easily
+
+commit d23e43ae1a94f65583fc5888cb3c91c5e551d0f8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 23 16:11:26 2015 +0200
+
+    timeline: Disable movement that lead to 2 transition at a position
+    
+    We should never let 3 objects to overlap at a same position, for that
+    we introduce a "rollback" feature and whenever such an editing happens,
+    we rollback object position to whatever it was before the move.
+
+commit 42700e98c5a8a51a6c03e6fe72d621145386e2e5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 23 19:19:29 2015 +0200
+
+    smart-video-mixer: Always keep a ref on the mixer pad
+
+commit 54be29e9ed0519b2c6c2f47716a87486a0d75e83
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 23 13:27:00 2015 +0200
+
+    timeline-element: Add a method to get the TrackType it interacts with
+    
+    API:
+      + ges_timeline_element_get_track_types
+
+commit 87b790a9da0d11b62dcd6bb9a8c3d6ebab952c5c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 19 11:08:25 2015 +0200
+
+    timeline: Never create transitions between rippled objects
+    
+    In case of groups, we can have track elements that do not belong
+    directly to the moved_trackelements but will be moved as others. Never
+    create transition to all object that have a start > moving group start.
+
+commit c17dae8f0ea0526c4a50902f823b17370ea00d6f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 16 17:07:40 2015 +0200
+
+    video-transition: Use a SmartMixer as mixer
+    
+    So that the frame position metas are parsed and taken into account
+
+commit 6a0ac8900951ce08f205653a031fd55984112500
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 16 15:02:18 2015 +0200
+
+    track-element: Add method to remove control binding
+    
+    API:
+      ges_track_element_remove_control_binding
+
+commit 7f4f1b0a07efb8a88b3c90e2cb5c93623b665467
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 16 13:25:32 2015 +0200
+
+    ges: Handle absolute GstDirectControlBindings
+
+commit 8e13b7d9b8ddf5d5eca80d078eefcfa8e372ba71
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Jun 13 18:48:20 2015 +0200
+
+    framepositionner: Make use of the new CompositorPad.width/height
+    
+    So that the scaling is done in the compositor and this way we can cleanly interpolate its value
+
+commit a0ee7e1f4461a43f48061b5644d34fa7b98aee90
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 3 09:19:30 2015 +0200
+
+    timeline: Never change output media time when trimming start
+    
+    + Fix testsuite
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=638802
+
+commit 53defaab7a8c6426131aaaf1356670fc35bcd9f5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 3 09:16:50 2015 +0200
+
+    track-element: Return right value when editing
+    
+    We used to always return TRUE which was wrong
+    
+    + Fix testsuite and remove randomness from the tests
+
+commit 938aaaef249095d5c982027b04837ed2421040bd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 1 17:28:52 2015 +0200
+
+    ges: Do not add a final gap at the end of track while rendering
+    
+    It is not correct to force a black frame at the end of the rendered
+    video and it also leads to rendering issue with vpX encoders.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=751510
+
+commit 8b821511ad1de0b6476a0256c615d1658e7b1665
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 1 11:35:42 2015 +0200
+
+    clip: Use container priority offset when setting children prios
+    
+    Instead of trying to compute it ourself which might lead to wrong
+    behaviour when moving between layer.
+    
+    + Make sure that when we reset clip children priority (to make space
+      for effects,) we update the container knowledge of priority offsets
+
+commit f7dbdd27babbb6dbf1379944221e25fb5a496bae
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 30 23:13:28 2015 +0200
+
+    clip: Fix track element priority computation
+    
+    We were computing the priority offset taking the global MIN_NLE_PRIO
+    (which is a constant == 2 to make space for the mixing elements) instead
+    of the layer 'track element' relative priority, leading to very big
+    offsets on layer with a prio > 0. In the end it leaded to effects having
+    the same priority as the sources which leads to an undefined behaviour
+    in NLE.
+
+commit 9669bafe46f68eef86ab25848a960425493aee19
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 24 09:06:30 2015 +0200
+
+    uri-asset: Bump the discoverer timeout to 1 minute
+    
+    We should by default avoid false timeouts
+
+commit 5833aae413e9d30f25a311cae9e46d78780887a2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jun 22 01:52:39 2015 +0200
+
+    track: Give usefull name to compositions
+
+commit 55f06012110b5ef2333599cc4f551b7817d368b9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jun 25 11:03:12 2015 +0200
+
+    nle: Port tests to the "commit" action signals
+    
+    Now that nle_object_commit symbol is hidden, we can't use it
+    in the tests.
+
+commit 2994650f9e83709c29145c155bc4901e672aed34
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jun 25 10:32:46 2015 +0200
+
+    ges: Unbreeak API after renaming of GNL to NLE
+
+commit f5a8c240778c0cb16e40812d084b33a074fdaa5c
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Thu Jun 25 10:28:41 2015 +0200
+
+    ges: Hide more symbols of headers that are not installed
+
+commit d46efecf2b6a1913e31726a41d6c77e4528ecb0d
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Thu Jun 25 10:25:48 2015 +0200
+
+    nle: Remove unused function
+    
+    nle/nlecomposition.c:2471:1: error: unused function '_parent_or_priority_changed' [-Werror,-Wunused-function]
+    _parent_or_priority_changed (NleObject * obj, GNode * oldnode,
+    ^
+
+commit fd81083071039711047f71f32f67247c664b07ec
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Thu Jun 25 10:24:13 2015 +0200
+
+    nle: Hide away symbols, they're supposed to be internal
+
+commit e547085a73aa38c7e80d40832fbbb418cd9475fb
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 24 17:55:22 2015 +0200
+
+    Back to development
+
+commit ff3209e6f77735c8cfece841a13a356a9db13e36
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 24 17:44:04 2015 +0200
+
+    Release 1.5.2
+
+commit 700e5b0ae014677c378b17e3df30c10e7aae33a4
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Tue Jun 23 09:41:01 2015 +0100
+
+    nlesource: remove outdated comment
+
+commit e3fc124b5018271e8c55da59e04b80db9a4be50c
+Author: Nicolas Dufresne <nicolas.dufresne@collabora.co.uk>
+Date:   Tue Jun 16 17:50:38 2015 -0400
+
+    Automatic update of common submodule
+    
+    From 6015d26 to f74b2df
+
+commit ac49f22530634db74f01963cdb995323160b3232
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 10 17:54:20 2015 +0200
+
+    pipeline: Handle rendering with disabled tracks
+    
+    Summary:
+    The user might want to render only some media type of the timeline,
+    for example he wants to only render the audio part of the timeline.
+    
+    It was failing as we were not connecting the track but were still trying
+    to 'render' it.
+    
+    Depends on D153
+    
+    Reviewers: Mathieu_Du
+    
+    Reviewed By: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D154
+
+commit 321d2c2edd64d541f1d7c2935c92a9e853182c8f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 9 21:00:44 2015 +0200
+
+    ges: Raise an error when the discoverer returns != RESULT_OK
+    
+    And do not try to run the pipeline when that happens
+
+commit 4f83cde17208df022da9ee13e24579096d07ede8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jun 9 20:58:00 2015 +0200
+
+    uri-asset: Add a way to control discoverer timeout through envvar
+    
+    Making it possible to run ges-launch test under valgrind for example
+
+commit 967bb50814f3aeeee8d90530648b34dabbeca9e0
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Tue Jun 9 12:23:59 2015 +0100
+
+    ges-launch: don't print random position/duration values at startup
+
+commit 639725c6ea563e6739c67a8a40f8074264020236
+Author: Edward Hervey <bilboed@bilboed.com>
+Date:   Tue Jun 9 11:30:59 2015 +0200
+
+    Automatic update of common submodule
+    
+    From d9a3353 to 6015d26
+
+commit a0f3290b700225323ba2ccd188312eed1f70756d
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Mon Jun 8 23:08:40 2015 +0200
+
+    Automatic update of common submodule
+    
+    From d37af32 to d9a3353
+
+commit 86fe256ab8d545becd723adb31b4483e0c71befa
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Sun Jun 7 23:07:40 2015 +0200
+
+    Automatic update of common submodule
+    
+    From 21ba2e5 to d37af32
+
+commit bd839e27939657b5f604125f7079c1b0c5d53537
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Sun Jun 7 17:32:34 2015 +0200
+
+    Automatic update of common submodule
+    
+    From c408583 to 21ba2e5
+
+commit fd4b449eb52204d775f8c0b5d9a987dc4573b77c
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Sun Jun 7 17:16:53 2015 +0200
+
+    Automatic update of common submodule
+    
+    From d676993 to c408583
+
+commit 0a6105ee3b8e7c43813768bb397d672683cef1ee
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 5 19:59:08 2015 +0200
+
+    timeline: Never snap end when rippling
+    
+    http://phabricator.freedesktop.org/T74
+
+commit 9d30b0014da75cbf0e55874dd068fc20f93ff9a9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 5 19:58:16 2015 +0200
+
+    timeline: Never create transition between elements inside the moving context
+    
+    http://phabricator.freedesktop.org/T74
+
+commit 73e4e3bb0a88ba02010c6852dc5d7e2a80dc3d90
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 5 18:49:51 2015 +0200
+
+    group: Disconnect from old layer notify::priority when a clip is moved to a NULL layer
+    
+    This means we need to properly track the layer a clip was in. We now
+    keep track of the various signal IDs in a dedicated structure and
+    keep a ref on the layer an object is in.
+    
+    http://phabricator.freedesktop.org/T88
+
+commit fee018b358959a427eb04a8e6d44400532af99e4
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 3 14:56:11 2015 +0200
+
+    tools: Exit the app as it is a simgle instance app
+    
+    And force exiting GstValidate when wanted
+
+commit b86cca00f1c58874ed71572baadf57aa406957f9
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Mon Jun 1 13:05:25 2015 +0100
+
+    ges: remove dead code
+    
+    Summary:
+    No need to recheck if error exists since it has already been checked by the
+    conditional above.
+    
+    Coverity CID #1302832
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D200
+
+commit c70a654dd6b57b7676bc4198af9701981024057f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun May 31 14:16:05 2015 +0200
+
+    ges: Handle trimming auto transitions
+    
+    Meaning trimming neighbors.
+    
+    + And add a test
+
+commit d7dfcff7459d10962f775cf621fdafdd57049116
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri May 29 15:15:25 2015 +0200
+
+    timeline: Use a simple GList to track auto transitions
+
+commit 4f70e5eb88ad04fb04f05c585cefc5f689620050
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jan 12 13:05:30 2015 +0100
+
+    nlecomposition: Do not fail when removing/adding child without commiting
+    
+    Summary:
+    We use to end up removing the nleobject when the following case happened:
+    
+     * add an object
+     * remove that object
+     * re add the object
+     * commit the composition
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D193
+
+commit 3ba6dec9761b551f903c9a3e479eb604291c2f72
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue May 19 18:18:30 2015 +0200
+
+    timeline: Minor documentation addition
+
+commit 241e809a81b0fc1a2a590882e7362b1eff420c0d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon May 18 21:24:25 2015 +0200
+
+    ges: Enhance xges format versioning
+    
+    Summary:
+    Handle the fact that some new features can be added and that means
+    generated files will not be fully understandable by older versions of
+    the formatter.
+    
+    Make sure that we set the format version to 0.2 when we serialize the
+    GstEncodingProfile.enabled property.
+    
+    Add some tests around that.
+    
+    + Fix a minor bug in the test-utils
+    + Add a meta on the projects to tell in what format version a project
+      has been serialized/parsed back
+    
+    API:
+      GES_META_FORMAT_VERSION
+    
+    Depends on D178
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D184
+
+commit ff274dee2ef794c8c7de36b3c55f9ccf85fcab2c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu May 14 11:12:20 2015 +0200
+
+    ges: If last added clip is not in a layer, get the first layer
+    
+    Summary:
+    In case we just removed it from its layer, make sure to
+    just use the first layer when none specified.
+    
+    Depends on D177
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D178
+
+commit 9843ffeed207514ed70f8458eff5791801c5590a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu May 14 11:11:44 2015 +0200
+
+    ges: Fix some error settings
+    
+    Summary: Depends on D176
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D177
+
+commit 2ddab4db571e8c6ee0d0ac9ca0b25dd23d951104
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu May 14 11:10:15 2015 +0200
+
+    ges:structured-interface: Use GET_AND_CHECK in more places
+    
+    Summary:
+    Giving more details about the issue to the user
+    
+    Depends on D151
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D176
+
+commit 8558a0327210c1f861af20aa089db5a56126d23c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu May 7 10:52:18 2015 +0200
+
+    xml-formatter: De/serialize whether encoding profiles are enabled or not
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D151
+
+commit bb40668ff9e47481d4741304f22129097a0d73d7
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Apr 26 18:22:40 2015 +0100
+
+    Remove obsolete Android build cruft
+    
+    This is not needed any longer.
+
+commit 0c8c2c4bd756957c62ec19ed0533a8075de1f1de
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Thu Apr 23 20:20:29 2015 +0100
+
+    Update .gitignore
+
+commit e651c43914d49fafd4eebad22fb6b940a8c1302f
+Author: Edward Hervey <edward@centricular.com>
+Date:   Wed Apr 22 15:07:58 2015 +0200
+
+    tools: Fix string leak
+    
+    Only allocate the return string when we know we are going to return
+    it.
+    
+    Coverity CID #1292292
+
+commit 1aeb6e691e4647c935d964d0fc4d50b5f3023c49
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Wed Apr 22 10:39:25 2015 +0200
+
+    Remove INSTALL file
+    
+    autotools automatically generate this, and when using different versions
+    for autogen.sh there will always be changes to a file tracked by git.
+
+commit 27c016a300ba7a644163e74984c11418c4651431
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Apr 21 11:24:38 2015 +0200
+
+    ges:xml-formatter: Call g_markup_parse_context_end_parse
+    
+    Summary:
+    Otherwise the parser context will never know that is all the XML it
+    will receive and fail out if the XML document is not valid (in that
+    case if it does not end)
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=746354
+    
+    Reviewers: Mathieu_Du
+    
+    Reviewed By: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D38
+
+commit 8dfac3c94fd5465caab68714c06b8eb2b767f5fe
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Apr 20 17:42:44 2015 +0200
+
+    ges: Add debug output when get_element returns NULL
+
+commit 4aaee7d5f5f8c917a800dfacb4d35e5ef005a4d3
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Apr 15 12:18:15 2015 +0200
+
+    tools:launch: Print out the timeline description as an INFO not an ERROR
+
+commit de256fcf132f168114591b9bb19636e468576d5e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Apr 15 12:18:15 2015 +0200
+
+    tools:launch: clean user facing message on wrong timeline description
+    
+    Summary:
+    Before:
+    
+      $ ../gst-editing-services/tools/ges-launch-1.0 -p
+      0:00:00.028629728  8155      0x17e1b60 ERROR                default ges-launcher.c:214:_create_timeline: serialized timeline is   -p
+    
+      ** (lt-ges-launch-1.0:8155): ERROR **: Could not create timeline, error: Could not find a suitable formatter
+      [1]    8155 trace trap (core dumped)  ../gst-editing-services/tools/ges-launch-1.0 -p
+    
+      $
+    
+    After:
+    
+      $ GST_DEBUG=0 ges-launch-1.0 -p
+    
+      ERROR: Could not create timeline, error: Could not find a suitable formatter
+    
+      $
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D95
+
+commit 506662e2dc62df382cee68b688b96d66977dd65e
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Apr 8 23:33:27 2015 +0200
+
+    nleobject: It is wrong to update object->stop in set_property.
+    
+    Summary: It must only be done when the object is commited.
+    We can do that in constructed though, as the changes will
+    anyway be commited when the object is added to a composition.
+    
+    Also update the tests, as we set properties spearately then
+    check the stop, we can commit the source at its creation without
+    removing meaning from the tests.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D84
+
+commit 2e26a9e926d29078bec2392b96ebcfdbea5d9c09
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Apr 8 21:38:48 2015 +0200
+
+    timeline, track: Emit commited at the correct moment.
+    
+    Summary:
+    + [API] GESTrack::commited signal.
+    + [API] ges_track_commit_sync
+    
+    We were emitting commited when timeline_commit was called, which
+    wasn't very helpful. This commit makes it so we emit commited once
+    all the compositions have actually been commited.
+    
+    We also add a synchronous commit method to spare the user
+    the need to connect to the signal and wait, and update the
+    documentation.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D83
+
+commit 54190d9dd8ee0edbc3b91b77a69fcdf8591083b6
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Apr 7 22:48:27 2015 +0200
+
+    layer: call timeline_element_set_timeline in layer_set_timeline.
+    
+    Summary:
+    Otherwise if there was still a reference to the layer when it
+    is removed from the timeline, it fails when the last reference
+    is released, because timeline_element_set_timeline calls
+    timeline_remove_element, which tries to remove the element from
+    an already disposed hashtable.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D82
+
+commit 6753ad5bd1bed45ab76f45788a506fd20e6a8575
+Author: Edward Hervey <edward@centricular.com>
+Date:   Wed Apr 8 17:05:19 2015 +0200
+
+    tests: Use AM_TESTS_ENVIRONMENT
+    
+    Needed by the new automake test runner
+
+commit c271f89d4ae71c45f295ccdaea815809644c3637
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Apr 3 17:38:53 2015 +0200
+
+    ges-launch: Add support for +test-clip
+    
+    Summary: With the pattern as a mandatory argument.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D68
+
+commit 47f1713f1e7be485c1dfebb3760da1d55da6ade0
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Apr 3 16:48:03 2015 +0200
+
+    ges-project: Surface a meaningful error when no suitable formatter.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D67
+
+commit 44af36026f58b28331fa98ef17a45adf3539aaf9
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Apr 3 15:35:54 2015 +0200
+
+    ges-launch: Add a save-only option.
+    
+    Summary: + Allows to serialize the timeline without playing it back.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D66
+
+commit ea348dccc5bea315085c2e82a655ae48b7871b2e
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Fri Apr 3 18:58:32 2015 +0100
+
+    Automatic update of common submodule
+    
+    From bc76a8b to c8fb372
+
+commit e89dccc9aaabe429b18f1613a2417a1e99b81f32
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Mar 31 14:26:19 2015 +0200
+
+    timeline-element: Disconnect child properties handlers.
+    
+    Summary:
+    + And freeze notifies while doing so.
+    
+    We had a race with GstController which isn't MT safe, we can
+    fix it by propertly disconnecting signals, and making sure
+    no notifies are emitted while doing so.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D64
+
+commit 1ea442a021d257793309fd1aa4cab23d7293451e
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Mar 30 18:41:11 2015 +0200
+
+    track: Set any caps features on tmpcaps.
+    
+    Summary: Before checking if we have a specific constructor for a track type.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D63
+
+commit 0d3a3eb9d2facb4db7b8d0086c16fe152939df65
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Mar 31 15:29:49 2015 +0200
+
+    pipeline: no reason to disconnect a pad that is NULL anyway.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D62
+
+commit 4a519bcf5cd191563681db4bf6045447cb751bfe
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Mar 25 15:43:16 2015 +0100
+
+    ges-launch: Better document options.
+    
+    + Sort them by topic
+    + remove --sample-paths and --sample-paths-recurse.
+    
+    http://phabricator.freedesktop.org/D58
+
+commit 2c4b92fd98d14ec17421140607e02ba65248858d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Mar 24 14:13:54 2015 +0100
+
+    ges-launch: port to GApplication
+    
+    Summary: + Extract some utility functions.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D55
+
+commit d4deeae5c1fbd95b982ca6f5afb94ada6dd24eed
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Mar 25 12:25:54 2015 +0100
+
+    build: no reason to introspect nodist sources.
+    
+    Summary: g-ir-scanner was erroring like crazy on the generated sources.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D57
+
+commit 54c5723b756e8086bb4ed9c140b1e495fc847d59
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Mar 25 12:22:43 2015 +0100
+
+    ges-pitivi-formatter: Don't flood stdout with alarming conclusions.
+    
+    Reviewers: thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D56
+
+commit 4f3b223f9835ebaf178476a883f936b1b7f40a39
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Mar 23 12:27:56 2015 +0100
+
+    completions: port to new base gst script
+
+commit c70f005970376d507eb3dd7c4af02fd3c5f05bda
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Mar 24 17:13:20 2015 +0100
+
+    completions: Fix completions after the first command.
+
+commit b55265c70dfdb2fefa01d88399aeb10507ffc150
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Mar 24 13:01:39 2015 +0100
+
+    Revert "ges-launch: no need for a tmp string pointer"
+    
+    This reverts commit 44a0924c1f6b07f0c91ee8bd03d3ae5d97da92d5.
+    
+    There indeed is a need for a tmp string pointer.
+
+commit 44a0924c1f6b07f0c91ee8bd03d3ae5d97da92d5
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Tue Mar 24 11:21:08 2015 +0000
+
+    ges-launch: no need for a tmp string pointer
+
+commit 865634d66c70515f39ee5d857174dad3764780c8
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Tue Mar 24 11:19:09 2015 +0000
+
+    ges-launch: free string before going out of scope
+    
+    CID #1291632
+
+commit 710d34adf46ac3e95d9c79dcb019a9d3f96d4e35
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 26 17:08:43 2015 +0100
+
+    build: fix make distcheck.
+
+commit d114cc60bd9e3b9126bf7bfbc83672186186e84e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Mar 17 18:25:02 2015 +0100
+
+    ges: Do not clear potentially NULL errors
+    
+    And avoid dereferencing NULL errors
+
+commit 663824d20f7ba583092bdb4e57c93de73f9cf28d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Mar 13 12:02:30 2015 +0000
+
+    ges-launch: Prefix clip, transition and effect instruction with a +
+    
+    Slightly changing the CLI so that we have indicators of the timeline
+    commands adding new objects.
+
+commit 20d94bea134330d7d3ce76b70b4e56b350d841b2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Mar 1 13:10:55 2015 +0100
+
+    ges: Accept path as URI in the create clip structured interface
+
+commit 7efa8c86a9124da432ec1860fa3a97115938b3bc
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 26 13:49:23 2015 +0100
+
+    ges-launch: Remove useless options, rename some short options.
+
+commit 8e18fd790c8711c0b8829d475d7cf12e7568d446
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 26 13:19:25 2015 +0100
+
+    bash-completion: Add support for new ges-launch commands.
+
+commit d77ad923a6e3c4aa77856a778960d093a0f404d8
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Feb 25 18:01:38 2015 +0100
+
+    parse.l: Modify command arguments.
+    
+    + --clip uri=file:// becomes clip file:// for example.
+
+commit e37d8e768fad09acf43215d9c33c4fab32de419b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Feb 23 17:41:59 2015 +0100
+
+    ges: command-line-formatter: Properly error out on invalid arguments
+
+commit 28a1e97aa267a77dc057d59638e7f1b9e05cd787
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Feb 23 14:48:18 2015 +0100
+
+    ges: Factor out a GESCommandLineFormatter class
+    
+    This formatter will allow any user to deserialize a timeline using
+    the new ges-launch command line interface
+
+commit ed0839dd829861ba68dec8bb8c3b15f66911f597
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Feb 23 00:53:14 2015 +0100
+
+    structured-interface: Be clever when no layer priority specified.
+    
+    And add the new element to the same layer as the last clip that
+    was added, insted of adding to the last layer of the timeline
+    (and with the current code, actually adding a new layer each time)
+
+commit 7cfdc2265d965c1f8927441479ae0201bc0cb420
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Sat Feb 21 15:30:57 2015 +0100
+
+    ges-structured-interface: fix build
+
+commit dbb2368a39fbe7c39209e49e5ee1f9bfecfb7813
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 20 12:26:54 2015 +0100
+
+    ges: Automatically put clips at the end of layer if no start specified
+    
+    In the 'structured' interface we should add it at the end of the layer
+    
+    And make use of the new ges_timeline_get_layer API
+
+commit 761067b6859cb2252c2e2cefcf3498293bde50ee
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 19 19:29:36 2015 +0100
+
+    structure-interface: rename layer-priority to layer.
+    
+    + And add a short name for it in ges-launch.
+
+commit 396196dfdf29a6b150f12c627ceee7ca74fba69c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 20 12:12:52 2015 +0100
+
+    ges: Add layer up to the wanted layer priority in the structure interface
+    
+    Making the thing easier to use
+
+commit 6f1091f84aff1c61386a1894ad33fd5fcd2e6fef
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 19 19:16:44 2015 +0100
+
+    ges-launch: parse property names longer than 1 char.
+    
+    + And finish the previous structure when encountering a setter.
+
+commit c6dedf2f36a3c80e236805cd9f1a10150eebc6ac
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 19 13:15:25 2015 +0100
+
+    ges-launch: Update lexer / parser to handle set-*
+    
+    + cleanup of the lexer
+
+commit ecf167e95e9d0fc8e5ae9433626663ec621fca25
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Feb 19 18:28:41 2015 +0100
+
+    tools: Implement a new CLI interface for the timeline creation
+
+commit 2ffa9477e9ad9449db835950418d3780c19ddca8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Feb 19 12:34:21 2015 +0100
+
+    ges: Handle setting child property on container directly in the structured based interface
+
+commit 5d7b37112f14718f4a7c6f8aa992ee959bbe2128
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Feb 19 11:28:48 2015 +0100
+
+    launcher: Add support to --set-property in the parser
+
+commit abb5f2cc2f9f424dc305d15ea3d0627667785a74
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 19 08:51:20 2015 +0100
+
+    ges-launch: Implement a new parser for the commandline.
+    
+    Summary: + flex-based lexing and manual simplistic parsing.
+    
+    Test Plan: Use that stuff to make awesome things, see if it breaks.
+
+commit 310579791357899aa1211c5a9e9194dc3b4a929f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Feb 17 23:48:12 2015 +0100
+
+    ges: Add an internal GstStructure based interface
+    
+    To be use by GstValidate action and ges-launch
+    
+    Reviewers: Mathieu_Du, thiblahute
+    
+    Differential Revision: http://phabricator.freedesktop.org/D42
+
+commit 7d0015b973b689cfda027b2d65cf028b617cffa3
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Mar 19 09:32:25 2015 +0100
+
+    ges: Fix build for older GLib
+    
+    The return type of g_hash_table_insert changed from void to boolean
+
+commit dd47def4e313fac342bd941b77bf19afbc1dbc76
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Feb 19 18:19:44 2015 +0100
+
+    container: implement children property handling
+
+commit 42477a5ec39c34ba3eb18cbf6239a1c783cd6b09
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Feb 19 16:30:18 2015 +0100
+
+    ges: Move the notion of children properties to GESTimelineElement
+    
+    Summary:
+    Deprecate the old GESTrackElement children property handling API.
+    
+    New APIs:
+      * ges_timeline_element_list_children_properties
+      * ges_timeline_element_lookup_child
+      * ges_timeline_element_get_child_property_by_pspec
+      * ges_timeline_element_get_child_property_valist
+      * ges_timeline_element_get_child_properties
+      * ges_timeline_element_set_child_property_valist
+      * ges_timeline_element_set_child_property_by_pspec
+      * ges_timeline_element_set_child_properties
+      * ges_timeline_element_set_child_property
+      * ges_timeline_element_get_child_property
+      * ges_timeline_element_add_child_property
+      * ges_timeline_element_remove_child_property
+    
+    Deprecated APIs:
+      * ges_track_element_list_children_properties
+      * ges_track_element_lookup_child
+      * ges_track_element_get_child_property_by_pspec
+      * ges_track_element_get_child_property_valist
+      * ges_track_element_get_child_properties
+      * ges_track_element_set_child_property_valist
+      * ges_track_element_set_child_property_by_pspec
+      * ges_track_element_set_child_properties
+      * ges_track_element_set_child_property
+      * ges_track_element_get_child_property
+      * ges_track_element_add_child_property
+    
+    Reviewers: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D40
+
+commit 3e49850e6d53b8fb0c3f23d2ab181d1161fa41fa
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 20 12:24:49 2015 +0100
+
+    timeline: Add API to find a layer with a specific priority in a timeline
+    
+    Summary:
+    API:
+      * ges_timeline_get_layer
+    
+    Test Plan: Nan
+    
+    Reviewers: mathieu.duponchelle
+
+commit f470222f3db8a9042818103a232f7b84320539b7
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 20 12:24:49 2015 +0100
+
+    Revert "ges: Move the notion of children properties to GESTimelineElement"
+    
+    I got some trouble with
+    
+      arc land
+    
+    and I wanted to push the 3 commit coming after this revert as 3
+    different commits but they ended up being all squash into one single
+    commit, which is clearly not cool for later bisecting and blaming.
+    Reverting that commit and re pushing those 3 commits as they were
+    supposed to be.
+    
+    This reverts commit 9fe15ef4354dc1d878dbdec80908ac8541bc6131.
+
+commit 9fe15ef4354dc1d878dbdec80908ac8541bc6131
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Mar 18 20:23:55 2015 +0100
+
+    ges: Move the notion of children properties to GESTimelineElement
+    
+    Summary:
+    Deprecate the old GESTrackElement children property handling API.
+    
+    New APIs:
+      * ges_timeline_element_list_children_properties
+      * ges_timeline_element_lookup_child
+      * ges_timeline_element_get_child_property_by_pspec
+      * ges_timeline_element_get_child_property_valist
+      * ges_timeline_element_get_child_properties
+      * ges_timeline_element_set_child_property_valist
+      * ges_timeline_element_set_child_property_by_pspec
+      * ges_timeline_element_set_child_properties
+      * ges_timeline_element_set_child_property
+      * ges_timeline_element_get_child_property
+      * ges_timeline_element_add_child_property
+      * ges_timeline_element_remove_child_property
+    
+    Deprecated APIs:
+      * ges_track_element_list_children_properties
+      * ges_track_element_lookup_child
+      * ges_track_element_get_child_property_by_pspec
+      * ges_track_element_get_child_property_valist
+      * ges_track_element_get_child_properties
+      * ges_track_element_set_child_property_valist
+      * ges_track_element_set_child_property_by_pspec
+      * ges_track_element_set_child_properties
+      * ges_track_element_set_child_property
+      * ges_track_element_get_child_property
+      * ges_track_element_add_child_property
+    
+    Reviewers: Mathieu_Du
+    
+    Reviewed By: Mathieu_Du
+    
+    Differential Revision: http://phabricator.freedesktop.org/D40
+
+commit f21132c3d586669a42bdbaf0a5cd6806d88da92f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Mar 1 21:13:35 2015 +0100
+
+    ges: Remove all reference to already dead GESSimpleLayer
+
+commit 8b4b2562a6a0316fe14272e27fdb0a0fe4b99e6d
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Thu Mar 5 13:53:15 2015 +0000
+
+    project: remove unnecessary dereference
+    
+    g_clear_error() already dereferences the error pointer, no need to manually
+    check and do it.
+    
+    CID #1257630
+
+commit c9089e15b392e616d935928a2779b594cd90a653
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Tue Mar 3 14:26:40 2015 +0000
+
+    examples: check argument is valid
+
+commit af3fd19637d0a4d4d24e5fde964e17271efc9dcd
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Fri Feb 27 01:26:24 2015 +0000
+
+    ges-base-xml-formatter: fix setting of child properties
+    
+    Make sure all child properties get set. GstStructureForeachFunc
+    takes a gboolean return value that decides whether to
+    continue or not.
+
+commit 7e9a2ef6c0518c17b4f239d24f66c6a33ca0df68
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Fri Feb 27 01:22:39 2015 +0000
+
+    ges-meta-container: fix ges_meta_container_foreach()
+    
+    Really call function on all metadata inside the container
+    instead of stopping randomly. GstStructureForeachFunc
+    takes a gboolean return value.
+
+commit 80909fb99adee19af7de2170091f96d3f47cf3b0
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Thu Feb 26 20:14:31 2015 +0000
+
+    ges-base-xml-formatter: fix property setting
+    
+    GstStructureForeachFunc has a gboolean return value,
+    and the foreach function will stop unless we return
+    TRUE here. This meant it was potluck whether all
+    properties in the structure got set or not.
+    
+    Fixes setting of text overlay clip text property
+    in particular.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=743874
+
+commit 462727d6d825b6e67119e6b8ea47d9e18cc22bdf
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Feb 24 18:00:34 2015 +0100
+
+    build: fix make distcheck.
+    
+    And install bash-completions in the supplied prefix.
+
+commit b5d5173860fbe639f49a147871cccc225c3302f6
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Feb 20 15:22:25 2015 +0100
+
+    ges-launch: enable auto-completion.
+    
+    Summary: + And be a little smart about it.
+    
+    Test Plan: New feature, working, not testing bash completion
+    
+    Reviewers: tsaunier
+    
+    Differential Revision: http://internal.opencreed.com:8888/D25
+
+commit d0421639e04e553bb7bbef0611c072c4c8220ca8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 20 13:51:47 2015 +0100
+
+    ges: Always set ANY capsfeatures on tracks caps property
+    
+    Summary:
+    We should not restrict the CapsFeatures on the track caps.
+    If someone want to do such a restriction he should add it to
+    the restriction caps directly
+    
+    Test Plan: Run testsuite
+    
+    Reviewers: mathieu.duponchelle
+
+commit 6321a9135fc29e9a8a8d3d23b0129c28cb811575
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Feb 19 17:33:12 2015 +0100
+
+    ges-project: no need to commit an empty timeline.
+    
+    Summary: Can lead to deadlocks if the user commits at the same time.
+    
+    Test Plan: Ran make check, it worked
+    
+    Reviewers: tsaunier
+
+commit 7dd8dbab282f9497ccc38857163134fce40d7013
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Tue Feb 10 10:29:39 2015 +0000
+
+    ges: initialize timeline_duration value
+    
+    If priv->timeline is False the function does not set any value for
+    timeline_duration before using it in gap_new (). Initialize the value to aviod
+    unexpected behaviour.
+    
+    CID #1268405
+
+commit fa3658053ea84c1a31dd4f5fe94553a37939b368
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Feb 6 10:01:14 2015 +0100
+
+    configure: Bump our Gst related dependencies to 1.5.0.1
+
+commit f192ba319268cae29ab144c40b4c1d849352ee40
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Feb 4 15:21:55 2015 +0100
+
+    nlecomposition: Properly protect the children task
+
+commit 1bfe0b7ef32449f142dba215f7a85a815caa85d9
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Feb 3 12:02:42 2015 +0100
+
+    Cleanly handle removing the last object in a composition
+    
+    The strategy here is to seek at the new end of the composition. And in
+    GES we always add a 1ns long gap at the end of the tracks so that all
+    track have the exact same duration, and we have black frames when the
+    timeline is empty
+
+commit f3f27bd63602a484bec04330d4a85949ad8b46ae
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Feb 2 11:57:19 2015 +0100
+
+    validate: Do not wrongly set clip duration for UriClips
+    
+    That was making no sense at all....
+
+commit 23c71e822234eeff6097142b64788fff89e64134
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jan 12 13:04:16 2015 +0100
+
+    validate: Properly expose the commit action as ASYNC
+
+commit 0bb313030b88e4a804fa77050bee308429621731
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jan 27 21:16:05 2015 +0100
+
+    layer: Remove child from children list before emitting "child-removed"
+
+commit 1efe0639dea5a5c958f8a09ab85436cbacb7eb20
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Mon Jan 26 18:25:02 2015 +0000
+
+    ges: remove useless gpointer variable
+    
+    gpointer useless is indeed useless since we can use GST_DEBUG_REGISTER_FUNCPTR
+    to avoid having to store the return of the GST_DEBUG_FUNCPTR registration.
+    
+    CID #1265771
+
+commit 8f79ee9230f7d3153ed185b59d9c8506d8892eec
+Author: Luis de Bethencourt <luis.bg@samsung.com>
+Date:   Mon Jan 26 17:46:36 2015 +0000
+
+    ges: merge MIN() and MAX() into CLAMP()
+    
+    Merge the usage of MIN() and MAX() into one CLAMP() function.
+    
+    CID #1265770
+
+commit 7a9d39fadb425bd7b69e8ee2fcc78cb522d458b0
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Jan 24 10:54:13 2015 +0100
+
+    ges: Make sure the GESTextOverlayClip is register on init
+    
+    So it can be used when de serializing projects containing it.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=743406
+
+commit 70a390451ee60185dcda1a968ad4fe150ef8bf04
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Mon Jan 12 16:14:32 2015 +0100
+
+    Automatic update of common submodule
+    
+    From f2c6b95 to bc76a8b
+
+commit 49c827a8d2dabce7dac71e58d4de628fd0a9ab30
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Thu Dec 18 10:56:54 2014 +0100
+
+    Automatic update of common submodule
+    
+    From ef1ffdc to f2c6b95
+
+commit c2583e01b6f8447c83ed61b4ce9db02d44f55ac2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Dec 13 15:13:32 2014 +0100
+
+    tools: Avoid trying to remove a signal handler that has already been removed
+
+commit dc2f48a7269b04b674b511470e4be24c0ea9c227
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Dec 12 12:02:41 2014 +0100
+
+    uri-asset: Check that the newly computed URI exist
+    
+    No the one we know failed!
+
+commit 7c6ad5e3ba88f3eeb175984b684cae344da68ebc
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Dec 10 10:21:16 2014 +0100
+
+    validate: Add an action type to load a project from its content
+
+commit 752a2c688581fa06edfbd801b62d2c87507c5e76
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Dec 6 10:41:25 2014 +0100
+
+    Revert "track: [API]: ges_track_update_restriction_caps."
+    
+    This reverts commit e9544ce1d67da6990f0a1cae75774063ec37be9d.
+    
+    This commit should never have landed we decided we do not want to do
+    that.
+
+commit 97c56da95bf323995662f08924e36c32ffa55803
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Dec 1 00:38:07 2014 +0100
+
+    timeline: Add a method to easily check if a timeline is empty
+    
+    API:
+        + ges_timeline_is_empty
+
+commit 78913931b20269b0119632518196a2620e28288c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Dec 1 00:34:38 2014 +0100
+
+    ges: Recompute Group priority when one of its clip.layer change priority
+    
+    And add a unit test for that case where it was previously failing
+
+commit b6dbae70c8f2f907aff19de8fb1641590576f68f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Nov 29 01:12:43 2014 +0100
+
+    validate: Start using the new testsuite based API from GstValidate
+
+commit e9544ce1d67da6990f0a1cae75774063ec37be9d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Nov 26 00:28:35 2014 +0100
+
+    track: [API]: ges_track_update_restriction_caps.
+    
+    + And specify default restriction caps for audio and video tracks.
+    + Add ges_track_set_restriction_caps to the sections, it was missing.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740726
+
+commit 18f14de105ed7541b0b3f58f59d33bb83633cd36
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 25 23:35:55 2014 +0100
+
+    tests: Remove integration tests, GstValidate is the way forward!
+
+commit ff2ccb71ac0de26ae9894c6a77a0908357fde386
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 25 19:15:52 2014 +0100
+
+    validate: Handle long tests in the TestManager
+    
+    + Minor bug fixes
+
+commit 523e279e91b70227d23bf6178b2977fcd1648f53
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 25 19:14:59 2014 +0100
+
+    nlecomposition: Minor debug enhancements
+
+commit 122dcbc1904cc1a2627680422eac43ec77880443
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 25 19:13:02 2014 +0100
+
+    pipeline: Expose playsink::video-filter and playsink::audio-filter
+    
+    That can be used to add filters at the very end of the pipeline,
+    and one can think of adding a watchdog element in there for
+    example.
+
+commit 068c20ff604a4e8de3473bbebd844a56ba8ce501
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 25 18:46:03 2014 +0100
+
+    pipeline: Dot not check for chain->tee twice
+
+commit c7cceae1286a97d2556f6c3f9448bb1080d371ff
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Nov 21 19:53:52 2014 +0100
+
+    validate: Avoid depending on not stable APIs
+    
+    And cleanup includes
+
+commit 452ebc19651b1e87b7634ffe8d8fdb8f9ed6738f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Nov 21 19:53:36 2014 +0100
+
+    validate: Move to new action type registration API
+
+commit 8e3790495fa377e9b56616d53269d7e7cbfc129b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Nov 16 20:07:24 2014 +0100
+
+    validate: Add missing action execution printing
+
+commit b7daa03a6e7ec5e2cc85c9838b256dc5f947b50b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Nov 16 20:05:25 2014 +0100
+
+    timeline-element: Properly handle setting name to NULL
+
+commit 6367c96d7db1d327c5e1569f62f6c9904b6f2b4b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Nov 4 15:38:05 2014 +0100
+
+    nlecomposition: Add a 'query-position' signal
+    
+    In order to get the precise position of the pipeline, the only
+    way is to ask the 'application' to query the pipeline position and
+    use it.
+
+commit 3b353be8eac56a14000a534b51bdd749569bcd5f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 12:18:35 2014 +0100
+
+    ges: Keep backward compatibility for relocated assets CLI
+    
+    Meaning adding an API for user to add relacation URI paths
+    
+    API:
+        ges_add_missing_uri_relocation_uri
+
+commit 1373937b8ef1a937c44dc06e1adfcda58de72bec
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 12:17:42 2014 +0100
+
+    Add some ignore files to .gitignore
+
+commit e5b57db7a20954a8834e971826f7023ba374b5c6
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:59:32 2014 +0100
+
+    ges: Add a method to pass argc/argv to GES at init time
+    
+    Allowing user to set configuration actions without using
+    the GES GOptionGroup
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740717
+
+commit ac3cad47b6f3b0f35ccc0900292b5fc5fd418e99
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:58:30 2014 +0100
+
+    validate: Expose GES Validate action
+    
+    So other can also make use of those action outside
+    ges-launch itself
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740718
+
+commit dc0770bfa69d90eb7b4afd22436bcf1435284375
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:55:29 2014 +0100
+
+    uri-asset: Ensure that UriAssets loaded with error are remembered
+
+commit 55c88a726e7389f446047e286fd9d2af612ac604
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:54:10 2014 +0100
+
+    project: Add a method to create assets synchronously
+    
+    This allows to create a add an asset to a project in a
+    synchronous way.
+    
+    API:
+      ges_project_create_asset_sync
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740716
+
+commit 58d525a4e72d30220dbf65887d2c13137d376701
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:51:51 2014 +0100
+
+    ges: Add an init option to set media paths for moved assets
+    
+    Allowing user to easily set a set of paths to look for moved
+    assets instead of needing the to re implement that logic
+    over and over.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740714
+
+commit c8b2ab8dbbf6f6b64a2488e3a3cb02e6cf3106a2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 11:14:45 2014 +0100
+
+    ges: Add a method to get GES GOption group
+    
+    This allow us to have global options to be
+    passed as arguments of the program to configure
+    GES behaviour
+    
+    API:
+      ges_init_get_option_group
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740715
+
+commit 39a7ce6ca0800e12d0839429a4ec9eba9d228498
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Nov 16 16:51:54 2014 +0100
+
+    pipeline: Disable encoding format renegotiation when rendering
+
+commit d109c37343cbbc5a277f0bf9f942db251f23c780
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Dec 5 22:19:32 2014 +0100
+
+    check/ges/track: add forgotten test file.
+
+commit fb34c5056e10345744be7eea1755b4f7923add72
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Nov 26 01:08:31 2014 +0100
+
+    *source: new lines in xml break my parser.
+    
+    + So I removed them cause I'm clever
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740727
+
+commit f85c463b9397903895aaa46a67f272a5948b8f7b
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Nov 26 20:34:24 2014 +0100
+
+    track: [API]: ges_track_update_restriction_caps.
+    
+    + And specify default restriction caps for audio tracks.
+    + Add ges_track_set_restriction_caps to the sections, it
+      was missing.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=740726
+
+commit 0d3044b78d692ef956c9fc051b580a42fb2432e4
+Author: Edward Hervey <bilboed@bilboed.com>
+Date:   Thu Nov 27 17:13:27 2014 +0100
+
+    Automatic update of common submodule
+    
+    From 7bb2bce to ef1ffdc
+
+commit fedee399007352274b258a9edc7fc2ecef2dc255
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 10 17:24:11 2014 +0100
+
+    tests: Fix make distcheck
+    
+    Some xges project are not used anymore and some new appeared, clean
+    that up in the Makefile.am
+
+commit fd268f0387135b7fbfcd5db45c3211f3cee04152
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 10 16:20:29 2014 +0100
+
+    element: Add a property allowing user to avoid serializing TimelineElements on demand
+
+commit 5665e3abb169604aed42aae8f6bffaf6af55e532
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Oct 27 16:51:42 2014 +0100
+
+    xml-formatter: Serialize groups
+    
+    They were not serialized until now.
+    
+    That implies several changes:
+    
+    * Override GESTimelineElement [start, inpoint, duration] properties in
+      GESGroup to ensure that those properties are not serialized as they
+      should not be.
+    
+    * Rename GESBaseXmlContainer->clips field to
+      GESBaseXmlContainer->containers as the hashtable now contains Groups
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=709148
+
+commit e36c4c2bf7d4089e5ff0323a3c4a5050e6e5ba16
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Nov 3 13:06:34 2014 +0100
+
+    pipeline: Do not relink an already linked track
+
+commit 08af3721bf2661b80499a76705c34e18bd1c4d49
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Nov 2 11:46:37 2014 +0100
+
+    frameposition: In case sources have the same size as track, follow track size
+    
+    For example if the size has been serialized in a file, but the user has
+    not personalized the size, we want that whenever the restriction caps
+    change the size, the video should take the size of the track
+    restriction caps.
+    
+    We know need to keep track of the current positionner.size even if
+    setting through caps size changes.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=739527
+
+commit 21807d6637a658f331dac341ecc1f796122d93f2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Nov 1 11:32:16 2014 +0100
+
+    xml-formatter: Do not forget to set properties on the track elements
+    
+    We were just setting children properties, even if the propertie to be
+    set on themselves where properly passed in
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=729487
+
+commit 7f71914f0706d10fb38e165d61db251a779f051d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Nov 1 10:34:41 2014 +0100
+
+    title-source: Expose the shaded-background property
+    
+    Rework the way we override the background property to avoid trying to
+    lookup shaded-foreground-color!
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=728635
+
+commit fcfdbef0b2aa13859bc3b45dd01e18d2604e8442
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Nov 1 09:47:39 2014 +0100
+
+    titlesource: Expose the outline-color property
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=728634
+
+commit b14b5d92cadc8cf074e114c48898bf0fa2325dd9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Oct 31 11:56:16 2014 +0100
+
+    tools: launch: Wait for the project to be loaded to activate gst-validate
+    
+    Otherwize we could have a race where GstValidate actions are launched
+    even before the project has been loaded
+
+commit aac186a742f5690f99083a6ae31d30bf8c18b65a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Oct 31 11:32:37 2014 +0100
+
+    tools: Never try to propose same URI when we know it is missing URI
+
+commit ee2b3f7d24fd59a53abdbe07ed95fdf5643881e7
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Oct 28 18:36:55 2014 +0100
+
+    pipeline: connect tracks when added, not only on state change.
+    
+    + ghost track src pad before calling track added so that
+      pipeline has a pad to link.
+    + Remove silly comment.
+
+commit ac906a9143e1231163907d1cb0e6e74b6fbd8137
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Oct 30 12:36:57 2014 +0100
+
+    Document known and usable child properties for GESTrackElements subclasses
+
+commit 903f30cb324a1a731dd8fa20be860f246b91b719
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Oct 30 12:38:16 2014 +0100
+
+    tools:launch: Properly terminate when we get a SIGINT signal
+
+commit 20f76fe86f941fae124e2db78c2d63a0e173592d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 29 13:40:55 2014 +0100
+
+    trackelement: Add a lookup_child vmethod
+    
+    This method can be used for subclass to override the default behaviour
+    for child lookup. This vmethod can be used for example in the case where
+    you want the name of a child property to be 'overridden'.
+    
+    As an example in the GESTitleSource where we have a videotestsrc
+    which has a 'foreground-color' property that is used in the TitleSource
+    to set the background color of the title, this vmethod is now used to
+    tweak the name passed as parameter to rename "background" to
+    "foreground-backend" making our API understandable.
+    
+    API:
+      GESTrackElement::lookup_child
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727880
+
+commit 190643508f14a64e36f085a69de819505e79dadb
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 29 12:44:17 2014 +0100
+
+    title: Deprecate all method related to child properties
+    
+    The standard way setting children properties is by using the
+    GESTrackElement::set_child_propery and friend methods
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=727880
+
+commit 0192c0e2372b3a5f29cd88cf5e8dca7d133e9689
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Oct 29 13:38:13 2014 +0100
+
+    ges-validate: inform of clip removal.
+
+commit 3035bcb405c600fa82ce76473f0ccd67bcfffa17
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Oct 29 13:25:06 2014 +0100
+
+    timeline: connect_after to layer.object_added.
+    
+    We want the user provided signal handlers to be called before
+    we add track elements.
+
+commit 3f97397b4f5fe64dd2362d56c18dabfc48a9a1d2
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Oct 28 17:33:09 2014 +0100
+
+    nle: Downgrade some INFO to DEBUG.
+    
+    + makes it more pleasant to read logs in info.
+
+commit 79230eef1fcf163383f1c962e7600006241d9fcb
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 22 13:49:27 2014 +0200
+
+    nle: Handle sending SEEK event recursively to our children
+    
+    Instead of relying on it being implemented in core (as it is currently
+    not!)
+
+commit d3d1f853737dc88edc889f465b6b42ff5bcef766
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Oct 6 12:30:17 2014 +0200
+
+    tests: Use audiomixer as an audio mixing element
+    
+    Adder is the past!
+
+commit ca0ce859de1c08227f6a85e4cac0aa6008517063
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 1 10:04:53 2014 +0200
+
+    validate: Implement validate Action type to handle KeyFrames
+    
+    New action types:
+      * set-control-binding
+      * add-keyframe
+      * remove-keyframe
+
+commit c4f43c88f2cf627cb0d048b6ecfa07f2c11d19e3
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 1 09:54:49 2014 +0200
+
+    track-element: Add a signal about added control bindings
+    
+    API:
+      GESTrackElement::control-binding-added
+
+commit 24e2c881807724c6c8b4604e5aa8c4c9d353edca
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Oct 1 09:53:44 2014 +0200
+
+    track-element: Add an API to list all set ControlBinding
+    
+    API:
+        ges_track_element_get_all_control_bindings
+
+commit a022b4b394ef98d9af0925438159a04e56bfd911
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Sep 27 09:59:12 2014 +0200
+
+    title-source: Properly expose children properties
+    
+    + Make sure that the TitleClip properties are not serialized anymore as
+      they are serialized through children properties now.
+    
+    + Enhance debugging for not serialized properties in GESXmlFormatter.
+
+commit 19ee23cdcc23921b4c42d27224178fe385ed47cd
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Sep 26 18:28:16 2014 +0200
+
+    nlecomposition: update base time before seeking current stack.
+    
+    There could be a race where the new segments were pushed after
+    a seek on some / all pads before the operation had had its basetime
+    updated, and thus incoming segments were tweaked wrongly.
+    
+    Reproducible with 3 clips composited and multiple seeks,
+    FIXME hard to validate.
+
+commit 84610050ae5d336cbab47a3c6003b6134649c0a0
+Author: Joris Valette <joris.valette@gmail.com>
+Date:   Sat Sep 14 01:35:55 2013 +0200
+
+    formatter: save and load source's children properties
+
+commit b89ffaea822d8dc5cc009238c25730a02a04e30b
+Author: Joris Valette <joris.valette@gmail.com>
+Date:   Mon Sep 23 18:40:34 2013 +0200
+
+    tests: project: Add children properties check
+    
+    Rename test_project_add_keyframes into test_project_add_properties
+
+commit e8fd816e33248ddde6bea09c1e5b4a38c1c2c88d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 26 18:39:19 2014 +0200
+
+    project: Do not concider adding am already tracked asset as failure
+    
+    It is not really a failure, just a special case.
+
+commit 6d8f744f7f3599047c776b4a0794e72bc713bd38
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 26 17:51:14 2014 +0200
+
+    ges-validate: Add actions to add/remove object from container
+    
+    + Add an action to set an asset on a GESTimelineElement
+
+commit c0a0c1f582494fe514ed5aae00911a4724652569
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 26 17:50:03 2014 +0200
+
+    ges-validate: Fix edit_container return code
+    
+    It used to always return FALSE.
+    
+    + Fix minor leaks
+    + Do not seek ourself, it is users responsability to seek and
+    commit these days.
+
+commit bc7a465fcd18ea11ed7fb5254b47f4b06df67bba
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 26 17:44:12 2014 +0200
+
+    extractable: Make extractable_set_asset return a boolean
+    
+    WARNING: This is a minor API breakage, it should be harmless
+    and allows us to let users know whether changing setting the
+    asset worked or no.
+
+commit 0cdec2c2d094862f2d96720d28588c3d6021d8d8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 17:31:49 2014 +0200
+
+    ges-validate: Add an action type to set restriction caps on track
+
+commit 92cb5811e7baa337727de94e8f0ba1b762cc8e72
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 17:31:05 2014 +0200
+
+    tools: Handle asset relocation for assets from scenario
+    
+    Allowing us to share scenario and media file!
+
+commit 46912100302876cd8ee3ea5758f0083b05ac2f1d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 15:30:55 2014 +0200
+
+    ges-validate: Add support for Layer.auto-transition
+    
+    + Fix a bug where the mandatory field name for the name of the clip to
+    remove in remove-clip did not correspond to what we used in the action
+    (clip-name vs name).
+
+commit f362e81a29fabbc63892db13e861cf918986a9d4
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 14:59:40 2014 +0200
+
+    ges-validate: Add commit and split-clip action types
+    
+    And stop commit at the end of other action types, this now
+    has to be done in the scenario itself.
+
+commit 8a6892ba0a7c47df30331ace3f7c71808db39c00
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 14:57:35 2014 +0200
+
+    ges-validate: Add start/inpoint/duration params to the add-clip action
+
+commit f4faa487ba23c1bd5ca8901a48be50bcec0afe8f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 14:55:15 2014 +0200
+
+    tools:ges-launch: Save the project at the end of execution
+    
+    So that changes from scenarios are taken into account
+
+commit 6a371b308bacfb7e002dc3dd33750cd90ab0e795
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Sep 25 14:53:36 2014 +0200
+
+    nlecomposition: Fix the get_current_position method
+
+commit d419bccf4f51c65d5594077bc484a937962af64e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Sep 23 15:01:56 2014 +0200
+
+    nlecomposition: Wait for a buffer from the new segment to restart task
+    
+    Avoiding races where we would launch a seek right after a FLUSH_STOP and
+    before we get a Buffer which would possibly lead to ERROR message when upstream
+    elements try to push a buffer and check_sticky fails because downstream
+    is flushing.
+
+commit 578364ce415de920afa8aa5b3c5c56f5a3b572f2
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Sep 22 18:58:43 2014 +0200
+
+    nlecomposition: Do useless thing so that the compiler doesn't warn us!
+    
+    Otherwize we get a gcc warning about useless statements.
+
+commit 2d3769f079f204facd61c6a1d52310b46016099e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 17:14:51 2014 +0200
+
+    tools:ges-launch: Do not set pipeline state before the timeline is ready
+    
+    When we are loading a project
+
+commit 2fb33d69f80dab0e481aedbfdb9710abd4558b4b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 17:13:52 2014 +0200
+
+    nlecomposition: Update start stop and duration on initialization
+    
+    So that the composition is usable right after the initialization
+
+commit 0d54d796defe9cfae74603dcdce49204a2133769
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 17:12:18 2014 +0200
+
+    ges: Avoid to always commit when a project is loaded
+    
+    In case we are not in a PLAYING state and the project is loaded, the
+    only thing that should be done is to fill the gaps and this way when the
+    composition get to PLAYING, their initialization will be enough to get
+    everything on track.
+
+commit 57eef236b5cb9a5ba79938d3f9c60b44d5706623
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:58:26 2014 +0200
+
+    tests: Use the new gst_check_objects_destroyed_on_unref function
+
+commit 95223fd46b279837212ba1ddf69d1d8ceab5cdce
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:57:30 2014 +0200
+
+    Start taking advantage of the fact that NLE is in the same three as GES!
+
+commit 50cf1fb5fede1dec4b2dfab4d4afcc9cad8bb52a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:55:51 2014 +0200
+
+    nlecomposition: Fix several leaks
+    
+    * In the action closure invokation we were alway leaking the composition.
+    * gst_bin_add will actually take an extra ref since we already  gst_object_ref_sink so we
+    own the object, other call to that method will increase the refcount which means we do
+    not need to pass an extra ref to the bin.
+    * We want to ref_sink right when the object is added to the composition, making things
+    cleaner and simpler to follow in the tests.
+
+commit 3e79e28213e98c6244c5de9d4f53bfd8c50d2cc1
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:52:45 2014 +0200
+
+    nlecomposition: Activate the composition ghostpad to flush downstream
+    
+    Since commit 060b16ac75ac227d4cfe1db89ccdc4f4b31545ff
+    "pad: don't accept flush-stop on inactive pads" in -core, the flush_stop event will not be
+    fowarded downstream in case the pad is not activated. In our case the element is in
+    READY state, so pads are deactivated. In that commit we simply make sure that the
+    event can be fowarded downstream
+
+commit 02665dae91387b46f59416957b5f51a7845356fa
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:49:52 2014 +0200
+
+    nlecomposition: Restart the main task on FLUSH_STOP
+    
+    It means stop using a dedicated probe to restart task so that the main probe does not
+    drop the FLUSH_STOP event before we have a chance to restart the task. (and this is
+    for sure cleaner/and simpler to read).
+
+commit 37f50193fd8013eb74472339f92580d10a0f3aca
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:29:28 2014 +0200
+
+    nle:source: Protect the probeid field with the GST_OBJECT_LOCK
+    
+    Avoiding races where we try to remove a probe on an already destroyed pad.
+
+commit 03c284abb6ac81df1192f78e510045a6bfcffc5e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Sep 19 12:28:05 2014 +0200
+
+    framepositionner: Add a weak pointer to the track_source
+    
+    Avoiding assertions when the object is destroyed.
+
+commit e31d0554c800b409224d75623732cc8012c3d594
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Aug 25 18:11:52 2014 +0200
+
+    nle: Seek gnlsource when prerolled only
+    
+    Instead of implementing seek on ready all around GStreamer, just
+    seek in PAUSED, when the source gets 'prerolled'.
+
+commit 6bd27667eb4e9e35f644a22c3d1c86a32d86a6a4
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Aug 28 10:20:24 2014 +0200
+
+    ges-track: Do not set removed object state
+    
+    It is the composition to handle
+
+commit 8913c14c5849e9a2508fdd5a46c8e5d13a35aa59
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Aug 20 13:15:30 2014 +0200
+
+    nle: Stop using a MainContext avoiding needing one iter per source dispach
+    
+    Using GClosure to handle the source handling and handle our action
+    ordering ourselves
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=733342
+
+commit aa69de7514ac94d3da00b524e217faa81901fbce
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Oct 21 11:01:17 2014 +0200
+
+    ges: Use audiomixer instead of adder by default
+
+commit b3336fe26e3b0618c8439faf85475dbd2afc234e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Oct 21 10:59:43 2014 +0200
+
+    Port to the new NLE API
+    
+    Port the timeline, track and pipeline to the new NLE API where
+    all objects have static src pads.
+
+commit 11f9c6e1080e70d9e1ee21d813b561cd636f1521
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Aug 15 15:48:14 2014 +0200
+
+    Cleanup import of GNL and rename gnl to nle for Non Linear Engine
+    
+    Conflicts:
+    	ges/ges-track-element.c
+    	gnl/Makefile.am
+    	gnl/common
+    
+    Conflicts:
+    	ges/ges-internal.h
+    	ges/ges-track.c
+    	ges/ges-utils.c
+    	ges/nle/.gitignore
+    	ges/nle/gnlmarshal.list
+    	ges/nle/nle.h
+    	ges/nle/nlecomposition.c
+    	ges/nle/nlecomposition.h
+    	ges/nle/nleghostpad.c
+    	ges/nle/nleghostpad.h
+    	ges/nle/nleobject.c
+    	ges/nle/nleoperation.c
+    	ges/nle/nleoperation.h
+    	ges/nle/nlesource.c
+    	ges/nle/nlesource.h
+    	ges/nle/nletypes.h
+    	ges/nle/nleurisource.c
+    	ges/nle/nleurisource.h
+    	gnl/Makefile.am
+    	gnl/gnl.c
+    	gnl/gnl.h
+    	gnl/gnl/gnl.h
+    	gnl/gnl/gnlcomposition.c
+    	gnl/gnl/gnlcomposition.h
+    	gnl/gnl/gnlghostpad.c
+    	gnl/gnl/gnlghostpad.h
+    	gnl/gnl/gnlmarshal.list
+    	gnl/gnl/gnlobject.c
+    	gnl/gnl/gnloperation.c
+    	gnl/gnl/gnloperation.h
+    	gnl/gnl/gnlsource.c
+    	gnl/gnl/gnlsource.h
+    	gnl/gnl/gnltypes.h
+    	gnl/gnl/gnlurisource.c
+    	gnl/gnl/gnlurisource.h
+    	gnl/gnlcomposition.c
+    	gnl/gnlcomposition.h
+    	gnl/gnlghostpad.c
+    	gnl/gnlghostpad.h
+    	gnl/gnlmarshal.list
+    	gnl/gnlobject.c
+    	gnl/gnlobject.h
+    	gnl/gnloperation.c
+    	gnl/gnloperation.h
+    	gnl/gnlsource.c
+    	gnl/gnlsource.h
+    	gnl/gnltypes.h
+    	gnl/gnlurisource.c
+    	gnl/gnlurisource.h
+    	gnl/tests/check/gnl/common.c
+    	gnl/tests/check/gnl/common.h
+    	gnl/tests/check/gnl/complex.c
+    	gnl/tests/check/gnl/gnlcomposition.c
+    	gnl/tests/check/gnl/gnloperation.c
+    	gnl/tests/check/gnl/gnlsource.c
+    	gnl/tests/check/gnl/seek.c
+    	gnl/tests/check/gnl/simple.c
+    	tests/check/gnl/common.c
+    	tests/check/gnl/common.h
+    	tests/check/gnl/complex.c
+    	tests/check/gnl/gnlcomposition.c
+    	tests/check/gnl/gnloperation.c
+    	tests/check/gnl/gnlsource.c
+    	tests/check/gnl/seek.c
+    	tests/check/gnl/simple.c
+    	tests/check/nle/common.c
+    	tests/check/nle/common.h
+    	tests/check/nle/complex.c
+    	tests/check/nle/nlecomposition.c
+    	tests/check/nle/nleoperation.c
+    	tests/check/nle/nlesource.c
+    	tests/check/nle/seek.c
+    	tests/check/nle/simple.c
+
+commit aa1ba05895de4cdc85320c60202a709bb5596bec
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Aug 12 14:35:09 2014 +0200
+
+    composition: Commit all values before initializing the pipeline
+
+commit f5073e4e58a5490576de5381cffe9d58ab05a9c3
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Aug 5 15:43:11 2014 +0200
+
+    composition: Prevent update sources from being added after seek.
+
+commit 4dd0b6fe14208f0aab0719c3f5feb20576f47d6d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 31 16:02:06 2014 +0200
+
+    composition: only flush stop after seek was set to READY.
+
+commit ee54d98fe24c6d9eaf2f58838fad5bcdd21ecd8b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 29 23:41:45 2014 +0200
+
+    composition: Also ignore all messages from children tearing them to READY
+    
+    At that stage elements should not be taken into account anymore. In some
+    spacial cases they can post ERROR messages (when trying to push sticky
+    events on flushing pads) on the bus. We actually do not care about those
+    issues at that exact point.
+
+commit 8154a2c96f95a2c2a5aae57360c65b29de09f561
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 28 20:24:50 2014 +0200
+
+    composition: Do not try to paused the task that could have been stopped
+    
+    There was a race where we ended up trying to update the pipeline and
+    stop our children task at the exact moment where we were actually
+    setting its state to PAUSED. Take the composition lock and make sure
+    that can't happen
+
+commit 463626ceae4015f89299d669574ff8ed3be92832
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 25 10:55:52 2014 +0200
+
+    composition: Post messages on the bus when it updates itself
+    
+    And properly set the seqnums of those messages so that the application,
+    parents have the exact information about what is going on and why.
+
+commit 9bd96f97705d4cda6332ca8240ffa6fa4ce60234
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 22 18:22:09 2014 +0200
+
+    composition: push flush events on the target.
+
+commit 1d089e8c800aad745f550d230a86db5a6d29e863
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Jul 19 11:41:56 2014 +0200
+
+    composition: No need for action signal to add and remove objects!
+
+commit 1c083281f9b41c29567206a2e84db5ce74a6f343
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 21 16:59:24 2014 +0200
+
+    composition: we're initialized even if update_pipeline returned FALSE
+
+commit 847360368a7a61a20ed0255be21fc8478185fa9c
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 21 16:57:14 2014 +0200
+
+    composition: reset base time to 0 when needed.
+
+commit 5c1b2133a5a0f7747108006889a251c7f304d698
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 21 16:54:46 2014 +0200
+
+    composition: Forward flushes on initialization
+
+commit 494303c263ced45600c50f6a9d02163f9b271ddb
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 18 04:04:16 2014 +0200
+
+    object: make the check for self commit work in a crappy way.
+
+commit baa7863da604f2193427e28da1ef384d84c5c04b
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 18 04:01:25 2014 +0200
+
+    composition: use g_main_context_set_dispatches_per_iteration ()
+    
+    Let's hope this gets merged ...
+
+commit c391310539033fffbf3f77d5b5eaa351a2c31690
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 15 15:17:43 2014 +0200
+
+    composition: set next_eos_seqnum when we get seeked too.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 48ed8c6d0e7a07434eae0917b6adfddcdb3ea8bd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 15 15:47:59 2014 +0200
+
+    gnl: Rely on the GstElement to properly handle their seqnums
+    
+    Actually it is not exactly thread safe to tweak them ourself at the GNL
+    level.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 114d63003eba6ff928e67e4e3577dfcaa4282815
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 15 15:16:23 2014 +0200
+
+    composition: Always return a value in GSourceFuncs
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit ecf353e837e98937153b04809e452353f71deb3c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 15 15:01:59 2014 +0200
+
+    composition: Rename _flush_downstream to _have_to_seek_downstrean
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit bdb74c51619a2fab0ac2882dbb2702a7d2834d0d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 15 14:59:54 2014 +0200
+
+    source: Remove cruft code to seek sources
+    
+    We now seek on ready and thus do not need to do magic trying to seek
+    the source as soon as possible as we now do it even sooner than soon.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 4e8424063002ef3f4a279d38d6bd84956bc0c1dc
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 15 09:46:03 2014 +0200
+
+    composition: Do not remove all sources when stopping task
+    
+    We only want to remove updates and seek, commits should be kept
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 01ee03bc1ff86acc35a796fb05968157b1838ff4
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 15 02:37:25 2014 +0200
+
+    composition: Don't send flushes downstream on pipeline update.
+    
+    The code is still a bit redundant in set_current_bin_to_ready, need
+    to discuss.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit ab2d2c6e4e529a65b3d3f5ac9fa65ff23ff44f41
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 17:52:36 2014 +0200
+
+    composition: Remove locking making sure that we manipulate children in right places
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 435e807f17763a32bbf509594ac5c956478f37b6
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 17:47:07 2014 +0200
+
+    composition: Avoid a race in PAUSED_TO_READY
+    
+    as we were using our children list in there without locking them.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 4c7731ede373b80d37d1d50023657adab40fd458
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 17:18:23 2014 +0200
+
+    composition: No need to reset the composition when going to PAUSED or NULL
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 08da7d6d2eb781fe8da6418cf49ba8df8d2699b1
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 17:10:35 2014 +0200
+
+    composition: Make sure we have a peer when we send flushes downstream
+    
+    And avoid leaks
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit c81ee05c412489e2499e16b4269cd36732dc5a4b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 17:06:05 2014 +0200
+
+    composition: Minor cleanups
+
+commit 2660f20cabc962931aaf022c7f3acf476980a486
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 16:51:56 2014 +0200
+
+    composition: Take the objects lock when reseting the composition
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 3f0f41f79fb51a942c9d23c1a1c346d8783da383
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 16:47:45 2014 +0200
+
+    composition: Remove the reset children method
+    
+    as it is all already done in _empty_bin ()
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 76bf900e82ca6c5a99dc9ce54a6eeafe61c8532e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 16:44:43 2014 +0200
+
+    composition: Set children caps only when they are added to the composition
+    
+    No need to do it again on READY_TO_PAUSED
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 73274d839137fe0108ac8d4e5c1ffc059a6c9b32
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 16:41:25 2014 +0200
+
+    composition: No need to children state locked anymore
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit c3ba1f7351078cfb231e0abeeef234dbb7efca1b
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 16:30:35 2014 +0200
+
+    composition: cleanup dispose / finalize
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit c6694778191eff46138486c27973bcebbc808a62
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 16:24:46 2014 +0200
+
+    composition: remove children warning drop HACK.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 0b292ea2dc3f2906cfdca4ad2f729c05def8a05f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 16:12:00 2014 +0200
+
+    composition: remove now useless notion of GnlCompositionEntry.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit caa916e509a06effcb198a6bacaf56628f50dfc1
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 15:50:58 2014 +0200
+
+    composition: cleanup GnlCompositionEntry before its actual removal.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit dcb7577673b54baeb23b38e17de46ee83873625d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 15:43:04 2014 +0200
+
+    composition: remove now useless prop "deactivated_elements_state".
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 3b749835e9ea92fbb3a31f1bf4a4060f412cb3df
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 15:40:28 2014 +0200
+
+    composition: Remove now useless flag "reset_time".
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 3e3ac438a44529fc9c56d7a8eadb75368d3acd2c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 15:37:51 2014 +0200
+
+    composition: Remove now useless flag "stackvalid".
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit f826851f3b4d4e0dba2cb112995aa4b800f55772
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 15:35:47 2014 +0200
+
+    composition: remove now useless "flushing" flag.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 619b157ec3c0c8103ba897586cc7420ce48e4687
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 13:36:31 2014 +0200
+
+    composition: Do not use 'update' seek for now
+    
+    This is not working in our new context and the seek do not work at
+    all when we set seek start to CLOCK_TIME_NONE and type to TYPE_NONE.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 0951cc07e2d76924a5a24aa6525b9e059e7cd3d4
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 14 13:35:24 2014 +0200
+
+    composition: Add the stack start/stop that has been set in dotfile name
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 8526ba627311e9c1d7bc700320184417e6f367cf
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 14 13:34:25 2014 +0200
+
+    composition: Push flush events *downstream* not 'somewhere' :)
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 6dae885161d6db75af151a023f3a859e04fad7d2
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Sun Jul 13 16:59:15 2014 +0200
+
+    source: Atomically change the probe ID
+    
+    Avoiding races where the probe would be removed 2 times
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 7d9ed1f185335c1d4080c1311b3d47083a177982
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Jul 13 11:51:51 2014 +0200
+
+    composition: Avoid deadlock when setting current bin to ready (on commit or seek)
+    
+    We need to make sure that between the time we send flush_start/stop and
+    the time we actually set the bin to READY, no buffer got prerolled again
+    as it would lead to a deadlock trying to set the bin to READY (while
+    deactivating the pads, it needs the streaming lock, which would be
+    taken in that case)
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 92ff7ffa6c6250b2e354da154a2a783b542fab8c
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Sat Jul 12 20:54:55 2014 +0200
+
+    composition: Only sync state of current bin when activating new stack.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit c94dfdc68852fe1d5be307238f03885654d95b5c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 21:59:43 2014 +0200
+
+    composition: Start kindergarten task when going to READY.
+    
+    And stop it when going back to NULL.
+    
+    Update tests.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 95a2e3b570e61df26048c22a2d540fa77bba1190
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 21:58:41 2014 +0200
+
+    composition: add a new failing test for finalize on commit.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 50959f9c106da808dc479b2bdcc3589f4789ed1a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 19:13:29 2014 +0200
+
+    composition: Make sure to remove all updates when updating the stack
+    
+    The EOS we received before that became meaningless and thus the
+    associated GSources should no be triggered
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 72ec11ef06e7d8e708113ee9b7fa84e77aba9b5e
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 18:29:17 2014 +0200
+
+    composition: Avoid emitting COMMITED like crazy
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit fe5ca968d01ab6e69695772beb021f39c707cc76
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 18:27:25 2014 +0200
+
+    composition: Add an enum to define why we update the stack
+    
+    Making the code simpler to follow
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit ccf9a3e3d7fbf69bb42f4a4213e842016736f202
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 17:48:05 2014 +0200
+
+    composition: We are now waiting for caps to restart our task
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 82cbbf3b860ef584041d74d88da1b86c6d75673c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 17:31:34 2014 +0200
+
+    composition: Remove useless functions to add GSources and add debugging
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 668331561bbad9c2edce2208d05cc71263c97659
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 17:25:44 2014 +0200
+
+    composition: Remove DONE fixme
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit d038e53db8a08c60e6c8f82e40b719d7b56b4207
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 17:23:29 2014 +0200
+
+    ghostpad: Do not try to be smarter than possible with seqnum
+    
+    We can have several CAPS event comming at any time and thuse we will
+    need to rely on elements to handle their seqnum properly as we can not
+    do a safe guard at our level
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit c256fd14869bd2b915f830caaa3798b6aea2528c
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 17:22:24 2014 +0200
+
+    composition: Keep our GSources in a list making their thread safe
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit c0227655299e05a25536be1493f2eabee33e2d83
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 16:08:20 2014 +0200
+
+    composition: Concider the last action as DONE when we get a CAPS or SEGMENT
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 7976d55e56b32b21c331c6f327fb9ed8cd93fa3f
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 15:41:50 2014 +0200
+
+    composition: only forward our flush start / stops
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 2ee5bf26c17b8be4a36a37d115a988bd82a74481
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 14:18:58 2014 +0200
+
+    ghostpad: remove useless debug
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit c6cfed94dabdbab5cfadfe83d489719c48933de2
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 14:17:36 2014 +0200
+
+    composition: cleanup and enhance debug
+    
+    Bye Bye STRAM START you were a brave little debug we will miss you.
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 1dbf0b91464889eb31976f28aee83a9c4953e3b9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 11 14:11:21 2014 +0200
+
+    composition: do not flush downstream when updating pipeline ourselves.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit b7265ecde28d07fde57c9817dc40f087b1373c9c
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 11 12:20:53 2014 +0200
+
+    composition: Set update to TRUE when updating the stack because of EOS
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit afc483b69daf78339ff773d5f806ffa790bf5731
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 10 18:01:32 2014 +0200
+
+    composition: Handle seeking current stack while PAUSED
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 6869c58e28abc2e07854289c03218721b380c2a8
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 10 16:26:48 2014 +0200
+
+    composition: Add and enhance some debug
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 48bd4c304699ddbbaf8657137f398e05130ee20c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 10 16:21:31 2014 +0200
+
+    composition: Dot the newly created stacks
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 39a915883e5bf6974a155be3a0dfea2e0ab7519d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 10 16:17:20 2014 +0200
+
+    gnlghostpad: Add some more debugging and fix mistakes in seqnum handling
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit b28c5061219af12042463822a9d3373dfb2bb9c9
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 10 15:48:50 2014 +0200
+
+    composition: Factor out a function to seek the current stack
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 75a809cf7599bce34f714bc2eac4ebed5c8ee2dc
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 10 15:46:19 2014 +0200
+
+    composition: Set the seqnum only when receiving the actual seek event
+    
+    Setting it before calling seek_handling is racy!
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit f6cb54c2ef961f96cc0532c6639be82e32cd52bc
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 10 15:45:19 2014 +0200
+
+    composition: Set the real_eos_seqnum in a dedicated method
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 28bea488936e5538b1413d986b0c9b4ff16e2cba
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 10 15:43:26 2014 +0200
+
+    composition: Reset the real_eos_seqnum when reseting the composition
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 9759f801e5b45b715614699063fde2b44e0cfb2e
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 10 15:42:48 2014 +0200
+
+    composition: Release OBJECTS_LOCK when emiting the "commited"
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 913798ea3dc1cde7cb4ff5e2e85973bc1945161a
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 10 15:33:23 2014 +0200
+
+    composition: Use the private struct directly
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 96672825d5ac604d95aca1cac2b0a5dca6c84523
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 9 12:51:36 2014 +0200
+
+    gnloperation: Totally clear operations when removing emptying current_bin
+    
+    Removing linked childre leads to weird behaviour, we want to make sure
+    that all elements are totally clean when they are out the current bin.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 837ef2199f802aa3da06764e85c95c62e4b79660
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 8 23:25:09 2014 +0200
+
+    gnlghostpad: Do not forget to set output segment seqnum
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 9d8d07762765507929c08d4933a4c140c60d0e06
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 8 23:00:29 2014 +0200
+
+    composition: Fix the build
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 123a9400013d982283276b52202125f8c3f505e8
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 8 22:59:11 2014 +0200
+
+    tests:composition: Fix some refcounts
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit eeb475db5bf692887c7b3a91c59c78ab24efe1f5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 8 22:58:02 2014 +0200
+
+    composition: Relink nodes *after* setting the seqnum
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 25a2c2387e78384ac511a5be77ba7cd6e48cb9d7
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 8 22:57:22 2014 +0200
+
+    gnlghostpad: Do not tolerate getting seeked when no target is set
+    
+    This should not happen anymore
+    
+    + Do not set twice events seqnums
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 73677edf6054942b37ffe0bddc19679ff68db48c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 8 22:55:15 2014 +0200
+
+    gnlghostpad: Add missing seqnum tweaking
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit d7e7b047d0d42d833e5728d939fb219263d2f25b
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 8 22:54:31 2014 +0200
+
+    tests: Use compositor instead of videomixer
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 92105a17a506787ef595f4e4a0ffe3ad8fd1261d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 8 22:53:57 2014 +0200
+
+    composition: Handle the case were we get an EOS right after a segment
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit f0dbc0fcd6146a9b54812aed74e0abf5dc1534e7
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jul 8 13:28:57 2014 +0200
+
+    composition: Make basic seeking working
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit ea055c834919bf5d5dc9013588a514ef410dc2da
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 23:28:43 2014 +0200
+
+    tests: Start fixing operation tests
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 988116fbae7537f83e9963074d5269bbf9480650
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 23:24:46 2014 +0200
+
+    tests: Fix composition tests
+    
+    We can not expect a seek event anymore as we are seeking in READY the elements
+    themselves
+    
+    +remove actual sinks
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 054569cce7ea9990978e04d3210e2aff9e0b24f5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 23:07:15 2014 +0200
+
+    composition: Implement the logic to PAUSE the task while executing actions
+    
+    We need to wait for the pipeline update to be actually finished before we can start another
+    action. That means that we pause the task until one buffer from the new stack is
+    outputed.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 6e476ddd247d688edcb639a6ebc8c9c19430375e
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 23:08:56 2014 +0200
+
+    composition: Do not forget to set expandables state to NULL when disposing
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit bd47c57d1a0a5c6f1484f072152b05e04d1684de
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 23:01:24 2014 +0200
+
+    composition: Factor out a function to commit only the values
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit de9c348ae0923759ba37ea4a615d13ebba609f8b
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 22:58:27 2014 +0200
+
+    composition: Get the current position before actually commiting values on commit
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit eeb530e19d3e74e8a65beb3aef51a3649a9b3400
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 22:54:25 2014 +0200
+
+    composition: Add a method that set the current bin to READY
+    
+    We need to get the stream lock in some conditions, and thuse send
+    flush event in those cases.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit c99642fe66e5801573f1ec0ca4baf5a7bdc0b551
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 22:50:34 2014 +0200
+
+    composition: Remove useless code
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 5efd167bf23c7c61a960987d1e19a5bc994761a0
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 22:33:09 2014 +0200
+
+    composition: Clear the old stack when removing children that where used
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit e522427cb48c64675b364839230bd5caa92a814c
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 22:27:21 2014 +0200
+
+    composition: Remove useless toplevel_seek argiment from activate_new_stack
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 7de8b9c16c7ec72fbd913cfea32b5b80ecb7383d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 22:25:51 2014 +0200
+
+    composition: Rework the seqnum logic to avoid races when setting the new stack seqnum
+    
+    When we were seeking the same stack without a logic that gurantees that we actually
+    saw the seek with the new seqnum set, we could have ended up with an EOS set with
+    the right seqnum even if it was actually not the case.
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 7b55a912841fe1f565291b15ef9ae6cd9ae34fe0
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jul 7 21:31:01 2014 +0200
+
+    composition: Add/Remove children in the same order as they were called
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 5ec01408dfcce71a9643592dacbc2ccd5044e7dd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 7 21:28:28 2014 +0200
+
+    composition: Remove useless flush_start argument from the stop_task method
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 44e95d240ad653f6b4bcf7085ce1453f9ada487b
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Sun Jul 6 15:46:22 2014 +0200
+
+    composition: Force setting children state to NULL rebfore unrefing them
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit f0c5f872849b47399bc62e9b1f8f003752b1bab6
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jul 4 11:05:41 2014 +0200
+
+    compositition: Check last stack in the children thread
+    
+    Avoiding to take the OBJECT_LOCK when recieving EOS. The computation is
+    based on the GstEvent.seqnum to make sure that the EOS we receive
+    corresponds to the right sequence.
+    
+    In that patch we tweak seqnums so that they are correctly computed
+    avoiding to depend on all elements to do it properly as it might pretty
+    much not be the case!
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 2e01715209933906078969f202c2f6e916270572
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 4 11:11:53 2014 +0200
+
+    composition: Actiually set current_bin state even when not debugging
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 5df6986a8192a2bb342c77e4a21b7d01abe53c22
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 17:42:06 2014 +0200
+
+    composition: Set *all* children state when going back to READY and then NULL
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 27d58a30af72d28c49a54883d3d90720fa9e9abb
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 3 17:36:01 2014 +0200
+
+    composition: Fix toplevel seek event refcounting
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 0e663da5887f01df3575b2c939aa147bb434b2d0
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 16:46:21 2014 +0200
+
+    composition: Teach the composition to seek same stack
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit c05898a169b7eb2b0675ff036474a59d5a0462f4
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 16:44:05 2014 +0200
+
+    composition: The ref the user gave us is our, and we give another to the bin when needed
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 976cebeaedc320aa87ae98a4eaa28b6de375f698
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 3 16:41:42 2014 +0200
+
+    composition: Rename commit_pipeline_func to commit_func
+    
+    We do not commit any pipeline, we commit the new state of the composition internals
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 3f76ea7c2f0b25631acdf19bd4b156080a824f5a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 14:48:25 2014 +0200
+
+    composition: Set the state of the internal bin before removing its children
+    
+    Otherwize when we set the composition state to READY or NULL we can end
+    up with children in PAUSED state outside of everything
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit d73cab7186e618f1baa52c5549bfd088bcc5e603
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 3 14:34:11 2014 +0200
+
+    tests: Minor cleanup
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 9c9fe03b8fdafa661e42988a07197ec710f2b18a
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 14:32:44 2014 +0200
+
+    gnlobject: Allow commiting of object that are not inside a composition
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 23f58e27e6669fe22fb210765ac161c7ab15fd52
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 3 14:32:18 2014 +0200
+
+    composition: Empty current_bin on gnl_composition_reset
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit be37cb14bd0f486b57dc093cdf24e3dd5bf49729
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jul 3 14:31:35 2014 +0200
+
+    composition: Remove now useless external_gst_bin_add_remove field
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit 2af389dc8725cb874febb2795379f0fec3c3a570
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 3 11:36:20 2014 +0200
+
+    composition: Remove now useless pad probes
+    
+    Co-Authored by: Thibault Saunier <tsaunier@gnome.org>
+
+commit 74c30001f902d8abce9fa5d3f5b2310eff864101
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 2 21:01:31 2014 +0200
+
+    composition: Add an internal bin where that contain used children
+    
+    Co-Authored by: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+
+commit d8ca412cd96399e8553790c1b0c4572345eb8a74
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jul 2 17:33:35 2014 +0200
+
+    composition: Add objects to the pending IO list in a GSource
+    
+    This way we make sure we do not manipulate our children from another
+    thread than the dedicated one.
+
+commit bb7fa996b46d56bdd0101f3c53c455f35c86734d
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Jul 1 18:08:32 2014 +0200
+
+    composition: Start implementing seeking in a GSource
+
+commit 5faa417583139d908e50fc7562eae5363d132776
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jun 30 16:21:30 2014 +0200
+
+    composition: switch to using an action signal to add and remove objects.
+
+commit be269c833ff2f236d15f02fef578ebfafdf42d22
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Mon Jun 30 16:29:50 2014 +0200
+
+    composition: chain up finalize before clering mcontext_lock.
+
+commit 33aea7c5f444688118a8023108c404bb3e93f793
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jun 30 15:12:38 2014 +0200
+
+    composition: Initialize the first stack async
+
+commit 3c958af13cb4a44705d6effa9a4effded48424ae
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sun Jun 29 22:35:34 2014 +0200
+
+    Finish fixing tests
+
+commit ab1d577a1077b25495638a827a17b5fcacccf9eb
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Sat Jun 28 14:44:24 2014 +0200
+
+    tests/common: disconnect commited handler
+
+commit 6dc52ca0d20d249a44561d1e41016795685746de
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 16:12:12 2014 +0200
+
+    composition: Actually commit in on our own thread
+    
+    Avoiding races
+
+commit 23e7788921573f192b4d960ff864e874bba21aba
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 17:03:44 2014 +0200
+
+    composition: start and stop task in init and finalize
+
+commit 170ea10cdec34a51907977b1022a27a40baf68a8
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 17:01:34 2014 +0200
+
+    tests: unref message correctly
+
+commit e81d987fad2f7570f17277fcb27899d593b809d7
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 16:40:19 2014 +0200
+
+    composition: home grown task
+
+commit c9bbb1d23010d5dc39afac4d02c2be73819d79b1
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 16:12:28 2014 +0200
+
+    Don't be sync silly test
+
+commit 13ae2cecd3333c541ebe7c0be27db4489f339c5e
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jun 27 15:00:48 2014 +0200
+
+    composition: simplify update_pipeline_func
+
+commit 9c10aa34d1a9296e4d38ace9a3eb124a5454f3a5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 27 16:26:09 2014 +0200
+
+    composition: Reset the srcpad target when removing the toplevelentry
+
+commit 550aaf522dec2e66bd6e306a14ae7bdb6f872064
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Jun 27 12:15:10 2014 +0200
+
+    composition: Use a GstPad task to run the update pipeline thread
+
+commit 6b193cdbdae630b2d2eaf6b8317edbddafdbba01
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jun 26 23:48:09 2014 +0200
+
+    gnlcomposition: Factor out code to deactivate old stack and activate new one
+
+commit 924f9ecf83a1a47d3826125287fc60518c20f26f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jun 26 19:00:03 2014 +0200
+
+    composition: Avoid looping using gotos
+
+commit 03b11d58e4b7e600e7d4d640cd367d9f34982ea8
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Thu Jun 26 18:41:48 2014 +0200
+
+    gnlcomposition: Use the new _object_block_and_drop_data where appropriate
+    
+    Renaming block_object_src_pad to _object_block_and_drop_data
+
+commit 978e5cbe48049bab21236428cdbb72be8085bf35
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 25 19:39:29 2014 +0200
+
+    gnlcomposition: factor out some functions
+
+commit bf367f704cdd8547cdcf9a6534fccaf9798e63f5
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 25 19:18:29 2014 +0200
+
+    gnlcomposition: Factor out the condition of _parent_or_priority_changed
+
+commit 381f7d2aee0409d2c010be8cca2a5a2041ceeb7f
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 25 19:17:55 2014 +0200
+
+    gnlcomposition: Add a function to block object source pad
+
+commit 4cb834fa2196cb241ab6c8a0e737046b1ff7d03d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jun 24 13:44:13 2014 +0200
+
+    gnl: Add the srcpad directly to GnlObject
+    
+    Starting from now we will not claim that we support GnlObject that have
+    several source pads as this is
+    1- Not true at all;
+    2- the design of priorities in the GnlComposition tree does not allow that;
+    3- Not very useful in most of the cases and it complexifies quite a lot the code
+       in the composition.
+    
+    Conflicts:
+    	configure.ac
+    	tests/check/Makefile.am
+
+commit 38b080deb3f48a01f47c0ea1275fd60a1305459c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Jun 25 15:35:08 2014 +0200
+
+    Revert "gnlobject: Commit object in READY_TO_PAUSED"
+    
+    This causes races when seeking, reverting for now even if we will
+    probably want to bring something like that back.
+    
+    This reverts commit 3549e745a8f0de3977b83c60e9b447afaf55d8a0.
+
+commit bd7d8776a1d905f3cf9da816e2ae24a89b99a7c9
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Tue Jun 24 12:52:24 2014 +0200
+
+    gnlsource: remove useless "controls_one" field.
+
+commit 81a0ee66c1266ed5b514b77b9cd00858b1dbceee
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Tue Oct 21 10:35:48 2014 +0200
+
+    Import GNL from 978332e7c4c3bba1949421d28b492540ab471450 'Release 1.4.0'
+
+commit a09caa3da235ef3b85f9c54256f7c991d3e8c3dc
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Aug 15 18:02:36 2014 +0200
+
+    tests: timelineedition: Init GES once at the beginning.
+    
+    Avoiding to forget to init in a particular test and failling stupidly
+
+commit 88430d70ea7d316e0bee041a68f70883d2ffa71c
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Fri Aug 15 18:00:24 2014 +0200
+
+    test: backgroundsource: Disable tests that rely on nlecomposition internals
+    
+    We can't rely on that, in particular now that it does not actually
+    add its children all the time but only when it is needed (and that
+    it has an internal bin where actual things happen).
+
+commit b752eea81892a971bbb6a585c2a97fd3555dd8d1
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Wed Aug 13 13:15:02 2014 +0200
+
+    timeline: Add a method to retrieve a pad from a track
+    
+    It allows user to easily get the proxied pad from a track.
+    
+    API:
+      + ges_timeline_get_pad_for_track
+
+commit cc84b63305424ecadca9ace16fc04396b74550ee
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Mon Jul 28 15:26:18 2014 +0200
+
+    tools:launcher: Avoid commiting when we are not done loading the timeline
+
+commit b9c6606e89c742311044c43f719076e8aa3c73dd
+Author: Thibault Saunier <tsaunier@gnome.org>
+Date:   Sat Jul 26 00:31:32 2014 +0200
+
+    ges: Use the new GNL element message feature to notify async operations
+
+commit 2104cd9e50e3ff9061b6fcacac6be4e4d76e02ff
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Jul 24 17:55:35 2014 +0200
+
+    xml-formatter: message-forward is not something that should be parsed.
+
+commit 565591e9ee4a19a9b5175949cf0390a999aedbf2
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Fri Jul 25 14:47:07 2014 +0200
+
+    timeline: handle async start
+
+commit d2b8e9d3d9b8ec152d87c77e2acbfb0d76329ae6
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Thu Oct 23 21:46:04 2014 +0200
+
+    tests: implement our validate TestManager.
+    
+    And make sure it installs alongside the other validate apps.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=739093
+
+commit 5c79b5539bb169fcccac22f446b653a570c3a504
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Thu Oct 30 15:54:04 2014 +0000
+
+    smart-video-mixer: unref pads_info hash table in dispose
+    
+    Before gst_bin_dispose() runs and destroys elements.
+
+commit 9b82267aef7c34d8a5e506abda2e2b2c512807a0
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Thu Oct 30 15:20:18 2014 +0000
+
+    smart-adder: fix crash in unit test
+    
+    Unref pads_info hash table in dispose instead of
+    finalize, i.e. before gst_bin_dispose runs and
+    destroys pads_info->bin (to which the pads_info
+    does not hold a ref).
+
+commit 05588c416ac71ea8648f7954ea5cdc82d9b98984
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Mon Oct 27 18:01:56 2014 +0100
+
+    Automatic update of common submodule
+    
+    From 84d06cd to 7bb2bce
+
+commit 717985182a5c473610817c1a31c11abf4e2c6fd9
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:36:22 2014 +0000
+
+    track: fix indentation
+
+commit e1f92be62b15347253cb054f109ed7ab3dee61ed
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:35:30 2014 +0000
+
+    timeline-element: don't leak name string
+
+commit 29bac48934b16c51773e9c5075d46ad44fc2cbd4
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:34:29 2014 +0000
+
+    timeline: fix mutex and all_elements hash table leaks
+
+commit 44724f8d6d21112ad11f86ab835d756a5e6b9b15
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:33:50 2014 +0000
+
+    timeline: free tracks obtained via select-tracks-for-object signal
+
+commit 30d879f357baf48088288fd03b04a72896f91093
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:32:41 2014 +0000
+
+    timeline: free track elements list
+
+commit b3114b6a4db729eb831e68eb744e974d62eff56b
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:31:40 2014 +0000
+
+    video-test-source: fix caps leak
+
+commit 0c5dfcf931f940bc258fc2b4d55a34cce03fd585
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:31:26 2014 +0000
+
+    framepositionner: fix caps leak
+
+commit 0f809b481bf4eb181847a2321e8b768cf94e3598
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:31:08 2014 +0000
+
+    audiotrack: fix caps leak
+
+commit 4ecb7c88fb6740b2f7cf897d47b572bcffc9a4ff
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:30:53 2014 +0000
+
+    videotrack: fix caps leak
+
+commit 8edb4a7ec616828a33b1e167e712fe9c76284de1
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:30:29 2014 +0000
+
+    track: don't leak restriction caps
+
+commit d2e33a35e972ed523533ed752235c10e2b39881a
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:29:06 2014 +0000
+
+    smart-adder: don't leak pads_infos hash table
+
+commit dd7d2d26ec4f28d041a979edaa8829745c3f4a03
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:28:09 2014 +0000
+
+    smart-video-mixer: don't leak pads_infos hash table
+
+commit 3e02157f02ec0cc3b28f16c9554eb450498271ed
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:27:17 2014 +0000
+
+    project: fix string leak
+
+commit 4ad628bb13da6d58094af6f039cafff3bdf97ba0
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:25:46 2014 +0000
+
+    metacontainer: don't leak GValue contents
+
+commit d106bc24f763b1ff724012fe34e0f59116ca597f
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:24:09 2014 +0000
+
+    tests: don't leak clips list in basic unit test
+
+commit 131760b6d34dac7760220eff4b9a2a81f25f3fd6
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Sun Oct 26 20:23:26 2014 +0000
+
+    Parallelise 'make check-valgrind'
+
+commit 5779e68102725c20bd32f91c5d1094c1d027699d
+Author: Mathieu Duponchelle <mathieu.duponchelle@opencreed.com>
+Date:   Wed Oct 22 14:15:11 2014 +0200
+
+    ges-validate: issues naming have changed.
+    
+    Update the override.
+
+commit a76e627af8b4f5b0ac4aeec54a6baa3a9c760a6b
+Author: Tim-Philipp Müller <tim@centricular.com>
+Date:   Tue Oct 21 13:04:26 2014 +0100
+
+    Automatic update of common submodule
+    
+    From a8c8939 to 84d06cd
+
+commit c46ae2c0095f13d7e6186f52ee25cb4e36a0cff7
+Author: Stefan Sauer <ensonic@users.sf.net>
+Date:   Tue Oct 21 13:01:04 2014 +0200
+
+    Automatic update of common submodule
+    
+    From 36388a1 to a8c8939
+
