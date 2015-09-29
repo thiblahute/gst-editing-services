@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="32e9f5e1-020c-41e9-b4a5-70e38873ef4e"></a>
+			</div>
+
+	
+	
+	
+		<h1>Goals of GStreamer Editing Services</h1>
+<p>The GStreamer multimedia framework and the accompanying GNonLin set of
+plugins for non-linear editing offer all the building blocks for:</p>
+<ul>
+<li><p>Decoding and encoding to a wide variety of formats, through all the
+available GStreamer plugins.</p></li>
+<li><p>Easily choosing segments of streams and arranging them through time
+through the GNonLin set of plugins.</p></li>
+</ul>
+<p>But all those building blocks only offer stream-level access, which
+results in developers who want to write non-linear editors to write a
+consequent amount of code to get to the level of <em>non-linear editing</em>
+notions which are closer and more meaningful for the end-user (and
+therefore the application).</p>
+<p>The GStreamer Editing Services (hereafter GES) aims to fill the gap
+between GStreamer/GNonLin and the application developer by offering a
+series of classes to simplify the creation of many kind of
+editing-related applications.</p>
+<h1>Architecture</h1>
+<h2>Timeline and TimelinePipeline</h2>
+<p>The most top-level object encapsulating every other object is the
+<a href="#GESTimeline">GESTimeline</a>. It is the central object for any editing
+project.</p>
+<p>The <code>GESTimeline</code> is a <code>GstElement</code>. It can therefore be used in any
+GStreamer pipeline like any other object.</p>
+<h2>Tracks and Layers</h2>
+<p>The GESTimeline can contain two types of objects (seen in ?):</p>
+<ul>
+<li><p>Layers - Corresponds to the user-visible arrangement of clips, and
+what you primarily interact with as an application developer. A
+minimalistic timeline would only have one layer, but a more complex
+editing application could use as many as needed.</p></li>
+<li><p>Tracks - Corresponds to the output streams in GStreamer. A typical
+GESTimeline, aimed at a video editing application, would have an
+audio track and a video track. A GESTimeline for an audio editing
+application would only require an audio track. Multiple layers can
+be related to each track.</p></li>
+</ul>
+<p><img src="layer_track_overview.png" alt="Layers and Tracks" /></p>
+<p>In order to reduce even more the amount of GStreamer interaction the
+application developer has to deal with, a convenience GstPipeline has
+been made available specifically for Timelines :
+<a href="#GESPipeline">GESPipeline</a>.</p>
+
+	
+	</div>
+

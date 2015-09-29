@@ -1,0 +1,50 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+ensure_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^ensure_uri (gchar * location)$/;"	f	language:C++	file:
+fields	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^  const gchar **fields;$/;"	m	language:C++	struct:__anon1	file:
+FieldsError	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^} FieldsError;$/;"	t	language:C++	typeref:struct:__anon1	file:
+GESPitiviFormatterPrivate	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^typedef struct _GESPitiviFormatterPrivate GESPitiviFormatterPrivate;$/;"	t	language:C++	typeref:struct:_GESPitiviFormatterPrivate
+GES_IS_PITIVI_FORMATTER	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	34;"	d	language:C++
+GES_IS_PITIVI_FORMATTER_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	37;"	d	language:C++
+GES_PITIVI_FORMATTER	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	28;"	d	language:C++
+GES_PITIVI_FORMATTER_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	31;"	d	language:C++
+GES_PITIVI_FORMATTER_GET_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	40;"	d	language:C++
+ges_pitivi_formatter_get_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^GType ges_pitivi_formatter_get_type (void);$/;"	p	language:C++
+ges_pitivi_formatter_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^GESPitiviFormatter *ges_pitivi_formatter_new (void);$/;"	p	language:C++
+ges_structure_parser_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_class_init (GESStructureParserClass * klass)$/;"	f	language:C++	file:
+ges_structure_parser_end_of_file	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_end_of_file (GESStructureParser * self)$/;"	f	language:C++
+ges_structure_parser_get_error	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_get_error (GESStructureParser * self)$/;"	f	language:C++
+ges_structure_parser_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_init (GESStructureParser * self)$/;"	f	language:C++	file:
+ges_structure_parser_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_new (void)$/;"	f	language:C++
+ges_structure_parser_parse_default	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_parse_default (GESStructureParser * self,$/;"	f	language:C++
+ges_structure_parser_parse_setter	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_parse_setter (GESStructureParser * self,$/;"	f	language:C++
+ges_structure_parser_parse_string	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_parse_string (GESStructureParser * self,$/;"	f	language:C++
+ges_structure_parser_parse_symbol	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_parse_symbol (GESStructureParser * self,$/;"	f	language:C++
+ges_structure_parser_parse_whitespace	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^ges_structure_parser_parse_whitespace (GESStructureParser * self)$/;"	f	language:C++
+GES_TYPE_PITIVI_FORMATTER	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	26;"	d	language:C++
+GET_AND_CHECK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	610;"	d	language:C++	file:
+GET_AND_CHECK	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	68;"	d	language:C++	file:
+invalid_fields	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^  GList *invalid_fields;$/;"	m	language:C++	struct:__anon1	file:
+LAST_CHILD_QDATA	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	26;"	d	language:C++	file:
+LAST_CONTAINER_QDATA	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	25;"	d	language:C++	file:
+parent	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^  GESFormatter parent;$/;"	m	language:C++	struct:_GESPitiviFormatter
+parent_class	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^  GESFormatterClass parent_class;$/;"	m	language:C++	struct:_GESPitiviFormatterClass
+priv	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^  GESPitiviFormatterPrivate *priv;$/;"	m	language:C++	struct:_GESPitiviFormatter
+TRY_GET	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	611;"	d	language:C++	file:
+TRY_GET	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	93;"	d	language:C++	file:
+TRY_GET_STRING	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	87;"	d	language:C++	file:
+_check_field	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_check_field (GQuark field_id, const GValue * value, FieldsError * fields_error)$/;"	f	language:C++	file:
+_check_fields	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_check_fields (GstStructure * structure, FieldsError fields_error,$/;"	f	language:C++	file:
+_finalize	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^_finalize (GObject * self)$/;"	f	language:C++	file:
+_finish_structure	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structure-parser.c	/^_finish_structure (GESStructureParser * self)$/;"	f	language:C++	file:
+_GESPitiviFormatter	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^struct _GESPitiviFormatter {$/;"	s	language:C++
+_GESPitiviFormatterClass	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^struct _GESPitiviFormatterClass$/;"	s	language:C++
+_ges_add_clip_from_struct	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_add_clip_from_struct (GESTimeline * timeline, GstStructure * structure,$/;"	f	language:C++
+_ges_add_remove_keyframe_from_struct	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_add_remove_keyframe_from_struct (GESTimeline * timeline,$/;"	f	language:C++
+_ges_container_add_child_from_struct	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_container_add_child_from_struct (GESTimeline * timeline,$/;"	f	language:C++
+_ges_get_asset_from_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_get_asset_from_timeline (GESTimeline * timeline, GType type,$/;"	f	language:C++
+_ges_get_layer_by_priority	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_get_layer_by_priority (GESTimeline * timeline, gint priority)$/;"	f	language:C++
+_GES_PITIVI_FORMATTER	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	21;"	d	language:C++
+_ges_reserved	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^  gpointer _ges_reserved[GES_PADDING];$/;"	m	language:C++	struct:_GESPitiviFormatter
+_ges_reserved	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-pitivi-formatter.h	/^  gpointer _ges_reserved[GES_PADDING];$/;"	m	language:C++	struct:_GESPitiviFormatterClass
+_ges_set_child_property_from_struct	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_ges_set_child_property_from_struct (GESTimeline * timeline,$/;"	f	language:C++
+_get_clocktime	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/ges/ges-structured-interface.c	/^_get_clocktime (GstStructure * structure, const gchar * name, gpointer var)$/;"	f	language:C++	file:

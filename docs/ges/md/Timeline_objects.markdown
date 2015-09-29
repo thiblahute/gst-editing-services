@@ -1,16 +1,16 @@
 # Timeline objects
 
-#### [gestimelinefilesource](GESUriClip.markdown)
+#### [GESUriClip](GESUriClip.markdown)
 
-#### [gestitleclip](GESTitleClip.markdown)
+#### [GESTitleClip](GESTitleClip.markdown)
 
-#### [gestestclip](GESTestClip.markdown)
+#### [GESTestClip](GESTestClip.markdown)
 
-#### [gestextoverlayclip](GESTextOverlayClip.markdown)
+#### [GESTextOverlayClip](GESTextOverlayClip.markdown)
 
-#### [gestransitionclip](GESTransitionClip.markdown)
+#### [GESTransitionClip](GESTransitionClip.markdown)
 
-#### [geseffectclip](GESEffectClip.markdown)
+#### [GESEffectClip](GESEffectClip.markdown)
 
-#### [gesgroup](GESGroup.markdown)
+#### [GESGroup](GESGroup.markdown)
 

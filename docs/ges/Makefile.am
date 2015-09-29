@@ -14,14 +14,15 @@ CLANG_OPTIONS = "-I$(top_srcdir) $(GST_PBUTILS_CFLAGS) $(GST_BASE_CFLAGS) $(GST_
 
 GIR_FILE = $(top_srcdir)/ges/GES-@GST_API_VERSION@.gir
 
+
 doc.stamp: $(HFILES) $(CFILES) $(MARKDOWN_FILES) $(GIR_FILE) Makefile.am
-	$(AM_V_GEN) CLANG_OPTIONS=$(CLANG_OPTIONS) DOC_DEBUG=5 \
+	$(AM_V_GEN) CLANG_OPTIONS=$(CLANG_OPTIONS)  DOC_DEBUG=1 \
 		hotdoc --filenames $(FILES) $(CFILES) $(HFILES) \
 		-i $(MARKDOWN_INDEX) \
     -o html \
     gi-extension \
     --gir-file $(GIR_FILE) \
-    --languages c python javascript
+    --languages c
 	@touch doc.stamp
 
 EXTRA_DIST = \

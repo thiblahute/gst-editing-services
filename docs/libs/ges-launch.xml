@@ -1,0 +1,468 @@
+<refentry id="ges-launch" revision="28 sept 2015">
+  <refmeta>
+    <refentrytitle>ges-launch</refentrytitle>
+
+    <manvolnum>1</manvolnum>
+
+    <refmiscinfo>GStreamer Editing Services</refmiscinfo>
+  </refmeta>
+  <refsect1 id="ges-launch-1.0">
+    <title>ges-launch-1.0</title>
+    <para>
+      <emphasis role="strong">ges-launch-1.0</emphasis> creates a
+      multimedia
+      <ulink url="https://phabricator.freedesktop.org/w/gstreamer/gst-editing-services/ges-timeline/">timeline</ulink>
+      and plays it back, or renders it to the specified format.
+    </para>
+    <para>
+      It can load a timeline from an existing project, or create one from
+      the specified commands.
+    </para>
+    <para>
+      Updating an existing project can be done through thanks to the
+      <ulink url="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-validate/html/">GstValidate</ulink>
+      <ulink url="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-validate/html/scenarios.html">scenarios</ulink>
+      using the <literal>--set-scenario</literal> argument, if
+      ges-launch-1.0 has been compiled with GstValidate.
+    </para>
+    <para>
+      You can inspect action types with:
+    </para>
+    <programlisting>
+  ges-launch-1.0 --inspect-action-type
+  </programlisting>
+    <para>
+      By default, ges-launch-1.0 is in &quot;playback-mode&quot;.
+    </para>
+  </refsect1>
+
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>ges-launch-1.0</command>
+      <arg><option>-h</option>, <option>--help</option></arg>
+      <group choice="plain" rep="repeat">
+        <arg>
+        </arg>
+      </group>
+      <arg choice="plain">FILE</arg>
+      <arg>
+        <arg choice="plain" rep="repeat">FILE</arg>
+      </arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1 id="options">
+      <title>Options</title>
+      <informalexample><programlisting><![CDATA[ 
+          ges-launch-1.0' [-l <path>|--load=<path>] \
+              [-s <path>|--save=<path>] \
+              [-p <path>|--sample-path=<path>] \
+              [-r <path>|--sample-path-recurse=<path>] \
+              [-o <uri>|--outputuri=<uri>] \
+              [-f <profile>|--format=<profile>] \
+              [-e <profile-name>|--encoding-profile=<profile-name>] \
+              [-t <track-types>|--track-types=<track-types>] \
+              [-v <videosink>|--videosink=<videosink>] \
+              [-a <audiosink>---audiosink=<audiosink>] \
+              [-m|--mute]\
+              [--inspect-action-type[=<action-type>]]\
+              [--list-transitions]\
+              [--disable-mixing]\
+              [-r <times>|--repeat=<times>]\
+              [--set-scenario=&lt;scenario-name]
+        ]]></programlisting></informalexample>
+    </refsect1>
+    <refsect1 id="define-a-timeline-through-the-command-line">
+      <title>Define a timeline through the command line</title>
+      <para>
+        The ges-launch-1.0 tool allows you to simply build a timeline
+        through a dedicated set of commands:
+      </para>
+      <refsect2 id="clip">
+        <title>+clip</title>
+        <para>
+          Adds a clip to the timeline.
+        </para>
+        <para>
+          See documentation for the --track-types option to
+          ges-launch-1.0, as it will affect the result of this command.
+        </para>
+        <refsect3 id="examples">
+          <title>Examples:</title>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media
+  </programlisting>
+          <para>
+            This will simply play the sample from its beginning to its
+            end.
+          </para>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media inpoint=4.0
+  </programlisting>
+          <para>
+            Assuming &quot;media&quot; is a 10 second long media sample,
+            this will play the sample from the 4th second to the 10th,
+            resulting in a 6-seconds long playback.
+          </para>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media inpoint=4.0 duration=2.0 start=4.0
+  </programlisting>
+          <para>
+            Assuming &quot;media&quot; is an audio video sample longer
+            than 6 seconds, this will play a black frame and silence for 4
+            seconds, then the sample from its 4th second to its sixth
+            second, resulting in a 6-seconds long playback.
+          </para>
+          <programlisting>
+  ges-launch-1.0 --track-types=audio +clip /path/to/media
+  </programlisting>
+          <para>
+            Assuming &quot;media&quot; is an audio video sample, this will
+            only play the audio of the sample in its entirety.
+          </para>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media1 layer=1 set-alpha 0.9 +clip /path/to/media2 layer=0
+  </programlisting>
+          <para>
+            Assume media1 and media2 both contain audio and video and last
+            for 10 seconds.
+          </para>
+          <para>
+            This will first add media1 in a new layer of
+            &quot;priority&quot; 1, thus implicitly creating a layer of
+            &quot;priority&quot; 0, the start of the clip will be 0 as no
+            clip had been added in that layer before.
+          </para>
+          <para>
+            It will then add media2 in the layer of &quot;priority&quot; 0
+            which was created previously, the start of this new clip will
+            also be 0 as no clip has been added in this layer before.
+          </para>
+          <para>
+            Both clips will thus overlap on two layers for 10 seconds.
+          </para>
+          <para>
+            The &quot;alpha&quot; property of the second clip will finally
+            be set to a value of 0.9.
+          </para>
+          <para>
+            All this will result in a 10 seconds playback, where media2 is
+            barely visible through media1, which is nearly opaque. If
+            alpha was set to 0.5, both clips would be equally visible, and
+            if it was set to 0.0, media1 would be invisible and media2
+            completely opaque.
+          </para>
+        </refsect3>
+        <refsect3 id="mandatory-arguments">
+          <title>Mandatory arguments</title>
+            <variablelist>
+
+              <varlistentry>
+                <term><literal>path|uri</literal></term>
+                <listitem>
+                  <para>
+                    Specifies the location of the sample to make a clip from.
+                  </para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+        </refsect3>
+        <refsect3>
+          <title>Options</title>
+          <para>
+            <emphasis role="strong"><![CDATA[ inpoint[i]=<inpoint>:]]> </emphasis>
+          </para>
+          <programlisting>
+  Sets the inpoint of the clip, that is the
+  position in the original sample at which the clip will start outputting
+  data.
+
+  It is an error to have an inpoint superior to the actual duration of the original sample.
+
+  0 by default.
+  </programlisting>
+          <para>
+            <emphasis role="strong"><![CDATA[ duration[i]=<duration>:]]></emphasis>
+          </para>
+          <programlisting>
+  Sets the duration of the clip, that is the
+  duration of the media the clip will output.
+
+  It is an error to have inpoint + duration be superior to the duration of the
+  original sample.
+
+  The default is the duration of the original sample - the inpoint of the clip.
+  </programlisting>
+          <para>
+            <emphasis role="strong"><![CDATA[ start[s]=<start>:]]></emphasis>
+          </para>
+          <programlisting>
+  Sets the start of the clip, that is its position in
+  the timeline.
+
+  If not specified, it will be set to the duration of the layer the clip is added on,
+  as the expected default behaviour is to queue clips one after another.
+  </programlisting>
+          <para>
+            <emphasis role="strong"><![CDATA[ layer[l]=<layer>:]]></emphasis>
+          </para>
+          <programlisting>
+  Sets the layer of the clip. The video stream in
+  overlapping clips on different layers will be blended together according
+  to their alpha property, starting with the clip on the last layer. An
+  example is shown in the EXAMPLES refsection.
+
+  If not specified, it will be set to the last layer a clip has been added on, or
+  a first layer if no clip has been added yet.
+  </programlisting>
+        </refsect3>
+        <refsect3 id="properties">
+          <title>Properties</title>
+            <title>Video properties</title>
+            <para>
+              These have no effects if there is no video stream in the
+              sample.
+            </para>
+            <para>
+              <emphasis role="strong">alpha:</emphasis>
+            </para>
+            <programlisting>
+  This is the amount of transparency of the clip, ranging from 0.0
+  to 1.0 Clips overlapping on different layers will be composited
+  together, unless --disable-mixing has been specified, in the order of
+  the layers.
+  </programlisting>
+            <para>
+              <emphasis role="strong">posx:</emphasis>
+            </para>
+            <programlisting>
+  This is the x position (offset) of the clip in pixels, relatively
+  to the output frame of the timeline.
+  </programlisting>
+            <para>
+              <emphasis role="strong">posy:</emphasis>
+            </para>
+            <programlisting>
+  This is the y position (offset) of the clip in pixels, relatively
+  to the output frame of the timeline.
+  </programlisting>
+            <para>
+              <emphasis role="strong">width:</emphasis>
+            </para>
+            <programlisting>
+  This is the width in pixels that the clip will occupy in the
+  final output frame.
+  </programlisting>
+            <para>
+              <emphasis role="strong">height:</emphasis>
+            </para>
+            <programlisting>
+  This is the height in pixels that the clip will occupy in the final output frame.
+  </programlisting>
+            <title>Audio properties</title>
+            <para>
+              <emphasis role="strong">volume:</emphasis>
+            </para>
+            <programlisting>
+  This is the volume that will be set on the audio part of the
+  clip, ranging from 0.0 to 10.0, with 1.0 being the default.
+  </programlisting>
+            <para>
+              <emphasis role="strong">mute:</emphasis>
+            </para>
+            <programlisting>
+  Set to true to mute the audio of the clip. Default is false.
+  </programlisting>
+        </refsect3>
+      </refsect2>
+      <refsect2 id="effect">
+        <title>+effect</title>
+        <refsect3 id="mandatory-arguments-1">
+          <title>Mandatory arguments</title>
+          <para>
+            <emphasis role="strong">bin-description:</emphasis>
+          </para>
+          <programlisting>
+  Specifies the description of a GStreamer a bin, in the gst-launch format.
+  </programlisting>
+        </refsect3>
+        <refsect3 id="options-1">
+          <title>Options</title>
+          <para><![CDATA[ 
+            Properties can be set on the effect either directly in the
+            bin-description, or separately through the set-<property-name>
+            command, which will lookup any readable property in any of the
+            children of the bin, and set the provided value on it.
+            ]]></para>
+        </refsect3>
+        <refsect3 id="examples-1">
+          <title>Examples</title>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media +effect &quot;agingtv&quot;
+  </programlisting>
+          <para>
+            This will apply the agingtv effect to &quot;media&quot; and
+            play it back.
+          </para>
+        </refsect3>
+      </refsect2>
+      <refsect2 id="set-">
+        <title><![CDATA[ set-<property-name><]]></title>
+        <para>
+          Sets the property of an object (for example a clip or an
+          effect). Trying to set a property than can't be looked up is
+          considered an error.
+        </para>
+        <para><![CDATA[ 
+          By default, set-<property-name> will lookup the property on the
+          last added object.]]>
+        </para>
+        <refsect3 id="examples-2">
+          <title>Examples</title>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media set-alpha 0.3
+  </programlisting>
+          <para>
+            This will set the alpha property on &quot;media&quot; then
+            play it back, assuming &quot;media&quot; contains a video
+            stream.
+          </para>
+          <programlisting>
+  ges-launch-1.0 +clip /path/to/media +effect &quot;agingtv&quot; set-dusts false
+  </programlisting>
+          <para>
+            This will set the &quot;dusts&quot; property of the agingtv to
+            false and play the timeline back.
+          </para>
+        </refsect3>
+      </refsect2>
+    </refsect1>
+    <refsect1 id="options-2">
+      <title>Options</title>
+      <refsect2 id="project-related-options">
+        <title>Project-related options</title>
+        <para>
+          <emphasis role="strong"><![CDATA[ --load[-l]=<path>:]]></emphasis>
+        </para>
+        <programlisting>
+  Load project from file. The project be saved again with the --save option.
+  </programlisting>
+        <para>
+          <emphasis role="strong"><![CDATA[ -s --save=<path>:]]></emphasis>
+        </para>
+        <programlisting>
+  Save project to file before rendering. It can then be loaded with the --load option
+  </programlisting>
+        <para>
+          <emphasis role="strong">-p --sample-path:</emphasis>
+        </para>
+        <programlisting>
+  If some assets are missing when loading a project file, ges-launch-1.0 will try to
+  locate them in this path. It is especially useful when sharing a project.
+  </programlisting>
+        <para>
+          <emphasis role="strong">-r --sample-path-recurse:</emphasis>
+        </para>
+        <programlisting>
+  Identical to --sample-path, but ges-launch-1.0 will also recurse in the subfolders
+  to look for assets.
+  </programlisting>
+      </refsect2>
+      <refsect2 id="rendering-options">
+        <title>Rendering options</title>
+        <para>
+          <emphasis role="strong"><![CDATA[ -o --outputuri=<uri>:]]></emphasis>
+        </para>
+        <programlisting>
+  If set, ges-launch-1.0 will render the specified timeline instead
+  of playing it back. The default rendering format is ogv, containing
+  theora and vorbis.
+  </programlisting>
+        <para>
+          <emphasis role="strong"><![CDATA[ -f --format=<profile>:]]></emphasis>
+        </para>
+        <programlisting>
+  Set an encoding profile on the command line. See ges-launch-1.0 help profile
+  for more information.
+  This will have no effect if no outputuri has been specified.
+  </programlisting>
+        <para>
+          <emphasis role="strong"><![CDATA[ -e
+            --encoding-profile=<profile-name>:]]></emphasis>
+        </para>
+        <programlisting>
+  Set an encoding profile from a preset file. See ges-launch-1.0 help profile
+  for more information.
+  This will have no effect if no outputuri has been specified.
+  </programlisting>
+        <para>
+          <emphasis role="strong">-t
+            <![CDATA[ --track-types=<track-types>:]]></emphasis>
+        </para>
+        <programlisting>
+  Specify the track types to be created. When loading a project, only relevant
+  tracks will be added to the timeline.
+  </programlisting>
+      </refsect2>
+      <refsect2 id="playback-options">
+        <title>Playback options</title>
+        <para>
+          <emphasis role="strong"><![CDATA[ -v --videosink=<videosink>:]]></emphasis>
+        </para>
+        <programlisting>
+  Set the videosink used for playback.
+  </programlisting>
+        <para>
+          <emphasis role="strong"><![CDATA[ -a --audiosink=<audiosink>:]]></emphasis>
+        </para>
+        <programlisting>
+  Set the audiosink used for playback.
+  </programlisting>
+        <para>
+          _ _-m --mute:__
+        </para>
+        <programlisting>
+  Mute playback output. This has no effect when rendering.
+  </programlisting>
+      </refsect2>
+      <refsect2 id="helpful-options">
+        <title>Helpful options</title>
+        <para>
+          <emphasis role="strong"><![CDATA[ --inspect-action-type=<action-type>:]]></emphasis>
+        </para>
+        <programlisting>
+  Inspect the available action types that can be defined in a scenario set with --set-scenario.
+  Will list all action-types if action-type is empty.
+  </programlisting>
+        <para>
+          <emphasis role="strong">--list-transitions:</emphasis>
+        </para>
+        <programlisting>
+  List all valid transition types and exit. See ges-launch-1.0 help transition
+  for more information.
+  </programlisting>
+      </refsect2>
+      <refsect2 id="generic-options">
+        <title>Generic options</title>
+        <para>
+          <emphasis role="strong">--disable-mixing:</emphasis>
+        </para>
+        <programlisting>
+  Do not use mixing elements to mix layers together.
+  </programlisting>
+        <para>
+          <emphasis role="strong"><![CDATA[ -r --repeat=<times>:]]></emphasis>
+        </para>
+        <programlisting>
+  Set the number of times to repeat the timeline.
+  </programlisting>
+        <para>
+          <emphasis role="strong">--set-scenario:</emphasis>
+        </para>
+        <programlisting>
+  ges-launch-1.0 exposes gst-validate functionalities, such as scenarios.
+  Scenarios describe actions to execute, such as seeks or setting of properties.
+  GES implements editing-specific actions such as adding or removal of clips.
+  </programlisting>
+      </refsect2>
+    </refsect1>
+</refentry>

@@ -1,0 +1,52 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+audiosink	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *audiosink;$/;"	m	language:C++	struct:__anon1	file:
+bus_message_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^bus_message_cb (GstBus * bus, GstMessage * message, GESLauncher * self)$/;"	f	language:C++	file:
+disable_mixing	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean disable_mixing;$/;"	m	language:C++	struct:__anon1	file:
+encoding_profile	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *encoding_profile;$/;"	m	language:C++	struct:__anon1	file:
+format	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *format;$/;"	m	language:C++	struct:__anon1	file:
+ges_launcher_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_class_init (GESLauncherClass * klass)$/;"	f	language:C++	file:
+ges_launcher_get_exit_status	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_get_exit_status (GESLauncher * self)$/;"	f	language:C++
+ges_launcher_get_info_option_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_get_info_option_group (GESLauncher * self)$/;"	f	language:C++	file:
+ges_launcher_get_playback_option_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_get_playback_option_group (GESLauncher * self)$/;"	f	language:C++	file:
+ges_launcher_get_project_option_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_get_project_option_group (GESLauncher * self)$/;"	f	language:C++	file:
+ges_launcher_get_rendering_option_group	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_get_rendering_option_group (GESLauncher * self)$/;"	f	language:C++	file:
+ges_launcher_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_init (GESLauncher * self)$/;"	f	language:C++	file:
+ges_launcher_new	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^ges_launcher_new (void)$/;"	f	language:C++
+HELP_SUMMARY	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^static const gchar *HELP_SUMMARY =$/;"	v	language:C++	file:
+inspect_action_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean inspect_action_type;$/;"	m	language:C++	struct:__anon1	file:
+intr_handler	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^intr_handler (GESLauncher * self)$/;"	f	language:C++	file:
+list_transitions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean list_transitions;$/;"	m	language:C++	struct:__anon1	file:
+load_path	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *load_path;$/;"	m	language:C++	struct:__anon1	file:
+mute	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean mute;$/;"	m	language:C++	struct:__anon1	file:
+needs_set_state	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean needs_set_state;$/;"	m	language:C++	struct:__anon1	file:
+outputuri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *outputuri;$/;"	m	language:C++	struct:__anon1	file:
+ParsedOptions	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^} ParsedOptions;$/;"	t	language:C++	typeref:struct:__anon1	file:
+parsed_options	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  ParsedOptions parsed_options;$/;"	m	language:C++	struct:_GESLauncherPrivate	file:
+pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  GESPipeline *pipeline;$/;"	m	language:C++	struct:_GESLauncherPrivate	file:
+sanitized_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *sanitized_timeline;$/;"	m	language:C++	struct:__anon1	file:
+save_only_path	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *save_only_path;$/;"	m	language:C++	struct:__anon1	file:
+save_path	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *save_path;$/;"	m	language:C++	struct:__anon1	file:
+scenario	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *scenario;$/;"	m	language:C++	struct:__anon1	file:
+seenerrors	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean seenerrors;$/;"	m	language:C++	struct:_GESLauncherPrivate	file:
+signal_watch_id	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  guint signal_watch_id;$/;"	m	language:C++	struct:_GESLauncherPrivate	file:
+sinkSettingFunction	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^typedef void (*sinkSettingFunction) (GESPipeline * pipeline,$/;"	t	language:C++	file:
+smartrender	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gboolean smartrender;$/;"	m	language:C++	struct:__anon1	file:
+timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  GESTimeline *timeline;$/;"	m	language:C++	struct:_GESLauncherPrivate	file:
+track_types	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  GESTrackType track_types;$/;"	m	language:C++	struct:__anon1	file:
+videosink	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^  gchar *videosink;$/;"	m	language:C++	struct:__anon1	file:
+_create_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_create_pipeline (GESLauncher * self, const gchar * serialized_timeline)$/;"	f	language:C++	file:
+_create_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_create_timeline (GESLauncher * self, const gchar * serialized_timeline,$/;"	f	language:C++	file:
+_error_loading_asset_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_error_loading_asset_cb (GESProject * project, GError * error,$/;"	f	language:C++	file:
+_GESLauncherPrivate	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^struct _GESLauncherPrivate$/;"	s	language:C++	file:
+_local_command_line	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_local_command_line (GApplication * application, gchar ** arguments[],$/;"	f	language:C++	file:
+_parse_track_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_parse_track_type (const gchar * option_name, const gchar * value,$/;"	f	language:C++	file:
+_print_transition_list	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_print_transition_list (void)$/;"	f	language:C++	file:
+_project_loaded_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_project_loaded_cb (GESProject * project, GESTimeline * timeline,$/;"	f	language:C++	file:
+_run_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_run_pipeline (GESLauncher * self)$/;"	f	language:C++	file:
+_save_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_save_timeline (GESLauncher * self)$/;"	f	language:C++	file:
+_set_playback_details	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_set_playback_details (GESLauncher * self)$/;"	f	language:C++	file:
+_set_rendering_details	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_set_rendering_details (GESLauncher * self)$/;"	f	language:C++	file:
+_set_sink	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_set_sink (GESLauncher * self, const gchar * sink_desc,$/;"	f	language:C++	file:
+_shutdown	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_shutdown (GApplication * application)$/;"	f	language:C++	file:
+_startup	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_startup (GApplication * application)$/;"	f	language:C++	file:
+_timeline_set_user_options	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/tools/ges-launcher.c	/^_timeline_set_user_options (GESLauncher * self, GESTimeline * timeline,$/;"	f	language:C++	file:

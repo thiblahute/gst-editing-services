@@ -1,12 +1,8 @@
 # Assets
 
-#### [gesclipasset](GESClipAsset.markdown)
-
-#### [gestrackelementasset](GESTrackElementAsset.markdown)
-
-#### [gesuriclipasset](GESUriClipAsset.markdown)
-
-#### [gesurisourceasset](GESUriSourceAsset.markdown)
-
-#### [gesproject](GESProject.markdown)
+#### [GESClipAsset](GESClipAsset.markdown)
+#### [GESTrackElementAsset](GESTrackElementAsset.markdown)
+#### [GESUriClipAsset](GESUriClipAsset.markdown)
+#### [GESUriClipAsset](GESUriSourceAsset.markdown)
+#### [GESProject](GESProject.markdown)
 
