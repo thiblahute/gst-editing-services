@@ -1,28 +1,130 @@
-Goals of GStreamer Editing Services
-===================================
-
-The GStreamer multimedia framework and the accompanying GNonLin set of
-plugins for non-linear editing offer all the building blocks for:
-
--   Decoding and encoding to a wide variety of formats, through all the
-    available GStreamer plugins.
-
--   Easily choosing segments of streams and arranging them through time
-    through the GNonLin set of plugins.
-
-But all those building blocks only offer stream-level access, which
-results in developers who want to write non-linear editors to write a
-consequent amount of code to get to the level of *non-linear editing*
-notions which are closer and more meaningful for the end-user (and
-therefore the application).
-
-The GStreamer Editing Services (hereafter GES) aims to fill the gap
-between GStreamer/GNonLin and the application developer by offering a
-series of classes to simplify the creation of many kind of
-editing-related applications.
-
 Architecture
 ============
+
+A GES Timeline is composed of one or more layers, and produces data on one or more tracks.
+
+A track represents a media type, for example audio, video or text. For the moment only
+audio and video tracks are supported.
+
+Layers contain clips, and represent the relative priorities of these clips.
+
+## Layers
+
+Let's imagine a timeline that contains two layers:
+
+This code creates a timeline:
+
+In C:
+``` lang=c
+int main (int argc, char **argv)
+{
+    GESTimeline *timeline;
+
+    timeline = ges_timeline_new();
+}
+```
+
+In python:
+``` lang=python
+from gi.repository import GES
+
+if __name__=="__main__":
+    timeline = GES.Timeline()
+```
+
+### Timeline, duration : 0 seconds
+
+```
++--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         |                                           |  |
+| Layer 1 |                                           |  |
+|         |                                           |  |
+|         +-------------------------------------------+  |
+|                                                        |
+|         +-------------------------------------------+  |
+|         |                                           |  |
+| Layer 2 |                                           |  |
+|         |                                           |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+```
+
+If we add two clips in layer 1 and layer 2, each starting at 0 with a duration
+of 10 seconds, our timeline now looks like this:
+
+### Timeline, duration : 10 seconds
+
+```
++--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 1 | |              Clip 1                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 2 | |              Clip 2                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+```
+
+In that timeline, Clip 2 is said to have the highest "priority". In the case of
+video streams, it means that it will be rendered on top of Clip 1, which in
+turn signifies that if Clip 1 and Clip 2 share the same width and height, Clip
+1 will be completely invisible.
+
+In the case of video streams, one can therefore think of the layer priority as
+a z-index.
+
+## Tracks
+
+Let's continue with that timeline. For now it indeed mixes various layers
+together, but it doesn't output anything. That's what Tracks are for.
+
+If we add a video track to our timeline, it can be represented that way:
+
+Timeline, duration : 10 seconds
+
+```
++--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 1 | |              Clip 1                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |--------> Video Track
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 2 | |              Clip 2                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+```
+
+Assuming both clips contain video streams, our timeline will now output the
+result of their compositing together on the video track. Any audio streams they
+contain are ignored.
+
+One can of course add an audio track to get audio output.
+
+Having multiple tracks with the same type, for example 3 audio tracks, is
+useful if one wants to link the timeline to a container that can store various
+languages, for example a DVD creator might store English, Dutch and French
+audio tracks.
+
+By default [ges-launch-1.0](ges-launch.markdown) will assume the user wants
+exactly one audio track and one video track, this can be modified through the
+`--track-types` argument to `ges-launch-1.0`.
+
 
 Timeline and TimelinePipeline
 -----------------------------

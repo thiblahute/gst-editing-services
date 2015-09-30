@@ -1,4 +1,4 @@
-IGNORE_HFILES = gesmarshal.h ges-internal.h
+IGNORE_HFILES = gesmarshal.h ges-internal.h parse_lex.h
 IGNORE_CFILES =
 
 ALLHFILES = $(wildcard $(top_srcdir)/ges/*.h)

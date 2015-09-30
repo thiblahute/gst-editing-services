@@ -1,4 +1,6 @@
-### [GStreamer Editing Services Overview](GStreamer_Editing_Services_Overview.markdown)
+### [API Index]()
+
+### [Getting started with the GStreamer Editing Services](GStreamer_Editing_Services_Overview.markdown)
 
 ### [Base Classes](Base_Classes.markdown)
 

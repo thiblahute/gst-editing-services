@@ -20,6 +20,8 @@
 #ifndef _GES_PITIVI_FORMATTER
 #define _GES_PITIVI_FORMATTER
 
+#include "ges.h"
+
 #define GES_TYPE_PITIVI_FORMATTER ges_pitivi_formatter_get_type()
 
 #define GES_PITIVI_FORMATTER(obj) \
