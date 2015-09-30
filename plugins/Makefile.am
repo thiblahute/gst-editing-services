@@ -1,1 +1,1 @@
-SUBDIRS = nle
+SUBDIRS = nle ges
