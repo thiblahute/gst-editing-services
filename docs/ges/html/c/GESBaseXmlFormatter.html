@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Data Structures">
+	<span class="dim">|</span>
+	<a href="#DataStructures">Data Structures</a>
+</span>
+
+<span id="nav_hierarchy">
+	<span class="dim">|</span>
+	<a href="#hierarchy">Object Hierarchy</a>
+</span>
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="GESBaseXmlFormatter"></a>
+				<h1 class="class">GESBaseXmlFormatter</h1>
+		<p></p>
+			</div>
+
+		<div class="refsect1">
+		<a name=DataStructures></a>
+		<h2>Data Structures</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESBaseXmlFormatter href=GESBaseXmlFormatter.html#GESBaseXmlFormatter-struct>GESBaseXmlFormatter</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+	<a name="hierarchy"></a>
+	<div class="refsect1">
+	<h2>Object Hierarchy</h2>
+<pre class="screen">
+<a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a>
+    <span class="lineart">╰──</span><a class="link" title=GInitiallyUnowned href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GInitiallyUnowned>GInitiallyUnowned</a>
+        <span class="lineart">╰──</span><a class="link" title=GESFormatter href=GESFormatter.html#GESFormatter>GESFormatter</a>
+            <span class="lineart">╰──</span>GESBaseXmlFormatter
+                <span class="lineart">╰──</span><a class="link" title=GESXmlFormatter href=GESXmlFormatter.html#GESXmlFormatter>GESXmlFormatter</a>
+
+
+</div>
+
+	</div>
+	
+	
+	
+		<div class="refsect1">
+		<a name="Data Structures"></a>
+		<h2>Data Structures</h2>
+		
+				<div class="refsect2">
+	<a name=GESBaseXmlFormatter-struct></a>
+	<h3>
+		struct GESBaseXmlFormatter
+	</h3>
+		<pre class="programlisting">
+struct _GESBaseXmlFormatter
+{
+  GESFormatter parent;
+
+  /*< public > */
+  /* <private> */
+  GESBaseXmlFormatterPrivate *priv;
+
+  gpointer _ges_reserved[GES_PADDING];
+};
+</pre>
+
+			
+<div class="refsect3">
+	<h4>Fields</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+		<td class="parameter_name">
+		<p>
+		<a class="link" title=GESFormatter href=GESFormatter.html#GESFormatter>GESFormatter</a> <em><code>parent</code></em>
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+
+</tr>
+
+						<tr>
+		<td class="parameter_name">
+		<p>
+		GESBaseXmlFormatterPrivate * <em><code>priv</code></em>
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+
+</tr>
+
+						<tr>
+		<td class="parameter_name">
+		<p>
+		gpointer [4]  <em><code>_ges_reserved</code></em>
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+			</div>
+	</div>
+

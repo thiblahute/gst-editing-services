@@ -1,0 +1,9 @@
+diff a/ges/ges-video-track.c b/ges/ges-video-track.c	(rejected hunks)
+@@ -56,6 +56,7 @@
+       fps_d, NULL);
+ 
+   g_object_set (capsfilter, "caps", caps, NULL);
++  gst_caps_unref (caps);
+ }
+ 
+ static void

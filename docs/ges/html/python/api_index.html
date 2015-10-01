@@ -1,0 +1,4094 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=redstyle.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+									
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" type="text/css" />
+
+<div style="margin-bottom:10px">Only show symbols if their version is
+
+<select id="filter_comparator">
+	<option value="eq">=</option>
+	<option value="gt">&gt;=</option>
+	<option value="lt">&lt;=</option>
+	<option value="ne">!=</option>
+</select>
+
+<input type="text" placeholder="version (1.4, 1.6 ...)" id="filter_value">
+
+</div>
+
+<table id="symbols" class="display" cellspacing="0">
+	<thead>
+		<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>In</th>
+						<th>Since</th>
+					</tr>
+	</thead>
+
+	<tbody>
+				<tr>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.extract href=GESAsset.html#ges_asset_extract>GES.Asset.extract</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.get_extractable_type href=GESAsset.html#ges_asset_get_extractable_type>GES.Asset.get_extractable_type</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.get_id href=GESAsset.html#ges_asset_get_id>GES.Asset.get_id</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.request href=GESAsset.html#ges_asset_request>GES.Asset.request</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.request_async href=GESAsset.html#ges_asset_request_async>GES.Asset.request_async</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Asset.request_finish href=GESAsset.html#ges_asset_request_finish>GES.Asset.request_finish</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioSource href=GESAudioSource.html#GESAudioSource-struct>GES.AudioSource</a></td>
+						<td>Structure</td>
+						<td>ges-audio-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioSource href=GESAudioSource.html#GESAudioSource>GES.AudioSource</a></td>
+						<td>Class</td>
+						<td>ges-audio-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource-struct>GES.AudioTestSource</a></td>
+						<td>Structure</td>
+						<td>ges-audio-test-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource>GES.AudioTestSource</a></td>
+						<td>Class</td>
+						<td>ges-audio-test-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource.get_freq href=GESAudioTestSource.html#ges_audio_test_source_get_freq>GES.AudioTestSource.get_freq</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource>GES.AudioTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource.get_volume href=GESAudioTestSource.html#ges_audio_test_source_get_volume>GES.AudioTestSource.get_volume</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource>GES.AudioTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource.set_freq href=GESAudioTestSource.html#ges_audio_test_source_set_freq>GES.AudioTestSource.set_freq</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource>GES.AudioTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTestSource.set_volume href=GESAudioTestSource.html#ges_audio_test_source_set_volume>GES.AudioTestSource.set_volume</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.AudioTestSource href=GESAudioTestSource.html#GESAudioTestSource>GES.AudioTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTrack href=GESAudioTrack.html#GESAudioTrack>GES.AudioTrack</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTrack.new href=GESAudioTrack.html#ges_audio_track_new>GES.AudioTrack.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.AudioTrack href=GESAudioTrack.html#GESAudioTrack>GES.AudioTrack</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTransition href=GESAudioTransition.html#GESAudioTransition-struct>GES.AudioTransition</a></td>
+						<td>Structure</td>
+						<td>ges-audio-transition.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTransition href=GESAudioTransition.html#GESAudioTransition>GES.AudioTransition</a></td>
+						<td>Class</td>
+						<td>ges-audio-transition.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioTransition.new href=GESAudioTransition.html#ges_audio_transition_new>GES.AudioTransition.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.AudioTransition href=GESAudioTransition.html#GESAudioTransition>GES.AudioTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioUriSource href=GESAudioUriSource.html#GESAudioUriSource-struct>GES.AudioUriSource</a></td>
+						<td>Structure</td>
+						<td>ges-audio-uri-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.AudioUriSource href=GESAudioUriSource.html#GESAudioUriSource>GES.AudioUriSource</a></td>
+						<td>Class</td>
+						<td>ges-audio-uri-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseEffect href=GESBaseEffect.html#GESBaseEffect-struct>GES.BaseEffect</a></td>
+						<td>Structure</td>
+						<td>ges-base-effect.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseEffect href=GESBaseEffect.html#GESBaseEffect>GES.BaseEffect</a></td>
+						<td>Class</td>
+						<td>ges-base-effect.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseEffectClip href=GESBaseEffectClip.html#GESBaseEffectClip-struct>GES.BaseEffectClip</a></td>
+						<td>Structure</td>
+						<td>ges-base-effect-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseEffectClip href=GESBaseEffectClip.html#GESBaseEffectClip>GES.BaseEffectClip</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseTransitionClip href=GESBaseTransitionClip.html#GESBaseTransitionClip-struct>GES.BaseTransitionClip</a></td>
+						<td>Structure</td>
+						<td>ges-base-transition-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseTransitionClip href=GESBaseTransitionClip.html#GESBaseTransitionClip>GES.BaseTransitionClip</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseXmlFormatter href=GESBaseXmlFormatter.html#GESBaseXmlFormatter-struct>GES.BaseXmlFormatter</a></td>
+						<td>Structure</td>
+						<td>ges-base-xml-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.BaseXmlFormatter href=GESBaseXmlFormatter.html#GESBaseXmlFormatter>GES.BaseXmlFormatter</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip-struct>GES.Clip</a></td>
+						<td>Structure</td>
+						<td>ges-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td>Class</td>
+						<td>ges-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.add_asset href=GESClip.html#ges_clip_add_asset>GES.Clip.add_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.find_track_element href=GESClip.html#ges_clip_find_track_element>GES.Clip.find_track_element</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.find_track_elements href=GESClip.html#ges_clip_find_track_elements>GES.Clip.find_track_elements</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.get_layer href=GESClip.html#ges_clip_get_layer>GES.Clip.get_layer</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.get_supported_formats href=GESClip.html#ges_clip_get_supported_formats>GES.Clip.get_supported_formats</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.get_top_effect_index href=GESClip.html#ges_clip_get_top_effect_index>GES.Clip.get_top_effect_index</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.get_top_effects href=GESClip.html#ges_clip_get_top_effects>GES.Clip.get_top_effects</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.move_to_layer href=GESClip.html#ges_clip_move_to_layer>GES.Clip.move_to_layer</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.set_supported_formats href=GESClip.html#ges_clip_set_supported_formats>GES.Clip.set_supported_formats</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.set_top_effect_index href=GESClip.html#ges_clip_set_top_effect_index>GES.Clip.set_top_effect_index</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Clip.split href=GESClip.html#ges_clip_split>GES.Clip.split</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ClipAsset href=GESClipAsset.html#GESClipAsset>GES.ClipAsset</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ClipAsset.get_supported_formats href=GESClipAsset.html#ges_clip_asset_get_supported_formats>GES.ClipAsset.get_supported_formats</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.ClipAsset href=GESClipAsset.html#GESClipAsset>GES.ClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ClipAsset.set_supported_formats href=GESClipAsset.html#ges_clip_asset_set_supported_formats>GES.ClipAsset.set_supported_formats</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.ClipAsset href=GESClipAsset.html#GESClipAsset>GES.ClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ClipClass href=GESClip.html#GESClipClass-struct>GES.ClipClass</a></td>
+						<td>Structure</td>
+						<td>ges-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer-struct>GES.Container</a></td>
+						<td>Structure</td>
+						<td>ges-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td>Class</td>
+						<td>ges-container.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container.add href=GESContainer.html#ges_container_add>GES.Container.add</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container.get_children href=GESContainer.html#ges_container_get_children>GES.Container.get_children</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container.group href=GESContainer.html#ges_container_group>GES.Container.group</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container.remove href=GESContainer.html#ges_container_remove>GES.Container.remove</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Container.ungroup href=GESContainer.html#ges_container_ungroup>GES.Container.ungroup</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ContainerClass href=GESContainer.html#GESContainerClass-struct>GES.ContainerClass</a></td>
+						<td>Structure</td>
+						<td>ges-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Edge href=Enum and flag types.html#GESEdge>GES.Edge</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.EditMode href=Enum and flag types.html#GESEditMode>GES.EditMode</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Effect href=GESEffect.html#GESEffect-struct>GES.Effect</a></td>
+						<td>Structure</td>
+						<td>ges-effect.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Effect href=GESEffect.html#GESEffect>GES.Effect</a></td>
+						<td>Class</td>
+						<td>ges-effect.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Effect.new href=GESEffect.html#ges_effect_new>GES.Effect.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Effect href=GESEffect.html#GESEffect>GES.Effect</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip-struct>GES.EffectClip</a></td>
+						<td>Structure</td>
+						<td>ges-effect-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.EffectClip.new href=GESEffectClip.html#ges_effect_clip_new>GES.EffectClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Error href=The GES GError types.html#GESError>GES.Error</a></td>
+						<td>Enumeration</td>
+						<td>ges-gerror.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Extractable href=GESExtractableInterface.html#GESExtractable-struct>GES.Extractable</a></td>
+						<td>Structure</td>
+						<td>ges-extractable.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Extractable.get_asset href=GESExtractableInterface.html#ges_extractable_get_asset>GES.Extractable.get_asset</a></td>
+						<td>Method</td>
+						<td>ges-extractable.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Extractable.get_id href=GESExtractableInterface.html#ges_extractable_get_id>GES.Extractable.get_id</a></td>
+						<td>Method</td>
+						<td>ges-extractable.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Extractable.set_asset href=GESExtractableInterface.html#ges_extractable_set_asset>GES.Extractable.set_asset</a></td>
+						<td>Method</td>
+						<td>ges-extractable.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ExtractableCheckId href=GESExtractableInterface.html#GESExtractableCheckId>GES.ExtractableCheckId</a></td>
+						<td>Callback</td>
+						<td>ges-extractable.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ExtractableInterface href=GESExtractableInterface.html#GESExtractableInterface>GES.ExtractableInterface</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.FillTrackElementFunc href=GESClip.html#GESFillTrackElementFunc>GES.FillTrackElementFunc</a></td>
+						<td>Callback</td>
+						<td>ges-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter-struct>GES.Formatter</a></td>
+						<td>Structure</td>
+						<td>ges-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td>Class</td>
+						<td>ges-formatter.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter.can_load_uri href=GESFormatter.html#ges_formatter_can_load_uri>GES.Formatter.can_load_uri</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter.can_save_uri href=GESFormatter.html#ges_formatter_can_save_uri>GES.Formatter.can_save_uri</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter.get_default href=GESFormatter.html#ges_formatter_get_default>GES.Formatter.get_default</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter.load_from_uri href=GESFormatter.html#ges_formatter_load_from_uri>GES.Formatter.load_from_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Formatter.save_to_uri href=GESFormatter.html#ges_formatter_save_to_uri>GES.Formatter.save_to_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.FormatterClass href=GESFormatter.html#GESFormatterClass-struct>GES.FormatterClass</a></td>
+						<td>Structure</td>
+						<td>ges-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.FormatterLoadFromURIMethod href=GESFormatter.html#GESFormatterLoadFromURIMethod>GES.FormatterLoadFromURIMethod</a></td>
+						<td>Callback</td>
+						<td>ges-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.FormatterSaveToURIMethod href=GESFormatter.html#GESFormatterSaveToURIMethod>GES.FormatterSaveToURIMethod</a></td>
+						<td>Callback</td>
+						<td>ges-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td>Class</td>
+						<td>ges-group.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Group.new href=GESGroup.html#ges_group_new>GES.Group.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ImageSource href=GESImageSource.html#GESImageSource-struct>GES.ImageSource</a></td>
+						<td>Structure</td>
+						<td>ges-image-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.ImageSource href=GESImageSource.html#GESImageSource>GES.ImageSource</a></td>
+						<td>Class</td>
+						<td>ges-image-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer-struct>GES.Layer</a></td>
+						<td>Structure</td>
+						<td>ges-layer.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td>Class</td>
+						<td>ges-layer.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.add_asset href=GESLayer.html#ges_layer_add_asset>GES.Layer.add_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.add_clip href=GESLayer.html#ges_layer_add_clip>GES.Layer.add_clip</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.get_auto_transition href=GESLayer.html#ges_layer_get_auto_transition>GES.Layer.get_auto_transition</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.get_clips href=GESLayer.html#ges_layer_get_clips>GES.Layer.get_clips</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.get_duration href=GESLayer.html#ges_layer_get_duration>GES.Layer.get_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.get_priority href=GESLayer.html#ges_layer_get_priority>GES.Layer.get_priority</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.get_timeline href=GESLayer.html#ges_layer_get_timeline>GES.Layer.get_timeline</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.is_empty href=GESLayer.html#ges_layer_is_empty>GES.Layer.is_empty</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.new href=GESLayer.html#ges_layer_new>GES.Layer.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.remove_clip href=GESLayer.html#ges_layer_remove_clip>GES.Layer.remove_clip</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.set_auto_transition href=GESLayer.html#ges_layer_set_auto_transition>GES.Layer.set_auto_transition</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Layer.set_priority href=GESLayer.html#ges_layer_set_priority>GES.Layer.set_priority</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.LayerClass href=GESLayer.html#GESLayerClass-struct>GES.LayerClass</a></td>
+						<td>Structure</td>
+						<td>ges-layer.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_DESCRIPTION href=GESMetaContainer.html#GES_META_DESCRIPTION>GES.META_DESCRIPTION</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMATTER_EXTENSION href=GESMetaContainer.html#GES_META_FORMATTER_EXTENSION>GES.META_FORMATTER_EXTENSION</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMATTER_MIMETYPE href=GESMetaContainer.html#GES_META_FORMATTER_MIMETYPE>GES.META_FORMATTER_MIMETYPE</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMATTER_NAME href=GESMetaContainer.html#GES_META_FORMATTER_NAME>GES.META_FORMATTER_NAME</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMATTER_RANK href=GESMetaContainer.html#GES_META_FORMATTER_RANK>GES.META_FORMATTER_RANK</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMATTER_VERSION href=GESMetaContainer.html#GES_META_FORMATTER_VERSION>GES.META_FORMATTER_VERSION</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.META_FORMAT_VERSION href=GESMetaContainer.html#GES_META_FORMAT_VERSION>GES.META_FORMAT_VERSION</a></td>
+						<td>Constant</td>
+						<td>ges-meta-container.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td>Interface</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.add_metas_from_string href=GESMetaContainer.html#ges_meta_container_add_metas_from_string>GES.MetaContainer.add_metas_from_string</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.foreach href=GESMetaContainer.html#ges_meta_container_foreach>GES.MetaContainer.foreach</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_boolean href=GESMetaContainer.html#ges_meta_container_get_boolean>GES.MetaContainer.get_boolean</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_date href=GESMetaContainer.html#ges_meta_container_get_date>GES.MetaContainer.get_date</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_date_time href=GESMetaContainer.html#ges_meta_container_get_date_time>GES.MetaContainer.get_date_time</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_double href=GESMetaContainer.html#ges_meta_container_get_double>GES.MetaContainer.get_double</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_float href=GESMetaContainer.html#ges_meta_container_get_float>GES.MetaContainer.get_float</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_int href=GESMetaContainer.html#ges_meta_container_get_int>GES.MetaContainer.get_int</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_int64 href=GESMetaContainer.html#ges_meta_container_get_int64>GES.MetaContainer.get_int64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_meta href=GESMetaContainer.html#ges_meta_container_get_meta>GES.MetaContainer.get_meta</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_string href=GESMetaContainer.html#ges_meta_container_get_string>GES.MetaContainer.get_string</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_uint href=GESMetaContainer.html#ges_meta_container_get_uint>GES.MetaContainer.get_uint</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.get_uint64 href=GESMetaContainer.html#ges_meta_container_get_uint64>GES.MetaContainer.get_uint64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.metas_to_string href=GESMetaContainer.html#ges_meta_container_metas_to_string>GES.MetaContainer.metas_to_string</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta href=GESMetaContainer.html#ges_meta_container_register_meta>GES.MetaContainer.register_meta</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_date href=GESMetaContainer.html#ges_meta_container_register_meta_date>GES.MetaContainer.register_meta_date</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_date_time href=GESMetaContainer.html#ges_meta_container_register_meta_date_time>GES.MetaContainer.register_meta_date_time</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_double href=GESMetaContainer.html#ges_meta_container_register_meta_double>GES.MetaContainer.register_meta_double</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_float href=GESMetaContainer.html#ges_meta_container_register_meta_float>GES.MetaContainer.register_meta_float</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_int href=GESMetaContainer.html#ges_meta_container_register_meta_int>GES.MetaContainer.register_meta_int</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_int64 href=GESMetaContainer.html#ges_meta_container_register_meta_int64>GES.MetaContainer.register_meta_int64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_string href=GESMetaContainer.html#ges_meta_container_register_meta_string>GES.MetaContainer.register_meta_string</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_uint href=GESMetaContainer.html#ges_meta_container_register_meta_uint>GES.MetaContainer.register_meta_uint</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.register_meta_uint64 href=GESMetaContainer.html#ges_meta_container_register_meta_uint64>GES.MetaContainer.register_meta_uint64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_boolean href=GESMetaContainer.html#ges_meta_container_set_boolean>GES.MetaContainer.set_boolean</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_date href=GESMetaContainer.html#ges_meta_container_set_date>GES.MetaContainer.set_date</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_date_time href=GESMetaContainer.html#ges_meta_container_set_date_time>GES.MetaContainer.set_date_time</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_double href=GESMetaContainer.html#ges_meta_container_set_double>GES.MetaContainer.set_double</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_float href=GESMetaContainer.html#ges_meta_container_set_float>GES.MetaContainer.set_float</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_int href=GESMetaContainer.html#ges_meta_container_set_int>GES.MetaContainer.set_int</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_int64 href=GESMetaContainer.html#ges_meta_container_set_int64>GES.MetaContainer.set_int64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_meta href=GESMetaContainer.html#ges_meta_container_set_meta>GES.MetaContainer.set_meta</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_string href=GESMetaContainer.html#ges_meta_container_set_string>GES.MetaContainer.set_string</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_uint href=GESMetaContainer.html#ges_meta_container_set_uint>GES.MetaContainer.set_uint</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaContainer.set_uint64 href=GESMetaContainer.html#ges_meta_container_set_uint64>GES.MetaContainer.set_uint64</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.MetaContainer href=GESMetaContainer.html#GESMetaContainer>GES.MetaContainer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MetaFlag href=Enum and flag types.html#GESMetaFlag>GES.MetaFlag</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MultiFileSource href=GESMultiFileSource.html#GESMultiFileSource-struct>GES.MultiFileSource</a></td>
+						<td>Structure</td>
+						<td>ges-multi-file-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GES.MultiFileSource</a></td>
+						<td>Class</td>
+						<td>ges-multi-file-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.MultiFileSource.new href=GESMultiFileSource.html#ges_multi_file_source_new>GES.MultiFileSource.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.MultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GES.MultiFileSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Operation href=GESOperation.html#GESOperation-struct>GES.Operation</a></td>
+						<td>Structure</td>
+						<td>ges-operation.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Operation href=GESOperation.html#GESOperation>GES.Operation</a></td>
+						<td>Class</td>
+						<td>ges-operation.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OperationClass href=GESOperation.html#GESOperationClass-struct>GES.OperationClass</a></td>
+						<td>Structure</td>
+						<td>ges-operation.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OperationClip href=GESOperationClip.html#GESOperationClip-struct>GES.OperationClip</a></td>
+						<td>Structure</td>
+						<td>ges-operation-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OperationClip href=GESOperationClip.html#GESOperationClip>GES.OperationClip</a></td>
+						<td>Class</td>
+						<td>ges-operation-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OverlayClip href=GESOverlayClip.html#GESOverlayClip-struct>GES.OverlayClip</a></td>
+						<td>Structure</td>
+						<td>ges-overlay-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OverlayClip href=GESOverlayClip.html#GESOverlayClip>GES.OverlayClip</a></td>
+						<td>Class</td>
+						<td>ges-overlay-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.OverlayClipClass href=GESOverlayClip.html#GESOverlayClipClass-struct>GES.OverlayClipClass</a></td>
+						<td>Structure</td>
+						<td>ges-overlay-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline-struct>GES.Pipeline</a></td>
+						<td>Structure</td>
+						<td>ges-pipeline.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td>Class</td>
+						<td>ges-pipeline.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.get_mode href=GESPipeline.html#ges_pipeline_get_mode>GES.Pipeline.get_mode</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.get_thumbnail href=GESPipeline.html#ges_pipeline_get_thumbnail>GES.Pipeline.get_thumbnail</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.get_thumbnail_rgb24 href=GESPipeline.html#ges_pipeline_get_thumbnail_rgb24>GES.Pipeline.get_thumbnail_rgb24</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.new href=GESPipeline.html#ges_pipeline_new>GES.Pipeline.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.preview_get_audio_sink href=GESPipeline.html#ges_pipeline_preview_get_audio_sink>GES.Pipeline.preview_get_audio_sink</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.preview_get_video_sink href=GESPipeline.html#ges_pipeline_preview_get_video_sink>GES.Pipeline.preview_get_video_sink</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.preview_set_audio_sink href=GESPipeline.html#ges_pipeline_preview_set_audio_sink>GES.Pipeline.preview_set_audio_sink</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.preview_set_video_sink href=GESPipeline.html#ges_pipeline_preview_set_video_sink>GES.Pipeline.preview_set_video_sink</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.save_thumbnail href=GESPipeline.html#ges_pipeline_save_thumbnail>GES.Pipeline.save_thumbnail</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.set_mode href=GESPipeline.html#ges_pipeline_set_mode>GES.Pipeline.set_mode</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.set_render_settings href=GESPipeline.html#ges_pipeline_set_render_settings>GES.Pipeline.set_render_settings</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Pipeline.set_timeline href=GESPipeline.html#ges_pipeline_set_timeline>GES.Pipeline.set_timeline</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.PipelineFlags href=Enum and flag types.html#GESPipelineFlags>GES.PipelineFlags</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.PitiviFormatter href=GESPitiviFormatter.html#GESPitiviFormatter-struct>GES.PitiviFormatter</a></td>
+						<td>Structure</td>
+						<td>ges-pitivi-formatter.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.PitiviFormatter href=GESPitiviFormatter.html#GESPitiviFormatter>GES.PitiviFormatter</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.add_asset href=GESProject.html#ges_project_add_asset>GES.Project.add_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.add_encoding_profile href=GESProject.html#ges_project_add_encoding_profile>GES.Project.add_encoding_profile</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.create_asset href=GESProject.html#ges_project_create_asset>GES.Project.create_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.get_asset href=GESProject.html#ges_project_get_asset>GES.Project.get_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.get_loading_assets href=GESProject.html#ges_project_get_loading_assets>GES.Project.get_loading_assets</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.get_uri href=GESProject.html#ges_project_get_uri>GES.Project.get_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.list_assets href=GESProject.html#ges_project_list_assets>GES.Project.list_assets</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.list_encoding_profiles href=GESProject.html#ges_project_list_encoding_profiles>GES.Project.list_encoding_profiles</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.load href=GESProject.html#ges_project_load>GES.Project.load</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.new href=GESProject.html#ges_project_new>GES.Project.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.remove_asset href=GESProject.html#ges_project_remove_asset>GES.Project.remove_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Project.save href=GESProject.html#ges_project_save>GES.Project.save</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Source href=GESSource.html#GESSource-struct>GES.Source</a></td>
+						<td>Structure</td>
+						<td>ges-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Source href=GESSource.html#GESSource>GES.Source</a></td>
+						<td>Class</td>
+						<td>ges-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.SourceClass href=GESSource.html#GESSourceClass-struct>GES.SourceClass</a></td>
+						<td>Structure</td>
+						<td>ges-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.SourceClip href=GESSourceClip.html#GESSourceClip-struct>GES.SourceClip</a></td>
+						<td>Structure</td>
+						<td>ges-source-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.SourceClip href=GESSourceClip.html#GESSourceClip>GES.SourceClip</a></td>
+						<td>Class</td>
+						<td>ges-source-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.SourceClipClass href=GESSourceClip.html#GESSourceClipClass-struct>GES.SourceClipClass</a></td>
+						<td>Structure</td>
+						<td>ges-source-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip-struct>GES.TestClip</a></td>
+						<td>Structure</td>
+						<td>ges-test-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td>Class</td>
+						<td>ges-test-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.get_frequency href=GESTestClip.html#ges_test_clip_get_frequency>GES.TestClip.get_frequency</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.get_volume href=GESTestClip.html#ges_test_clip_get_volume>GES.TestClip.get_volume</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.get_vpattern href=GESTestClip.html#ges_test_clip_get_vpattern>GES.TestClip.get_vpattern</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.is_muted href=GESTestClip.html#ges_test_clip_is_muted>GES.TestClip.is_muted</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.new href=GESTestClip.html#ges_test_clip_new>GES.TestClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.new_for_nick href=GESTestClip.html#ges_test_clip_new_for_nick>GES.TestClip.new_for_nick</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.set_frequency href=GESTestClip.html#ges_test_clip_set_frequency>GES.TestClip.set_frequency</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.set_mute href=GESTestClip.html#ges_test_clip_set_mute>GES.TestClip.set_mute</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.set_volume href=GESTestClip.html#ges_test_clip_set_volume>GES.TestClip.set_volume</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClip.set_vpattern href=GESTestClip.html#ges_test_clip_set_vpattern>GES.TestClip.set_vpattern</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TestClipClass href=GESTestClip.html#GESTestClipClass-struct>GES.TestClipClass</a></td>
+						<td>Structure</td>
+						<td>ges-test-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextHAlign href=Enum and flag types.html#GESTextHAlign>GES.TextHAlign</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay-struct>GES.TextOverlay</a></td>
+						<td>Structure</td>
+						<td>ges-text-overlay.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td>Class</td>
+						<td>ges-text-overlay.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_color href=GESTextOverlay.html#ges_text_overlay_get_color>GES.TextOverlay.get_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_font_desc href=GESTextOverlay.html#ges_text_overlay_get_font_desc>GES.TextOverlay.get_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_halignment href=GESTextOverlay.html#ges_text_overlay_get_halignment>GES.TextOverlay.get_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_text href=GESTextOverlay.html#ges_text_overlay_get_text>GES.TextOverlay.get_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_valignment href=GESTextOverlay.html#ges_text_overlay_get_valignment>GES.TextOverlay.get_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_xpos href=GESTextOverlay.html#ges_text_overlay_get_xpos>GES.TextOverlay.get_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.get_ypos href=GESTextOverlay.html#ges_text_overlay_get_ypos>GES.TextOverlay.get_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.new href=GESTextOverlay.html#ges_text_overlay_new>GES.TextOverlay.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_color href=GESTextOverlay.html#ges_text_overlay_set_color>GES.TextOverlay.set_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_font_desc href=GESTextOverlay.html#ges_text_overlay_set_font_desc>GES.TextOverlay.set_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_halignment href=GESTextOverlay.html#ges_text_overlay_set_halignment>GES.TextOverlay.set_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_text href=GESTextOverlay.html#ges_text_overlay_set_text>GES.TextOverlay.set_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_valignment href=GESTextOverlay.html#ges_text_overlay_set_valignment>GES.TextOverlay.set_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_xpos href=GESTextOverlay.html#ges_text_overlay_set_xpos>GES.TextOverlay.set_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlay.set_ypos href=GESTextOverlay.html#ges_text_overlay_set_ypos>GES.TextOverlay.set_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlay href=GESTextOverlay.html#GESTextOverlay>GES.TextOverlay</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip-struct>GES.TextOverlayClip</a></td>
+						<td>Structure</td>
+						<td>ges-text-overlay-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td>Class</td>
+						<td>ges-text-overlay-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_color href=GESTextOverlayClip.html#ges_text_overlay_clip_get_color>GES.TextOverlayClip.get_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_font_desc href=GESTextOverlayClip.html#ges_text_overlay_clip_get_font_desc>GES.TextOverlayClip.get_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_halignment href=GESTextOverlayClip.html#ges_text_overlay_clip_get_halignment>GES.TextOverlayClip.get_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_text href=GESTextOverlayClip.html#ges_text_overlay_clip_get_text>GES.TextOverlayClip.get_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_valignment href=GESTextOverlayClip.html#ges_text_overlay_clip_get_valignment>GES.TextOverlayClip.get_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_xpos href=GESTextOverlayClip.html#ges_text_overlay_clip_get_xpos>GES.TextOverlayClip.get_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.get_ypos href=GESTextOverlayClip.html#ges_text_overlay_clip_get_ypos>GES.TextOverlayClip.get_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.new href=GESTextOverlayClip.html#ges_text_overlay_clip_new>GES.TextOverlayClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_color href=GESTextOverlayClip.html#ges_text_overlay_clip_set_color>GES.TextOverlayClip.set_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_font_desc href=GESTextOverlayClip.html#ges_text_overlay_clip_set_font_desc>GES.TextOverlayClip.set_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_halign href=GESTextOverlayClip.html#ges_text_overlay_clip_set_halign>GES.TextOverlayClip.set_halign</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_text href=GESTextOverlayClip.html#ges_text_overlay_clip_set_text>GES.TextOverlayClip.set_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_valign href=GESTextOverlayClip.html#ges_text_overlay_clip_set_valign>GES.TextOverlayClip.set_valign</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_xpos href=GESTextOverlayClip.html#ges_text_overlay_clip_set_xpos>GES.TextOverlayClip.set_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextOverlayClip.set_ypos href=GESTextOverlayClip.html#ges_text_overlay_clip_set_ypos>GES.TextOverlayClip.set_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TextVAlign href=Enum and flag types.html#GESTextVAlign>GES.TextVAlign</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline-struct>GES.Timeline</a></td>
+						<td>Structure</td>
+						<td>ges-timeline.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td>Class</td>
+						<td>ges-timeline.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.add_layer href=GESTimeline.html#ges_timeline_add_layer>GES.Timeline.add_layer</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.add_track href=GESTimeline.html#ges_timeline_add_track>GES.Timeline.add_track</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.append_layer href=GESTimeline.html#ges_timeline_append_layer>GES.Timeline.append_layer</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.commit href=GESTimeline.html#ges_timeline_commit>GES.Timeline.commit</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.commit_sync href=GESTimeline.html#ges_timeline_commit_sync>GES.Timeline.commit_sync</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_auto_transition href=GESTimeline.html#ges_timeline_get_auto_transition>GES.Timeline.get_auto_transition</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_duration href=GESTimeline.html#ges_timeline_get_duration>GES.Timeline.get_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_element href=GESTimeline.html#ges_timeline_get_element>GES.Timeline.get_element</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_layers href=GESTimeline.html#ges_timeline_get_layers>GES.Timeline.get_layers</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_pad_for_track href=GESTimeline.html#ges_timeline_get_pad_for_track>GES.Timeline.get_pad_for_track</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_snapping_distance href=GESTimeline.html#ges_timeline_get_snapping_distance>GES.Timeline.get_snapping_distance</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_track_for_pad href=GESTimeline.html#ges_timeline_get_track_for_pad>GES.Timeline.get_track_for_pad</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.get_tracks href=GESTimeline.html#ges_timeline_get_tracks>GES.Timeline.get_tracks</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.is_empty href=GESTimeline.html#ges_timeline_is_empty>GES.Timeline.is_empty</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.load_from_uri href=GESTimeline.html#ges_timeline_load_from_uri>GES.Timeline.load_from_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.new href=GESTimeline.html#ges_timeline_new>GES.Timeline.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.new_audio_video href=GESTimeline.html#ges_timeline_new_audio_video>GES.Timeline.new_audio_video</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.new_from_uri href=GESTimeline.html#ges_timeline_new_from_uri>GES.Timeline.new_from_uri</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.remove_layer href=GESTimeline.html#ges_timeline_remove_layer>GES.Timeline.remove_layer</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.remove_track href=GESTimeline.html#ges_timeline_remove_track>GES.Timeline.remove_track</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.save_to_uri href=GESTimeline.html#ges_timeline_save_to_uri>GES.Timeline.save_to_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.set_auto_transition href=GESTimeline.html#ges_timeline_set_auto_transition>GES.Timeline.set_auto_transition</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Timeline.set_snapping_distance href=GESTimeline.html#ges_timeline_set_snapping_distance>GES.Timeline.set_snapping_distance</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement-struct>GES.TimelineElement</a></td>
+						<td>Structure</td>
+						<td>ges-timeline-element.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td>Class</td>
+						<td>ges-timeline-element.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.copy href=GESTimelineElement.html#ges_timeline_element_copy>GES.TimelineElement.copy</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_child_property href=GESTimelineElement.html#ges_timeline_element_get_child_property>GES.TimelineElement.get_child_property</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_duration href=GESTimelineElement.html#ges_timeline_element_get_duration>GES.TimelineElement.get_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_inpoint href=GESTimelineElement.html#ges_timeline_element_get_inpoint>GES.TimelineElement.get_inpoint</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_max_duration href=GESTimelineElement.html#ges_timeline_element_get_max_duration>GES.TimelineElement.get_max_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_name href=GESTimelineElement.html#ges_timeline_element_get_name>GES.TimelineElement.get_name</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_parent href=GESTimelineElement.html#ges_timeline_element_get_parent>GES.TimelineElement.get_parent</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_priority href=GESTimelineElement.html#ges_timeline_element_get_priority>GES.TimelineElement.get_priority</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_start href=GESTimelineElement.html#ges_timeline_element_get_start>GES.TimelineElement.get_start</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_timeline href=GESTimelineElement.html#ges_timeline_element_get_timeline>GES.TimelineElement.get_timeline</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_toplevel_parent href=GESTimelineElement.html#ges_timeline_element_get_toplevel_parent>GES.TimelineElement.get_toplevel_parent</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.get_track_types href=GESTimelineElement.html#ges_timeline_element_get_track_types>GES.TimelineElement.get_track_types</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td>1.6.0</td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.list_children_properties href=GESTimelineElement.html#ges_timeline_element_list_children_properties>GES.TimelineElement.list_children_properties</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.lookup_child href=GESTimelineElement.html#ges_timeline_element_lookup_child>GES.TimelineElement.lookup_child</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.paste href=GESTimelineElement.html#ges_timeline_element_paste>GES.TimelineElement.paste</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td>1.6.0</td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.ripple href=GESTimelineElement.html#ges_timeline_element_ripple>GES.TimelineElement.ripple</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.ripple_end href=GESTimelineElement.html#ges_timeline_element_ripple_end>GES.TimelineElement.ripple_end</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.roll_end href=GESTimelineElement.html#ges_timeline_element_roll_end>GES.TimelineElement.roll_end</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.roll_start href=GESTimelineElement.html#ges_timeline_element_roll_start>GES.TimelineElement.roll_start</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_child_property href=GESTimelineElement.html#ges_timeline_element_set_child_property>GES.TimelineElement.set_child_property</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_child_property_by_pspec href=GESTimelineElement.html#ges_timeline_element_set_child_property_by_pspec>GES.TimelineElement.set_child_property_by_pspec</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_duration href=GESTimelineElement.html#ges_timeline_element_set_duration>GES.TimelineElement.set_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_inpoint href=GESTimelineElement.html#ges_timeline_element_set_inpoint>GES.TimelineElement.set_inpoint</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_max_duration href=GESTimelineElement.html#ges_timeline_element_set_max_duration>GES.TimelineElement.set_max_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_name href=GESTimelineElement.html#ges_timeline_element_set_name>GES.TimelineElement.set_name</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_parent href=GESTimelineElement.html#ges_timeline_element_set_parent>GES.TimelineElement.set_parent</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_priority href=GESTimelineElement.html#ges_timeline_element_set_priority>GES.TimelineElement.set_priority</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_start href=GESTimelineElement.html#ges_timeline_element_set_start>GES.TimelineElement.set_start</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.set_timeline href=GESTimelineElement.html#ges_timeline_element_set_timeline>GES.TimelineElement.set_timeline</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElement.trim href=GESTimelineElement.html#ges_timeline_element_trim>GES.TimelineElement.trim</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TimelineElementClass href=GESTimelineElement.html#GESTimelineElementClass-struct>GES.TimelineElementClass</a></td>
+						<td>Structure</td>
+						<td>ges-timeline-element.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip-struct>GES.TitleClip</a></td>
+						<td>Structure</td>
+						<td>ges-title-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td>Class</td>
+						<td>ges-title-clip.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_background_color href=GESTitleClip.html#ges_title_clip_get_background_color>GES.TitleClip.get_background_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_font_desc href=GESTitleClip.html#ges_title_clip_get_font_desc>GES.TitleClip.get_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_halignment href=GESTitleClip.html#ges_title_clip_get_halignment>GES.TitleClip.get_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_text href=GESTitleClip.html#ges_title_clip_get_text>GES.TitleClip.get_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_text_color href=GESTitleClip.html#ges_title_clip_get_text_color>GES.TitleClip.get_text_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_valignment href=GESTitleClip.html#ges_title_clip_get_valignment>GES.TitleClip.get_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_xpos href=GESTitleClip.html#ges_title_clip_get_xpos>GES.TitleClip.get_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.get_ypos href=GESTitleClip.html#ges_title_clip_get_ypos>GES.TitleClip.get_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.new href=GESTitleClip.html#ges_title_clip_new>GES.TitleClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_background href=GESTitleClip.html#ges_title_clip_set_background>GES.TitleClip.set_background</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_color href=GESTitleClip.html#ges_title_clip_set_color>GES.TitleClip.set_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_font_desc href=GESTitleClip.html#ges_title_clip_set_font_desc>GES.TitleClip.set_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_halignment href=GESTitleClip.html#ges_title_clip_set_halignment>GES.TitleClip.set_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_text href=GESTitleClip.html#ges_title_clip_set_text>GES.TitleClip.set_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_valignment href=GESTitleClip.html#ges_title_clip_set_valignment>GES.TitleClip.set_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_xpos href=GESTitleClip.html#ges_title_clip_set_xpos>GES.TitleClip.set_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleClip.set_ypos href=GESTitleClip.html#ges_title_clip_set_ypos>GES.TitleClip.set_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource-struct>GES.TitleSource</a></td>
+						<td>Structure</td>
+						<td>ges-title-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td>Class</td>
+						<td>ges-title-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_background_color href=GESTitleSource.html#ges_title_source_get_background_color>GES.TitleSource.get_background_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_font_desc href=GESTitleSource.html#ges_title_source_get_font_desc>GES.TitleSource.get_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_halignment href=GESTitleSource.html#ges_title_source_get_halignment>GES.TitleSource.get_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_text href=GESTitleSource.html#ges_title_source_get_text>GES.TitleSource.get_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_text_color href=GESTitleSource.html#ges_title_source_get_text_color>GES.TitleSource.get_text_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_valignment href=GESTitleSource.html#ges_title_source_get_valignment>GES.TitleSource.get_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_xpos href=GESTitleSource.html#ges_title_source_get_xpos>GES.TitleSource.get_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.get_ypos href=GESTitleSource.html#ges_title_source_get_ypos>GES.TitleSource.get_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_background_color href=GESTitleSource.html#ges_title_source_set_background_color>GES.TitleSource.set_background_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_font_desc href=GESTitleSource.html#ges_title_source_set_font_desc>GES.TitleSource.set_font_desc</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_halignment href=GESTitleSource.html#ges_title_source_set_halignment>GES.TitleSource.set_halignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_text href=GESTitleSource.html#ges_title_source_set_text>GES.TitleSource.set_text</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_text_color href=GESTitleSource.html#ges_title_source_set_text_color>GES.TitleSource.set_text_color</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_valignment href=GESTitleSource.html#ges_title_source_set_valignment>GES.TitleSource.set_valignment</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_xpos href=GESTitleSource.html#ges_title_source_set_xpos>GES.TitleSource.set_xpos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TitleSource.set_ypos href=GESTitleSource.html#ges_title_source_set_ypos>GES.TitleSource.set_ypos</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TitleSource href=GESTitleSource.html#GESTitleSource>GES.TitleSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack-struct>GES.Track</a></td>
+						<td>Structure</td>
+						<td>ges-track.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td>Class</td>
+						<td>ges-track.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.add_element href=GESTrack.html#ges_track_add_element>GES.Track.add_element</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.get_caps href=GESTrack.html#ges_track_get_caps>GES.Track.get_caps</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.get_elements href=GESTrack.html#ges_track_get_elements>GES.Track.get_elements</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.new href=GESTrack.html#ges_track_new>GES.Track.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.remove_element href=GESTrack.html#ges_track_remove_element>GES.Track.remove_element</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.set_restriction_caps href=GESTrack.html#ges_track_set_restriction_caps>GES.Track.set_restriction_caps</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Track.update_restriction_caps href=GESTrack.html#ges_track_update_restriction_caps>GES.Track.update_restriction_caps</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement-struct>GES.TrackElement</a></td>
+						<td>Structure</td>
+						<td>ges-track-element.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td>Class</td>
+						<td>ges-track-element.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.add_children_props href=GESTrackElementAsset.html#ges_track_element_add_children_props>GES.TrackElement.add_children_props</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.edit href=GESTrackElement.html#ges_track_element_edit>GES.TrackElement.edit</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_all_control_bindings href=GESTrackElement.html#ges_track_element_get_all_control_bindings>GES.TrackElement.get_all_control_bindings</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_child_property href=GESTrackElement.html#ges_track_element_get_child_property>GES.TrackElement.get_child_property</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_child_property_by_pspec href=GESTrackElement.html#ges_track_element_get_child_property_by_pspec>GES.TrackElement.get_child_property_by_pspec</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_control_binding href=GESTrackElement.html#ges_track_element_get_control_binding>GES.TrackElement.get_control_binding</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_element href=GESTrackElement.html#ges_track_element_get_element>GES.TrackElement.get_element</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_gnlobject href=GESTrackElement.html#ges_track_element_get_gnlobject>GES.TrackElement.get_gnlobject</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_nleobject href=GESTrackElement.html#ges_track_element_get_nleobject>GES.TrackElement.get_nleobject</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td>1.6</td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.get_track href=GESTrackElement.html#ges_track_element_get_track>GES.TrackElement.get_track</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.is_active href=GESTrackElement.html#ges_track_element_is_active>GES.TrackElement.is_active</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.list_children_properties href=GESTrackElement.html#ges_track_element_list_children_properties>GES.TrackElement.list_children_properties</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.lookup_child href=GESTrackElement.html#ges_track_element_lookup_child>GES.TrackElement.lookup_child</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.remove_control_binding href=GESTrackElement.html#ges_track_element_remove_control_binding>GES.TrackElement.remove_control_binding</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.set_active href=GESTrackElement.html#ges_track_element_set_active>GES.TrackElement.set_active</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.set_child_property href=GESTrackElement.html#ges_track_element_set_child_property>GES.TrackElement.set_child_property</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.set_child_property_by_pspec href=GESTrackElement.html#ges_track_element_set_child_property_by_pspec>GES.TrackElement.set_child_property_by_pspec</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElement.set_control_source href=GESTrackElement.html#ges_track_element_set_control_source>GES.TrackElement.set_control_source</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElementAsset href=GESTrackElementAsset.html#GESTrackElementAsset>GES.TrackElementAsset</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElementAsset.get_track_type href=GESTrackElementAsset.html#ges_track_element_asset_get_track_type>GES.TrackElementAsset.get_track_type</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElementAsset href=GESTrackElementAsset.html#GESTrackElementAsset>GES.TrackElementAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElementAsset.set_track_type href=GESTrackElementAsset.html#ges_track_element_asset_set_track_type>GES.TrackElementAsset.set_track_type</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.TrackElementAsset href=GESTrackElementAsset.html#GESTrackElementAsset>GES.TrackElementAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackElementClass href=GESTrackElement.html#GESTrackElementClass-struct>GES.TrackElementClass</a></td>
+						<td>Structure</td>
+						<td>ges-track-element.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TrackType href=Enum and flag types.html#GESTrackType>GES.TrackType</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Transition href=GESTransition.html#GESTransition-struct>GES.Transition</a></td>
+						<td>Structure</td>
+						<td>ges-transition.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.Transition href=GESTransition.html#GESTransition>GES.Transition</a></td>
+						<td>Class</td>
+						<td>ges-transition.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TransitionClass href=GESTransition.html#GESTransitionClass-struct>GES.TransitionClass</a></td>
+						<td>Structure</td>
+						<td>ges-transition.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip-struct>GES.TransitionClip</a></td>
+						<td>Structure</td>
+						<td>ges-transition-clip.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip>GES.TransitionClip</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TransitionClip.new href=GESTransitionClip.html#ges_transition_clip_new>GES.TransitionClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip>GES.TransitionClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.TransitionClip.new_for_nick href=GESTransitionClip.html#ges_transition_clip_new_for_nick>GES.TransitionClip.new_for_nick</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip>GES.TransitionClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.get_uri href=GESUriClip.html#ges_uri_clip_get_uri>GES.UriClip.get_uri</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.is_image href=GESUriClip.html#ges_uri_clip_is_image>GES.UriClip.is_image</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.is_muted href=GESUriClip.html#ges_uri_clip_is_muted>GES.UriClip.is_muted</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.new href=GESUriClip.html#ges_uri_clip_new>GES.UriClip.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.set_is_image href=GESUriClip.html#ges_uri_clip_set_is_image>GES.UriClip.set_is_image</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClip.set_mute href=GESUriClip.html#ges_uri_clip_set_mute>GES.UriClip.set_mute</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.get_duration href=GESUriClipAsset.html#ges_uri_clip_asset_get_duration>GES.UriClipAsset.get_duration</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.get_info href=GESUriClipAsset.html#ges_uri_clip_asset_get_info>GES.UriClipAsset.get_info</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.get_stream_assets href=GESUriClipAsset.html#ges_uri_clip_asset_get_stream_assets>GES.UriClipAsset.get_stream_assets</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.is_image href=GESUriClipAsset.html#ges_uri_clip_asset_is_image>GES.UriClipAsset.is_image</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.new href=GESUriClipAsset.html#ges_uri_clip_asset_new>GES.UriClipAsset.new</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAsset.request_sync href=GESUriClipAsset.html#ges_uri_clip_asset_request_sync>GES.UriClipAsset.request_sync</a></td>
+						<td>Function</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriClipAssetClass.set_timeout href=GESUriClipAsset.html#ges_uri_clip_asset_class_set_timeout>GES.UriClipAssetClass.set_timeout</a></td>
+						<td>Method</td>
+						<td>ges-uri-asset.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriSourceAsset href=GESUriSourceAsset.html#GESUriSourceAsset>GES.UriSourceAsset</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriSourceAsset.get_filesource_asset href=GESUriSourceAsset.html#ges_uri_source_asset_get_filesource_asset>GES.UriSourceAsset.get_filesource_asset</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriSourceAsset href=GESUriSourceAsset.html#GESUriSourceAsset>GES.UriSourceAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.UriSourceAsset.get_stream_info href=GESUriSourceAsset.html#ges_uri_source_asset_get_stream_info>GES.UriSourceAsset.get_stream_info</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.UriSourceAsset href=GESUriSourceAsset.html#GESUriSourceAsset>GES.UriSourceAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoSource href=GESVideoSource.html#GESVideoSource-struct>GES.VideoSource</a></td>
+						<td>Structure</td>
+						<td>ges-video-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoSource href=GESVideoSource.html#GESVideoSource>GES.VideoSource</a></td>
+						<td>Class</td>
+						<td>ges-video-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoStandardTransitionType href=Enum and flag types.html#GESVideoStandardTransitionType>GES.VideoStandardTransitionType</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTestPattern href=Enum and flag types.html#GESVideoTestPattern>GES.VideoTestPattern</a></td>
+						<td>Enumeration</td>
+						<td>ges-enums.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTestSource href=GESVideoTestSource.html#GESVideoTestSource-struct>GES.VideoTestSource</a></td>
+						<td>Structure</td>
+						<td>ges-video-test-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTestSource href=GESVideoTestSource.html#GESVideoTestSource>GES.VideoTestSource</a></td>
+						<td>Class</td>
+						<td>ges-video-test-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTestSource.get_pattern href=GESVideoTestSource.html#ges_video_test_source_get_pattern>GES.VideoTestSource.get_pattern</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTestSource href=GESVideoTestSource.html#GESVideoTestSource>GES.VideoTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTestSource.set_pattern href=GESVideoTestSource.html#ges_video_test_source_set_pattern>GES.VideoTestSource.set_pattern</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTestSource href=GESVideoTestSource.html#GESVideoTestSource>GES.VideoTestSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTrack href=GESVideoTrack.html#GESVideoTrack>GES.VideoTrack</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTrack.new href=GESVideoTrack.html#ges_video_track_new>GES.VideoTrack.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.VideoTrack href=GESVideoTrack.html#GESVideoTrack>GES.VideoTrack</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition-struct>GES.VideoTransition</a></td>
+						<td>Structure</td>
+						<td>ges-video-transition.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td>Class</td>
+						<td>ges-video-transition.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.get_border href=GESVideoTransition.html#ges_video_transition_get_border>GES.VideoTransition.get_border</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.get_transition_type href=GESVideoTransition.html#ges_video_transition_get_transition_type>GES.VideoTransition.get_transition_type</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.is_inverted href=GESVideoTransition.html#ges_video_transition_is_inverted>GES.VideoTransition.is_inverted</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.new href=GESVideoTransition.html#ges_video_transition_new>GES.VideoTransition.new</a></td>
+						<td>Constructor</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.set_border href=GESVideoTransition.html#ges_video_transition_set_border>GES.VideoTransition.set_border</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.set_inverted href=GESVideoTransition.html#ges_video_transition_set_inverted>GES.VideoTransition.set_inverted</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoTransition.set_transition_type href=GESVideoTransition.html#ges_video_transition_set_transition_type>GES.VideoTransition.set_transition_type</a></td>
+						<td>Method</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoUriSource href=GESVideoUriSource.html#GESVideoUriSource-struct>GES.VideoUriSource</a></td>
+						<td>Structure</td>
+						<td>ges-video-uri-source.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.VideoUriSource href=GESVideoUriSource.html#GESVideoUriSource>GES.VideoUriSource</a></td>
+						<td>Class</td>
+						<td>ges-video-uri-source.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.XmlFormatter href=GESXmlFormatter.html#GESXmlFormatter>GES.XmlFormatter</a></td>
+						<td>Class</td>
+						<td></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.init href=Initialize GES.html#ges_init>GES.init</a></td>
+						<td>Function</td>
+						<td>ges.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.init_check href=Initialize GES.html#ges_init_check>GES.init_check</a></td>
+						<td>Function</td>
+						<td>ges.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.list_assets href=GESAsset.html#ges_list_assets>GES.list_assets</a></td>
+						<td>Function</td>
+						<td>ges-asset.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES.version href=Initialize GES.html#ges_version>GES.version</a></td>
+						<td>Function</td>
+						<td>ges.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=GES_ERROR href=The GES GError types.html#GES_ERROR>GES_ERROR</a></td>
+						<td>Constant</td>
+						<td>ges-gerror.h</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=active href=GESTrackElement.html#GESTrackElement:::active---property>active</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=active href=GESTrackElement.html#GESTrackElement:::active---property>active</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=asset-added href=GESProject.html#GESProject:::asset-added---signal>asset-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=asset-added href=GESProject.html#GESProject:::asset-added---signal>asset-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=asset-removed href=GESProject.html#GESProject:::asset-removed---signal>asset-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=asset-removed href=GESProject.html#GESProject:::asset-removed---signal>asset-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-bin-description href=GESEffectClip.html#GESEffectClip:::audio-bin-description---property>audio-bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-bin-description href=GESEffectClip.html#GESEffectClip:::audio-bin-description---property>audio-bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-filter href=GESPipeline.html#GESPipeline:::audio-filter---property>audio-filter</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-filter href=GESPipeline.html#GESPipeline:::audio-filter---property>audio-filter</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-sink href=GESPipeline.html#GESPipeline:::audio-sink---property>audio-sink</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=audio-sink href=GESPipeline.html#GESPipeline:::audio-sink---property>audio-sink</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=auto-transition href=GESTimeline.html#GESTimeline:::auto-transition---property>auto-transition</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=auto-transition href=GESTimeline.html#GESTimeline:::auto-transition---property>auto-transition</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=auto-transition href=GESLayer.html#GESLayer:::auto-transition---property>auto-transition</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=auto-transition href=GESLayer.html#GESLayer:::auto-transition---property>auto-transition</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=background href=GESTitleClip.html#GESTitleClip:::background---property>background</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=background href=GESTitleClip.html#GESTitleClip:::background---property>background</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=bin-description href=GESEffect.html#GESEffect:::bin-description---property>bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Effect href=GESEffect.html#GESEffect>GES.Effect</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=bin-description href=GESEffect.html#GESEffect:::bin-description---property>bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Effect href=GESEffect.html#GESEffect>GES.Effect</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=border href=GESVideoTransition.html#GESVideoTransition:::border---property>border</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=border href=GESVideoTransition.html#GESVideoTransition:::border---property>border</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=caps href=GESTrack.html#GESTrack:::caps---property>caps</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=caps href=GESTrack.html#GESTrack:::caps---property>caps</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=child-added href=GESContainer.html#GESContainer:::child-added---signal>child-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=child-added href=GESContainer.html#GESContainer:::child-added---signal>child-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=child-removed href=GESContainer.html#GESContainer:::child-removed---signal>child-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=child-removed href=GESContainer.html#GESContainer:::child-removed---signal>child-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=clip-added href=GESLayer.html#GESLayer:::clip-added---signal>clip-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=clip-added href=GESLayer.html#GESLayer:::clip-added---signal>clip-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=clip-removed href=GESLayer.html#GESLayer:::clip-removed---signal>clip-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=clip-removed href=GESLayer.html#GESLayer:::clip-removed---signal>clip-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=color href=GESTitleClip.html#GESTitleClip:::color---property>color</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=color href=GESTitleClip.html#GESTitleClip:::color---property>color</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=color href=GESTextOverlayClip.html#GESTextOverlayClip:::color---property>color</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=color href=GESTextOverlayClip.html#GESTextOverlayClip:::color---property>color</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=commited href=GESTimeline.html#GESTimeline:::commited---signal>commited</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=commited href=GESTimeline.html#GESTimeline:::commited---signal>commited</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=commited href=GESTrack.html#GESTrack:::commited---signal>commited</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=commited href=GESTrack.html#GESTrack:::commited---signal>commited</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=control-binding-added href=GESTrackElement.html#GESTrackElement:::control-binding-added---signal>control-binding-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=control-binding-added href=GESTrackElement.html#GESTrackElement:::control-binding-added---signal>control-binding-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=deep-notify href=GESTimelineElement.html#GESTimelineElement:::deep-notify---signal>deep-notify</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=deep-notify href=GESTimelineElement.html#GESTimelineElement:::deep-notify---signal>deep-notify</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_active_changed href=GESTrackElement.html#GESTrackElement:::active_changed---vfunc>do_active_changed</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_active_changed href=GESTrackElement.html#GESTrackElement:::active_changed---vfunc>do_active_changed</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_add_child href=GESContainer.html#GESContainer:::add_child---vfunc>do_add_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_add_child href=GESContainer.html#GESContainer:::add_child---vfunc>do_add_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_can_load_uri href=GESFormatter.html#GESFormatter:::can_load_uri---vfunc>do_can_load_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_can_load_uri href=GESFormatter.html#GESFormatter:::can_load_uri---vfunc>do_can_load_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_child_added href=GESContainer.html#GESContainer:::child_added---vfunc>do_child_added</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_child_added href=GESContainer.html#GESContainer:::child_added---vfunc>do_child_added</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_child_removed href=GESContainer.html#GESContainer:::child_removed---vfunc>do_child_removed</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_child_removed href=GESContainer.html#GESContainer:::child_removed---vfunc>do_child_removed</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_element href=GESTrackElement.html#GESTrackElement:::create_element---vfunc>do_create_element</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_element href=GESTrackElement.html#GESTrackElement:::create_element---vfunc>do_create_element</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_gnl_object href=GESTrackElement.html#GESTrackElement:::create_gnl_object---vfunc>do_create_gnl_object</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_gnl_object href=GESTrackElement.html#GESTrackElement:::create_gnl_object---vfunc>do_create_gnl_object</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_track_element href=GESClip.html#GESClip:::create_track_element---vfunc>do_create_track_element</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_track_element href=GESClip.html#GESClip:::create_track_element---vfunc>do_create_track_element</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_track_elements href=GESClip.html#GESClip:::create_track_elements---vfunc>do_create_track_elements</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_create_track_elements href=GESClip.html#GESClip:::create_track_elements---vfunc>do_create_track_elements</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_deep_copy href=GESTimelineElement.html#GESTimelineElement:::deep_copy---vfunc>do_deep_copy</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_deep_copy href=GESTimelineElement.html#GESTimelineElement:::deep_copy---vfunc>do_deep_copy</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_get_objects href=GESLayer.html#GESLayer:::get_objects---vfunc>do_get_objects</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_get_objects href=GESLayer.html#GESLayer:::get_objects---vfunc>do_get_objects</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_list_children_properties href=GESTrackElement.html#GESTrackElement:::list_children_properties---vfunc>do_list_children_properties</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_list_children_properties href=GESTrackElement.html#GESTrackElement:::list_children_properties---vfunc>do_list_children_properties</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_load_from_uri href=GESFormatter.html#GESFormatter:::load_from_uri---vfunc>do_load_from_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_load_from_uri href=GESFormatter.html#GESFormatter:::load_from_uri---vfunc>do_load_from_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_lookup_child href=GESTrackElement.html#GESTrackElement:::lookup_child---vfunc>do_lookup_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_lookup_child href=GESTrackElement.html#GESTrackElement:::lookup_child---vfunc>do_lookup_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_remove_child href=GESContainer.html#GESContainer:::remove_child---vfunc>do_remove_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_remove_child href=GESContainer.html#GESContainer:::remove_child---vfunc>do_remove_child</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ripple href=GESTimelineElement.html#GESTimelineElement:::ripple---vfunc>do_ripple</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ripple href=GESTimelineElement.html#GESTimelineElement:::ripple---vfunc>do_ripple</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ripple_end href=GESTimelineElement.html#GESTimelineElement:::ripple_end---vfunc>do_ripple_end</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ripple_end href=GESTimelineElement.html#GESTimelineElement:::ripple_end---vfunc>do_ripple_end</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_roll_end href=GESTimelineElement.html#GESTimelineElement:::roll_end---vfunc>do_roll_end</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_roll_end href=GESTimelineElement.html#GESTimelineElement:::roll_end---vfunc>do_roll_end</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_roll_start href=GESTimelineElement.html#GESTimelineElement:::roll_start---vfunc>do_roll_start</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_roll_start href=GESTimelineElement.html#GESTimelineElement:::roll_start---vfunc>do_roll_start</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_save_to_uri href=GESFormatter.html#GESFormatter:::save_to_uri---vfunc>do_save_to_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_save_to_uri href=GESFormatter.html#GESFormatter:::save_to_uri---vfunc>do_save_to_uri</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Formatter href=GESFormatter.html#GESFormatter>GES.Formatter</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_duration href=GESTimelineElement.html#GESTimelineElement:::set_duration---vfunc>do_set_duration</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_duration href=GESTimelineElement.html#GESTimelineElement:::set_duration---vfunc>do_set_duration</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_inpoint href=GESTimelineElement.html#GESTimelineElement:::set_inpoint---vfunc>do_set_inpoint</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_inpoint href=GESTimelineElement.html#GESTimelineElement:::set_inpoint---vfunc>do_set_inpoint</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_max_duration href=GESTimelineElement.html#GESTimelineElement:::set_max_duration---vfunc>do_set_max_duration</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_max_duration href=GESTimelineElement.html#GESTimelineElement:::set_max_duration---vfunc>do_set_max_duration</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_parent href=GESTimelineElement.html#GESTimelineElement:::set_parent---vfunc>do_set_parent</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_parent href=GESTimelineElement.html#GESTimelineElement:::set_parent---vfunc>do_set_parent</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_priority href=GESTimelineElement.html#GESTimelineElement:::set_priority---vfunc>do_set_priority</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_priority href=GESTimelineElement.html#GESTimelineElement:::set_priority---vfunc>do_set_priority</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_start href=GESTimelineElement.html#GESTimelineElement:::set_start---vfunc>do_set_start</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_set_start href=GESTimelineElement.html#GESTimelineElement:::set_start---vfunc>do_set_start</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_trim href=GESTimelineElement.html#GESTimelineElement:::trim---vfunc>do_trim</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_trim href=GESTimelineElement.html#GESTimelineElement:::trim---vfunc>do_trim</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ungroup href=GESContainer.html#GESContainer:::ungroup---vfunc>do_ungroup</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=do_ungroup href=GESContainer.html#GESContainer:::ungroup---vfunc>do_ungroup</a></td>
+						<td>Virtual function</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTimeline.html#GESTimeline:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTimeline.html#GESTimeline:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTimelineElement.html#GESTimelineElement:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTimelineElement.html#GESTimelineElement:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTrack.html#GESTrack:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESTrack.html#GESTrack:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESGroup.html#GESGroup:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESGroup.html#GESGroup:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESUriClipAsset.html#GESUriClipAsset:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=duration href=GESUriClipAsset.html#GESUriClipAsset:::duration---property>duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClipAsset href=GESUriClipAsset.html#GESUriClipAsset>GES.UriClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=error-loading-asset href=GESProject.html#GESProject:::error-loading-asset---signal>error-loading-asset</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=error-loading-asset href=GESProject.html#GESProject:::error-loading-asset---signal>error-loading-asset</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=extractable-type href=GESAsset.html#GESAsset:::extractable-type---property>extractable-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=extractable-type href=GESAsset.html#GESAsset:::extractable-type---property>extractable-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=font-desc href=GESTitleClip.html#GESTitleClip:::font-desc---property>font-desc</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=font-desc href=GESTitleClip.html#GESTitleClip:::font-desc---property>font-desc</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=font-desc href=GESTextOverlayClip.html#GESTextOverlayClip:::font-desc---property>font-desc</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=font-desc href=GESTextOverlayClip.html#GESTextOverlayClip:::font-desc---property>font-desc</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=freq href=GESTestClip.html#GESTestClip:::freq---property>freq</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=freq href=GESTestClip.html#GESTestClip:::freq---property>freq</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=ges_track_set_caps href=GESTrack.html#ges_track_set_caps>ges_track_set_caps</a></td>
+						<td>Function</td>
+						<td>ges-track.c</td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=halignment href=GESTitleClip.html#GESTitleClip:::halignment---property>halignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=halignment href=GESTitleClip.html#GESTitleClip:::halignment---property>halignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=halignment href=GESTextOverlayClip.html#GESTextOverlayClip:::halignment---property>halignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=halignment href=GESTextOverlayClip.html#GESTextOverlayClip:::halignment---property>halignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=height href=GESContainer.html#GESContainer:::height---property>height</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=height href=GESContainer.html#GESContainer:::height---property>height</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Container href=GESContainer.html#GESContainer>GES.Container</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=id href=GESAsset.html#GESAsset:::id---property>id</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=id href=GESAsset.html#GESAsset:::id---property>id</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Asset href=GESAsset.html#GESAsset>GES.Asset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=in-point href=GESTimelineElement.html#GESTimelineElement:::in-point---property>in-point</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=in-point href=GESTimelineElement.html#GESTimelineElement:::in-point---property>in-point</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=in-point href=GESGroup.html#GESGroup:::in-point---property>in-point</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=in-point href=GESGroup.html#GESGroup:::in-point---property>in-point</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=invert href=GESVideoTransition.html#GESVideoTransition:::invert---property>invert</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=invert href=GESVideoTransition.html#GESVideoTransition:::invert---property>invert</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=is-image href=GESUriClip.html#GESUriClip:::is-image---property>is-image</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=is-image href=GESUriClip.html#GESUriClip:::is-image---property>is-image</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer href=GESClip.html#GESClip:::layer---property>layer</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer href=GESClip.html#GESClip:::layer---property>layer</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer-added href=GESTimeline.html#GESTimeline:::layer-added---signal>layer-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer-added href=GESTimeline.html#GESTimeline:::layer-added---signal>layer-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer-removed href=GESTimeline.html#GESTimeline:::layer-removed---signal>layer-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=layer-removed href=GESTimeline.html#GESTimeline:::layer-removed---signal>layer-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=loaded href=GESProject.html#GESProject:::loaded---signal>loaded</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=loaded href=GESProject.html#GESProject:::loaded---signal>loaded</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=max-duration href=GESTimelineElement.html#GESTimelineElement:::max-duration---property>max-duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=max-duration href=GESTimelineElement.html#GESTimelineElement:::max-duration---property>max-duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=max-duration href=GESGroup.html#GESGroup:::max-duration---property>max-duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=max-duration href=GESGroup.html#GESGroup:::max-duration---property>max-duration</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=missing-uri href=GESProject.html#GESProject:::missing-uri---signal>missing-uri</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=missing-uri href=GESProject.html#GESProject:::missing-uri---signal>missing-uri</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mixing href=GESTrack.html#GESTrack:::mixing---property>mixing</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mixing href=GESTrack.html#GESTrack:::mixing---property>mixing</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mode href=GESPipeline.html#GESPipeline:::mode---property>mode</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mode href=GESPipeline.html#GESPipeline:::mode---property>mode</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mute href=GESUriClip.html#GESUriClip:::mute---property>mute</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mute href=GESUriClip.html#GESUriClip:::mute---property>mute</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mute href=GESTestClip.html#GESTestClip:::mute---property>mute</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=mute href=GESTestClip.html#GESTestClip:::mute---property>mute</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=name href=GESTimelineElement.html#GESTimelineElement:::name---property>name</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=name href=GESTimelineElement.html#GESTimelineElement:::name---property>name</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=parent href=GESTimelineElement.html#GESTimelineElement:::parent---property>parent</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=parent href=GESTimelineElement.html#GESTimelineElement:::parent---property>parent</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESLayer.html#GESLayer:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESLayer.html#GESLayer:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Layer href=GESLayer.html#GESLayer>GES.Layer</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESTimelineElement.html#GESTimelineElement:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESTimelineElement.html#GESTimelineElement:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESGroup.html#GESGroup:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=priority href=GESGroup.html#GESGroup:::priority---property>priority</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=restriction-caps href=GESTrack.html#GESTrack:::restriction-caps---property>restriction-caps</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=restriction-caps href=GESTrack.html#GESTrack:::restriction-caps---property>restriction-caps</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=select-tracks-for-object href=GESTimeline.html#GESTimeline:::select-tracks-for-object---signal>select-tracks-for-object</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=select-tracks-for-object href=GESTimeline.html#GESTimeline:::select-tracks-for-object---signal>select-tracks-for-object</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=serialize href=GESTimelineElement.html#GESTimelineElement:::serialize---property>serialize</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=serialize href=GESTimelineElement.html#GESTimelineElement:::serialize---property>serialize</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=snapping-distance href=GESTimeline.html#GESTimeline:::snapping-distance---property>snapping-distance</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=snapping-distance href=GESTimeline.html#GESTimeline:::snapping-distance---property>snapping-distance</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=start href=GESTimelineElement.html#GESTimelineElement:::start---property>start</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=start href=GESTimelineElement.html#GESTimelineElement:::start---property>start</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=start href=GESGroup.html#GESGroup:::start---property>start</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=start href=GESGroup.html#GESGroup:::start---property>start</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Group href=GESGroup.html#GESGroup>GES.Group</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESClip.html#GESClip:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESClip.html#GESClip:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Clip href=GESClip.html#GESClip>GES.Clip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESUriClip.html#GESUriClip:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESUriClip.html#GESUriClip:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESClipAsset.html#GESClipAsset:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.ClipAsset href=GESClipAsset.html#GESClipAsset>GES.ClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=supported-formats href=GESClipAsset.html#GESClipAsset:::supported-formats---property>supported-formats</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.ClipAsset href=GESClipAsset.html#GESClipAsset>GES.ClipAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=text href=GESTitleClip.html#GESTitleClip:::text---property>text</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=text href=GESTitleClip.html#GESTitleClip:::text---property>text</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=text href=GESTextOverlayClip.html#GESTextOverlayClip:::text---property>text</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=text href=GESTextOverlayClip.html#GESTextOverlayClip:::text---property>text</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=timeline href=GESTimelineElement.html#GESTimelineElement:::timeline---property>timeline</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=timeline href=GESTimelineElement.html#GESTimelineElement:::timeline---property>timeline</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TimelineElement href=GESTimelineElement.html#GESTimelineElement>GES.TimelineElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=timeline href=GESPipeline.html#GESPipeline:::timeline---property>timeline</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=timeline href=GESPipeline.html#GESPipeline:::timeline---property>timeline</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track href=GESTrackElement.html#GESTrackElement:::track---property>track</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track href=GESTrackElement.html#GESTrackElement:::track---property>track</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-added href=GESTimeline.html#GESTimeline:::track-added---signal>track-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-added href=GESTimeline.html#GESTimeline:::track-added---signal>track-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-element-added href=GESTrack.html#GESTrack:::track-element-added---signal>track-element-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-element-added href=GESTrack.html#GESTrack:::track-element-added---signal>track-element-added</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-element-removed href=GESTrack.html#GESTrack:::track-element-removed---signal>track-element-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-element-removed href=GESTrack.html#GESTrack:::track-element-removed---signal>track-element-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-removed href=GESTimeline.html#GESTimeline:::track-removed---signal>track-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-removed href=GESTimeline.html#GESTimeline:::track-removed---signal>track-removed</a></td>
+						<td>Signal</td>
+						<td><a class="link" title=GES.Timeline href=GESTimeline.html#GESTimeline>GES.Timeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrack.html#GESTrack:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrack.html#GESTrack:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Track href=GESTrack.html#GESTrack>GES.Track</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrackElement.html#GESTrackElement:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrackElement.html#GESTrackElement:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElement href=GESTrackElement.html#GESTrackElement>GES.TrackElement</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrackElementAsset.html#GESTrackElementAsset:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElementAsset href=GESTrackElementAsset.html#GESTrackElementAsset>GES.TrackElementAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=track-type href=GESTrackElementAsset.html#GESTrackElementAsset:::track-type---property>track-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TrackElementAsset href=GESTrackElementAsset.html#GESTrackElementAsset>GES.TrackElementAsset</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=transition-type href=GESVideoTransition.html#GESVideoTransition:::transition-type---property>transition-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=transition-type href=GESVideoTransition.html#GESVideoTransition:::transition-type---property>transition-type</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoTransition href=GESVideoTransition.html#GESVideoTransition>GES.VideoTransition</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESUriClip.html#GESUriClip:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESUriClip.html#GESUriClip:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.UriClip href=GESUriClip.html#GESUriClip>GES.UriClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESAudioUriSource.html#GESAudioUriSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.AudioUriSource href=GESAudioUriSource.html#GESAudioUriSource>GES.AudioUriSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESAudioUriSource.html#GESAudioUriSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.AudioUriSource href=GESAudioUriSource.html#GESAudioUriSource>GES.AudioUriSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESVideoUriSource.html#GESVideoUriSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoUriSource href=GESVideoUriSource.html#GESVideoUriSource>GES.VideoUriSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESVideoUriSource.html#GESVideoUriSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.VideoUriSource href=GESVideoUriSource.html#GESVideoUriSource>GES.VideoUriSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESImageSource.html#GESImageSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.ImageSource href=GESImageSource.html#GESImageSource>GES.ImageSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESImageSource.html#GESImageSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.ImageSource href=GESImageSource.html#GESImageSource>GES.ImageSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESMultiFileSource.html#GESMultiFileSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.MultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GES.MultiFileSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESMultiFileSource.html#GESMultiFileSource:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.MultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GES.MultiFileSource</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESProject.html#GESProject:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=uri href=GESProject.html#GESProject:::uri---property>uri</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Project href=GESProject.html#GESProject>GES.Project</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=valignment href=GESTitleClip.html#GESTitleClip:::valignment---property>valignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=valignment href=GESTitleClip.html#GESTitleClip:::valignment---property>valignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=valignment href=GESTextOverlayClip.html#GESTextOverlayClip:::valignment---property>valignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=valignment href=GESTextOverlayClip.html#GESTextOverlayClip:::valignment---property>valignment</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-bin-description href=GESEffectClip.html#GESEffectClip:::video-bin-description---property>video-bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-bin-description href=GESEffectClip.html#GESEffectClip:::video-bin-description---property>video-bin-description</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.EffectClip href=GESEffectClip.html#GESEffectClip>GES.EffectClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-filter href=GESPipeline.html#GESPipeline:::video-filter---property>video-filter</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-filter href=GESPipeline.html#GESPipeline:::video-filter---property>video-filter</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-sink href=GESPipeline.html#GESPipeline:::video-sink---property>video-sink</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=video-sink href=GESPipeline.html#GESPipeline:::video-sink---property>video-sink</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.Pipeline href=GESPipeline.html#GESPipeline>GES.Pipeline</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=volume href=GESTestClip.html#GESTestClip:::volume---property>volume</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=volume href=GESTestClip.html#GESTestClip:::volume---property>volume</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=vpattern href=GESTestClip.html#GESTestClip:::vpattern---property>vpattern</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=vpattern href=GESTestClip.html#GESTestClip:::vpattern---property>vpattern</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TestClip href=GESTestClip.html#GESTestClip>GES.TestClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=vtype href=GESTransitionClip.html#GESTransitionClip:::vtype---property>vtype</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip>GES.TransitionClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=vtype href=GESTransitionClip.html#GESTransitionClip:::vtype---property>vtype</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TransitionClip href=GESTransitionClip.html#GESTransitionClip>GES.TransitionClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=xpos href=GESTitleClip.html#GESTitleClip:::xpos---property>xpos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=xpos href=GESTitleClip.html#GESTitleClip:::xpos---property>xpos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=xpos href=GESTextOverlayClip.html#GESTextOverlayClip:::xpos---property>xpos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=xpos href=GESTextOverlayClip.html#GESTextOverlayClip:::xpos---property>xpos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=ypos href=GESTitleClip.html#GESTitleClip:::ypos---property>ypos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=ypos href=GESTitleClip.html#GESTitleClip:::ypos---property>ypos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TitleClip href=GESTitleClip.html#GESTitleClip>GES.TitleClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=ypos href=GESTextOverlayClip.html#GESTextOverlayClip:::ypos---property>ypos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+				<tr>
+						<td><a class="link" title=ypos href=GESTextOverlayClip.html#GESTextOverlayClip:::ypos---property>ypos</a></td>
+						<td>Property</td>
+						<td><a class="link" title=GES.TextOverlayClip href=GESTextOverlayClip.html#GESTextOverlayClip>GES.TextOverlayClip</a></td>
+						<td></td>
+					</tr>
+			</tbody>
+
+	<tfoot>
+		<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>In</th>
+						<th>Since</th>
+					</tr>
+	</tfoot>
+</table>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+</script>
+
+<script type="text/javascript" src="API_index.js">
+</script>
+
+

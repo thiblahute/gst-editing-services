@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Data Structures">
+	<span class="dim">|</span>
+	<a href="#DataStructures">Data Structures</a>
+</span>
+
+<span id="nav_hierarchy">
+	<span class="dim">|</span>
+	<a href="#hierarchy">Object Hierarchy</a>
+</span>
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="GESOperationClip"></a>
+				<h1 class="class">GESOperationClip</h1>
+		<p>Base Class for operations in a GESLayer</p>
+			</div>
+
+		<div class="refsect1">
+		<a name=DataStructures></a>
+		<h2>Data Structures</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESOperationClip href=GESOperationClip.html#GESOperationClip-struct>GESOperationClip</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+	<a name="hierarchy"></a>
+	<div class="refsect1">
+	<h2>Object Hierarchy</h2>
+<pre class="screen">
+<a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a>
+    <span class="lineart">╰──</span><a class="link" title=GInitiallyUnowned href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GInitiallyUnowned>GInitiallyUnowned</a>
+        <span class="lineart">╰──</span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a>
+            <span class="lineart">╰──</span><a class="link" title=GESContainer href=GESContainer.html#GESContainer>GESContainer</a>
+                <span class="lineart">╰──</span><a class="link" title=GESClip href=GESClip.html#GESClip>GESClip</a>
+                    <span class="lineart">╰──</span>GESOperationClip
+                        <span class="lineart">╰──</span><a class="link" title=GESBaseEffectClip href=GESBaseEffectClip.html#GESBaseEffectClip>GESBaseEffectClip</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESOverlayClip href=GESOverlayClip.html#GESOverlayClip>GESOverlayClip</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESBaseTransitionClip href=GESBaseTransitionClip.html#GESBaseTransitionClip>GESBaseTransitionClip</a>
+
+
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+		<h2>Instance description</h2>
+		<p>Operations are any kind of object that both outputs AND consumes data.</p>
+
+	</div>
+	
+	
+		<div class="refsect1">
+		<a name="Data Structures"></a>
+		<h2>Data Structures</h2>
+		
+				<div class="refsect2">
+	<a name=GESOperationClip-struct></a>
+	<h3>
+		struct GESOperationClip
+	</h3>
+		<pre class="programlisting">
+typedef struct _GESOperationClip GESOperationClip;
+</pre>
+
+			<p>The GESOperationClip subclass. Subclasses can access these fields.</p>
+
+		
+
+</div>
+
+			</div>
+	</div>
+

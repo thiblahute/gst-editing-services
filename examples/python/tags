@@ -1,0 +1,28 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+add_one_clip_in_each_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/add_one_clip_in_each_layer.py	/^def add_one_clip_in_each_layer(timeline, duration):$/;"	f	language:Python
+add_one_clip_in_each_layer	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from add_one_clip_in_each_layer import add_one_clip_in_each_layer$/;"	i	language:Python
+add_one_video_track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/add_one_video_track.py	/^def add_one_video_track(timeline):$/;"	f	language:Python
+add_one_video_track	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from add_one_video_track import add_one_video_track$/;"	i	language:Python
+bus_message_cb	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^    def bus_message_cb(self, unused_bus, message):$/;"	m	language:Python	class:Simple
+create_timeline_with_n_layers	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/create_timeline_with_n_layers.py	/^def create_timeline_with_n_layers(n_layers):$/;"	f	language:Python
+create_timeline_with_n_layers	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from create_timeline_with_n_layers import create_timeline_with_n_layers$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/add_one_clip_in_each_layer.py	/^from gi.repository import GES$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/add_one_video_track.py	/^from gi.repository import GES$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/create_timeline_with_n_layers.py	/^from gi.repository import GES$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from gi.repository import GES, Gst$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/play_timeline.py	/^from gi.repository import GES, Gst, GLib$/;"	i	language:Python
+GES	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^from gi.repository import Gst, GES, GLib$/;"	i	language:Python
+GLib	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/play_timeline.py	/^from gi.repository import GES, Gst, GLib$/;"	i	language:Python
+GLib	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^from gi.repository import Gst, GES, GLib$/;"	i	language:Python
+Gst	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from gi.repository import GES, Gst$/;"	i	language:Python
+Gst	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/play_timeline.py	/^from gi.repository import GES, Gst, GLib$/;"	i	language:Python
+Gst	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^from gi.repository import Gst, GES, GLib$/;"	i	language:Python
+os	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^import os$/;"	i	language:Python
+play_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^from play_timeline import play_timeline$/;"	i	language:Python
+play_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/play_timeline.py	/^def play_timeline(timeline):$/;"	f	language:Python
+simple	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^    simple = Simple(os.sys.argv[1])$/;"	v	language:Python
+Simple	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^class Simple:$/;"	c	language:Python
+start	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^    def start(self):$/;"	m	language:Python	class:Simple
+timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/full_timeline_tutorial.py	/^    timeline = create_timeline_with_n_layers(2)$/;"	v	language:Python
+_create_pipeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^    def _create_pipeline(self, timeline):$/;"	m	language:Python	class:Simple
+__init__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/examples/python/simple.py	/^    def __init__(self, uri):$/;"	m	language:Python	class:Simple

@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Functions">
+	<span class="dim">|</span>
+	<a href="#Functions">Functions</a>
+</span>
+<span id="nav_Properties">
+	<span class="dim">|</span>
+	<a href="#Properties">Properties</a>
+</span>
+<span id="nav_Data Structures">
+	<span class="dim">|</span>
+	<a href="#DataStructures">Data Structures</a>
+</span>
+
+<span id="nav_hierarchy">
+	<span class="dim">|</span>
+	<a href="#hierarchy">Object Hierarchy</a>
+</span>
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="GESMultiFileSource"></a>
+				<h1 class="class">GESMultiFileSource</h1>
+		<p>outputs the video stream from a sequence of images.</p>
+			</div>
+
+		<div class="refsect1">
+		<a name=Functions></a>
+		<h2>Functions</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESMultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GESMultiFileSource</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_multi_file_source_new href=GESMultiFileSource.html#ges_multi_file_source_new>ges_multi_file_source_new</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=Properties></a>
+		<h2>Properties</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *</span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=uri href=GESMultiFileSource.html#GESMultiFileSource:::uri---property>uri</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+
+/
+Construct Only
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=DataStructures></a>
+		<h2>Data Structures</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESMultiFileSource href=GESMultiFileSource.html#GESMultiFileSource-struct>GESMultiFileSource</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+	<a name="hierarchy"></a>
+	<div class="refsect1">
+	<h2>Object Hierarchy</h2>
+<pre class="screen">
+<a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a>
+    <span class="lineart">╰──</span><a class="link" title=GInitiallyUnowned href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GInitiallyUnowned>GInitiallyUnowned</a>
+        <span class="lineart">╰──</span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a>
+            <span class="lineart">╰──</span><a class="link" title=GESTrackElement href=GESTrackElement.html#GESTrackElement>GESTrackElement</a>
+                <span class="lineart">╰──</span><a class="link" title=GESSource href=GESSource.html#GESSource>GESSource</a>
+                    <span class="lineart">╰──</span><a class="link" title=GESVideoSource href=GESVideoSource.html#GESVideoSource>GESVideoSource</a>
+                        <span class="lineart">╰──</span>GESMultiFileSource
+
+
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+		<h2>Instance description</h2>
+		<p>Outputs the video stream from a given image sequence. The start frame
+chosen will be determined by the in-point property on the track element.</p>
+
+	</div>
+	
+	
+		<div class="refsect1">
+		<a name="Functions"></a>
+		<h2>Functions</h2>
+		
+				<div class="refsect2">
+	<a name=ges_multi_file_source_new></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_multi_file_source_new”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESMultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GESMultiFileSource</a> *
+ges_multi_file_source_new (<a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * uri)</pre>
+
+	<p>Creates a new <a href="GESMultiFileSource.html#GESMultiFileSource">GESMultiFileSource</a> for the provided <em>uri</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		uri
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the URI the source should control</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>A new <a href="GESMultiFileSource.html#GESMultiFileSource">GESMultiFileSource</a>.</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Properties"></a>
+		<h2>Properties</h2>
+		
+				
+<div class="refsect2">
+	<a name=GESMultiFileSource:::uri---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“uri”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“uri” <span class="type"><a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *</span>
+</pre>
+
+	<p>The uri of the file/resource to use. You can set a start index,
+a stop index and a sequence pattern.
+The format is &lt;multifile://start:stop_location_-pattern&gt;.
+The pattern uses printf string formating.</p>
+<p>Example uris:</p>
+<p>multifile:///home/you/image%03d.jpg</p>
+<p>multifile://20:50@/home/you/sequence/%04d.png</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+
+/
+Construct Only
+</p>
+</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Data Structures"></a>
+		<h2>Data Structures</h2>
+		
+				<div class="refsect2">
+	<a name=GESMultiFileSource-struct></a>
+	<h3>
+		struct GESMultiFileSource
+	</h3>
+		<pre class="programlisting">
+typedef struct _GESMultiFileSource GESMultiFileSource;
+</pre>
+
+			
+
+</div>
+
+			</div>
+	</div>
+

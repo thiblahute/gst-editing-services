@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Data Structures">
+	<span class="dim">|</span>
+	<a href="#DataStructures">Data Structures</a>
+</span>
+
+<span id="nav_hierarchy">
+	<span class="dim">|</span>
+	<a href="#hierarchy">Object Hierarchy</a>
+</span>
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="GESVideoSource"></a>
+				<h1 class="class">GESVideoSource</h1>
+		<p>Base Class for video sources</p>
+			</div>
+
+		<div class="refsect1">
+		<a name=DataStructures></a>
+		<h2>Data Structures</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESVideoSource href=GESVideoSource.html#GESVideoSource-struct>GESVideoSource</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+	<a name="hierarchy"></a>
+	<div class="refsect1">
+	<h2>Object Hierarchy</h2>
+<pre class="screen">
+<a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a>
+    <span class="lineart">╰──</span><a class="link" title=GInitiallyUnowned href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GInitiallyUnowned>GInitiallyUnowned</a>
+        <span class="lineart">╰──</span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a>
+            <span class="lineart">╰──</span><a class="link" title=GESTrackElement href=GESTrackElement.html#GESTrackElement>GESTrackElement</a>
+                <span class="lineart">╰──</span><a class="link" title=GESSource href=GESSource.html#GESSource>GESSource</a>
+                    <span class="lineart">╰──</span>GESVideoSource
+                        <span class="lineart">╰──</span><a class="link" title=GESVideoTestSource href=GESVideoTestSource.html#GESVideoTestSource>GESVideoTestSource</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESVideoUriSource href=GESVideoUriSource.html#GESVideoUriSource>GESVideoUriSource</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESMultiFileSource href=GESMultiFileSource.html#GESMultiFileSource>GESMultiFileSource</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESTitleSource href=GESTitleSource.html#GESTitleSource>GESTitleSource</a>
+                        <span class="lineart">╰──</span><a class="link" title=GESImageSource href=GESImageSource.html#GESImageSource>GESImageSource</a>
+
+
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+		<h2>Instance description</h2>
+		<p><refsect1 id="GESVideoSource.children_properties" role="properties">
+<title role="children_properties.title">Children Properties</title>
+<para>You can use the following children properties through the
+<a href="GESTrackElement.html#ges_track_element_set_child_property">ges_track_element_set_child_property</a> and alike set of methods:</para>
+<informaltable frame="none">
+<tgroup cols="3">
+<colspec colname="properties_type" colwidth="150px"/>
+<colspec colname="properties_name" colwidth="200px"/>
+<colspec colname="properties_flags" colwidth="400px"/></p>
+ <tbody>
+ <row>
+  <entry role="property_type"><link linkend="gdouble"><type>double</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--alpha">alpha</link></entry>
+  <entry>The desired alpha for the stream.</entry>
+ </row>
+ <row>
+  <entry role="property_type"><link linkend="gint"><type>gint</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--posx">posx</link></entry>
+  <entry>The desired x position for the stream.</entry>
+ </row>
+ <row>
+  <entry role="property_type"><link linkend="gint"><type>gint</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--posy">posy</link></entry>
+  <entry>The desired y position for the stream</entry>
+ </row>
+ <row>
+  <entry role="property_type"><link linkend="guint"><type>guint</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--zorder">zorder</link></entry>
+  <entry>The desired z order for the stream</entry>
+ </row>
+ <row>
+  <entry role="property_type"><link linkend="gint"><type>gint</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--width">width</link></entry>
+  <entry>The desired width for that source. Set to 0 if size is not mandatory, will be set to width of the current track.</entry>
+ </row>
+ <row>
+  <entry role="property_type"><link linkend="gint"><type>gint</type></link></entry>
+  <entry role="property_name"><link linkend="GESVideoSource--height">height</link></entry>
+  <entry>The desired height for that source. Set to 0 if size is not mandatory, will be set to height of the current track.</entry>
+ </row>
+ </tbody>
+ </tgroup>
+ </informaltable>
+ </refsect1>
+
+	</div>
+	
+	
+		<div class="refsect1">
+		<a name="Data Structures"></a>
+		<h2>Data Structures</h2>
+		
+				<div class="refsect2">
+	<a name=GESVideoSource-struct></a>
+	<h3>
+		struct GESVideoSource
+	</h3>
+		<pre class="programlisting">
+typedef struct _GESVideoSource GESVideoSource;
+</pre>
+
+			<p>Base class for video sources</p>
+
+		
+
+</div>
+
+			</div>
+	</div>
+

@@ -1,0 +1,2084 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Enumerations">
+	<span class="dim">|</span>
+	<a href="#Enumerations">Enumerations</a>
+</span>
+
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="6b89c822-3044-4555-b382-9126a469078f"></a>
+				<h1 class="class">Enum and flag types</h1>
+		<p></p>
+			</div>
+
+		<div class="refsect1">
+		<a name=Enumerations></a>
+		<h2>Enumerations</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESTrackType href=Enum and flag types.html#GESTrackType>GESTrackType</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESVideoStandardTransitionType href=Enum and flag types.html#GESVideoStandardTransitionType>GESVideoStandardTransitionType</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESTextHAlign href=Enum and flag types.html#GESTextHAlign>GESTextHAlign</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESTextVAlign href=Enum and flag types.html#GESTextVAlign>GESTextVAlign</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESVideoTestPattern href=Enum and flag types.html#GESVideoTestPattern>GESVideoTestPattern</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESPipelineFlags href=Enum and flag types.html#GESPipelineFlags>GESPipelineFlags</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESEdge href=Enum and flag types.html#GESEdge>GESEdge</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESEditMode href=Enum and flag types.html#GESEditMode>GESEditMode</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>enum</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESMetaFlag href=Enum and flag types.html#GESMetaFlag>GESMetaFlag</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+	
+	
+	
+		<div class="refsect1">
+		<a name="Enumerations"></a>
+		<h2>Enumerations</h2>
+		
+				<div class="refsect2">
+	<a name=GESTrackType></a>
+	<h3>
+		enum GESTrackType
+	</h3>
+		<p>Types of content handled by a track. If the content is not one of
+<em>GES_TRACK_TYPE_AUDIO</em>, <em>GES_TRACK_TYPE_VIDEO</em> or <em>GES_TRACK_TYPE_TEXT</em>,
+the user of the <a href="GESTrack.html#GESTrack">GESTrack</a> must set the type to <em>GES_TRACK_TYPE_CUSTOM</em>.</p>
+<p><em>GES_TRACK_TYPE_UNKNOWN</em> is for internal purposes and should not be used
+by users</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TRACK_TYPE_UNKNOWN"></a>
+		GES_TRACK_TYPE_UNKNOWN
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A track of unknown type (i.e. invalid)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TRACK_TYPE_AUDIO"></a>
+		GES_TRACK_TYPE_AUDIO
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>An audio track</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TRACK_TYPE_VIDEO"></a>
+		GES_TRACK_TYPE_VIDEO
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A video track</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TRACK_TYPE_TEXT"></a>
+		GES_TRACK_TYPE_TEXT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A text (subtitle) track</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 8</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TRACK_TYPE_CUSTOM"></a>
+		GES_TRACK_TYPE_CUSTOM
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A custom-content track</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 16</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESVideoStandardTransitionType></a>
+	<h3>
+		enum GESVideoStandardTransitionType
+	</h3>
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_NONE"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_NONE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Transition type has not been set,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_LR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_LR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A bar moves from left to right,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_TB"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BAR_WIPE_TB
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A bar moves from top to bottom,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the upper-left corner to the lower-right corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the upper-right corner to the lower-left corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the lower-right corner to the upper-left corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 5</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the lower-left corner to the upper-right corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 6</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CI"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CI
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box shape expands from each of the four corners toward the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 7</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CO"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FOUR_BOX_WIPE_CO
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box shape expands from the center of each quadrant toward the corners of each quadrant,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 8</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_V"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_V
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A central, vertical line splits and expands toward the left and right edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 21</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_H"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_H
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A central, horizontal line splits and expands toward the top and bottom edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 22</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TC"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_TC
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the top edge's midpoint to the bottom corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 23</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_RC"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_RC
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the right edge's midpoint to the left corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 24</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BC"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_BC
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the bottom edge's midpoint to the top corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 25</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_LC"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOX_WIPE_LC
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A box expands from the left edge's midpoint to the right corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 26</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A diagonal line moves from the upper-left corner to the lower-right corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 41</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DIAGONAL_TR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A diagonal line moves from the upper right corner to the lower-left corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 42</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_V"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_V
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two wedge shapes slide in from the top and bottom edges toward the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 43</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_H"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BOWTIE_H
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two wedge shapes slide in from the left and right edges toward the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 44</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DBL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DBL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A diagonal line from the lower-left to upper-right corners splits and expands toward the opposite corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 45</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DTL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNDOOR_DTL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A diagonal line from upper-left to lower-right corners splits and expands toward the opposite corners,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 46</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DBD"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DBD
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Four wedge shapes split from the center and retract toward the four edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 47</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DD"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_MISC_DIAGONAL_DD
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A diamond connecting the four edge midpoints simultaneously contracts toward the center and expands toward the edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 48</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_D"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_D
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A wedge shape moves from top to bottom,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 61</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_L"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_L
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A wedge shape moves from right to left,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 62</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_U"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_U
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A wedge shape moves from bottom to top,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 63</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_R"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_VEE_R
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A wedge shape moves from left to right,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 64</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_D"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_D
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A 'V' shape extending from the bottom edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 65</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_L"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_L
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A 'V' shape extending from the left edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 66</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_U"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_U
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A 'V' shape extending from the top edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 67</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_R"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_BARNVEE_R
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A 'V' shape extending from the right edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 68</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_IRIS_RECT"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_IRIS_RECT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A rectangle expands from the center.,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 101</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW12"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW12
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the twelve o'clock position,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 201</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW3"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW3
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the three o'clock position,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 202</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW6"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW6
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the six o'clock position,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 203</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW9"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_CLOCK_CW9
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the nine o'clock position,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 204</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBV"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBV
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands sweep clockwise from the twelve and six o'clock positions,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 205</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBH"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_TBH
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands sweep clockwise from the nine and three o'clock positions,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 206</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_FB"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_PINWHEEL_FB
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Four radial hands sweep clockwise,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 207</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CT"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the top edge, the fan axis at the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 211</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_CR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the right edge, the fan axis at the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 212</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOV"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOV
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two fans, their axes at the center, unfold from the top and bottom,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 213</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOH"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FOH
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two fans, their axes at the center, unfold from the left and right,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 214</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWT"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the top edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 221</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the right edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 222</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWB"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWB
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the bottom edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 223</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the left edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 224</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PV"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PV
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands sweep clockwise and counter-clockwise from the top and bottom edges' midpoints,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 225</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PD"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PD
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands sweep clockwise and counter-clockwise from the left and right edges' midpoints,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 226</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OV"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OV
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the top and bottom edges' midpoints sweep from right to left,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 227</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OH"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_OH
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the left and right edges' midpoints sweep from top to bottom,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 228</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_T"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_T
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the bottom, the fan axis at the top edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 231</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_R"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_R
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the left, the fan axis at the right edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 232</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_B"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_B
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the top, the fan axis at the bottom edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 233</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_L"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_FAN_L
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A fan unfolds from the right, the fan axis at the left edge's midpoint,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 234</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIV"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIV
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two fans, their axes at the top and bottom, unfold from the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 235</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIH"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLEFAN_FIH
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two fans, their axes at the left and right, unfold from the center,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 236</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the upper-left corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 241</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps counter-clockwise from the lower-left corner.,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 242</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWBR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps clockwise from the lower-right corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 243</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTR"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SINGLESWEEP_CWTR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A radial hand sweeps counter-clockwise from the upper-right corner,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 244</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDTL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDTL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the upper-left and lower-right corners sweep down and up,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 245</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDBL"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_DOUBLESWEEP_PDBL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the lower-left and upper-right corners sweep down and up,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 246</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_T"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_T
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the upper-left and upper-right corners sweep down,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 251</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_L"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_L
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the upper-left and lower-left corners sweep to the right,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 252</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_B"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_B
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the lower-left and lower-right corners sweep up,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 253</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_R"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_SALOONDOOR_R
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the upper-right and lower-right corners sweep to the left,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 254</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_R"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_R
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the midpoints of the top and bottom halves sweep from right to left,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 261</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_U"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_U
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two radial hands attached at the midpoints of the left and right halves sweep from top to bottom,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 262</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_V"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_V
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two sets of radial hands attached at the midpoints of the top and bottom halves sweep from top to bottom and bottom to top,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 263</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_H"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_WINDSHIELD_H
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Two sets of radial hands attached at the midpoints of the left and right halves sweep from left to right and right to left,</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 264</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE"></a>
+		GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Crossfade</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 512</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTextHAlign></a>
+	<h3>
+		enum GESTextHAlign
+	</h3>
+		<p>Horizontal alignment of the text.</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_HALIGN_LEFT"></a>
+		GES_TEXT_HALIGN_LEFT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>align text left</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_HALIGN_CENTER"></a>
+		GES_TEXT_HALIGN_CENTER
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>align text center</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_HALIGN_RIGHT"></a>
+		GES_TEXT_HALIGN_RIGHT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>align text right</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_HALIGN_POSITION"></a>
+		GES_TEXT_HALIGN_POSITION
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>align text on xpos position</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTextVAlign></a>
+	<h3>
+		enum GESTextVAlign
+	</h3>
+		<p>Vertical alignment of the text.</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_VALIGN_BASELINE"></a>
+		GES_TEXT_VALIGN_BASELINE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>draw text on the baseline</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_VALIGN_BOTTOM"></a>
+		GES_TEXT_VALIGN_BOTTOM
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>draw text on the bottom</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_VALIGN_TOP"></a>
+		GES_TEXT_VALIGN_TOP
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>draw text on top</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_VALIGN_POSITION"></a>
+		GES_TEXT_VALIGN_POSITION
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>draw text on ypos position</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_TEXT_VALIGN_CENTER"></a>
+		GES_TEXT_VALIGN_CENTER
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>draw text on the center</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESVideoTestPattern></a>
+	<h3>
+		enum GESVideoTestPattern
+	</h3>
+		<p>The test pattern to produce</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_SMPTE"></a>
+		GES_VIDEO_TEST_PATTERN_SMPTE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A standard SMPTE test pattern</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_SNOW"></a>
+		GES_VIDEO_TEST_PATTERN_SNOW
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Random noise</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_BLACK"></a>
+		GES_VIDEO_TEST_PATTERN_BLACK
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A black image</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_WHITE"></a>
+		GES_VIDEO_TEST_PATTERN_WHITE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A white image</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_RED"></a>
+		GES_VIDEO_TEST_PATTERN_RED
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A red image</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_GREEN"></a>
+		GES_VIDEO_TEST_PATTERN_GREEN
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A green image</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 5</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_BLUE"></a>
+		GES_VIDEO_TEST_PATTERN_BLUE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>A blue image</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 6</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_CHECKERS1"></a>
+		GES_VIDEO_TEST_PATTERN_CHECKERS1
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Checkers pattern (1px)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 7</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_CHECKERS2"></a>
+		GES_VIDEO_TEST_PATTERN_CHECKERS2
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Checkers pattern (2px)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 8</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_CHECKERS4"></a>
+		GES_VIDEO_TEST_PATTERN_CHECKERS4
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Checkers pattern (4px)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 9</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_CHECKERS8"></a>
+		GES_VIDEO_TEST_PATTERN_CHECKERS8
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Checkers pattern (8px)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 10</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_CIRCULAR"></a>
+		GES_VIDEO_TEST_PATTERN_CIRCULAR
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Circular pattern</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 11</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_BLINK"></a>
+		GES_VIDEO_TEST_PATTERN_BLINK
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Alternate between black and white</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 12</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_SMPTE75"></a>
+		GES_VIDEO_TEST_PATTERN_SMPTE75
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>SMPTE test pattern (75% color bars)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 13</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_ZONE_PLATE"></a>
+		GES_VIDEO_TEST_ZONE_PLATE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Zone plate</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 14</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_GAMUT"></a>
+		GES_VIDEO_TEST_GAMUT
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Gamut checkers</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 15</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_CHROMA_ZONE_PLATE"></a>
+		GES_VIDEO_TEST_CHROMA_ZONE_PLATE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Chroma zone plate</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 16</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_VIDEO_TEST_PATTERN_SOLID"></a>
+		GES_VIDEO_TEST_PATTERN_SOLID
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Solid color</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 17</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESPipelineFlags></a>
+	<h3>
+		enum GESPipelineFlags
+	</h3>
+		<p>The various modes the <a href="GESPipeline.html#GESPipeline">GESPipeline</a> can be configured to.</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_PIPELINE_MODE_PREVIEW_AUDIO"></a>
+		GES_PIPELINE_MODE_PREVIEW_AUDIO
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>output audio to the soundcard</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_PIPELINE_MODE_PREVIEW_VIDEO"></a>
+		GES_PIPELINE_MODE_PREVIEW_VIDEO
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>output video to the screen</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_PIPELINE_MODE_PREVIEW"></a>
+		GES_PIPELINE_MODE_PREVIEW
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>output audio/video to soundcard/screen (default)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_PIPELINE_MODE_RENDER"></a>
+		GES_PIPELINE_MODE_RENDER
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>render timeline (forces decoding)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_PIPELINE_MODE_SMART_RENDER"></a>
+		GES_PIPELINE_MODE_SMART_RENDER
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>render timeline (tries to avoid decoding/reencoding)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 8</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESEdge></a>
+	<h3>
+		enum GESEdge
+	</h3>
+		<p>The edges of an object contain in a <a href="GESTimeline.html#GESTimeline">GESTimeline</a> or <a href="GESTrack.html#GESTrack">GESTrack</a></p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDGE_START"></a>
+		GES_EDGE_START
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Represents the start of an object.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDGE_END"></a>
+		GES_EDGE_END
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Represents the end of an object.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDGE_NONE"></a>
+		GES_EDGE_NONE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>Represent the fact we are not workin with any edge of an
+object.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESEditMode></a>
+	<h3>
+		enum GESEditMode
+	</h3>
+		<p>You can also find more explanation about the behaviour of those modes at:
+<ulink url="http://pitivi.org/manual/trimming.html"> trim, ripple and roll</ulink>
+and <ulink url="http://pitivi.org/manual/usingclips.html">clip management</ulink>.</p>
+
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDIT_MODE_NORMAL"></a>
+		GES_EDIT_MODE_NORMAL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The object is edited the normal way (default).</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 0</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDIT_MODE_RIPPLE"></a>
+		GES_EDIT_MODE_RIPPLE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The objects are edited in ripple mode.
+The Ripple mode allows you to modify the beginning/end of a clip
+and move the neighbours accordingly. This will change the overall
+timeline duration. In the case of ripple end, the duration of the
+clip being rippled can't be superior to its max_duration - inpoint
+otherwise the action won't be executed.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDIT_MODE_ROLL"></a>
+		GES_EDIT_MODE_ROLL
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The object is edited in roll mode.
+The Roll mode allows you to modify the position of an editing point
+between two clips without modifying the inpoint of the first clip
+nor the out-point of the second clip. This will not change the
+overall timeline duration.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDIT_MODE_TRIM"></a>
+		GES_EDIT_MODE_TRIM
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The object is edited in trim mode.
+The Trim mode allows you to modify the in-point/duration of a clip
+without modifying its position in the timeline.</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_EDIT_MODE_SLIDE"></a>
+		GES_EDIT_MODE_SLIDE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The object is edited in slide mode.
+The Slide mode allows you to modify the position of a clip in a
+timeline without modifying its duration or its in-point, but will
+modify the duration of the previous clip and in-point of the
+following clip so does not modify the overall timeline duration.
+(not implemented yet)</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 4</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESMetaFlag></a>
+	<h3>
+		enum GESMetaFlag
+	</h3>
+		
+<div class="refsect3">
+	<h4>Members</h4>
+	<div class="informaltable">
+		<table width="100%" border="0">
+			<colgroup>
+				<col class="members_name" width="300px" />
+				<col class="members_description" />
+				<col class="members_value" width="200px"/>
+			</colgroup>
+			<tbody>
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_META_READABLE"></a>
+		GES_META_READABLE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The metadata is readable</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 1</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_META_WRITABLE"></a>
+		GES_META_WRITABLE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The metadata is writable</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 2</span>
+	<td>
+</tr>
+
+						<tr>
+	<td class="enum_member_name">
+		<p>
+		<a name="GES_META_READ_WRITE"></a>
+		GES_META_READ_WRITE
+		</p>
+	</td>
+	<td class="enum_member_description"><p><p>The metadata is readable and writable</p>
+</p></td>
+	<td class="enum_member_value">
+		<span class="value">Value: 3</span>
+	<td>
+</tr>
+
+						</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+			</div>
+	</div>
+

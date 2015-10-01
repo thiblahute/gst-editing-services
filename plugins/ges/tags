@@ -1,0 +1,30 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+gstgessource	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^GST_DEBUG_CATEGORY_STATIC (gstgessource);$/;"	v	language:C++
+GstGesSource	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^} GstGesSource;$/;"	t	language:C++	typeref:struct:__anon1
+GstGesSourceClass	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^} GstGesSourceClass;$/;"	t	language:C++	typeref:struct:__anon2
+GST_CAT_DEFAULT	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	45;"	d	language:C++	file:
+GST_GES_SOURCE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	35;"	d	language:C++
+GST_GES_SOURCE_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	36;"	d	language:C++
+gst_ges_source_class_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_class_init (GstGesSourceClass * self_class)$/;"	f	language:C++	file:
+GST_GES_SOURCE_GET_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	39;"	d	language:C++
+gst_ges_source_get_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_get_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+gst_ges_source_get_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^GType gst_ges_source_get_type (void);$/;"	p	language:C++
+gst_ges_source_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_init (GstGesSource * self)$/;"	f	language:C++	file:
+gst_ges_source_set_property	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_set_property (GObject * object, guint property_id,$/;"	f	language:C++	file:
+gst_ges_source_set_timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_set_timeline (GstGesSource * self, GESTimeline * timeline)$/;"	f	language:C++	file:
+GST_GES_SOURCE_TYPE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	34;"	d	language:C++
+gst_ges_source_uri_get_protocols	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_uri_get_protocols (GType type)$/;"	f	language:C++	file:
+gst_ges_source_uri_get_type	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_uri_get_type (GType type)$/;"	f	language:C++	file:
+gst_ges_source_uri_get_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_uri_get_uri (GstURIHandler * handler)$/;"	f	language:C++	file:
+gst_ges_source_uri_handler_init	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_uri_handler_init (gpointer g_iface, gpointer iface_data)$/;"	f	language:C++	file:
+gst_ges_source_uri_set_uri	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^gst_ges_source_uri_set_uri (GstURIHandler * handler, const gchar * uri,$/;"	f	language:C++	file:
+GST_IS_GES_SOURCE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	37;"	d	language:C++
+GST_IS_GES_SOURCE_CLASS	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	38;"	d	language:C++
+parent	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^  GstBin parent;$/;"	m	language:C++	struct:__anon1
+parent	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^  GstBinClass parent;$/;"	m	language:C++	struct:__anon2
+properties	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^static GParamSpec *properties[PROP_LAST];$/;"	v	language:C++	file:
+PROP_0	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^  PROP_0,$/;"	e	language:C++	enum:__anon1	file:
+PROP_LAST	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^  PROP_LAST$/;"	e	language:C++	enum:__anon1	file:
+PROP_TIMELINE	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.c	/^  PROP_TIMELINE,$/;"	e	language:C++	enum:__anon1	file:
+timeline	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	/^  GESTimeline *timeline;$/;"	m	language:C++	struct:__anon1
+__GST_GES_SOURCE_H__	/home/thiblahute/devel/pitivi/1.0-uninstalled/gst-editing-services/plugins/ges/gstgessource.h	25;"	d	language:C++

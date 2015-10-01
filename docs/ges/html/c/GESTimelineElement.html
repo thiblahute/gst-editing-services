@@ -1,0 +1,4667 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=style.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+<span id="nav_Functions">
+	<span class="dim">|</span>
+	<a href="#Functions">Functions</a>
+</span>
+<span id="nav_Function Macros">
+	<span class="dim">|</span>
+	<a href="#FunctionMacros">Function Macros</a>
+</span>
+<span id="nav_Properties">
+	<span class="dim">|</span>
+	<a href="#Properties">Properties</a>
+</span>
+<span id="nav_Signals">
+	<span class="dim">|</span>
+	<a href="#Signals">Signals</a>
+</span>
+<span id="nav_Virtual Functions">
+	<span class="dim">|</span>
+	<a href="#VirtualFunctions">Virtual Functions</a>
+</span>
+<span id="nav_Data Structures">
+	<span class="dim">|</span>
+	<a href="#DataStructures">Data Structures</a>
+</span>
+
+<span id="nav_hierarchy">
+	<span class="dim">|</span>
+	<a href="#hierarchy">Object Hierarchy</a>
+</span>
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="GESTimelineElement"></a>
+				<h1 class="class">GESTimelineElement</h1>
+		<p>Base Class for all elements that will be in a way or
+ another inside a GESTimeline.</p>
+			</div>
+
+		<div class="refsect1">
+		<a name=Functions></a>
+		<h2>Functions</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_parent href=GESTimelineElement.html#ges_timeline_element_set_parent>ges_timeline_element_set_parent</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_parent href=GESTimelineElement.html#ges_timeline_element_get_parent>ges_timeline_element_get_parent</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_timeline href=GESTimelineElement.html#ges_timeline_element_set_timeline>ges_timeline_element_set_timeline</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESTimeline href=GESTimeline.html#GESTimeline>GESTimeline</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_timeline href=GESTimelineElement.html#ges_timeline_element_get_timeline>ges_timeline_element_get_timeline</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_start href=GESTimelineElement.html#ges_timeline_element_set_start>ges_timeline_element_set_start</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_inpoint href=GESTimelineElement.html#ges_timeline_element_set_inpoint>ges_timeline_element_set_inpoint</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_duration href=GESTimelineElement.html#ges_timeline_element_set_duration>ges_timeline_element_set_duration</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_max_duration href=GESTimelineElement.html#ges_timeline_element_set_max_duration>ges_timeline_element_set_max_duration</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_priority href=GESTimelineElement.html#ges_timeline_element_set_priority>ges_timeline_element_set_priority</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_start href=GESTimelineElement.html#ges_timeline_element_get_start>ges_timeline_element_get_start</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_inpoint href=GESTimelineElement.html#ges_timeline_element_get_inpoint>ges_timeline_element_get_inpoint</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_duration href=GESTimelineElement.html#ges_timeline_element_get_duration>ges_timeline_element_get_duration</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_max_duration href=GESTimelineElement.html#ges_timeline_element_get_max_duration>ges_timeline_element_get_max_duration</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=guint32 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint32>guint32</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_priority href=GESTimelineElement.html#ges_timeline_element_get_priority>ges_timeline_element_get_priority</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_ripple href=GESTimelineElement.html#ges_timeline_element_ripple>ges_timeline_element_ripple</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_ripple_end href=GESTimelineElement.html#ges_timeline_element_ripple_end>ges_timeline_element_ripple_end</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_roll_start href=GESTimelineElement.html#ges_timeline_element_roll_start>ges_timeline_element_roll_start</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_roll_end href=GESTimelineElement.html#ges_timeline_element_roll_end>ges_timeline_element_roll_end</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_trim href=GESTimelineElement.html#ges_timeline_element_trim>ges_timeline_element_trim</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_toplevel_parent href=GESTimelineElement.html#ges_timeline_element_get_toplevel_parent>ges_timeline_element_get_toplevel_parent</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_copy href=GESTimelineElement.html#ges_timeline_element_copy>ges_timeline_element_copy</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_paste href=GESTimelineElement.html#ges_timeline_element_paste>ges_timeline_element_paste</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_name href=GESTimelineElement.html#ges_timeline_element_get_name>ges_timeline_element_get_name</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_name href=GESTimelineElement.html#ges_timeline_element_set_name>ges_timeline_element_set_name</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GParamSpec href=https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec>GParamSpec</a> **</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_list_children_properties href=GESTimelineElement.html#ges_timeline_element_list_children_properties>ges_timeline_element_list_children_properties</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_lookup_child href=GESTimelineElement.html#ges_timeline_element_lookup_child>ges_timeline_element_lookup_child</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_child_property_valist href=GESTimelineElement.html#ges_timeline_element_get_child_property_valist>ges_timeline_element_get_child_property_valist</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_child_properties href=GESTimelineElement.html#ges_timeline_element_get_child_properties>ges_timeline_element_get_child_properties</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_child_property_valist href=GESTimelineElement.html#ges_timeline_element_set_child_property_valist>ges_timeline_element_set_child_property_valist</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_child_property_by_pspec href=GESTimelineElement.html#ges_timeline_element_set_child_property_by_pspec>ges_timeline_element_set_child_property_by_pspec</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_child_properties href=GESTimelineElement.html#ges_timeline_element_set_child_properties>ges_timeline_element_set_child_properties</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_set_child_property href=GESTimelineElement.html#ges_timeline_element_set_child_property>ges_timeline_element_set_child_property</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_child_property href=GESTimelineElement.html#ges_timeline_element_get_child_property>ges_timeline_element_get_child_property</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=GESTrackType href=Enum and flag types.html#GESTrackType>GESTrackType</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=ges_timeline_element_get_track_types href=GESTimelineElement.html#ges_timeline_element_get_track_types>ges_timeline_element_get_track_types</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=FunctionMacros></a>
+		<h2>Function Macros</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_PARENT href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_PARENT>GES_TIMELINE_ELEMENT_PARENT</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_TIMELINE href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_TIMELINE>GES_TIMELINE_ELEMENT_TIMELINE</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_START href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_START>GES_TIMELINE_ELEMENT_START</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_END href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_END>GES_TIMELINE_ELEMENT_END</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_INPOINT href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_INPOINT>GES_TIMELINE_ELEMENT_INPOINT</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_DURATION href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_DURATION>GES_TIMELINE_ELEMENT_DURATION</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_MAX_DURATION href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_MAX_DURATION>GES_TIMELINE_ELEMENT_MAX_DURATION</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_PRIORITY href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_PRIORITY>GES_TIMELINE_ELEMENT_PRIORITY</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>#define </span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=GES_TIMELINE_ELEMENT_NAME href=GESTimelineElement.html#GES_TIMELINE_ELEMENT_NAME>GES_TIMELINE_ELEMENT_NAME</a>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=Properties></a>
+		<h2>Properties</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=in-point href=GESTimelineElement.html#GESTimelineElement:::in-point---property>in-point</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *</span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=name href=GESTimelineElement.html#GESTimelineElement:::name---property>name</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+
+/
+Construct
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *</span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=parent href=GESTimelineElement.html#GESTimelineElement:::parent---property>parent</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=GESTimeline href=GESTimeline.html#GESTimeline>GESTimeline</a> *</span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=timeline href=GESTimelineElement.html#GESTimelineElement:::timeline---property>timeline</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=serialize href=GESTimelineElement.html#GESTimelineElement:::serialize---property>serialize</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=max-duration href=GESTimelineElement.html#GESTimelineElement:::max-duration---property>max-duration</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+
+/
+Construct
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=guint href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint>guint</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=priority href=GESTimelineElement.html#GESTimelineElement:::priority---property>priority</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=start href=GESTimelineElement.html#GESTimelineElement:::start---property>start</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+				<tr>
+    <td class="property_type">
+	    <span><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+    </td>
+    <td class="property_name">
+	    <span><a class="link" title=duration href=GESTimelineElement.html#GESTimelineElement:::duration---property>duration</a></span>
+    </td>
+
+<td class="signal_flags" style="text-align:right;">
+
+
+Read
+
+/
+Write
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=Signals></a>
+		<h2>Signals</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="function_type">
+	    <span>void</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><a class="link" title=deep-notify href=GESTimelineElement.html#GESTimelineElement:::deep-notify---signal>deep-notify</a>
+<span class="c_punctuation">()</span></span>
+</td>
+<td class="signal_flags" style="text-align:right;">
+
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a>
+
+<a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-NO-HOOKS:CAPS">No Hooks</a>
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=VirtualFunctions></a>
+		<h2>Virtual Functions</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=trim href=GESTimelineElement.html#GESTimelineElement:::trim---vfunc>trim</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=roll_end href=GESTimelineElement.html#GESTimelineElement:::roll_end---vfunc>roll_end</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span>void</span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=deep_copy href=GESTimelineElement.html#GESTimelineElement:::deep_copy---vfunc>deep_copy</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_inpoint href=GESTimelineElement.html#GESTimelineElement:::set_inpoint---vfunc>set_inpoint</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_max_duration href=GESTimelineElement.html#GESTimelineElement:::set_max_duration---vfunc>set_max_duration</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_priority href=GESTimelineElement.html#GESTimelineElement:::set_priority---vfunc>set_priority</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=ripple href=GESTimelineElement.html#GESTimelineElement:::ripple---vfunc>ripple</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_start href=GESTimelineElement.html#GESTimelineElement:::set_start---vfunc>set_start</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=roll_start href=GESTimelineElement.html#GESTimelineElement:::roll_start---vfunc>roll_start</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_duration href=GESTimelineElement.html#GESTimelineElement:::set_duration---vfunc>set_duration</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=set_parent href=GESTimelineElement.html#GESTimelineElement:::set_parent---vfunc>set_parent</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+				<tr>
+    <td class="function_type">
+	    <span><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+    </td>
+    <td class="function_name", style="text-align: left;">
+	    <span><span class="c_punctuation">(*</span><a class="link" title=ripple_end href=GESTimelineElement.html#GESTimelineElement:::ripple_end---vfunc>ripple_end</a><span class="c_punctuation">)</span>
+<span class="c_punctuation">()</span></span>
+</td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+		<div class="refsect1">
+		<a name=DataStructures></a>
+		<h2>Data Structures</h2>
+<div class="informaltable">
+	<table>
+		<colgroup>
+			<col width="150px"/>
+		</colgroup>
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement-struct>GESTimelineElement</a></span>
+    </td>
+</tr>
+
+				<tr>
+    <td class="datatype_keyword">
+	    <span>struct</span>
+    </td>
+    <td class="function_name">
+	    <span><a class="link" title=GESTimelineElementClass href=GESTimelineElement.html#GESTimelineElementClass-struct>GESTimelineElementClass</a></span>
+    </td>
+</tr>
+
+			</table>
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+	<a name="hierarchy"></a>
+	<div class="refsect1">
+	<h2>Object Hierarchy</h2>
+<pre class="screen">
+<a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a>
+    <span class="lineart">╰──</span><a class="link" title=GInitiallyUnowned href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GInitiallyUnowned>GInitiallyUnowned</a>
+        <span class="lineart">╰──</span>GESTimelineElement
+            <span class="lineart">╰──</span><a class="link" title=GESContainer href=GESContainer.html#GESContainer>GESContainer</a>
+            <span class="lineart">╰──</span><a class="link" title=GESTrackElement href=GESTrackElement.html#GESTrackElement>GESTrackElement</a>
+
+
+</div>
+
+	</div>
+	
+		<div class="refsect1">
+		<h2>Instance description</h2>
+		<p>The GESTimelineElement base class implements the notion of timing as well
+as priority. A GESTimelineElement can have a parent object which will be
+responsible for controlling its timing properties.</p>
+
+	</div>
+	
+	
+		<div class="refsect1">
+		<a name="Functions"></a>
+		<h2>Functions</h2>
+		
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_parent></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_parent”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_set_parent (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                 <a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * parent)</pre>
+
+	<p>Sets the parent of <em>self</em> to <em>parent</em>. The object's reference count will
+be incremented, and any floating reference will be removed (see <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstObject.html#gst-object-ref-sink">gst_object_ref_sink()</a>).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		parent
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>new parent of self</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if <em>parent</em> could be set or <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> when <em>self</em>
+already had a parent or <em>self</em> and <em>parent</em> are the same.</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_parent></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_parent”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *
+ges_timeline_element_get_parent (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	<p>Returns the parent of <em>self</em>. This function increases the refcount
+of the parent object so you should <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstObject.html#gst-object-unref">gst_object_unref()</a> it after usage.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>parent of <em>self</em>, this can be <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#NULL:CAPS">NULL</a> if <em>self</em>
+has no parent. unref after usage.</p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Free data after the code is done">		<span class="acronym">transfer: full</span>		</acronym>				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_timeline></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_timeline”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_set_timeline (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                   <a class="link" title=GESTimeline href=GESTimeline.html#GESTimeline>GESTimeline</a> * timeline)</pre>
+
+	<p>Sets the timeline of <em>self</em> to <em>timeline</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		timeline
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimeline.html#GESTimeline">GESTimeline</a> <em>self</em> is in</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if <em>timeline</em> could be set or <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> when <em>timeline</em>
+already had a timeline.</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_timeline></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_timeline”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESTimeline href=GESTimeline.html#GESTimeline>GESTimeline</a> *
+ges_timeline_element_get_timeline (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	<p>Returns the timeline of <em>self</em>. This function increases the refcount
+of the timeline so you should <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstObject.html#gst-object-unref">gst_object_unref()</a> it after usage.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>timeline of <em>self</em>, this can be <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#NULL:CAPS">NULL</a> if <em>self</em>
+has no timeline. unref after usage.</p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Free data after the code is done">		<span class="acronym">transfer: full</span>		</acronym>				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_start></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_start”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_start (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> start)</pre>
+
+	<p>Set the position of the object in its containing layer</p>
+<p>Note that if the timeline snap-distance property of the timeline containing
+<em>self</em> is set, <em>self</em> will properly snap to its neighboors.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the position in <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime">GstClockTime</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_inpoint></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_inpoint”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_inpoint (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                  <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> inpoint)</pre>
+
+	<p>Set the in-point, that is the moment at which the <em>self</em> will start
+outputting data from its contents.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		inpoint
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the in-point in <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime">GstClockTime</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_duration></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_duration”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                   <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> duration)</pre>
+
+	<p>Set the duration of the object</p>
+<p>Note that if the timeline snap-distance property of the timeline containing
+<em>self</em> is set, <em>self</em> will properly snap to its neighboors.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		duration
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the duration in <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime">GstClockTime</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_max_duration></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_max_duration”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_max_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                       <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> maxduration)</pre>
+
+	<p>Set the maximun duration of the object</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		maxduration
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the maximum duration in <a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime">GstClockTime</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_priority></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_priority”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_priority (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                   <a class="link" title=guint32 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint32>guint32</a> priority)</pre>
+
+	<p>Sets the priority of the object within the containing layer</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		priority
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the priority</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_start></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_start”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a>
+ges_timeline_element_get_start (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The <em>start</em> of <em>self</em></p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_inpoint></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_inpoint”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a>
+ges_timeline_element_get_inpoint (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The <em>inpoint</em> of <em>self</em></p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_duration></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_duration”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a>
+ges_timeline_element_get_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The <em>duration</em> of <em>self</em></p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_max_duration></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_max_duration”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a>
+ges_timeline_element_get_max_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The <em>maxduration</em> of <em>self</em></p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_priority></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_priority”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=guint32 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint32>guint32</a>
+ges_timeline_element_get_priority (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The <em>priority</em> of <em>self</em></p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_ripple></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_ripple”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_ripple (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                             <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> start)</pre>
+
+	<p>Edits <em>self</em> in ripple mode. It allows you to modify the
+start of <em>self</em> and move the following neighbours accordingly.
+This will change the overall timeline duration.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to ripple.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The new start of <em>self</em> in ripple mode.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the self as been rippled properly, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> if an error
+occured</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_ripple_end></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_ripple_end”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_ripple_end (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                 <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> end)</pre>
+
+	<p>Edits <em>self</em> in ripple mode. It allows you to modify the
+duration of a <em>self</em> and move the following neighbours accordingly.
+This will change the overall timeline duration.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to ripple.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		end
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The new end (start + duration) of <em>self</em> in ripple mode. It will
+basically only change the duration of <em>self</em>.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the self as been rippled properly, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> if an error
+occured</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_roll_start></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_roll_start”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_roll_start (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                 <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> start)</pre>
+
+	<p>Edits <em>self</em> in roll mode. It allows you to modify the
+start and inpoint of a <em>self</em> and &quot;resize&quot; (basicly change the duration
+in this case) of the previous neighbours accordingly.
+This will not change the overall timeline duration.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to roll</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The new start of <em>self</em> in roll mode, it will also adapat
+the in-point of <em>self</em> according</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the self as been roll properly, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> if an error
+occured</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_roll_end></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_roll_end”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_roll_end (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                               <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> end)</pre>
+
+	<p>Edits <em>self</em> in roll mode. It allows you to modify the
+duration of a <em>self</em> and trim (basicly change the start + inpoint
+in this case) the following neighbours accordingly.
+This will not change the overall timeline duration.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to roll.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		end
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The new end (start + duration) of <em>self</em> in roll mode</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the self as been rolled properly, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> if an error
+occured</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_trim></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_trim”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_trim (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                           <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> start)</pre>
+
+	<p>Edits <em>self</em> in trim mode. It allows you to modify the
+inpoint and start of <em>self</em>.
+This will not change the overall timeline duration.</p>
+<p>Note that to trim the end of an self you can just set its duration. The same way
+as this method, it will take into account the snapping-distance property of the
+timeline in which <em>self</em> is.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to trim.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The new start of <em>self</em> in trim mode, will adapt the inpoint
+of <em>self</em> accordingly</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the self as been trimmed properly, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> if an error
+occured</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_toplevel_parent></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_toplevel_parent”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *
+ges_timeline_element_get_toplevel_parent (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	<p>Gets the toplevel <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> controlling <em>self</em></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to get the toplevel parent from</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The toplevel controlling parent of <em>self</em></p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Free data after the code is done">		<span class="acronym">transfer: full</span>		</acronym>				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_copy></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_copy”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *
+ges_timeline_element_copy (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                           <a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a> deep)</pre>
+
+	<p>Copies <em>self</em></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to copy</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		deep
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>whether we want to create the elements <em>self</em> contains or not</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The newly create <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a>, copied from <em>self</em></p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Alias for transfer none, used for objects with floating refs">		<span class="acronym">transfer: floating</span>		</acronym>				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_paste></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_paste”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_paste (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                            <a class="link" title=GstClockTime href=http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html//GstClock.html#GstClockTime>GstClockTime</a> paste_position)</pre>
+
+	<p>Paste <em>self</em> inside the timeline. <em>self</em> must have been created
+using ges_timeline_element_copy with recurse=TRUE set,
+otherwise it will fail.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to paste</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		paste_position
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The position in the timeline the element should
+be copied to, meaning it will become the start of <em>self</em></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+			<p>
+		since		       			: 1.6.0
+				</p>
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_name></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_name”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *
+ges_timeline_element_get_name (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	<p>Returns a copy of the name of <em>self</em>.
+Caller should <a href="https://developer.gnome.org/glib/unstable//glib-Memory-Allocation.html#g-free">g_free()</a> the return value after usage.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>The name of <em>self</em></p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Free data after the code is done">		<span class="acronym">transfer: full</span>		</acronym>				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_name></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_name”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_set_name (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                               const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * name)</pre>
+
+	<p>Sets the name of object, or gives <em>self</em> a guaranteed unique name (if name is NULL).
+This function makes a copy of the provided name, so the caller retains ownership
+of the name it sent.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name <em>self</em> should take (if avalaible&lt;)</p>
+</p></td>
+<td class="parameter_annotations">
+<span class="annotation">[<acronym title="NULL is OK, both for passing and returning"><span class="acronym">allow-none</span></acronym>]</span>
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_list_children_properties></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_list_children_properties”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GParamSpec href=https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec>GParamSpec</a> **
+ges_timeline_element_list_children_properties (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                               <a class="link" title=guint href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint>guint</a> * n_properties)</pre>
+
+	<p>Gets an array of <a href="https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec">GParamSpec</a>* for all configurable properties of the
+children of <em>self</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> to get the list of children properties from</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		n_properties
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>return location for the length of the returned array</p>
+</p></td>
+<td class="parameter_annotations">
+<span class="annotation">[<acronym title="Parameter for returning results"><span class="acronym">out</span></acronym>]</span>
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>an array of <a href="https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec">GParamSpec</a>* which should be freed after use or
+<a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#NULL:CAPS">NULL</a> if something went wrong</p>
+
+</div>
+
+<p>
+			<span class="annotation">[		<acronym title="Free data after the code is done">		<span class="acronym">transfer: full</span>		</acronym>				]		</span>
+			<span class="annotation">[		<acronym title="Parameter points to an array of items">		<span class="acronym">array</span>		</acronym>				 length=n_properties				]		</span>
+	</p>
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_lookup_child></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_lookup_child”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_lookup_child (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                   const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * prop_name,
+                                   <a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a> ** child,
+                                   <a class="link" title=GParamSpec href=https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec>GParamSpec</a> ** pspec)</pre>
+
+	<p>Looks up which <em>element</em> and <em>pspec</em> would be effected by the given <em>name</em>. If various
+contained elements have this property name you will get the first one, unless you
+specify the class name in <em>name</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>object to lookup the property in</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		prop_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>name of the property to look up. You can specify the name of the
+class as such: &quot;ClassName::property-name&quot;, to guarantee that you get the
+proper GParamSpec in case various GstElement-s contain the same property
+name. If you don't do so, you will get the first element found, having
+this property and the and the corresponding GParamSpec.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		child
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		pspec
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>pointer to take the <a href="https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec">GParamSpec</a>
+describing the property</p>
+</p></td>
+<td class="parameter_annotations">
+<span class="annotation">[<acronym title="NULL is OK, both for passing and returning"><span class="acronym">allow-none</span></acronym>]</span>
+<span class="annotation">[<acronym title="Free data after the code is done"><span class="acronym">transfer: full</span></acronym>]</span>
+<span class="annotation">[<acronym title="Parameter for returning results"><span class="acronym">out</span></acronym>]</span>
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p>TRUE if <em>element</em> and <em>pspec</em> could be found. FALSE otherwise. In that
+case the values for <em>pspec</em> and <em>element</em> are not modified. Unref <em>element</em> after
+usage.</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_child_property_valist></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_child_property_valist”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_get_child_property_valist (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                                const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * first_property_name,
+                                                va_list  var_args)</pre>
+
+	<p>Gets a property of a child of <em>self</em>. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> parent object</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		first_property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the first property to get</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		var_args
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>value for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_child_properties></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_child_properties”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_get_child_properties (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                           const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * first_property_name)</pre>
+
+	<p>Gets properties of a child of <em>self</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The origin <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		first_property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the first property to get</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_child_property_valist></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_child_property_valist”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_child_property_valist (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                                const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * first_property_name,
+                                                va_list  var_args)</pre>
+
+	<p>Sets a property of a child of <em>self</em>. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> parent object</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		first_property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the first property to set</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		var_args
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>value for the first property, followed optionally by more
+name/return location pairs, followed by NULL</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_child_property_by_pspec></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_child_property_by_pspec”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_child_property_by_pspec (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                                  <a class="link" title=GParamSpec href=https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec>GParamSpec</a> * pspec,
+                                                  <a class="link" title=GValue href=https://developer.gnome.org/gobject/unstable//gobject-Generic-values.html#GValue>GValue</a> * value)</pre>
+
+	<p>Sets a property of a child of <em>self</em>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		pspec
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec">GParamSpec</a> that specifies the property you want to set</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		value
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the value</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_child_properties></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_child_properties”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+void 
+ges_timeline_element_set_child_properties (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                           const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * first_property_name)</pre>
+
+	<p>Sets a property of a child of <em>self</em>. If there are various child elements
+that have the same property name, you can distinguish them using the following
+syntax: 'ClasseName::property_name' as property name. If you don't, the
+corresponding property of the first element found will be set.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> parent object</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		first_property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the first property to set</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_set_child_property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_set_child_property”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_set_child_property (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                         const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * property_name,
+                                         <a class="link" title=GValue href=https://developer.gnome.org/gobject/unstable//gobject-Generic-values.html#GValue>GValue</a> * value)</pre>
+
+	<p>Sets a property of a child of <em>self</em></p>
+<p>Note that <a href="GESTimelineElement.html#ges_timeline_element_set_child_property">ges_timeline_element_set_child_property</a> is really
+intended for language bindings, <a href="GESTimelineElement.html#ges_timeline_element_set_child_properties">ges_timeline_element_set_child_properties</a>
+is much more convenient for C programming.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The origin <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the property</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		value
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the value</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the property was set, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> otherwize</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_child_property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_child_property”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ges_timeline_element_get_child_property (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self,
+                                         const <a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> * property_name,
+                                         <a class="link" title=GValue href=https://developer.gnome.org/gobject/unstable//gobject-Generic-values.html#GValue>GValue</a> * value)</pre>
+
+	<p>In general, a copy is made of the property contents and
+the caller is responsible for freeing the memory by calling
+<a href="https://developer.gnome.org/gobject/unstable//gobject-Generic-values.html#g-value-unset">g_value_unset()</a>.</p>
+<p>Gets a property of a GstElement contained in <em>object</em>.</p>
+<p>Note that <a href="GESTimelineElement.html#ges_timeline_element_get_child_property">ges_timeline_element_get_child_property</a> is really
+intended for language bindings, <a href="GESTimelineElement.html#ges_timeline_element_get_child_properties">ges_timeline_element_get_child_properties</a>
+is much more convenient for C programming.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		property_name
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The name of the property</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		value
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>return location for the property value, it will
+be initialized if it is initialized with 0</p>
+</p></td>
+<td class="parameter_annotations">
+<span class="annotation">[<acronym title="Parameter for returning results"><span class="acronym">out</span></acronym>]</span>
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+			<div class="refsect3">
+	<h4>Returns</h4>
+	<p><a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#TRUE:CAPS">TRUE</a> if the property was found, <a href="https://developer.gnome.org/glib/unstable//glib-Standard-Macros.html#FALSE:CAPS">FALSE</a> otherwize</p>
+
+</div>
+
+
+
+
+
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=ges_timeline_element_get_track_types></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ges_timeline_element_get_track_types”</code> method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=GESTrackType href=Enum and flag types.html#GESTrackType>GESTrackType</a>
+ges_timeline_element_get_track_types (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * self)</pre>
+
+	<p>Gets all the TrackTypes <em>self</em> will interact with</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		self
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>A <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+			<p>
+		since		       			: 1.6.0
+				</p>
+	</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Function Macros"></a>
+		<h2>Function Macros</h2>
+		
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_PARENT></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_PARENT”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_PARENT(obj) (((GESTimelineElement*)obj)->parent)
+</pre>
+
+	<p>The parent of the object.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_TIMELINE></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_TIMELINE”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_TIMELINE(obj) (((GESTimelineElement*)obj)->timeline)
+</pre>
+
+	<p>The timeline in which the object is.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_START></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_START”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_START(obj) (((GESTimelineElement*)obj)->start)
+</pre>
+
+	<p>The start position of the object (in nanoseconds).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_END></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_END”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_END(obj) ((((GESTimelineElement*)obj)->start) + (((GESTimelineElement*)obj)->duration))
+</pre>
+
+	<p>The end position of the object (in nanoseconds).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_INPOINT></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_INPOINT”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_INPOINT(obj) (((GESTimelineElement*)obj)->inpoint)
+</pre>
+
+	<p>The in-point of the object (in nanoseconds).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_DURATION></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_DURATION”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_DURATION(obj) (((GESTimelineElement*)obj)->duration)
+</pre>
+
+	<p>The duration of the object (in nanoseconds).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_MAX_DURATION></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_MAX_DURATION”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_MAX_DURATION(obj) (((GESTimelineElement*)obj)->maxduration)
+</pre>
+
+	<p>The maximun duration of the object (in nanoseconds).</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_PRIORITY></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_PRIORITY”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_PRIORITY(obj) (((GESTimelineElement*)obj)->priority)
+</pre>
+
+	<p>The priority of the object.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GES_TIMELINE_ELEMENT_NAME></a>
+	<h3 class="method">
+		<span class="entry">The <code>“GES_TIMELINE_ELEMENT_NAME”</code> function macro</span>
+	</h3>
+	<pre class="programlisting">
+#define GES_TIMELINE_ELEMENT_NAME(obj) (((GESTimelineElement*)obj)->name)
+</pre>
+
+	<p>The name of the object.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		obj
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Properties"></a>
+		<h2>Properties</h2>
+		
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::in-point---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“in-point”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“in-point” <span class="type"><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+</pre>
+
+	<p>The in-point at which this <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a> will start outputting data
+from its contents (in nanoseconds).</p>
+<p>Ex : an in-point of 5 seconds means that the first outputted buffer will
+be the one located 5 seconds in the controlled resource.</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::name---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“name”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“name” <span class="type"><a class="link" title=gchar href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gchar>gchar</a> *</span>
+</pre>
+
+	<p>The name of the object</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+
+/
+Construct
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::parent---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“parent”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“parent” <span class="type"><a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> *</span>
+</pre>
+
+	<p>The parent container of the object</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::timeline---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“timeline”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“timeline” <span class="type"><a class="link" title=GESTimeline href=GESTimeline.html#GESTimeline>GESTimeline</a> *</span>
+</pre>
+
+	<p>The timeline in which <em>element</em> is</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::serialize---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“serialize”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“serialize” <span class="type"><a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a></span>
+</pre>
+
+	<p>Whether the element should be serialized.</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::max-duration---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“max-duration”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“max-duration” <span class="type"><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+</pre>
+
+	<p>The maximum duration (in nanoseconds) of the <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a>.</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+
+/
+Construct
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::priority---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“priority”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“priority” <span class="type"><a class="link" title=guint href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint>guint</a></span>
+</pre>
+
+	<p>The priority of the object.</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::start---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“start”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“start” <span class="type"><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+</pre>
+
+	<p>The position of the object in its container (in nanoseconds).</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+		
+				<hr></hr>
+				
+<div class="refsect2">
+	<a name=GESTimelineElement:::duration---property></a>
+	<h3 class="method">
+		<span class="entry">The <code>“duration”</code> property</span>
+	</h3>
+	<pre class="programlisting">
+“duration” <span class="type"><a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a></span>
+</pre>
+
+	<p>The duration (in nanoseconds) which will be used in the container</p>
+
+
+<p>Flags:
+
+Read
+
+/
+Write
+</p>
+</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Signals"></a>
+		<h2>Signals</h2>
+		
+				<div class="refsect2">
+	<a name=GESTimelineElement:::deep-notify---signal></a>
+	<h3 class="method">
+		<span class="entry">The <code>“deep-notify”</code> signal</span>
+	</h3>
+	<pre class="programlisting">
+void
+deep_notify_callback (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+                      <a class="link" title=GObject href=https://developer.gnome.org/gobject/unstable//gobject-The-Base-Object-Type.html#GObject>GObject</a> prop_object,
+                      <a class="link" title=GParamSpec href=https://developer.gnome.org/gobject/unstable//gobject-GParamSpec.html#GParamSpec>GParamSpec</a> prop,
+                      <a class="link" title=gpointer href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gpointer>gpointer</a> user_data)</pre>
+
+	<p>The deep notify signal is used to be notified of property changes of all
+the childs of <em>timeline_element</em></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>The object that emitted the signal</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		prop_object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the object that originated the signal</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		prop
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>the property that changed</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		user_data
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>user data set when the signal handler was connected.</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+			<p>Flags:		
+			
+						<a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a>
+					
+						/			
+						<a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-NO-HOOKS:CAPS">No Hooks</a>
+						
+	</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Virtual Functions"></a>
+		<h2>Virtual Functions</h2>
+		
+				<div class="refsect2">
+	<a name=GESTimelineElement:::trim---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“trim”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+trim (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+      <a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a> start)</pre>
+
+	<p>method to trim an object</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::roll_end---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“roll_end”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+roll_end (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+          <a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a> end)</pre>
+
+	<p>method to roll an object on its [GES_EDGE_END](Enum and flag types.html#GES_EDGE_END) edge</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		end
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::deep_copy---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“deep_copy”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+void
+deep_copy (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+           <a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> copy)</pre>
+
+	<p>Copy the children properties of <em>self</em> into <em>copy</em></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		copy
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_inpoint---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_inpoint”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_inpoint (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+             Gst.ClockTime inpoint)</pre>
+
+	<p>method to set the inpoint of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		inpoint
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_max_duration---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_max_duration”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_max_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+                  Gst.ClockTime maxduration)</pre>
+
+	<p>method to set the maximun duration of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		maxduration
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_priority---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_priority”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_priority (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+              <a class="link" title=guint32 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint32>guint32</a> priority)</pre>
+
+	<p>method to set the priority of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		priority
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::ripple---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ripple”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ripple (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+        <a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a> start)</pre>
+
+	<p>method to ripple an object</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_start---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_start”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_start (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+           Gst.ClockTime start)</pre>
+
+	<p>method to set the start of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::roll_start---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“roll_start”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+roll_start (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+            <a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a> start)</pre>
+
+	<p>method to roll an object on its [GES_EDGE_START](Enum and flag types.html#GES_EDGE_START) edge</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		start
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_duration---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_duration”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_duration (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+              Gst.ClockTime duration)</pre>
+
+	<p>method to set the duration of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a></p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		duration
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::set_parent---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“set_parent”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+set_parent (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+            <a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> parent)</pre>
+
+	<p>method to set the parent of a <a href="GESTimelineElement.html#GESTimelineElement">GESTimelineElement</a>.</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		parent
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElement:::ripple_end---vfunc></a>
+	<h3 class="method">
+		<span class="entry">The <code>“ripple_end”</code> virtual method</span>
+	</h3>
+	<pre class="programlisting">
+<a class="link" title=gboolean href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#gboolean>gboolean</a>
+ripple_end (<a class="link" title=GESTimelineElement href=GESTimelineElement.html#GESTimelineElement>GESTimelineElement</a> * object,
+            <a class="link" title=guint64 href=https://developer.gnome.org/glib/unstable//glib-Basic-Types.html#guint64>guint64</a> end)</pre>
+
+	<p>method to ripple an object on its [GES_EDGE_END](Enum and flag types.html#GES_EDGE_END) edge</p>
+
+			<div class="refsect3">
+			<h4>Parameters</h4>
+			<div class="informaltable">
+				<table width="100%" border="0">
+					<colgroup>
+						<col class="parameters_name" width="150px" />
+						<col class="parameters_description" />
+						<col class="parameters_annotations" width="200px"/>
+					</colgroup>
+					<tbody>
+													<tr>
+		<td class="parameter_name">
+		<p>
+		object
+		</p>
+	</td>
+		<td class="parameter_description"><p><p>An instance of the class implementing the virtual method</p>
+</p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+													<tr>
+		<td class="parameter_name">
+		<p>
+		end
+		</p>
+	</td>
+		<td class="parameter_description"><p></p></td>
+<td class="parameter_annotations">
+<td>
+
+</tr>
+
+											</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+	
+	</div>
+
+			</div>
+		<div class="refsect1">
+		<a name="Data Structures"></a>
+		<h2>Data Structures</h2>
+		
+				<div class="refsect2">
+	<a name=GESTimelineElement-struct></a>
+	<h3>
+		struct GESTimelineElement
+	</h3>
+		<pre class="programlisting">
+typedef struct _GESTimelineElement GESTimelineElement;
+</pre>
+
+			<p>Those filed can be accessed from outside but in no case should
+be changed from there. Subclasses can write them but should make
+sure to properly call g_object_notify.</p>
+
+		
+
+</div>
+
+		
+				<hr></hr>
+				<div class="refsect2">
+	<a name=GESTimelineElementClass-struct></a>
+	<h3>
+		struct GESTimelineElementClass
+	</h3>
+		<pre class="programlisting">
+typedef struct _GESTimelineElementClass GESTimelineElementClass;
+</pre>
+
+			<p>The GESTimelineElement base class. Subclasses should override at least
+<em>set_start</em> <em>set_inpoint</em> <em>set_duration</em> <em>ripple</em> <em>ripple_end</em> <em>roll_start</em>
+<em>roll_end</em> and <em>trim</em>.</p>
+<p>Vmethods in subclasses should apply all the operation they need to but
+the real method implementation is in charge of setting the proper field,
+and emit the notify signal.</p>
+
+		
+
+</div>
+
+			</div>
+	</div>
+

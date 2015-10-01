@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='text/html; charset=UTF-8' />
+	<link rel="stylesheet" href=greenstyle.css type="text/css" />
+</head>
+
+<table class="navigation" id="top" summary="Navigation header" width="100%" cellpadding="2" cellspacing="5">
+	<tbody>
+	<tr valign="middle">
+		<td class="shortcuts" align="left" width=100%>
+			<a class="shortcut" href="#">Top</a>
+
+						
+
+
+		</td>
+		<td>
+			<a href="index.html" accesskey="h">
+				<img border="0" width="16" alt="Home" src="home.png"></img>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<div class="refentry">
+	<div class="refnamediv">
+		<a name="6e00e8e6-3b2e-4655-ab3a-7b718d85dff9"></a>
+			</div>
+
+	
+	
+	
+		<h1>Architecture</h1>
+<h2>The Timeline</h2>
+<p>The most top-level object encapsulating every other object is the
+<a href="#GESTimeline">GESTimeline</a>. It is the central object for any editing
+project.</p>
+<p>A GES Timeline is composed of one or more layers, and produces data on one or more tracks.</p>
+<p>A track represents a media type, for example audio, video.</p>
+<p>Layers contain clips, and represent the relative priorities of these clips.</p>
+<h2>Layers</h2>
+<p>Let's imagine a timeline that contains two layers:</p>
+<h3>Timeline, duration : 0 seconds</h3>
+<pre><code>+--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         |                                           |  |
+| Layer 1 |                                           |  |
+|         |                                           |  |
+|         +-------------------------------------------+  |
+|                                                        |
+|         +-------------------------------------------+  |
+|         |                                           |  |
+| Layer 2 |                                           |  |
+|         |                                           |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+</code></pre>
+<p>If we add two clips in layer 1 and layer 2, each starting at 0 with a duration
+of 10 seconds, our timeline now looks like this:</p>
+<h3>Timeline, duration : 10 seconds</h3>
+<pre><code>+--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 1 | |              Clip 1                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 2 | |              Clip 2                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+</code></pre>
+<p>In that timeline, Clip 2 is said to have the highest &quot;priority&quot;. In the case of
+video streams, it means that it will be rendered on top of Clip 1, which in
+turn signifies that if Clip 1 and Clip 2 share the same width and height, Clip
+1 will be completely invisible.</p>
+<p>In the case of video streams, one can therefore think of the layer priority as
+a z-index.</p>
+<h2>Tracks</h2>
+<p>Let's continue with that timeline. For now it indeed mixes various layers
+together, but it doesn't output anything. That's what Tracks are for.</p>
+<p>If we add a video track to our timeline, it can be represented that way:</p>
+<p>Timeline, duration : 10 seconds</p>
+<pre><code>+--------------------------------------------------------+
+|                                                        |
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 1 | |              Clip 1                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |--------&gt; Video Track
+|         +-------------------------------------------+  |
+|         | +=======================================+ |  |
+| Layer 2 | |              Clip 2                   | |  |
+|         | +=======================================+ |  |
+|         +-------------------------------------------+  |
+|                                                        |
++--------------------------------------------------------+
+</code></pre>
+<p>Assuming both clips contain video streams, our timeline will now output the
+result of their compositing together on the video track. Any audio streams they
+contain are ignored.</p>
+<p>One can of course add an audio track to get audio output.</p>
+<p>By default <a href="ges-launch.html">ges-launch-1.0</a> will assume the user wants
+exactly one audio track and one video track, this can be modified through the
+<code>--track-types</code> argument to <code>ges-launch-1.0</code>.</p>
+<h2>The GESAsset</h2>
+<p>In order to help you handle the various <code>assets</code> you may have, mainly Media files (Audio
+and Video files), GES offers an API representing them: <a href="GESAsset.html">GESAsset</a>.</p>
+<h2>The GESProject</h2>
+<p>The <a href="GESProject.html">GESProject</a> API makes it simpler to use <a href="GESAsset.html">GESAssets</a>
+and is what end user will care about in many cases.</p>
+<h2>The GESPipeline</h2>
+<p>In order to reduce even more the amount of GStreamer interaction the
+application developer has to deal with, a convenience GstPipeline has
+been made available specifically for Timelines: <a href="GESPipeline.html">GESPipeline</a>.</p>
+
+	
+	</div>
+
