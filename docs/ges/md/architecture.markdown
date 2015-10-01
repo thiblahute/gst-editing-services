@@ -1,36 +1,22 @@
 Architecture
 ============
 
+## The Timeline
+
+The most top-level object encapsulating every other object is the
+[GESTimeline](#GESTimeline). It is the central object for any editing
+project.
+
+
 A GES Timeline is composed of one or more layers, and produces data on one or more tracks.
 
-A track represents a media type, for example audio, video or text. For the moment only
-audio and video tracks are supported.
+A track represents a media type, for example audio, video.
 
 Layers contain clips, and represent the relative priorities of these clips.
 
 ## Layers
 
 Let's imagine a timeline that contains two layers:
-
-This code creates a timeline:
-
-In C:
-``` lang=c
-int main (int argc, char **argv)
-{
-    GESTimeline *timeline;
-
-    timeline = ges_timeline_new();
-}
-```
-
-In python:
-``` lang=python
-from gi.repository import GES
-
-if __name__=="__main__":
-    timeline = GES.Timeline()
-```
 
 ### Timeline, duration : 0 seconds
 
@@ -116,45 +102,22 @@ contain are ignored.
 
 One can of course add an audio track to get audio output.
 
-Having multiple tracks with the same type, for example 3 audio tracks, is
-useful if one wants to link the timeline to a container that can store various
-languages, for example a DVD creator might store English, Dutch and French
-audio tracks.
-
-By default [ges-launch-1.0](ges-launch.markdown) will assume the user wants
+By default [ges-launch-1.0](ges-launch.html) will assume the user wants
 exactly one audio track and one video track, this can be modified through the
 `--track-types` argument to `ges-launch-1.0`.
 
+## The GESAsset
 
-Timeline and TimelinePipeline
------------------------------
+In order to help you handle the various `assets` you may have, mainly Media files (Audio
+and Video files), GES offers an API representing them: [GESAsset](GESAsset.html).
 
-The most top-level object encapsulating every other object is the
-[GESTimeline](#GESTimeline). It is the central object for any editing
-project.
+## The GESProject
 
-The `GESTimeline` is a `GstElement`. It can therefore be used in any
-GStreamer pipeline like any other object.
+The [GESProject](GESProject.html) API makes it simpler to use [GESAssets](GESAsset.html)
+and is what end user will care about in many cases. 
 
-Tracks and Layers
------------------
-
-The GESTimeline can contain two types of objects (seen in ?):
-
--   Layers - Corresponds to the user-visible arrangement of clips, and
-    what you primarily interact with as an application developer. A
-    minimalistic timeline would only have one layer, but a more complex
-    editing application could use as many as needed.
-
--   Tracks - Corresponds to the output streams in GStreamer. A typical
-    GESTimeline, aimed at a video editing application, would have an
-    audio track and a video track. A GESTimeline for an audio editing
-    application would only require an audio track. Multiple layers can
-    be related to each track.
-
-![Layers and Tracks](layer_track_overview.png)
+## The GESPipeline
 
 In order to reduce even more the amount of GStreamer interaction the
 application developer has to deal with, a convenience GstPipeline has
-been made available specifically for Timelines :
-[GESPipeline](#GESPipeline).
+been made available specifically for Timelines: [GESPipeline](GESPipeline.html).
