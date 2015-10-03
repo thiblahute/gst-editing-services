@@ -1,7 +1,7 @@
 Architecture
 ============
 
-## The Timeline
+### [The GESTimeline](GESTimeline.markdown)
 
 The most top-level object encapsulating every other object is the
 [GESTimeline](#GESTimeline). It is the central object for any editing
@@ -14,7 +14,7 @@ A track represents a media type, for example audio, video.
 
 Layers contain clips, and represent the relative priorities of these clips.
 
-## Layers
+### [GESLayer](GESLayer.markdown)
 
 Let's imagine a timeline that contains two layers:
 
@@ -69,12 +69,12 @@ turn signifies that if Clip 1 and Clip 2 share the same width and height, Clip
 In the case of video streams, one can therefore think of the layer priority as
 a z-index.
 
-## Tracks
+### [GESTrack](GESTrack.markdown)
 
 Let's continue with that timeline. For now it indeed mixes various layers
 together, but it doesn't output anything. That's what Tracks are for.
 
-If we add a video track to our timeline, it can be represented that way:
+If we add a [video track](GESVideoTrack.html) to our timeline, it can be represented that way:
 
 Timeline, duration : 10 seconds
 
