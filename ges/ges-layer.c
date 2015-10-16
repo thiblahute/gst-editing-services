@@ -22,7 +22,7 @@
 
 /**
  * SECTION:geslayer
- * @short_description: Non-overlapping sequence of GESClip
+ * @short_description: Sequence of GESClip at a `priority` in a #GESTimeline
  *
  * Responsible for the ordering of the various contained Clip(s). A
  * timeline layer has a "priority" property, which is used to manage the

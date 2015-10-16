@@ -11,7 +11,6 @@
 * [ges_timeline_remove_track]()
 * [ges_timeline_load_from_uri]()
 * [ges_timeline_save_to_uri]()
-* [ges_timeline_enable_update]()
 * [ges_timeline_is_updating]()
 * [ges_timeline_commit]()
 * [ges_timeline_commit_sync]()
@@ -28,3 +27,5 @@
 * [ges_timeline_set_snapping_distance]()
 * [ges_timeline_get_element]()
 * [ges_timeline_is_empty]()
+* [GES_TIMELINE_GET_LAYERS]()
+* [GES_TIMELINE_GET_TRACKS]()

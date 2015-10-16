@@ -1,7 +1,5 @@
 # Base Classes
 
-#### [GESTimeline](GESTimeline.markdown)
-
 #### [GESLayer](GESLayer.markdown)
 
 #### [GESTimelineElement](GESTimelineElement.markdown)

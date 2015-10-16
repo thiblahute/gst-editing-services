@@ -20,7 +20,7 @@
 
 /**
  * SECTION:gestrack
- * @short_description: Composition of objects
+ * @short_description: Representation of an audio or video output stream
  *
  * Corresponds to one output format (i.e. audio OR video).
  *

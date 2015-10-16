@@ -29,7 +29,7 @@
  * and then you can extract objects of those types with the appropriate parameters from the asset
  * using the #ges_asset_extract method:
  *
- * |[
+ * ``` c
  * GESAsset *effect_asset;
  * GESEffect *effect;
  *
@@ -39,7 +39,7 @@
  * // And now you can extract an instance of GESEffect from that asset
  * effect = GES_EFFECT (ges_asset_extract (effect_asset));
  *
- * ]|
+ * ```
  *
  * In that example, the advantages of having a #GESAsset are that you can know what effects
  * you are working with and let your user know about the avalaible ones, you can add metadata
@@ -60,7 +60,7 @@
  * Each and every #GESAsset is cached into GES, and you can query those with the #ges_list_assets function.
  * Also the system will automatically register #GESAssets for #GESFormatters and #GESTransitionClips
  * and standard effects (actually not implemented yet) and you can simply query those calling:
- * |[
+ * ``` c
  *    GList *formatter_assets, *tmp;
  *
  *    //  List all  the transitions
@@ -75,7 +75,7 @@
  *
  *    g_list_free (transition_assets);
  *
- * ]|
+ * ```
  *
  * You can request the creation of #GESAssets using either #ges_asset_request_async or
  * #ges_asset_request_async. All the #GESAssets are cached and thus any asset that has already

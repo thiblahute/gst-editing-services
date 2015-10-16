@@ -1,20 +1,27 @@
-### [GStreamer Editing Services Overview](GStreamer_Editing_Services_Overview.markdown)
+# [API Index]()
 
-### [Base Classes](Base_Classes.markdown)
+# [Getting started with the GStreamer Editing Services](Getting_started.markdown)
 
-### [Timeline objects](Timeline_objects.markdown)
+## [Overview](overview.markdown) - overview of the main GStreamer Editing Services componenents
+## [ges-launch](ges-launch.markdown) - a command line interface for prototyping and testing [GES Timelines](GESTimeline)
+## [Initialize GES](Initialization.markdown) (needs to be done before using the API)
+## [Object Hierarchy]() - diagram of the GES class hierarchy
 
-### [Track objects](Track_objects.markdown)
+# [Base Classes](Base_Classes.markdown) - The GStreamer Editing
 
-### [Convenience classes](Convenience_classes.markdown)
+# [Timeline objects](Timeline_objects.markdown)
 
-### [Serialization Classes](Serialization_Classes.markdown)
+# [Track objects](Track_objects.markdown)
 
-### [Interfaces](Interfaces.markdown)
+# [Convenience classes](Convenience_classes.markdown)
 
-### [Assets](Assets.markdown)
+# [Serialization Classes](Serialization_Classes.markdown)
 
-### [Tracks](Tracks.markdown)
+# [Interfaces](Interfaces.markdown)
 
-### [Object Hierarchy](Object_Hierarchy.markdown)
+# [Assets](Assets.markdown)
 
+# [Tracks](Tracks.markdown)
+
+# [Enum and flag types](GES_Enums.markdown)
+# [The GES GError types](GES_GErrors.markdown)
