@@ -20,10 +20,7 @@
 #ifndef __GES_ERROR_H__
 #define __GES_ERROR_H__
 
-/**
- * SECTION: ges-gerror
- * @short_description: GError — Categorized error messages
- */
+#include <glib.h>
 
 G_BEGIN_DECLS
 

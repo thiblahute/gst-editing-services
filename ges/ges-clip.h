@@ -153,7 +153,7 @@ GList *           ges_clip_find_track_elements    (GESClip * clip, GESTrack * tr
 /****************************************************
  *                     Layer                        *
  ****************************************************/
-GESLayer* ges_clip_get_layer              (GESClip *clip);
+GESLayer*         ges_clip_get_layer              (GESClip *clip);
 gboolean          ges_clip_move_to_layer          (GESClip *clip, GESLayer  *layer);
 
 /****************************************************
