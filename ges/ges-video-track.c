@@ -66,13 +66,6 @@ _track_restriction_changed_cb (GESTrack * track, GParamSpec * arg G_GNUC_UNUSED,
   _sync_capsfilter_with_track (track, capsfilter);
 }
 
-static void
-_weak_notify_cb (GESTrack * track, GstElement * capsfilter)
-{
-  g_signal_handlers_disconnect_by_func (track,
-      (GCallback) _track_restriction_changed_cb, capsfilter);
-}
-
 static GstElement *
 create_element_for_raw_video_gap (GESTrack * track)
 {
@@ -84,8 +77,6 @@ create_element_for_raw_video_gap (GESTrack * track)
       TRUE, NULL);
 
   capsfilter = gst_bin_get_by_name (GST_BIN (bin), "gapfilter");
-  g_object_weak_ref (G_OBJECT (capsfilter), (GWeakNotify) _weak_notify_cb,
-      track);
   g_signal_connect (track, "notify::restriction-caps",
       (GCallback) _track_restriction_changed_cb, capsfilter);
 
