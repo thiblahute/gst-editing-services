@@ -595,7 +595,7 @@ ges_project_try_updating_id (GESProject * project, GESAsset * asset,
 
   if (new_id) {
     GST_DEBUG_OBJECT (project, "new id found: %s", new_id);
-    if (!ges_asset_set_proxy (asset, new_id)) {
+    if (!ges_asset_try_proxy (asset, new_id)) {
       g_free (new_id);
       new_id = NULL;
     }
@@ -633,6 +633,7 @@ new_asset_cb (GESAsset * source, GAsyncResult * res, GESProject * project)
     return;
   }
 
+  ges_asset_set_proxy (NULL, asset);
   ges_project_add_asset (project, asset);
   if (asset)
     gst_object_unref (asset);

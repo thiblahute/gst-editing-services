@@ -99,6 +99,14 @@ enum
   PROP_LAST
 };
 
+enum
+{
+  PROXIED_SIGNAL,
+  SIGNAL_LAST
+};
+
+static guint _signals[SIGNAL_LAST] = { 0 };
+
 typedef enum
 {
   ASSET_NOT_INITIALIZED,
@@ -115,11 +123,14 @@ struct _GESAssetPrivate
   GESAssetState state;
   GType extractable_type;
 
-  /* When a asset is proxied, instanciating it will
+  /* When an asset is proxied, instanciating it will
    * return the asset it points to */
   char *proxied_asset_id;
 
-  /* The error that accured when a asset has been initialized with error */
+  GList *proxies;
+  GESAsset *proxy_target;
+
+  /* The error that accured when an asset has been initialized with error */
   GError *error;
 };
 
@@ -377,6 +388,18 @@ ges_asset_class_init (GESAssetClass * klass)
       "The unic identifier of the asset", NULL,
       G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE);
 
+  /**
+   * GESTimeline::track-added:
+   * @timeline: the #GESTimeline
+   * @track: the #GESTrack that was added to the timeline
+   *
+   * Will be emitted after the track was added to the timeline.
+   */
+  _signals[PROXIED_SIGNAL] =
+      g_signal_new ("proxied", G_TYPE_FROM_CLASS (klass),
+      G_SIGNAL_RUN_FIRST, G_STRUCT_OFFSET (GESAssetClass, proxied),
+      NULL, NULL, NULL, G_TYPE_NONE, 1, GES_TYPE_ASSET);
+
   g_object_class_install_properties (object_class, PROP_LAST, _properties);
 
   klass->start_loading = ges_asset_start_loading_default;
@@ -593,9 +616,10 @@ ges_asset_request_id_update (GESAsset * asset, gchar ** proposed_id,
 }
 
 gboolean
-ges_asset_set_proxy (GESAsset * asset, const gchar * new_id)
+ges_asset_try_proxy (GESAsset * asset, const gchar * new_id)
 {
   GESAssetClass *class;
+
   if (g_strcmp0 (asset->priv->id, new_id) == 0) {
     GST_WARNING_OBJECT (asset, "Trying to proxy to itself (%s),"
         " NOT possible", new_id);
@@ -609,9 +633,7 @@ ges_asset_set_proxy (GESAsset * asset, const gchar * new_id)
     return FALSE;
   }
 
-  if (asset->priv->proxied_asset_id)
-    g_free (asset->priv->proxied_asset_id);
-
+  g_free (asset->priv->proxied_asset_id);
   asset->priv->state = ASSET_PROXIED;
   asset->priv->proxied_asset_id = g_strdup (new_id);
 
@@ -619,8 +641,151 @@ ges_asset_set_proxy (GESAsset * asset, const gchar * new_id)
   if (class->inform_proxy)
     GES_ASSET_GET_CLASS (asset)->inform_proxy (asset, new_id);
 
-  GST_DEBUG_OBJECT (asset, "Now proxied to %s", new_id);
+  GST_DEBUG_OBJECT (asset, "Trying to proxy to %s", new_id);
+
   return TRUE;
+}
+
+static gboolean
+_lookup_proxied_asset (const gchar * id, GESAssetCacheEntry * entry,
+    const gchar * asset_id)
+{
+  return !g_strcmp0 (asset_id, entry->asset->priv->proxied_asset_id);
+}
+
+/**
+ * ges_asset_set_asset:
+ * @asset: The #GESAsset to set proxy on
+ * @proxy: (allow none): The #GESAsset that should be used as default proxy for @asset or
+ * %NULL if you want to use the currently set proxy. Note that an asset can proxy one and only
+ * one other asset.
+ *
+ * A proxying asset is an asset that can substitue the real @asset. For example if you
+ * have a full HD #GESUriClipAsset you might want to set a lower resolution (HD version
+ * of the same file) as proxy. Note that when an asset is proxied, calling
+ * #ges_asset_request will actually return the proxy asset.
+ *
+ * Returns: The list of proxies @asset has. Note that the default asset to be
+ * used is always the first in that list.
+ */
+gboolean
+ges_asset_set_proxy (GESAsset * asset, GESAsset * proxy)
+{
+  g_return_val_if_fail (asset == NULL || GES_IS_ASSET (asset), FALSE);
+  g_return_val_if_fail (proxy == NULL || GES_IS_ASSET (proxy), FALSE);
+  g_return_val_if_fail (asset != proxy, FALSE);
+
+  if (!proxy) {
+    if (asset->priv->error) {
+      GST_ERROR_OBJECT (asset,
+          "Proxy was loaded with error (%s), it should not be 'unproxied'",
+          asset->priv->error->message);
+
+      return FALSE;
+    }
+
+    if (asset->priv->proxies)
+      GES_ASSET (asset->priv->proxies->data)->priv->proxy_target = NULL;
+
+    GST_DEBUG_OBJECT (asset, "%s not proxied anymore", asset->priv->id);
+    asset->priv->state = ASSET_INITIALIZED;
+
+    return TRUE;
+  }
+
+  if (asset == NULL) {
+    GHashTable *entries_table;
+    GESAssetCacheEntry *entry;
+
+    entries_table = g_hash_table_lookup (type_entries_table,
+        _extractable_type_name (proxy->priv->extractable_type));
+    entry = g_hash_table_find (entries_table, (GHRFunc) _lookup_proxied_asset,
+        (gpointer) ges_asset_get_id (proxy));
+
+    if (!entry) {
+      GST_DEBUG_OBJECT (asset, "Not proxying any asset");
+      return FALSE;
+    }
+
+    asset = entry->asset;
+    while (asset->priv->proxies)
+      asset = asset->priv->proxies->data;
+  }
+
+  if (proxy->priv->proxy_target) {
+    GST_ERROR_OBJECT (asset,
+        "Trying to use %s as a proxy, but it is already proxying %s",
+        proxy->priv->id, proxy->priv->proxy_target->priv->id);
+  }
+
+  if (g_list_find (proxy->priv->proxies, asset)) {
+    GST_ERROR_OBJECT (asset, "Trying to setup a circular proxying dependency!");
+
+    return FALSE;
+  }
+
+  if (g_list_find (asset->priv->proxies, proxy)) {
+    GST_INFO_OBJECT (asset,
+        "%" GST_PTR_FORMAT " already marked as proxy, moving to first", proxy);
+    GES_ASSET (asset->priv->proxies->data)->priv->proxy_target = NULL;
+    asset->priv->proxies = g_list_remove (asset->priv->proxies, proxy);
+  }
+
+  GST_INFO ("%s is now proxied by %s", asset->priv->id, proxy->priv->id);
+  asset->priv->proxies = g_list_prepend (asset->priv->proxies, proxy);
+  proxy->priv->proxy_target = asset;
+
+  asset->priv->state = ASSET_PROXIED;
+  g_signal_emit (asset, _signals[PROXIED_SIGNAL], 0, proxy);
+
+  return TRUE;
+}
+
+/**
+ * ges_asset_list_proxies:
+ * @asset: The #GESAsset to get proxies from
+ *
+ * Returns: The list of proxies @asset has. Note that the default asset to be
+ * used is always the first in that list.
+ */
+GList *
+ges_asset_list_proxies (GESAsset * asset)
+{
+  g_return_val_if_fail (GES_IS_ASSET (asset), NULL);
+
+  return asset->priv->proxies;
+}
+
+/**
+ * ges_asset_get_proxy:
+ * @asset: The #GESAsset to get currenlty used proxy
+ *
+ * Returns: (transfer none): The proxy in use for @asset
+ */
+GESAsset *
+ges_asset_get_proxy (GESAsset * asset)
+{
+  g_return_val_if_fail (GES_IS_ASSET (asset), NULL);
+
+  if (asset->priv->state == ASSET_PROXIED && asset->priv->proxies) {
+    return asset->priv->proxies->data;
+  }
+
+  return NULL;
+}
+
+/**
+ * ges_asset_get_proxy_target:
+ * @proxy: The #GESAsset from which to get the the asset it proxies.
+ *
+ * Returns: (transfer none): The #GESAsset that is proxied by @proxy
+ */
+GESAsset *
+ges_asset_get_proxy_target (GESAsset * proxy)
+{
+  g_return_val_if_fail (GES_IS_ASSET (proxy), NULL);
+
+  return proxy->priv->proxy_target;
 }
 
 /* Caution, this method should be used in rare cases (ie: for the project
@@ -751,19 +916,20 @@ ges_asset_request (GType extractable_type, const gchar * id, GError ** error)
           asset = NULL;
           goto done;
         case ASSET_PROXIED:
-          asset =
-              ges_asset_cache_lookup (asset->priv->extractable_type,
-              asset->priv->proxied_asset_id);
-          if (asset == NULL) {
-            GST_ERROR ("Asset against a asset we do not"
+          if (asset->priv->proxies == NULL) {
+            GST_ERROR ("Proxied against an asset we do not"
                 " have in cache, something massively screwed");
 
             goto done;
           }
+
+          asset = asset->priv->proxies->data;
+          while (asset->priv->proxies)
+            asset = asset->priv->proxies->data;
           break;
         case ASSET_INITIALIZED_WITH_ERROR:
           GST_WARNING_OBJECT (asset, "Initialized with error, not returning");
-          if (asset->priv->error)
+          if (asset->priv->error && error)
             *error = g_error_copy (asset->priv->error);
           asset = NULL;
           goto done;
@@ -866,7 +1032,7 @@ ges_asset_request_async (GType extractable_type,
     real_id = g_strdup (id);
   }
 
-  /* Check if we already have a asset for this ID */
+  /* Check if we already have an asset for this ID */
   asset = ges_asset_cache_lookup (extractable_type, real_id);
   if (asset) {
     GTask *task = g_task_new (asset, NULL, callback, user_data);
@@ -896,7 +1062,7 @@ ges_asset_request_async (GType extractable_type,
               ges_asset_cache_lookup (asset->priv->extractable_type,
               asset->priv->proxied_asset_id);
           if (asset == NULL) {
-            GST_ERROR ("Asset proxied against a asset we do not"
+            GST_ERROR ("Asset proxied against an asset we do not"
                 " have in cache, something massively screwed");
 
             goto done;
