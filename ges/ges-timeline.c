@@ -22,7 +22,7 @@
  */
 
 /**
- * SECTION:gestimeline
+ * GESTimeline::GESTimeline:
  * @short_description: Multimedia timeline
  *
  * #GESTimeline is the central object for any multimedia timeline.

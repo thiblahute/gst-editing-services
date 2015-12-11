@@ -19,8 +19,8 @@
  */
 
 /**
- * SECTION:gestitleclip
- * @short_description: Render stand-alone titles in  GESLayer.
+ * GESTitleClip::GESTitleClip:
+ * @short_description: Render stand-alone titles in #GESLayer.
  *
  * Renders the given text in the specified font, at specified position, and
  * with the specified background pattern.
@@ -170,8 +170,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * The text to diplay
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
   g_object_class_install_property (object_class, PROP_TEXT,
       g_param_spec_string ("text", "Text", "The text to display",
@@ -183,8 +185,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * Pango font description string
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
   g_object_class_install_property (G_OBJECT_CLASS (klass), PROP_FONT_DESC,
       g_param_spec_string ("font-desc", "font description",
@@ -199,8 +203,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * Vertical alignent of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
   g_object_class_install_property (G_OBJECT_CLASS (klass), PROP_VALIGNMENT,
       g_param_spec_enum ("valignment", "vertical alignment",
@@ -213,8 +219,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * Horizontal alignment of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
   g_object_class_install_property (G_OBJECT_CLASS (klass), PROP_HALIGNMENT,
       g_param_spec_enum ("halignment", "horizontal alignment",
@@ -233,8 +241,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * The color of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
 
   g_object_class_install_property (object_class, PROP_COLOR,
@@ -247,8 +257,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * The background of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
 
   g_object_class_install_property (object_class, PROP_BACKGROUND,
@@ -261,8 +273,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * The horizontal position of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
 
   g_object_class_install_property (object_class, PROP_XPOS,
@@ -275,8 +289,10 @@ ges_title_clip_class_init (GESTitleClipClass * klass)
    *
    * The vertical position of the text
    *
-   * Deprecated: use ges_track_element_get/set_children_properties on the
+   * Use ges_track_element_get/set_children_properties on the
    * underlying GESTrackElement instead
+   *
+   * Deprecated: 1.6
    */
 
   g_object_class_install_property (object_class, PROP_YPOS,
@@ -303,8 +319,10 @@ ges_title_clip_init (GESTitleClip * self)
  *
  * Sets the text this clip will render.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_text (GESTitleClip * self, const gchar * text)
@@ -325,8 +343,10 @@ ges_title_clip_set_text (GESTitleClip * self, const gchar * text)
  *
  * Sets the pango font description of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_font_desc (GESTitleClip * self, const gchar * font_desc)
@@ -348,8 +368,10 @@ ges_title_clip_set_font_desc (GESTitleClip * self, const gchar * font_desc)
  *
  * Sets the horizontal aligment of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_halignment (GESTitleClip * self, GESTextHAlign halign)
@@ -371,8 +393,10 @@ ges_title_clip_set_halignment (GESTitleClip * self, GESTextHAlign halign)
  *
  * Sets the vertical aligment of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_valignment (GESTitleClip * self, GESTextVAlign valign)
@@ -394,8 +418,10 @@ ges_title_clip_set_valignment (GESTitleClip * self, GESTextVAlign valign)
  *
  * Sets the color of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_color (GESTitleClip * self, guint32 color)
@@ -416,8 +442,10 @@ ges_title_clip_set_color (GESTitleClip * self, guint32 color)
  *
  * Sets the background of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_background (GESTitleClip * self, guint32 background)
@@ -440,8 +468,10 @@ ges_title_clip_set_background (GESTitleClip * self, guint32 background)
  *
  * Sets the horizontal position of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_xpos (GESTitleClip * self, gdouble position)
@@ -462,8 +492,10 @@ ges_title_clip_set_xpos (GESTitleClip * self, gdouble position)
  *
  * Sets the vertical position of the text.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 void
 ges_title_clip_set_ypos (GESTitleClip * self, gdouble position)
@@ -485,8 +517,10 @@ ges_title_clip_set_ypos (GESTitleClip * self, gdouble position)
  *
  * Returns: The text currently set on @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const gchar *
 ges_title_clip_get_text (GESTitleClip * self)
@@ -507,8 +541,10 @@ ges_title_clip_get_text (GESTitleClip * self)
  *
  * Returns: The pango font description used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const char *
 ges_title_clip_get_font_desc (GESTitleClip * self)
@@ -529,8 +565,10 @@ ges_title_clip_get_font_desc (GESTitleClip * self)
  *
  * Returns: The horizontal aligment used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 GESTextHAlign
 ges_title_clip_get_halignment (GESTitleClip * self)
@@ -551,8 +589,10 @@ ges_title_clip_get_halignment (GESTitleClip * self)
  *
  * Returns: The vertical aligment used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 GESTextVAlign
 ges_title_clip_get_valignment (GESTitleClip * self)
@@ -573,8 +613,10 @@ ges_title_clip_get_valignment (GESTitleClip * self)
  *
  * Returns: The color used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const guint32
 ges_title_clip_get_text_color (GESTitleClip * self)
@@ -595,8 +637,10 @@ ges_title_clip_get_text_color (GESTitleClip * self)
  *
  * Returns: The color used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const guint32
 ges_title_clip_get_background_color (GESTitleClip * self)
@@ -617,8 +661,10 @@ ges_title_clip_get_background_color (GESTitleClip * self)
  *
  * Returns: The horizontal position used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const gdouble
 ges_title_clip_get_xpos (GESTitleClip * self)
@@ -639,8 +685,10 @@ ges_title_clip_get_xpos (GESTitleClip * self)
  *
  * Returns: The vertical position used by @self.
  *
- * Deprecated: use ges_track_element_get/set_children_properties on the
+ * Use ges_track_element_get/set_children_properties on the
  * underlying GESTrackElement instead
+ *
+ * Deprecated: 1.6
  */
 const gdouble
 ges_title_clip_get_ypos (GESTitleClip * self)

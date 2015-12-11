@@ -19,8 +19,8 @@
  */
 
 /**
- * SECTION: gestrackelementasset
- * @short_description: A GESAsset subclass specialized in GESTrackElement extraction
+ * GESTrackElementAsset::GESTrackElementAsset:
+ * @short_description: A #GESAsset subclass specialized in #GESTrackElement extraction
  */
 
 #include "ges-track-element-asset.h"

@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesoperation
+ * GESOperation::GESOperation:
  * @short_description: Base Class for effects and overlays
  */
 

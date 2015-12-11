@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gestextoverlayclip
+ * GESTextOverlayClip::GESTextOverlayClip:
  * @short_description: Render text onto another stream in a GESLayer
  *
  * Renders text onto the next lower priority stream using textrender.
@@ -260,7 +260,6 @@ ges_text_overlay_clip_init (GESTextOverlayClip * self)
  * made.
  *
  * Sets the text this clip will render.
- *
  */
 void
 ges_text_overlay_clip_set_text (GESTextOverlayClip * self, const gchar * text)

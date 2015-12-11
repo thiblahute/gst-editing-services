@@ -19,13 +19,18 @@
  * Boston, MA 02111-1307, USA.
  */
 /**
- * SECTION: gesuriclipasset
- * @short_description: A GESAsset subclass specialized in GESUriClip extraction
+ * GESUriClipAsset::GESUriClipAsset:
+ * @short_description: A #GESAsset subclass specialized in #GESUriClip extraction
  *
  * The #GESUriClipAsset is a special #GESAsset that lets you handle
  * the media file to use inside the GStreamer Editing Services. It has APIs that
  * let you get information about the medias. Also, the tags found in the media file are
  * set as Metadatas of the Asser.
+ */
+/**
+ * GESUriSourceAsset::GESUriSourceAsset:
+ * @short_description: A GESAsset subclass specialized in #GESVideoUriSource
+ * and #GESAudioUriSource extraction
  */
 #include <errno.h>
 #include <gst/pbutils/pbutils.h>

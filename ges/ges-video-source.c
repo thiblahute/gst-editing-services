@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesvideosource
+ * GESVideoSource::GESVideoSource:
  * @short_description: Base Class for video sources
  *
  * <refsect1 id="GESVideoSource.children_properties" role="properties">

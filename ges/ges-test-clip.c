@@ -19,8 +19,8 @@
  */
 
 /**
- * SECTION:gestestclip
- * @short_description: Render video and audio test patterns in a GESLayer
+ * GESTestClip::GESTestClip:
+ * @short_description: Render video and audio test patterns in a #GESLayer
  *
  * Useful for testing purposes.
  *

@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gesmultifilesource
+ * GESMultiFileSource::GESMultiFileSource:
  * @short_description: outputs the video stream from a sequence of images.
  *
  * Outputs the video stream from a given image sequence. The start frame

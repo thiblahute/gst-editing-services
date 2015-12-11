@@ -18,8 +18,8 @@
  */
 
 /**
- * SECTION: gesaudiotrack
- * @short_description: A standard GESTrack for raw audio
+ * GESAudioTrack::GESAudioTrack:
+ * @short_description: A standard #GESTrack for raw audio
  *
  * Sane default properties to specify and fixate the output stream are
  * set as restriction-caps.

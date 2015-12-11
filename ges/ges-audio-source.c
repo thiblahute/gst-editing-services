@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesaudiosource
+ * GESAudioSource::GESAudioSource:
  * @short_description: Base Class for audio sources
  *
  * <refsect1 id="GESVideoSource.children_properties" role="properties">

@@ -1,0 +1,16 @@
+### GESAsset
+
+* [GESAsset]()
+* [ges_asset_get_extractable_type]()
+* [ges_asset_get_id]()
+* [ges_asset_request]()
+* [ges_asset_request_async]()
+* [ges_asset_request_finish]()
+* [ges_asset_extract]()
+* [ges_asset_get_error]()
+* [ges_list_assets]()
+* [ges_asset_set_proxy]()
+* [ges_asset_list_proxies]()
+* [ges_asset_get_proxy_target]()
+* [ges_asset_get_proxy]()
+* [ges_asset_needs_reload]()

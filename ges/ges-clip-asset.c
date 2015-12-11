@@ -18,8 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 /**
- * SECTION: gesclipasset
- * @short_description: A GESAsset subclass specialized in GESClip extraction
+ * GESClipAsset::GESClipAsset:
+ * @short_description: A #GESAsset subclass specialized in GESClip extraction
  *
  * The #GESUriClipAsset is a special #GESAsset specilized in #GESClip.
  * it is mostly used to get information about the #GESTrackType-s the objects extracted

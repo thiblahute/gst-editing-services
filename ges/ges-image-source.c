@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesimagesource
+ * GESImageSource::GESImageSource:
  * @short_description: outputs the video stream from a media file as a still
  * image.
  * 

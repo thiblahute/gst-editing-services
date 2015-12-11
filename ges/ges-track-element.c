@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gestrackelement
+ * GESTrackElement::GESTrackElement:
  * @short_description: Base Class for objects contained in a GESTrack
  *
  * #GESTrackElement is the Base Class for any object that can be contained in a
@@ -901,7 +901,7 @@ ges_track_element_set_track (GESTrackElement * object, GESTrack * track)
 }
 
 /**
- * ges_track_element_get_all_control_bindings
+ * ges_track_element_get_all_control_bindings:
  * @trackelement: The #TrackElement from which to get all set bindings
  *
  * Returns: (element-type gchar* GstControlBinding)(transfer none): A

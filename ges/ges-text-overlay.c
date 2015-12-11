@@ -19,9 +19,8 @@
  */
 
 /**
- * SECTION:gestextoverlay
- * @short_description: render text onto another video stream in a GESLayer
- *
+ * GESTextOverlay::GESTextOverlay:
+ * @short_description: render text onto another video stream in a #GESLayer
  */
 
 #include "ges-internal.h"

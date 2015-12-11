@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesaudiourisource
+ * GESAudioUriSource::GESAudioUriSource:
  * @short_description: outputs a single audio stream from a given file
  */
 

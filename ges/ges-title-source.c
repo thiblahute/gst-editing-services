@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gestitlesource
+ * GESTitleSource::GESTitleSource:
  * @short_description: render stand-alone text titles
  * 
  * #GESTitleSource is a GESTimelineElement that implements the notion

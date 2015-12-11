@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesformatter
+ * GESFormatter::GESFormatter:
  * @short_description: Timeline saving and loading.
  *
  **/

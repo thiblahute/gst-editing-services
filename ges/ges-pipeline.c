@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gespipeline
+ * GESPipeline::GESPipeline:
  * @short_description: Convenience GstPipeline for editing.
  *
  * #GESPipeline allows developers to view and render #GESTimeline
@@ -331,7 +331,7 @@ ges_pipeline_class_init (GESPipelineClass * klass)
       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GESPipeline::audio-filter
+   * GESPipeline::audio-filter:
    *
    * The audio filter(s) to apply during playback right before the audio sink
    *
@@ -343,7 +343,7 @@ ges_pipeline_class_init (GESPipelineClass * klass)
       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GESPipeline::video-filter
+   * GESPipeline::video-filter:
    *
    * The video filter(s) to apply during playback right before the video sink
    *

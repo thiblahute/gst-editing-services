@@ -21,7 +21,7 @@
  */
 
 /**
- * SECTION:geslayer
+ * GESLayer::GESLayer:
  * @short_description: Non-overlapping sequence of GESClip
  *
  * Responsible for the ordering of the various contained Clip(s). A

@@ -1,0 +1,43 @@
+{
+    "index": "markdown/index.markdown",
+    "c_source_filters": [
+        "../../ges/ges-base-xml-formatter.*",
+        "../../ges/ges-pitivi-formatter.*",
+        "../../ges/ges-internal.h",
+        "../../ges/parse_lex.h",
+        "../../ges/lex.priv_ges_parse_yy.c"
+    ],
+    "c_sources": [
+        "../../ges/ges.h",
+        "../../ges/*.c",
+        "../../ges/*.h"
+    ],
+    "index": "markdown/index.markdown",
+    "extra_c_flags": [
+        "-DGST_DISABLE_DEPRECATED",
+        "-I../.."
+    ],
+    "output_format": "html",
+    "pkg_config_packages": [
+        "gstreamer-1.0",
+        "gstreamer-pbutils-1.0",
+        "gio-2.0",
+        "glib-2.0",
+        "gstreamer-controller-1.0",
+        "gstreamer-video-1.0",
+        "libxml-2.0"
+    ],
+    "languages": [
+        "c",
+        "python",
+        "javascript"
+    ],
+    "include_paths": "markdown",
+    "gi_index": "gobject-api.markdown",
+    "output": "html",
+    "gir_file": "../../ges/GES-1.0.gir",
+    "git_repo": "../..",
+    "tag_prototypes": [
+        "Deprecated::"
+    ]
+}

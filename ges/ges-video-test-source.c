@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesvideotestsource
+ * GESVideoTestSource::GESVideoTestSource:
  * @short_description: produce solid colors and patterns
  */
 

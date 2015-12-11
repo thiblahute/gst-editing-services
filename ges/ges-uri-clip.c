@@ -19,8 +19,8 @@
  */
 
 /**
- * SECTION:gestimelinefilesource
- * @short_description: An object for manipulating media files in a GESTimeline
+ * GESUriClip::GESUriClip:
+ * @short_description: An object for manipulating media files in a #GESLayer
  *
  * Represents all the output streams from a particular uri. It is assumed that
  * the URI points to a file of some type.

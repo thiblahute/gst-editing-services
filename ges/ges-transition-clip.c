@@ -19,8 +19,9 @@
  */
 
 /**
- * SECTION: gestransitionclip
- * @short_description: Transition from one clip to another in a GESLayer
+ * GESTransitionClip::GESTransitionClip:
+ * @short_description: Transition from one clip to another in a #GESLayer. Automatically
+ * created when the GESTimeline auto-transition property is set.
  *
  * Creates an object that mixes together the two underlying objects, A and B.
  * The A object is assumed to have a higher prioirity (lower number) than the

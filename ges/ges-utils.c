@@ -17,11 +17,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-/**
- * SECTION:ges-utils
- * @short_description: Convenience methods
- *
- */
+
 
 #include <string.h>
 

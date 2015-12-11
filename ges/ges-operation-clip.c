@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gesoperationclip
+ * GESOperationClip::GESOperationClip:
  * @short_description: Base Class for operations in a GESLayer
  *
  * Operations are any kind of object that both outputs AND consumes data.

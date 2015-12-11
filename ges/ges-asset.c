@@ -1112,7 +1112,7 @@ done:
 }
 
 /**
- * ges_asset_needs_reload
+ * ges_asset_needs_reload:
  * @extractable_type: The #GType of the object that can be extracted from the
  *  asset to be reloaded.
  * @id: The identifier of the asset to mark as needing reload

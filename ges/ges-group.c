@@ -18,9 +18,9 @@
  */
 
 /**
- * SECTION:gesgroup
+ * GESGroup::GESGroup:
  * @short_description: Class that permits to group GESClip-s in a timeline,
- * letting the user manage it a single GESTimelineElement
+ * letting the user manage it as a single GESTimelineElement
  *
  * A #GESGroup is an object which controls one or more
  * #GESClips in one or more #GESLayer(s).

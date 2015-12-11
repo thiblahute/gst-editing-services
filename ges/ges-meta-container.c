@@ -24,10 +24,11 @@
 #include "ges-meta-container.h"
 
 /**
-* SECTION: gesmetacontainer
-* @short_description: An interface for storing meta
+* GESMetaContainer::GESMetaContainer:
+* @short_description: An interface for storing metadatas on
+* objects implementing it, and allowing serializing them.
 *
-* Interface that allows reading and writing meta
+* Interface that allows reading and writing metadatas.
 */
 
 static GQuark ges_meta_key;

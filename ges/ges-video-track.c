@@ -18,8 +18,8 @@
  */
 
 /**
- * SECTION: gesvideotrack
- * @short_description: A standard GESTrack for raw video
+ * GESVideoTrack::GESVideoTrack:
+ * @short_description: A standard #GESTrack for raw video streams.
  */
 
 #include "ges-video-track.h"
