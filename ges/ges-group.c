@@ -19,13 +19,12 @@
 
 /**
  * GESGroup::GESGroup:
- * @short_description: Class that permits to group GESClip-s in a timeline,
- * letting the user manage it as a single GESTimelineElement
+ * @short_description: Group of [GESTimelineElements](GESTimelineElement)
  *
  * A #GESGroup is an object which controls one or more
  * #GESClips in one or more #GESLayer(s).
  *
- * To instanciate a group, you should use the ges_container_group method,
+ * To instanciate a group, you should use the #ges_container_group method,
  * this will be responsible for deciding what subclass of #GESContainer
  * should be instaciated to group the various #GESTimelineElement passed
  * in parametter.
