@@ -927,8 +927,8 @@ _unlink_track (GESPipeline * self, GESTrack * track)
  *
  * The reference to the @timeline will be stolen by the @pipeline.
  *
- * Returns: TRUE if the @timeline could be successfully set on the @pipeline,
- * else FALSE.
+ * Returns: %TRUE if the @timeline could be successfully set on the @pipeline,
+ * else %FALSE.
  */
 gboolean
 ges_pipeline_set_timeline (GESPipeline * pipeline, GESTimeline * timeline)

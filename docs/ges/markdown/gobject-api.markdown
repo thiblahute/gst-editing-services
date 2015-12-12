@@ -16,8 +16,6 @@
 
 ### [Interfaces](Interfaces.markdown) - The [GInterfaces](GTypeInterface) offered by GES
 
-### [Enums](GES_Enums.markdown) - The GES enums and flags
-
 ### [Base Classes](Base_Classes.markdown) - The GES base classes
 
 ### [Object Hierarchy]()
