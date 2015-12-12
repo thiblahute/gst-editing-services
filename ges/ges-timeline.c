@@ -33,11 +33,11 @@
  * The output type is determined by the #GESTrack that are set on
  * the #GESTimeline.
  *
- * To save/load a timeline, you can use the ges_timeline_load_from_uri() and
- * ges_timeline_save_to_uri() methods to use the default format. If you wish
+ * To save/load a timeline, you can use the #ges_timeline_load_from_uri and
+ * #ges_timeline_save_to_uri methods to use the default format. If you wish
  *
- * Note that any change you make in the timeline will not actually be taken
- * into account until you call the #ges_timeline_commit method.
+ * **Note** that changes in the timeline will **not be taken
+ * into account** until you call the **#ges_timeline_commit method**.
  */
 
 #include "ges-internal.h"
