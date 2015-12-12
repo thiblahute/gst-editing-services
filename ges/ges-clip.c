@@ -1497,12 +1497,12 @@ ges_clip_add_asset (GESClip * clip, GESAsset * asset)
  * @track_type: a #GESTrackType indicating the type of tracks in which elements
  * should be searched.
  * @type: a #GType indicating the type of track element you are looking
- * for or %G_TYPE_NONE if you do not care about the track type.
+ * for or %G_TYPE_NONE if you do not care about the [track element](GESTrackElement) type.
  *
  * Finds all the #GESTrackElement controlled by @clip that is used in @track. You
  * may optionally specify a GType to further narrow search criteria.
  *
- * Returns: (transfer full) (element-type GESTrackElement): a #GList of the
+ * Returns: (transfer full) (element-type GESTrackElement): A #GList of the
  * #GESTrackElement contained in @clip.
  * The refcount of the objects will be increased. The user will have to
  * unref each #GESTrackElement and free the #GList.
