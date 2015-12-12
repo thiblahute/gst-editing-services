@@ -1070,11 +1070,11 @@ ges_clip_get_layer (GESClip * clip)
  * ges_clip_get_top_effects:
  * @clip: The origin #GESClip
  *
- * Get effects applied on @clip
+ * List all the  effects applied on @clip
  *
  * Returns: (transfer full) (element-type GESTrackElement): a #GList of the
- * #GESBaseEffect that are applied on @clip order by ascendant priorities.
- * The refcount of the objects will be increased. The user will have to
+ * #GESBaseEffect that are applied on @clip ordered by ascendant priorities.
+ */
  * unref each #GESBaseEffect and free the #GList.
  */
 GList *
