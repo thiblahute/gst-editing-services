@@ -388,12 +388,12 @@ GType ges_edit_mode_get_type (void);
 
 /**
  * GESEdge:
- * @GES_EDGE_START: Represents the start of an object.
- * @GES_EDGE_END: Represents the end of an object.
- * @GES_EDGE_NONE: Represent the fact we are not workin with any edge of an
- *   object.
+ * @GES_EDGE_START: Represents the start of an [element](GESTimelineElement).
+ * @GES_EDGE_END: Represents the end of an [element](GESTimelineElement).
+ * @GES_EDGE_NONE: Represents the fact that we are not working with
+ * any edge of an [element](GESTimelineElement).
  *
- * The edges of an object contain in a #GESTimeline or #GESTrack
+ * The edges of an [element](GESTimelineElement) contained in a #GESTimeline
  */
 typedef enum {
     GES_EDGE_START,
