@@ -20,7 +20,7 @@
 
 /**
  * GESTitleClip::GESTitleClip:
- * @short_description: Render stand-alone titles in #GESLayer.
+ * @short_description: Render stand-alone titles in a #GESLayer.
  *
  * Renders the given text in the specified font, at specified position, and
  * with the specified background pattern.
