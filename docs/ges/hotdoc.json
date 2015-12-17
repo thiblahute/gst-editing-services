@@ -33,11 +33,8 @@
         "javascript"
     ],
     "include_paths": "markdown",
-    "gi_index": "gobject-api.markdown",
+    "gi_index": "index.markdown",
     "output": "html",
     "gir_file": "../../ges/GES-1.0.gir",
-    "git_repo": "../..",
-    "tag_prototypes": [
-        "Deprecated::"
-    ]
+    "git_repo": "../.."
 }
