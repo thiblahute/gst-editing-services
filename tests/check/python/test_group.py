@@ -92,32 +92,20 @@ class TestCopyPaste(unittest.TestCase):
         self.assertEqual(len(clips), 3)
         self.assertEqual(clips[1].props.start, 10)
 
-    def testPasteChangedGroup(self):
-        clip1 = GES.TestClip.new()
-        clip1.props.duration = 10
+    def testUngroupCopiedClip(self):
+        clip = GES.TestClip.new()
+        clip.props.duration = 10
 
-        clip2 = GES.TestClip.new()
-        clip2.props.start = 20
-        clip2.props.duration = 10
+        self.layer.add_clip(clip)
 
-        self.layer.add_clip(clip1)
-        self.layer.add_clip(clip2)
+        copy = clip.copy(True)
 
-        self.assertEqual(len(clip1.get_children(False)), 2)
+        self.layer.remove_clip(clip)
 
-        group = GES.Group.new()
-        self.assertTrue(group.add(clip1))
+        pasted = copy.paste(0)
+        self.assertEquals(len(self.layer.get_clips()), 1)
+        clips = pasted.ungroup(False)
+        self.assertEquals(len(clips), 2)
+        self.assertEquals(len(self.layer.get_clips()), 2)
 
-        self.assertEqual(len(group.get_children(False)), 1)
 
-        group_copy = group.copy(True)
-        self.assertEqual(len(group_copy.get_children(False)), 0)
-
-        self.assertTrue(group.add(clip2))
-        self.assertEqual(len(group.get_children(False)), 2)
-        self.assertEqual(len(group_copy.get_children(False)), 0)
-
-        self.assertTrue(group_copy.paste(10))
-        clips = self.layer.get_clips()
-        self.assertEqual(len(clips), 3)
-        self.assertEqual(clips[1].props.start, 10)
