@@ -731,13 +731,13 @@ ges_clip_set_property (GObject * object, guint property_id,
 }
 
 static void
-ges_clip_finalize (GObject * object)
+ges_clip_dispose (GObject * object)
 {
   GESClip *self = GES_CLIP (object);
 
   g_list_free_full (self->priv->copied_track_elements, g_object_unref);
 
-  G_OBJECT_CLASS (ges_clip_parent_class)->finalize (object);
+  G_OBJECT_CLASS (ges_clip_parent_class)->dispose (object);
 }
 
 static void
@@ -751,7 +751,7 @@ ges_clip_class_init (GESClipClass * klass)
 
   object_class->get_property = ges_clip_get_property;
   object_class->set_property = ges_clip_set_property;
-  object_class->finalize = ges_clip_finalize;
+  object_class->dispose = ges_clip_dispose;
   klass->create_track_elements = ges_clip_create_track_elements_func;
   klass->create_track_element = NULL;
 
@@ -845,7 +845,7 @@ ges_clip_create_track_element (GESClip * clip, GESTrackType type)
   class = GES_CLIP_GET_CLASS (clip);
 
   if (G_UNLIKELY (class->create_track_element == NULL)) {
-    GST_ERROR ("No 'create_track_element' implementation available fo type %s",
+    GST_ERROR ("No 'create_track_element' implementation available for type %s",
         G_OBJECT_TYPE_NAME (clip));
     return NULL;
   }
@@ -869,8 +869,9 @@ ges_clip_create_track_element (GESClip * clip, GESTrackType type)
 GList *
 ges_clip_create_track_elements (GESClip * clip, GESTrackType type)
 {
-  GList *result, *tmp;
+  GList *result = FALSE, *tmp;
   GESClipClass *klass;
+  gboolean reuse_children = FALSE;
   guint max_prio, min_prio;
 
   g_return_val_if_fail (GES_IS_CLIP (clip), NULL);
@@ -884,7 +885,34 @@ ges_clip_create_track_elements (GESClip * clip, GESTrackType type)
 
   GST_DEBUG_OBJECT (clip, "Creating TrackElements for type: %s",
       ges_track_type_name (type));
-  result = klass->create_track_elements (clip, type);
+  for (tmp = GES_CONTAINER_CHILDREN (clip); tmp; tmp = tmp->next) {
+      GESTrackElement *child = GES_TRACK_ELEMENT (tmp->data);
+      if (!GES_IS_BASE_EFFECT (child) &&
+              ges_track_element_get_track_type (child) & type){
+          GST_ERROR_OBJECT (clip, "Reusing existing children! : %"
+                  GST_PTR_FORMAT, tmp->data);
+          reuse_children = TRUE;
+      }
+  }
+
+  if (reuse_children) {
+      for (tmp = GES_CONTAINER_CHILDREN (clip); tmp; tmp = tmp->next) {
+          GESTrackElement *child = GES_TRACK_ELEMENT (tmp->data);
+
+          if (ges_track_element_get_track_type (child) & type) {
+              result = g_list_prepend (result, g_object_ref (child));
+
+              GST_ERROR_OBJECT (clip, "Removing %" GST_PTR_FORMAT, child);
+              ges_container_remove (GES_CONTAINER (clip), tmp->data);
+
+          }
+      }
+  } else {
+    result = klass->create_track_elements (clip, type);
+    for (tmp = result; tmp; tmp = tmp->next)
+        GST_ERROR_OBJECT (clip, "Created child %" GST_PTR_FORMAT,
+                tmp->data);
+  }
 
   _get_priority_range (GES_CONTAINER (clip), &min_prio, &max_prio);
   for (tmp = result; tmp; tmp = tmp->next) {

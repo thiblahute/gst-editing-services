@@ -119,8 +119,6 @@ GST_START_TEST (test_ges_scenario)
   ASSERT_OBJECT_REFCOUNT (layer, "layer", 1);
   tmp_layer = ges_clip_get_layer (GES_CLIP (source));
   fail_unless (tmp_layer == NULL);
-  trackelements = GES_CONTAINER_CHILDREN (source);
-  fail_unless (trackelements == NULL);  /* No unreffing then */
   gst_object_unref (source);
 
   GST_DEBUG ("Removing track from the timeline");
@@ -501,7 +499,12 @@ GST_START_TEST (test_ges_timeline_remove_track)
   g_list_foreach (tmp, (GFunc) gst_object_unref, NULL);
   g_list_free (tmp);
 
-  check_destroyed (G_OBJECT (timeline), G_OBJECT (layer), t1, t2, t3, NULL);
+  GST_ERROR_OBJECT (t1, "-");
+  GST_ERROR_OBJECT (t2, "-");
+  GST_ERROR_OBJECT (t3, "-");
+
+  gst_check_objects_destroyed_on_unref (G_OBJECT (timeline),
+          G_OBJECT (layer), t1, t2, t3, NULL);
 }
 
 GST_END_TEST;
