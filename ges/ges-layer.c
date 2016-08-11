@@ -218,6 +218,44 @@ ges_layer_init (GESLayer * self)
   _register_metas (self);
 }
 
+static gint
+ges_layer_resync_priorities_by_type (GESLayer * layer,
+    gint starting_priority, GType type)
+{
+  GstClockTime next_reset = 0;
+  gint priority = starting_priority, max_priority = priority;
+  GList *tmp;
+  GESTimelineElement *element;
+
+  for (tmp = layer->priv->clips_start; tmp; tmp = tmp->next) {
+
+    element = GES_TIMELINE_ELEMENT (tmp->data);
+
+    if (GES_IS_TRANSITION_CLIP (element)) {
+      /* Blindly set transitions priorities to 0 */
+      _set_priority0 (element, 0);
+      continue;
+    } else if (!g_type_is_a (G_OBJECT_TYPE (element), type))
+      continue;
+
+    if (element->start > next_reset) {
+      priority = starting_priority;
+      next_reset = 0;
+    }
+
+    if (element->start + element->duration > next_reset)
+      next_reset = element->start + element->duration;
+
+    _set_priority0 (element, priority);
+    priority = priority + GES_CONTAINER_HEIGHT (element);
+
+    if (priority > max_priority)
+      max_priority = priority;
+  }
+
+  return max_priority;
+}
+
 /**
  * ges_layer_resync_priorities:
  * @layer: a #GESLayer
@@ -228,35 +266,16 @@ ges_layer_init (GESLayer * self)
 gboolean
 ges_layer_resync_priorities (GESLayer * layer)
 {
-  GstClockTime next_reset = 0;
-  gint priority = 1;
-  GList *tmp;
-  GESTimelineElement *element;
+  gint min_source_prios;
 
   GST_INFO_OBJECT (layer, "Resync priorities (prio: %d)",
       layer->priv->priority);
 
-  for (tmp = layer->priv->clips_start; tmp; tmp = tmp->next) {
+  min_source_prios = ges_layer_resync_priorities_by_type (layer, 1,
+      GES_TYPE_OPERATION_CLIP);
 
-    element = GES_TIMELINE_ELEMENT (tmp->data);
-
-    if (GES_IS_TRANSITION_CLIP (element)) {
-      _set_priority0 (element, 0);
-
-      continue;
-    }
-
-    if (element->start > next_reset) {
-      priority = 1;
-      next_reset = 0;
-    }
-
-    if (element->start + element->duration > next_reset)
-      next_reset = element->start + element->duration;
-
-    _set_priority0 (element, priority);
-    priority = priority + GES_CONTAINER_HEIGHT (element);
-  }
+  ges_layer_resync_priorities_by_type (layer, min_source_prios,
+      GES_TYPE_SOURCE_CLIP);
 
   return TRUE;
 }
@@ -398,6 +417,7 @@ ges_layer_set_priority (GESLayer * layer, guint priority)
     layer->priv->priority = priority;
     layer->min_nle_priority = (priority * LAYER_HEIGHT) + MIN_NLE_PRIO;
     layer->max_nle_priority = ((priority + 1) * LAYER_HEIGHT) + MIN_NLE_PRIO;
+
     ges_layer_resync_priorities (layer);
   }
 
@@ -530,7 +550,7 @@ ges_layer_add_clip (GESLayer * layer, GESClip * clip)
   g_return_val_if_fail (GES_IS_LAYER (layer), FALSE);
   g_return_val_if_fail (GES_IS_CLIP (clip), FALSE);
 
-  GST_DEBUG_OBJECT (layer, "adding clip: %s", GES_TIMELINE_ELEMENT_NAME (clip));
+  GST_DEBUG_OBJECT (layer, "adding clip:%p", clip);
 
   priv = layer->priv;
   current_layer = ges_clip_get_layer (clip);
