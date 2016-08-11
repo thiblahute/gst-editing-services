@@ -228,18 +228,36 @@ ges_layer_init (GESLayer * self)
 static gboolean
 ges_layer_resync_priorities (GESLayer * layer)
 {
+  GstClockTime next_reset = 0;
+  gint current_priority = 1, next_priority;
   GList *tmp;
   GESTimelineElement *element;
 
-  GST_DEBUG ("Resync priorities of %p", layer);
-
-  /* TODO : Inhibit composition updates while doing this.
-   * Ideally we want to do it from an even higher level, but here will
-   * do in the meantime. */
+  GST_INFO_OBJECT (layer, "Resync priorities (prio: %d)",
+      layer->priv->priority);
 
   for (tmp = layer->priv->clips_start; tmp; tmp = tmp->next) {
+
     element = GES_TIMELINE_ELEMENT (tmp->data);
-    _set_priority0 (element, _PRIORITY (element));
+
+    if (GES_IS_TRANSITION_CLIP (element)) {
+      _set_priority0 (element, 0);
+
+      continue;
+    }
+
+    if (element->start > next_reset) {
+      current_priority = 1;
+      next_reset = 0;
+    }
+
+    if (element->start + element->duration > next_reset)
+      next_reset = element->start + element->duration;
+
+    next_priority = current_priority + GES_CONTAINER_HEIGHT (element);
+    _set_priority0 (element, current_priority);
+
+    current_priority = next_priority;
   }
 
   return TRUE;
@@ -515,7 +533,7 @@ ges_layer_add_clip (GESLayer * layer, GESClip * clip)
   g_return_val_if_fail (GES_IS_LAYER (layer), FALSE);
   g_return_val_if_fail (GES_IS_CLIP (clip), FALSE);
 
-  GST_DEBUG_OBJECT (layer, "adding clip:%p", clip);
+  GST_DEBUG_OBJECT (layer, "adding clip: %s", GES_TIMELINE_ELEMENT_NAME (clip));
 
   priv = layer->priv;
   current_layer = ges_clip_get_layer (clip);
