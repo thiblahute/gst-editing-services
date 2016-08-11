@@ -1643,12 +1643,12 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
           FALSE;
 
       if (use_inpoint && inpoint + position < start) {
-        GST_ERROR_OBJECT (timeline, "Track element %s inpoint %" GST_TIME_FORMAT
-            " would be negative,"
-            " not trimming", GES_TIMELINE_ELEMENT_NAME (track_element),
-            GST_TIME_ARGS (inpoint));
-        gst_object_unref (toplevel);
-        return FALSE;
+        GST_DEBUG_OBJECT (timeline, "Track element %s inpoint %" GST_TIME_FORMAT
+            " would be negative, not trimming",
+            GES_TIMELINE_ELEMENT_NAME (track_element), GST_TIME_ARGS (inpoint));
+        ret = FALSE;
+
+        goto trim_start_done;
       }
 
       inpoint = inpoint + position - start;
@@ -1666,8 +1666,8 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
           (duration == 0 && _DURATION (element) == 0)) {
         GST_DEBUG_OBJECT (track_element,
             "Duration already == max_duration, no triming");
-        gst_object_unref (toplevel);
-        return FALSE;
+        ret = FALSE;
+        goto trim_start_done;
       }
 
       timeline->priv->needs_transitions_update = FALSE;
@@ -1676,11 +1676,14 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
       timeline->priv->needs_transitions_update = TRUE;
 
       _set_duration0 (GES_TIMELINE_ELEMENT (track_element), duration);
+
+    trim_start_done:
       if (GES_IS_GROUP (toplevel))
         GES_CONTAINER (toplevel)->children_control_mode = old_mode;
 
       gst_object_unref (toplevel);
-      break;
+
+      return ret;
     }
     case GES_EDGE_END:
     {
