@@ -49,7 +49,8 @@ struct _GESVideoTransitionPrivate
   GESVideoStandardTransitionType pending_type;
 
   /* these enable video interpolation */
-  GstTimedValueControlSource *crossfade_control_source;
+  GstTimedValueControlSource *crossfade_in_control_source;
+  GstTimedValueControlSource *crossfade_out_control_source;
   GstTimedValueControlSource *smpte_control_source;
 
   /* so we can support changing between wipes */
@@ -188,7 +189,8 @@ ges_video_transition_init (GESVideoTransition * self)
   self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self,
       GES_TYPE_VIDEO_TRANSITION, GESVideoTransitionPrivate);
 
-  self->priv->crossfade_control_source = NULL;
+  self->priv->crossfade_in_control_source = NULL;
+  self->priv->crossfade_out_control_source = NULL;
   self->priv->smpte_control_source = NULL;
   self->priv->smpte = NULL;
   self->priv->mixer_sink = NULL;
@@ -226,9 +228,14 @@ ges_video_transition_dispose (GObject * object)
 
   GST_DEBUG ("disposing");
 
-  if (priv->crossfade_control_source) {
-    gst_object_unref (priv->crossfade_control_source);
-    priv->crossfade_control_source = NULL;
+  if (priv->crossfade_in_control_source) {
+    gst_object_unref (priv->crossfade_in_control_source);
+    priv->crossfade_in_control_source = NULL;
+  }
+
+  if (priv->crossfade_out_control_source) {
+    gst_object_unref (priv->crossfade_out_control_source);
+    priv->crossfade_out_control_source = NULL;
   }
 
   if (priv->smpte_control_source) {
@@ -374,7 +381,9 @@ ges_video_transition_create_element (GESTrackElement * object)
 
   /* set up interpolation */
 
-  priv->crossfade_control_source =
+  priv->crossfade_out_control_source =
+      set_interpolation (GST_OBJECT (priv->mixer_sinka), priv, "alpha");
+  priv->crossfade_in_control_source =
       set_interpolation (GST_OBJECT (priv->mixer_sinkb), priv, "alpha");
   priv->smpte_control_source =
       set_interpolation (GST_OBJECT (priv->smpte), priv, "position");
@@ -444,13 +453,17 @@ ges_video_transition_duration_changed (GESTrackElement * object,
   GST_LOG ("updating controller");
 
   if (priv->type == GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE) {
-    ges_video_transition_update_control_source (priv->crossfade_control_source,
-        duration, 0.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_in_control_source, duration, 0.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_out_control_source, duration, 1.0, 0.0);
     ges_video_transition_update_control_source (priv->smpte_control_source,
         duration, 0.0, 0.0);
   } else {
-    ges_video_transition_update_control_source (priv->crossfade_control_source,
-        duration, 1.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_in_control_source, duration, 1.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_out_control_source, duration, 1.0, 1.0);
     ges_video_transition_update_control_source (priv->smpte_control_source,
         duration, 1.0, 0.0);
   }
@@ -505,13 +518,17 @@ ges_video_transition_set_transition_type_internal (GESVideoTransition
   }
 
   if (type == GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE) {
-    ges_video_transition_update_control_source (priv->crossfade_control_source,
-        duration, 0.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_in_control_source, duration, 0.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_out_control_source, duration, 1.0, 0.0);
     ges_video_transition_update_control_source (priv->smpte_control_source,
         duration, 0.0, 0.0);
   } else {
-    ges_video_transition_update_control_source (priv->crossfade_control_source,
-        duration, 1.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_in_control_source, duration, 1.0, 1.0);
+    ges_video_transition_update_control_source
+        (priv->crossfade_out_control_source, duration, 1.0, 1.0);
     ges_video_transition_update_control_source (priv->smpte_control_source,
         duration, 1.0, 0.0);
   }
