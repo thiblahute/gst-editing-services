@@ -225,7 +225,7 @@ ges_layer_init (GESLayer * self)
  * Resyncs the priorities of the clips controlled by @layer.
  * This method
  */
-static gboolean
+gboolean
 ges_layer_resync_priorities (GESLayer * layer)
 {
   GstClockTime next_reset = 0;
@@ -400,7 +400,6 @@ ges_layer_set_priority (GESLayer * layer, guint priority)
     layer->priv->priority = priority;
     layer->min_nle_priority = (priority * LAYER_HEIGHT) + MIN_NLE_PRIO;
     layer->max_nle_priority = ((priority + 1) * LAYER_HEIGHT) + MIN_NLE_PRIO;
-
     ges_layer_resync_priorities (layer);
   }
 
@@ -603,9 +602,10 @@ ges_layer_add_clip (GESLayer * layer, GESClip * clip)
 
   /* If the clip has an acceptable priority, we just let it with its current
    * priority */
-  ges_layer_resync_priorities (layer);
   ges_timeline_element_set_timeline (GES_TIMELINE_ELEMENT (clip),
       layer->timeline);
+
+  ges_layer_resync_priorities (layer);
 
   /* emit 'clip-added' */
   g_signal_emit (layer, ges_layer_signals[OBJECT_ADDED], 0, clip);
