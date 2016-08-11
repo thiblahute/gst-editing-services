@@ -333,7 +333,7 @@ GST_START_TEST (test_priorities_clip)
   for (tmp = effects, i = 0; tmp; tmp = tmp->next, i++) {
     gint priority = ges_clip_get_top_effect_position (GES_CLIP (effect_clip),
         GES_BASE_EFFECT (tmp->data));
-    fail_unless (priority > effect_prio);
+    fail_unless (priority >= effect_prio, "%d >= %d", priority, effect_prio);
     fail_unless (GES_IS_EFFECT (tmp->data));
     effect_prio = priority;
 
