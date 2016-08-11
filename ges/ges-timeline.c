@@ -2044,7 +2044,7 @@ ges_timeline_move_object_simple (GESTimeline * timeline,
     guint64 position)
 {
   GstClockTime cpos = GES_TIMELINE_ELEMENT_START (element);
-  guint64 *snap_end, *snap_st, *cur, off1, off2, end;
+  guint64 *snap_end, *snap_st, *cur, position_offset, off1, off2, end;
   GESTrackElement *track_element;
 
   /* We only work with GESSource-s and we check that we are not already moving
@@ -2055,7 +2055,10 @@ ges_timeline_move_object_simple (GESTimeline * timeline,
 
   timeline->priv->needs_rollback = FALSE;
   track_element = GES_TRACK_ELEMENT (element);
-  end = position + _DURATION (get_toplevel_container (track_element));
+  position_offset = position - _START (track_element);
+  end =
+      _START (get_toplevel_container (track_element)) +
+      _DURATION (get_toplevel_container (track_element)) + position_offset;
   cur = g_hash_table_lookup (timeline->priv->by_end, track_element);
 
   GST_DEBUG_OBJECT (timeline, "Moving %" GST_PTR_FORMAT "to %"
