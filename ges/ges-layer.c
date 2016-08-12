@@ -263,7 +263,6 @@ ges_layer_resync_priorities_by_type (GESLayer * layer,
  * @layer: a #GESLayer
  *
  * Resyncs the priorities of the clips controlled by @layer.
- * This method
  */
 gboolean
 ges_layer_resync_priorities (GESLayer * layer)

@@ -1576,7 +1576,7 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
     GESTimelineElement * element, GList * layers, GESEdge edge,
     guint64 position, gboolean snapping)
 {
-  guint64 start, inpoint, duration, max_duration, *snapped, *cur;
+  guint64 start, inpoint, duration, max_duration, *snapped = NULL, *cur;
   gboolean ret = TRUE;
   gint64 real_dur;
   GESTrackElement *track_element;
@@ -1616,7 +1616,7 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
       old_mode = GES_CONTAINER (toplevel)->children_control_mode;
       if (GES_IS_GROUP (toplevel) && old_mode == GES_CHILDREN_UPDATE) {
         GST_DEBUG_OBJECT (toplevel, "Setting children udpate mode to"
-            " UPDDATE_ALL_VALUES so we can trim without moving the contained");
+            " UPDDATE_ALL_VALUES so we can trim without moving the container");
         /* The container will update its values itself according to new
          * values of the children */
         GES_CONTAINER (toplevel)->children_control_mode =
@@ -1630,7 +1630,7 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
         cur = g_hash_table_lookup (timeline->priv->by_start, track_element);
 
         snapped = ges_timeline_snap_position (timeline, track_element, cur,
-            position, TRUE);
+            position, FALSE);
         if (snapped)
           position = *snapped;
       }
@@ -1669,6 +1669,13 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
         ret = FALSE;
         goto trim_start_done;
       }
+
+           /* If we already are at max duration or duration == 0 do no useless work */
+      if (snapped && !(_INPOINT (track_element) == 0 && inpoint == 0))
+        ges_timeline_emit_snappig (timeline, track_element, snapped);
+      else
+          ges_timeline_emit_snappig (timeline, track_element, NULL);
+
 
       timeline->priv->needs_transitions_update = FALSE;
       _set_start0 (GES_TIMELINE_ELEMENT (track_element), position);

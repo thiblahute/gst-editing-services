@@ -143,12 +143,17 @@ _set_start (GESTimelineElement * element, GstClockTime start)
     GESTimelineElement *child = (GESTimelineElement *) tmp->data;
 
     if (child != container->initiated_move) {
-      /* Make the snapping happen if in a timeline */
-      timeline = GES_TIMELINE_ELEMENT_TIMELINE (child);
-      if (timeline == NULL || ges_timeline_move_object_simple (timeline, child,
-              NULL, GES_EDGE_NONE, start) == FALSE)
-        _set_start0 (GES_TIMELINE_ELEMENT (child), start);
+      gboolean needs_set_start = TRUE;
 
+      timeline = GES_TIMELINE_ELEMENT_TIMELINE (child);
+
+      if (!container->initiated_move)
+        /* Make the snapping happen if in a timeline */
+        needs_set_start = ges_timeline_move_object_simple (timeline,
+            child, NULL, GES_EDGE_NONE, start);
+
+      if (needs_set_start)
+        _set_start0 (GES_TIMELINE_ELEMENT (child), start);
     }
   }
   container->children_control_mode = GES_CHILDREN_UPDATE;
@@ -190,9 +195,17 @@ _set_duration (GESTimelineElement * element, GstClockTime duration)
     if (child != container->initiated_move) {
       /* Make the snapping happen if in a timeline */
       timeline = GES_TIMELINE_ELEMENT_TIMELINE (child);
-      if (timeline == NULL || ges_timeline_trim_object_simple (timeline, child,
-              NULL, GES_EDGE_END, _START (child) + duration, TRUE) == FALSE)
-        _set_duration0 (GES_TIMELINE_ELEMENT (child), duration);
+      if (timeline) {
+        gboolean needs_set_duration = TRUE;
+
+        if (!container->initiated_move)
+          needs_set_duration = ges_timeline_trim_object_simple (timeline,
+              child, NULL, GES_EDGE_END, _START (child) + duration, TRUE);
+
+        if (needs_set_duration)
+          _set_duration0 (GES_TIMELINE_ELEMENT (child), duration);
+
+      }
     }
   }
   container->children_control_mode = GES_CHILDREN_UPDATE;
