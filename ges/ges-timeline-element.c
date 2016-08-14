@@ -666,6 +666,7 @@ ges_timeline_element_set_start (GESTimelineElement * self, GstClockTime start)
 {
   GESTimelineElementClass *klass;
   GESTimelineElement *toplevel_container;
+  gint64 offset = start - _START (self);
 
   g_return_if_fail (GES_IS_TIMELINE_ELEMENT (self));
 
@@ -676,16 +677,22 @@ ges_timeline_element_set_start (GESTimelineElement * self, GstClockTime start)
       GST_TIME_ARGS (GES_TIMELINE_ELEMENT_START (self)), GST_TIME_ARGS (start));
 
   toplevel_container = ges_timeline_element_get_toplevel_parent (self);
+  gst_object_unref (toplevel_container);
 
-  if (((gint64) (_START (toplevel_container) + start - _START (self))) < 0) {
+  if (((gint64) (_START (toplevel_container) + offset)) < 0) {
     GST_INFO_OBJECT (self, "Can not move the object as it would imply its"
         "container to have a negative start value");
-
-    gst_object_unref (toplevel_container);
     return;
   }
 
-  gst_object_unref (toplevel_container);
+  if (toplevel_container != self) {
+    GST_DEBUG_OBJECT (self, "Setting toplevel %" GST_PTR_FORMAT
+        "start", toplevel_container);
+
+    return ges_timeline_element_set_start (toplevel_container,
+        _START (toplevel_container) + offset);
+  }
+
   if (klass->set_start) {
     if (klass->set_start (self, start)) {
       self->start = start;
@@ -714,28 +721,30 @@ void
 ges_timeline_element_set_inpoint (GESTimelineElement * self,
     GstClockTime inpoint)
 {
-  GESTimelineElementClass *klass;
+  GESTimelineElement *tmp, *editing_element;
+  GESTimelineElementClass *klass = NULL;
 
   g_return_if_fail (GES_IS_TIMELINE_ELEMENT (self));
 
-  GST_DEBUG_OBJECT (self, "current inpoint: %" GST_TIME_FORMAT
-      " new inpoint: %" GST_TIME_FORMAT, GST_TIME_ARGS (inpoint),
-      GST_TIME_ARGS (GES_TIMELINE_ELEMENT_INPOINT (self)));
+  tmp = self;
+  while (tmp) {
 
-  klass = GES_TIMELINE_ELEMENT_GET_CLASS (self);
+    if (!GES_TIMELINE_ELEMENT_GET_CLASS (tmp)->set_inpoint)
+      break;
 
-  if (klass->set_inpoint) {
-    if (klass->set_inpoint (self, inpoint)) {
-      self->inpoint = inpoint;
-      g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_INPOINT]);
-    }
-
-    return;
+    klass = GES_TIMELINE_ELEMENT_GET_CLASS (tmp);
+    editing_element = tmp;
+    tmp = GES_TIMELINE_ELEMENT_PARENT (tmp);
   }
 
-  GST_DEBUG_OBJECT (self, "No set_inpoint virtual method implementation"
-      " on class %s. Can not set inpoint %" GST_TIME_FORMAT,
-      G_OBJECT_CLASS_NAME (klass), GST_TIME_ARGS (inpoint));
+  if (klass && klass->set_inpoint) {
+    if (klass->set_inpoint (editing_element, inpoint)) {
+      editing_element->inpoint = inpoint;
+      g_object_notify (G_OBJECT (editing_element), "in_point");
+    }
+  } else {
+    GST_INFO_OBJECT (self, "Did not find any element to set inpoint on.");
+  }
 }
 
 /**
@@ -783,29 +792,30 @@ void
 ges_timeline_element_set_duration (GESTimelineElement * self,
     GstClockTime duration)
 {
-  GESTimelineElementClass *klass;
+  GESTimelineElement *tmp, *editing_element;
+  GESTimelineElementClass *klass = NULL;
 
   g_return_if_fail (GES_IS_TIMELINE_ELEMENT (self));
 
-  klass = GES_TIMELINE_ELEMENT_GET_CLASS (self);
+  tmp = self;
+  while (tmp) {
 
-  GST_DEBUG_OBJECT (self, "current duration: %" GST_TIME_FORMAT
-      " new duration: %" GST_TIME_FORMAT,
-      GST_TIME_ARGS (GES_TIMELINE_ELEMENT_DURATION (self)),
-      GST_TIME_ARGS (duration));
+    if (!GES_TIMELINE_ELEMENT_GET_CLASS (tmp)->set_duration)
+      break;
 
-  if (klass->set_duration) {
-    if (klass->set_duration (self, duration)) {
-      self->duration = duration;
-      g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_DURATION]);
-    }
-
-    return;
+    klass = GES_TIMELINE_ELEMENT_GET_CLASS (tmp);
+    editing_element = tmp;
+    tmp = GES_TIMELINE_ELEMENT_PARENT (tmp);
   }
 
-  GST_WARNING_OBJECT (self, "No set_duration virtual method implementation"
-      " on class %s. Can not set duration %" GST_TIME_FORMAT,
-      G_OBJECT_CLASS_NAME (klass), GST_TIME_ARGS (duration));
+  if (klass && klass->set_duration) {
+    if (klass->set_duration (editing_element, duration)) {
+      editing_element->duration = duration;
+      g_object_notify (G_OBJECT (editing_element), "duration");
+    }
+  } else {
+    GST_INFO_OBJECT (self, "Did not find any element to set duration on.");
+  }
 }
 
 /**

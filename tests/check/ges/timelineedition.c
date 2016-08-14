@@ -355,8 +355,8 @@ GST_START_TEST (test_snapping)
    * time               25------------- 72 --------122
    */
   g_object_set (timeline, "snapping-distance", (guint64) 4, NULL);
-  fail_unless (ges_timeline_element_trim (GES_TIMELINE_ELEMENT (clip1),
-          28) == TRUE);
+  ges_container_edit (GES_CONTAINER (clip1), NULL, -1, GES_EDIT_MODE_TRIM,
+      GES_EDGE_START, 28);
   DEEP_CHECK (clip, 25, 0, 37);
   DEEP_CHECK (clip1, 25, 5, 47);
   DEEP_CHECK (clip2, 72, 10, 50);
@@ -383,8 +383,12 @@ GST_START_TEST (test_snapping)
    *                    |  clip1    ||  clip2   |
    * time               26-------- 62 --------122
    */
+  /* set_start does not snap */
   ges_timeline_element_set_start (GES_TIMELINE_ELEMENT (clip1), 26);
-  ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (clip1), 37);
+
+  /* Let snap_end happen */
+  ges_container_edit (GES_CONTAINER (clip1), NULL, -1, GES_EDIT_MODE_TRIM,
+      GES_EDGE_END, 63);
   DEEP_CHECK (clip, 25, 0, 37);
   DEEP_CHECK (clip1, 26, 5, 36);
   DEEP_CHECK (clip2, 62, 0, 60);
@@ -437,11 +441,12 @@ GST_START_TEST (test_snapping)
 
 
   /**
-   * inpoints     0----------5---------- 0----------
-   *              |   clip    ||  clip1   ||  clip2    |
-   * time         25---------62--------110--------170
+   * inpoints     0----------5---------- 0-----------
+   *              |   clip    ||  clip1   ||  clip2 |
+   * time         25---------62--------110----------170
    */
-  g_object_set (clip1, "duration", (guint64) 46, NULL);
+  fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
+          GES_EDGE_END, 108) == TRUE);
   DEEP_CHECK (clip, 25, 0, 37);
   DEEP_CHECK (clip1, 62, 5, 48);
   DEEP_CHECK (clip2, 110, 0, 60);
@@ -451,7 +456,8 @@ GST_START_TEST (test_snapping)
    *              |   clip1    ||  clip2   ||  clip     |
    * time         62---------110--------170--------207
    */
-  g_object_set (clip, "start", (guint64) 168, NULL);
+  fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_NORMAL,
+          GES_EDGE_START, 168) == TRUE);
   DEEP_CHECK (clip, 170, 0, 37);
   DEEP_CHECK (clip1, 62, 5, 48);
   DEEP_CHECK (clip2, 110, 0, 60);
@@ -777,8 +783,8 @@ GST_START_TEST (test_timeline_edition_mode)
           GES_EDGE_END, 52) == TRUE);
   DEEP_CHECK (clip, 32, 5, 20);
   DEEP_CHECK (clip1, 20, 0, 10);
-  DEEP_CHECK (clip2, 52, 0, 60)
-      layer = ges_clip_get_layer (GES_CLIP (clip));
+  DEEP_CHECK (clip2, 52, 0, 60);
+  layer = ges_clip_get_layer (GES_CLIP (clip));
   assert_equals_int (ges_layer_get_priority (layer), 2);
   gst_object_unref (layer);
 

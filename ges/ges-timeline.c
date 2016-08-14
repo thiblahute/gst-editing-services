@@ -1576,111 +1576,37 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
     GESTimelineElement * element, GList * layers, GESEdge edge,
     guint64 position, gboolean snapping)
 {
-  guint64 start, inpoint, duration, max_duration, *snapped, *cur;
+  guint64 start, duration, max_duration, *snapped, *cur;
   gboolean ret = TRUE;
   gint64 real_dur;
-  GESTrackElement *track_element;
+  GESTrackElement *track_element = GES_TRACK_ELEMENT (element);
 
   if (GES_IS_TRANSITION (element)) {
     return _trim_transition (timeline,
         ges_clip_get_layer (GES_CLIP (GES_TIMELINE_ELEMENT_PARENT (element))),
-        GES_TRACK_ELEMENT (element), edge, position);
+        track_element, edge, position);
   } else if (GES_IS_SOURCE (element) == FALSE) {
     return FALSE;
   }
 
-  track_element = GES_TRACK_ELEMENT (element);
-  GST_DEBUG_OBJECT (track_element, "Trimming to %" GST_TIME_FORMAT
-      " %s snaping, edge %i", GST_TIME_ARGS (position),
-      snapping ? "Is" : "Not", edge);
-
-  start = _START (track_element);
-  g_object_get (track_element, "max-duration", &max_duration, NULL);
-
   switch (edge) {
     case GES_EDGE_START:
     {
-      GESTimelineElement *toplevel;
-      GESChildrenControlMode old_mode;
-      gboolean use_inpoint;
-      toplevel = ges_timeline_element_get_toplevel_parent (element);
-
-      if (position < _START (toplevel) && _START (toplevel) < _START (element)) {
-        GST_DEBUG_OBJECT (toplevel, "Not trimming %p as not at begining "
-            "of the container", element);
-
-        gst_object_unref (toplevel);
-        return FALSE;
-      }
-
-      old_mode = GES_CONTAINER (toplevel)->children_control_mode;
-      if (GES_IS_GROUP (toplevel) && old_mode == GES_CHILDREN_UPDATE) {
-        GST_DEBUG_OBJECT (toplevel, "Setting children udpate mode to"
-            " UPDDATE_ALL_VALUES so we can trim without moving the contained");
-        /* The container will update its values itself according to new
-         * values of the children */
-        GES_CONTAINER (toplevel)->children_control_mode =
-            GES_CHILDREN_UPDATE_ALL_VALUES;
-      }
-
-      inpoint = _INPOINT (track_element);
-      duration = _DURATION (track_element);
-
       if (snapping) {
-        cur = g_hash_table_lookup (timeline->priv->by_start, track_element);
+        cur = g_hash_table_lookup (timeline->priv->by_start, element);
 
-        snapped = ges_timeline_snap_position (timeline, track_element, cur,
-            position, TRUE);
+        snapped = ges_timeline_snap_position (timeline, track_element,
+            cur, position, TRUE);
         if (snapped)
           position = *snapped;
       }
 
-      /* Calculate new values */
-      position = MIN (position, start + duration);
-
-      use_inpoint =
-          GES_TIMELINE_ELEMENT_GET_CLASS (track_element)->set_inpoint ? TRUE :
-          FALSE;
-
-      if (use_inpoint && inpoint + position < start) {
-        GST_ERROR_OBJECT (timeline, "Track element %s inpoint %" GST_TIME_FORMAT
-            " would be negative,"
-            " not trimming", GES_TIMELINE_ELEMENT_NAME (track_element),
-            GST_TIME_ARGS (inpoint));
-        gst_object_unref (toplevel);
-        return FALSE;
-      }
-
-      inpoint = inpoint + position - start;
-      real_dur = _END (element) - position;
-      if (use_inpoint)
-        duration = CLAMP (real_dur, 0, max_duration > inpoint ?
-            max_duration - inpoint : G_MAXUINT64);
-      else
-        duration = real_dur;
-
-
-      /* If we already are at max duration or duration == 0 do no useless work */
-      if ((duration == _DURATION (track_element) &&
-              _DURATION (track_element) == _MAXDURATION (track_element)) ||
-          (duration == 0 && _DURATION (element) == 0)) {
-        GST_DEBUG_OBJECT (track_element,
-            "Duration already == max_duration, no triming");
-        gst_object_unref (toplevel);
-        return FALSE;
-      }
-
       timeline->priv->needs_transitions_update = FALSE;
-      _set_start0 (GES_TIMELINE_ELEMENT (track_element), position);
-      _set_inpoint0 (GES_TIMELINE_ELEMENT (track_element), inpoint);
+      ret = ges_timeline_element_trim (element->parent, position);
       timeline->priv->needs_transitions_update = TRUE;
+      create_transitions (timeline, track_element);
 
-      _set_duration0 (GES_TIMELINE_ELEMENT (track_element), duration);
-      if (GES_IS_GROUP (toplevel))
-        GES_CONTAINER (toplevel)->children_control_mode = old_mode;
-
-      gst_object_unref (toplevel);
-      break;
+      return ret;
     }
     case GES_EDGE_END:
     {
@@ -1690,6 +1616,8 @@ ges_timeline_trim_object_simple (GESTimeline * timeline,
       if (snapped)
         position = *snapped;
 
+      g_object_get (element, "max-duration", &max_duration, NULL);
+      start = _START (element);
       /* Calculate new values */
       real_dur = position - start;
       duration = MAX (0, real_dur);
@@ -1805,15 +1733,14 @@ timeline_ripple_object (GESTimeline * timeline, GESTrackElement * obj,
         new_start = _START (trackelement) + offset;
 
         container = add_toplevel_container (mv_ctx, trackelement);
-        if (GES_IS_GROUP (container))
-          container->children_control_mode = GES_CHILDREN_UPDATE_OFFSETS;
         /* Make sure not to move 2 times the same Clip */
         if (g_list_find (moved_clips, container) == NULL) {
-          _set_start0 (GES_TIMELINE_ELEMENT (trackelement), new_start);
+          GESTimelineElement *parent =
+              GES_TIMELINE_ELEMENT_PARENT (trackelement);
+          GES_TIMELINE_ELEMENT_GET_CLASS (parent)->set_start (parent,
+              new_start);
           moved_clips = g_list_prepend (moved_clips, container);
         }
-        if (GES_IS_GROUP (container))
-          container->children_control_mode = GES_CHILDREN_UPDATE;
       }
 
       g_list_free (moved_clips);
@@ -2516,6 +2443,7 @@ static void
 layer_priority_changed_cb (GESLayer * layer,
     GParamSpec * arg G_GNUC_UNUSED, GESTimeline * timeline)
 {
+  timeline->priv->movecontext.needs_move_ctx = TRUE;
   timeline->layers = g_list_sort (timeline->layers, (GCompareFunc)
       sort_layers);
 }
