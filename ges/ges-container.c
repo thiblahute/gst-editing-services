@@ -47,14 +47,7 @@ typedef struct
 {
   GESTimelineElement *child;
 
-  GstClockTime start_offset;
-  GstClockTime duration_offset;
-  GstClockTime inpoint_offset;
   gint32 priority_offset;
-
-  guint start_notifyid;
-  guint duration_notifyid;
-  guint inpoint_notifyid;
 } ChildMapping;
 
 enum
@@ -102,14 +95,6 @@ _free_mapping (ChildMapping * mapping)
 {
   GESTimelineElement *child = mapping->child;
 
-  /* Disconnect all notify listeners */
-  if (mapping->start_notifyid)
-    g_signal_handler_disconnect (child, mapping->start_notifyid);
-  if (mapping->duration_notifyid)
-    g_signal_handler_disconnect (child, mapping->duration_notifyid);
-  if (mapping->inpoint_notifyid)
-    g_signal_handler_disconnect (child, mapping->inpoint_notifyid);
-
   ges_timeline_element_set_parent (child, NULL);
   g_slice_free (ChildMapping, mapping);
 }
@@ -135,10 +120,9 @@ compare_grouping_prio (GType * a, GType * b)
 }
 
 static void
-_resync_start_offsets (GESTimelineElement * child,
-    ChildMapping * map, GESContainer * container)
+_resync (GESContainer * container)
 {
-  map->start_offset = _START (container) - _START (child);
+  _ges_container_sort_children (container);
 }
 
 /*****************************************************
@@ -150,20 +134,22 @@ static gboolean
 _set_start (GESTimelineElement * element, GstClockTime start)
 {
   GList *tmp;
-  ChildMapping *map;
-  GESContainer *container = GES_CONTAINER (element);
-  GESContainerPrivate *priv = container->priv;
+  GESContainer *self = GES_CONTAINER (element);
+  gint64 offset = _START (element) - start;
 
-  GST_DEBUG_OBJECT (element, "Updating children offsets, (initiated_move: %"
-      GST_PTR_FORMAT ")", container->initiated_move);
+  for (tmp = self->children; tmp; tmp = g_list_next (tmp)) {
+    GESTimelineElement *child = GES_TIMELINE_ELEMENT (tmp->data);
+    GESTimelineElementClass *klass = GES_TIMELINE_ELEMENT_GET_CLASS (child);
+    GstClockTime nstart = _START (child) - offset;
 
-  for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
-
-    map = g_hash_table_lookup (priv->mappings, child);
-    map->start_offset = start - _START (child);
+    if (klass->set_start (child, nstart)) {
+      child->start = nstart;
+      g_object_notify (G_OBJECT (child), "start");
+    }
   }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
+
+  element->start = start;
+  g_object_notify (G_OBJECT (self), "start");
 
   return TRUE;
 }
@@ -171,33 +157,6 @@ _set_start (GESTimelineElement * element, GstClockTime start)
 static gboolean
 _set_inpoint (GESTimelineElement * element, GstClockTime inpoint)
 {
-  GList *tmp;
-  GESContainer *container = GES_CONTAINER (element);
-
-  for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
-    ChildMapping *map = g_hash_table_lookup (container->priv->mappings, child);
-
-    map->inpoint_offset = inpoint - _INPOINT (child);
-  }
-
-  return TRUE;
-}
-
-static gboolean
-_set_duration (GESTimelineElement * element, GstClockTime duration)
-{
-  GList *tmp;
-  GESContainer *container = GES_CONTAINER (element);
-  GESContainerPrivate *priv = container->priv;
-
-  for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
-    ChildMapping *map = g_hash_table_lookup (priv->mappings, child);
-
-    map->duration_offset = duration - _DURATION (child);
-  }
-
   return TRUE;
 }
 
@@ -321,9 +280,6 @@ _deep_copy (GESTimelineElement * element, GESTimelineElement * copy)
         g_slice_dup (ChildMapping, g_hash_table_lookup (self->priv->mappings,
             tmp->data));
     map->child = ges_timeline_element_copy (tmp->data, TRUE);
-    map->start_notifyid = 0;
-    map->inpoint_notifyid = 0;
-    map->duration_notifyid = 0;
 
     ccopy->priv->copied_children = g_list_prepend (ccopy->priv->copied_children,
         map);
@@ -342,11 +298,11 @@ _paste (GESTimelineElement * element, GESTimelineElement * ref,
 
   for (tmp = self->priv->copied_children; tmp; tmp = tmp->next) {
     GESTimelineElement *nchild;
-
     map = tmp->data;
+
     nchild =
         ges_timeline_element_paste (map->child,
-        paste_position - map->start_offset);
+        paste_position - _START (element) - _START (map->child));
     ges_timeline_element_set_timeline (GES_TIMELINE_ELEMENT (ncontainer),
         GES_TIMELINE_ELEMENT_TIMELINE (ref));
     ges_container_add (ncontainer, nchild);
@@ -471,7 +427,6 @@ ges_container_class_init (GESContainerClass * klass)
 
 
   element_class->set_start = _set_start;
-  element_class->set_duration = _set_duration;
   element_class->set_inpoint = _set_inpoint;
   element_class->list_children_properties = _list_children_properties;
   element_class->lookup_child = _lookup_child;
@@ -486,6 +441,7 @@ ges_container_class_init (GESContainerClass * klass)
   klass->group = NULL;
   klass->grouping_priority = 0;
   klass->edit = NULL;
+  klass->resync = _resync;
 }
 
 static void
@@ -502,130 +458,6 @@ ges_container_init (GESContainer * self)
 
   self->priv->mappings = g_hash_table_new_full (g_direct_hash, g_direct_equal,
       NULL, (GDestroyNotify) _free_mapping);
-}
-
-/**********************************************
- *                                            *
- *    Property notifications from Children    *
- *                                            *
- **********************************************/
-static void
-_child_start_changed_cb (GESTimelineElement * child,
-    GParamSpec * arg G_GNUC_UNUSED, GESContainer * container)
-{
-  ChildMapping *map;
-  GstClockTime start;
-
-  GESContainerPrivate *priv = container->priv;
-  GESTimelineElement *element = GES_TIMELINE_ELEMENT (container);
-
-  map = g_hash_table_lookup (priv->mappings, child);
-  g_assert (map);
-
-  switch (container->children_control_mode) {
-    case GES_CHILDREN_IGNORE_NOTIFIES:
-      return;
-    case GES_CHILDREN_UPDATE_ALL_VALUES:
-      _ges_container_sort_children (container);
-      start = container->children ?
-          _START (container->children->data) : _START (container);
-
-      if (start != _START (container)) {
-        _DURATION (container) = _END (container) - start;
-        _START (container) = start;
-
-        GST_DEBUG_OBJECT (container, "Child move made us "
-            "move to %" GST_TIME_FORMAT, GST_TIME_ARGS (_START (container)));
-
-        g_object_notify (G_OBJECT (container), "start");
-      }
-
-      /* Falltrough! */
-    case GES_CHILDREN_UPDATE_OFFSETS:
-      map->start_offset = _START (container) - _START (child);
-      break;
-
-    case GES_CHILDREN_UPDATE:
-      /* We update all the children calling our set_start method */
-      container->initiated_move = child;
-      _set_start0 (element, _START (child) + map->start_offset);
-      container->initiated_move = NULL;
-      break;
-    default:
-      break;
-  }
-}
-
-static void
-_child_inpoint_changed_cb (GESTimelineElement * child,
-    GParamSpec * arg G_GNUC_UNUSED, GESContainer * container)
-{
-  ChildMapping *map;
-
-  GESContainerPrivate *priv = container->priv;
-  GESTimelineElement *element = GES_TIMELINE_ELEMENT (container);
-
-  if (container->children_control_mode == GES_CHILDREN_IGNORE_NOTIFIES)
-    return;
-
-  map = g_hash_table_lookup (priv->mappings, child);
-  g_assert (map);
-
-  if (container->children_control_mode == GES_CHILDREN_UPDATE_OFFSETS) {
-    map->inpoint_offset = _START (container) - _START (child);
-
-    return;
-  }
-
-  /* We update all the children calling our set_inpoint method */
-  container->initiated_move = child;
-  _set_inpoint0 (element, _INPOINT (child) + map->inpoint_offset);
-  container->initiated_move = NULL;
-}
-
-static void
-_child_duration_changed_cb (GESTimelineElement * child,
-    GParamSpec * arg G_GNUC_UNUSED, GESContainer * container)
-{
-  ChildMapping *map;
-
-  GList *tmp;
-  GstClockTime end = 0;
-  GESContainerPrivate *priv = container->priv;
-  GESTimelineElement *element = GES_TIMELINE_ELEMENT (container);
-
-  if (container->children_control_mode == GES_CHILDREN_IGNORE_NOTIFIES)
-    return;
-
-  map = g_hash_table_lookup (priv->mappings, child);
-  g_assert (map);
-
-  switch (container->children_control_mode) {
-    case GES_CHILDREN_IGNORE_NOTIFIES:
-      break;
-    case GES_CHILDREN_UPDATE_ALL_VALUES:
-      _ges_container_sort_children_by_end (container);
-
-      for (tmp = container->children; tmp; tmp = tmp->next)
-        end = MAX (end, _END (tmp->data));
-
-      if (end != _END (container)) {
-        _DURATION (container) = end - _START (container);
-        g_object_notify (G_OBJECT (container), "duration");
-      }
-      /* Falltrough */
-    case GES_CHILDREN_UPDATE_OFFSETS:
-      map->inpoint_offset = _START (container) - _START (child);
-      break;
-    case GES_CHILDREN_UPDATE:
-      /* We update all the children calling our set_duration method */
-      container->initiated_move = child;
-      _set_duration0 (element, _DURATION (child) + map->duration_offset);
-      container->initiated_move = NULL;
-      break;
-    default:
-      break;
-  }
 }
 
 /****************************************************
@@ -699,9 +531,10 @@ gboolean
 ges_container_add (GESContainer * container, GESTimelineElement * child)
 {
   ChildMapping *mapping;
-  gboolean notify_start = FALSE;
   GESContainerClass *class;
   GESContainerPrivate *priv;
+  GstClockTime start = _START (container), duration = _DURATION (container),
+      priority = _PRIORITY (container);
 
   g_return_val_if_fail (GES_IS_CONTAINER (container), FALSE);
   g_return_val_if_fail (GES_IS_TIMELINE_ELEMENT (child), FALSE);
@@ -713,53 +546,27 @@ ges_container_add (GESContainer * container, GESTimelineElement * child)
   GST_DEBUG_OBJECT (container, "adding timeline element %" GST_PTR_FORMAT,
       child);
 
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
   if (class->add_child) {
     if (class->add_child (container, child) == FALSE) {
-      container->children_control_mode = GES_CHILDREN_UPDATE;
       GST_WARNING_OBJECT (container, "Erreur adding child %p", child);
       return FALSE;
     }
   }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
-
-  if (_START (container) > _START (child)) {
-    _START (container) = _START (child);
-
-    g_hash_table_foreach (priv->mappings, (GHFunc) _resync_start_offsets,
-        container);
-    notify_start = TRUE;
-  }
 
   mapping = g_slice_new0 (ChildMapping);
   mapping->child = gst_object_ref (child);
-  mapping->start_offset = _START (container) - _START (child);
-  mapping->duration_offset = _DURATION (container) - _DURATION (child);
-  mapping->inpoint_offset = _INPOINT (container) - _INPOINT (child);
-
   g_hash_table_insert (priv->mappings, child, mapping);
-
   container->children = g_list_prepend (container->children, child);
 
-  _ges_container_sort_children (container);
+  GES_CONTAINER_GET_CLASS (container)->resync (container);
 
-  /* Listen to all property changes */
-  mapping->start_notifyid =
-      g_signal_connect (G_OBJECT (child), "notify::start",
-      G_CALLBACK (_child_start_changed_cb), container);
-  mapping->duration_notifyid =
-      g_signal_connect (G_OBJECT (child), "notify::duration",
-      G_CALLBACK (_child_duration_changed_cb), container);
-  mapping->inpoint_notifyid =
-      g_signal_connect (G_OBJECT (child), "notify::in-point",
-      G_CALLBACK (_child_inpoint_changed_cb), container);
-
-  if (ges_timeline_element_set_parent (child, GES_TIMELINE_ELEMENT (container))
-      == FALSE) {
+  if (!ges_timeline_element_set_parent (child,
+          GES_TIMELINE_ELEMENT (container))) {
 
     g_hash_table_remove (priv->mappings, child);
     container->children = g_list_remove (container->children, child);
-    _ges_container_sort_children (container);
+
+    GES_CONTAINER_GET_CLASS (container)->resync (container);
 
     return FALSE;
   }
@@ -771,8 +578,14 @@ ges_container_add (GESContainer * container, GESTimelineElement * child)
       child);
   priv->adding_children = g_list_remove (priv->adding_children, child);
 
-  if (notify_start)
+  if (start != _START (container))
     g_object_notify (G_OBJECT (container), "start");
+
+  if (duration != _DURATION (container))
+    g_object_notify (G_OBJECT (container), "duration");
+
+  if (priority != _PRIORITY (container))
+    g_object_notify (G_OBJECT (container), "priority");
 
   return TRUE;
 }

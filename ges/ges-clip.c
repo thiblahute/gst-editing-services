@@ -58,6 +58,7 @@ struct _GESClipPrivate
    * properties so we don't end up in infinite property update loops
    */
   gboolean is_moving;
+  gboolean setting_priorities;
 
   guint nb_effects;
 
@@ -112,7 +113,7 @@ _child_priority_changed_cb (GESTimelineElement * child,
   GST_DEBUG_OBJECT (container, "TimelineElement %p priority changed to %i",
       child, _PRIORITY (child));
 
-  if (container->children_control_mode == GES_CHILDREN_IGNORE_NOTIFIES)
+  if (GES_CLIP (container)->priv->setting_priorities)
     return;
 
   /* Update mapping */
@@ -122,55 +123,42 @@ _child_priority_changed_cb (GESTimelineElement * child,
       min_prio - _PRIORITY (child));
 }
 
+static void
+resync_parent (GESTimelineElement * element)
+{
+  if (element->parent) {
+    GST_DEBUG_OBJECT (element, "Resync parent");
+
+    GES_CONTAINER_GET_CLASS (element->parent)->
+        resync (GES_CONTAINER (element->parent));
+  }
+}
+
 /*****************************************************
  *                                                   *
  * GESTimelineElement virtual methods implementation *
  *                                                   *
  *****************************************************/
-
-static gboolean
-_set_start (GESTimelineElement * element, GstClockTime start)
-{
-  GList *tmp;
-  GESTimeline *timeline;
-  GESContainer *container = GES_CONTAINER (element);
-
-  GST_DEBUG_OBJECT (element, "Setting children start, (initiated_move: %"
-      GST_PTR_FORMAT ")", container->initiated_move);
-
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
-  for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
-
-    if (child != container->initiated_move) {
-      /* Make the snapping happen if in a timeline */
-      timeline = GES_TIMELINE_ELEMENT_TIMELINE (child);
-      if (timeline == NULL || ges_timeline_move_object_simple (timeline, child,
-              NULL, GES_EDGE_NONE, start) == FALSE)
-        _set_start0 (GES_TIMELINE_ELEMENT (child), start);
-
-    }
-  }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
-
-  return TRUE;
-}
-
 static gboolean
 _set_inpoint (GESTimelineElement * element, GstClockTime inpoint)
 {
   GList *tmp;
+
   GESContainer *container = GES_CONTAINER (element);
 
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
   for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
+    GESTimelineElement *child = GES_TIMELINE_ELEMENT (tmp->data);
+    GESTimelineElementClass *klass = GES_TIMELINE_ELEMENT_GET_CLASS (child);
 
-    if (child != container->initiated_move) {
-      _set_inpoint0 (child, inpoint);
+    if (klass->set_inpoint (child, inpoint)) {
+
+      child->inpoint = inpoint;
+      g_object_notify (G_OBJECT (child), "in_point");
     }
   }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
+
+  element->inpoint = inpoint;
+  resync_parent (element);
 
   return TRUE;
 }
@@ -179,24 +167,22 @@ static gboolean
 _set_duration (GESTimelineElement * element, GstClockTime duration)
 {
   GList *tmp;
-  GESTimeline *timeline;
 
   GESContainer *container = GES_CONTAINER (element);
 
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
   for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
-    GESTimelineElement *child = (GESTimelineElement *) tmp->data;
+    GESTimelineElement *child = GES_TIMELINE_ELEMENT (tmp->data);
+    GESTimelineElementClass *klass = GES_TIMELINE_ELEMENT_GET_CLASS (child);
 
-    if (child != container->initiated_move) {
-      /* Make the snapping happen if in a timeline */
-      timeline = GES_TIMELINE_ELEMENT_TIMELINE (child);
-      if (timeline == NULL || ges_timeline_trim_object_simple (timeline, child,
-              NULL, GES_EDGE_END, _START (child) + duration, TRUE) == FALSE)
-        _set_duration0 (GES_TIMELINE_ELEMENT (child), duration);
+    if (klass->set_duration (child, duration)) {
+
+      child->duration = duration;
+      g_object_notify (G_OBJECT (child), "duration");
     }
   }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
 
+  element->duration = duration;
+  resync_parent (element);
   return TRUE;
 }
 
@@ -219,10 +205,11 @@ _set_priority (GESTimelineElement * element, guint32 priority)
   guint32 min_prio, max_prio;
 
   GESContainer *container = GES_CONTAINER (element);
+  GESClipPrivate *priv = GES_CLIP (container)->priv;
 
   _get_priority_range (container, &min_prio, &max_prio);
 
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
+  priv->setting_priorities = TRUE;
   for (tmp = container->children; tmp; tmp = g_list_next (tmp)) {
     guint32 track_element_prio;
     GESTimelineElement *child = (GESTimelineElement *) tmp->data;
@@ -250,7 +237,8 @@ _set_priority (GESTimelineElement * element, guint32 priority)
     }
     _set_priority0 (child, track_element_prio);
   }
-  container->children_control_mode = GES_CHILDREN_UPDATE;
+  priv->setting_priorities = FALSE;
+
   _compute_height (container);
 
   return TRUE;
@@ -307,21 +295,17 @@ _add_child (GESContainer * container, GESTimelineElement * element)
    */
   _get_priority_range (container, &min_prio, &max_prio);
   if (GES_IS_BASE_EFFECT (element)) {
-    GESChildrenControlMode mode = container->children_control_mode;
-
     GST_DEBUG_OBJECT (container, "Adding %ith effect: %" GST_PTR_FORMAT
         " Priority %i", priv->nb_effects + 1, element,
         min_prio + priv->nb_effects);
 
     tmp = g_list_nth (GES_CONTAINER_CHILDREN (container), priv->nb_effects);
-    container->children_control_mode = GES_CHILDREN_UPDATE_OFFSETS;
     for (; tmp; tmp = tmp->next) {
       ges_timeline_element_set_priority (GES_TIMELINE_ELEMENT (tmp->data),
           GES_TIMELINE_ELEMENT_PRIORITY (tmp->data) + 1);
     }
 
     _set_priority0 (element, min_prio + priv->nb_effects);
-    container->children_control_mode = mode;
     priv->nb_effects++;
   } else {
     /* We add the track element on top of the effect list */
@@ -330,11 +314,9 @@ _add_child (GESContainer * container, GESTimelineElement * element)
 
   /* We set the timing value of the child to ours, we avoid infinite loop
    * making sure the container ignore notifies from the child */
-  container->children_control_mode = GES_CHILDREN_IGNORE_NOTIFIES;
   _set_start0 (element, GES_TIMELINE_ELEMENT_START (container));
   _set_inpoint0 (element, GES_TIMELINE_ELEMENT_INPOINT (container));
   _set_duration0 (element, GES_TIMELINE_ELEMENT_DURATION (container));
-  container->children_control_mode = GES_CHILDREN_UPDATE;
 
   return TRUE;
 }
@@ -803,7 +785,6 @@ ges_clip_class_init (GESClipClass * klass)
   element_class->roll_start = _roll_start;
   element_class->roll_end = _roll_end;
   element_class->trim = _trim;
-  element_class->set_start = _set_start;
   element_class->set_duration = _set_duration;
   element_class->set_inpoint = _set_inpoint;
   element_class->set_priority = _set_priority;
@@ -1037,14 +1018,43 @@ ges_clip_is_moving_from_layer (GESClip * clip)
 gboolean
 ges_clip_move_to_layer (GESClip * clip, GESLayer * layer)
 {
-  gboolean ret;
   GESLayer *current_layer;
+  GESTimelineElement *toplevel;
 
   g_return_val_if_fail (GES_IS_CLIP (clip), FALSE);
   g_return_val_if_fail (GES_IS_LAYER (layer), FALSE);
 
   current_layer = clip->priv->layer;
+  toplevel =
+      ges_timeline_element_get_toplevel_parent (GES_TIMELINE_ELEMENT (clip));
+  gst_object_unref (toplevel);
+  if (toplevel != GES_TIMELINE_ELEMENT (clip)) {
+    gint new_prio;
+    new_prio =
+        (gint) _PRIORITY (toplevel) + ges_layer_get_priority (layer) -
+        ges_layer_get_priority (current_layer);
 
+    if (new_prio < 0) {
+      GST_INFO_OBJECT (toplevel, "Can not move as priority (%d) would be < 0",
+          new_prio);
+      return FALSE;
+    }
+
+    ges_timeline_element_set_priority (toplevel, new_prio);
+
+    return (clip->priv->layer == layer);
+  }
+
+  return clip_move_to_layer (clip, layer);
+}
+
+gboolean
+clip_move_to_layer (GESClip * clip, GESLayer * layer)
+{
+  gboolean ret;
+  GESLayer *current_layer;
+
+  current_layer = clip->priv->layer;
   if (current_layer == NULL) {
     GST_DEBUG ("Not moving %p, only adding it to %p", clip, layer);
 
@@ -1517,29 +1527,61 @@ _roll_end (GESTimelineElement * element, GstClockTime end)
 gboolean
 _trim (GESTimelineElement * element, GstClockTime start)
 {
-  gboolean ret = TRUE;
-  GESTimeline *timeline;
+  guint64 cstart, inpoint, duration, max_duration;
+  gint64 real_dur;
+  GESTimelineElement *toplevel;
+  gboolean use_inpoint;
 
-  GESClip *clip = GES_CLIP (element);
+  g_object_get (element, "max-duration", &max_duration, NULL);
 
-  timeline = ges_layer_get_timeline (clip->priv->layer);
+  toplevel = ges_timeline_element_get_toplevel_parent (element);
 
-  if (timeline == NULL) {
-    GST_DEBUG ("Not in a timeline yet");
+  if (start < _START (toplevel) && _START (toplevel) < _START (element)) {
+    GST_DEBUG_OBJECT (toplevel, "Not trimming %p as not at begining "
+        "of the container", element);
+
+    gst_object_unref (toplevel);
+    return FALSE;
+  }
+  gst_object_unref (toplevel);
+
+  /* Calculate new values */
+  cstart = _START (element);
+  inpoint = _INPOINT (element);
+  duration = _DURATION (element);
+  start = MIN (start, cstart + duration);
+
+  use_inpoint = GES_TIMELINE_ELEMENT_GET_CLASS (element)->set_inpoint ?
+      TRUE : FALSE;
+
+  if (use_inpoint && inpoint + start < cstart) {
+    GST_DEBUG_OBJECT (element, "inpoint %" GST_TIME_FORMAT
+        " would be negative, not trimming", GST_TIME_ARGS (inpoint));
     return FALSE;
   }
 
-  if (GES_CONTAINER_CHILDREN (element)) {
-    GESTrackElement *track_element =
-        GES_TRACK_ELEMENT (GES_CONTAINER_CHILDREN (element)->data);
+  inpoint = inpoint + start - cstart;
+  real_dur = _END (element) - start;
+  if (use_inpoint)
+    duration = CLAMP (real_dur, 0, max_duration > inpoint ?
+        max_duration - inpoint : G_MAXUINT64);
+  else
+    duration = real_dur;
 
-    GST_DEBUG_OBJECT (element, "Trimming child: %" GST_PTR_FORMAT,
-        track_element);
-    ret = timeline_trim_object (timeline, track_element, NULL, GES_EDGE_START,
-        start);
+
+  /* If we already are at max duration or duration == 0 do no useless work */
+  if ((duration == _DURATION (element) &&
+          _DURATION (element) == _MAXDURATION (element)) ||
+      (duration == 0 && _DURATION (element) == 0)) {
+    GST_DEBUG_OBJECT (element, "Duration already == max_duration, no triming");
+    return FALSE;
   }
 
-  return ret;
+  GES_TIMELINE_ELEMENT_GET_CLASS (element)->set_start (element, start);
+  GES_TIMELINE_ELEMENT_GET_CLASS (element)->set_inpoint (element, inpoint);
+  GES_TIMELINE_ELEMENT_GET_CLASS (element)->set_duration (element, duration);
+
+  return TRUE;
 }
 
 /**

@@ -126,13 +126,15 @@ struct _GESContainerClass
                                    GESEdge edge,
                                    guint64 position);
 
-
-
   /*< private >*/
   guint grouping_priority;
 
+  /*< protected >*/
+  /* Resync children values taking into account their new state */
+  void (*resync)       (GESContainer *container);
+
   /* Padding for API extension */
-  gpointer _ges_reserved[GES_PADDING_LARGE];
+  gpointer _ges_reserved[GES_PADDING_LARGE - 1];
 };
 
 GType ges_container_get_type (void);
