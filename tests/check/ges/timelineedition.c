@@ -44,7 +44,6 @@ GST_START_TEST (test_basic_timeline_edition)
   GESTrack *track;
   GESTimeline *timeline;
   GESLayer *layer;
-  GESTrackElement *trackelement, *trackelement1, *trackelement2;
   GESContainer *clip, *clip1, *clip2;
 
   track = GES_TRACK (ges_audio_track_new ());
@@ -70,22 +69,14 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   clip = GES_CONTAINER (ges_layer_add_asset (layer, asset, 0, 0, 10,
           GES_TRACK_TYPE_UNKNOWN));
-  trackelement = GES_CONTAINER_CHILDREN (clip)->data;
-  fail_unless (GES_IS_TRACK_ELEMENT (trackelement));
-
   clip1 = GES_CONTAINER (ges_layer_add_asset (layer, asset, 10, 0, 10,
           GES_TRACK_TYPE_UNKNOWN));
-  trackelement1 = GES_CONTAINER_CHILDREN (clip1)->data;
-  fail_unless (GES_IS_TRACK_ELEMENT (trackelement1));
-
   clip2 = GES_CONTAINER (ges_layer_add_asset (layer, asset, 50, 0, 60,
           GES_TRACK_TYPE_UNKNOWN));
-  trackelement2 = GES_CONTAINER_CHILDREN (clip2)->data;
-  fail_unless (GES_IS_TRACK_ELEMENT (trackelement2));
 
-  CHECK_OBJECT_PROPS (trackelement, 0, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 50, 0, 60);
+  DEEP_CHECK (clip, 0, 0, 10);
+  DEEP_CHECK (clip1, 10, 0, 10);
+  DEEP_CHECK (clip2, 50, 0, 60);
 
   /**
    * Simple rippling clip to: 10
@@ -99,27 +90,27 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 10) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 60, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 60, 0, 60);
 
 
   /* FIXME find a way to check that we are using the same MovingContext
    * inside the GESTrack */
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 40, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 80, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 40, 0, 10);
+  DEEP_CHECK (clip2, 80, 0, 60);
 
   /**
    * Rippling clip1 back to: 20 (getting to the exact same timeline as before
    */
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 20) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 60, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 60, 0, 60);
 
   /**
    * Simple move clip to: 27 and clip2 to 35
@@ -135,9 +126,9 @@ GST_START_TEST (test_basic_timeline_edition)
           GES_EDGE_NONE, 27) == TRUE);
   fail_unless (ges_container_edit (clip2, NULL, -1, GES_EDIT_MODE_NORMAL,
           GES_EDGE_NONE, 35) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 27, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 27, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
 
   /**
    * Trim start clip to: 32 and clip2 to 35
@@ -151,9 +142,9 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_START, 32) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 5);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 5);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
 
   /* Ripple end clip to 42
    * New timeline:
@@ -165,9 +156,9 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 42) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
 
   /**
    * New timeline:
@@ -180,9 +171,9 @@ GST_START_TEST (test_basic_timeline_edition)
           GES_EDGE_NONE, 42) == TRUE);
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 52) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 20);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 52, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 20);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 52, 0, 60);
 
   /**
    * New timeline:
@@ -193,9 +184,9 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 42, 5, 20);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 42, 5, 20);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
    * New timeline:
@@ -206,9 +197,9 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_START, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 40, 3, 22);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 40, 3, 22);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
   /**
    * New timeline:
    * ------------
@@ -218,16 +209,16 @@ GST_START_TEST (test_basic_timeline_edition)
    */
   fail_if (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_START, 25));
-  CHECK_OBJECT_PROPS (trackelement, 40, 3, 22);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 40, 3, 22);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Make sure that not doing anything when not able to roll */
   fail_if (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 65) == TRUE, 0);
-  CHECK_OBJECT_PROPS (trackelement, 40, 3, 22);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 40, 3, 22);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   gst_object_unref (timeline);
 }
@@ -311,16 +302,16 @@ GST_START_TEST (test_snapping)
   g_object_set (timeline, "snapping-distance", (guint64) 3, NULL);
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_END, 27) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Snaping to edge, so no move */
   fail_if (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_END, 27));
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
    * New timeline:
@@ -332,9 +323,9 @@ GST_START_TEST (test_snapping)
    */
   g_object_set (timeline, "snapping-distance", (guint64) 0, NULL);
   ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (clip1), 10);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
    * New timeline(the "layers" are just to help reading diagram, nothing else):
@@ -351,98 +342,98 @@ GST_START_TEST (test_snapping)
           62));
   fail_unless (ges_timeline_element_roll_end (GES_TIMELINE_ELEMENT (clip1),
           72) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 52);
-  CHECK_OBJECT_PROPS (trackelement2, 72, 10, 50);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 52);
+  DEEP_CHECK (clip2, 72, 10, 50);
 
   /**
-   *                    0----------
+   *                    0------------
    *                    |   clip    |
    *                    25---------62
-   * inpoints           5--------------- 10--------
+   * inpoints           5--------------- 10-----------
    *                    |     clip1      ||  clip2   |
    * time               25------------- 72 --------122
    */
   g_object_set (timeline, "snapping-distance", (guint64) 4, NULL);
   fail_unless (ges_timeline_element_trim (GES_TIMELINE_ELEMENT (clip1),
           28) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 25, 5, 47);
-  CHECK_OBJECT_PROPS (trackelement2, 72, 10, 50);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 25, 5, 47);
+  DEEP_CHECK (clip2, 72, 10, 50);
 
   /**
-   *                    0----------
+   *                    0------------
    *                    |   clip    |
    *                    25---------62
-   * inpoints           5---------- 0---------
+   * inpoints           5---------- 0------------
    *                    |  clip1    ||  clip2   |
    * time               25-------- 62 --------122
    */
   fail_unless (ges_timeline_element_roll_start (GES_TIMELINE_ELEMENT (clip2),
           59) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 25, 5, 37);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 25, 5, 37);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
-   *                      0----------
-   *                      |   clip  |
-   *                      26--------63
+   *                     0-----------
+   *                     |   clip   |
+   *                     26--------62
    * inpoints           5---------- 0---------
    *                    |  clip1    ||  clip2   |
    * time               25-------- 62 --------122
    */
   ges_timeline_element_set_start (GES_TIMELINE_ELEMENT (clip1), 26);
   ges_timeline_element_set_duration (GES_TIMELINE_ELEMENT (clip1), 37);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 26, 5, 36);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 26, 5, 36);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
    /**
-   * inpoints           0----------5--------------
-   *                    |   clip    ||  clip1    |
-   * time               25----------62----------99
+   * inpoints           0----------5-------------
+   *                    |   clip    ||  clip1   |
+   * time               25----------62----------98
    *                                            0-----------
    *                                            |  clip2   |
    *                                            98--------168
    */
   fail_unless (ges_timeline_element_ripple (GES_TIMELINE_ELEMENT (clip1),
           58) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 62, 5, 36);
-  CHECK_OBJECT_PROPS (trackelement2, 98, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 62, 5, 36);
+  DEEP_CHECK (clip2, 98, 0, 60);
 
   /**
-   * inpoints     0----------5----------     0----------
-   *              |   clip    ||  clip1    |   |  clip2    |
-   * time         25---------62-------- 99  110--------170
+   * inpoints     0----------- 5---------    0------------
+   *              |   clip    ||  clip1 |    |  clip2    |
+   * time         25---------62-------- 98  110--------170
    */
   ges_timeline_element_set_start (GES_TIMELINE_ELEMENT (clip2), 110);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 62, 5, 36);
-  CHECK_OBJECT_PROPS (trackelement2, 110, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 62, 5, 36);
+  DEEP_CHECK (clip2, 110, 0, 60);
 
   /**
-   * inpoints     0----------5    5 --------- 0----------
-   *              |   clip    |    |  clip1    ||  clip2    |
-   * time         25---------62   73---------110--------170
+   * inpoints     0----------5     5--------- 0------------
+   *              |   clip    |    |  clip1  ||  clip2    |
+   * time         25---------62   74---------110--------170
    */
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_NORMAL,
           GES_EDGE_NONE, 72) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 73, 5, 36);
-  CHECK_OBJECT_PROPS (trackelement2, 110, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 74, 5, 36);
+  DEEP_CHECK (clip2, 110, 0, 60);
 
   /**
-   * inpoints     0----------5----------     0----------
-   *              |   clip    ||  clip1    |   |  clip2    |
+   * inpoints     0----------5----------    0------------
+   *              |   clip    ||  clip1 |   |  clip2    |
    * time         25---------62-------- 99  110--------170
    */
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_NORMAL,
           GES_EDGE_NONE, 58) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 62, 5, 36);
-  CHECK_OBJECT_PROPS (trackelement2, 110, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 62, 5, 36);
+  DEEP_CHECK (clip2, 110, 0, 60);
 
 
   /**
@@ -451,9 +442,9 @@ GST_START_TEST (test_snapping)
    * time         25---------62--------110--------170
    */
   g_object_set (clip1, "duration", (guint64) 46, NULL);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 62, 5, 48);
-  CHECK_OBJECT_PROPS (trackelement2, 110, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 62, 5, 48);
+  DEEP_CHECK (clip2, 110, 0, 60);
 
   /**
    * inpoints     5----------- 0--------- 0----------
@@ -461,9 +452,9 @@ GST_START_TEST (test_snapping)
    * time         62---------110--------170--------207
    */
   g_object_set (clip, "start", (guint64) 168, NULL);
-  CHECK_OBJECT_PROPS (trackelement, 170, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 62, 5, 48);
-  CHECK_OBJECT_PROPS (trackelement2, 110, 0, 60);
+  DEEP_CHECK (clip, 170, 0, 37);
+  DEEP_CHECK (clip1, 62, 5, 48);
+  DEEP_CHECK (clip2, 110, 0, 60);
 
   /* Check we didn't lose/screwed any references */
   ASSERT_OBJECT_REFCOUNT (trackelement, "First trackelement", 4);
@@ -627,18 +618,18 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 10) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 60, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 60, 0, 60);
 
 
   /* FIXME find a way to check that we are using the same MovingContext
    * inside the GESTimeline */
   fail_unless (ges_container_edit (clip1, NULL, 3, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 40, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 80, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 40, 0, 10);
+  DEEP_CHECK (clip2, 80, 0, 60);
   layer2 = ges_clip_get_layer (GES_CLIP (clip1));
   assert_equals_int (ges_layer_get_priority (layer2), 3);
   /* clip2 should have moved layer too */
@@ -652,9 +643,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip1, NULL, 1, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_NONE, 20) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 10, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 60, 0, 60);
+  DEEP_CHECK (clip, 10, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 60, 0, 60);
   layer2 = ges_clip_get_layer (GES_CLIP (clip1));
   assert_equals_int (ges_layer_get_priority (layer2), 1);
   /* clip2 should have moved layer too */
@@ -681,9 +672,9 @@ GST_START_TEST (test_timeline_edition_mode)
           GES_EDGE_NONE, 27) == TRUE);
   fail_unless (ges_container_edit (clip2, NULL, -1, GES_EDIT_MODE_NORMAL,
           GES_EDGE_NONE, 35) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 27, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 27, 0, 10);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
 
   /**
    * Simple trimming start clip to: 32
@@ -701,9 +692,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_START, 32) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 5);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 5);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
 
   /* Ripple end clip to 35 and move to layer 2
    * New timeline:
@@ -719,9 +710,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, 2, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 35) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 3);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 3);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
   layer = ges_clip_get_layer (GES_CLIP (clip));
   assert_equals_int (ges_layer_get_priority (layer), 2);
   gst_object_unref (layer);
@@ -740,9 +731,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, 2, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 50) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 18);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 50, 15, 45);
+  DEEP_CHECK (clip, 32, 5, 18);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 50, 15, 45);
   layer = ges_clip_get_layer (GES_CLIP (clip));
   assert_equals_int (ges_layer_get_priority (layer), 2);
   gst_object_unref (layer);
@@ -761,9 +752,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, 2, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 35) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 3);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 35, 0, 60);
+  DEEP_CHECK (clip, 32, 5, 3);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 35, 0, 60);
   layer = ges_clip_get_layer (GES_CLIP (clip));
   assert_equals_int (ges_layer_get_priority (layer), 2);
   gst_object_unref (layer);
@@ -784,9 +775,9 @@ GST_START_TEST (test_timeline_edition_mode)
   /* Can not move to the first layer as clip2 should move to a layer with priority < 0 */
   fail_unless (ges_container_edit (clip, NULL, 0, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 52) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 32, 5, 20);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 52, 0, 60)
+  DEEP_CHECK (clip, 32, 5, 20);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 52, 0, 60)
       layer = ges_clip_get_layer (GES_CLIP (clip));
   assert_equals_int (ges_layer_get_priority (layer), 2);
   gst_object_unref (layer);
@@ -827,9 +818,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip1, NULL, 0, GES_EDIT_MODE_RIPPLE,
           GES_EDGE_END, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 42, 5, 20);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 42, 5, 20);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Check that movement between layer has been done properly */
   layer1 = ges_clip_get_layer (GES_CLIP (clip));
@@ -857,9 +848,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_START, 40) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 40, 3, 22);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 20);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 40, 3, 22);
+  DEEP_CHECK (clip1, 20, 0, 20);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Roll clip end to 25
    * New timeline:
@@ -877,34 +868,34 @@ GST_START_TEST (test_timeline_edition_mode)
   ges_timeline_element_set_inpoint (GES_TIMELINE_ELEMENT (clip), 15);
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 25) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Make sure that not doing anything when not able to roll */
   fail_if (ges_container_edit (clip, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_START, 65));
   fail_if (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 65));
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Snaping to edge, so no move */
   g_object_set (timeline, "snapping-distance", (guint64) 3, NULL);
   fail_if (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_END, 27));
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /* Snaping to edge, so no move */
   fail_if (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_END, 27));
 
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 5);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 5);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
    * New timeline:
@@ -917,9 +908,9 @@ GST_START_TEST (test_timeline_edition_mode)
   g_object_set (timeline, "snapping-distance", (guint64) 0, NULL);
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_END, 30) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 10);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 10);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
   /**
    * New timeline
@@ -936,9 +927,9 @@ GST_START_TEST (test_timeline_edition_mode)
           GES_EDGE_END, 62) == TRUE);
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_END, 72) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 20, 0, 52);
-  CHECK_OBJECT_PROPS (trackelement2, 72, 10, 50);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 20, 0, 52);
+  DEEP_CHECK (clip2, 72, 10, 50);
 
   /* Test Snapping */
   /**
@@ -952,9 +943,9 @@ GST_START_TEST (test_timeline_edition_mode)
   g_object_set (timeline, "snapping-distance", (guint64) 4, NULL);
   fail_unless (ges_container_edit (clip1, NULL, -1, GES_EDIT_MODE_TRIM,
           GES_EDGE_START, 28) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 25, 5, 47);
-  CHECK_OBJECT_PROPS (trackelement2, 72, 10, 50);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 25, 5, 47);
+  DEEP_CHECK (clip2, 72, 10, 50);
 
   /**
    *                    0----------
@@ -966,9 +957,9 @@ GST_START_TEST (test_timeline_edition_mode)
    */
   fail_unless (ges_container_edit (clip2, NULL, -1, GES_EDIT_MODE_ROLL,
           GES_EDGE_START, 59) == TRUE);
-  CHECK_OBJECT_PROPS (trackelement, 25, 0, 37);
-  CHECK_OBJECT_PROPS (trackelement1, 25, 5, 37);
-  CHECK_OBJECT_PROPS (trackelement2, 62, 0, 60);
+  DEEP_CHECK (clip, 25, 0, 37);
+  DEEP_CHECK (clip1, 25, 5, 37);
+  DEEP_CHECK (clip2, 62, 0, 60);
 
 }
 
