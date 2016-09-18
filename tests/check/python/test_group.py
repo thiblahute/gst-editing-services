@@ -211,8 +211,8 @@ class TestGroup(common.GESSimpleTimelineTest):
         clips = self.layer.get_clips()
         self.assertEqual(len(clips), 4)
 
-        video_trans = None
-        audio_trans = None
+        video_transition = None
+        audio_transition = None
         for clip in clips:
             if isinstance(clip, GES.TransitionClip):
                 if isinstance(clip.get_children(False)[0], GES.VideoTransition):
