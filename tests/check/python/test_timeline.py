@@ -33,7 +33,7 @@ Gst.init(None)
 GES.init()
 
 
-class TestTimeline(unittest.TestCase):
+class TestTimeline(common.GESTest):
 
     def test_signals_not_emitted_when_loading(self):
         mainloop = common.create_main_loop()
@@ -60,3 +60,16 @@ class TestTimeline(unittest.TestCase):
         mainloop.run()
         self.assertTrue(loaded_called)
         handle.assert_not_called()
+
+    def test_ripple_with_transition(self):
+        timeline = GES.Project.new(
+            " +test-clip black s=0 d=10 name=clip1 "
+            "+test-clip black s=5 d=10 name=clip2").extract()
+        layers = timeline.get_layers()
+        clip1, atransition, vtransition, clip2 = layers[0].get_clips()
+        self.error("%s" % clip1.get_name())
+        clip1.edit([], -1, GES.EditMode.EDIT_RIPPLE,
+                   GES.Edge.EDGE_NONE, 10 * Gst.SECOND)
+        clip1, atransition, vtransition, clip2 = layers[0].get_clips()
+        self.assertEqual(clip1.props.start, 10 * Gst.SECOND)
+        self.assertEqual(clip2.props.start, 15 * Gst.SECOND)
