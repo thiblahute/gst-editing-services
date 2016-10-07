@@ -838,13 +838,14 @@ _destroy_auto_transition_cb (GESAutoTransition * auto_transition,
       get_toplevel_container (auto_transition->previous_clip), *toplevel_next =
       get_toplevel_container (auto_transition->next_clip);
 
-  if (mv_ctx->moving_to_layer_prio > 0 &&
-      g_hash_table_lookup (mv_ctx->toplevel_containers, toplevel_prev) &&
+  if (g_hash_table_lookup (mv_ctx->toplevel_containers, toplevel_prev) &&
       g_hash_table_lookup (mv_ctx->toplevel_containers, toplevel_next)) {
-    GESLayer *nlayer =
-        g_list_nth_data (timeline->layers, mv_ctx->moving_to_layer_prio);
+    GESLayer *nlayer;
 
+    if (mv_ctx->moving_to_layer_prio < 0)
+      return;
 
+    nlayer = g_list_nth_data (timeline->layers, mv_ctx->moving_to_layer_prio);
     ges_clip_move_to_layer (auto_transition->transition_clip, nlayer);
 
     return;
