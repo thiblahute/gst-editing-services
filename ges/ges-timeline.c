@@ -985,7 +985,8 @@ _create_transitions_on_layer (GESTimeline * timeline, GESLayer * layer,
   guint32 layer_prio;
   GSequenceIter *iter;
   GESAutoTransition *transition;
-
+  GESContainer *toplevel_next;
+  MoveContext *mv_ctx = &timeline->priv->movecontext;
   GESTrack *ctrack = track;
   GList *entered = NULL;        /* List of TrackElement for wich we walk through the
                                  * "start" but not the "end" in the starts_ends list */
@@ -1025,18 +1026,23 @@ _create_transitions_on_layer (GESTimeline * timeline, GESLayer * layer,
       continue;
     }
 
+    toplevel_next = get_toplevel_container (next);
     for (tmp = entered; tmp; tmp = tmp->next) {
       gint64 transition_duration;
-
       GESTrackElement *prev = tmp->data;
+      GESContainer *toplevel_prev = get_toplevel_container (prev);
 
       if (ctrack != ges_track_element_get_track (prev) ||
           ges_timeline_element_get_toplevel_parent (GES_TIMELINE_ELEMENT (prev))
           == toplevel)
         continue;
 
-      if (priv->movecontext.moving_trackelements &&
-          GES_TIMELINE_ELEMENT_START (next) > priv->movecontext.start)
+      if (mv_ctx->moving_trackelements &&
+          GES_TIMELINE_ELEMENT_START (next) > mv_ctx->start)
+        continue;
+
+      if (g_hash_table_lookup (mv_ctx->toplevel_containers, toplevel_prev) &&
+          g_hash_table_lookup (mv_ctx->toplevel_containers, toplevel_next))
         continue;
 
       transition_duration = (_START (prev) + _DURATION (prev)) - _START (next);
