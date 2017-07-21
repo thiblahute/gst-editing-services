@@ -266,7 +266,7 @@ _load_from_uri (GESFormatter * self, GESTimeline * timeline, const gchar * uri,
 
 static gboolean
 _save_to_uri (GESFormatter * formatter, GESTimeline * timeline,
-    const gchar * uri, gboolean overwrite, GError ** error)
+    const gchar * uri, GESProjectSaveFlags flags, GError ** error)
 {
   GFile *file;
   gboolean ret;
@@ -280,7 +280,7 @@ _save_to_uri (GESFormatter * formatter, GESTimeline * timeline,
   stream = G_OUTPUT_STREAM (g_file_create (file, G_FILE_CREATE_NONE, NULL,
           &lerror));
   if (stream == NULL) {
-    if (overwrite && lerror->code == G_IO_ERROR_EXISTS) {
+    if (flags & GES_PROJECT_SAVE_OVERWRITE && lerror->code == G_IO_ERROR_EXISTS) {
       g_clear_error (&lerror);
       stream = G_OUTPUT_STREAM (g_file_replace (file, NULL, FALSE,
               G_FILE_CREATE_NONE, NULL, &lerror));
@@ -291,7 +291,7 @@ _save_to_uri (GESFormatter * formatter, GESTimeline * timeline,
   }
 
   str = GES_BASE_XML_FORMATTER_GET_CLASS (formatter)->save (formatter,
-      timeline, error);
+      timeline, flags, error);
 
   if (str == NULL)
     goto serialization_failed;
@@ -410,7 +410,7 @@ ges_base_xml_formatter_class_init (GESBaseXmlFormatterClass * self_class)
 
   formatter_klass->can_load_uri = _can_load_uri;
   formatter_klass->load_from_uri = _load_from_uri;
-  formatter_klass->save_to_uri = _save_to_uri;
+  formatter_klass->save_to_uri_full = _save_to_uri;
 
   self_class->save = NULL;
 

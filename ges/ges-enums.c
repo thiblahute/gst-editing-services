@@ -542,3 +542,28 @@ ges_meta_flag_get_type (void)
   g_once (&once, (GThreadFunc) register_ges_meta_flag, &id);
   return id;
 }
+
+static void
+register_ges_project_save_flags (GType * id)
+{
+  static const GFlagsValue values[] = {
+    {C_ENUM (GES_PROJECT_SAVE_OVERWRITE), "GES_PROJECT_SAVE_OVERWRITE",
+        "overwrite"},
+    {C_ENUM (GES_PROJECT_SAVE_RELATIVE), "GES_PROJECT_SAVE_RELATIVE",
+        "relative"},
+    {0, NULL, NULL}
+  };
+
+  *id = g_flags_register_static ("GESProjectSaveFlags", values);
+}
+
+GType
+ges_project_save_flags_get_type (void)
+{
+  static GType id;
+  static GOnce once = G_ONCE_INIT;
+
+  g_once (&once, (GThreadFunc) register_ges_project_save_flags, &id);
+
+  return id;
+}

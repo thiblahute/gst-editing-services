@@ -911,7 +911,8 @@ _serialize_properties (GObject * object, const gchar * fieldname, ...)
 }
 
 static inline void
-_save_assets (GESXmlFormatter * self, GString * str, GESProject * project)
+_save_assets (GESXmlFormatter * self, GString * str, GESProject * project,
+    GESProjectSaveFlags flags)
 {
   char *properties, *metas;
   GESAsset *asset, *proxy;
@@ -1450,7 +1451,8 @@ _save_encoding_profiles (GESXmlFormatter * self, GString * str,
 }
 
 static GString *
-_save (GESFormatter * formatter, GESTimeline * timeline, GError ** error)
+_save (GESFormatter * formatter, GESTimeline * timeline,
+    GESProjectSaveFlags flags, GError ** error)
 {
   GString *str;
   GESProject *project;
@@ -1468,7 +1470,11 @@ _save (GESFormatter * formatter, GESTimeline * timeline, GError ** error)
   str = priv->str = g_string_new (NULL);
 
   properties = _serialize_properties (G_OBJECT (project), NULL);
+  ges_meta_container_set_boolean (GES_META_CONTAINER (project),
+      "relative-assets", flags & GES_PROJECT_SAVE_RELATIVE);
   metas = ges_meta_container_metas_to_string (GES_META_CONTAINER (project));
+  ges_meta_container_set_meta (GES_META_CONTAINER (project), "relative-assets",
+      NULL);
   append_escaped (str,
       g_markup_printf_escaped ("  <project properties='%s' metadatas='%s'>\n",
           properties, metas));
@@ -1480,7 +1486,7 @@ _save (GESFormatter * formatter, GESTimeline * timeline, GError ** error)
   g_string_append (str, "    </encoding-profiles>\n");
 
   g_string_append (str, "    <ressources>\n");
-  _save_assets (self, str, project);
+  _save_assets (self, str, project, flags);
   g_string_append (str, "    </ressources>\n");
 
   _save_timeline (self, str, timeline);

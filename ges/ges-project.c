@@ -931,10 +931,21 @@ ges_project_list_assets (GESProject * project, GType filter)
  * (using ges_asset_extract (@project);)
  *
  * Returns: %TRUE if the project could be save, %FALSE otherwize
+ *
+ * Deprecated since 1.14 use #ges_project_save_full instead.
  */
 gboolean
 ges_project_save (GESProject * project, GESTimeline * timeline,
     const gchar * uri, GESAsset * formatter_asset, gboolean overwrite,
+    GError ** error)
+{
+  return ges_project_save_full (project, timeline, uri, formatter_asset,
+      overwrite ? GES_PROJECT_SAVE_OVERWRITE : 0, error);
+}
+
+gboolean
+ges_project_save_full (GESProject * project, GESTimeline * timeline,
+    const gchar * uri, GESAsset * formatter_asset, GESProjectSaveFlags flags,
     GError ** error)
 {
   GESAsset *tl_asset;
@@ -983,7 +994,7 @@ ges_project_save (GESProject * project, GESTimeline * timeline,
   }
 
   ges_project_add_formatter (project, formatter);
-  ret = ges_formatter_save_to_uri (formatter, timeline, uri, overwrite, error);
+  ret = ges_formatter_save_to_uri (formatter, timeline, uri, flags, error);
   if (ret && project->priv->uri == NULL)
     ges_project_set_uri (project, uri);
 

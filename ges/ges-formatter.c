@@ -377,11 +377,34 @@ ges_formatter_load_from_uri (GESFormatter * formatter,
  *
  * Returns: TRUE if the timeline data was successfully saved to the URI
  * else FALSE.
+ *
+ * Deprecated since 1.14 use #ges_project_save_full instead.
  */
-
 gboolean
 ges_formatter_save_to_uri (GESFormatter * formatter, GESTimeline *
     timeline, const gchar * uri, gboolean overwrite, GError ** error)
+{
+
+  return ges_formatter_save_to_uri_full (formatter, timeline, uri,
+      overwrite ? GES_PROJECT_SAVE_OVERWRITE : 0, error);
+}
+
+/**
+ * ges_formatter_save_to_uri_full:
+ * @formatter: a #GESFormatter
+ * @timeline: a #GESTimeline
+ * @uri: a #gchar * pointing to a URI
+ * @flags: The #GESProjectSaveFlags to use.
+ * @error: A #GError that will be set in case of error
+ *
+ * Save data from timeline to the given URI.
+ *
+ * Returns: TRUE if the timeline data was successfully saved to the URI
+ * else FALSE.
+ */
+gboolean
+ges_formatter_save_to_uri_full (GESFormatter * formatter, GESTimeline *
+    timeline, const gchar * uri, GESProjectSaveFlags flags, GError ** error)
 {
   GError *lerr = NULL;
   gboolean ret = FALSE;
@@ -389,8 +412,11 @@ ges_formatter_save_to_uri (GESFormatter * formatter, GESTimeline *
 
   GST_DEBUG_OBJECT (formatter, "Saving %" GST_PTR_FORMAT " to %s",
       timeline, uri);
-  if (klass->save_to_uri)
-    ret = klass->save_to_uri (formatter, timeline, uri, overwrite, &lerr);
+  if (klass->save_to_uri_full)
+    ret = klass->save_to_uri_full (formatter, timeline, uri, flags, &lerr);
+  else if (klass->save_to_uri)
+    ret = klass->save_to_uri (formatter, timeline, uri,
+        flags & GES_PROJECT_SAVE_OVERWRITE, &lerr);
   else
     GST_ERROR_OBJECT (formatter, "save_to_uri not implemented!");
 

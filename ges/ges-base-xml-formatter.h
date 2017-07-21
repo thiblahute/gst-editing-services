@@ -59,7 +59,8 @@ struct _GESBaseXmlFormatterClass
   /* Should be overriden by subclasses */
   GMarkupParser content_parser;
 
-  GString * (*save) (GESFormatter *formatter, GESTimeline *timeline, GError **error);
+  GString * (*save) (GESFormatter *formatter, GESTimeline *timeline, GESProjectSaveFlags flags,
+      GError **error);
 
   gpointer _ges_reserved[GES_PADDING];
 };

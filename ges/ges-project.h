@@ -86,6 +86,12 @@ gboolean  ges_project_save         (GESProject * project,
                                     GESAsset * formatter_asset,
                                     gboolean overwrite,
                                     GError **error);
+gboolean  ges_project_save_full   (GESProject * project,
+                                    GESTimeline * timeline,
+                                    const gchar *uri,
+                                    GESAsset * formatter_asset,
+                                    GESProjectSaveFlags flags,
+                                    GError **error);
 gboolean  ges_project_load         (GESProject * project,
                                     GESTimeline * timeline,
                                     GError **error);

@@ -407,6 +407,21 @@ typedef enum {
 
 GType ges_edge_get_type (void);
 
+/**
+ * GESProjectSaveFlags:
+ * @GES_PROJECT_SAVE_OVERWRITE: output audio to the soundcard
+ * @GES_PROJECT_SAVE_RELATIVE: render timeline (tries to avoid decoding/reencoding)
+ *
+ * The various modes the #GESProject can be saved with
+ */
+typedef enum {
+  GES_PROJECT_SAVE_OVERWRITE  = 1 << 0,
+  GES_PROJECT_SAVE_RELATIVE   = 1 << 1,
+} GESProjectSaveFlags;
+
+#define GES_TYPE_PROJECT_SAVE_FLAGES ges_project_save_flags_get_type()
+
+GType ges_project_save_flags_get_type (void);
 
 const gchar * ges_track_type_name (GESTrackType type);
 G_END_DECLS

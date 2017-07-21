@@ -23,6 +23,7 @@
 
 #include <glib-object.h>
 #include <ges/ges-timeline.h>
+#include <ges/ges-enums.h>
 
 G_BEGIN_DECLS
 
@@ -124,6 +125,11 @@ struct _GESFormatterClass {
   GESFormatterCanLoadURIMethod can_load_uri;
   GESFormatterLoadFromURIMethod load_from_uri;
   GESFormatterSaveToURIMethod save_to_uri;
+  gboolean (*save_to_uri_full) (GESFormatter *formatter,
+                                GESTimeline *timeline,
+                                const gchar * uri,
+                                GESProjectSaveFlags flags,
+                                GError **error);
 
   /* < private > */
   const gchar *name;
@@ -160,6 +166,11 @@ gboolean ges_formatter_save_to_uri      (GESFormatter * formatter,
                                          GESTimeline *timeline,
                                          const gchar *uri,
                                          gboolean overwrite,
+                                         GError **error);
+gboolean ges_formatter_save_to_uri_full (GESFormatter * formatter,
+                                         GESTimeline *timeline,
+                                         const gchar *uri,
+                                         GESProjectSaveFlags flags,
                                          GError **error);
 
 GESAsset *ges_formatter_get_default    (void);
