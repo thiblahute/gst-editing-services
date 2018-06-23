@@ -222,6 +222,7 @@ G_GNUC_INTERNAL  void ges_project_add_loading_asset               (GESProject *p
 
 /* FIXME GESBaseXmlFormatter is all internal for now, the API is not stable
  * fo now, so do not expose it */
+G_GNUC_INTERNAL gboolean ges_base_xml_formatter_parsing_assets (GESBaseXmlFormatter* self);
 G_GNUC_INTERNAL void ges_base_xml_formatter_add_clip (GESBaseXmlFormatter * self,
                                                                  const gchar *id,
                                                                  const char *asset_id,

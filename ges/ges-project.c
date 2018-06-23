@@ -314,8 +314,12 @@ ges_missing_uri_default (GESProject * self, GError * error,
   guint i;
   const gchar *old_uri = ges_asset_get_id (wrong_asset);
 
-  if (new_paths == NULL)
-    return NULL;
+  // GST_ERROR("%p -- %s --> %s", wrong_asset, old_uri, wrong_asset->priv->proxy_target_id);
+  if (new_paths == NULL) {
+      GST_ERROR("WUT? Nothing");
+
+      return NULL;
+  }
 
   if (tried_uris == NULL)
     tried_uris = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
@@ -328,13 +332,14 @@ ges_missing_uri_default (GESProject * self, GError * error,
     g_free (basename);
 
     if (g_strcmp0 (old_uri, res) == 0) {
-      g_hash_table_add (tried_uris, res);
+        GST_ERROR("Heu");
+        g_hash_table_add(tried_uris, res);
     } else if (g_hash_table_lookup (tried_uris, res)) {
-      GST_DEBUG_OBJECT (self, "File already tried: %s", res);
+      GST_ERROR_OBJECT (self, "File already tried: %s", res);
       g_free (res);
     } else {
       g_hash_table_add (tried_uris, g_strdup (res));
-      GST_DEBUG_OBJECT (self, "Trying: %s\n", res);
+      GST_ERROR_OBJECT (self, "Trying: %s\n", res);
       return res;
     }
   }

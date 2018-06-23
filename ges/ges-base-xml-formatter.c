@@ -101,6 +101,8 @@ typedef struct PendingAsset
   gchar *metadatas;
   GstStructure *properties;
   gchar *proxy_id;
+  GType extractable_type;
+  gchar *id;
 } PendingAsset;
 
 struct _GESBaseXmlFormatterPrivate
@@ -135,7 +137,13 @@ struct _GESBaseXmlFormatterPrivate
   gboolean timeline_auto_transition;
 
   GList *groups;
+
+  gboolean parsing_assets;
 };
+
+static void new_asset_cb (GESAsset * source, GAsyncResult * res,
+    PendingAsset * passet);
+
 
 static void
 _free_layer_entry (LayerEntry * entry)
@@ -159,14 +167,27 @@ enum
 static guint signals[LAST_SIGNAL];
 */
 
-static GMarkupParseContext *
-create_parser_context (GESBaseXmlFormatter * self, const gchar * uri,
-    GError ** error)
+static gint
+compare_assets_for_loading (PendingAsset * a, PendingAsset * b)
 {
+  if (a->proxy_id)
+    return -1;
+
+  if (b->proxy_id)
+    return 1;
+
+  return 0;
+}
+
+static GMarkupParseContext *
+_parse (GESBaseXmlFormatter * self, const gchar * uri, GError ** error)
+{
+  gint i;
   gsize xmlsize;
   GFile *file = NULL;
   gchar *xmlcontent = NULL;
   GMarkupParseContext *parsecontext = NULL;
+  GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
   GESBaseXmlFormatterClass *self_class =
       GES_BASE_XML_FORMATTER_GET_CLASS (self);
 
@@ -192,13 +213,31 @@ create_parser_context (GESBaseXmlFormatter * self, const gchar * uri,
   parsecontext = g_markup_parse_context_new (&self_class->content_parser,
       G_MARKUP_TREAT_CDATA_AS_TEXT, self, NULL);
 
-  if (g_markup_parse_context_parse (parsecontext, xmlcontent, xmlsize,
-          &err) == FALSE)
-    goto failed;
 
-  if (!g_markup_parse_context_end_parse (parsecontext, &err))
-    goto failed;
+  for (i = 0; i < 2; i++) {
+    priv->parsing_assets = (i == 0);
 
+    if (priv->pending_assets) {
+      GList *tmp;
+      priv->pending_assets = g_list_sort (priv->pending_assets,
+          (GCompareFunc) compare_assets_for_loading);
+
+      for (tmp = priv->pending_assets; tmp; tmp = tmp->next) {
+        PendingAsset *passet = tmp->data;
+
+        ges_asset_request_async (passet->extractable_type, passet->id, NULL,
+            (GAsyncReadyCallback) new_asset_cb, passet);
+        ges_project_add_loading_asset (GES_FORMATTER (self)->project,
+            passet->extractable_type, passet->id);
+      }
+    }
+
+    if (!g_markup_parse_context_parse (parsecontext, xmlcontent, xmlsize, &err))
+      goto failed;
+
+    if (!g_markup_parse_context_end_parse (parsecontext, &err))
+      goto failed;
+  }
 
 done:
   g_free (xmlcontent);
@@ -235,7 +274,7 @@ _can_load_uri (GESFormatter * dummy_formatter, const gchar * uri,
   _GET_PRIV (self)->check_only = TRUE;
 
 
-  ctx = create_parser_context (self, uri, error);
+  ctx = _parse (self, uri, error);
   if (!ctx)
     return FALSE;
 
@@ -251,8 +290,7 @@ _load_from_uri (GESFormatter * self, GESTimeline * timeline, const gchar * uri,
 
   ges_timeline_set_auto_transition (timeline, FALSE);
 
-  priv->parsecontext =
-      create_parser_context (GES_BASE_XML_FORMATTER (self), uri, error);
+  priv->parsecontext = _parse (GES_BASE_XML_FORMATTER (self), uri, error);
 
   if (!priv->parsecontext)
     return FALSE;
@@ -641,6 +679,7 @@ static void
 _free_pending_asset (GESBaseXmlFormatterPrivate * priv, PendingAsset * passet)
 {
   g_free (passet->metadatas);
+  g_free (passet->id);
   g_free (passet->proxy_id);
   if (passet->properties)
     gst_structure_free (passet->properties);
@@ -922,21 +961,25 @@ ges_base_xml_formatter_add_asset (GESBaseXmlFormatter * self,
   PendingAsset *passet;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (!priv->parsing_assets) {
+    GST_INFO ("Already parsed assets");
+
+    return;
+  }
+
   if (priv->check_only)
     return;
 
   passet = g_slice_new0 (PendingAsset);
   passet->metadatas = g_strdup (metadatas);
+  passet->id = g_strdup (id);
+  passet->extractable_type = extractable_type;
   passet->proxy_id = g_strdup (proxy_id);
   passet->formatter = gst_object_ref (self);
   if (properties)
     passet->properties = gst_structure_copy (properties);
-
-  ges_asset_request_async (extractable_type, id, NULL,
-      (GAsyncReadyCallback) new_asset_cb, passet);
-  ges_project_add_loading_asset (GES_FORMATTER (self)->project,
-      extractable_type, id);
   priv->pending_assets = g_list_prepend (priv->pending_assets, passet);
+  GST_ERROR ("Added %s", id);
 }
 
 void
@@ -950,6 +993,11 @@ ges_base_xml_formatter_add_clip (GESBaseXmlFormatter * self,
   GESClip *nclip;
   LayerEntry *entry;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
+
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
 
   if (priv->check_only)
     return;
@@ -1061,6 +1109,11 @@ ges_base_xml_formatter_add_layer (GESBaseXmlFormatter * self,
   gboolean auto_transition = FALSE;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (priv->check_only)
     return;
 
@@ -1110,6 +1163,11 @@ ges_base_xml_formatter_add_track (GESBaseXmlFormatter * self,
   GESTrack *track;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (priv->check_only) {
     return;
   }
@@ -1149,6 +1207,11 @@ ges_base_xml_formatter_add_control_binding (GESBaseXmlFormatter * self,
 {
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
   GESTrackElement *element = NULL;
+
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
 
   if (track_id[0] != '-' && priv->current_clip)
     element = _get_element_by_track_id (priv, track_id, priv->current_clip);
@@ -1200,6 +1263,11 @@ ges_base_xml_formatter_add_source (GESBaseXmlFormatter * self,
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
   GESTrackElement *element = NULL;
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (track_id[0] != '-' && priv->current_clip)
     element = _get_element_by_track_id (priv, track_id, priv->current_clip);
 
@@ -1238,6 +1306,11 @@ ges_base_xml_formatter_add_track_element (GESBaseXmlFormatter * self,
   GError *err = NULL;
   GESAsset *asset = NULL;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
+
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
 
   if (priv->check_only)
     return;
@@ -1322,6 +1395,11 @@ ges_base_xml_formatter_add_encoding_profile (GESBaseXmlFormatter * self,
   GstEncodingContainerProfile *parent_profile = NULL;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (priv->check_only)
     goto done;
 
@@ -1384,6 +1462,11 @@ ges_base_xml_formatter_add_group (GESBaseXmlFormatter * self,
   PendingGroup *pgroup;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (priv->check_only)
     return;
 
@@ -1404,10 +1487,15 @@ ges_base_xml_formatter_last_group_add_child (GESBaseXmlFormatter * self,
   PendingGroup *pgroup;
   GESBaseXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  if (priv->parsing_assets) {
+    GST_INFO_OBJECT (self, "Parsing assets");
+    return;
+  }
+
   if (priv->check_only)
     return;
 
-  g_return_if_fail (priv->groups);
+  g_return_if_fail (!priv->groups);
 
   pgroup = priv->groups->data;
 
@@ -1416,4 +1504,10 @@ ges_base_xml_formatter_last_group_add_child (GESBaseXmlFormatter * self,
 
   GST_DEBUG_OBJECT (self, "Adding %s to %s", child_id,
       GES_TIMELINE_ELEMENT_NAME (((PendingGroup *) priv->groups->data)->group));
+}
+
+gboolean
+ges_base_xml_formatter_parsing_assets (GESBaseXmlFormatter * self)
+{
+  return self->priv->parsing_assets;
 }

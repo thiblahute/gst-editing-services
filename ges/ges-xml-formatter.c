@@ -51,6 +51,8 @@ struct _GESXmlFormatterPrivate
   guint nbelements;
 
   guint min_version;
+
+  GList *assets;
 };
 
 static inline void
@@ -749,6 +751,14 @@ _parse_group_child (GMarkupParseContext * context, const gchar * element_name,
       child_id, name);
 }
 
+#define PARSE_ELEMENT(name, function, in_asset)                                              \
+  else if (!g_strcmp0(element_name, name))                                                   \
+  {                                                                                          \
+    if ((in_asset && ges_base_xml_formatter_parsing_assets(GES_BASE_XML_FORMATTER(self))) || \
+        (!in_asset && !ges_base_xml_formatter_parsing_assets(GES_BASE_XML_FORMATTER(self)))) \
+    function(context, element_name, attribute_names, attribute_values, self, error);  \
+  }
+
 static void
 _parse_element_start (GMarkupParseContext * context, const gchar * element_name,
     const gchar ** attribute_names, const gchar ** attribute_values,
@@ -756,48 +766,26 @@ _parse_element_start (GMarkupParseContext * context, const gchar * element_name,
 {
   GESXmlFormatterPrivate *priv = _GET_PRIV (self);
 
+  GST_ERROR ("Here %s", element_name);
   if (!G_UNLIKELY (priv->ges_opened))
     _parse_ges_element (context, element_name, attribute_names,
         attribute_values, self, error);
   else if (!G_UNLIKELY (priv->project_opened))
     _parse_project (context, element_name, attribute_names, attribute_values,
         self, error);
-  else if (g_strcmp0 (element_name, "encoding-profile") == 0)
-    _parse_encoding_profile (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "stream-profile") == 0)
-    _parse_stream_profile (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "timeline") == 0)
-    _parse_timeline (context, element_name, attribute_names, attribute_values,
-        self, error);
-  else if (g_strcmp0 (element_name, "asset") == 0)
-    _parse_asset (context, element_name, attribute_names, attribute_values,
-        self, error);
-  else if (g_strcmp0 (element_name, "track") == 0)
-    _parse_track (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "layer") == 0)
-    _parse_layer (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "clip") == 0)
-    _parse_clip (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "source") == 0)
-    _parse_source (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "effect") == 0)
-    _parse_effect (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "binding") == 0)
-    _parse_binding (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "group") == 0)
-    _parse_group (context, element_name, attribute_names,
-        attribute_values, self, error);
-  else if (g_strcmp0 (element_name, "child") == 0)
-    _parse_group_child (context, element_name, attribute_names,
-        attribute_values, self, error);
+
+  PARSE_ELEMENT ("encoding-profile", _parse_encoding_profile, FALSE)
+  PARSE_ELEMENT ("stream-profile", _parse_stream_profile, FALSE)
+  PARSE_ELEMENT ("timeline", _parse_timeline, FALSE)
+  PARSE_ELEMENT ("asset", _parse_asset, TRUE)
+  PARSE_ELEMENT ("track", _parse_track, FALSE)
+  PARSE_ELEMENT ("layer", _parse_layer, FALSE)
+  PARSE_ELEMENT ("clip", _parse_clip, FALSE)
+  PARSE_ELEMENT ("source", _parse_source, FALSE)
+  PARSE_ELEMENT ("effect", _parse_effect, FALSE)
+  PARSE_ELEMENT ("binding", _parse_binding, FALSE)
+  PARSE_ELEMENT ("group", _parse_group, FALSE)
+  PARSE_ELEMENT ("child", _parse_group_child, FALSE)
   else
     GST_LOG_OBJECT (self, "Element %s not handled", element_name);
 }
