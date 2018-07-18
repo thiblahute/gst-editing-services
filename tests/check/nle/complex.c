@@ -216,7 +216,7 @@ GST_START_TEST (test_one_space_another)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments, GST_STREAM_ERROR);
 }
@@ -321,20 +321,7 @@ GST_START_TEST (test_one_default_another)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          3 * GST_SECOND, 4 * GST_SECOND, 3 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 5 * GST_SECOND, 4 * GST_SECOND));
-
+      segment_new (1.0, GST_FORMAT_TIME, 0, 5 * GST_SECOND, 0));
   fill_pipeline_and_check (comp, segments, GST_STREAM_ERROR);
 }
 
@@ -443,19 +430,7 @@ GST_START_TEST (test_one_expandable_another)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          3 * GST_SECOND, 4 * GST_SECOND, 3 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 5 * GST_SECOND, 4 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 5 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments, 0);
 }
@@ -557,13 +532,7 @@ GST_START_TEST (test_renegotiation)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   gst_element_link (comp, audioconvert);
 
@@ -616,13 +585,7 @@ GST_START_TEST (test_renegotiation)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
   collect->gotsegment = FALSE;
   collect->expected_base = 0;
 
@@ -740,7 +703,7 @@ GST_START_TEST (test_one_bin_space_another)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments, GST_STREAM_ERROR);
 }
@@ -770,7 +733,7 @@ GST_START_TEST (test_one_above_another)
 
   /*
      Source 2
-     Start : 2s
+     Start : 1s
      Duration : 2s
      Priority : 1
    */
@@ -807,11 +770,7 @@ GST_START_TEST (test_one_above_another)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 3 * GST_SECOND, 1 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments, 0);
 }

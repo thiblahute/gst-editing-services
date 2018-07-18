@@ -263,10 +263,7 @@ test_one_after_other_full (void)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 5 * GST_SECOND, 6 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 1 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0 * GST_SECOND, 2 * GST_SECOND, 0));
 
   gst_element_link (comp, sink);
 
@@ -319,10 +316,7 @@ test_one_after_other_full (void)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 5 * GST_SECOND, 6 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 1 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0 * GST_SECOND, 2 * GST_SECOND, 0));
   collect->gotsegment = FALSE;
   collect->expected_base = 0;
 
@@ -461,15 +455,7 @@ test_one_under_another_full (void)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, GST_SECOND, 0));
-
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, GST_SECOND, 2 * GST_SECOND,
-          GST_SECOND));
-
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   gst_element_link (comp, sink);
 
@@ -615,10 +601,7 @@ test_one_bin_after_other_full (void)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
 
   gst_element_link (comp, sink);
 
@@ -671,10 +654,7 @@ test_one_bin_after_other_full (void)
 
   /* Expected segments */
   collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  collect->expected_segments = g_list_append (collect->expected_segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
   collect->gotsegment = FALSE;
   collect->expected_base = 0;
 

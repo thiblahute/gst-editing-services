@@ -81,7 +81,7 @@ GST_START_TEST (test_tempochange)
 
   /* Define expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0 * GST_SECOND, 4.0 * GST_SECOND, 0));
+      segment_new (1.0, GST_FORMAT_TIME, 0 * GST_SECOND, 2.0 * GST_SECOND, 0));
   collect = g_new0 (CollectStructure, 1);
   collect->comp = comp;
   collect->sink = sink;

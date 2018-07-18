@@ -169,6 +169,14 @@ struct _NleCompositionPrivate
   /* Segment representing the last seek. Simply initialized
    * segment if no seek occured. */
   GstSegment *seek_segment;
+
+  /* The last segment that was outputed by the current stack,
+   * This segment is never pushed downstream but is used to
+   * retimestamp buffers */
+  GstSegment stack_segment;
+
+  /* Next running base_time to set on stack_segment so we
+   * can properly retimestamp buffers. */
   guint64 next_base_time;
 
   /*
@@ -184,6 +192,7 @@ struct _NleCompositionPrivate
   GList *actions;
   Action *current_action;
 
+  gboolean needs_segment;
   gboolean running;
   gboolean initialized;
 
@@ -1207,6 +1216,7 @@ nle_composition_reset (NleComposition * comp)
 
   gst_segment_init (priv->segment, GST_FORMAT_TIME);
   gst_segment_init (priv->seek_segment, GST_FORMAT_TIME);
+  gst_segment_init (&priv->stack_segment, GST_FORMAT_TIME);
 
   if (priv->current)
     g_node_destroy (priv->current);
@@ -1215,6 +1225,7 @@ nle_composition_reset (NleComposition * comp)
   nle_composition_reset_target_pad (comp);
 
   priv->initialized = FALSE;
+  priv->needs_segment = TRUE;
   priv->send_stream_start = TRUE;
   priv->real_eos_seqnum = 0;
   priv->next_eos_seqnum = 0;
@@ -1232,6 +1243,15 @@ ghost_event_probe_handler (GstPad * ghostpad G_GNUC_UNUSED,
   GstPadProbeReturn retval = GST_PAD_PROBE_OK;
   NleCompositionPrivate *priv = comp->priv;
   GstEvent *event;
+
+  if (GST_IS_BUFFER (info->data) && priv->waiting_serialized_query_or_buffer) {
+    GST_BUFFER_PTS (info->data) =
+        gst_segment_to_running_time (&priv->stack_segment, GST_FORMAT_TIME,
+        GST_BUFFER_PTS (info->data));
+
+    GST_LOG_OBJECT (comp, "Retimestamped bufffer to %" GST_TIME_FORMAT,
+        GST_TIME_ARGS (GST_BUFFER_PTS (info->data)));
+  }
 
   if (GST_IS_BUFFER (info->data) ||
       (GST_IS_QUERY (info->data) && GST_QUERY_IS_SERIALIZED (info->data))) {
@@ -1289,33 +1309,40 @@ ghost_event_probe_handler (GstPad * ghostpad G_GNUC_UNUSED,
     {
       guint64 rstart, rstop;
       const GstSegment *segment;
-      GstSegment copy;
-      GstEvent *event2;
-      /* next_base_time */
 
       if (_is_ready_to_restart_task (comp, event))
         _restart_task (comp);
 
+      /* next_base_time */
       gst_event_parse_segment (event, &segment);
-      gst_segment_copy_into (segment, &copy);
-
-      rstart =
-          gst_segment_to_running_time (segment, GST_FORMAT_TIME,
+      priv->stack_segment = *segment;
+      priv->stack_segment.base = comp->priv->next_base_time;
+      rstart = gst_segment_to_running_time (segment, GST_FORMAT_TIME,
           segment->start);
-      rstop =
-          gst_segment_to_running_time (segment, GST_FORMAT_TIME, segment->stop);
-      copy.base = comp->priv->next_base_time;
+      rstop = gst_segment_to_running_time (segment, GST_FORMAT_TIME,
+          segment->stop);
       GST_DEBUG_OBJECT (comp,
           "Updating base time to %" GST_TIME_FORMAT ", next:%" GST_TIME_FORMAT,
           GST_TIME_ARGS (comp->priv->next_base_time),
           GST_TIME_ARGS (comp->priv->next_base_time + rstop - rstart));
       comp->priv->next_base_time += rstop - rstart;
 
-      event2 = gst_event_new_segment (&copy);
-      GST_EVENT_SEQNUM (event2) = GST_EVENT_SEQNUM (event);
+      if (g_atomic_int_compare_and_exchange (&comp->priv->needs_segment, TRUE,
+              FALSE)) {
+        GstEvent *event2;
 
-      GST_PAD_PROBE_INFO_DATA (info) = event2;
-      gst_event_unref (event);
+        event2 = gst_event_new_segment (comp->priv->segment);
+        GST_EVENT_SEQNUM (event2) = GST_EVENT_SEQNUM (event);
+        GST_DEBUG_OBJECT (comp, "Replaced upstream segment %" GST_PTR_FORMAT
+            " with the composition segment: %" GST_PTR_FORMAT, event, event2);
+
+        GST_PAD_PROBE_INFO_DATA (info) = event2;
+        gst_event_unref (event);
+      } else {
+        GST_DEBUG_OBJECT (comp, "Dropping: %" GST_PTR_FORMAT, event);
+        gst_event_unref (event);
+        return GST_PAD_PROBE_HANDLED;
+      }
     }
       break;
     case GST_EVENT_TAG:
@@ -1612,6 +1639,9 @@ seek_handling (NleComposition * comp, gint32 seqnum,
 {
   GST_DEBUG_OBJECT (comp, "Seek handling update pipeline reason: %s",
       UPDATE_PIPELINE_REASONS[update_stack_reason]);
+
+  if (_have_to_flush_downstream (update_stack_reason))
+    comp->priv->needs_segment = TRUE;
 
   if (have_to_update_pipeline (comp, update_stack_reason)) {
     if (comp->priv->segment->rate >= 0.0)
@@ -2330,6 +2360,7 @@ _commit_func (NleComposition * comp, UpdateCompositionData * ucompo)
     return;
   }
 
+  comp->priv->needs_segment = TRUE;
   if (priv->initialized == FALSE) {
     GST_DEBUG_OBJECT (comp, "Not initialized yet, just updating values");
 
@@ -2586,11 +2617,11 @@ update_start_stop_duration (NleComposition * comp)
       }
     }
 
-    priv->segment->stop = obj->stop;
     cobj->stop = obj->stop;
     g_object_notify_by_pspec (G_OBJECT (cobj),
         nleobject_properties[NLEOBJECT_PROP_STOP]);
   }
+  priv->segment->stop = cobj->stop;
 
   if ((cobj->stop - cobj->start) != cobj->duration) {
     cobj->pending_duration = cobj->duration = cobj->stop - cobj->start;
@@ -2960,8 +2991,9 @@ update_pipeline (NleComposition * comp, GstClockTime currenttime, gint32 seqnum,
 
   if (currenttime >= duration) {
     currenttime = duration;
-    priv->segment->start = GST_CLOCK_TIME_NONE;
-    priv->segment->stop = GST_CLOCK_TIME_NONE;
+    priv->segment->start = NLE_OBJECT_START (comp);
+    priv->segment->position = priv->segment->time = currenttime;
+    priv->segment->stop = NLE_OBJECT_STOP (comp);
   }
 
   GST_INFO_OBJECT (comp,

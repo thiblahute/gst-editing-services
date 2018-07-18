@@ -199,13 +199,7 @@ GST_START_TEST (test_simple_operation)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 3 * GST_SECOND, 2 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 3 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -285,19 +279,7 @@ GST_START_TEST (test_pyramid_operations)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 4 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 6 * GST_SECOND, 4 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          6 * GST_SECOND, 8 * GST_SECOND, 6 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          8 * GST_SECOND, 10 * GST_SECOND, 8 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 10 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -382,19 +364,7 @@ GST_START_TEST (test_pyramid_operations2)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 1 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          1 * GST_SECOND, 2 * GST_SECOND, 1 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 4 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 5 * GST_SECOND, 4 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          5 * GST_SECOND, 6 * GST_SECOND, 5 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 6 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -472,13 +442,7 @@ GST_START_TEST (test_pyramid_operations_expandable)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          2 * GST_SECOND, 4 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 6 * GST_SECOND, 4 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 6 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -567,13 +531,7 @@ GST_START_TEST (test_complex_operations)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          0 * GST_SECOND, 2 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          4 * GST_SECOND, 6 * GST_SECOND, 4 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 6 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -667,13 +625,7 @@ GST_START_TEST (test_complex_operations_bis)
 
   /* Expected segments */
   segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME, 0, 2 * GST_SECOND, 0));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          0 * GST_SECOND, 2 * GST_SECOND, 2 * GST_SECOND));
-  segments = g_list_append (segments,
-      segment_new (1.0, GST_FORMAT_TIME,
-          0 * GST_SECOND, 2 * GST_SECOND, 4 * GST_SECOND));
+      segment_new (1.0, GST_FORMAT_TIME, 0, 6 * GST_SECOND, 0));
 
   fill_pipeline_and_check (comp, segments);
 }
@@ -699,12 +651,8 @@ gnonlin_suite (void)
   tcase_add_test (tc_chain, test_pyramid_operations);
   tcase_add_test (tc_chain, test_pyramid_operations2);
   tcase_add_test (tc_chain, test_pyramid_operations_expandable);
-  if (gst_registry_check_feature_version (gst_registry_get (), "compositor", 0,
-          11, 0)) {
-    tcase_add_test (tc_chain, test_complex_operations);
-    tcase_add_test (tc_chain, test_complex_operations_bis);
-  } else
-    GST_WARNING ("compositor element not available, skipping 1 test");
+  tcase_add_test (tc_chain, test_complex_operations);
+  tcase_add_test (tc_chain, test_complex_operations_bis);
 
   return s;
 }
